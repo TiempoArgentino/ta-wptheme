@@ -1,0 +1,449 @@
+@media (max-width: 992px) and (orientation: landscape) {
+  .seamos-socios {
+    .socios-block {
+      .img-container {
+        max-width: 60%;
+        margin: 0 auto;
+      }
+
+      .asociarme-btn {
+        button {
+          padding: 8px 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 992px) {
+  .newsletter {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .articulo-simple {
+    .img-wrapper {
+      width: 100%;
+      height: auto;
+      position: relative;
+      left: auto;
+      margin-left: 0;
+    }
+  }
+
+  .ta-header-container {
+    .sub-blocks {
+      .articles-and-btns {
+        .articles-container {
+          &.fullwidth-row {
+            .article {
+              .img-container {
+                width: 278px;
+                height: auto;
+              }
+            }
+          }
+
+          .article {
+            flex: 1 1 0px;
+
+            &.thumbnail {
+              .img-container {
+                .img-wrapper {
+                  img {
+                    max-width: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-title {
+    h4 {
+      font-size: 16px;
+      line-height: 21.17px;
+    }
+  }
+  .articulo-simple {
+    .title {
+      h1 {
+        font-size: 39px;
+        line-height: 44.85px;
+      }
+    }
+
+    .subtitle {
+      h3 {
+        font-size: 19px;
+        line-height: 25.14px;
+      }
+    }
+
+    .article-body {
+      p {
+        font-size: 19px;
+        line-height: 25.14px;
+        margin-bottom: 1rem;
+      }
+
+      .bajada {
+        p {
+          font-size: 16px;
+          line-height: 21.17px;
+          letter-spacing: 0.3px;
+        }
+      }
+
+      .quote {
+        .quote-body {
+          p {
+            font-size: 26px;
+            line-height: 32.24px;
+          }
+        }
+
+        .author-quoted {
+          p {
+            font-size: 16px;
+            line-height: 19.84px;
+          }
+        }
+      }
+
+      .anuncio-seccion {
+        .anuncio-container {
+          p,
+          a {
+            font-size: 19px;
+            line-height: 25.14px;
+          }
+        }
+      }
+
+      .subnote,
+      .event {
+        .title {
+          h2 {
+            font-size: 24px;
+            line-height: 31.75px;
+            letter-spacing: -0.2px;
+          }
+        }
+      }
+    }
+
+    .date,
+    .author {
+      font-size: 16px;
+      line-height: 19.84px;
+    }
+
+    .img-container {
+      .credits {
+        p {
+          font-size: 13px;
+          line-height: 16.12px;
+        }
+      }
+    }
+  }
+
+  .article-tags {
+    .tags-container {
+      .tag {
+        .content {
+          p {
+            font-size: 16px;
+            line-height: 21.17px;
+          }
+        }
+
+        .triangle {
+          width: 22px;
+          height: 22px;
+          transform: rotate(45deg) translate(-5px, 11px);
+        }
+      }
+    }
+  }
+
+  .btns-container {
+    .personalizar {
+      button {
+        @include button(var(--ta-celeste), transparent);
+        text-decoration: underline;
+        font-size: 19px;
+        line-height: 25.14px;
+      }
+    }
+
+    .ver-mas {
+      button {
+        font-size: 19px;
+        line-height: 25.14px;
+      }
+    }
+  }
+
+  .ta-header-container {
+    .sub-blocks {
+      .articles-and-btns {
+        .articles-container {
+          overflow: hidden;
+          .article {
+            max-width: 258px;
+            &.thumbnail {
+              max-width: 258px;
+              .img-container {
+                img {
+                  max-width: 100%;
+                }
+              }
+
+              .content {
+                margin-left: 0;
+
+                .article-border {
+                  border-top: 2px solid var(--ta-celeste);
+                  width: 70px;
+                  margin: 10px 0;
+                }
+
+                .description {
+                  p {
+                    margin-bottom: 1rem;
+                  }
+                }
+                .author {
+                  max-width: 70%;
+                }
+              }
+            }
+
+            .content {
+              .description {
+                p {
+                  font-size: 19px;
+                  line-height: 25.14px;
+                  letter-spacing: -0.1px;
+                }
+              }
+
+              .duration {
+                line-height: 25.14px;
+                letter-spacing: -0.1px;
+                font-size: 19px;
+              }
+
+              .date {
+                font-size: 16px;
+                line-height: 19.84px;
+              }
+
+              .article-info-container {
+                .format {
+                  p {
+                    font-size: 16px;
+                    line-height: 21.17px;
+                  }
+                }
+                .author {
+                  p {
+                    font-size: 16px;
+                    line-height: 19.84px;
+                  }
+                }
+              }
+
+              .category-title {
+                h4 {
+                  font-size: 16px;
+                  line-height: 21.17px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .seamos-socios {
+    .socios-block {
+      .title {
+        h2 {
+          font-size: 26px;
+          line-height: 32.24px;
+        }
+      }
+
+      .subtitle {
+        p {
+          font-size: 19px;
+          line-height: 25.14px;
+        }
+      }
+      .asociarme-btn {
+        button {
+          font-size: 19px;
+          line-height: 25.14px;
+          padding: 8px 35px;
+        }
+      }
+
+      .optional-content {
+        p {
+          font-size: 19px;
+          line-height: 25.14px;
+          letter-spacing: -0.1px;
+        }
+      }
+    }
+  }
+
+  .newsletter {
+    .section-title {
+      h4 {
+        font-size: 19px;
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
+      }
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 25.14px;
+      letter-spacing: -0.1px;
+    }
+
+    .newsletter-form {
+      input {
+        height: 43px;
+        padding-right: 60px;
+        background-color: var(--ta-celeste-fondos);
+
+        &::placeholder {
+          font-size: 19px;
+          letter-spacing: -0.1px;
+        }
+      }
+
+      button {
+        font-size: 19px;
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
+        padding: 8px 35px;
+        width: auto !important;
+        max-width: 60%;
+      }
+
+      .input-icon {
+        bottom: 9px;
+        right: 30px;
+      }
+    }
+
+    .newsletter-options {
+      button {
+        font-size: 19px;
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
+        background-color: var(--ta-celeste-fondos);
+      }
+    }
+  }
+
+  .ta-input-container {
+    .header-container {
+      .date,
+      .title,
+      .author-name {
+        p {
+          font-size: 19px;
+          line-height: 25.14px;
+          letter-spacing: -0.1px;
+        }
+      }
+
+      .description {
+        p,
+        p.hashtag {
+          font-size: 24px;
+          line-height: 31.75px;
+          letter-spacing: -0.2px;
+
+          span {
+            font-size: 24px;
+            line-height: 31.75px;
+            letter-spacing: -0.2px;
+          }
+        }
+      }
+    }
+    .input-quantity {
+      p {
+        font-size: 19px;
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
+      }
+    }
+    .input-box {
+      .input-container {
+        .input-wrapper {
+          span {
+            padding-right: 50px;
+            input {
+              height: 50px;
+
+              &::placeholder {
+                font-size: 19px;
+                letter-spacing: -0.1px;
+              }
+            }
+          }
+        }
+
+        .input-icon {
+          button {
+            max-width: unset;
+            bottom: 6px;
+          }
+        }
+      }
+
+      .send-btn {
+        height: 52px;
+      }
+    }
+
+    .input-container {
+      .input {
+        .content {
+          .user-info,
+          .input-body {
+            p {
+              font-size: 19px;
+              line-height: 25.14px;
+              letter-spacing: -0.1px;
+            }
+          }
+
+          .date {
+            p {
+              font-size: 16px;
+              line-height: 19.84px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
