@@ -787,10 +787,15 @@ a {
         line-height: 22.49px;
         letter-spacing: -0.2px;
         margin-bottom: 0;
-        color: var(--ta-celeste);
 
         span {
           font-weight: 700;
+        }
+      }
+
+      &.ta-celeste-color {
+        p {
+          color: var(--ta-celeste);
         }
       }
     }
@@ -812,6 +817,67 @@ a {
         font-size: 15px;
         line-height: 19.85px;
         letter-spacing: -0.2px;
+      }
+    }
+  }
+}
+
+.author-profile {
+  .author-block {
+    border: 1px solid var(--ta-celeste);
+    .profile {
+      .partner-icon {
+        .icon {
+          bottom: -12px;
+          left: -12px;
+        }
+      }
+    }
+
+    .author-name {
+      p {
+        @include baskerville-italic;
+        font-size: 12px;
+        line-height: 14.88px;
+
+        span {
+          color: var(--ta-celeste);
+        }
+      }
+    }
+
+    .quote {
+      .author-quoted {
+        p {
+          @include caladea-700;
+          font-size: 27px;
+          line-height: 31.05px;
+          letter-spacing: -1px;
+          color: var(--ta-negro-texto);
+          text-align: left;
+        }
+      }
+
+      .quote-body {
+        color: var(--ta-celeste);
+      }
+    }
+
+    .author-description {
+      p {
+        @include red-hat-400;
+        font-size: 15px;
+        line-height: 19.85px;
+        letter-spacing: -0.2px;
+      }
+      .author-summary {
+        p {
+          margin: 0;
+
+          span {
+            @include red-hat-700;
+          }
+        }
       }
     }
   }

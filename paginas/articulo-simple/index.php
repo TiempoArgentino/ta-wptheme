@@ -17,7 +17,7 @@
         <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
             <div class="col-12 col-lg-8 p-0">
                 <?php include_once('../../partes/articulo-simple.php');  ?>
-                <?php include_once('../../partes/seamos-socios.php');  ?>
+                <?php include_once('../../partes/seamos-socios-fullwidth.php');  ?>
                 <?php include_once('../../partes/tags.php');  ?>
                 <?php include_once('../../partes/mira-tambien.php');  ?>
                 <?php include_once('../../partes/audiovisual.php');  ?>

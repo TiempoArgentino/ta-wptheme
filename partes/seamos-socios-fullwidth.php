@@ -1,20 +1,19 @@
 <section class="seamos-socios">
     <div class="container mt-3">
         <div class="socios-block mx-auto px-3 py-4">
-            <div class="socios-header-container d-flex flex-column">
-                <div class="content">
+            <div class="socios-header-container d-flex flex-column flex-md-row">
+                <div class="content col-12 col-md-7 px-0">
                     <div class="title">
-                        <h2>En Tiempo Argentino hacemos periodismo sin fines de lucro. </h2>
+                        <h2>Esta nota fue posible gracias al apoyo de nuestros lectores.</h2>
                     </div>
-                    <div class="subtitle">
+                    <div class="subtitle ta-celeste-color">
                         <p>
-                            <span>Nuestra agenda se guía por los temas socialmente relevantes</span>, por eso abordamos
-                            problemáticas
-                            habitualmente marginadas de los otros medios de comunicación masivos.</span>
+                            Su aporte nos permite hacer periodismo sin condicionamientos. <span>El sueño
+                                de un medio libre no es solo nuestro.</span>
                         </p>
                     </div>
                 </div>
-                <div class="img-btn">
+                <div class="img-btn col-12 col-md-5 px-0">
                     <div class="img-container text-center mt-3">
                         <img src="../../assets/images/asociate.svg" alt="" class="w-100 h-auto" />
                     </div>
@@ -26,7 +25,7 @@
 
                 </div>
             </div>
-            <!-- <div class="optional-content mt-3">
+            <div class="optional-content mt-3">
                 <p>El gobernador sobreactuó su gesta por la salud pública con dos medidas sorprendentes: la
                     súbita expulsión de 61 migrantes de países latinoamericanos –quienes fueron arreados en un
                     micro hacia Buenos Aires– y el anunció de poner una faja en las casas de posibles
@@ -39,7 +38,7 @@
                     sorprendentes: la súbita expulsión de 61 migrantes de países latinoamericanos –quienes
                     fueron arreados en un micro hacia Buenos Aires– y el anunció de poner una faja en las casas
                     de posibles infectados.</p>
-            </div> -->
+            </div>
         </div>
     </div>
 </section>

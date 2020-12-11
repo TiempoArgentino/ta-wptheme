@@ -62,6 +62,29 @@
         }
       }
     }
+
+    .author-profile {
+      .author-block {
+        .author-content {
+          .quote {
+            .author-quoted {
+              p {
+                font-size: 39px;
+                line-height: 44.85px;
+                letter-spacing: -0.5px;
+              }
+            }
+
+            .quote-body {
+              p {
+                font-size: 26px;
+                line-height: 32.24px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
