@@ -22,6 +22,9 @@
                 <div class="input-quantity mt-3">
                     <p>452 Comentarios</p>
                 </div>
+                <div class="container twitter-screenshot">
+                    <img src="/assets/images/twitter-screenshot.svg" alt="" class="img-fluid" />
+                </div>
             </div>
         </div>
     </div>

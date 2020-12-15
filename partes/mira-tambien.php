@@ -1,48 +1,48 @@
-<section class="ta-header-container">
-    <div class="container">
-        <div class="section-title">
-            <h4>MIRÁ TAMBIÉN</h4>
-        </div>
+<div class="container">
+    <div class="section-title">
+        <h4>MIRÁ TAMBIÉN</h4>
     </div>
-    <div class="sub-blocks mt-3">
-        <div class="container">
-            <div class="articles-and-btns">
-                <div class="articles-container fullwidth-row">
-                    <div class="article d-flex mt-3">
+</div>
+<div class="sub-blocks mt-3">
+    <div class="container">
+        <div class="articles-and-btns">
+            <div class="articles-container fullwidth-row">
+                <div class="articles-block col-12 p-0 d-flex">
+                    <div class="col-3 p-0">
                         <a href="">
-                            <div class="img-container mr-2">
-                                <img src="../../assets/images/tiny-art.png" alt="" />
+                            <div class="img-container position-relative">
+                                <div class="img-wrapper">
+                                    <img src="../../assets/images/taller.png" alt="" class="img-fluid" />
+                                </div>
                             </div>
                         </a>
-                        <div class="content d-flex flex-column justify-content-center">
-                            <div class="section-title">
-                                <h4>TEMA O SECCIÓN</h4>
-                            </div>
-                            <div class="description">
-                                <a href="">
-                                    <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
-                                </a>
-                            </div>
-                        </div>
                     </div>
-                    <div class="article mt-3">
-                        <div class="content">
-                            <div class="section-title">
-                                <h4>TEMA O SECCIÓN</h4>
-                            </div>
-                            <div class="description">
-                                <a href="">
-                                    <p>Otro título, pero en segundo plano, de nota que el autor (o quien cargó la nota
-                                        principal)
-                                        señaló
-                                        como relacionada. </p>
-                                </a>
-                            </div>
+                    <div class="content mt-0 mt-lg-3 col-9">
+                        <div class="section-title">
+                            <h4>TEMA O SECCIÓN</h4>
+                        </div>
+                        <div class="description">
+                            <a href="">
+                                <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <div class="articles-block col-12 p-0 d-flex mt-3 mt-md-0">
+                    <div class="content mt-0 mt-lg-3 col-12 p-0">
+                        <div class="section-title">
+                            <h4>TEMA O SECCIÓN</h4>
+                        </div>
+                        <div class="description">
+                            <a href="">
+                                <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="separator"></div>
-</section>
+</div>
+<div class="separator"></div>

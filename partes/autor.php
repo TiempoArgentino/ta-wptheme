@@ -4,8 +4,8 @@
             <h4>MÁS DEL AUTOR</h4>
         </div>
     </div>
-    <div class="author-block m-3">
-        <div class="container pb-2 pt-4">
+    <div class="container">
+        <div class="author-block px-3 py-4">
             <div class="d-flex flex-column flex-md-row">
                 <div class="d-flex flex-row flex-md-column justify-content-between justify-content-md-start px-4">
                     <div class="profile  position-relative ">
@@ -46,7 +46,8 @@
                             <p>Verónica Benaim</p>
                         </div>
                         <div class="quote-body  mt-2">
-                            <p>“Me siento periodista desde antes de terminar la escuela. Economía, información General y
+                            <p>“Me siento periodista desde antes de terminar la escuela. Economía, información
+                                General y
                                 Educación
                                 son
                                 mis temas preferidos.“
@@ -62,7 +63,8 @@
                         <div class="description-content mt-4">
                             <p>
                                 Durante el siglo XIV, la denominada peste negra se extendió
-                                por Asia Menor, Oriente Medio, el norte de Africa y Europa, alcanzando su pico máximo
+                                por Asia Menor, Oriente Medio, el norte de Africa y Europa, alcanzando su pico
+                                máximo
                                 entre
                                 1346
                                 y

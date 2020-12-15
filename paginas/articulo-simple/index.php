@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container-fluid container-lg p-0 p-md-2">
+    <div class="ta-context transparent-blue container-fluid container-lg p-0 ">
         <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
             <div class="col-12 col-lg-8 p-0">
                 <?php include_once('../../partes/articulo-simple.php');  ?>
@@ -27,23 +27,35 @@
                     <?php include_once('../../partes/newsletter.php');  ?>
                     <?php include_once('../../partes/mas-leidas.php');  ?>
                 </div>
-                <div class="d-none d-lg-block">
-                    <?php include_once('../../partes/taller-relacionado.php');  ?>
+                <div class="d-none d-md-block">
+                    <?php include('../../partes/taller-relacionado.php');  ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php include_once('../../partes/segun-tus-intereses.php');  ?>
-    <div class="d-block d-md-none">
-        <?php include_once('../../partes/taller-relacionado.php');  ?>
+    <div class="ta-context light-blue-bg">
+        <?php include_once('../../partes/segun-tus-intereses.php');  ?>
     </div>
-    <?php include_once('../../partes/comentarios.php');  ?>
-    <?php include_once('../../partes/pregunta-y-participa.php');  ?>
-    <?php include_once('../../partes/conversemos.php');  ?>
-    <?php include_once('../../partes/relacionados-tema.php');  ?>
-    <?php include_once('../../partes/podes-leer.php');  ?>
-
-
+    <div class="ta-context transparent-bg">
+        <div class="container-md">
+            <div class="separator"></div>
+        </div>
+        <div class="d-block d-md-none">
+            <?php include('../../partes/taller-relacionado.php');  ?>
+        </div>
+        <?php include_once('../../partes/comentarios.php');  ?>
+        <?php include_once('../../partes/pregunta-y-participa.php');  ?>
+        <?php include_once('../../partes/conversemos.php');  ?>
+    </div>
+    <div class="ta-context dark-blue-bg">
+        <?php include_once('../../partes/relacionados-tema.php');  ?>
+    </div>
+    <div class="container-md">
+        <div class="separator"></div>
+    </div>
+    <div class="ta-context light-blue-bg">
+        <?php include_once('../../partes/podes-leer.php');  ?>
+    </div>
 </body>
 
 </html>

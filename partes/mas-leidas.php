@@ -1,4 +1,4 @@
-<section class="ta-header-container mt-4">
+<section class="mt-4">
     <div class="container">
         <div class="section-title">
             <h4>LAS MÁS LEÍDAS</h4>
@@ -8,12 +8,16 @@
         <div class="container">
             <div class="articles-and-btns">
                 <div class="articles-container fullwidth-row">
-                    <div class="article d-flex flex-row flex-lg-column mt-3">
-                        <a href="">
-                            <div class="img-container w-100 pr-2">
-                                <img src="../../assets/images/tiny-art.png" alt="" />
-                            </div>
-                        </a>
+                    <div class="articles-block mt-3 col-12 d-flex flex-row flex-lg-column p-0">
+                        <div>
+                            <a href="">
+                                <div class="img-container w-100 pr-2 pr-lg-0">
+                                    <div class="img-wrapper">
+                                        <img src="../../assets/images/tiny-art.png" alt="" />
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                         <div class="content mt-0 mt-lg-3">
                             <div class="section-title">
                                 <h4>TEMA O SECCIÓN</h4>
@@ -25,12 +29,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article d-flex flex-row flex-lg-column mt-3">
-                        <a href="">
-                            <div class="img-container w-100 pr-2">
-                                <img src="../../assets/images/tiny-art.png" alt="" />
-                            </div>
-                        </a>
+                    <div class="articles-block mt-3 col-12 d-flex flex-row flex-lg-column p-0">
+                        <div>
+                            <a href="">
+                                <div class="img-container w-100 pr-2 pr-lg-0">
+                                    <div class="img-wrapper">
+                                        <img src="../../assets/images/tiny-art.png" alt="" />
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                         <div class="content mt-0 mt-lg-3">
                             <div class="section-title">
                                 <h4>TEMA O SECCIÓN</h4>
@@ -42,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article mt-3">
+                    <div class="articles-block mt-3 col-12 d-flex flex-row flex-lg-column p-0">
                         <div class="content">
                             <div class="section-title">
                                 <h4>POLÍTICA</h4>
@@ -54,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article mt-3">
+                    <div class="articles-block mt-3 col-12 d-flex flex-row flex-lg-column p-0">
                         <div class="content">
                             <div class="section-title">
                                 <h4>ECONOMÍA</h4>
@@ -69,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article mt-3">
+                    <div class="articles-block mt-3 col-12 d-flex flex-row flex-lg-column p-0">
                         <div class="content">
                             <div class="section-title">
                                 <h4>INTERÉS GENERAL</h4>

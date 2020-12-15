@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container-fluid container-lg p-0 p-md-2">
+    <div class="ta-context transparent-blue container-fluid container-lg p-0 p-md-2">
         <?php include_once('../../partes/autor.php');  ?>
         <div class="d-flex flex-column flex-md-row-reverse">
             <div class="col-12 col-md-4 p-0">
@@ -24,10 +24,6 @@
             </div>
         </div>
         <div class="btns-container">
-            <div class="ver-mas text-right d-block d-lg-none">
-                <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
-                            alt="" /></span></button>
-            </div>
             <div class="pagination d-none d-lg-flex justify-content-center">
                 <button class="active">1</button>
                 <button>2</button>
