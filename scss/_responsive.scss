@@ -64,8 +64,10 @@
     }
   }
 
-  .author-profile {
-    .author-block {
+  .author-profile,
+  .tag-profile {
+    .author-block,
+    .tag-block {
       max-width: 85%;
       margin: 10px auto;
       .author-name {
@@ -74,10 +76,12 @@
           line-height: 19.84px;
         }
       }
-      .author-content {
+      .author-content,
+      .tag-content {
         max-width: 70%;
         .quote {
-          .author-quoted {
+          .author-quoted,
+          .tag-quoted {
             p {
               font-size: 39px;
               line-height: 44.85px;
@@ -93,7 +97,8 @@
           }
         }
 
-        .author-description {
+        .author-description,
+        .tag-description {
           .author-summary,
           .description-content {
             p {
@@ -103,6 +108,10 @@
             }
           }
         }
+      }
+
+      .tag-content {
+        max-width: 100%;
       }
     }
   }

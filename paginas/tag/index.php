@@ -14,13 +14,13 @@
 
 <body>
     <div class="ta-context transparent-bg container-fluid container-lg p-0 p-md-2">
-        <?php include_once('../../partes/autor.php');  ?>
+        <?php include_once('../../partes/tag-info.php');  ?>
         <div class="d-flex flex-column flex-md-row-reverse">
             <div class="col-12 col-md-4 p-0">
                 <?php include_once('../../partes/seamos-socios.php');  ?>
             </div>
             <div class="col-12 col-md-8 p-0">
-                <?php include_once('../../partes/articulos-autor.php');  ?>
+                <?php include_once('../../partes/articulos-tag.php');  ?>
             </div>
         </div>
         <div class="btns-container">

@@ -871,8 +871,10 @@ a {
   }
 }
 
-.author-profile {
-  .author-block {
+.author-profile,
+.tag-profile {
+  .author-block,
+  .tag-block {
     border: 1px solid var(--ta-celeste);
     .profile {
       .partner-icon {
@@ -883,7 +885,8 @@ a {
       }
     }
 
-    .author-name {
+    .author-name,
+    .tag-name {
       p {
         @include baskerville-italic;
         font-size: 12px;
@@ -896,7 +899,8 @@ a {
     }
 
     .quote {
-      .author-quoted {
+      .author-quoted,
+      .tag-quoted {
         p {
           @include caladea-700;
           font-size: 27px;
@@ -912,14 +916,16 @@ a {
       }
     }
 
-    .author-description {
+    .author-description,
+    .tag-description {
       p {
         @include red-hat-400;
         font-size: 15px;
         line-height: 19.85px;
         letter-spacing: -0.2px;
       }
-      .author-summary {
+      .author-summary,
+      .tag-summary {
         p {
           margin: 0;
 
@@ -930,48 +936,9 @@ a {
       }
     }
   }
-}
 
-.navbar-toggle {
-  background-color: transparent;
-  border: none;
-  outline: none;
-
-  .icon-bar {
-    min-height: 3px;
-    width: 25px;
-    transition: all 0.2s;
-    background-color: #000;
-  }
-  .top-bar {
-    transform: rotate(45deg);
-    transform-origin: 10% 10%;
-  }
-  .middle-bar {
-    opacity: 0;
-  }
-  .bottom-bar {
-    transform: rotate(-45deg);
-    transform-origin: 10% 90%;
-  }
-}
-
-.navbar-toggle.collapsed .top-bar {
-  transform: rotate(0);
-}
-.navbar-toggle.collapsed .middle-bar {
-  opacity: 1;
-}
-.navbar-toggle.collapsed .bottom-bar {
-  transform: rotate(0);
-}
-
-.nav.navbar-nav {
-  padding: 20px 10px;
-  li {
-    a {
-      color: white;
-    }
+  .tag-block {
+    border: none;
   }
 }
 

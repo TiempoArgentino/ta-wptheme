@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="ta-context transparent-blue container-fluid container-lg p-0 ">
+    <div class="ta-context transparent-bg container-fluid container-lg p-0 ">
         <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
             <div class="col-12 col-lg-8 p-0">
                 <?php include_once('../../partes/articulo-simple.php');  ?>

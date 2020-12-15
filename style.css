@@ -773,24 +773,51 @@ a {
   letter-spacing: -0.2px;
 }
 
-.author-profile .author-block {
+.author-profile .author-block,
+.author-profile .tag-block,
+.tag-profile .author-block,
+.tag-profile .tag-block {
   border: 1px solid var(--ta-celeste);
 }
-.author-profile .author-block .profile .partner-icon .icon {
+.author-profile .author-block .profile .partner-icon .icon,
+.author-profile .tag-block .profile .partner-icon .icon,
+.tag-profile .author-block .profile .partner-icon .icon,
+.tag-profile .tag-block .profile .partner-icon .icon {
   bottom: -12px;
   left: -12px;
 }
-.author-profile .author-block .author-name p {
+.author-profile .author-block .author-name p,
+.author-profile .author-block .tag-name p,
+.author-profile .tag-block .author-name p,
+.author-profile .tag-block .tag-name p,
+.tag-profile .author-block .author-name p,
+.tag-profile .author-block .tag-name p,
+.tag-profile .tag-block .author-name p,
+.tag-profile .tag-block .tag-name p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
   line-height: 14.88px;
 }
-.author-profile .author-block .author-name p span {
+.author-profile .author-block .author-name p span,
+.author-profile .author-block .tag-name p span,
+.author-profile .tag-block .author-name p span,
+.author-profile .tag-block .tag-name p span,
+.tag-profile .author-block .author-name p span,
+.tag-profile .author-block .tag-name p span,
+.tag-profile .tag-block .author-name p span,
+.tag-profile .tag-block .tag-name p span {
   color: var(--ta-celeste);
 }
-.author-profile .author-block .quote .author-quoted p {
+.author-profile .author-block .quote .author-quoted p,
+.author-profile .author-block .quote .tag-quoted p,
+.author-profile .tag-block .quote .author-quoted p,
+.author-profile .tag-block .quote .tag-quoted p,
+.tag-profile .author-block .quote .author-quoted p,
+.tag-profile .author-block .quote .tag-quoted p,
+.tag-profile .tag-block .quote .author-quoted p,
+.tag-profile .tag-block .quote .tag-quoted p {
   font-family: "Caladea";
   font-style: normal;
   font-weight: 700;
@@ -800,10 +827,20 @@ a {
   color: var(--ta-negro-texto);
   text-align: left;
 }
-.author-profile .author-block .quote .quote-body {
+.author-profile .author-block .quote .quote-body,
+.author-profile .tag-block .quote .quote-body,
+.tag-profile .author-block .quote .quote-body,
+.tag-profile .tag-block .quote .quote-body {
   color: var(--ta-celeste);
 }
-.author-profile .author-block .author-description p {
+.author-profile .author-block .author-description p,
+.author-profile .author-block .tag-description p,
+.author-profile .tag-block .author-description p,
+.author-profile .tag-block .tag-description p,
+.tag-profile .author-block .author-description p,
+.tag-profile .author-block .tag-description p,
+.tag-profile .tag-block .author-description p,
+.tag-profile .tag-block .tag-description p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -811,55 +848,47 @@ a {
   line-height: 19.85px;
   letter-spacing: -0.2px;
 }
-.author-profile .author-block .author-description .author-summary p {
+.author-profile .author-block .author-description .author-summary p,
+.author-profile .author-block .author-description .tag-summary p,
+.author-profile .author-block .tag-description .author-summary p,
+.author-profile .author-block .tag-description .tag-summary p,
+.author-profile .tag-block .author-description .author-summary p,
+.author-profile .tag-block .author-description .tag-summary p,
+.author-profile .tag-block .tag-description .author-summary p,
+.author-profile .tag-block .tag-description .tag-summary p,
+.tag-profile .author-block .author-description .author-summary p,
+.tag-profile .author-block .author-description .tag-summary p,
+.tag-profile .author-block .tag-description .author-summary p,
+.tag-profile .author-block .tag-description .tag-summary p,
+.tag-profile .tag-block .author-description .author-summary p,
+.tag-profile .tag-block .author-description .tag-summary p,
+.tag-profile .tag-block .tag-description .author-summary p,
+.tag-profile .tag-block .tag-description .tag-summary p {
   margin: 0;
 }
-.author-profile .author-block .author-description .author-summary p span {
+.author-profile .author-block .author-description .author-summary p span,
+.author-profile .author-block .author-description .tag-summary p span,
+.author-profile .author-block .tag-description .author-summary p span,
+.author-profile .author-block .tag-description .tag-summary p span,
+.author-profile .tag-block .author-description .author-summary p span,
+.author-profile .tag-block .author-description .tag-summary p span,
+.author-profile .tag-block .tag-description .author-summary p span,
+.author-profile .tag-block .tag-description .tag-summary p span,
+.tag-profile .author-block .author-description .author-summary p span,
+.tag-profile .author-block .author-description .tag-summary p span,
+.tag-profile .author-block .tag-description .author-summary p span,
+.tag-profile .author-block .tag-description .tag-summary p span,
+.tag-profile .tag-block .author-description .author-summary p span,
+.tag-profile .tag-block .author-description .tag-summary p span,
+.tag-profile .tag-block .tag-description .author-summary p span,
+.tag-profile .tag-block .tag-description .tag-summary p span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
 }
-
-.navbar-toggle {
-  background-color: transparent;
+.author-profile .tag-block,
+.tag-profile .tag-block {
   border: none;
-  outline: none;
-}
-.navbar-toggle .icon-bar {
-  min-height: 3px;
-  width: 25px;
-  transition: all 0.2s;
-  background-color: #000;
-}
-.navbar-toggle .top-bar {
-  transform: rotate(45deg);
-  transform-origin: 10% 10%;
-}
-.navbar-toggle .middle-bar {
-  opacity: 0;
-}
-.navbar-toggle .bottom-bar {
-  transform: rotate(-45deg);
-  transform-origin: 10% 90%;
-}
-
-.navbar-toggle.collapsed .top-bar {
-  transform: rotate(0);
-}
-
-.navbar-toggle.collapsed .middle-bar {
-  opacity: 1;
-}
-
-.navbar-toggle.collapsed .bottom-bar {
-  transform: rotate(0);
-}
-
-.nav.navbar-nav {
-  padding: 20px 10px;
-}
-.nav.navbar-nav li a {
-  color: white;
 }
 
 @media (max-width: 992px) and (orientation: landscape) {
@@ -906,31 +935,102 @@ a {
     max-width: 100%;
   }
 
-  .author-profile .author-block {
+  .author-profile .author-block,
+.author-profile .tag-block,
+.tag-profile .author-block,
+.tag-profile .tag-block {
     max-width: 85%;
     margin: 10px auto;
   }
-  .author-profile .author-block .author-name p {
+  .author-profile .author-block .author-name p,
+.author-profile .tag-block .author-name p,
+.tag-profile .author-block .author-name p,
+.tag-profile .tag-block .author-name p {
     font-size: 16px;
     line-height: 19.84px;
   }
-  .author-profile .author-block .author-content {
+  .author-profile .author-block .author-content,
+.author-profile .author-block .tag-content,
+.author-profile .tag-block .author-content,
+.author-profile .tag-block .tag-content,
+.tag-profile .author-block .author-content,
+.tag-profile .author-block .tag-content,
+.tag-profile .tag-block .author-content,
+.tag-profile .tag-block .tag-content {
     max-width: 70%;
   }
-  .author-profile .author-block .author-content .quote .author-quoted p {
+  .author-profile .author-block .author-content .quote .author-quoted p,
+.author-profile .author-block .author-content .quote .tag-quoted p,
+.author-profile .author-block .tag-content .quote .author-quoted p,
+.author-profile .author-block .tag-content .quote .tag-quoted p,
+.author-profile .tag-block .author-content .quote .author-quoted p,
+.author-profile .tag-block .author-content .quote .tag-quoted p,
+.author-profile .tag-block .tag-content .quote .author-quoted p,
+.author-profile .tag-block .tag-content .quote .tag-quoted p,
+.tag-profile .author-block .author-content .quote .author-quoted p,
+.tag-profile .author-block .author-content .quote .tag-quoted p,
+.tag-profile .author-block .tag-content .quote .author-quoted p,
+.tag-profile .author-block .tag-content .quote .tag-quoted p,
+.tag-profile .tag-block .author-content .quote .author-quoted p,
+.tag-profile .tag-block .author-content .quote .tag-quoted p,
+.tag-profile .tag-block .tag-content .quote .author-quoted p,
+.tag-profile .tag-block .tag-content .quote .tag-quoted p {
     font-size: 39px;
     line-height: 44.85px;
     letter-spacing: -0.5px;
   }
-  .author-profile .author-block .author-content .quote .quote-body p {
+  .author-profile .author-block .author-content .quote .quote-body p,
+.author-profile .author-block .tag-content .quote .quote-body p,
+.author-profile .tag-block .author-content .quote .quote-body p,
+.author-profile .tag-block .tag-content .quote .quote-body p,
+.tag-profile .author-block .author-content .quote .quote-body p,
+.tag-profile .author-block .tag-content .quote .quote-body p,
+.tag-profile .tag-block .author-content .quote .quote-body p,
+.tag-profile .tag-block .tag-content .quote .quote-body p {
     font-size: 26px;
     line-height: 32.24px;
   }
   .author-profile .author-block .author-content .author-description .author-summary p,
-.author-profile .author-block .author-content .author-description .description-content p {
+.author-profile .author-block .author-content .author-description .description-content p,
+.author-profile .author-block .author-content .tag-description .author-summary p,
+.author-profile .author-block .author-content .tag-description .description-content p,
+.author-profile .author-block .tag-content .author-description .author-summary p,
+.author-profile .author-block .tag-content .author-description .description-content p,
+.author-profile .author-block .tag-content .tag-description .author-summary p,
+.author-profile .author-block .tag-content .tag-description .description-content p,
+.author-profile .tag-block .author-content .author-description .author-summary p,
+.author-profile .tag-block .author-content .author-description .description-content p,
+.author-profile .tag-block .author-content .tag-description .author-summary p,
+.author-profile .tag-block .author-content .tag-description .description-content p,
+.author-profile .tag-block .tag-content .author-description .author-summary p,
+.author-profile .tag-block .tag-content .author-description .description-content p,
+.author-profile .tag-block .tag-content .tag-description .author-summary p,
+.author-profile .tag-block .tag-content .tag-description .description-content p,
+.tag-profile .author-block .author-content .author-description .author-summary p,
+.tag-profile .author-block .author-content .author-description .description-content p,
+.tag-profile .author-block .author-content .tag-description .author-summary p,
+.tag-profile .author-block .author-content .tag-description .description-content p,
+.tag-profile .author-block .tag-content .author-description .author-summary p,
+.tag-profile .author-block .tag-content .author-description .description-content p,
+.tag-profile .author-block .tag-content .tag-description .author-summary p,
+.tag-profile .author-block .tag-content .tag-description .description-content p,
+.tag-profile .tag-block .author-content .author-description .author-summary p,
+.tag-profile .tag-block .author-content .author-description .description-content p,
+.tag-profile .tag-block .author-content .tag-description .author-summary p,
+.tag-profile .tag-block .author-content .tag-description .description-content p,
+.tag-profile .tag-block .tag-content .author-description .author-summary p,
+.tag-profile .tag-block .tag-content .author-description .description-content p,
+.tag-profile .tag-block .tag-content .tag-description .author-summary p,
+.tag-profile .tag-block .tag-content .tag-description .description-content p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
+  }
+  .author-profile .author-block .tag-content,
+.author-profile .tag-block .tag-content,
+.tag-profile .author-block .tag-content,
+.tag-profile .tag-block .tag-content {
+    max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
