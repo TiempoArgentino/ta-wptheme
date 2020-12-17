@@ -4,6 +4,7 @@
 body {
   color: var(--ta-negro-texto);
   overflow-x: hidden !important;
+  @include antialiasing-fix;
 }
 
 a {

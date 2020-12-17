@@ -50,3 +50,8 @@
   line-height: 20px;
   padding: 4px 10px;
 }
+
+@mixin antialiasing-fix {
+  opacity: 0.99;
+  transform: rotateX(0deg);
+}
