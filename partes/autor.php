@@ -1,4 +1,4 @@
-<section class="author-profile mt-3">
+<section class="container-with-header mt-3">
     <div class="container">
         <div class="section-title">
             <h4>MÁS DEL AUTOR</h4>

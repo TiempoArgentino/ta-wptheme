@@ -1,4 +1,4 @@
-<section class="ta-input-container">
+<section class="container-with-header">
     <div class="container">
         <div class="section-title">
             <h4>PREGUNTÁ Y PARTICIPÁ</h4>
@@ -125,5 +125,7 @@
             </div>
         </div>
     </div>
-    <div class="separator"></div>
+    <div class="container-md mb-2 p-0">
+        <div class="separator"></div>
+    </div>
 </section>

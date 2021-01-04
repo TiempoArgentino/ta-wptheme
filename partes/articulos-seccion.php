@@ -1,4 +1,4 @@
-<div class="py-3">
+<div class="container-with-header py-3">
     <div class="container">
         <div class="section-title">
             <h4>SECCIÓN ECONOMÍA</h4>
@@ -6,10 +6,9 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container">
-            <div class="articles-and-btns">
-                <div
-                    class="row articles-container d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+            <div class="articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                <div class="row">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -38,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -70,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -95,10 +94,7 @@
 
                         </div>
                     </div>
-                </div>
-                <div
-                    class="row articles-container d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -123,7 +119,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column ">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column ">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -155,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -180,10 +176,7 @@
 
                         </div>
                     </div>
-                </div>
-                <div
-                    class="row articles-container d-none d-lg-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -208,7 +201,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -236,7 +229,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block mt-3 horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -249,8 +242,6 @@
                                 <p class="mb-1">15/09/20</p>
                             </div>
                         </div>
-
-
                         <div class="content">
                             <div class="description">
                                 <a href="">
@@ -266,11 +257,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="btns-container">
-                    <div class="ver-mas text-right d-block d-lg-none">
-                        <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
-                                    alt="" /></span></button>
-                    </div>
+
+            </div>
+            <div class="btns-container">
+                <div class="ver-mas text-right d-block d-lg-none">
+                    <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
+                                alt="" /></span></button>
                 </div>
             </div>
         </div>

@@ -1,15 +1,13 @@
 @media (max-width: 992px) and (orientation: landscape) {
-  .seamos-socios {
-    .socios-block {
-      .img-container {
-        max-width: 60%;
-        margin: 0 auto;
-      }
+  .socios-block {
+    .img-container {
+      max-width: 60%;
+      margin: 0 auto;
+    }
 
-      .asociarme-btn {
-        button {
-          padding: 8px 30px;
-        }
+    .asociarme-btn {
+      button {
+        padding: 8px 30px;
       }
     }
   }
@@ -33,97 +31,78 @@
     }
   }
 
-  .sub-blocks {
-    .articles-and-btns {
-      .articles-container {
-        /* &.fullwidth-row {
-          .article,
-          .articles-block {
-            .img-container {
-              width: 278px;
-              height: auto;
-            }
-          }
-        } */
-
-        .article,
-        .articles-block {
-          flex: 1 1 0px;
-
-          &.horizontal {
-            .img-container {
-              .img-wrapper {
-                img {
-                  max-width: 100%;
-                }
-              }
-            }
+  .article-preview {
+    &.horizontal {
+      .img-container {
+        .img-wrapper {
+          img {
+            max-width: 100%;
           }
         }
       }
     }
   }
 
-  .author-profile,
-  .tag-profile {
-    .author-block,
-    .tag-block {
-      max-width: 85%;
-      margin: 10px auto;
-      .author-name {
-        p {
-          font-size: 16px;
-          line-height: 19.84px;
-        }
+  .author-block,
+  .tag-block {
+    max-width: 85%;
+    margin: 10px auto;
+    .author-name {
+      p {
+        font-size: 16px;
+        line-height: 19.84px;
       }
-      .author-content,
-      .tag-content {
-        max-width: 70%;
-        .quote {
-          .author-quoted,
-          .tag-quoted {
-            p {
-              font-size: 39px;
-              line-height: 44.85px;
-              letter-spacing: -0.5px;
-            }
-          }
-
-          .quote-body {
-            p {
-              font-size: 26px;
-              line-height: 32.24px;
-            }
+    }
+    .author-content,
+    .tag-content {
+      max-width: 70%;
+      .quote {
+        .author-quoted,
+        .tag-quoted {
+          p {
+            font-size: 39px;
+            line-height: 44.85px;
+            letter-spacing: -0.5px;
           }
         }
 
-        .author-description,
-        .tag-description {
-          .author-summary,
-          .description-content {
-            p {
-              font-size: 19px;
-              line-height: 25.14px;
-              letter-spacing: -0.1px;
-            }
+        .quote-body {
+          p {
+            font-size: 26px;
+            line-height: 32.24px;
           }
         }
       }
 
-      .tag-content {
-        max-width: 100%;
+      .author-description,
+      .tag-description {
+        .author-summary,
+        .description-content {
+          p {
+            font-size: 19px;
+            line-height: 25.14px;
+            letter-spacing: -0.1px;
+          }
+        }
       }
+    }
+
+    .tag-content {
+      max-width: 100%;
     }
   }
 }
 
 @media (min-width: 1200px) {
-  .section-title {
-    h4 {
-      font-size: 16px;
-      line-height: 21.17px;
+  .container-with-header {
+    .section-title {
+      h4 {
+        font-size: 16px;
+        line-height: 21.17px;
+      }
     }
   }
+
   .articulo-simple {
     .title {
       h1 {
@@ -209,20 +188,18 @@
   }
 
   .article-tags {
-    .tags-container {
-      .tag {
-        .content {
-          p {
-            font-size: 16px;
-            line-height: 21.17px;
-          }
+    .tag {
+      .content {
+        p {
+          font-size: 16px;
+          line-height: 21.17px;
         }
+      }
 
-        .triangle {
-          width: 22px;
-          height: 22px;
-          transform: rotate(45deg) translate(-5px, 11px);
-        }
+      .triangle {
+        width: 22px;
+        height: 22px;
+        transform: rotate(45deg) translate(-5px, 11px);
       }
     }
   }
@@ -246,116 +223,113 @@
   }
 
   .sub-blocks {
-    .articles-and-btns {
-      .articles-container {
-        overflow: hidden;
-        .article,
-        .articles-block {
-          max-width: 258px;
-          &.thumbnail {
-            max-width: 258px;
-            .img-container {
-              img {
-                max-width: 100%;
-              }
-            }
-
-            .content {
-              margin-left: 0;
-
-              .article-border {
-                border-top: 2px solid var(--ta-celeste);
-                width: 70px;
-                margin: 10px 0;
-              }
-
-              .description {
-                p {
-                  margin-bottom: 1rem;
-                }
-              }
-              .author {
-                max-width: 70%;
-              }
-            }
-          }
-
-          .content {
-            .description {
-              p {
-                font-size: 19px;
-                line-height: 25.14px;
-                letter-spacing: -0.1px;
-              }
-            }
-
-            .duration {
-              line-height: 25.14px;
-              letter-spacing: -0.1px;
-              font-size: 19px;
-            }
-
-            .date {
-              font-size: 16px;
-              line-height: 19.84px;
-            }
-
-            .article-info-container {
-              .format {
-                p {
-                  font-size: 16px;
-                  line-height: 21.17px;
-                }
-              }
-              .author {
-                p {
-                  font-size: 16px;
-                  line-height: 19.84px;
-                }
-              }
-            }
-
-            .category-title {
-              h4 {
-                font-size: 16px;
-                line-height: 21.17px;
-              }
-            }
-          }
-        }
-      }
+    .articles-block {
+      overflow: hidden;
     }
   }
 
-  .seamos-socios {
-    .socios-block {
-      .title {
-        h2 {
-          font-size: 26px;
-          line-height: 32.24px;
+  .article-preview {
+    max-width: 258px;
+
+    &.thumbnail {
+      max-width: 258px;
+      .img-container {
+        img {
+          max-width: 100%;
         }
       }
 
-      .subtitle {
-        p {
-          font-size: 19px;
-          line-height: 25.14px;
-        }
-      }
-      .asociarme-btn {
-        button {
-          font-size: 19px;
-          line-height: 25.14px;
-          padding: 8px 35px;
-        }
-      }
+      .content {
+        margin-left: 0;
 
-      .optional-content {
+        .article-border {
+          border-top: 2px solid var(--ta-celeste);
+          width: 70px;
+          margin: 10px 0;
+        }
+
+        .description {
+          p {
+            margin-bottom: 1rem;
+          }
+        }
+        .author {
+          max-width: 70%;
+        }
+      }
+    }
+
+    .content {
+      .description {
         p {
           font-size: 19px;
           line-height: 25.14px;
           letter-spacing: -0.1px;
         }
+      }
+
+      .duration {
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
+        font-size: 19px;
+      }
+
+      .date {
+        font-size: 16px;
+        line-height: 19.84px;
+      }
+
+      .article-info-container {
+        .format {
+          p {
+            font-size: 16px;
+            line-height: 21.17px;
+          }
+        }
+        .author {
+          p {
+            font-size: 16px;
+            line-height: 19.84px;
+          }
+        }
+      }
+
+      .category-title {
+        h4 {
+          font-size: 16px;
+          line-height: 21.17px;
+        }
+      }
+    }
+  }
+
+  .socios-block {
+    .title {
+      h2 {
+        font-size: 26px;
+        line-height: 32.24px;
+      }
+    }
+
+    .subtitle {
+      p {
+        font-size: 19px;
+        line-height: 25.14px;
+      }
+    }
+    .asociarme-btn {
+      button {
+        font-size: 19px;
+        line-height: 25.14px;
+        padding: 8px 35px;
+      }
+    }
+
+    .optional-content {
+      p {
+        font-size: 19px;
+        line-height: 25.14px;
+        letter-spacing: -0.1px;
       }
     }
   }
@@ -412,86 +386,84 @@
     }
   }
 
-  .ta-input-container {
-    .header-container {
-      .date,
-      .title,
-      .author-name {
-        p {
-          font-size: 19px;
-          line-height: 25.14px;
-          letter-spacing: -0.1px;
-        }
-      }
-
-      .description {
-        p,
-        p.hashtag {
-          font-size: 24px;
-          line-height: 31.75px;
-          letter-spacing: -0.2px;
-
-          span {
-            font-size: 24px;
-            line-height: 31.75px;
-            letter-spacing: -0.2px;
-          }
-        }
-      }
-    }
-    .input-quantity {
+  .header-container {
+    .date,
+    .title,
+    .author-name {
       p {
         font-size: 19px;
         line-height: 25.14px;
         letter-spacing: -0.1px;
       }
     }
-    .input-box {
-      .input-container {
-        .input-wrapper {
-          span {
-            padding-right: 50px;
-            input {
-              height: 50px;
 
-              &::placeholder {
-                font-size: 19px;
-                letter-spacing: -0.1px;
-              }
-            }
-          }
+    .description {
+      p,
+      p.hashtag {
+        font-size: 24px;
+        line-height: 31.75px;
+        letter-spacing: -0.2px;
+
+        span {
+          font-size: 24px;
+          line-height: 31.75px;
+          letter-spacing: -0.2px;
         }
-
-        .input-icon {
-          button {
-            max-width: unset;
-            bottom: 6px;
-          }
-        }
-      }
-
-      .send-btn {
-        height: 52px;
       }
     }
-
+  }
+  .input-quantity {
+    p {
+      font-size: 19px;
+      line-height: 25.14px;
+      letter-spacing: -0.1px;
+    }
+  }
+  .input-box {
     .input-container {
-      .input {
-        .content {
-          .user-info,
-          .input-body {
-            p {
+      .input-wrapper {
+        span {
+          padding-right: 50px;
+          input {
+            height: 50px;
+
+            &::placeholder {
               font-size: 19px;
-              line-height: 25.14px;
               letter-spacing: -0.1px;
             }
           }
+        }
+      }
 
-          .date {
-            p {
-              font-size: 16px;
-              line-height: 19.84px;
-            }
+      .input-icon {
+        button {
+          max-width: unset;
+          bottom: 6px;
+        }
+      }
+    }
+
+    .send-btn {
+      height: 52px;
+    }
+  }
+
+  .input-container {
+    .input {
+      .content {
+        .user-info,
+        .input-body {
+          p {
+            font-size: 19px;
+            line-height: 25.14px;
+            letter-spacing: -0.1px;
+          }
+        }
+
+        .date {
+          p {
+            font-size: 16px;
+            line-height: 19.84px;
           }
         }
       }

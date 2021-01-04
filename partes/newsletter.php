@@ -1,4 +1,4 @@
-<section class="newsletter">
+<div class="container-with-header newsletter">
     <div class="light-blue-bg py-4">
         <div class="container">
             <div class="section-title">
@@ -22,5 +22,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-md mb-2 p-0 d-block d-md-none">
     <div class="separator"></div>
-</section>
+</div>

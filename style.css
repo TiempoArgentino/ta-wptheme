@@ -36,46 +36,33 @@ a {
   background-color: var(--ta-celeste);
 }
 
-.ta-context.transparent-bg {
-  background-color: transparent;
-}
-.ta-context.transparent-bg .section-title h4 {
-  color: #000;
-}
-.ta-context.transparent-bg .category-title h4 {
-  color: var(--ta-celeste);
-}
-.ta-context.light-blue-bg {
-  background-color: var(--ta-celeste-fondos);
-}
-.ta-context.light-blue-bg .section-title h4 {
-  color: #000;
-}
-.ta-context.light-blue-bg .category-title h4 {
-  color: var(--ta-celeste);
-}
 .ta-context.dark-blue-bg {
   background-color: var(--ta-celeste);
 }
-.ta-context.dark-blue-bg .format p,
-.ta-context.dark-blue-bg .author p {
+.ta-context.dark-blue-bg .article-preview .content .article-info-container .format p,
+.ta-context.dark-blue-bg .article-preview .content .article-info-container .author p {
   color: white;
 }
 .ta-context.dark-blue-bg .btns-container .ver-mas button {
   color: white;
 }
 
-.section-title h4 {
+.container-with-header .section-title h4 {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
   font-size: 12px;
   margin: 0;
+  color: #000;
 }
-.section-title h4 span {
+.container-with-header .section-title h4 span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
+}
+
+.category-title h4 {
+  color: var(--ta-celeste);
 }
 
 .article-border {
@@ -244,21 +231,21 @@ a {
   color: #ce0d54;
 }
 
-.audiovisual .play-btn img {
+.play-btn img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.ta-input-container .header-container .date p {
+.header-container .date p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
   margin: 0;
 }
-.ta-input-container .header-container .title p,
-.ta-input-container .header-container .author-name p {
+.header-container .title p,
+.header-container .author-name p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
@@ -267,10 +254,10 @@ a {
   line-height: 18px;
   margin: 0;
 }
-.ta-input-container .header-container .author-name p {
+.header-container .author-name p {
   color: var(--ta-negro-texto);
 }
-.ta-input-container .header-container .description p {
+.header-container .description p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 500;
@@ -278,7 +265,7 @@ a {
   line-height: 22.49px;
   letter-spacing: -0.2px;
 }
-.ta-input-container .header-container .description p span {
+.header-container .description p span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
@@ -286,7 +273,7 @@ a {
   line-height: 22.49px;
   letter-spacing: 0.3px;
 }
-.ta-input-container .header-container .description p.hashtag {
+.header-container .description p.hashtag {
   color: var(--ta-celeste);
   font-family: "Red Hat Display";
   font-style: normal;
@@ -295,10 +282,11 @@ a {
   line-height: 22.49px;
   letter-spacing: 0.3px;
 }
-.ta-input-container .header-container .description a:hover {
+.header-container .description a:hover {
   color: var(--ta-celeste) !important;
 }
-.ta-input-container .input-quantity p {
+
+.input-quantity p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -307,14 +295,15 @@ a {
   letter-spacing: -0.2px;
   color: var(--ta-celeste);
 }
-.ta-input-container .input-box .input-container .input-wrapper span {
+
+.input-box .input-container .input-wrapper span {
   display: block;
   padding: 0 10px;
   padding-right: 40px;
   border-radius: 20px;
   border: 1.5px solid var(--ta-celeste);
 }
-.ta-input-container .input-box .input-container .input-wrapper span input {
+.input-box .input-container .input-wrapper span input {
   background: none;
   width: 100%;
   outline: none;
@@ -322,7 +311,7 @@ a {
   box-sizing: border-box;
   height: 38px;
 }
-.ta-input-container .input-box .input-container .input-wrapper span input::placeholder {
+.input-box .input-container .input-wrapper span input::placeholder {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -330,25 +319,26 @@ a {
   font-size: 15px;
   letter-spacing: -0.2px;
 }
-.ta-input-container .input-box .input-container .input-icon button {
+.input-box .input-container .input-icon button {
   right: 0;
   bottom: 5px;
   max-width: 42px;
   border: none;
   background-color: transparent;
 }
-.ta-input-container .input-box .send-btn button {
+.input-box .send-btn button {
   background-color: transparent;
   border: none;
 }
-.ta-input-container .input-container .input .profile {
+
+.input-container .input .profile {
   height: min-content;
 }
-.ta-input-container .input-container .input .profile .partner-icon .icon {
+.input-container .input .profile .partner-icon .icon {
   left: -10px;
   bottom: -25%;
 }
-.ta-input-container .input-container .input .content .user-info p {
+.input-container .input .content .user-info p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
@@ -357,25 +347,25 @@ a {
   letter-spacing: -0.2px;
   margin: 0;
 }
-.ta-input-container .input-container .input .content .user-info p span.yellow-tag {
+.input-container .input .content .user-info p span.yellow-tag {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
   color: var(--ta-socios);
 }
-.ta-input-container .input-container .input .content .user-info p span.blue-tag {
+.input-container .input .content .user-info p span.blue-tag {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
   color: var(--ta-celeste);
 }
-.ta-input-container .input-container .input .content .questioner-info p span {
+.input-container .input .content .questioner-info p span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
   color: var(--ta-celeste);
 }
-.ta-input-container .input-container .input .content .date p {
+.input-container .input .content .date p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -383,7 +373,7 @@ a {
   line-height: 15px;
   margin-bottom: 10px;
 }
-.ta-input-container .input-container .input .content .input-body p {
+.input-container .input .content .input-body p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -391,7 +381,8 @@ a {
   line-height: 20px;
   letter-spacing: -0.2px;
 }
-.ta-input-container .ver-mas button {
+
+.ver-mas button {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
@@ -403,7 +394,7 @@ a {
   line-height: 20px;
   padding: 4px 10px;
 }
-.ta-input-container .ver-mas button span img {
+.ver-mas button span img {
   transform: rotate(90deg);
 }
 
@@ -459,32 +450,13 @@ a {
   color: var(--white) !important;
 }
 
-.sub-blocks .articles-and-btns .articles-container {
-  overflow: scroll;
-  overflow-y: hidden;
-}
-.sub-blocks .articles-and-btns .articles-container.fullwidth-row {
-  overflow: hidden;
-}
-.sub-blocks .articles-and-btns .articles-container.fullwidth-row .article,
-.sub-blocks .articles-and-btns .articles-container.fullwidth-row .articles-block {
-  max-width: 100%;
-}
-.sub-blocks .articles-and-btns .articles-container.fullwidth-row .article .img-container img,
-.sub-blocks .articles-and-btns .articles-container.fullwidth-row .articles-block .img-container img {
-  min-width: 100%;
-  height: auto;
-}
-.sub-blocks .articles-and-btns .articles-container .article,
-.sub-blocks .articles-and-btns .articles-container .articles-block {
+.article-preview {
   max-width: 258px;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal {
+.article-preview.horizontal {
   max-width: 100%;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal .date,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .date {
+.article-preview.horizontal .date {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -494,42 +466,38 @@ a {
   text-align: right;
   margin-top: 5px;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal .img-container img,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .img-container img {
+.article-preview.horizontal .img-container img {
   max-width: 115px;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal .content,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .content {
+.article-preview.horizontal .content {
   margin-left: 10px;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal .content .description p,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .content .description p {
+.article-preview.horizontal .content .description p {
   margin: 0;
 }
-.sub-blocks .articles-and-btns .articles-container .article.horizontal .content .author,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .content .author {
+.article-preview.horizontal .content .author {
   max-width: 100%;
 }
-.sub-blocks .articles-and-btns .articles-container .article .img-container .article-icons,
-.sub-blocks .articles-and-btns .articles-container .articles-block .img-container .article-icons {
+.article-preview .img-container img {
+  min-width: 100%;
+  height: auto;
+}
+.article-preview .img-container .article-icons {
   top: 50%;
   transform: translateY(-50%);
 }
-.sub-blocks .articles-and-btns .articles-container .article .img-container .article-icons img,
-.sub-blocks .articles-and-btns .articles-container .articles-block .img-container .article-icons img {
+.article-preview .img-container .article-icons img {
   max-width: 40px;
   height: auto;
   margin: 5px 0;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .category-title h4,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .category-title h4 {
+.article-preview .content .category-title h4 {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
   font-size: 12px;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .description p,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .description p {
+.article-preview .content .description p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -537,8 +505,7 @@ a {
   letter-spacing: -0.2px;
   font-size: 15px;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .duration,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .duration {
+.article-preview .content .duration {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
@@ -547,8 +514,7 @@ a {
   letter-spacing: -0.2px;
   font-size: 15px;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .date,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .date {
+.article-preview .content .date {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -556,40 +522,54 @@ a {
   line-height: 15px;
   color: var(--white);
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container {
+.article-preview .content .article-info-container {
   display: flex;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .author,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .author {
+.article-preview .content .article-info-container .author {
+  max-width: 50%;
+}
+.article-preview .content .article-info-container .author p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   color: var(--ta-gris-subtexto);
   font-size: 12px;
   line-height: 14.88px;
-  max-width: 50%;
+  margin-bottom: 0;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .format-icon,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .format-icon {
+.article-preview .content .article-info-container .format-icon {
   margin-right: 10px;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .author,
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .format,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .author,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .format {
+.article-preview .content .article-info-container .author,
+.article-preview .content .article-info-container .format {
   max-width: 90%;
 }
-.sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .format p,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .format p {
+.article-preview .content .article-info-container .format p {
   margin: 0;
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
 }
 
-.tiempo-blue-bg .sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .author,
-.tiempo-blue-bg .sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .format {
+.sub-blocks .articles-block {
+  overflow: scroll;
+  overflow-y: hidden;
+}
+.sub-blocks .articles-block.fullwidth-row {
+  overflow: hidden;
+}
+.sub-blocks .articles-block.fullwidth-row .article,
+.sub-blocks .articles-block.fullwidth-row .article-preview {
+  max-width: 100%;
+}
+.sub-blocks .articles-block.fullwidth-row .article .img-container img,
+.sub-blocks .articles-block.fullwidth-row .article-preview .img-container img {
+  min-width: 100%;
+  height: auto;
+}
+
+.tiempo-blue-bg .sub-blocks .articles-block .article .content .article-info-container .author,
+.tiempo-blue-bg .sub-blocks .articles-block .article .content .article-info-container .format {
   color: var(--white) !important;
 }
 
@@ -611,25 +591,22 @@ a {
   text-align: right;
 }
 
-.article-tags {
-  margin: 20px auto;
-}
-.article-tags .tags-container .tag .content {
+.article-tags .tag .content {
   width: max-content;
   border: 1px solid var(--ta-celeste);
   border-right: 1px solid transparent;
 }
-.article-tags .tags-container .tag .content a {
+.article-tags .tag .content a {
   text-decoration-color: var(--ta-celeste);
 }
-.article-tags .tags-container .tag .content p {
+.article-tags .tag .content p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
   color: var(--ta-celeste);
 }
-.article-tags .tags-container .tag .triangle {
+.article-tags .tag .triangle {
   content: "";
   background-color: transparent;
   bottom: 0;
@@ -723,15 +700,15 @@ a {
   transform: translateX(-50%);
 }
 
-.seamos-socios .socios-block {
+.socios-block {
   border: 1px solid var(--ta-celeste);
   box-sizing: border-box;
   /* .img-container {
-    max-width: 70%;
-    margin: 0 auto;
-  } */
+      max-width: 70%;
+      margin: 0 auto;
+    } */
 }
-.seamos-socios .socios-block .title h2 {
+.socios-block .title h2 {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -739,7 +716,7 @@ a {
   line-height: 24.8px;
   letter-spacing: -0.2px;
 }
-.seamos-socios .socios-block .subtitle p {
+.socios-block .subtitle p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -748,13 +725,13 @@ a {
   letter-spacing: -0.2px;
   margin-bottom: 0;
 }
-.seamos-socios .socios-block .subtitle p span {
+.socios-block .subtitle p span {
   font-weight: 700;
 }
-.seamos-socios .socios-block .subtitle.ta-celeste-color p {
+.socios-block .subtitle.ta-celeste-color p {
   color: var(--ta-celeste);
 }
-.seamos-socios .socios-block .asociarme-btn button {
+.socios-block .asociarme-btn button {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
@@ -766,7 +743,7 @@ a {
   line-height: 20px;
   padding: 4px 10px;
 }
-.seamos-socios .socios-block .optional-content p {
+.socios-block .optional-content p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -775,51 +752,35 @@ a {
   letter-spacing: -0.2px;
 }
 
-.author-profile .author-block,
-.author-profile .tag-block,
-.tag-profile .author-block,
-.tag-profile .tag-block {
+.author-block,
+.tag-block {
   border: 1px solid var(--ta-celeste);
 }
-.author-profile .author-block .profile .partner-icon .icon,
-.author-profile .tag-block .profile .partner-icon .icon,
-.tag-profile .author-block .profile .partner-icon .icon,
-.tag-profile .tag-block .profile .partner-icon .icon {
+.author-block .profile .partner-icon .icon,
+.tag-block .profile .partner-icon .icon {
   bottom: -12px;
   left: -12px;
 }
-.author-profile .author-block .author-name p,
-.author-profile .author-block .tag-name p,
-.author-profile .tag-block .author-name p,
-.author-profile .tag-block .tag-name p,
-.tag-profile .author-block .author-name p,
-.tag-profile .author-block .tag-name p,
-.tag-profile .tag-block .author-name p,
-.tag-profile .tag-block .tag-name p {
+.author-block .author-name p,
+.author-block .tag-name p,
+.tag-block .author-name p,
+.tag-block .tag-name p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
   line-height: 14.88px;
 }
-.author-profile .author-block .author-name p span,
-.author-profile .author-block .tag-name p span,
-.author-profile .tag-block .author-name p span,
-.author-profile .tag-block .tag-name p span,
-.tag-profile .author-block .author-name p span,
-.tag-profile .author-block .tag-name p span,
-.tag-profile .tag-block .author-name p span,
-.tag-profile .tag-block .tag-name p span {
+.author-block .author-name p span,
+.author-block .tag-name p span,
+.tag-block .author-name p span,
+.tag-block .tag-name p span {
   color: var(--ta-celeste);
 }
-.author-profile .author-block .quote .author-quoted p,
-.author-profile .author-block .quote .tag-quoted p,
-.author-profile .tag-block .quote .author-quoted p,
-.author-profile .tag-block .quote .tag-quoted p,
-.tag-profile .author-block .quote .author-quoted p,
-.tag-profile .author-block .quote .tag-quoted p,
-.tag-profile .tag-block .quote .author-quoted p,
-.tag-profile .tag-block .quote .tag-quoted p {
+.author-block .quote .author-quoted p,
+.author-block .quote .tag-quoted p,
+.tag-block .quote .author-quoted p,
+.tag-block .quote .tag-quoted p {
   font-family: "Caladea";
   font-style: normal;
   font-weight: 700;
@@ -829,20 +790,14 @@ a {
   color: var(--ta-negro-texto);
   text-align: left;
 }
-.author-profile .author-block .quote .quote-body,
-.author-profile .tag-block .quote .quote-body,
-.tag-profile .author-block .quote .quote-body,
-.tag-profile .tag-block .quote .quote-body {
+.author-block .quote .quote-body,
+.tag-block .quote .quote-body {
   color: var(--ta-celeste);
 }
-.author-profile .author-block .author-description p,
-.author-profile .author-block .tag-description p,
-.author-profile .tag-block .author-description p,
-.author-profile .tag-block .tag-description p,
-.tag-profile .author-block .author-description p,
-.tag-profile .author-block .tag-description p,
-.tag-profile .tag-block .author-description p,
-.tag-profile .tag-block .tag-description p {
+.author-block .author-description p,
+.author-block .tag-description p,
+.tag-block .author-description p,
+.tag-block .tag-description p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -850,55 +805,39 @@ a {
   line-height: 19.85px;
   letter-spacing: -0.2px;
 }
-.author-profile .author-block .author-description .author-summary p,
-.author-profile .author-block .author-description .tag-summary p,
-.author-profile .author-block .tag-description .author-summary p,
-.author-profile .author-block .tag-description .tag-summary p,
-.author-profile .tag-block .author-description .author-summary p,
-.author-profile .tag-block .author-description .tag-summary p,
-.author-profile .tag-block .tag-description .author-summary p,
-.author-profile .tag-block .tag-description .tag-summary p,
-.tag-profile .author-block .author-description .author-summary p,
-.tag-profile .author-block .author-description .tag-summary p,
-.tag-profile .author-block .tag-description .author-summary p,
-.tag-profile .author-block .tag-description .tag-summary p,
-.tag-profile .tag-block .author-description .author-summary p,
-.tag-profile .tag-block .author-description .tag-summary p,
-.tag-profile .tag-block .tag-description .author-summary p,
-.tag-profile .tag-block .tag-description .tag-summary p {
+.author-block .author-description .author-summary p,
+.author-block .author-description .tag-summary p,
+.author-block .tag-description .author-summary p,
+.author-block .tag-description .tag-summary p,
+.tag-block .author-description .author-summary p,
+.tag-block .author-description .tag-summary p,
+.tag-block .tag-description .author-summary p,
+.tag-block .tag-description .tag-summary p {
   margin: 0;
 }
-.author-profile .author-block .author-description .author-summary p span,
-.author-profile .author-block .author-description .tag-summary p span,
-.author-profile .author-block .tag-description .author-summary p span,
-.author-profile .author-block .tag-description .tag-summary p span,
-.author-profile .tag-block .author-description .author-summary p span,
-.author-profile .tag-block .author-description .tag-summary p span,
-.author-profile .tag-block .tag-description .author-summary p span,
-.author-profile .tag-block .tag-description .tag-summary p span,
-.tag-profile .author-block .author-description .author-summary p span,
-.tag-profile .author-block .author-description .tag-summary p span,
-.tag-profile .author-block .tag-description .author-summary p span,
-.tag-profile .author-block .tag-description .tag-summary p span,
-.tag-profile .tag-block .author-description .author-summary p span,
-.tag-profile .tag-block .author-description .tag-summary p span,
-.tag-profile .tag-block .tag-description .author-summary p span,
-.tag-profile .tag-block .tag-description .tag-summary p span {
+.author-block .author-description .author-summary p span,
+.author-block .author-description .tag-summary p span,
+.author-block .tag-description .author-summary p span,
+.author-block .tag-description .tag-summary p span,
+.tag-block .author-description .author-summary p span,
+.tag-block .author-description .tag-summary p span,
+.tag-block .tag-description .author-summary p span,
+.tag-block .tag-description .tag-summary p span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 700;
 }
-.author-profile .tag-block,
-.tag-profile .tag-block {
+
+.tag-block {
   border: none;
 }
 
 @media (max-width: 992px) and (orientation: landscape) {
-  .seamos-socios .socios-block .img-container {
+  .socios-block .img-container {
     max-width: 60%;
     margin: 0 auto;
   }
-  .seamos-socios .socios-block .asociarme-btn button {
+  .socios-block .asociarme-btn button {
     padding: 8px 30px;
   }
 }
@@ -917,126 +856,72 @@ a {
     margin-left: 0;
   }
 
-  .sub-blocks .articles-and-btns .articles-container {
-    /* &.fullwidth-row {
-      .article,
-      .articles-block {
-        .img-container {
-          width: 278px;
-          height: auto;
-        }
-      }
-    } */
-  }
-  .sub-blocks .articles-and-btns .articles-container .article,
-.sub-blocks .articles-and-btns .articles-container .articles-block {
-    flex: 1 1 0px;
-  }
-  .sub-blocks .articles-and-btns .articles-container .article.horizontal .img-container .img-wrapper img,
-.sub-blocks .articles-and-btns .articles-container .articles-block.horizontal .img-container .img-wrapper img {
+  .article-preview.horizontal .img-container .img-wrapper img {
     max-width: 100%;
   }
 
-  .author-profile .author-block,
-.author-profile .tag-block,
-.tag-profile .author-block,
-.tag-profile .tag-block {
+  .author-block,
+.tag-block {
     max-width: 85%;
     margin: 10px auto;
   }
-  .author-profile .author-block .author-name p,
-.author-profile .tag-block .author-name p,
-.tag-profile .author-block .author-name p,
-.tag-profile .tag-block .author-name p {
+  .author-block .author-name p,
+.tag-block .author-name p {
     font-size: 16px;
     line-height: 19.84px;
   }
-  .author-profile .author-block .author-content,
-.author-profile .author-block .tag-content,
-.author-profile .tag-block .author-content,
-.author-profile .tag-block .tag-content,
-.tag-profile .author-block .author-content,
-.tag-profile .author-block .tag-content,
-.tag-profile .tag-block .author-content,
-.tag-profile .tag-block .tag-content {
+  .author-block .author-content,
+.author-block .tag-content,
+.tag-block .author-content,
+.tag-block .tag-content {
     max-width: 70%;
   }
-  .author-profile .author-block .author-content .quote .author-quoted p,
-.author-profile .author-block .author-content .quote .tag-quoted p,
-.author-profile .author-block .tag-content .quote .author-quoted p,
-.author-profile .author-block .tag-content .quote .tag-quoted p,
-.author-profile .tag-block .author-content .quote .author-quoted p,
-.author-profile .tag-block .author-content .quote .tag-quoted p,
-.author-profile .tag-block .tag-content .quote .author-quoted p,
-.author-profile .tag-block .tag-content .quote .tag-quoted p,
-.tag-profile .author-block .author-content .quote .author-quoted p,
-.tag-profile .author-block .author-content .quote .tag-quoted p,
-.tag-profile .author-block .tag-content .quote .author-quoted p,
-.tag-profile .author-block .tag-content .quote .tag-quoted p,
-.tag-profile .tag-block .author-content .quote .author-quoted p,
-.tag-profile .tag-block .author-content .quote .tag-quoted p,
-.tag-profile .tag-block .tag-content .quote .author-quoted p,
-.tag-profile .tag-block .tag-content .quote .tag-quoted p {
+  .author-block .author-content .quote .author-quoted p,
+.author-block .author-content .quote .tag-quoted p,
+.author-block .tag-content .quote .author-quoted p,
+.author-block .tag-content .quote .tag-quoted p,
+.tag-block .author-content .quote .author-quoted p,
+.tag-block .author-content .quote .tag-quoted p,
+.tag-block .tag-content .quote .author-quoted p,
+.tag-block .tag-content .quote .tag-quoted p {
     font-size: 39px;
     line-height: 44.85px;
     letter-spacing: -0.5px;
   }
-  .author-profile .author-block .author-content .quote .quote-body p,
-.author-profile .author-block .tag-content .quote .quote-body p,
-.author-profile .tag-block .author-content .quote .quote-body p,
-.author-profile .tag-block .tag-content .quote .quote-body p,
-.tag-profile .author-block .author-content .quote .quote-body p,
-.tag-profile .author-block .tag-content .quote .quote-body p,
-.tag-profile .tag-block .author-content .quote .quote-body p,
-.tag-profile .tag-block .tag-content .quote .quote-body p {
+  .author-block .author-content .quote .quote-body p,
+.author-block .tag-content .quote .quote-body p,
+.tag-block .author-content .quote .quote-body p,
+.tag-block .tag-content .quote .quote-body p {
     font-size: 26px;
     line-height: 32.24px;
   }
-  .author-profile .author-block .author-content .author-description .author-summary p,
-.author-profile .author-block .author-content .author-description .description-content p,
-.author-profile .author-block .author-content .tag-description .author-summary p,
-.author-profile .author-block .author-content .tag-description .description-content p,
-.author-profile .author-block .tag-content .author-description .author-summary p,
-.author-profile .author-block .tag-content .author-description .description-content p,
-.author-profile .author-block .tag-content .tag-description .author-summary p,
-.author-profile .author-block .tag-content .tag-description .description-content p,
-.author-profile .tag-block .author-content .author-description .author-summary p,
-.author-profile .tag-block .author-content .author-description .description-content p,
-.author-profile .tag-block .author-content .tag-description .author-summary p,
-.author-profile .tag-block .author-content .tag-description .description-content p,
-.author-profile .tag-block .tag-content .author-description .author-summary p,
-.author-profile .tag-block .tag-content .author-description .description-content p,
-.author-profile .tag-block .tag-content .tag-description .author-summary p,
-.author-profile .tag-block .tag-content .tag-description .description-content p,
-.tag-profile .author-block .author-content .author-description .author-summary p,
-.tag-profile .author-block .author-content .author-description .description-content p,
-.tag-profile .author-block .author-content .tag-description .author-summary p,
-.tag-profile .author-block .author-content .tag-description .description-content p,
-.tag-profile .author-block .tag-content .author-description .author-summary p,
-.tag-profile .author-block .tag-content .author-description .description-content p,
-.tag-profile .author-block .tag-content .tag-description .author-summary p,
-.tag-profile .author-block .tag-content .tag-description .description-content p,
-.tag-profile .tag-block .author-content .author-description .author-summary p,
-.tag-profile .tag-block .author-content .author-description .description-content p,
-.tag-profile .tag-block .author-content .tag-description .author-summary p,
-.tag-profile .tag-block .author-content .tag-description .description-content p,
-.tag-profile .tag-block .tag-content .author-description .author-summary p,
-.tag-profile .tag-block .tag-content .author-description .description-content p,
-.tag-profile .tag-block .tag-content .tag-description .author-summary p,
-.tag-profile .tag-block .tag-content .tag-description .description-content p {
+  .author-block .author-content .author-description .author-summary p,
+.author-block .author-content .author-description .description-content p,
+.author-block .author-content .tag-description .author-summary p,
+.author-block .author-content .tag-description .description-content p,
+.author-block .tag-content .author-description .author-summary p,
+.author-block .tag-content .author-description .description-content p,
+.author-block .tag-content .tag-description .author-summary p,
+.author-block .tag-content .tag-description .description-content p,
+.tag-block .author-content .author-description .author-summary p,
+.tag-block .author-content .author-description .description-content p,
+.tag-block .author-content .tag-description .author-summary p,
+.tag-block .author-content .tag-description .description-content p,
+.tag-block .tag-content .author-description .author-summary p,
+.tag-block .tag-content .author-description .description-content p,
+.tag-block .tag-content .tag-description .author-summary p,
+.tag-block .tag-content .tag-description .description-content p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .author-profile .author-block .tag-content,
-.author-profile .tag-block .tag-content,
-.tag-profile .author-block .tag-content,
-.tag-profile .tag-block .tag-content {
+  .author-block .tag-content,
+.tag-block .tag-content {
     max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
-  .section-title h4 {
+  .container-with-header .section-title h4 {
     font-size: 16px;
     line-height: 21.17px;
   }
@@ -1088,11 +973,11 @@ a {
     line-height: 16.12px;
   }
 
-  .article-tags .tags-container .tag .content p {
+  .article-tags .tag .content p {
     font-size: 16px;
     line-height: 21.17px;
   }
-  .article-tags .tags-container .tag .triangle {
+  .article-tags .tag .triangle {
     width: 22px;
     height: 22px;
     transform: rotate(45deg) translate(-5px, 11px);
@@ -1118,86 +1003,74 @@ a {
     line-height: 25.14px;
   }
 
-  .sub-blocks .articles-and-btns .articles-container {
+  .sub-blocks .articles-block {
     overflow: hidden;
   }
-  .sub-blocks .articles-and-btns .articles-container .article,
-.sub-blocks .articles-and-btns .articles-container .articles-block {
+
+  .article-preview {
     max-width: 258px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail {
+  .article-preview.thumbnail {
     max-width: 258px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail .img-container img,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail .img-container img {
+  .article-preview.thumbnail .img-container img {
     max-width: 100%;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail .content,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail .content {
+  .article-preview.thumbnail .content {
     margin-left: 0;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail .content .article-border,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail .content .article-border {
+  .article-preview.thumbnail .content .article-border {
     border-top: 2px solid var(--ta-celeste);
     width: 70px;
     margin: 10px 0;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail .content .description p,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail .content .description p {
+  .article-preview.thumbnail .content .description p {
     margin-bottom: 1rem;
   }
-  .sub-blocks .articles-and-btns .articles-container .article.thumbnail .content .author,
-.sub-blocks .articles-and-btns .articles-container .articles-block.thumbnail .content .author {
+  .article-preview.thumbnail .content .author {
     max-width: 70%;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .description p,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .description p {
+  .article-preview .content .description p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .duration,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .duration {
+  .article-preview .content .duration {
     line-height: 25.14px;
     letter-spacing: -0.1px;
     font-size: 19px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .date,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .date {
+  .article-preview .content .date {
     font-size: 16px;
     line-height: 19.84px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .format p,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .format p {
+  .article-preview .content .article-info-container .format p {
     font-size: 16px;
     line-height: 21.17px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .article-info-container .author p,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .article-info-container .author p {
+  .article-preview .content .article-info-container .author p {
     font-size: 16px;
     line-height: 19.84px;
   }
-  .sub-blocks .articles-and-btns .articles-container .article .content .category-title h4,
-.sub-blocks .articles-and-btns .articles-container .articles-block .content .category-title h4 {
+  .article-preview .content .category-title h4 {
     font-size: 16px;
     line-height: 21.17px;
   }
 
-  .seamos-socios .socios-block .title h2 {
+  .socios-block .title h2 {
     font-size: 26px;
     line-height: 32.24px;
   }
-  .seamos-socios .socios-block .subtitle p {
+  .socios-block .subtitle p {
     font-size: 19px;
     line-height: 25.14px;
   }
-  .seamos-socios .socios-block .asociarme-btn button {
+  .socios-block .asociarme-btn button {
     font-size: 19px;
     line-height: 25.14px;
     padding: 8px 35px;
   }
-  .seamos-socios .socios-block .optional-content p {
+  .socios-block .optional-content p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
@@ -1241,54 +1114,57 @@ a {
     background-color: var(--ta-celeste-fondos);
   }
 
-  .ta-input-container .header-container .date p,
-.ta-input-container .header-container .title p,
-.ta-input-container .header-container .author-name p {
+  .header-container .date p,
+.header-container .title p,
+.header-container .author-name p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .ta-input-container .header-container .description p,
-.ta-input-container .header-container .description p.hashtag {
+  .header-container .description p,
+.header-container .description p.hashtag {
     font-size: 24px;
     line-height: 31.75px;
     letter-spacing: -0.2px;
   }
-  .ta-input-container .header-container .description p span,
-.ta-input-container .header-container .description p.hashtag span {
+  .header-container .description p span,
+.header-container .description p.hashtag span {
     font-size: 24px;
     line-height: 31.75px;
     letter-spacing: -0.2px;
   }
-  .ta-input-container .input-quantity p {
+
+  .input-quantity p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .ta-input-container .input-box .input-container .input-wrapper span {
+
+  .input-box .input-container .input-wrapper span {
     padding-right: 50px;
   }
-  .ta-input-container .input-box .input-container .input-wrapper span input {
+  .input-box .input-container .input-wrapper span input {
     height: 50px;
   }
-  .ta-input-container .input-box .input-container .input-wrapper span input::placeholder {
+  .input-box .input-container .input-wrapper span input::placeholder {
     font-size: 19px;
     letter-spacing: -0.1px;
   }
-  .ta-input-container .input-box .input-container .input-icon button {
+  .input-box .input-container .input-icon button {
     max-width: unset;
     bottom: 6px;
   }
-  .ta-input-container .input-box .send-btn {
+  .input-box .send-btn {
     height: 52px;
   }
-  .ta-input-container .input-container .input .content .user-info p,
-.ta-input-container .input-container .input .content .input-body p {
+
+  .input-container .input .content .user-info p,
+.input-container .input .content .input-body p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .ta-input-container .input-container .input .content .date p {
+  .input-container .input .content .date p {
     font-size: 16px;
     line-height: 19.84px;
   }

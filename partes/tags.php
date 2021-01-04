@@ -1,5 +1,5 @@
-<section class="article-tags">
-    <div class="container tags-container d-flex flex-wrap">
+<div class="container">
+    <div class="article-tags d-flex flex-wrap mt-4">
         <div class="tag d-flex justify-content-center my-2">
             <div class="content p-1">
                 <a href="">
@@ -33,5 +33,7 @@
             <div class="triangle"></div>
         </div>
     </div>
+</div>
+<div class="container-md mb-2 p-0">
     <div class="separator"></div>
-</section>
+</div>

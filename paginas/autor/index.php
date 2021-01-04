@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="ta-context transparent-bg container-fluid container-lg p-0 p-md-2">
+    <div class="container-fluid container-lg p-0 p-md-2">
         <?php include_once('../../partes/autor.php');  ?>
         <div class="d-flex flex-column flex-md-row-reverse">
             <div class="col-12 col-md-4 p-0">

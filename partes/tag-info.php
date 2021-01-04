@@ -1,18 +1,16 @@
-<section class="tag-profile mt-3">
+<section class="container-with-header tag-profile mt-3">
     <div class="container d-flex">
         <div class="section-title d-flex align-items-center mr-2">
             <h4>NUBE DE TAGS</h4>
         </div>
         <div class="article-tags m-0">
-            <div class="tags-container">
-                <div class="tag d-flex justify-content-center my-2">
-                    <div class="content p-1">
-                        <a href="">
-                            <p class="m-0">Martín Guzmán</p>
-                        </a>
-                    </div>
-                    <div class="triangle"></div>
+            <div class="tag d-flex justify-content-center my-2">
+                <div class="content p-1">
+                    <a href="">
+                        <p class="m-0">Martín Guzmán</p>
+                    </a>
                 </div>
+                <div class="triangle"></div>
             </div>
         </div>
     </div>

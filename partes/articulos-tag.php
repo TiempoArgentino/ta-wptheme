@@ -1,11 +1,9 @@
-<div class="py-3">
-
+<div class="container-with-header py-3">
     <div class="sub-blocks">
         <div class="container">
-            <div class="articles-and-btns">
-                <div
-                    class="row articles-container d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+            <div class="articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                <div class="row">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -34,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -66,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -91,10 +89,7 @@
 
                         </div>
                     </div>
-                </div>
-                <div
-                    class="row articles-container d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -119,7 +114,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column ">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3 ">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -151,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -176,10 +171,7 @@
 
                         </div>
                     </div>
-                </div>
-                <div
-                    class="row articles-container d-none d-lg-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -204,7 +196,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -232,7 +224,7 @@
 
                         </div>
                     </div>
-                    <div class="articles-block horizontal col-4 d-flex flex-row flex-lg-column">
+                    <div class="article-preview horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column mt-3">
                         <div>
                             <a href="">
                                 <div class="img-container position-relative">
@@ -262,14 +254,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="btns-container">
-                    <div class="ver-mas text-right d-block d-lg-none">
-                        <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
-                                    alt="" /></span></button>
-                    </div>
+            </div>
+            <div class="btns-container">
+                <div class="ver-mas text-right d-block d-lg-none">
+                    <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
+                                alt="" /></span></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="separator"></div>
+<div class="container-md mb-2 p-0">
+    <div class="separator"></div>
+</div>
