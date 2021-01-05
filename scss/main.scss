@@ -919,4 +919,35 @@ a {
   border: none;
 }
 
+.footer-content {
+  .tiempo-logo {
+    max-width: 75%;
+  }
+
+  p {
+    @include red-hat-400;
+    font-size: 15px;
+    font-style: normal;
+
+    span {
+      @include red-hat-700;
+    }
+  }
+
+  .description p {
+    @include red-hat-400;
+    font-style: italic;
+  }
+
+  .address p,
+  .derechos {
+    @include red-hat-500;
+    font-style: italic;
+  }
+
+  .ta-celeste-color {
+    color: var(--ta-celeste);
+  }
+}
+
 @import "responsive";

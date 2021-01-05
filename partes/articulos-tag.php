@@ -264,6 +264,3 @@
         </div>
     </div>
 </div>
-<div class="container-md mb-2 p-0">
-    <div class="separator"></div>
-</div>

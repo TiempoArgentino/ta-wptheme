@@ -832,6 +832,38 @@ a {
   border: none;
 }
 
+.footer-content .tiempo-logo {
+  max-width: 75%;
+}
+.footer-content p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  font-style: normal;
+}
+.footer-content p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+.footer-content .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-style: italic;
+}
+.footer-content .address p,
+.footer-content .derechos {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-style: italic;
+}
+.footer-content .ta-celeste-color {
+  color: var(--ta-celeste);
+}
+
 @media (max-width: 992px) and (orientation: landscape) {
   .socios-block .img-container {
     max-width: 60%;
@@ -1167,6 +1199,13 @@ a {
   .input-container .input .content .date p {
     font-size: 16px;
     line-height: 19.84px;
+  }
+
+  .footer-content .tiempo-logo {
+    max-width: 100%;
+  }
+  .footer-content p {
+    font-size: 19px;
   }
 }
 

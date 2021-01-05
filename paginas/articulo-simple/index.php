@@ -57,6 +57,7 @@
     <div class="ta-context light-blue-bg">
         <?php include_once('../../partes/podes-leer.php');  ?>
     </div>
+    <?php include_once('../../partes/footer.php');  ?>
 </body>
 
 </html>
