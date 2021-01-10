@@ -94,6 +94,41 @@
 }
 
 @media (min-width: 1200px) {
+  .menu {
+    padding: 60px 0 !important;
+    .menu-header {
+      .tiempo-menu-logo,
+      .search-icon,
+      .profile-icon {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .hamburger-menu {
+    button {
+      span {
+        width: 30px;
+      }
+    }
+  }
+
+  .header {
+    .header-content {
+      .tiempo-logo {
+        max-width: 204px;
+      }
+
+      .asociate-banner {
+        .asociate-banner-content {
+          p {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+
   .container-with-header {
     .section-title {
       h4 {
