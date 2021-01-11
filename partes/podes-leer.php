@@ -6,7 +6,7 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container">
-            <div class="articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+            <div class="ta-articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                 <div class="row">
                     <div class="article-preview horizontal col-12 col-lg-3 d-flex flex-row flex-lg-column mt-3">
                         <div>

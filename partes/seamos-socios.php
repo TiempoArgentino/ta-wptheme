@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <div class="socios-block mx-auto px-3 py-4">
+    <div class="ta-socios-block mx-auto px-3 py-4">
         <div class="socios-header-container d-flex flex-column">
             <div class="content">
                 <div class="title">

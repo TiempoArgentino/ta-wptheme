@@ -6,7 +6,7 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container px-0 px-md-1">
-            <div class="articles-block d-flex">
+            <div class="ta-articles-block d-flex">
                 <div class="article-preview col-12 p-0 m-2">
                     <div>
                         <a href="">

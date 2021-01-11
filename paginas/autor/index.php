@@ -16,7 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -40,6 +41,7 @@
         </div>
     </div>
     <?php include_once('../../partes/footer.php');  ?>
+    <script src="../../js/index.js"></script>
 </body>
 
 </html>

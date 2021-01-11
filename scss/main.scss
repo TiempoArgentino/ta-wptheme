@@ -163,6 +163,10 @@ a {
   &:focus {
     box-shadow: none;
   }
+
+  &.btn-link {
+    color: var(--ta-negro-texto) !important;
+  }
 }
 
 .search-bar-container {
@@ -355,12 +359,6 @@ a {
   }
 }
 
-.search-icon {
-  &.btn-link {
-    color: var(--ta-negro-texto) !important;
-  }
-}
-
 .banner-covid {
   background-color: var(--ta-gris-imagen);
 
@@ -441,6 +439,19 @@ a {
       span {
         @include red-hat-400;
       }
+    }
+  }
+}
+
+.section-title {
+  h4 {
+    @include red-hat-900;
+    font-size: 12px;
+    margin: 0;
+    color: #000;
+
+    span {
+      @include red-hat-400;
     }
   }
 }
@@ -584,7 +595,7 @@ a {
       }
     }
 
-    .subnote {
+    .ta-subnote-block {
       border: 1px solid var(--ta-gris-subtexto);
       position: relative;
       .separator {
@@ -603,7 +614,7 @@ a {
       }
     }
 
-    .event {
+    .ta-event-block {
       border: 1px solid var(--ta-espectaculos);
 
       .title {
@@ -1005,7 +1016,7 @@ a {
 }
 
 .sub-blocks {
-  .articles-block {
+  .ta-articles-block {
     overflow: scroll;
     overflow-y: hidden;
 
@@ -1028,7 +1039,7 @@ a {
 
 .tiempo-blue-bg {
   .sub-blocks {
-    .articles-block {
+    .ta-articles-block {
       .article {
         .content {
           .article-info-container {
@@ -1174,7 +1185,7 @@ a {
   }
 }
 
-.socios-block {
+.ta-socios-block {
   border: 1px solid var(--ta-celeste);
   box-sizing: border-box;
   .title {
@@ -1227,7 +1238,7 @@ a {
   }
 }
 
-.author-block,
+.ta-author-block,
 .tag-block {
   border: 1px solid var(--ta-celeste);
   .profile {
@@ -1324,6 +1335,12 @@ a {
   .ta-celeste-color {
     color: var(--ta-celeste);
   }
+}
+
+/////// ver mas //////
+
+#more {
+  display: none;
 }
 
 @import "responsive";

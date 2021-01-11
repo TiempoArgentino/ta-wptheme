@@ -144,6 +144,9 @@ a {
 .search-icon:focus {
   box-shadow: none;
 }
+.search-icon.btn-link {
+  color: var(--ta-negro-texto) !important;
+}
 
 .search-bar-container {
   background-color: var(--ta-celeste-fondos);
@@ -298,10 +301,6 @@ a {
   margin-right: 10px;
 }
 
-.search-icon.btn-link {
-  color: var(--ta-negro-texto) !important;
-}
-
 .banner-covid {
   background-color: var(--ta-gris-imagen);
 }
@@ -360,6 +359,20 @@ a {
   color: #000;
 }
 .container-with-header .section-title h4 span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+
+.section-title h4 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  margin: 0;
+  color: #000;
+}
+.section-title h4 span {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -487,17 +500,17 @@ a {
 .articulo-simple .article-body .anuncio-seccion .anuncio-container a {
   color: var(--ta-celeste) !important;
 }
-.articulo-simple .article-body .subnote {
+.articulo-simple .article-body .ta-subnote-block {
   border: 1px solid var(--ta-gris-subtexto);
   position: relative;
 }
-.articulo-simple .article-body .subnote .separator {
+.articulo-simple .article-body .ta-subnote-block .separator {
   position: absolute;
   top: -2px;
   margin-top: 0;
   background-color: var(--ta-negro-texto);
 }
-.articulo-simple .article-body .subnote .title h2 {
+.articulo-simple .article-body .ta-subnote-block .title h2 {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
@@ -505,10 +518,10 @@ a {
   letter-spacing: 0.3px;
   line-height: 22.49px;
 }
-.articulo-simple .article-body .event {
+.articulo-simple .article-body .ta-event-block {
   border: 1px solid var(--ta-espectaculos);
 }
-.articulo-simple .article-body .event .title h2 {
+.articulo-simple .article-body .ta-event-block .title h2 {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -516,22 +529,22 @@ a {
   letter-spacing: 0.3px;
   line-height: 22.49px;
 }
-.articulo-simple .article-body .event .title h2.bold {
+.articulo-simple .article-body .ta-event-block .title h2.bold {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
 }
-.articulo-simple .article-body .event .content p a {
+.articulo-simple .article-body .ta-event-block .content p a {
   text-decoration: underline;
   text-decoration-color: #ce0d54;
   color: #ce0d54 !important;
 }
-.articulo-simple .article-body .event .content p.bold {
+.articulo-simple .article-body .ta-event-block .content p.bold {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
 }
-.articulo-simple .article-body .event .content p.red-font {
+.articulo-simple .article-body .ta-event-block .content p.red-font {
   color: #ce0d54;
 }
 
@@ -855,25 +868,25 @@ a {
   font-weight: 700;
 }
 
-.sub-blocks .articles-block {
+.sub-blocks .ta-articles-block {
   overflow: scroll;
   overflow-y: hidden;
 }
-.sub-blocks .articles-block.fullwidth-row {
+.sub-blocks .ta-articles-block.fullwidth-row {
   overflow: hidden;
 }
-.sub-blocks .articles-block.fullwidth-row .article,
-.sub-blocks .articles-block.fullwidth-row .article-preview {
+.sub-blocks .ta-articles-block.fullwidth-row .article,
+.sub-blocks .ta-articles-block.fullwidth-row .article-preview {
   max-width: 100%;
 }
-.sub-blocks .articles-block.fullwidth-row .article .img-container img,
-.sub-blocks .articles-block.fullwidth-row .article-preview .img-container img {
+.sub-blocks .ta-articles-block.fullwidth-row .article .img-container img,
+.sub-blocks .ta-articles-block.fullwidth-row .article-preview .img-container img {
   min-width: 100%;
   height: auto;
 }
 
-.tiempo-blue-bg .sub-blocks .articles-block .article .content .article-info-container .author,
-.tiempo-blue-bg .sub-blocks .articles-block .article .content .article-info-container .format {
+.tiempo-blue-bg .sub-blocks .ta-articles-block .article .content .article-info-container .author,
+.tiempo-blue-bg .sub-blocks .ta-articles-block .article .content .article-info-container .format {
   color: var(--white) !important;
 }
 
@@ -1004,7 +1017,7 @@ a {
   transform: translateX(-50%);
 }
 
-.socios-block {
+.ta-socios-block {
   border: 1px solid var(--ta-celeste);
   box-sizing: border-box;
   /* .img-container {
@@ -1012,7 +1025,7 @@ a {
       margin: 0 auto;
     } */
 }
-.socios-block .title h2 {
+.ta-socios-block .title h2 {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -1020,7 +1033,7 @@ a {
   line-height: 24.8px;
   letter-spacing: -0.2px;
 }
-.socios-block .subtitle p {
+.ta-socios-block .subtitle p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -1029,13 +1042,13 @@ a {
   letter-spacing: -0.2px;
   margin-bottom: 0;
 }
-.socios-block .subtitle p span {
+.ta-socios-block .subtitle p span {
   font-weight: 700;
 }
-.socios-block .subtitle.ta-celeste-color p {
+.ta-socios-block .subtitle.ta-celeste-color p {
   color: var(--ta-celeste);
 }
-.socios-block .asociarme-btn button {
+.ta-socios-block .asociarme-btn button {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
@@ -1047,7 +1060,7 @@ a {
   line-height: 20px;
   padding: 4px 10px;
 }
-.socios-block .optional-content p {
+.ta-socios-block .optional-content p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -1056,17 +1069,17 @@ a {
   letter-spacing: -0.2px;
 }
 
-.author-block,
+.ta-author-block,
 .tag-block {
   border: 1px solid var(--ta-celeste);
 }
-.author-block .profile .partner-icon .icon,
+.ta-author-block .profile .partner-icon .icon,
 .tag-block .profile .partner-icon .icon {
   bottom: -12px;
   left: -12px;
 }
-.author-block .author-name p,
-.author-block .tag-name p,
+.ta-author-block .author-name p,
+.ta-author-block .tag-name p,
 .tag-block .author-name p,
 .tag-block .tag-name p {
   font-family: "Libre Baskerville";
@@ -1075,14 +1088,14 @@ a {
   font-size: 12px;
   line-height: 14.88px;
 }
-.author-block .author-name p span,
-.author-block .tag-name p span,
+.ta-author-block .author-name p span,
+.ta-author-block .tag-name p span,
 .tag-block .author-name p span,
 .tag-block .tag-name p span {
   color: var(--ta-celeste);
 }
-.author-block .quote .author-quoted p,
-.author-block .quote .tag-quoted p,
+.ta-author-block .quote .author-quoted p,
+.ta-author-block .quote .tag-quoted p,
 .tag-block .quote .author-quoted p,
 .tag-block .quote .tag-quoted p {
   font-family: "Caladea";
@@ -1094,12 +1107,12 @@ a {
   color: var(--ta-negro-texto);
   text-align: left;
 }
-.author-block .quote .quote-body,
+.ta-author-block .quote .quote-body,
 .tag-block .quote .quote-body {
   color: var(--ta-celeste);
 }
-.author-block .author-description p,
-.author-block .tag-description p,
+.ta-author-block .author-description p,
+.ta-author-block .tag-description p,
 .tag-block .author-description p,
 .tag-block .tag-description p {
   font-family: "Red Hat Display";
@@ -1109,20 +1122,20 @@ a {
   line-height: 19.85px;
   letter-spacing: -0.2px;
 }
-.author-block .author-description .author-summary p,
-.author-block .author-description .tag-summary p,
-.author-block .tag-description .author-summary p,
-.author-block .tag-description .tag-summary p,
+.ta-author-block .author-description .author-summary p,
+.ta-author-block .author-description .tag-summary p,
+.ta-author-block .tag-description .author-summary p,
+.ta-author-block .tag-description .tag-summary p,
 .tag-block .author-description .author-summary p,
 .tag-block .author-description .tag-summary p,
 .tag-block .tag-description .author-summary p,
 .tag-block .tag-description .tag-summary p {
   margin: 0;
 }
-.author-block .author-description .author-summary p span,
-.author-block .author-description .tag-summary p span,
-.author-block .tag-description .author-summary p span,
-.author-block .tag-description .tag-summary p span,
+.ta-author-block .author-description .author-summary p span,
+.ta-author-block .author-description .tag-summary p span,
+.ta-author-block .tag-description .author-summary p span,
+.ta-author-block .tag-description .tag-summary p span,
 .tag-block .author-description .author-summary p span,
 .tag-block .author-description .tag-summary p span,
 .tag-block .tag-description .author-summary p span,
@@ -1168,12 +1181,16 @@ a {
   color: var(--ta-celeste);
 }
 
+#more {
+  display: none;
+}
+
 @media (max-width: 992px) and (orientation: landscape) {
-  .socios-block .img-container {
+  .ta-socios-block .img-container {
     max-width: 60%;
     margin: 0 auto;
   }
-  .socios-block .asociarme-btn button {
+  .ta-socios-block .asociarme-btn button {
     padding: 8px 30px;
   }
 }
@@ -1196,26 +1213,26 @@ a {
     max-width: 100%;
   }
 
-  .author-block,
+  .ta-author-block,
 .tag-block {
     max-width: 85%;
     margin: 10px auto;
   }
-  .author-block .author-name p,
+  .ta-author-block .author-name p,
 .tag-block .author-name p {
     font-size: 16px;
     line-height: 19.84px;
   }
-  .author-block .author-content,
-.author-block .tag-content,
+  .ta-author-block .author-content,
+.ta-author-block .tag-content,
 .tag-block .author-content,
 .tag-block .tag-content {
     max-width: 70%;
   }
-  .author-block .author-content .quote .author-quoted p,
-.author-block .author-content .quote .tag-quoted p,
-.author-block .tag-content .quote .author-quoted p,
-.author-block .tag-content .quote .tag-quoted p,
+  .ta-author-block .author-content .quote .author-quoted p,
+.ta-author-block .author-content .quote .tag-quoted p,
+.ta-author-block .tag-content .quote .author-quoted p,
+.ta-author-block .tag-content .quote .tag-quoted p,
 .tag-block .author-content .quote .author-quoted p,
 .tag-block .author-content .quote .tag-quoted p,
 .tag-block .tag-content .quote .author-quoted p,
@@ -1224,21 +1241,21 @@ a {
     line-height: 44.85px;
     letter-spacing: -0.5px;
   }
-  .author-block .author-content .quote .quote-body p,
-.author-block .tag-content .quote .quote-body p,
+  .ta-author-block .author-content .quote .quote-body p,
+.ta-author-block .tag-content .quote .quote-body p,
 .tag-block .author-content .quote .quote-body p,
 .tag-block .tag-content .quote .quote-body p {
     font-size: 26px;
     line-height: 32.24px;
   }
-  .author-block .author-content .author-description .author-summary p,
-.author-block .author-content .author-description .description-content p,
-.author-block .author-content .tag-description .author-summary p,
-.author-block .author-content .tag-description .description-content p,
-.author-block .tag-content .author-description .author-summary p,
-.author-block .tag-content .author-description .description-content p,
-.author-block .tag-content .tag-description .author-summary p,
-.author-block .tag-content .tag-description .description-content p,
+  .ta-author-block .author-content .author-description .author-summary p,
+.ta-author-block .author-content .author-description .description-content p,
+.ta-author-block .author-content .tag-description .author-summary p,
+.ta-author-block .author-content .tag-description .description-content p,
+.ta-author-block .tag-content .author-description .author-summary p,
+.ta-author-block .tag-content .author-description .description-content p,
+.ta-author-block .tag-content .tag-description .author-summary p,
+.ta-author-block .tag-content .tag-description .description-content p,
 .tag-block .author-content .author-description .author-summary p,
 .tag-block .author-content .author-description .description-content p,
 .tag-block .author-content .tag-description .author-summary p,
@@ -1251,7 +1268,7 @@ a {
     line-height: 25.14px;
     letter-spacing: -0.1px;
   }
-  .author-block .tag-content,
+  .ta-author-block .tag-content,
 .tag-block .tag-content {
     max-width: 100%;
   }
@@ -1278,6 +1295,11 @@ a {
   }
 
   .container-with-header .section-title h4 {
+    font-size: 16px;
+    line-height: 21.17px;
+  }
+
+  .section-title h4 {
     font-size: 16px;
     line-height: 21.17px;
   }
@@ -1313,8 +1335,8 @@ a {
     font-size: 19px;
     line-height: 25.14px;
   }
-  .articulo-simple .article-body .subnote .title h2,
-.articulo-simple .article-body .event .title h2 {
+  .articulo-simple .article-body .ta-subnote-block .title h2,
+.articulo-simple .article-body .ta-event-block .title h2 {
     font-size: 24px;
     line-height: 31.75px;
     letter-spacing: -0.2px;
@@ -1359,7 +1381,7 @@ a {
     line-height: 25.14px;
   }
 
-  .sub-blocks .articles-block {
+  .sub-blocks .ta-articles-block {
     overflow: hidden;
   }
 
@@ -1413,20 +1435,20 @@ a {
     line-height: 21.17px;
   }
 
-  .socios-block .title h2 {
+  .ta-socios-block .title h2 {
     font-size: 26px;
     line-height: 32.24px;
   }
-  .socios-block .subtitle p {
+  .ta-socios-block .subtitle p {
     font-size: 19px;
     line-height: 25.14px;
   }
-  .socios-block .asociarme-btn button {
+  .ta-socios-block .asociarme-btn button {
     font-size: 19px;
     line-height: 25.14px;
     padding: 8px 35px;
   }
-  .socios-block .optional-content p {
+  .ta-socios-block .optional-content p {
     font-size: 19px;
     line-height: 25.14px;
     letter-spacing: -0.1px;

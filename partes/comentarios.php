@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="container mt-3">
-        <div class="col-12 col-lg-8">
+        <div class="ta-comentarios-block col-12 col-lg-8">
             <div class="px-md-5">
                 <div class="input-quantity">
                     <p>452 Comentarios</p>

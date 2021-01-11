@@ -1,4 +1,4 @@
-<section class="container-with-header tag-profile mt-3">
+<div class="tag-profile mt-3">
     <div class="container d-flex">
         <div class="section-title d-flex align-items-center mr-2">
             <h4>NUBE DE TAGS</h4>
@@ -45,4 +45,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

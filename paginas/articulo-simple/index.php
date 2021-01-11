@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
     <div class="ta-context dark-blue-bg">
         <?php include_once('../../partes/relacionados-tema.php');  ?>
     </div>
-    <div class="container-md mb-2 p-0">
+    <div class="container-md p-0">
         <div class="separator"></div>
     </div>
     <div class="ta-context light-blue-bg">

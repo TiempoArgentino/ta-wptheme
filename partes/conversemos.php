@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="container mt-3">
-        <div class="col-12 col-lg-8">
+        <div class="ta-conversemos-block col-12 col-lg-8">
             <div class="px-md-5">
                 <div class="header-container twitter d-flex">
                     <div class="logo mr-3">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="container-md mb-2 p-0">
+    <div class="container-md p-0">
         <div class="separator"></div>
     </div>
 </div>

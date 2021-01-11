@@ -1,4 +1,4 @@
-<div class="container-with-header py-3">
+<div class="py-3">
     <div class="container">
         <div class="section-title">
             <h4>SECCIÓN ECONOMÍA</h4>
@@ -6,7 +6,7 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container">
-            <div class="articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+            <div class="ta-articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                 <div class="row">
                     <div class="article-preview mt-3 horizontal col-12 col-lg-4 d-flex flex-row flex-lg-column">
                         <div>

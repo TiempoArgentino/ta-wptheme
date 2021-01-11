@@ -16,7 +16,7 @@
 
         </div>
     </div>
-    <div class="container-md mb-2 p-0">
+    <div class="container-md p-0">
         <div class="separator"></div>
     </div>
 </div>

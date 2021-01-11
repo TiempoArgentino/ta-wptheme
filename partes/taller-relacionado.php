@@ -6,7 +6,7 @@
     </div>
     <div class="sub-blocks tiempo-blue-bg py-3 mt-3">
         <div class="container">
-            <div class="articles-block fullwidth-row">
+            <div class="ta-articles-block fullwidth-row">
                 <div class="article-preview col-12 p-0">
                     <div>
                         <a href="">

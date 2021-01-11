@@ -1,11 +1,11 @@
-<section class="container-with-header mt-3">
+<div class="mt-3">
     <div class="container">
         <div class="section-title">
             <h4>MÁS DEL AUTOR</h4>
         </div>
     </div>
     <div class="container">
-        <div class="author-block px-3 py-4">
+        <div class="ta-author-block px-3 py-4">
             <div class="d-flex flex-column flex-md-row">
                 <div class="d-flex flex-row flex-md-column justify-content-between justify-content-md-start px-4">
                     <div class="profile  position-relative ">
@@ -62,16 +62,16 @@
                         </div>
                         <div class="description-content mt-4">
                             <p>
-                                Durante el siglo XIV, la denominada peste negra se extendió
-                                por Asia Menor, Oriente Medio, el norte de Africa y Europa, alcanzando su pico
-                                máximo
-                                entre
-                                1346
-                                y
-                                1353 con un saldo aproximado de 20 millones de muertes. En algunos estados de la
-                                península
-                                ibérica,
-                                la Santa Inquisición impulsó...
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<span
+                                    id="dots">...</span><span id="more">
+                                    Duis aute irure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur.
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                    mollit anim id est laborum.
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -79,10 +79,10 @@
             </div>
             <div class="btns-container">
                 <div class="ver-mas text-right">
-                    <button>ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
+                    <button id="myBtn">ver más<span class="ml-3 "><img src="../../assets/images/right-arrow.png"
                                 alt="" /></span></button>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

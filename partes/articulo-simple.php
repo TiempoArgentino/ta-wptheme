@@ -1,4 +1,4 @@
-<section class="articulo-simple text-right my-4">
+<div class="articulo-simple text-right my-4">
     <div class="container">
         <div class="text-left mx-auto">
             <div class="categories d-flex">
@@ -121,7 +121,7 @@
                         súbita
                         expulsión de 61 migrantes de países latinoamericanos –quienes fueron arreados en un micro hacia
                         Buenos Aires– y el anunció de poner una faja en las casas de posibles infectados.</p>
-                    <div class="subnote mt-4">
+                    <div class="ta-subnote-block mt-4">
                         <div class="separator"></div>
                         <div class="p-3">
                             <div class="title">
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="event mt-4">
+                    <div class="ta-event-block mt-4">
                         <div class="p-3">
                             <div class="title">
                                 <h2 class="bold">Título o Títulos del evento</h2>
@@ -188,4 +188,4 @@
     <div class="container-md mb-2 p-0">
         <div class="separator"></div>
     </div>
-</section>
+</div>

@@ -11,7 +11,7 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container px-0 px-md-1">
-            <div class="articles-block d-flex">
+            <div class="ta-articles-block d-flex">
                 <div class="article-preview m-2 col-12 col-lg-3 d-flex flex-column p-0">
                     <div>
                         <a href="">

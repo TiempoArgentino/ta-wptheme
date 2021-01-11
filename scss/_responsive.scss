@@ -1,5 +1,5 @@
 @media (max-width: 992px) and (orientation: landscape) {
-  .socios-block {
+  .ta-socios-block {
     .img-container {
       max-width: 60%;
       margin: 0 auto;
@@ -43,7 +43,7 @@
     }
   }
 
-  .author-block,
+  .ta-author-block,
   .tag-block {
     max-width: 85%;
     margin: 10px auto;
@@ -138,6 +138,13 @@
     }
   }
 
+  .section-title {
+    h4 {
+      font-size: 16px;
+      line-height: 21.17px;
+    }
+  }
+
   .articulo-simple {
     .title {
       h1 {
@@ -194,8 +201,8 @@
         }
       }
 
-      .subnote,
-      .event {
+      .ta-subnote-block,
+      .ta-event-block {
         .title {
           h2 {
             font-size: 24px;
@@ -258,7 +265,7 @@
   }
 
   .sub-blocks {
-    .articles-block {
+    .ta-articles-block {
       overflow: hidden;
     }
   }
@@ -338,7 +345,7 @@
     }
   }
 
-  .socios-block {
+  .ta-socios-block {
     .title {
       h2 {
         font-size: 26px;

@@ -1,11 +1,11 @@
-<section class="container-with-header">
+<div class="container-with-header">
     <div class="container">
         <div class="section-title">
             <h4>PREGUNTÁ Y PARTICIPÁ</h4>
         </div>
     </div>
     <div class="container mt-3">
-        <div class="col-12 col-lg-8">
+        <div class="ta-participa-block col-12 col-lg-8">
             <div class="px-md-5">
                 <div class="header-container">
                     <div class="d-flex align-items-end">
@@ -128,4 +128,4 @@
     <div class="container-md mb-2 p-0">
         <div class="separator"></div>
     </div>
-</section>
+</div>
