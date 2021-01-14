@@ -33,7 +33,7 @@
             </div>
             <div class="img-container mt-3">
                 <div class="img-wrapper">
-                    <img src="../../assets/images/foto-nota.png" alt="" class="img-fluid w-100" />
+                    <img src="../../assets/images/mineria.jpg" alt="" class="img-fluid w-100" />
                 </div>
                 <div class="credits text-right text-md-left mt-2">
                     <p>Foto: Asamblea permanente por el Rio Colorado</p>

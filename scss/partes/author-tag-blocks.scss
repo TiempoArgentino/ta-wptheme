@@ -1,0 +1,129 @@
+@import "../variables";
+@import "../mixins";
+
+.ta-author-block,
+.ta-tag-block {
+  border: 1px solid var(--ta-celeste);
+  .profile {
+    .picture {
+      width: 174px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    .partner-icon {
+      .icon {
+        bottom: -12px;
+        left: -12px;
+      }
+    }
+  }
+
+  .author-name,
+  .tag-name {
+    p {
+      @include baskerville-italic;
+      font-size: 12px;
+      line-height: 14.88px;
+
+      span {
+        color: var(--ta-celeste);
+      }
+    }
+  }
+
+  .quote,
+  .featured-quote {
+    .author-quoted,
+    .tag-quoted {
+      p {
+        @include caladea-700;
+        font-size: 27px;
+        line-height: 31.05px;
+        letter-spacing: -1px;
+        color: var(--ta-negro-texto);
+        text-align: left;
+      }
+    }
+
+    .quote-body {
+      color: var(--ta-celeste);
+    }
+  }
+
+  .author-description,
+  .tag-description {
+    p {
+      @include red-hat-400;
+      font-size: 15px;
+      line-height: 19.85px;
+      letter-spacing: -0.2px;
+    }
+    .author-summary,
+    .tag-summary {
+      p {
+        margin: 0;
+
+        span {
+          @include red-hat-700;
+        }
+      }
+    }
+  }
+}
+
+.ta-tag-block {
+  border: none;
+}
+
+@media (min-width: 992px) {
+  .ta-author-block,
+  .ta-tag-block {
+    max-width: 85%;
+    margin: 10px auto;
+    .author-name {
+      p {
+        font-size: 16px;
+        line-height: 19.84px;
+      }
+    }
+    .author-content,
+    .tag-content {
+      max-width: 70%;
+      .quote,
+      .featured-quote {
+        .author-quoted,
+        .tag-quoted {
+          p {
+            font-size: 39px;
+            line-height: 44.85px;
+            letter-spacing: -0.5px;
+          }
+        }
+
+        .quote-body {
+          p {
+            font-size: 26px;
+            line-height: 32.24px;
+          }
+        }
+      }
+
+      .author-description,
+      .tag-description {
+        .author-summary,
+        .description-content {
+          p {
+            font-size: 19px;
+            line-height: 25.14px;
+            letter-spacing: -0.1px;
+          }
+        }
+      }
+    }
+
+    .tag-content {
+      max-width: 100%;
+    }
+  }
+}
