@@ -1,11 +1,11 @@
 <div class="container-with-header">
-    <div class="container">
+    <div>
         <div class="section-title">
             <h4>COMENTARIOS</h4>
         </div>
     </div>
-    <div class="container mt-3">
-        <div class="ta-comentarios-block col-12 col-lg-8">
+    <div class="mt-3">
+        <div class="ta-comentarios-block">
             <div class="px-md-5">
                 <div class="input-quantity">
                     <p>452 Comentarios</p>
@@ -78,8 +78,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-md mb-2 p-0">
-        <div class="separator"></div>
     </div>
 </div>

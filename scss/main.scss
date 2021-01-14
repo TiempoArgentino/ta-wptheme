@@ -385,6 +385,14 @@ a {
   }
 }
 
+.line-height-0 {
+  line-height: 0;
+}
+
+.ta-celeste-color {
+  color: var(--ta-celeste);
+}
+
 .separator {
   background-color: var(--ta-celeste);
   display: inline-block;
@@ -422,6 +430,56 @@ a {
       .ver-mas {
         button {
           color: white;
+        }
+      }
+    }
+  }
+
+  &.dark-bg {
+    background-color: var(--ta-negro-texto);
+
+    .section-title {
+      h4 {
+        color: var(--ta-celeste);
+      }
+    }
+  }
+
+  &.blue-border {
+    border: 1px solid var(--ta-celeste);
+  }
+
+  &.yellow-border {
+    .ta-socios-block {
+      border: 1px solid var(--ta-socios);
+    }
+  }
+
+  &.talleres-especial {
+    p {
+      font-size: 17px;
+      @include red-hat-500;
+      span {
+        @include red-hat-900;
+      }
+    }
+  }
+
+  &.newsletter-especial {
+    .envelope-icon {
+      display: block;
+    }
+
+    .newsletter-form {
+      .input-icon {
+        bottom: 4px;
+        right: 24px;
+        &.envelope {
+          display: none;
+        }
+
+        &.send {
+          display: block;
         }
       }
     }
@@ -468,7 +526,8 @@ a {
   margin: 5px 0;
 }
 
-.articulo-simple {
+.articulo-simple,
+.articulo-especial {
   .categories {
     h4 {
       font-size: 13px;
@@ -513,25 +572,27 @@ a {
     font-size: 12px;
   }
 
-  .img-container .credits {
-    p {
-      @include baskerville-italic;
-      font-size: 12px;
-      margin: 0;
+  .img-container {
+    .img-wrapper {
+      width: 100vw;
+      height: auto;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
     }
-    a {
-      @include baskerville-italic;
-      font-size: 12px;
-      color: var(--ta-celeste) !important;
-    }
-  }
 
-  .img-wrapper {
-    width: 100vw;
-    height: auto;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
+    .credits {
+      p {
+        @include baskerville-italic;
+        font-size: 12px;
+        margin: 0;
+      }
+      a {
+        @include baskerville-italic;
+        font-size: 12px;
+        color: var(--ta-celeste) !important;
+      }
+    }
   }
 
   .author {
@@ -561,16 +622,6 @@ a {
 
       span {
         font-weight: 700;
-      }
-    }
-
-    .bajada {
-      p {
-        @include red-hat-500;
-        font-size: 13px;
-        line-height: 17.2px;
-        letter-spacing: 0.3px;
-        color: var(--ta-gris-subtexto);
       }
     }
 
@@ -648,6 +699,21 @@ a {
         }
       }
     }
+  }
+
+  .bajada {
+    p {
+      @include red-hat-500;
+      font-size: 13px;
+      line-height: 17.2px;
+      letter-spacing: 0.3px;
+      color: var(--ta-gris-subtexto);
+    }
+  }
+
+  .quote {
+    @include red-hat-500;
+    font-style: italic;
   }
 }
 
@@ -1054,7 +1120,7 @@ a {
   }
 }
 
-.quote {
+.featured-quote {
   .quote-body {
     p {
       @include baskerville-italic;
@@ -1110,6 +1176,14 @@ a {
   background-color: var(--ta-celeste-fondos);
 }
 
+.sponsor {
+  p {
+    span {
+      @include red-hat-700;
+    }
+  }
+}
+
 .mira-tambien,
 .mas-leidas {
   .description {
@@ -1123,6 +1197,9 @@ a {
 }
 
 .newsletter {
+  .envelope-icon {
+    display: none;
+  }
   p {
     @include red-hat-400;
     font-size: 15px;
@@ -1161,6 +1238,10 @@ a {
       bottom: 6px;
       right: 35px;
       max-width: 30px;
+
+      &.send {
+        display: none;
+      }
     }
 
     button {
@@ -1207,12 +1288,6 @@ a {
 
       span {
         font-weight: 700;
-      }
-    }
-
-    &.ta-celeste-color {
-      p {
-        color: var(--ta-celeste);
       }
     }
   }
@@ -1263,7 +1338,8 @@ a {
     }
   }
 
-  .quote {
+  .quote,
+  .featured-quote {
     .author-quoted,
     .tag-quoted {
       p {
@@ -1330,10 +1406,6 @@ a {
   .derechos {
     @include red-hat-500;
     font-style: italic;
-  }
-
-  .ta-celeste-color {
-    color: var(--ta-celeste);
   }
 }
 

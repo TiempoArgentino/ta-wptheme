@@ -28,11 +28,22 @@
                 <?php include_once('../../partes/seamos-socios-fullwidth.php');  ?>
                 <?php include_once('../../partes/tags.php');  ?>
                 <?php include_once('../../partes/mira-tambien.php');  ?>
+                <div class="container-md mb-2 p-0">
+                    <div class="separator"></div>
+                </div>
                 <?php include_once('../../partes/audiovisual.php');  ?>
             </div>
             <div class="col-12 col-lg-4 p-0">
                 <div class="d-flex flex-column flex-lg-column-reverse">
-                    <?php include_once('../../partes/newsletter.php');  ?>
+                    <div class="container-md p-0 line-height-0 mt-3 d-block d-md-none">
+                        <div class="separator"></div>
+                    </div>
+                    <div class="ta-context light-blue-bg">
+                        <?php include_once('../../partes/newsletter.php');  ?>
+                    </div>
+                    <div class="container-md mb-2 p-0 d-block d-md-none">
+                        <div class="separator"></div>
+                    </div>
                     <?php include_once('../../partes/mas-leidas.php');  ?>
                 </div>
                 <div class="container-md mb-2 p-0 d-none d-md-block">
@@ -44,6 +55,9 @@
             </div>
         </div>
     </div>
+    <div class="container-md p-0 line-height-0 mt-3">
+        <div class="separator"></div>
+    </div>
     <div class="ta-context light-blue-bg">
         <?php include_once('../../partes/segun-tus-intereses.php');  ?>
     </div>
@@ -53,9 +67,13 @@
     <div class="d-block d-md-none">
         <?php include('../../partes/taller-relacionado.php');  ?>
     </div>
-    <?php include_once('../../partes/comentarios.php');  ?>
-    <?php include_once('../../partes/pregunta-y-participa.php');  ?>
-    <?php include_once('../../partes/conversemos.php');  ?>
+    <div class="container-md">
+        <div class="col-12 col-lg-8">
+            <?php include_once('../../partes/comentarios.php');  ?>
+            <?php include_once('../../partes/pregunta-y-participa.php');  ?>
+            <?php include_once('../../partes/conversemos.php');  ?>
+        </div>
+    </div>
     <div class="ta-context dark-blue-bg">
         <?php include_once('../../partes/relacionados-tema.php');  ?>
     </div>

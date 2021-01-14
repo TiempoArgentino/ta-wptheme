@@ -1,11 +1,11 @@
 <div class="container-with-header">
-    <div class="container">
+    <div>
         <div class="section-title">
             <h4>PREGUNTÁ Y PARTICIPÁ</h4>
         </div>
     </div>
-    <div class="container mt-3">
-        <div class="ta-participa-block col-12 col-lg-8">
+    <div class="mt-3">
+        <div class="ta-participa-block">
             <div class="px-md-5">
                 <div class="header-container">
                     <div class="d-flex align-items-end">
@@ -124,8 +124,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-md mb-2 p-0">
-        <div class="separator"></div>
     </div>
 </div>

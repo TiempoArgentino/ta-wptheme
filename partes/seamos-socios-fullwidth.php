@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container">
     <div class="ta-socios-block mx-auto px-3 py-4">
         <div class="socios-header-container d-flex flex-column flex-md-row">
             <div class="content col-12 col-md-7 px-0">
@@ -14,7 +14,7 @@
             </div>
             <div class="img-btn col-12 col-md-5 px-0">
                 <div class="img-container text-center mt-3">
-                    <img src="../../assets/images/asociate.svg" alt="" class="w-100 h-auto" />
+                    <img src="../../assets/images/asociate.svg" alt="" class="w-75 h-auto" />
                 </div>
                 <div class="btns-container">
                     <div class="asociarme-btn d-flex justify-content-center mx-auto mt-3">

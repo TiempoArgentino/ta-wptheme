@@ -40,7 +40,7 @@
                     <p>Verónica Benaim <span>/ Tiempo Argentino</span></p>
                 </div>
                 <div class="author-content">
-                    <div class="quote mt-3">
+                    <div class="featured-quote mt-3">
                         <div class="separator my-3 d-block d-md-none"></div>
                         <div class="author-quoted">
                             <p>Verónica Benaim</p>

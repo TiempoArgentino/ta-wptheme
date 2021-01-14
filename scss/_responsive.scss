@@ -18,16 +18,27 @@
     max-width: 60%;
     margin: 0 auto;
   }
+
+  .ta-context {
+    &.newsletter-especial {
+      .newsletter {
+        max-width: 100%;
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {
-  .articulo-simple {
-    .img-wrapper {
-      width: 100%;
-      height: auto;
-      position: relative;
-      left: auto;
-      margin-left: 0;
+  .articulo-simple,
+  .articulo-especial {
+    .img-container {
+      .img-wrapper {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: auto;
+        margin-left: 0;
+      }
     }
   }
 
@@ -56,7 +67,8 @@
     .author-content,
     .tag-content {
       max-width: 70%;
-      .quote {
+      .quote,
+      .featured-quote {
         .author-quoted,
         .tag-quoted {
           p {
@@ -94,6 +106,20 @@
 }
 
 @media (min-width: 1200px) {
+  .ta-context {
+    &.talleres-especial {
+      p {
+        font-size: 24px;
+      }
+    }
+
+    &.mas-leidas-especial {
+      .ta-articles-block {
+        display: flex;
+      }
+    }
+  }
+
   .menu {
     padding: 60px 0 !important;
     .menu-header {
@@ -145,7 +171,8 @@
     }
   }
 
-  .articulo-simple {
+  .articulo-simple,
+  .articulo-especial {
     .title {
       h1 {
         font-size: 39px;
@@ -160,6 +187,15 @@
       }
     }
 
+    .img-container {
+      .credits {
+        p {
+          font-size: 13px;
+          line-height: 16.12px;
+        }
+      }
+    }
+
     .article-body {
       p {
         font-size: 19px;
@@ -167,15 +203,7 @@
         margin-bottom: 1rem;
       }
 
-      .bajada {
-        p {
-          font-size: 16px;
-          line-height: 21.17px;
-          letter-spacing: 0.3px;
-        }
-      }
-
-      .quote {
+      .featured-quote {
         .quote-body {
           p {
             font-size: 26px;
@@ -213,19 +241,18 @@
       }
     }
 
+    .bajada {
+      p {
+        font-size: 16px;
+        line-height: 21.17px;
+        letter-spacing: 0.3px;
+      }
+    }
+
     .date,
     .author {
       font-size: 16px;
       line-height: 19.84px;
-    }
-
-    .img-container {
-      .credits {
-        p {
-          font-size: 13px;
-          line-height: 16.12px;
-        }
-      }
     }
   }
 

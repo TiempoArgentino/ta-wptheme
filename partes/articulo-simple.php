@@ -85,7 +85,7 @@
                         gobernador sobreactuó su gesta por la salud pública con dos medidas sorprendentes: la súbita
                         expulsión de 61 migrantes de países.</p>
 
-                    <div class="quote mt-4">
+                    <div class="featured-quote mt-4">
                         <div class="quote-body">
                             <p>“Todo reclamo de la provincia que estime tener en relación con un Estado extranjero debe
                                 remitirlo al gobierno nacional.“

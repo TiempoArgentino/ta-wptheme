@@ -323,6 +323,14 @@ a {
   font-weight: 400;
 }
 
+.line-height-0 {
+  line-height: 0;
+}
+
+.ta-celeste-color {
+  color: var(--ta-celeste);
+}
+
 .separator {
   background-color: var(--ta-celeste);
   display: inline-block;
@@ -348,6 +356,42 @@ a {
 }
 .ta-context.dark-blue-bg .btns-container .ver-mas button {
   color: white;
+}
+.ta-context.dark-bg {
+  background-color: var(--ta-negro-texto);
+}
+.ta-context.dark-bg .section-title h4 {
+  color: var(--ta-celeste);
+}
+.ta-context.blue-border {
+  border: 1px solid var(--ta-celeste);
+}
+.ta-context.yellow-border .ta-socios-block {
+  border: 1px solid var(--ta-socios);
+}
+.ta-context.talleres-especial p {
+  font-size: 17px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+}
+.ta-context.talleres-especial p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.ta-context.newsletter-especial .envelope-icon {
+  display: block;
+}
+.ta-context.newsletter-especial .newsletter-form .input-icon {
+  bottom: 4px;
+  right: 24px;
+}
+.ta-context.newsletter-especial .newsletter-form .input-icon.envelope {
+  display: none;
+}
+.ta-context.newsletter-especial .newsletter-form .input-icon.send {
+  display: block;
 }
 
 .container-with-header .section-title h4 {
@@ -388,28 +432,33 @@ a {
   margin: 5px 0;
 }
 
-.articulo-simple .categories h4 {
+.articulo-simple .categories h4,
+.articulo-especial .categories h4 {
   font-size: 13px;
   line-height: 15.88px;
 }
-.articulo-simple .categories h4.theme {
+.articulo-simple .categories h4.theme,
+.articulo-especial .categories h4.theme {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 900;
   margin-right: 10px;
 }
-.articulo-simple .categories h4.subtheme {
+.articulo-simple .categories h4.subtheme,
+.articulo-especial .categories h4.subtheme {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
 }
-.articulo-simple .title h1 {
+.articulo-simple .title h1,
+.articulo-especial .title h1 {
   font-family: "Caladea";
   font-style: normal;
   font-weight: 700;
   font-size: 27px;
 }
-.articulo-simple .subtitle h3 {
+.articulo-simple .subtitle h3,
+.articulo-especial .subtitle h3 {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 500;
@@ -417,51 +466,62 @@ a {
   line-height: 22.49px;
   letter-spacing: -0.2px;
 }
-.articulo-simple .social-btns a {
+.articulo-simple .social-btns a,
+.articulo-especial .social-btns a {
   text-decoration: none;
 }
 .articulo-simple .date,
-.articulo-simple .author {
+.articulo-simple .author,
+.articulo-especial .date,
+.articulo-especial .author {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
 }
-.articulo-simple .img-container .credits p {
-  font-family: "Libre Baskerville";
-  font-style: italic;
-  font-weight: 400;
-  font-size: 12px;
-  margin: 0;
-}
-.articulo-simple .img-container .credits a {
-  font-family: "Libre Baskerville";
-  font-style: italic;
-  font-weight: 400;
-  font-size: 12px;
-  color: var(--ta-celeste) !important;
-}
-.articulo-simple .img-wrapper {
+.articulo-simple .img-container .img-wrapper,
+.articulo-especial .img-container .img-wrapper {
   width: 100vw;
   height: auto;
   position: relative;
   left: 50%;
   margin-left: -50vw;
 }
-.articulo-simple .author {
+.articulo-simple .img-container .credits p,
+.articulo-especial .img-container .credits p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+}
+.articulo-simple .img-container .credits a,
+.articulo-especial .img-container .credits a {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ta-celeste) !important;
+}
+.articulo-simple .author,
+.articulo-especial .author {
   position: relative;
   left: 10px;
 }
-.articulo-simple .author .author-icon {
+.articulo-simple .author .author-icon,
+.articulo-especial .author .author-icon {
   margin-right: 5px;
 }
-.articulo-simple .author p {
+.articulo-simple .author p,
+.articulo-especial .author p {
   margin-bottom: 0;
 }
-.articulo-simple .author a {
+.articulo-simple .author a,
+.articulo-especial .author a {
   color: var(--ta-celeste) !important;
 }
-.articulo-simple .article-body p {
+.articulo-simple .article-body p,
+.articulo-especial .article-body p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
@@ -470,10 +530,90 @@ a {
   letter-spacing: -0.2px;
   margin-bottom: 0;
 }
-.articulo-simple .article-body p span {
+.articulo-simple .article-body p span,
+.articulo-especial .article-body p span {
   font-weight: 700;
 }
-.articulo-simple .article-body .bajada p {
+.articulo-simple .article-body .anuncio-seccion .anuncio-container p,
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container p,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 19.85px;
+  letter-spacing: -0.2px;
+}
+.articulo-simple .article-body .anuncio-seccion .anuncio-container span,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  color: var(--ta-celeste);
+}
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
+  color: var(--ta-celeste) !important;
+}
+.articulo-simple .article-body .ta-subnote-block,
+.articulo-especial .article-body .ta-subnote-block {
+  border: 1px solid var(--ta-gris-subtexto);
+  position: relative;
+}
+.articulo-simple .article-body .ta-subnote-block .separator,
+.articulo-especial .article-body .ta-subnote-block .separator {
+  position: absolute;
+  top: -2px;
+  margin-top: 0;
+  background-color: var(--ta-negro-texto);
+}
+.articulo-simple .article-body .ta-subnote-block .title h2,
+.articulo-especial .article-body .ta-subnote-block .title h2 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  line-height: 22.49px;
+}
+.articulo-simple .article-body .ta-event-block,
+.articulo-especial .article-body .ta-event-block {
+  border: 1px solid var(--ta-espectaculos);
+}
+.articulo-simple .article-body .ta-event-block .title h2,
+.articulo-especial .article-body .ta-event-block .title h2 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  line-height: 22.49px;
+}
+.articulo-simple .article-body .ta-event-block .title h2.bold,
+.articulo-especial .article-body .ta-event-block .title h2.bold {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.articulo-simple .article-body .ta-event-block .content p a,
+.articulo-especial .article-body .ta-event-block .content p a {
+  text-decoration: underline;
+  text-decoration-color: #ce0d54;
+  color: #ce0d54 !important;
+}
+.articulo-simple .article-body .ta-event-block .content p.bold,
+.articulo-especial .article-body .ta-event-block .content p.bold {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.articulo-simple .article-body .ta-event-block .content p.red-font,
+.articulo-especial .article-body .ta-event-block .content p.red-font {
+  color: #ce0d54;
+}
+.articulo-simple .bajada p,
+.articulo-especial .bajada p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 500;
@@ -482,70 +622,12 @@ a {
   letter-spacing: 0.3px;
   color: var(--ta-gris-subtexto);
 }
-.articulo-simple .article-body .anuncio-seccion .anuncio-container p,
-.articulo-simple .article-body .anuncio-seccion .anuncio-container a {
+.articulo-simple .quote,
+.articulo-especial .quote {
   font-family: "Red Hat Display";
   font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 19.85px;
-  letter-spacing: -0.2px;
-}
-.articulo-simple .article-body .anuncio-seccion .anuncio-container span {
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 900;
-  color: var(--ta-celeste);
-}
-.articulo-simple .article-body .anuncio-seccion .anuncio-container a {
-  color: var(--ta-celeste) !important;
-}
-.articulo-simple .article-body .ta-subnote-block {
-  border: 1px solid var(--ta-gris-subtexto);
-  position: relative;
-}
-.articulo-simple .article-body .ta-subnote-block .separator {
-  position: absolute;
-  top: -2px;
-  margin-top: 0;
-  background-color: var(--ta-negro-texto);
-}
-.articulo-simple .article-body .ta-subnote-block .title h2 {
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 900;
-  font-size: 17px;
-  letter-spacing: 0.3px;
-  line-height: 22.49px;
-}
-.articulo-simple .article-body .ta-event-block {
-  border: 1px solid var(--ta-espectaculos);
-}
-.articulo-simple .article-body .ta-event-block .title h2 {
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 17px;
-  letter-spacing: 0.3px;
-  line-height: 22.49px;
-}
-.articulo-simple .article-body .ta-event-block .title h2.bold {
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 900;
-}
-.articulo-simple .article-body .ta-event-block .content p a {
-  text-decoration: underline;
-  text-decoration-color: #ce0d54;
-  color: #ce0d54 !important;
-}
-.articulo-simple .article-body .ta-event-block .content p.bold {
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 900;
-}
-.articulo-simple .article-body .ta-event-block .content p.red-font {
-  color: #ce0d54;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .play-btn img {
@@ -890,7 +972,7 @@ a {
   color: var(--white) !important;
 }
 
-.quote .quote-body p {
+.featured-quote .quote-body p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
@@ -898,7 +980,7 @@ a {
   line-height: 25px;
   letter-spacing: -0.2px;
 }
-.quote .author-quoted p {
+.featured-quote .author-quoted p {
   color: var(--ta-gris-subtexto);
   font-family: "Libre Baskerville";
   font-style: italic;
@@ -938,6 +1020,12 @@ a {
   background-color: var(--ta-celeste-fondos);
 }
 
+.sponsor p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+
 .mira-tambien .description p,
 .mas-leidas .description p {
   font-family: "Red Hat Display";
@@ -948,6 +1036,9 @@ a {
   line-height: 16.5px;
 }
 
+.newsletter .envelope-icon {
+  display: none;
+}
 .newsletter p {
   font-family: "Red Hat Display";
   font-style: normal;
@@ -985,6 +1076,9 @@ a {
   bottom: 6px;
   right: 35px;
   max-width: 30px;
+}
+.newsletter .newsletter-form .input-icon.send {
+  display: none;
 }
 .newsletter .newsletter-form button {
   font-family: "Red Hat Display";
@@ -1045,9 +1139,6 @@ a {
 .ta-socios-block .subtitle p span {
   font-weight: 700;
 }
-.ta-socios-block .subtitle.ta-celeste-color p {
-  color: var(--ta-celeste);
-}
 .ta-socios-block .asociarme-btn button {
   font-family: "Red Hat Display";
   font-style: normal;
@@ -1096,8 +1187,12 @@ a {
 }
 .ta-author-block .quote .author-quoted p,
 .ta-author-block .quote .tag-quoted p,
+.ta-author-block .featured-quote .author-quoted p,
+.ta-author-block .featured-quote .tag-quoted p,
 .tag-block .quote .author-quoted p,
-.tag-block .quote .tag-quoted p {
+.tag-block .quote .tag-quoted p,
+.tag-block .featured-quote .author-quoted p,
+.tag-block .featured-quote .tag-quoted p {
   font-family: "Caladea";
   font-style: normal;
   font-weight: 700;
@@ -1108,7 +1203,9 @@ a {
   text-align: left;
 }
 .ta-author-block .quote .quote-body,
-.tag-block .quote .quote-body {
+.ta-author-block .featured-quote .quote-body,
+.tag-block .quote .quote-body,
+.tag-block .featured-quote .quote-body {
   color: var(--ta-celeste);
 }
 .ta-author-block .author-description p,
@@ -1177,9 +1274,6 @@ a {
   font-weight: 500;
   font-style: italic;
 }
-.footer-content .ta-celeste-color {
-  color: var(--ta-celeste);
-}
 
 #more {
   display: none;
@@ -1199,9 +1293,14 @@ a {
     max-width: 60%;
     margin: 0 auto;
   }
+
+  .ta-context.newsletter-especial .newsletter {
+    max-width: 100%;
+  }
 }
 @media (min-width: 992px) {
-  .articulo-simple .img-wrapper {
+  .articulo-simple .img-container .img-wrapper,
+.articulo-especial .img-container .img-wrapper {
     width: 100%;
     height: auto;
     position: relative;
@@ -1231,20 +1330,32 @@ a {
   }
   .ta-author-block .author-content .quote .author-quoted p,
 .ta-author-block .author-content .quote .tag-quoted p,
+.ta-author-block .author-content .featured-quote .author-quoted p,
+.ta-author-block .author-content .featured-quote .tag-quoted p,
 .ta-author-block .tag-content .quote .author-quoted p,
 .ta-author-block .tag-content .quote .tag-quoted p,
+.ta-author-block .tag-content .featured-quote .author-quoted p,
+.ta-author-block .tag-content .featured-quote .tag-quoted p,
 .tag-block .author-content .quote .author-quoted p,
 .tag-block .author-content .quote .tag-quoted p,
+.tag-block .author-content .featured-quote .author-quoted p,
+.tag-block .author-content .featured-quote .tag-quoted p,
 .tag-block .tag-content .quote .author-quoted p,
-.tag-block .tag-content .quote .tag-quoted p {
+.tag-block .tag-content .quote .tag-quoted p,
+.tag-block .tag-content .featured-quote .author-quoted p,
+.tag-block .tag-content .featured-quote .tag-quoted p {
     font-size: 39px;
     line-height: 44.85px;
     letter-spacing: -0.5px;
   }
   .ta-author-block .author-content .quote .quote-body p,
+.ta-author-block .author-content .featured-quote .quote-body p,
 .ta-author-block .tag-content .quote .quote-body p,
+.ta-author-block .tag-content .featured-quote .quote-body p,
 .tag-block .author-content .quote .quote-body p,
-.tag-block .tag-content .quote .quote-body p {
+.tag-block .author-content .featured-quote .quote-body p,
+.tag-block .tag-content .quote .quote-body p,
+.tag-block .tag-content .featured-quote .quote-body p {
     font-size: 26px;
     line-height: 32.24px;
   }
@@ -1274,6 +1385,13 @@ a {
   }
 }
 @media (min-width: 1200px) {
+  .ta-context.talleres-especial p {
+    font-size: 24px;
+  }
+  .ta-context.mas-leidas-especial .ta-articles-block {
+    display: flex;
+  }
+
   .menu {
     padding: 60px 0 !important;
   }
@@ -1304,51 +1422,64 @@ a {
     line-height: 21.17px;
   }
 
-  .articulo-simple .title h1 {
+  .articulo-simple .title h1,
+.articulo-especial .title h1 {
     font-size: 39px;
     line-height: 44.85px;
   }
-  .articulo-simple .subtitle h3 {
+  .articulo-simple .subtitle h3,
+.articulo-especial .subtitle h3 {
     font-size: 19px;
     line-height: 25.14px;
   }
-  .articulo-simple .article-body p {
+  .articulo-simple .img-container .credits p,
+.articulo-especial .img-container .credits p {
+    font-size: 13px;
+    line-height: 16.12px;
+  }
+  .articulo-simple .article-body p,
+.articulo-especial .article-body p {
     font-size: 19px;
     line-height: 25.14px;
     margin-bottom: 1rem;
   }
-  .articulo-simple .article-body .bajada p {
-    font-size: 16px;
-    line-height: 21.17px;
-    letter-spacing: 0.3px;
-  }
-  .articulo-simple .article-body .quote .quote-body p {
+  .articulo-simple .article-body .featured-quote .quote-body p,
+.articulo-especial .article-body .featured-quote .quote-body p {
     font-size: 26px;
     line-height: 32.24px;
   }
-  .articulo-simple .article-body .quote .author-quoted p {
+  .articulo-simple .article-body .featured-quote .author-quoted p,
+.articulo-especial .article-body .featured-quote .author-quoted p {
     font-size: 16px;
     line-height: 19.84px;
   }
   .articulo-simple .article-body .anuncio-seccion .anuncio-container p,
-.articulo-simple .article-body .anuncio-seccion .anuncio-container a {
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container p,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
     font-size: 19px;
     line-height: 25.14px;
   }
   .articulo-simple .article-body .ta-subnote-block .title h2,
-.articulo-simple .article-body .ta-event-block .title h2 {
+.articulo-simple .article-body .ta-event-block .title h2,
+.articulo-especial .article-body .ta-subnote-block .title h2,
+.articulo-especial .article-body .ta-event-block .title h2 {
     font-size: 24px;
     line-height: 31.75px;
     letter-spacing: -0.2px;
   }
+  .articulo-simple .bajada p,
+.articulo-especial .bajada p {
+    font-size: 16px;
+    line-height: 21.17px;
+    letter-spacing: 0.3px;
+  }
   .articulo-simple .date,
-.articulo-simple .author {
+.articulo-simple .author,
+.articulo-especial .date,
+.articulo-especial .author {
     font-size: 16px;
     line-height: 19.84px;
-  }
-  .articulo-simple .img-container .credits p {
-    font-size: 13px;
-    line-height: 16.12px;
   }
 
   .article-tags .tag .content p {

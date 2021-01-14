@@ -1,11 +1,11 @@
 <div class="container-with-header">
-    <div class="container">
+    <div>
         <div class="section-title">
             <h4>CONVERSEMOS</h4>
         </div>
     </div>
-    <div class="container mt-3">
-        <div class="ta-conversemos-block col-12 col-lg-8">
+    <div class="mt-3">
+        <div class="ta-conversemos-block">
             <div class="px-md-5">
                 <div class="header-container twitter d-flex">
                     <div class="logo mr-3">
@@ -22,13 +22,10 @@
                 <div class="input-quantity mt-3">
                     <p>452 Comentarios</p>
                 </div>
-                <div class="container twitter-screenshot">
+                <div class="container twitter-screenshot text-center">
                     <img src="/assets/images/twitter-screenshot.svg" alt="" class="img-fluid" />
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-md p-0">
-        <div class="separator"></div>
     </div>
 </div>

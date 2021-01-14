@@ -1,4 +1,4 @@
-<div class="container-with-header">
+<div class="container-with-header mt-3">
     <div class="container">
         <div class="section-title">
             <h4>TIEMPO AUDIOVISUAL</h4>
@@ -15,8 +15,5 @@
             </div>
 
         </div>
-    </div>
-    <div class="container-md p-0">
-        <div class="separator"></div>
     </div>
 </div>
