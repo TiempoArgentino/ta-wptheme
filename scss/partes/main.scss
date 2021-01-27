@@ -385,6 +385,13 @@ a {
   }
 }
 
+.section-title,
+.category-title {
+  h4 {
+    text-transform: uppercase;
+  }
+}
+
 .line-height-0 {
   line-height: 0;
 }
@@ -409,8 +416,18 @@ a {
   background-color: var(--ta-celeste);
 }
 
+.blue-bordered-btn {
+  button {
+    @include button(
+      var(--ta-celeste),
+      transparent,
+      1px solid var(--ta-celeste)
+    );
+  }
+}
+
 .ta-context {
-  &.dark-blue-bg {
+  /* &.dark-blue-bg {
     background-color: var(--ta-celeste);
 
     .article-preview {
@@ -433,17 +450,195 @@ a {
         }
       }
     }
+  } */
+
+  &.dark-blue {
+    .context-color {
+      .article-preview {
+        .content {
+          p {
+            color: white !important;
+          }
+        }
+
+        &.autor {
+          .img-container {
+            .img-wrapper {
+              border-color: var(--ta-celeste);
+            }
+          }
+          .content {
+            .title {
+              p {
+                &.nota-title {
+                  color: var(--ta-celeste);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .section-title,
+      .category-title {
+        h4 {
+          color: var(--ta-celeste);
+        }
+      }
+
+      .article-border {
+        border-color: var(--ta-celeste);
+      }
+    }
+
+    .context-bg {
+      background-color: var(--ta-negro-texto);
+    }
   }
 
-  &.dark-bg {
-    background-color: var(--ta-negro-texto);
+  &.deportes {
+    .context-color {
+      .article-preview {
+        &.autor {
+          .img-container {
+            .img-wrapper {
+              border-color: var(--ta-deportes);
+            }
+          }
+          .content {
+            .title {
+              p {
+                &.nota-title {
+                  color: var(--ta-deportes);
+                }
+              }
+            }
+          }
+        }
+      }
 
+      .section-title,
+      .category-title {
+        h4 {
+          color: var(--ta-deportes);
+        }
+      }
+
+      .separator {
+        background-color: var(--ta-deportes);
+      }
+
+      .article-border {
+        border-color: var(--ta-deportes);
+      }
+    }
+
+    .context-bg {
+      background-color: var(--ta-deportes-bg);
+    }
+  }
+
+  &.espectaculos {
+    .context-color {
+      .article-preview {
+        &.autor {
+          .img-container {
+            .img-wrapper {
+              border-color: var(--ta-espectaculos);
+            }
+          }
+          .content {
+            .title {
+              p {
+                &.nota-title {
+                  color: var(--ta-espectaculos);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .section-title,
+      .category-title {
+        h4 {
+          color: var(--ta-espectaculos);
+        }
+      }
+
+      .separator {
+        background-color: var(--ta-espectaculos);
+      }
+
+      .article-border {
+        border-color: var(--ta-espectaculos);
+      }
+    }
+
+    .context-bg {
+      background-color: var(--ta-espectaculos-bg);
+    }
+  }
+
+  &.cultura {
+    .context-color {
+      .article-preview {
+        &.autor {
+          .img-container {
+            .img-wrapper {
+              border-color: var(--ta-cultura);
+            }
+          }
+          .content {
+            .title {
+              p {
+                &.nota-title {
+                  color: var(--ta-cultura);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .section-title,
+      .category-title {
+        h4 {
+          color: var(--ta-cultura);
+        }
+      }
+
+      .separator {
+        background-color: var(--ta-cultura);
+      }
+
+      .article-border {
+        border-color: var(--ta-cultura);
+      }
+    }
+
+    .context-bg {
+      background-color: var(--ta-cultura-bg);
+    }
+  }
+
+  /* &.espectaculos-bg {
+    background-color: var(--ta-espectaculos-bg);
     .section-title {
       h4 {
-        color: var(--ta-celeste);
+        color: var(--ta-espectaculos);
       }
     }
   }
+
+  &.cultura-bg {
+    background-color: var(--ta-cultura-bg);
+    .section-title {
+      h4 {
+        color: var(--ta-cultura);
+      }
+    }
+  } */
 
   &.blue-border {
     border: 1px solid var(--ta-celeste);
@@ -457,10 +652,21 @@ a {
 
   &.talleres-especial {
     p {
-      font-size: 17px;
-      @include red-hat-500;
+      font-size: 15px;
+      @include caladea-400;
+      line-height: 16.5px;
       span {
-        @include red-hat-900;
+        @include caladea-700;
+      }
+    }
+    .destacado {
+      p {
+        font-size: 20px;
+        @include caladea-400;
+        line-height: 22.46px;
+        span {
+          @include caladea-700;
+        }
       }
     }
   }
@@ -480,6 +686,43 @@ a {
 
         &.send {
           display: block;
+        }
+      }
+    }
+  }
+
+  &.portada {
+    .article-preview {
+      .content {
+        .title {
+          p {
+            @include caladea-700;
+          }
+        }
+      }
+    }
+
+    .opinion {
+      .article-preview {
+        .content {
+          .title {
+            p {
+              @include baskerville-italic;
+              font-size: 15px;
+              line-height: 18.6px;
+              letter-spacing: -0.2px;
+              color: var(--ta-negro-texto);
+            }
+          }
+
+          .article-info-container {
+            .author {
+              p {
+                @include red-hat-700;
+                color: var(--ta-celeste);
+              }
+            }
+          }
         }
       }
     }
@@ -683,6 +926,58 @@ a {
   }
 }
 
+.banner-nuevo-tiempo,
+.eleccion-contenido {
+  .title {
+    p {
+      @include baskerville-italic;
+      color: white;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+      margin: 0 auto;
+      max-width: 60%;
+    }
+  }
+
+  p {
+    @include red-hat-500;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    span {
+      @include red-hat-900;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+  }
+}
+
+.eleccion-contenido {
+  .title {
+    p {
+      color: var(--ta-celeste);
+      margin: 0;
+      max-width: 100%;
+    }
+  }
+
+  .ver-mas {
+    button {
+      @include button(white, var(--ta-celeste));
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+
+.miscelanea {
+  .article-preview {
+    &.destacado {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
 /////// ver mas //////
 
 #more {
@@ -702,8 +997,22 @@ a {
 @media (min-width: 1200px) {
   .ta-context {
     &.talleres-especial {
+      .destacado {
+        p {
+          font-size: 30px;
+          line-height: 33.69px;
+          letter-spacing: -0.5px;
+        }
+      }
+
       p {
-        font-size: 24px;
+        font-size: 21px;
+        line-height: 24.15px;
+        letter-spacing: -0.5px;
+
+        span {
+          letter-spacing: -0.1px;
+        }
       }
     }
 
@@ -779,6 +1088,35 @@ a {
       button {
         font-size: 19px;
         line-height: 25.14px;
+      }
+    }
+  }
+
+  .banner-nuevo-tiempo,
+  .eleccion-contenido {
+    .title {
+      p {
+        font-size: 26px;
+      }
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 31.75px;
+      letter-spacing: -0.2px;
+
+      span {
+        font-size: 24px;
+        line-height: 31.75px;
+        letter-spacing: -0.2px;
+      }
+    }
+  }
+
+  .sub-blocks {
+    .ta-articles-block {
+      &.opinion {
+        overflow: hidden;
       }
     }
   }

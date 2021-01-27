@@ -1,0 +1,47 @@
+@import "../variables";
+@import "../mixins";
+
+.podcasts-block {
+  .podcast-preview {
+    p {
+      @include caladea-400;
+      font-size: 15px;
+      margin: 0;
+      color: white;
+
+      &.episode-number {
+        @include caladea-700;
+      }
+    }
+
+    .article-info-container {
+      .author {
+        p {
+          @include baskerville-italic;
+          font-size: 12px;
+          color: var(--ta-gris-subtexto);
+        }
+      }
+    }
+  }
+
+  .podcast-preview-container {
+    overflow-y: auto;
+    max-height: 254px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .podcasts-block {
+    .podcast-preview {
+      p {
+        font-size: 19px;
+      }
+    }
+
+    .podcast-preview-container {
+      height: auto;
+      max-height: max-content;
+    }
+  }
+}

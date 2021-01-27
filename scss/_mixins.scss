@@ -40,6 +40,12 @@
   font-weight: 700;
 }
 
+@mixin caladea-400 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 400;
+}
+
 @mixin button($color, $bg-color, $border: none) {
   @include red-hat-900;
   background-color: $bg-color;

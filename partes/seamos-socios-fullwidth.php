@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ta-context yellow-border mt-3">
     <div class="ta-socios-block mx-auto px-3 py-4">
         <div class="socios-header-container d-flex flex-column flex-md-row">
             <div class="content col-12 col-md-7 px-0">

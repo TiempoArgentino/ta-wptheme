@@ -1,0 +1,59 @@
+@import "../variables";
+@import "../mixins";
+
+.historieta {
+  .comic-container {
+    .comic-wrapper {
+      overflow-x: scroll;
+
+      img {
+        max-height: 275px;
+      }
+    }
+  }
+
+  .title {
+    p {
+      @include caladea-700;
+      font-size: 20px;
+      line-height: 22.46px;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+  }
+
+  .autor {
+    p {
+      @include baskerville-italic;
+      font-size: 12px;
+      line-height: 14.88px;
+      color: var(--ta-gris-subtexto);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .historieta {
+    .comic-container {
+      .comic-wrapper {
+        overflow-x: hidden;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .historieta {
+    .comic-container {
+      .comic-wrapper {
+        overflow-x: hidden;
+
+        img {
+          max-height: inherit;
+          height: auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
