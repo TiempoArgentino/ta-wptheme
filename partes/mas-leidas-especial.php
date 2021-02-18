@@ -14,7 +14,7 @@
                             <a href="">
                                 <div class="img-container w-100 pr-2 pr-lg-0">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/tiny-art.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -35,7 +35,7 @@
                             <a href="">
                                 <div class="img-container w-100 pr-2 pr-lg-0">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/tiny-art.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -56,7 +56,7 @@
                             <a href="">
                                 <div class="img-container w-100 pr-2 pr-lg-0">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/tiny-art.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -77,7 +77,7 @@
                             <a href="">
                                 <div class="img-container w-100 pr-2 pr-lg-0">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/tiny-art.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -98,7 +98,7 @@
                             <a href="">
                                 <div class="img-container w-100 pr-2 pr-lg-0">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/tiny-art.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>

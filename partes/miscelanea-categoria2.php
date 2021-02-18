@@ -82,7 +82,7 @@
                 <div class="content col-7 col-md-12 text-md-center">
                     <div class="title">
                         <a href="">
-                            <p class="nota-title">“Desafíos pendientes para la equidad de género”</p>
+                            <p class="nota-title w-75 mx-auto">“Desafíos pendientes para la equidad de género”</p>
                         </a>
                     </div>
                     <div class="article-info-container d-block text-md-center">

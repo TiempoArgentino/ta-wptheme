@@ -30,7 +30,7 @@
             <?php include_once('../../partes/misc.php');  ?>
             <?php include_once('../../partes/simple-x7.php');  ?>
             <?php include_once('../../partes/miscelanea-categoria.php');  ?>
-            <?php include_once('../../partes/newsletter-especial.php');  ?>
+            <?php include_once('../../partes/newsletter-personalizar.php');  ?>
             <?php include_once('../../partes/miscelanea-categoria2.php');  ?>
             <?php include_once('../../partes/fotogaleria.php');  ?>
             <?php include('../../partes/seamos-socios-fullwidth.php');  ?>

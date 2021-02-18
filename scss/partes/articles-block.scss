@@ -49,10 +49,10 @@
     .icons-container {
       .article-icons {
         min-height: 33px;
-        top: 50%;
-        transform: translateY(-50%);
+        /* top: 50%;
+        transform: translateY(-50%); */
         img {
-          max-width: 26px;
+          max-width: 48px;
           height: auto;
           margin: 5px 0;
         }
@@ -142,9 +142,7 @@
         background-size: cover;
       }
       .article-icons {
-        img {
-          max-width: 40px;
-        }
+        bottom: 20px;
       }
     }
 
@@ -225,7 +223,8 @@
       }
 
       .article-icons {
-        top: 85%;
+        top: initial;
+        bottom: -11%;
       }
     }
 
@@ -391,6 +390,23 @@
       }
     }
   }
+
+  .column-x3 {
+    .article-preview {
+      &.autor {
+        .content {
+          .title {
+            p {
+              &.nota-title {
+                max-width: 75%;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 1200px) {
@@ -480,6 +496,10 @@
         .img-wrapper {
           min-height: 157px;
           width: 157px;
+        }
+
+        .article-icons {
+          bottom: 0;
         }
       }
 

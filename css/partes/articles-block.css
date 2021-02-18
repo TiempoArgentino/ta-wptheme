@@ -56,11 +56,11 @@
 }
 .article-preview .img-container .icons-container .article-icons {
   min-height: 33px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* top: 50%;
+  transform: translateY(-50%); */
 }
 .article-preview .img-container .icons-container .article-icons img {
-  max-width: 26px;
+  max-width: 48px;
   height: auto;
   margin: 5px 0;
 }
@@ -137,8 +137,8 @@
   background: url("../../assets/images/interest-img.png") center no-repeat;
   background-size: cover;
 }
-.article-preview.destacado .img-container .article-icons img {
-  max-width: 40px;
+.article-preview.destacado .img-container .article-icons {
+  bottom: 20px;
 }
 .article-preview.destacado .content .title p {
   font-size: 20px;
@@ -188,7 +188,8 @@
   background: url("../../assets/images/autor-photo.jpg") top center no-repeat;
 }
 .article-preview.autor .img-container .article-icons {
-  top: 85%;
+  top: initial;
+  bottom: -11%;
 }
 .article-preview.autor .content .title p.nota-title {
   font-family: "Libre Baskerville";
@@ -273,6 +274,11 @@
   .article-preview.autor .img-container .img-wrapper {
     min-height: 79px;
   }
+
+  .column-x3 .article-preview.autor .content .title p.nota-title {
+    max-width: 75%;
+    margin: 0 auto;
+  }
 }
 @media (min-width: 1200px) {
   .ta-articles-block {
@@ -316,6 +322,9 @@
   .article-preview.autor .img-container .img-wrapper {
     min-height: 157px;
     width: 157px;
+  }
+  .article-preview.autor .img-container .article-icons {
+    bottom: 0;
   }
   .article-preview.autor .content .title p.nota-title {
     line-height: 29.76px;

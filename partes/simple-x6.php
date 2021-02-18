@@ -12,19 +12,25 @@
 </div>
 <div class="ta-articles-block column-x3 d-flex flex-column flex-md-row mt-3">
     <div class="col-12 d-flex flex-column flex-md-row flex-wrap p-0">
-        <div class="article-preview col-12 col-md-4 autor mb-3 pr-0">
+        <div class="article-preview col-12 col-md-4 autor mb-3 pr-md-0">
             <div class="light-blue-bg h-100 d-flex align-items-center">
-                <div class="py-2 d-flex flex-column text-center justify-content-center align-items-center">
-                    <div class="col-4 col-md-12 p-0">
+                <div
+                    class="py-2 d-flex flex-row flex-md-column text-center justify-content-center align-items-center w-100">
+                    <div class="col-5 col-md-12 p-0">
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
 
                                 </div>
+                                <div class="icons-container">
+                                    <div class="article-icons d-flex flex-column position-absolute">
+                                        <img src="../../assets/images/icon-img-3.svg" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
-                    <div class="content col-8 col-md-12 text-md-center">
+                    <div class="content col-7 col-md-12 text-md-center">
                         <div class="title">
                             <a href="">
                                 <p class="nota-title">“Un espacio para las historias colectivas”</p>

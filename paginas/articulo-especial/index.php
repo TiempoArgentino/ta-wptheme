@@ -29,7 +29,7 @@
         <?php include_once('../../partes/tags.php');  ?>
         <div class="d-flex flex-column flex-md-row">
             <?php include_once('../../partes/sponsor.php');  ?>
-            <?php include_once('../../partes/mira-tambien.php');  ?>
+
         </div>
     </div>
     <div class="ta-context dark-bg mt-3 d-none d-md-block">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="container mt-5">
-        <div class="ta-context blue-border newsletter-especial">
+        <div class="ta-context newsletter-especial">
             <?php include_once('../../partes/newsletter-especial.php');  ?>
         </div>
     </div>
@@ -59,7 +59,7 @@
         <div class="line-height-0">
             <div class="separator m-0"></div>
         </div>
-        <div class="ta-context blue-border talleres-especial">
+        <div class="ta-context talleres-especial">
             <?php include('../../partes/talleres.php');  ?>
         </div>
     </div>

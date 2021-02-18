@@ -106,6 +106,12 @@
                                 <div class="img-wrapper">
 
                                 </div>
+                                <div class="icons-container">
+                                    <div class="article-icons d-flex flex-column position-absolute">
+                                        <img src="../../assets/images/icon-img-2.svg" alt="">
+                                        <img src="../../assets/images/icon-img-3.svg" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>

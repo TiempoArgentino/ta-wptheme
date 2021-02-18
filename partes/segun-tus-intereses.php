@@ -17,7 +17,7 @@
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
-                                    <img src="../../assets/images/interest-img.png" alt="" />
+
                                 </div>
                                 <div class="icons-container">
                                     <div class="article-icons d-flex flex-column position-absolute">
@@ -50,7 +50,7 @@
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
-                                    <img src="../../assets/images/interest-img.png" alt="" />
+
                                 </div>
                                 <div class="icons-container">
                                     <div class="article-icons d-flex flex-column position-absolute">
@@ -83,7 +83,7 @@
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
-                                    <img src="../../assets/images/interest-img.png" alt="" />
+
                                 </div>
                                 <div class="icons-container">
                                     <div class="article-icons d-flex flex-column position-absolute">
@@ -116,7 +116,7 @@
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
-                                    <img src="../../assets/images/interest-img.png" alt="" />
+
                                 </div>
                                 <div class="icons-container">
                                     <div class="article-icons d-flex flex-column position-absolute">

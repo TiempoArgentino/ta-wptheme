@@ -517,18 +517,27 @@ a {
   font-style: normal;
   font-weight: 700;
 }
-.ta-context.newsletter-especial .envelope-icon {
+.ta-context.newsletter-especial .envelope-icon,
+.ta-context .newsletter-personalizar .envelope-icon {
   display: block;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon {
+.ta-context.newsletter-especial .newsletter-form .input-icon,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon {
   bottom: 4px;
   right: 24px;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon.envelope {
+.ta-context.newsletter-especial .newsletter-form .input-icon.envelope,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon.envelope {
   display: none;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon.send {
+.ta-context.newsletter-especial .newsletter-form .input-icon.send,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon.send {
   display: block;
+}
+.ta-context.newsletter-personalizar .newsletter-options button {
+  left: initial;
+  transform: none;
+  width: auto !important;
 }
 .ta-context.portada .article-preview .content .title p {
   font-family: "Caladea";
@@ -788,7 +797,27 @@ a {
 }
 
 @media (min-width: 500px) and (max-width: 992px) {
-  .ta-context.newsletter-especial .newsletter {
+  .ta-context.newsletter-especial .newsletter,
+.ta-context .newsletter-personalizar .newsletter {
+    max-width: 100%;
+  }
+
+  .banner-nuevo-tiempo .title,
+.eleccion-contenido .title {
+    flex: 1;
+  }
+  .banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .banner-nuevo-tiempo .title,
+.eleccion-contenido .title {
+    flex: 1;
+  }
+  .banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
     max-width: 100%;
   }
 }

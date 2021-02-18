@@ -13,7 +13,7 @@
                             <a href="">
                                 <div class="img-container position-relative">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/interest-img.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -38,7 +38,7 @@
                             <a href="">
                                 <div class="img-container position-relative">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/interest-img.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -66,7 +66,7 @@
                             <a href="">
                                 <div class="img-container position-relative">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/interest-img.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>
@@ -91,7 +91,7 @@
                             <a href="">
                                 <div class="img-container position-relative">
                                     <div class="img-wrapper">
-                                        <img src="../../assets/images/interest-img.png" alt="" />
+
                                     </div>
                                 </div>
                             </a>

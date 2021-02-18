@@ -15,7 +15,7 @@
                         <a href="">
                             <div class="img-container position-relative">
                                 <div class="img-wrapper">
-                                    <img src="../../assets/images/taller.png" alt="" class="img-fluid" />
+
                                 </div>
                             </div>
                         </a>
