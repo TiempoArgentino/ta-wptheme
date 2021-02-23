@@ -1,0 +1,82 @@
+.sortables-ul li {
+	position: relative;
+	background: #ffffff;
+	color: #23282d/*#575e67*/;
+	font-weight: 600;
+	text-align:  center;
+	border: solid 0.1rem #ddd;
+	cursor: move !important;
+	padding: 0.6rem;
+	overflow: hidden;
+}
+
+.sortables-ul > .sortable-li:not(.ui-sortable-placeholder):before {
+    content: counter(list, decimal);
+    counter-increment: list;
+    position: absolute;
+    left: 0;
+    font-size: 6rem;
+    top: -3rem;
+    color: #adadad;
+    font-family: sans-serif;
+}
+
+.sortables-ul > .sortable-li.dragged:before {
+    content: '';
+}
+
+.sortables-ul {
+    margin-left: 0;
+    cursor: move !important;
+	counter-reset: list;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.customize-control-sortable-list label{
+  cursor: initial;
+}
+
+.sortables-ul li.dragged {
+  position: absolute;
+  opacity: 1;
+  z-index: 9999999999999;
+  /* background-color: #1cbfa5; */
+  /* color: #ffffff; */
+  /* border-radius: 4rem; */
+  /* height: auto!important; */
+  /* width: auto!important; */
+  overflow: hidden;
+  font-size: 2rem;
+}
+
+.sortables-ul li.placeholder{
+  border: solid 0.3rem #d1d1d1;
+  min-height: 2.1rem;
+  border-style: dashed;
+  background-color: transparent;
+  height: 100%;
+}
+
+.customize-control-sortable-list {
+    /* background-color: #adadad; */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #adadad;
+}
+
+.customize-control-sortable-list .customize-control-title {
+    color: #000000;
+}
+
+#customize-controls .customize-control-sortable-list span.description.customize-control-description {
+    color: #000000;
+}
+
+.sortables-ul li:hover, .sortables-ul li:hover:before, .sortables-ul li.dragged {
+    border-color: #999;
+    color: #0073aa;
+    overflow:  visible;
+}

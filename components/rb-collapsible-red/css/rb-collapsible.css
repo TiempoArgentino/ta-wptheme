@@ -1,0 +1,19 @@
+/* ========================================================================== */
+/* COLORS */
+/* ========================================================================== */
+
+.rb-collapsible.red.active{
+    box-shadow: 3px 4px 0px #95000085;
+}
+
+.rb-collapsible.red.active > .rb-collapsible-header, .rb-collapsible.red.active > .rb-collapsible-body {
+    border-color: #c20000;
+}
+
+.rb-collapsible.red.active > .rb-collapsible-header {
+    background-color: #c20000;
+}
+
+.rb-collapsible.red.active > .rb-collapsible-header .title {
+    color: #ffffff;
+}

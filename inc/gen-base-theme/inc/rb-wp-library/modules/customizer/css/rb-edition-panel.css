@@ -1,0 +1,28 @@
+/* ========================================================================== */
+/* Hide any other element */
+/* ========================================================================== */
+#wpadminbar, #adminmenuback, #adminmenuwrap, #wpfooter{
+    display: none;
+}
+
+#wpbody{
+    padding-top: 0;
+    margin: 0;
+}
+
+#wpcontent{
+    margin: 0;
+    padding: 0;
+}
+
+html.wp-toolbar{
+    padding-top: 0;
+}
+
+#wpbody-content > *:not(#rb-edition-panel){
+    display: none;
+}
+
+body{
+    background: transparent;
+}

@@ -1,0 +1,355 @@
+/* html {
+    font-size: 12px!important;
+} */
+
+:root{
+    --rb-main-color: #008ec2;
+    --rb-main-shadow-color: #006d9585;
+    --rb-blue-color: #008ec2;
+    --rb-shadow-blue-color: #006d9585;
+    --rb-red-color: #E53935;
+}
+
+body{
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ========================================================================== */
+/* COLORS */
+/* ========================================================================== */
+.rb-collapsible.active{
+    box-shadow: 3px 4px 0px var(--rb-main-shadow-color);
+}
+
+.rb-collapsible.active > .rb-collapsible-header, .rb-collapsible.active > .rb-collapsible-body {
+    border-color: var(--rb-main-color);
+}
+
+.rb-collapsible.active > .rb-collapsible-header {
+    background-color: var(--rb-main-color);
+}
+
+.rb-collapsible.active > .rb-collapsible-header .title {
+    color: #ffffff;
+}
+
+/* ========================================================================== */
+/* INPUTS */
+/* ========================================================================== */
+.rb-wp-control input:not([type="checkbox"]), .rb-wp-control textarea{
+    width: 100%;
+}
+
+.rb-wp-control input:not([type="checkbox"]), .rb-wp-control textarea {
+    box-shadow: none;
+    border: 0;
+    border-bottom: solid 1px #CACACC;
+    transition: border-color 0.4s;
+    /* background-color: #ffffff57; */
+}
+
+.rb-wp-control input:disabled, .rb-wp-control textarea:disabled {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.rb-wp-control input:focus{
+    border-color: #808080;
+    box-shadow: none;
+}
+
+.rb-wp-control textarea {
+    box-shadow: 0px 0px 2px #cacacc;
+    transition: box-shadow 0.4s, border-color 0.4s;
+}
+
+.rb-wp-control textarea:focus{
+    border-color: #808080;
+    box-shadow: 0 0px 2px #000000;
+}
+
+/* ========================================================================== */
+/* GENERAL */
+/* ========================================================================== */
+.rb-field{
+    margin-bottom: 1rem;
+}
+
+.rb-field:not(.rb-collapsible) > .control-header{
+    margin-bottom: 0.5rem;
+}
+
+.rb-field .control-body > .control-description {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.rb-field p {
+    margin-top: 0;
+}
+
+.rb-field > .control-header .title{
+    /* padding: 0; */
+    font-size: 1rem;
+    /* font-size: 1.22rem; */
+}
+
+.rb-field:not(.rb-collapsible) > .control-header .title {
+    padding: 0;
+}
+
+
+/* ========================================================================== */
+/* MEDIA CONTROL */
+/* ========================================================================== */
+.input-wp-media-image-holder .input-image-src {
+    position:  relative;
+    max-height: 10rem;
+    opacity: 1;
+    max-width: 100%;
+}
+
+.input-wp-media-image-holder {
+    position:  relative;
+    border: dashed 0.1rem #555d66;
+    min-height: 6rem;
+    cursor:  pointer;
+    display:  flex;
+    align-items:  center;
+    justify-content:  center;
+    background-color: #d2d2d2;
+    margin-bottom: 0.5rem;
+}
+
+.input-wp-media-image-holder .input-image-placeholder {
+    position:  absolute;
+    display:  flex;
+    align-items: center;
+    justify-content:  center;
+    height:  100%;
+    width:  100%;
+    top: 0;
+    left:  0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.input-wp-media-image-holder .input-image-placeholder p {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.input-wp-media-image-holder:hover .input-image-src {
+    opacity: 0.2;
+}
+
+.input-wp-media-image-holder:hover .input-image-placeholder, .input-wp-media-image-holder .input-image-src[src=""] ~ .input-image-placeholder {
+    z-index: 2;
+    opacity: 1;
+}
+
+.input-wp-media-image-holder input {
+    position:  absolute;
+    top: 0;
+    z-index:  -1;
+    opacity: 0;
+}
+
+.remove-image-button {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.remove-image-button i:hover {
+    color:  red;
+}
+
+.remove-image-button i {
+    transition:  all 0.3s;
+    cursor:  pointer;
+}
+
+/* ========================================================================== */
+/* REPEATER */
+/* ========================================================================== */
+.repeater-add-button {
+    text-align: center;
+}
+
+.repeater-add-button .add-button {
+    font-size: 2rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    /* color: #66BB6A; */
+}
+
+.repeater-add-button .add-button:hover {
+    color: #5ae535;
+}
+
+.rb-repeater-empty-message{
+    text-align: center;
+    display: none;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.repeater-container.empty .rb-repeater-empty-message {
+    display: block;
+    opacity: 1;
+}
+
+.rb-repeater-empty-message .message{
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+
+.repeater-empty-control{
+    display: none;
+}
+
+/* ========================================================================== */
+/* Repeate item no collapsible */
+/* ========================================================================== */
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) {
+    /* text-align: right; */
+    border: solid 1px;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    padding: 0.25rem 2rem;
+    padding-left: 0.5rem;
+    position: relative;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header {
+    /* display: flex; */
+}
+
+#poststuff .rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .item-title {
+    padding: 0;
+    margin-bottom: 1rem;
+    /* margin-top: 0.5rem; */
+    font-size: 1.3rem;
+    /* font-weight: 500; */
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .item-title {
+    margin-top: 0;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls {
+    text-align: right;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control {
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #2196F3;
+    color: #ffffff;
+    padding: 0.25rem;
+    font-size: 1rem;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control:hover{
+    background-color: #1976D2;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control.red{
+    background-color: #E53935
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control.red:hover {
+    background-color: red;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control:last-child {
+    border-bottom-left-radius: 0.25rem;
+}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls .control {}
+
+.rb-repeater-items > .repeater-item:not(.rb-collapsible) > .item-header .action-controls {
+    /* justify-self: flex-end; */
+    /* align-self: flex-end; */
+}
+
+
+/* ========================================================================== */
+/* REPEATER SORTABLE */
+/* ========================================================================== */
+.repeater-item.ui-sortable-helper,
+.repeater-item.ui-sortable-helper + .repeater-item > .item-header,
+.repeater-item.ui-sortable-placeholder + .repeater-item > .item-header{
+    border-top-width: 1px;
+}
+
+.rb-repeater-items > .repeater-item.ui-sortable-placeholder{
+    border: dashed 1px grey;
+    visibility: visible!important;
+    background-color: transparent;
+}
+
+.rb-repeater-items > .repeater-item > .item-header .action-controls .control.drag-button{
+    cursor: move;
+}
+
+/* ========================================================================== */
+/* GROUP */
+/* ========================================================================== */
+:not(.item-content) > .rb-group-field:not(.rb-collapsible) > .control-body {
+    background-color: #ffffff;
+    border: solid 1px #00000033;
+    padding: 1rem;
+    box-shadow: 3px 4px 0px #00000040;
+}
+
+.rb-group-field:not(.rb-collapsible) {
+    margin-bottom: 2rem;
+}
+
+.rb-group-field > .control-body > .controls > .group-child-control > .rb-repeater-field > .control-body {
+    border: solid 1px #bfbfbf;
+    padding: 0.75rem;
+}
+
+
+/* ========================================================================== */
+/* CONTROLS */
+/* ========================================================================== */
+.rb-wp-control > .control-header > .control-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.rb-wp-control > .control-header > .control-description {
+    margin-top: 0;
+}
+
+/* ========================================================================== */
+/* METABOX */
+/* ========================================================================== */
+.postbox > .inside{
+    padding-top: 0.5rem;
+}
+.postbox > .inside > .rb-group-field:not(.rb-collapsible) > .control-body {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+}
+
+.postbox > .inside > .rb-group-field:not(.rb-collapsible) > .control-header{
+    margin-bottom: 0.25rem;
+}
+
+#poststuff .rb-field h2, #poststuff .rb-field h3.hndle {
+    /* font-size: 14px; */
+    /* padding: 8px 12px; */
+    /* margin: 0; */
+    /* line-height: 1.4; */
+}

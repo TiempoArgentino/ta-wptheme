@@ -1,0 +1,23 @@
+/*
+Theme Name: Tiempo Argentino
+Theme URI:
+Author: Genosha
+Author URI: www.genosha.com.ar
+Description:
+Version: 0.0.14
+License:
+License URI:
+Tags:
+Text Domain: gen-base-theme
+Domain Path: /languages
+*/
+
+.article-preview .img-container img{
+    height: 144px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.ta-author-block .profile .picture img {
+    max-width: 11rem;
+}

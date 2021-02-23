@@ -1,0 +1,114 @@
+
+/* ========================================================================== */
+/* LIST CONTROL */
+/* ========================================================================== */
+.rb-double-list-control .item .content {
+    display: flex;
+    margin-left: 1rem;
+    border: solid 0.1rem #fec118;
+    padding: 0.1rem 2.5rem;
+    padding-left: 1.5rem;
+}
+
+.rb-double-list-control .item {
+    position:  relative;
+    margin-bottom: 1rem;
+}
+
+.rb-double-list-control .item .content > div {
+    width: 50%;
+}
+
+.rb-double-list-control .item .content > div input {
+    width: 99%;
+}
+
+.rb-double-list-control .item .handle {
+    position:  absolute;
+    height: calc(100%);
+    width: 2rem;
+    /* background-color: #ffffff; */
+    /* top: -0.1rem; */
+    left: -0.1rem;
+}
+
+.rb-double-list-control .item .handle > div {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background-color: #fec118;
+    border: solid 0.1rem #fec118;
+    position:  relative;
+    top: -0.1rem;
+    box-sizing:  border-box;
+    cursor: move;
+}
+
+.rb-double-list-control .item .handle > div:before {
+    content: "";
+    display:  block;
+    height: 1rem;
+    width: 1rem;
+    background-color: #ffffff;
+    border-radius:  50%;
+    position:  relative;
+    left: 0.65rem;
+    top: 0.65rem;
+    box-shadow: 0 0 0 0.1rem white;
+    padding: 0.1rem;
+    border: solid 0.1rem #fec118;
+    box-sizing:  border-box;
+}
+
+.rb-double-list-control .add-item-button-container {
+    width:  100%;
+    text-align:  center;
+    display:  flex;
+    align-items:  center;
+    justify-content:  center;
+}
+
+.rb-double-list-control .add-item-button-container .add-item {height: 3rem;width: 3rem;font-size: 3rem;color: #fec118;cursor:  pointer;}
+
+.rb-double-list-control .item .delete-button {
+    position:  absolute;
+    top: 0;
+    right: 0;
+    background-color: #fec118;
+    height: 4.2rem;
+    width:  2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-double-list-control .item .delete-button > span {
+    font-size: 2.2rem;
+    color: #ffffff;
+    position: relative;
+    left: 0;
+    top: -rem;
+    transition:  all 0.2s;
+}
+
+.rb-double-list-control .item .delete-button:hover {
+    /* box-shadow: inset 0px 0px 3px 0px #000000; */
+    background-color: #fe1818;
+}
+
+.rb-double-list-control .item .delete-button:hover > span {
+    /* transform: scale(0.9); */
+    /* top: 0; */
+}
+
+.rb-double-list-control .item.ui-sortable-placeholder {
+    border: dashed 0.1rem #fec118;
+    height: 2rem;
+    visibility: visible!important;
+}
+
+.rb-double-list-control .items{
+    margin-left: 0;
+}
