@@ -26,6 +26,8 @@ class TA_Theme{
 
 		self::add_themes_supports();
 		self::register_menues();
+		/** permalinks filters */
+		add_filter('post_type_link', [__CLASS__,'ta_secion__permalink_structure'], 10, 4);
 
 		if( is_admin() ){
 			require_once TA_THEME_PATH . '/inc/attachments.php';
@@ -84,6 +86,19 @@ class TA_Theme{
 
 	static public function register_gutenberg_categories(){
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
+	}
+
+	/** Permalinks Secciones */
+	static public function ta_secion__permalink_structure($post_link, $post, $leavename, $sample) {
+		if (false !== strpos($post_link, '%ta_article_section%')) {
+			$ta_article_section_type_term = get_the_terms($post->ID, 'ta_article_section');
+			if (!empty($ta_article_section_type_term))
+				$post_link = str_replace('%ta_article_section%', array_pop($ta_article_section_type_term)->
+				slug, $post_link);
+			else
+				$post_link = str_replace('%ta_article_section%', 'uncategorized', $post_link);
+		}
+		return $post_link;
 	}
 }
 
