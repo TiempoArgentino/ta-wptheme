@@ -59,6 +59,8 @@ class TA_Theme
 				return false;
 			return $check;
 		}, 10, 2);
+
+		self::get_plugins_assets();
 	}
 
 	static public function add_themes_supports()
@@ -136,6 +138,15 @@ class TA_Theme
 			}
 		}
 		return $permalink;
+	}
+	/**
+	 * Plugins
+	 */
+	static public function get_plugins_assets()
+	{
+		require_once TA_THEME_PATH . '/suscriptions-theme/functions.php';
+		require_once TA_THEME_PATH . '/mailtrain/functions.php';
+		
 	}
 }
 
