@@ -30,7 +30,7 @@ class TA_Theme
 		self::register_menues();
 
 		add_filter('generate_rewrite_rules', [self::class, 'sections_rules']);
-		add_filter('post_type_link', [self::class, 'suplement_link'], 10, 2);
+		add_filter('post_type_link', [self::class, 'article_link'], 10, 2);
 
 
 		if (is_admin()) {
@@ -112,7 +112,7 @@ class TA_Theme
 	}
 
 
-	static public function suplement_link($permalink, $post)
+	static public function article_link($permalink, $post)
 	{
 
 		$get_terms = wp_get_post_terms($post->ID, array('ta_article_section'));
