@@ -7,29 +7,33 @@ if (!defined('ABSPATH')) {
 
 define('TA_THEME_PATH', get_template_directory());
 define('TA_THEME_URL', get_template_directory_uri());
-define('TA_ASSETS_PATH',TA_THEME_PATH . "/assets");
+define('TA_ASSETS_PATH', TA_THEME_PATH . "/assets");
 define('TA_ASSETS_URL', TA_THEME_URL . "/assets");
 define('TA_IMAGES_URL', TA_ASSETS_URL . "/img");
 define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
 
-require_once TA_THEME_PATH. '/inc/gen-base-theme/gen-base-theme.php';
+require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
 
 
 
-class TA_Theme{
+class TA_Theme
+{
 	static private $initialized = false;
 
-	static public function initialize(){
-		if( self::$initialized )
+	static public function initialize()
+	{
+		if (self::$initialized)
 			return false;
 		self::$initialized = true;
 
 		self::add_themes_supports();
 		self::register_menues();
-		/** permalinks filters */
-		add_filter('post_type_link', [__CLASS__,'ta_secion__permalink_structure'], 10, 4);
 
-		if( is_admin() ){
+		add_filter('generate_rewrite_rules', [self::class, 'sections_rules']);
+		add_filter('post_type_link', [self::class, 'suplement_link'], 10, 2);
+
+
+		if (is_admin()) {
 			require_once TA_THEME_PATH . '/inc/attachments.php';
 		}
 
@@ -47,89 +51,123 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
-		add_action( 'gen_modules_loaded', array(self::class, 'register_gutenberg_categories') );
-		add_action( 'wp_enqueue_scripts', array(self::class, 'enqueue_scripts') );
+		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
+		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 
-		add_filter('gen_check_post_type_name_dash_error', function($check, $post_type){
-		    if($post_type == 'tribe-ea-record')
-		        return false;
-		    return $check;
+		add_filter('gen_check_post_type_name_dash_error', function ($check, $post_type) {
+			if ($post_type == 'tribe-ea-record')
+				return false;
+			return $check;
 		}, 10, 2);
 	}
 
-	static public function add_themes_supports() {
-        add_theme_support('post-thumbnails');
+	static public function add_themes_supports()
+	{
+		add_theme_support('post-thumbnails');
 
-        //svg support
-        function cc_mime_types($mimes) {
-            $mimes['svg'] = 'image/svg+xml';
-            return $mimes;
-        }
-        add_filter('upload_mimes', 'cc_mime_types');
-    }
-
-	static private function register_menues() {
-        RB_Wordpress_Framework::load_module('menu');
-        register_nav_menus(
-            array(
-                'navbar-menu' => __('Navbar menú'),
-                'dropwdown-header-menu' => __('Menú desplegable'),
-                'footer-menu' => __('Footer menú'),
-            )
-        );
-    }
-
-	static public function enqueue_scripts(){
-		wp_enqueue_style( 'bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css' );
-		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/styles.css' );
+		//svg support
+		function cc_mime_types($mimes)
+		{
+			$mimes['svg'] = 'image/svg+xml';
+			return $mimes;
+		}
+		add_filter('upload_mimes', 'cc_mime_types');
 	}
 
-	static public function register_gutenberg_categories(){
+	static private function register_menues()
+	{
+		RB_Wordpress_Framework::load_module('menu');
+		register_nav_menus(
+			array(
+				'navbar-menu' => __('Navbar menú'),
+				'dropwdown-header-menu' => __('Menú desplegable'),
+				'footer-menu' => __('Footer menú'),
+			)
+		);
+	}
+
+	static public function enqueue_scripts()
+	{
+		wp_enqueue_style('bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css');
+		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/styles.css');
+	}
+
+	static public function register_gutenberg_categories()
+	{
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
 
-	/** Permalinks Secciones */
-	static public function ta_secion__permalink_structure($post_link, $post, $leavename, $sample) {
-		if (false !== strpos($post_link, '%ta_article_section%')) {
-			$ta_article_section_type_term = get_the_terms($post->ID, 'ta_article_section');
-			if (!empty($ta_article_section_type_term))
-				$post_link = str_replace('%ta_article_section%', array_pop($ta_article_section_type_term)->
-				slug, $post_link);
-			else
-				$post_link = str_replace('%ta_article_section%', 'uncategorized', $post_link);
+	static public function sections_rules($wp_rewrite)
+	{
+		$rules = array();
+		$post_type = 'ta_article';
+		$terms = get_terms(array(
+			'taxonomy' => 'ta_article_section',
+			'hide_empty' => false,
+		));
+		foreach ($terms as $term) {
+			$rules[$term->slug . '/([^/]*)$'] = 'index.php?post_type=' . $post_type . '&ta_article=$matches[4]&name=$matches[5]';
 		}
-		return $post_link;
+		$wp_rewrite->rules = $rules + $wp_rewrite->rules;
+	}
+
+
+	static public function suplement_link($permalink, $post)
+	{
+
+		$get_terms = wp_get_post_terms($post->ID, array('ta_article_section'));
+		$taxonomy = isset($get_terms[0]) && $get_terms[0] ? $get_terms[0]->taxonomy : null;
+
+		if ($post->post_type == 'ta_article') {
+			if ($taxonomy == 'ta_article_section') {
+				$section_terms = get_the_terms($post, 'ta_article_section');
+				$term_slug = '';
+				if (!empty($section_terms)) {
+					foreach ($section_terms as $term) {
+						$term_slug = $term->slug;
+						$unixtime = strtotime($post->post_date);
+						$date = explode(" ", date('Y m d H i s', $unixtime));
+						break;
+					}
+				}
+				if ($post->post_status == 'publish') {
+					$permalink = get_home_url() . '/' . $term_slug . '/' . $post->post_name . '/';
+				}
+			}
+		}
+		return $permalink;
 	}
 }
 
 TA_Theme::initialize();
 
 
-function get_etiquetas($request){
-    // init the resource
-    $ch = curl_init();
+function get_etiquetas($request)
+{
+	// init the resource
+	$ch = curl_init();
 
-    curl_setopt_array($ch, array(
-        CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
-        CURLOPT_RETURNTRANSFER    	=> true,
+	curl_setopt_array($ch, array(
+		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
+		CURLOPT_RETURNTRANSFER    	=> true,
 		CURLOPT_POST				=> true,
 		CURLOPT_HTTPHEADER			=> 'Content-Type: application/json',
 		CURLOPT_POSTFIELDS			=> $request->get_body(),
-    ));
+	));
 
-    // execute
-    $output = curl_exec($ch);
+	// execute
+	$output = curl_exec($ch);
 
-    // free
-    curl_close($ch);
+	// free
+	curl_close($ch);
 
-    return $output;
+	return $output;
 }
 
-add_action( 'rest_api_init', function () {
-	register_rest_route( 'ta/v1', '/etiquetador', array(
+add_action('rest_api_init', function () {
+	register_rest_route('ta/v1', '/etiquetador', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> 'get_etiquetas',
 		'permission_callback'	=> '__return_true',
-	) );
-} );
+	));
+});
