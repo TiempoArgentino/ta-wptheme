@@ -71,8 +71,8 @@
 
         $('#prev-button').on('click',function(){
 			if($('#user-data').not(':visible')){
-				$('#user-data').slideDown(400,function(){
-                    $('#lists').slideUp();
+                $('#lists').slideUp(400,function(){
+                    $('#user-data').slideDown();
                 });
 			}
 			
