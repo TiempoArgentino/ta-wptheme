@@ -138,7 +138,7 @@
             <?php if (!is_user_logged_in()) : ?>
                 <button type="button" id="prev-button" class="gray-btn-black-text w-50"><?php echo __('anterior', 'gen-base-theme') ?></button>
             <?php endif; ?>
-            <button type="button" id="finish-button" class="w-50 <?php echo is_user_logged_in() ? 'mx-auto' : ''; ?>"><?php echo __('siguiente', 'gen-base-theme') ?></button>
+            <button type="button" id="finish-button-1" class="w-50 <?php echo is_user_logged_in() ? 'mx-auto' : ''; ?>"><?php echo __('siguiente', 'gen-base-theme') ?></button>
         </div>
     </div>
 <?php
