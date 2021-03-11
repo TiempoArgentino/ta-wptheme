@@ -136,7 +136,7 @@
         </div>
         <div class="btns-container <?php echo !is_user_logged_in() ? 'd-flex justify-content-between align-items-center' : 'text-center'; ?> mt-3">
             <?php if (!is_user_logged_in()) : ?>
-                <button type="button" id="prev-button" class="gray-btn-black-text w-50"><?php echo __('anterior', 'gen-base-theme') ?></button>
+                <button type="button" id="prev-button-1" class="gray-btn-black-text w-50"><?php echo __('anterior', 'gen-base-theme') ?></button>
             <?php endif; ?>
             <button type="button" id="finish-button-1" class="w-50 <?php echo is_user_logged_in() ? 'mx-auto' : ''; ?>"><?php echo __('siguiente', 'gen-base-theme') ?></button>
         </div>

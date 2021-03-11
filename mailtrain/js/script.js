@@ -69,7 +69,7 @@
 			}
 		});
 
-        $('#prev-button').on('click',function(){
+        $('#prev-button-1').on('click',function(){
 			if($('#user-data').not(':visible')){
                 $('#lists').slideUp(400,function(){
                     $('#user-data').slideDown();
