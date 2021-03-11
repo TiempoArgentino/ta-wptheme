@@ -56,12 +56,12 @@
 				$('#mailtrain_name').removeClass('border-danger');
 				$('#mailtrain_email').removeClass('border-danger');
 				if($('#user-data').is(':visible')){
-					$('#user-data').slideUp();
-                    $('#separator-1').hide();
+					$('#user-data').slideUp(400, function(){
+                        $('#lists').slideDown();
+                        $('#name-user').html(name);
+                        $('#separator-1').hide();
+                    });
 				}
-				$('#name-user').html(name);
-                
-				$('#lists').slideDown();
 			} else {
 				$('#mailtrain_name').addClass('border-danger');
 				$('#mailtrain_email').addClass('border-danger');
@@ -71,9 +71,11 @@
 
         $('#prev-button').on('click',function(){
 			if($('#user-data').not(':visible')){
-				$('#user-data').slideDown();
+				$('#user-data').slideDown(400,function(){
+                    $('#lists').slideUp();
+                });
 			}
-			$('#lists').slideUp();
+			
 		});
     });
 
