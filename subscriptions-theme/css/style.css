@@ -1387,3 +1387,6 @@
   img.item-subscription {
     margin-right: 10px;
 }
+#paquete-elegido, #login-form, #register-form{
+  display: none;
+}

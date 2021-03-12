@@ -1,4 +1,8 @@
 (function($){
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
     $(document).ready(function(){
         $(".amount .price").on('click', function(event) {
             $(".continue-btn").removeClass('active');
@@ -31,10 +35,171 @@
 			});
 			
 		});
-       
-        $('.login-btn').bind('click', function() {
-            $('#warningDeliveryZones').addClass('active')
+
+        $('.button-suscribe-1').on('click',function(){
+            var price = $(this).data('price');
+            var name = $(this).data('name');
+            var paper = $(this).data('paper');
+
+            if(paper === 1) {
+                $('#paper-option').hide();
+            }
+            if($('#subscriptions-loop').is(':visible')) {
+                $('#subscriptions-loop').slideUp(400,function(){
+                    $('#paquete-elegido').slideDown();
+                    $('#pack-name').html(name);
+                    $('#price-paquete').html(price);
+                });
+            }
         });
+
+        $('#custom-next-2').on('click',function(){
+            var price = $('#custom-price-input').val();
+            var name = $('#custom-price-input').data('name');
+            var paper = $(this).data('paper');
+
+            if(paper === 1) {
+                $('#paper-option').hide();
+            }
+            if($('#custom-price-row').is(':visible')) {
+                $('#custom-price-row').slideUp(400,function(){
+                    $('#paquete-elegido').slideDown();
+                    $('#pack-name').html(name);
+                    $('#price-paquete').html(price);
+                });
+            }
+        });
+
+        $('#login-button').on('click',function(){
+            $('#paquete-elegido').slideUp(400,function(){
+                $('#login-form').slideDown();
+            });
+        });
+        
+        $('#send-login-2').on('click',function() {
+            var user = $('#username');
+            var password = $('#password');
+
+            if(user.val() === '') {
+                user.addClass('border-danger');
+                  $('.username_error').html('El email es obligatorio.');
+            }
+
+            if(user.val() === '') {
+                password.addClass('border-danger');
+                $('.pass_error').html('El password es obligatorio.');
+            }
+
+            if(!isEmail(user.val())){
+                user.addClass('border-danger');
+                $('.username_error').html('El Usuario debe ser un email.');
+            }
+        });
+
+        $('#username').keypress(function(){
+            if($(this).val().length >= 3 && isEmail($(this).val())) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.username_error').remove();
+            }
+        });
+
+        $('#password').keypress(function(){
+            if($(this).val().length >= 3) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.pass_error').remove();
+            }
+        });
+
+        $('#register-button').on('click',function(){
+            $('#paquete-elegido').slideUp(400,function(){
+                $('#register-form').slideDown();
+            });
+        });
+        
+
+        $('#submit-register-2').on('click',function(){
+            var name = $('#first_name');
+            var last = $('#last_name');
+            var email = $('#email');
+            var passwd = $('#passwd');
+            var passwd2 = $('#passwd2');
+
+            if(name.val() === ''){
+                name.addClass('border-danger');
+                $('.first_name_error').html('El nombre es obligatorio.');
+            }
+
+            if(last.val() === ''){
+                last.addClass('border-danger');
+                $('.last_name_error').html('El apellido es obligatorio.');
+            }
+
+            if(email.val() === '' || !isEmail(email.val())){
+                email.addClass('border-danger');
+                $('.email_error').html('Falta el email.');
+            }
+
+            if(passwd.val() === ''){
+                passwd.addClass('border-danger');
+                $('.password_error').html('La contraseña es obligatoria.');
+            }
+
+            if(passwd2.val() === '' || passwd2.val() !== passwd.val()){
+                passwd2.addClass('border-danger');
+                $('.password2_error').html('Las contraseñas no coinciden.');
+            }
+        });
+
+        $('#first_name').keypress(function(){
+            if($(this).val().length >= 3) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.first_name_error').remove();
+            }
+        });
+
+        $('#last_name').keypress(function(){
+            if($(this).val().length >= 3) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.last_name_error').remove();
+            }
+        });
+
+        
+        $('#email').keyup(function(){
+            if($(this).val().length >= 3 && isEmail($(this).val())) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.email_error').remove();
+            }
+        });
+
+        $('#passwd').keypress(function(){
+            if($(this).val().length >= 3) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.password_error').remove();
+            }
+        });
+
+        $('#passwd2').keyup(function(){
+            if($(this).val().length >= 3 && $(this).val() === $('#passwd').val()) {
+                if($(this).hasClass('border-danger')){
+                    $(this).removeClass('border-danger');
+                }
+                $('.password2_error').remove();
+            }
+        });
+
         $('.close-popup').bind('click', function() {
             $('#warningDeliveryZones').removeClass('active')
         });
