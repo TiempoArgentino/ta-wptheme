@@ -1,20 +1,18 @@
 (function($){
     $(document).ready(function(){
-        $(".amount button").on('click', function(event) {
+        $(".amount .price").on('click', function(event) {
             $(".continue-btn").removeClass('active');
             $(".amount button").removeClass('active');
             const buttonID = $(this).data("id");
             $("#button" + buttonID).addClass('active');
             $(this).addClass('active');
         });
-    
-        
-        // $('.continue-btn').bind('click', function() {
-        //     $('#continuarErrorPopup').addClass('active')
-        // });
-        // $('.close-popup').bind('click', function() {
-        //     $('#continuarErrorPopup').removeClass('active')
-        // });
+       
+        $('.open-price').on('click',function() {
+            var min = $(this).data('min');
+            $('#minimo').html('$' + min);
+        });
+       
         $('.login-btn').bind('click', function() {
             $('#warningDeliveryZones').addClass('active')
         });

@@ -1,7 +1,7 @@
 <?php get_header() ?>
 
 
-<div class="container ta-context asociate mt-2 my-lg-5">
+<div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
     <div class="line-height-0">
         <div class="separator m-0"></div>
     </div>
@@ -14,10 +14,10 @@
                 <div class="py-2">
                     <div class="subs-opt mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4 class="italic"><?php echo __('Nombre estas son las mejores opciones para asociarte', 'gen-base-theme') ?></h4>
+                            <h4 class="italic"><?php echo is_user_logged_in() ? wp_get_current_user()->user_firstname : __('Hola, ','gen-base-theme')?> <?php echo __('estas son las mejores opciones para asociarte', 'gen-base-theme') ?></h4>
                         </div>
                         <div class="opt-list mt-3">
-                            <div class="d-flex flex-column flex-lg-row justify-content-center" id="subscriptions-loop">
+                            <div class="d-flex flex-column flex-lg-row justify-content-center">
                                 <?php
                                 $args = array(
                                     'post_type' => 'subscriptions',
@@ -82,7 +82,7 @@
                                                                 <?php
                                                                 if (get_post_meta(get_the_ID(), '_price_custom', true)) {
                                                                     echo ' <div class="col-6 col-lg-12 p-1">
-                                                                        <div class="amount other">
+                                                                        <div class="amount other price-custom">
                                                                             <button class="custom-price-button open-price" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
                                                                                 <p>' . __('abonar más', 'gen-base-theme') . '</p>
                                                                             </button>
@@ -177,14 +177,14 @@
                                 <div
                                     class="your-amount-input-container d-flex align-items-center justify-content-center mt-3">
                                     <p>$</p>
-                                    <input type="number">
+                                    <input type="number" id="custom-price-input">
                                 </div>
                                 <div class="btns-container text-center mt-5">
                                     <button class="yellow-btn-white-text">SIGUIENTE</button>
                                 </div>
                             </div>
                             <div class="info text-md-center mt-5">
-                                <h6>Recordá que el valor <b>mínimo es $250</b></h6>
+                                <h6>Recordá que el valor <b>mínimo es <span id="minimo"></span></b></h6>
                                 <h6 class="mt-2">Podrás <b>suspender tu abono</b> cuando quieras desde tu perfil de
                                     usuario</h6>
                             </div>
