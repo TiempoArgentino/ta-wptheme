@@ -85,7 +85,7 @@
                                 ?>
                                         <!-- lista -->
                                         <div class="articulo with-thumbnail mt-3">
-                                            <button class="d-flex align-items-center" id="topic-<?php echo get_the_ID() ?>">
+                                            <button type="button" class="d-flex align-items-center" id="topic-<?php echo get_the_ID() ?>">
                                                 <div class="thumbnail d-none d-md-block col-12 col-md-3 p-0">
                                                     <div class="img-container" style="background-image:url('<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>');">
                                                     </div>
