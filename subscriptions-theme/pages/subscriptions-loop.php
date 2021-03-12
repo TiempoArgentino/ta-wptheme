@@ -93,7 +93,7 @@
                                                             </div>
                                                             <div class="btns-container">
                                                                 <div class="d-flex justify-content-center mx-auto uppercase mt-3">
-                                                                    <button class="continue-btn yellow-btn-yellow-text button-suscribe" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
+                                                                    <button class="continue-btn yellow-btn-yellow-text button-suscribe" data-type="subscription" id="button<?php echo get_the_ID() ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
                                                                 </div>
                                                             </div>
                                                             <div class="opt-details mt-3">
@@ -160,36 +160,36 @@
     </div>
     <div class="asociate-block-container pb-md-5">
         <div class="section-title p-2">
-            <h4>asociate<span class="ml-2">OTRO IMPORTE</span></h4>
+            <h4><?php echo __('asociate', 'gen-base-theme') ?><span class="ml-2"><?php echo __('OTRO IMPORTE', 'gen-base-theme') ?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
                 <div class="py-2">
                     <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4>¿Con qué importe deseas asociarte?</h4>
+                            <h4><?php echo __('¿Con qué importe deseas asociarte?', 'gen-base-theme') ?></h4>
                         </div>
                         <div class="asociate-wrapper">
                             <div class="your-amount-block">
                                 <div class="title text-center mt-4">
-                                    <h6>Ingresá acá el importe que desees:</h6>
+                                    <h6><?php echo __('Ingresá acá el importe que desees:', 'gen-base-theme') ?></h6>
                                 </div>
                                 <div
                                     class="your-amount-input-container d-flex align-items-center justify-content-center mt-3">
                                     <p>$</p>
                                     <input type="number" id="custom-price-input">
                                 </div>
+                                <div id="minimum"></div>
                                 <div class="btns-container text-center mt-5">
-                                    <button class="yellow-btn-white-text">SIGUIENTE</button>
+                                    <button class="yellow-btn-white-text" id="custom-next-2" data-type="subscription"><?php echo __('SIGUIENTE', 'gen-base-theme') ?></button>
                                 </div>
                             </div>
                             <div class="info text-md-center mt-5">
-                                <h6>Recordá que el valor <b>mínimo es <span id="minimo"></span></b></h6>
-                                <h6 class="mt-2">Podrás <b>suspender tu abono</b> cuando quieras desde tu perfil de
-                                    usuario</h6>
+                                <h6><?php echo sprintf( __('Recordá que el valor %s', 'gen-base-theme'),'<b>'.__('mínimo es', 'gen-base-theme').' <span id="minimo"></span></b>') ?> </h6>
+                                <h6 class="mt-2"><?php echo sprintf(__('Podrás %s', 'gen-base-theme'),'<b>'.__('suspender tu abono', 'gen-base-theme').'</b> '.__('cuando quieras desde tu perfil de usuario', 'gen-base-theme'))?></h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
-                                <h6>Si deseas obtener ayuda con el proceso de asociación, podés escribir un mail a
+                                <h6><?php echo __('Si deseas obtener ayuda con el proceso de asociación, podés escribir un mail a', 'gen-base-theme') ?>
                                 </h6>
                                 <h6><a class="highlighted"
                                         href="mailto:suscripciones@tiempoargentino.com.ar">suscripciones@tiempoargentino.com.ar</a>

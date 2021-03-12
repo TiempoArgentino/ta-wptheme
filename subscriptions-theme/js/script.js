@@ -12,6 +12,25 @@
             var min = $(this).data('min');
             $('#minimo').html('$' + min);
         });
+        
+        $('#custom-next-2').on('click', function() {
+			var val = $('#custom-price-input').val();
+			var min = $('#custom-price-input').attr('min');
+
+			if(parseInt(val) < parseInt(min))
+			{
+				$('#custom-price-input').addClass('is-invalid');
+                $('#custom-price-input').val(min);
+                $('.info h6').addClass('text-danger');
+				$('#minimum').html('<strong class="text-center d-block text-danger">Recordá que el valor mínimo es $' + min + '</strong>');
+				return;
+			}
+
+			$('#custom-price-row').slideUp(400,function(){
+				$('#login-register-loop').slideDown();
+			});
+			
+		});
        
         $('.login-btn').bind('click', function() {
             $('#warningDeliveryZones').addClass('active')
