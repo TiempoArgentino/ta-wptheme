@@ -262,7 +262,9 @@
     padding: 10px;
   }
   .asociate-block-container .subs-opt .opt-list .opt-details .card-body h6,
-  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body h6 {
+  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body h6,
+  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body p,
+  .subscription-content {
     font-family: "Red Hat Display";
     font-style: normal;
     font-weight: 400;
@@ -1172,7 +1174,9 @@
       margin-top: 5px;
     }
     .asociate-block-container .subs-opt .opt-list .opt-details .card-body h6,
-  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body h6 {
+  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body h6,
+  .apoyanos-block-container .subs-opt .opt-list .opt-details .card-body p,
+  .subscription-content {
       font-size: 19px;
     }
     .asociate-block-container .subs-opt .opt-list .opt.papel .description h4,
@@ -1379,3 +1383,7 @@
   
   /*# sourceMappingURL=asociate-apoyanos.css.map */
   
+  /** arreglos */
+  img.item-subscription {
+    margin-right: 10px;
+}

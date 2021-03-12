@@ -75,7 +75,6 @@
                     $('#user-data').slideDown();
                 });
 			}
-			
 		});
     });
 
