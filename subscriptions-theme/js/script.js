@@ -267,4 +267,66 @@
         var target = $(this).data('target');
         $(target).toggle();
     });
+    /**
+     * Ajax
+     */
+     $(document).ready(function() {
+        $('.button-suscribe-1').on('click', function() {
+            var suscription_id = $(this).data('id');
+            var suscription_price = $(this).data('price');
+            var suscription_name = $(this).data('name');
+            var suscription_type = $(this).data('type');
+            $.ajax({
+                type: 'post',
+                url: ajax_add_price_data.url,
+                data: {
+                    action: ajax_add_price_data.action,
+                    _ajax_nonce: ajax_add_price_data._ajax_nonce,
+                    add_price: ajax_add_price_data.add_price,
+                    suscription_id: suscription_id,
+                    suscription_price: suscription_price,
+                    suscription_name: suscription_name,
+                    suscription_type: suscription_type
+                },
+                beforeSend: function(result) {
+                   // console.log('before ' + suscription_id);
+                },
+                success: function(result){
+                    // console.log('success ' + result);
+                },
+                error: function(result) {
+                    console.log('error ' + result);
+                }
+            });
+        });
+    });
+    /**
+     * Custom price
+     */
+     $(document).ready(function() {
+        $('#custom-next-2').on('click', function() {
+            $.ajax({
+                    type: 'post',
+                    url: ajax_add_custom_price_data.url,
+                    data: {
+                        action: ajax_add_custom_price_data.action,
+                        _ajax_nonce: ajax_add_custom_price_data._ajax_nonce,
+                        add_price_custom: ajax_add_custom_price_data.add_price_custom,
+                        suscription_id: $('#custom-price-input').data('id'),
+                        suscription_price:  $('#custom-price-input').val(),
+                        suscription_name: $('#custom-price-input').data('name'),
+                        suscription_type: $('#custom-next-2').data('type')
+                    },
+                    beforeSend: function(result) {
+                    // console.log('before ' + suscription_id);
+                    },
+                    success: function(result){
+                        console.log('success ' + result);
+                    },
+                    error: function(result) {
+                        console.log('error ' + result);
+                    }
+            });
+       });
+    });
 })(jQuery);

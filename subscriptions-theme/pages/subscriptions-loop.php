@@ -192,7 +192,7 @@
                             <div class="ayuda text-md-center mb-4 mt-5">
                                 <h6><?php echo __('Si deseas obtener ayuda con el proceso de asociación, podés escribir un mail a', 'gen-base-theme') ?>
                                 </h6>
-                                <h6><a class="highlighted" href="mailto:suscripciones@tiempoargentino.com.ar">suscripciones@tiempoargentino.com.ar</a>
+                                <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender');?>"><?php echo get_option('subscriptions_email_sender');?></a>
                                 </h6>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                                 <?php if (is_user_logged_in()) : ?>
                                     <div id="user-logged-in">
                                         <div class="btns-container text-center">
-                                            <button><?php echo __('CONTINUAR AL PAGO', 'gen-base-theme') ?></button>
+                                            <button><a href="<?php echo get_permalink(get_option('subscriptions_payment_page'))?>"><?php echo __('CONTINUAR AL PAGO', 'gen-base-theme') ?></a></button>
                                         </div>
                                     </div>
                                 <?php else : ?>
@@ -243,8 +243,8 @@
                                         <div class="title">
                                             <p><?php echo sprintf(__('%s para terminar de asociarte a Tiempo Argentino', 'gen-base-theme'), '<b>' . __('Creá tu cuenta', 'gen-base-theme') . '</b>') ?></p>
                                         </div>
-                                        <div class="btns-container text-center" id="register-button">
-                                            <button><?php echo __('CREAR CUENTA', 'gen-base-theme') ?></button>
+                                        <div class="btns-container text-center">
+                                            <button type="button" id="register-button"><?php echo __('CREAR CUENTA', 'gen-base-theme') ?></button>
                                         </div>
                                     </div>
                                     <div class="login mt-4">
@@ -317,7 +317,7 @@
                                                 <p><?php echo __('¿No tenés cuenta?', 'gen-base-theme') ?></p>
                                             </div>
                                             <div class="btns-container text-center">
-                                                <button class="gray-btn-black-text" id="register-button"><?php echo __('CREAR CUENTA', 'gen-base-theme') ?></button>
+                                                <button class="gray-btn-black-text" type="button" id="register-button"><?php echo __('CREAR CUENTA', 'gen-base-theme') ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -444,4 +444,8 @@
         </div>
     </div>
 </div>
+<?php if(null !== Subscriptions_Sessions::get_session('subscriptions_add_session')){
+    var_dump(Subscriptions_Sessions::get_session('subscriptions_add_session'));
+}
+?>
 <?php get_footer(); ?>

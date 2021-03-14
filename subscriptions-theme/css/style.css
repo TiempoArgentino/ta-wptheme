@@ -1390,3 +1390,65 @@
 #paquete-elegido, #login-form, #register-form{
   display: none;
 }
+li.payment-panel-front.payment-col.mb-3 {
+  text-align: center;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+label.form-check-label.payment-title{
+  font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    background-color: var(--ta-socios);
+    border: none;
+    color: var(--ta-negro-texto);
+    font-size: 19px !important;
+    padding: 4px 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+    width: 300px;
+}
+.subscritpions-form .form-group label{
+  display: none;
+}
+.subscritpions-form  .form-control{
+  border: 1.5px solid var(--ta-gris-subtexto);
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-gris-subtexto);
+  border-radius: 30px;
+  padding: 0 5px;
+  padding: 0 15px;
+  width: 100%;
+  font-size: 19px;
+  height: 50px;
+}
+.subscritpions-form select {
+  min-width: 70px;
+}
+.subscritpions-form  .form-control::placeholder{
+  color: var(--ta-gris-subtexto);
+}
+.payment-button-submit{
+  font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    background-color: var(--ta-socios);
+    border: none;
+    color: white;
+    font-size: 15px;
+    left: 50%;
+    line-height: 20px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 0;
+    min-width: 130px;
+}
+.payment-button-submit:hover{
+  background-color: var(--ta-socios);
+  color: var(--ta-negro-texto);
+}
