@@ -299,7 +299,7 @@
                                             </div>
                                             <input type="hidden" name="redirect_to" id="redirect_to" value="<?php echo get_permalink(get_option('subscriptions_payment_page')); ?>">
                                             <div class="btns-container text-center mt-4">
-                                                <button class="yellow-btn-white-text" name="send-login" type="button" id="send-login-2"><?php echo __('Ingresar', 'gen-base-theme') ?></button>
+                                                <button class="yellow-btn-white-text" name="send-login" type="button" id="send-login"><?php echo __('Ingresar', 'gen-base-theme') ?></button>
                                             </div>
                                         </form>
                                     </div>
@@ -370,7 +370,7 @@
                                                 </div>
                                                 <input type="hidden" name="register_redirect" id="register_redirect" value="<?php echo get_permalink(get_option('subscriptions_payment_page')); ?>">
                                                 <div class="btns-container text-center mt-4">
-                                                    <button class="yellow-btn-white-text" type="button" name="submit-register" id="submit-register-2"><?php echo __('REGISTRARSE', 'gen-base-theme') ?></button>
+                                                    <button class="yellow-btn-white-text" type="button" name="submit-register" id="submit-register"><?php echo __('REGISTRARSE', 'gen-base-theme') ?></button>
                                                 </div>
                                             </div>
                                         </form>

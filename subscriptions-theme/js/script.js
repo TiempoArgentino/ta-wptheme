@@ -76,7 +76,7 @@
             });
         });
         
-        $('#send-login-2').on('click',function() {
+        $('#send-login').on('click',function() {
             var user = $('#username');
             var password = $('#password');
 
