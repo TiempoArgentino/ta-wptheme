@@ -1,0 +1,11 @@
+.rb-list-container .item .item-content {
+  color: black;
+  background-color: #f1f1f1;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  min-width: 0;
+}
+
+.rb-list-container .item:nth-child(even) .item-content {
+  background-color: #e4e4e4;
+}

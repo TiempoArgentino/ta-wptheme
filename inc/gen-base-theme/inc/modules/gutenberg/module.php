@@ -82,7 +82,7 @@ class GEN_Gutenberg_Build{
 		// =============================================================================
 		// HOOK BLOCKS PHP
 		// =============================================================================
-		self::require_blocks_files();
+		// self::require_blocks_files();
 		self::require_components_files();
 		self::require_helpers_files();
 	}
@@ -228,7 +228,8 @@ class GEN_Gutenberg_Build{
 
 	}
 
-	//Incluye el archivo .php principal de los bloques
+	// Incluye el archivo .php principal de los bloques
+	// Deprecated. Already done in the enqueue_blocks_assets method
 	static private function require_blocks_files(){
 		foreach (new DirectoryIterator( self::get_blocks_path() ) as $block) {
 			if($block->isDot()) continue;

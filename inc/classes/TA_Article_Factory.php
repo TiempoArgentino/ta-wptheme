@@ -6,7 +6,7 @@
 
 class TA_Article_Factory{
     static private $ta_articles = [];
-
+    static private $post_types = ['article_post'];
     /**
     *
     *   @param WP_Post $data
@@ -19,9 +19,9 @@ class TA_Article_Factory{
                 case 'article_post':
                     $post = get_post($data);
                     if( $post->post_type == 'ta_article' ){
-                        if( array_key_exists($data->ID, self::$ta_articles) )
-                            return self::$ta_articles[$data->ID];
-                        return new TA_Article($data);
+                        if( array_key_exists($post->ID, self::$ta_articles) )
+                            return self::$ta_articles[$post->ID];
+                        return new TA_Article($post);
                     }
                 break;
             }

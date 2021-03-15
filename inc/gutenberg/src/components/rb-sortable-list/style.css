@@ -1,0 +1,30 @@
+.rb-sortable-list-container .item.helper-item .item-content {
+  background-color: #75fff25e;
+  /* border: dashed 1px #0000005c; */
+}
+
+.rb-sortable-list-container .item {
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: solid 1px #ffffff78;
+}
+
+.rb-sortable-list-container .item .item-handle {
+  width: 2rem;
+  /* height: 1rem; */
+  background-color: #6fc6ff;
+  color: #fff;
+  /* border: solid 1px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+  /* border-top: solid 1px; */
+  /* border-bottom: 0; */
+  /* position: relative; */
+  /* top: 0px; */
+}
+
+.rb-sortable-list-container .item .item-handle .icon {
+    height: 1.2rem;
+}

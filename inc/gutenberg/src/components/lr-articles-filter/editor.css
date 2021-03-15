@@ -1,0 +1,18 @@
+.lr-articles-filters-component {
+    margin-bottom: 1rem;
+}
+
+.lr-articles-filters-component.compressed-layout .panel-bodies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lr-articles-filters-component.compressed-layout .panel-bodies > .components-panel__body {
+    width: 49%;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* border: solid 1px #000000; */
+    /* border-top: 0; */
+    /* border-bottom: 0; */
+}

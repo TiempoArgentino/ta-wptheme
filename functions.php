@@ -14,8 +14,6 @@ define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
 
 require_once TA_THEME_PATH. '/inc/gen-base-theme/gen-base-theme.php';
 
-
-
 class TA_Theme{
 	static private $initialized = false;
 
@@ -79,7 +77,7 @@ class TA_Theme{
 
 	static public function enqueue_scripts(){
 		wp_enqueue_style( 'bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css' );
-		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/styles.css' );
+		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/style.css' );
 	}
 
 	static public function register_gutenberg_categories(){
@@ -115,6 +113,32 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'ta/v1', '/etiquetador', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> 'get_etiquetas',
+		'permission_callback'	=> '__return_true',
+	) );
+} );
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'ta/v1', '/articles', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$params = $request->get_json_params();
+			$articles = [];
+			$result = rb_get_posts($params['args']);
+			$posts = $result['posts'];
+			$query = $result['wp_query'];
+
+			if($posts && !empty($posts)){
+				foreach ($posts as $article_post) {
+					$article = TA_Article_Factory::get_article($article_post, 'article_post');
+					$article->populate(true);
+					$articles[] = $article;
+				}
+			}
+
+			$response = new WP_REST_Response($articles, 200);
+			$response->header('X-WP-TotalPages', $result['total_pages']);
+			return $response;
+		},
 		'permission_callback'	=> '__return_true',
 	) );
 } );

@@ -1,5 +1,6 @@
 :root {
   --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
   --ta-gris-imagen: #ebebeb;
   --ta-celeste-fondos: #ebf7fe;
   --ta-negro-texto: #252b2d;
@@ -7,8 +8,11 @@
   --ta-socios: #ffbb0f;
   --ta-socios-fondos: #ffe7a9;
   --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
   --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
   --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
 }
 
 body {
@@ -323,6 +327,11 @@ a {
   font-weight: 400;
 }
 
+.section-title h4,
+.category-title h4 {
+  text-transform: uppercase;
+}
+
 .line-height-0 {
   line-height: 0;
 }
@@ -347,21 +356,143 @@ a {
   background-color: var(--ta-celeste);
 }
 
-.ta-context.dark-blue-bg {
+.blue-bordered-btn button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: transparent;
+  border: 1px solid var(--ta-celeste);
+  color: var(--ta-celeste);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+}
+
+.ta-context {
+  /* &.dark-blue-bg {
+    background-color: var(--ta-celeste);
+
+    .article-preview {
+      .content {
+        .article-info-container {
+          .format,
+          .author {
+            p {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+
+    .btns-container {
+      .ver-mas {
+        button {
+          color: white;
+        }
+      }
+    }
+  } */
+  /* &.espectaculos-bg {
+    background-color: var(--ta-espectaculos-bg);
+    .section-title {
+      h4 {
+        color: var(--ta-espectaculos);
+      }
+    }
+  }
+
+  &.cultura-bg {
+    background-color: var(--ta-cultura-bg);
+    .section-title {
+      h4 {
+        color: var(--ta-cultura);
+      }
+    }
+  } */
+}
+.ta-context.blue-tiempo .context-color .article-preview .content .article-info-container p {
+  color: white !important;
+}
+.ta-context.blue-tiempo .context-bg {
   background-color: var(--ta-celeste);
 }
-.ta-context.dark-blue-bg .article-preview .content .article-info-container .format p,
-.ta-context.dark-blue-bg .article-preview .content .article-info-container .author p {
-  color: white;
+.ta-context.dark-blue .context-color .article-preview .content p {
+  color: white !important;
 }
-.ta-context.dark-blue-bg .btns-container .ver-mas button {
-  color: white;
+.ta-context.dark-blue .context-color .article-preview.autor .img-container .img-wrapper {
+  border-color: var(--ta-celeste);
 }
-.ta-context.dark-bg {
+.ta-context.dark-blue .context-color .article-preview.autor .content .title p.nota-title {
+  color: var(--ta-celeste);
+}
+.ta-context.dark-blue .context-color .section-title h4,
+.ta-context.dark-blue .context-color .category-title h4 {
+  color: var(--ta-celeste);
+}
+.ta-context.dark-blue .context-color .article-border {
+  border-color: var(--ta-celeste);
+}
+.ta-context.dark-blue .context-bg {
   background-color: var(--ta-negro-texto);
 }
-.ta-context.dark-bg .section-title h4 {
-  color: var(--ta-celeste);
+.ta-context.deportes .context-color .article-preview.autor .img-container .img-wrapper {
+  border-color: var(--ta-deportes);
+}
+.ta-context.deportes .context-color .article-preview.autor .content .title p.nota-title {
+  color: var(--ta-deportes);
+}
+.ta-context.deportes .context-color .section-title h4,
+.ta-context.deportes .context-color .category-title h4 {
+  color: var(--ta-deportes);
+}
+.ta-context.deportes .context-color .separator {
+  background-color: var(--ta-deportes);
+}
+.ta-context.deportes .context-color .article-border {
+  border-color: var(--ta-deportes);
+}
+.ta-context.deportes .context-bg {
+  background-color: var(--ta-deportes-bg);
+}
+.ta-context.espectaculos .context-color .article-preview.autor .img-container .img-wrapper {
+  border-color: var(--ta-espectaculos);
+}
+.ta-context.espectaculos .context-color .article-preview.autor .content .title p.nota-title {
+  color: var(--ta-espectaculos);
+}
+.ta-context.espectaculos .context-color .section-title h4,
+.ta-context.espectaculos .context-color .category-title h4 {
+  color: var(--ta-espectaculos);
+}
+.ta-context.espectaculos .context-color .separator {
+  background-color: var(--ta-espectaculos);
+}
+.ta-context.espectaculos .context-color .article-border {
+  border-color: var(--ta-espectaculos);
+}
+.ta-context.espectaculos .context-bg {
+  background-color: var(--ta-espectaculos-bg);
+}
+.ta-context.cultura .context-color .article-preview.autor .img-container .img-wrapper {
+  border-color: var(--ta-cultura);
+}
+.ta-context.cultura .context-color .article-preview.autor .content .title p.nota-title {
+  color: var(--ta-cultura);
+}
+.ta-context.cultura .context-color .section-title h4,
+.ta-context.cultura .context-color .category-title h4 {
+  color: var(--ta-cultura);
+}
+.ta-context.cultura .context-color .separator {
+  background-color: var(--ta-cultura);
+}
+.ta-context.cultura .context-color .article-border {
+  border-color: var(--ta-cultura);
+}
+.ta-context.cultura .context-bg {
+  background-color: var(--ta-cultura-bg);
 }
 .ta-context.blue-border {
   border: 1px solid var(--ta-celeste);
@@ -370,28 +501,76 @@ a {
   border: 1px solid var(--ta-socios);
 }
 .ta-context.talleres-especial p {
-  font-size: 17px;
-  font-family: "Red Hat Display";
+  font-size: 15px;
+  font-family: "Caladea";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 16.5px;
 }
 .ta-context.talleres-especial p span {
-  font-family: "Red Hat Display";
+  font-family: "Caladea";
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
 }
-.ta-context.newsletter-especial .envelope-icon {
+.ta-context.talleres-especial .destacado p {
+  font-size: 20px;
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22.46px;
+}
+.ta-context.talleres-especial .destacado p span {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+}
+.ta-context.newsletter-especial {
+  max-width: 100%;
+}
+.ta-context.newsletter-especial .envelope-icon,
+.ta-context .newsletter-personalizar .envelope-icon {
   display: block;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon {
+.ta-context.newsletter-especial .newsletter-form .input-icon,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon {
   bottom: 4px;
   right: 24px;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon.envelope {
+.ta-context.newsletter-especial .newsletter-form .input-icon.envelope,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon.envelope {
   display: none;
 }
-.ta-context.newsletter-especial .newsletter-form .input-icon.send {
+.ta-context.newsletter-especial .newsletter-form .input-icon.send,
+.ta-context .newsletter-personalizar .newsletter-form .input-icon.send {
   display: block;
+}
+.ta-context.newsletter-personalizar .newsletter-options button {
+  left: initial;
+  transform: none;
+  width: auto !important;
+}
+.ta-context.portada .article-preview .content .title p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+}
+.ta-context.portada .opinion .article-preview .content .title p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18.6px;
+  letter-spacing: -0.2px;
+  color: var(--ta-negro-texto);
+}
+.ta-context.portada .opinion .article-preview .content .article-info-container .author p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-celeste);
+}
+.ta-context.asociate .separator {
+  background-color: var(--ta-socios);
 }
 
 .container-with-header .section-title h4 {
@@ -573,18 +752,101 @@ a {
   font-style: italic;
 }
 
+.banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  color: white;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  margin: 0 auto;
+  max-width: 60%;
+}
+.banner-nuevo-tiempo p,
+.eleccion-contenido p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+.banner-nuevo-tiempo p span,
+.eleccion-contenido p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+}
+
+.eleccion-contenido .title p {
+  color: var(--ta-celeste);
+  margin: 0;
+  max-width: 100%;
+}
+.eleccion-contenido .ver-mas button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-celeste);
+  border: none;
+  color: white;
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.miscelanea .article-preview.destacado {
+  width: 100%;
+  max-width: 100%;
+}
+
 #more {
   display: none;
 }
 
 @media (min-width: 500px) and (max-width: 992px) {
-  .ta-context.newsletter-especial .newsletter {
+  .ta-context.newsletter-especial .newsletter,
+.ta-context .newsletter-personalizar .newsletter {
+    max-width: 100%;
+  }
+
+  .banner-nuevo-tiempo .title,
+.eleccion-contenido .title {
+    flex: 1;
+  }
+  .banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .banner-nuevo-tiempo .title,
+.eleccion-contenido .title {
+    flex: 1;
+  }
+  .banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
     max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
+  .ta-context.talleres-especial .destacado p {
+    font-size: 30px;
+    line-height: 33.69px;
+    letter-spacing: -0.5px;
+  }
   .ta-context.talleres-especial p {
-    font-size: 24px;
+    font-size: 21px;
+    line-height: 24.15px;
+    letter-spacing: -0.5px;
+  }
+  .ta-context.talleres-especial p span {
+    letter-spacing: -0.1px;
   }
   .ta-context.mas-leidas-especial .ta-articles-block {
     display: flex;
@@ -638,6 +900,27 @@ a {
   .btns-container .ver-mas button {
     font-size: 19px;
     line-height: 25.14px;
+  }
+
+  .banner-nuevo-tiempo .title p,
+.eleccion-contenido .title p {
+    font-size: 26px;
+  }
+  .banner-nuevo-tiempo p,
+.eleccion-contenido p {
+    font-size: 24px;
+    line-height: 31.75px;
+    letter-spacing: -0.2px;
+  }
+  .banner-nuevo-tiempo p span,
+.eleccion-contenido p span {
+    font-size: 24px;
+    line-height: 31.75px;
+    letter-spacing: -0.2px;
+  }
+
+  .sub-blocks .ta-articles-block.opinion {
+    overflow: hidden;
   }
 
   .footer-content .tiempo-logo {

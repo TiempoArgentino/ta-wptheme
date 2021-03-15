@@ -1,0 +1,56 @@
+.ta-article-preview.opinion {
+    background-color: #ebf7fe;
+    padding: 1rem;
+}
+
+.ta-article-preview.opinion .author-photo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-size: contain;
+    background-image: url(http://localhost/wpbasetheme/wp-content/uploads/2021/01/IMG-20180725-WA0023-scaled.jpeg);
+    min-width: 5rem;
+    /* margin-right: 1rem; */
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border: solid 2px #16a1dc;
+}
+
+.ta-article-preview.opinion .article-data {
+    text-align: center;
+}
+
+.ta-article-preview.opinion .article-data .title p {
+    color: #16a1dc;
+    margin-bottom: 0.25rem;
+    font-style: italic;
+}
+
+.ta-article-preview.opinion .article-data .separator {
+    height: 1px;
+    width: 39px;
+    background: #16a1dc;
+    margin: 0 auto;
+    margin-bottom: 0.25rem;
+}
+
+.ta-article-preview.opinion.horizontal .author-photo {
+    margin-right: 1rem;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+/**
+*   HORIZONTAL
+*/
+.ta-article-preview.opinion.horizontal .article-data {
+    text-align: left;
+}
+
+.ta-article-preview.opinion.horizontal .article-data .separator {
+    margin-left: 0;
+}
+
+.wp-block {
+    max-width: 768px;
+}

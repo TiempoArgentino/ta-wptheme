@@ -1,0 +1,4 @@
+.rb-items-selector .items-selector-list .item.selected .item-content{
+    background-color: #00d5ff;
+    opacity: 0.5;
+}

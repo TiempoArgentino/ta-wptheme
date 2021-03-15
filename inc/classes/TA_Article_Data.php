@@ -6,12 +6,13 @@
 */
 class TA_Article_Data extends Data_Manager{
     protected $defaults = array(
+        'ID'                => null,
         'title'             => '',
         'excerpt'           => '',
+        'excerpt_trimmed'   => '',
         'date'              => '',
         'section'           => null,
         'tags'              => null,
-        'author'            => '',
         'publication_info'  => '',
         'content'           => '',
         'authors'           => null,
@@ -21,6 +22,7 @@ class TA_Article_Data extends Data_Manager{
         'thumbnail_16_9'    => null,
         'url'               => '',
         'cintillo'          => '',
+        'isopinion'         => false,
     );
 
     public function get_thumbnail($variation = 'common', $size = 'full'){
@@ -28,6 +30,7 @@ class TA_Article_Data extends Data_Manager{
 
         if(is_string($variation))
             $thumbnail_prop = "{$thumbnail_prop}_$variation";
+        $this->$thumbnail_prop;
         return $this->$thumbnail_prop;
     }
 

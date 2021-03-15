@@ -2,25 +2,40 @@
 $block = RB_Gutenberg_Block::get_block('ta/articles');
 $article_preview_block = RB_Gutenberg_Block::get_block('ta/article-preview');
 $container_header_block = RB_Gutenberg_Block::get_block('ta/container-with-header');
+register_articles_block_cells_count(0);
 
 if(!$block) return '';
-extract($block->get_render_attributes());
+$block_attributes = $block->get_render_attributes();
+extract($block_attributes);
 
-if( !$articles && !$articles_data ) return '';
+$articles = get_ta_articles_block_articles($block_attributes);
+if( (!$articles || empty($articles)) || !$rows )
+    return '';
 
+$all_articles = $articles;
 $block_path = plugin_dir_path( __FILE__ );
+
 ob_start();
 ?>
 
 <?php
-switch($layout){
-    case 'slider':
-        include "$block_path/slider.php";
-    break;
-    default:
-        include "$block_path/common-infinite.php";
-    break;
+foreach ($rows as $row) {
+    $offset = get_articles_block_cells_count();
+    $articles = array_slice($articles, $offset);
+    $format = isset($row['format']) ? $row['format'] : null;
+    switch($format){
+        // case 'slider':
+        //     include "$block_path/slider.php";
+        // break;
+        case 'miscelanea':
+            include "$block_path/templates/miscelanea.php";
+        break;
+        default:
+            include "$block_path/templates/common-infinite.php";
+        break;
+    }
 }
+register_articles_block_cells_count(0);
 ?>
 
 <?php if( $footer ): ?>
@@ -33,7 +48,7 @@ switch($layout){
 <?php
 $content = ob_get_clean();
 
-if( $use_container){
+if( $use_container ){
     $container_header_block->render(array(
         'title'             => $container_title,
         'header_right'      => $header_right,

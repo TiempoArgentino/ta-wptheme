@@ -1,0 +1,51 @@
+.rb-terms-selector .selected-term-row {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    color: black;
+    background-color: #f1f1f1;
+    /* height: min-content; */
+    /* margin-bottom: 1rem; */
+}
+
+.rb-terms-selector .selected-term-row:nth-child(even) {
+    background-color: #e4e4e4;
+}
+
+.rb-terms-selector .selected-term-row .term-info {
+    padding: 0.25rem 0;
+    padding-left: 1rem;
+}
+
+.rb-terms-selector .selected-term-row .term-title {
+    margin: 0;
+}
+
+.rb-terms-selector .selected-term-row .remove-btn-container {
+    height: 100%;
+}
+
+.rb-terms-selector .selected-term-row .remove-btn-container > .remove-button{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none!important;
+    border: none!important;
+    background-color: #ff696900;
+    /* color: #ffffff; */
+    /* border: solid 1px grey; */
+}
+
+.rb-terms-selector .modal-container{
+    text-align: center;
+}
+
+.rb-terms-selector .loading-spinner-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

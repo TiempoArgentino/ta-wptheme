@@ -1,0 +1,12 @@
+.ta-articles-grid .articles {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.25rem;
+}
+
+.ta-articles-grid .articles > .article-preview-container {
+    flex: 50%;
+    /* max-width: 50%; */
+    padding: 0 0.25rem;
+    flex-grow: 1;
+}

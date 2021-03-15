@@ -11,6 +11,10 @@ class TA_Article extends TA_Article_Data{
         $this->post = $post;
     }
 
+    protected function get_ID(){
+        return $this->post->ID;
+    }
+
     protected function get_content(){
         return get_the_content($this->post);
     }
@@ -20,7 +24,12 @@ class TA_Article extends TA_Article_Data{
     }
 
     protected function get_excerpt(){
-        return get_the_excerpt($this->post);
+        return $this->post->post_excerpt;
+    }
+
+    protected function get_excerpt_trimmed(){
+        $excerpt_words = explode(' ', $this->excerpt);
+        return count($excerpt_words) > 8 ? implode(' ', array_slice($excerpt_words, 0, 8)) . " " . '...' : $this->excerpt;
     }
 
     protected function get_section(){
@@ -47,11 +56,12 @@ class TA_Article extends TA_Article_Data{
     /**
     *   @return LR_Author[]|null
     */
+    #[Data_Manager_Array]
     protected function get_authors(){
         $authors_terms = get_the_terms($this->post, 'ta_article_author');
         $authors = null;
         if(is_array($authors_terms) && !empty($authors_terms)){
-            $authors = array();
+            $authors = [];
             foreach($authors_terms as $author_term){
                 $authors[] = TA_Author_Factory::get_author($author_term);
             }
@@ -133,4 +143,11 @@ class TA_Article extends TA_Article_Data{
         return get_post_meta($this->post->ID, 'ta_article_cintillo', true);
     }
 
+    /**
+    *   @return bool
+    */
+    public function get_isopinion(){
+        $author = $this->first_author;
+        return $author && get_post_meta($this->post->ID, 'ta_article_isopinion', true);
+    }
 }
