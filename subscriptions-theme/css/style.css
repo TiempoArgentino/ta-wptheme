@@ -1448,7 +1448,21 @@ label.form-check-label.payment-title{
     border-radius: 0;
     min-width: 130px;
 }
-.payment-button-submit:hover{
+.payment-button-submit:hover, .reset-password:hover{
   background-color: var(--ta-socios);
   color: var(--ta-negro-texto);
+}
+.alert {
+  display: block;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 17px;
+  margin-bottom: 2%;
+}
+.alert-danger a{
+  color: white;
+}
+.alert-danger {
+  background: var(--ta-espectaculos);
+  color: white;
 }

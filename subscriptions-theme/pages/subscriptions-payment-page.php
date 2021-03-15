@@ -66,10 +66,4 @@ do_action('subscriptions_payment_page_header');
         </div>
     </div>
 </div>
-
-
-<?php if (null !== Subscriptions_Sessions::get_session('subscriptions_add_session')) {
-    var_dump(Subscriptions_Sessions::get_session('subscriptions_add_session'));
-}
-?>
 <?php get_footer() ?>

@@ -44,7 +44,7 @@ do_action('header_thankyou_page');
                                 <div class="subtitle text-center mt-4">
                                     <p>Muy pronto alguien de Tiempo Argentino te escribirá por e-mail para efectuar el pago.</p>
                                 </div>
-                                <div class="title text-center mt-5">
+                                <!--<div class="title text-center mt-5">
                                     <p><b>¿Querés contarnos un poco más de vos?</b></p>
                                 </div>
                                 <div class="text-center">
@@ -56,9 +56,9 @@ do_action('header_thankyou_page');
                                 <div class="text-center mt-4">
                                     <p>o podés seguir navegando nuestro sitio y personalizar, desde tu perfil de usuario, en
                                         otro momento</p>
-                                </div>
+                                </div>-->
                                 <div class="btns-container text-center">
-                                    <button class="gray-btn-black-text">ir al sitio</button>
+                                    <button class="gray-btn-black-text"><a href="<?php echo home_url()?>">ir al sitio</a></button>
                                 </div>
                             </div>
                         </div>

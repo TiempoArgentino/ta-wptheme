@@ -309,7 +309,7 @@
                                                 <p><?php echo __('¿Olvidaste tu contraseña?', 'gen-base-theme') ?></p>
                                             </div>
                                             <div class="btns-container text-center">
-                                                <button class="gray-btn-black-text"><?php echo __('RECUPERAR', 'gen-base-theme') ?></button>
+                                                <button class="gray-btn-black-text"><a href="<?php echo get_permalink( get_option('subscriptions_lost_password_page') )?>"><?php echo __('RECUPERAR', 'gen-base-theme') ?></a></button>
                                             </div>
                                         </div>
                                         <div class="sign-in mt-4">
@@ -444,8 +444,5 @@
         </div>
     </div>
 </div>
-<?php if(null !== Subscriptions_Sessions::get_session('subscriptions_add_session')){
-    var_dump(Subscriptions_Sessions::get_session('subscriptions_add_session'));
-}
-?>
+
 <?php get_footer(); ?>
