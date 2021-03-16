@@ -7,7 +7,7 @@
 
 
 <div class="container">
-    <?php if ( have_posts() ) : the_post(); the_content(); endif; ?>asdasd
+    <?php if ( have_posts() ) : the_post(); the_content(); endif; ?>
     <?php
     $articles = [];
     $result = rb_get_posts(array(
