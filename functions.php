@@ -60,7 +60,7 @@ class TA_Theme
 			return $check;
 		}, 10, 2);
 
-		self::get_plugins_assets();
+		//self::get_plugins_assets();
 	}
 
 	static public function add_themes_supports()
