@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import TAEtiquetador from '../../components/ta-etiquetador/ta-etiquetador';
+import TAEtiquetador from '../../components/TAEtiquetador/TAEtiquetador';
 import RBTagsManager from '../../components/RBTagsManager/RBTagsManager';
 import {useRbTerms} from '../../helpers/rb-terms/rb-terms.js';
 import {

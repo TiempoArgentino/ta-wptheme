@@ -57,8 +57,6 @@ const unescapeTerms = ( terms ) => {
 	return map( terms, unescapeTerm );
 };
 
-
-
 const TAEtiquetador = (props) => {
     const {
         terms,
@@ -66,9 +64,16 @@ const TAEtiquetador = (props) => {
         onUpdateTerms,
     } = props;
 
+    // Etiquetador API
+    const {
+        tags: etiquetadorTags,
+        analizedText,
+        updateTags,
+        fetching: etiquetadorFetching,
+        error: etiquetadorError,
+    } = useEtiquetador();
 
     const articleCurrentText = useArticleText();
-    const [ currentAnalizedText, setCurrentAnalizedText ] = useState('');
     const [ fetchingTags, setFetchingTags ] = useState(false);
     const [ loading, setLoading ] = useState(false);
     const [ selectedTermsNames, setSelectedTermsNames ] = useState([]);
@@ -76,11 +81,12 @@ const TAEtiquetador = (props) => {
     const [ tagsOnQueue, setTagsOnQueue ] = useState([]);
     const tagsFetchTimeout = useRef(null);
     const fetchWaitTimeout = useRef(null);
-    const textChanged = articleCurrentText != currentAnalizedText;
+    const textChanged = articleCurrentText != analizedText;
     const initRequest = useRef(null);
     const addRequest = useRef(null);
     const termNames = [];
     const termsIds = [];
+
 
     // Wait for the user to stop selecting tags
     useEffect( () => {
@@ -102,16 +108,6 @@ const TAEtiquetador = (props) => {
             termsIds.push(term.id ? term.id : term.term_id);
         });
     }
-
-    // Etiquetador API
-    const {
-        result: etiquetadorTags,
-        fetching: etiquetadorFetching,
-        error: etiquetadorError,
-    } = useEtiquetador({
-        text: currentAnalizedText,
-        amount: 20,
-    });
 
     /**
     *   Cheks if the tags exists, and retrieves or creates them, dispatching the result updating the post.
@@ -196,8 +192,12 @@ const TAEtiquetador = (props) => {
 	}
 
     const generateTags = () => {
-        if(!etiquetadorFetching && textChanged)
-            setCurrentAnalizedText(articleCurrentText);
+        if(!etiquetadorFetching && textChanged){
+            updateTags({
+                text: articleCurrentText,
+                amount: 20,
+            })
+        }
     }
 
     const enqueueTag = (tagName) => setTagsOnQueue([...tagsOnQueue, tagName]);

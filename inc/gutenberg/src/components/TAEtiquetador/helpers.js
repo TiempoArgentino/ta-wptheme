@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
-const { useSelect } = wp.data;
+const { useSelect, useDispatch, registerGenericStore } = wp.data;
 
 /**
 *   Utilizes the etiquetador API to return suggested tags for an article.
 *   @return
-*   @property {string[]} result                                                 The suggested tags
+*   @property {string[]} tags                                                   The suggested tags
+*   @property {string[]} analizedText                                           The latest analized text
+*   @property {function} updateTags                                             Function that recieves text an amount, and sets the result state.
 *   @property {bool} fetching                                                   Indicates if the suggested tags are being fetched
 *   @property {bool} error                                                      Indicates if an error ocurred while fetching the suggested tags
 */
 export function useEtiquetador(props){
+    const etiquetadorStates = useSelect( ( select ) => {
+       return select('ta-etiquetador');
+    } );
+    const result = etiquetadorStates.getResult();
+    const {setResult} = useDispatch('ta-etiquetador');
     const {
-        text,
-        amount = 20,
-    } = props;
-
-    const [result, setResult] = useState(null);
+        keywords: tags = [],
+        text: analizedText = '',
+    } = result ? result : {};
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState(false);
 
-    useEffect( () => {
+    const updateTags = ({
+        text, amount
+    }) => {
         if(!text)
             return;
 
@@ -53,10 +60,12 @@ export function useEtiquetador(props){
                 setFetching(false);
                 return finalData;
             });
-    }, [text, amount]);
+    };
 
     return {
-        result: result && result.keywords ? result.keywords : [],
+        tags,
+        analizedText,
+        updateTags,
         fetching,
         error,
     };
@@ -88,3 +97,33 @@ export const useArticleText = () => {
 
     return articleText;
 };
+
+registerGenericStore( 'ta-etiquetador', (() => {
+    let storeChanged = () => {};
+    let result = null;
+
+    const selectors = {
+        getResult: () => {
+            return result;
+        },
+    };
+
+    const actions = {
+        setResult: (newResult) => {
+            result = newResult;
+            storeChanged();
+        },
+    };
+
+    return {
+        getSelectors: () => {
+            return selectors;
+        },
+        getActions: () => {
+            return actions;
+        },
+        subscribe: ( listener ) => {
+            storeChanged = listener;
+        },
+    };
+})() );
