@@ -76,7 +76,8 @@ function array_to_tree($array, $is_child){
     if( !isset($array) || !is_array($array) || !isset($array) || !is_callable($is_child) )
         return null;
 
-    $charge_childs = function($item, $items, $removed = array(), $is_child) use(&$charge_childs){
+    $charge_childs = function($item, $items, $removed, $is_child) use(&$charge_childs){
+        $removed = $removed ? $removed : [];
         $item->menu_item_childs = array();
         foreach($items as $key => $possible_child){
             if( $is_child($possible_child, $item) ){//Si es hijo
@@ -495,4 +496,101 @@ function redirect_object_templates($object_name, $object_type, $templates){
     }
 
     return true;
+}
+
+function rb_get_posts($query_args = array(), $post_filter = null){
+    //ARGS
+    $default_args = array(
+        'post_type'                 => 'post',
+        'with_thumbnail'            => false,
+        'include_terms'             => null,//array of taxonomies to search terms for
+        'only_with_included_terms'  => false, //only return posts that has some of the terms from the taxonomies in 'include_terms'
+    );
+    $args = $default_args;
+    if(is_array($query_args))
+        $args = wp_parse_args($query_args, $default_args);
+
+    // =========================================================================
+    // TAXONOMY
+    // =========================================================================
+    //Dont fetch posts that doesnt belong to the desired taxonomy
+    if($args['only_with_included_terms'] && is_array($args['include_terms']) && !empty($args['include_terms'])){
+        $old_tax_query = isset($args['tax_query']) && is_array($args['tax_query']) ? $args['tax_query'] : null;
+        $included_terms_tax_query = [];
+
+        //Add all the terms for the wanted taxonomies to the taxonomy query
+        foreach($args['include_terms'] as $taxonomy_name){
+            $taxonomy_terms = get_terms(array(
+                'taxonomy'  => $taxonomy_name,
+            ));
+            if(is_array($taxonomy_terms) && !empty($taxonomy_terms)){
+                $included_terms_tax_query[] = array(
+                    'taxonomy'  => $taxonomy_name,
+                    'field'     => 'term_id',
+                    'terms'     => wp_list_pluck($taxonomy_terms, 'term_id'),
+                );
+            }
+        }
+
+        if(count($included_terms_tax_query) >= 2){
+            $included_terms_tax_query['relation'] = 'OR';
+        }
+
+        $args['tax_query'] = $included_terms_tax_query;
+        if($old_tax_query){
+            //Keep the old tax query, but make the new one obligatory
+            $args['tax_query'] = array(
+                'relation'  => 'AND',
+                $included_terms_tax_query,
+                $old_tax_query,
+            );
+        }
+    }
+
+    // =============================================================================
+    // POST QUERY
+    // =============================================================================
+    $posts_query = new WP_Query($args);
+    if(!$posts_query || is_wp_error($posts_query))
+        return $posts_query;
+
+    // =============================================================================
+    // INITIAL RESPONSE
+    // =============================================================================
+    $posts = $posts_query->posts;
+    $total_pages = $posts_query->max_num_pages;
+
+    // =========================================================================
+    // FILTERS
+    // =========================================================================
+    //ONLY INCLUDE
+    if(isset($args['only_include']) && $args['only_include'] && empty($args['post__in'])){
+        $posts = [];
+        $total_pages = 1;
+    }
+    else if(is_array($posts) && !empty($posts)){
+        foreach($posts as $post_index => &$post_data){
+            if(isset($args['with_thumbnail']) && $args['with_thumbnail']){
+                $thumb_size = isset($args['thumbnail_size']) ? $args['thumbnail_size'] : 'full';
+                $post_data->thumbnail_url = get_the_post_thumbnail_url($post_data->ID, $thumb_size);
+            }
+
+            if(is_array($args['include_terms']) && !empty($args['include_terms'])){
+                $post_data->terms = [];
+                foreach($args['include_terms'] as $taxonomy_name){
+                    $post_data->terms[$taxonomy_name] = wp_get_post_terms($post_data->ID, $taxonomy_name);
+                }
+            }
+
+            if(is_callable($post_filter)){
+                $post_data = call_user_func($post_filter, $post_data);
+            }
+        }
+    }
+
+    return array(
+        'posts'         => $posts,
+        'wp_query'      => $posts_query,
+        'total_pages'   => $total_pages,
+    );
 }

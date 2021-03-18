@@ -1,0 +1,190 @@
+const { __ } = wp.i18n; // Import __() from wp.i18n
+//const { Component, Fragment } = wp.element;
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { InspectorControls } = wp.editor;
+const { useRef, useState, useEffect } = wp.element;
+const { SelectControl, CheckboxControl, TextControl, Spinner, RangeControl, PanelBody, Button } = wp.components;
+import arrayMove from 'array-move';
+import TAArticlePreview from '../../components/TAArticlePreview/TAArticlePreview';
+import TAArticlesGrid from '../../components/TAArticlesGrid/TAArticlesGrid';
+import useTAArticlesRowsContainer from '../../helpers/useTAArticlesRowsContainer/useTAArticlesRowsContainer';
+import {useTAArticles} from '../../helpers/ta-article/ta-article';
+import { useTAArticlesManager } from '../../helpers/ta-article/lr-articles.js';
+import './css/editor.css';
+
+registerBlockType( 'ta/articles', {
+	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+	title: __( 'Articulos', 'ta-genosha' ), // Block title.
+	icon: 'media-document', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	category: 'ta-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	keywords: [
+		__( 'La Razón' ),
+		__( 'Genosha' ),
+		__( 'Contenedor' ),
+		__( 'Sección' ),
+	],
+	// The "edit" property must be a valid function.
+	edit: function( props ) {
+        const { attributes, setAttributes, className, isSelected, getAttribute } = props;
+		const [ selectedRowIndex, setSelectedRowIndex ] = useState(0);
+		const currentRow = attributes.rows[selectedRowIndex];
+
+		const updateRowValue = ( index, valName, newValue ) => {
+			const row = attributes.rows[index];
+			row[valName] = newValue;
+			updateRow( index, row );
+		};
+
+		const updateRow = ( index, newData ) => {
+			const rows = attributes.rows.slice();
+			rows.splice(index, 1, newData)
+			setAttributes( {
+				rows: rows,
+			} );
+		};
+
+		const selectRow = ({ index }) => {
+			if( selectedRowIndex == index)
+				return;
+			setSelectedRowIndex(index);
+		};
+
+		const moveRow = ({ indexFrom, indexTo }) => {
+			if( (indexFrom == indexTo) || (!attributes.rows || !attributes.rows.length || !attributes.rows[indexFrom] || !attributes.rows[indexTo]) )
+				return;
+			const newOrderRows = arrayMove(attributes.rows, indexFrom, indexTo);
+			setAttributes( {
+				rows: newOrderRows,
+			} );
+
+			if( indexFrom == selectedRowIndex )
+				selectRow({ index: indexTo });
+		};
+
+		const removeRow = ({index}) => {
+			const rows = attributes.rows.slice();
+			rows.splice(index, 1);
+			setAttributes( {
+				rows: rows,
+			} );
+		};
+
+		const addRow = ({
+			index = attributes.rows ? attributes.rows.length : 0
+		} = {}) => {
+
+		};
+
+		const {
+			renderRows,
+			selectedRowData,
+			getCellsCount,
+		} = useTAArticlesRowsContainer({
+			rows: attributes.rows,
+			onMoveRow: moveRow,
+			onClickRow: selectRow,
+			onRemoveRow: removeRow,
+			selectedRowIndex: selectedRowIndex,
+			showEmpty: isSelected,
+			showControls: isSelected,
+		});
+
+		const cellsCount = getCellsCount();
+
+		useEffect( () => {
+			setAttributes({
+				amount: cellsCount,
+			});
+		}, [cellsCount]);
+
+		const {
+			loadingArticles,
+			articlesFetchError,
+			articles,
+			renderArticlesControls,
+		} = useTAArticlesManager({
+			attributes,
+			setAttributes,
+			// taxonomiesFilters = {tag: true, section: true, author: true},
+		});
+
+		const {
+			Controls: RowControls,
+		} = selectedRowData ? selectedRowData : {};
+
+        return (
+			<>
+				<div className={`${className} ta-articles-block`}>
+					{ loadingArticles && <Spinner/> }
+					{ !loadingArticles && (!articles || articles.length == 0) &&
+					<p>No hay articulos</p>
+					}
+					<div className="rows-container">
+						{ renderRows({articles: articles}) }
+						{ isSelected &&
+						<div className="add-btn-container">
+							<Button
+								isPrimary
+								onClick = { () => {
+									setAttributes({
+										rows: [ ...attributes.rows,
+											{
+												format: 'miscelanea',
+												cells: {
+													0: {
+														format: 'voice',
+													},
+												},
+											},
+										],
+									})
+								} }
+							>Agregar fila</Button>
+						</div>
+						}
+					</div>
+				</div>
+				<InspectorControls>
+					{ articles && articles.length > cellsCount &&
+					<p>Hay mas artículos de los que se pueden mostrar!!!</p>
+					}
+					{ currentRow &&
+					<PanelBody
+						title="Fila"
+						icon="layout"
+						initialOpen={false}
+					>
+						<SelectControl
+							label="Formato"
+							value={ currentRow.format }
+							options={ [
+								{ label: 'Miscelanea', value: 'miscelanea' },
+								{ label: 'Común', value: 'common' },
+							] }
+							onChange={ ( format ) => updateRowValue(selectedRowIndex, 'format', format) }
+						/>
+						{ RowControls &&
+						<RowControls
+							row = { currentRow }
+							index = { selectedRowIndex }
+							onUpdate = { ({row, index}) => updateRow(index, row) }
+						/>
+						}
+					</PanelBody>
+					}
+
+					{ renderArticlesControls({
+						articlesFiltersProps: {
+							amountFilter: false,
+						},
+					}) }
+
+				</InspectorControls>
+			</>
+        );
+	},
+	// The "save" property must be specified and must be a valid function.
+	save: function( { attributes } ) {
+        return null;
+	},
+} );

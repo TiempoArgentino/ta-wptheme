@@ -1,0 +1,52 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+}
+
+.podcasts-block .podcast-preview p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0;
+  color: white;
+}
+.podcasts-block .podcast-preview p.episode-number {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+}
+.podcasts-block .podcast-preview .article-info-container .author p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ta-gris-subtexto);
+}
+.podcasts-block .podcast-preview-container {
+  overflow-y: auto;
+  max-height: 254px;
+}
+
+@media (min-width: 1200px) {
+  .podcasts-block .podcast-preview p {
+    font-size: 19px;
+  }
+  .podcasts-block .podcast-preview-container {
+    height: auto;
+    max-height: max-content;
+  }
+}
+
+/*# sourceMappingURL=podcasts-block.css.map */

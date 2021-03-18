@@ -54,6 +54,23 @@ return array(
                 ),
             ),
         ),
+        'ta_article_isopinion' => array(
+            'settings'  => array(
+                'title'             => __('Opinión', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'        => array(
+                    'text'   => array(
+                        'label'             => __('Es artículo de opinión', 'ta-genosha'),
+                        // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
+                        'input_type'            => 'checkbox',
+                    ),
+                ),
+            ),
+        ),
         'ta_article_related' => array(
             'settings'  => array(
                 'title'             => __('Artículo Relacionado', 'ta-genosha'),

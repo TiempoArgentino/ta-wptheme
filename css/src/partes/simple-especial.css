@@ -213,6 +213,7 @@
   width: max-content;
   border: 1px solid var(--ta-celeste);
   border-right: 1px solid transparent;
+  z-index: 10;
 }
 .article-tags .tag .content a {
   text-decoration-color: var(--ta-celeste);
@@ -232,7 +233,15 @@
   height: 20.6px;
   border-right: 1px solid var(--ta-celeste);
   border-top: 1px solid var(--ta-celeste);
-  transform: rotate(45deg) translate(-4.5px, 10.5px);
+  transform: rotate(45deg) translate(-4.5px, 10px);
+}
+.article-tags.ta-blue-bg .tag .content,
+.article-tags.ta-blue-bg .tag .triangle {
+  background-color: var(--ta-celeste);
+}
+.article-tags.ta-blue-bg .tag .content p,
+.article-tags.ta-blue-bg .tag .triangle p {
+  color: white;
 }
 
 @media (min-width: 992px) {

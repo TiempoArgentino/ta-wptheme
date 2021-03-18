@@ -1,0 +1,38 @@
+.rb-paginator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.rb-paginator .pagination {
+    display: flex;
+    font-size: 0.5rem;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    margin: 0 1rem;
+}
+
+.rb-paginator .pagination .pag {
+    position: relative;
+    transition: all 0.3s;
+    margin: 0 0.1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rb-paginator .pagination.disabled .pag {
+    color: #d0d0d0;
+}
+
+.rb-paginator .pagination .current {
+    font-size: 2rem;
+}
+
+.rb-paginator .pagination .prev, .rb-paginator .pagination .next, .rb-paginator .pagination .dist-1 {
+    font-size: 1.5rem;
+}
+
+.rb-paginator .pagination .prev-2, .rb-paginator .pagination .next-2, .rb-paginator .pagination .dist-2 {
+    font-size: 1rem;
+}

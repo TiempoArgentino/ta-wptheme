@@ -18,5 +18,9 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "homepage": "https://bitbucket.org/genosha/gen-base-theme#readme"
+    "homepage": "https://bitbucket.org/genosha/gen-base-theme#readme",
+    "dependencies": {
+        "array-move": "^3.0.1",
+        "react-sortable-hoc": "^1.11.0"
+    }
 }

@@ -40,6 +40,30 @@
 ?>
 <?php get_header(); ?>
     <?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+    <?php
+    //
+    // if($posts && !empty($posts)){
+    //     foreach ($posts as $article_post) {
+    //         $article = TA_Article_Factory::get_article($article_post, 'article_post');
+    //         $article->populate(true);
+    //         $articles[] = $article;
+    //     }
+    // }
+    //
+    // if($articles){
+    //     $columns = array(
+    //         array(
+    //             'cells' => array(1,2,3,4,5,6),
+    //             'width' => 1/2,
+    //         ),
+    //         array(
+    //             'cells' => array(1,2,3,4,5,6),
+    //             'width' => 1/2,
+    //         ),
+    //     );
+    //    render_grid($columns, $articles);
+    // }
+    ?>
     <div class="container-fluid container-lg p-0 ">
         <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
             <div class="col-12 col-lg-8 p-0">

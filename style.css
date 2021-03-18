@@ -21,3 +21,19 @@ Domain Path: /languages
 .ta-author-block .profile .picture img {
     max-width: 11rem;
 }
+
+.article-preview .img-container .img-wrapper, .article-preview.destacado .img-container .img-wrapper {
+    background: initial;
+    background-size: cover;
+    background-position: top left;
+    margin-bottom: 10px;
+}
+
+.article-preview.autor .img-container .img-wrapper {
+    margin-bottom: 10px;
+}
+
+.article-preview.autor .img-container .img-wrapper {
+    background-position: top left;
+    background-size: cover;
+}

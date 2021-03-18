@@ -1,4 +1,5 @@
 <?php
+define('TA_ARTICLES_CELLS_COUNT_VARNAME', 'ta_article_preview_cell_count');
 /**
 *	Articles block
 *	@param TA_Article_Data|mixed[] articles									    Array of articles instances. Mixed if articles_type is set
@@ -8,50 +9,69 @@
 */
 return array(
 	'id'					=> 'ta/articles',
-	'attributes'			=> array(
-		'articles'	    => array(
-			'type'                => 'array',
-			'default'             => null,
-		),
-	    'articles_data' => array(
-	        'type'                => 'array',
-	        'default'             => null,
-	    ),
-	    'articles_type'	=> array(
-			'type'				=> 'string',
-			'default'			=> null,
-		),
-	    'container_title'   => array(
-	        'type'				=> 'string',
-	        'default'			=> '',
-	    ),
-	    'header_right'		=> array(
-			'type'		        => 'string',
-			'default'	        => '',
-		),
-	    'color_context'		=> array(
-			'type'		=> 'string',
-			'default'	=> '',
-		),
-	    'footer'		=> array(
-	        'type'		=> 'string',
-	        'default'	=> '',
-	    ),
-	    'layout'		=> array(
-	        'type'		=> 'string',
-	        'default'	=> '',
-	    ),
-		'cells_per_row'	=> array(
-			'type'			=> 'int',
-			'default'		=> 4,
-		),
-		'use_container'	=> array(
-			'type'			=> 'bool',
-			'default'		=> false,
-		),
-		'show_authors'	=> array(
-			'type'			=> 'bool',
-			'default'		=> true,
+	'attributes'			=> array_merge(
+		lr_get_article_filters_attributes(array(
+			'amount'            => true,
+			'most_recent'		=> true,
+			'suplements'        => true,
+			'sections'          => true,
+			'tags'              => true,
+			'authors'           => true,
+		)),
+		array(
+			'rows'			=> array(
+				'type'					=> 'array',
+				'default'				=> [
+					[
+						'format'	=> 'miscelanea',
+						'cells'		=> null,
+					],
+				],
+			),
+			'articles'	    => array(
+				'type'                => 'array',
+				'default'             => null,
+			),
+		    'articles_data' => array(
+		        'type'                => 'array',
+		        'default'             => null,
+		    ),
+		    'articles_type'	=> array(
+				'type'				=> 'string',
+				'default'			=> null,
+			),
+		    'container_title'   => array(
+		        'type'				=> 'string',
+		        'default'			=> '',
+		    ),
+		    'header_right'		=> array(
+				'type'		        => 'string',
+				'default'	        => '',
+			),
+		    'color_context'		=> array(
+				'type'		=> 'string',
+				'default'	=> '',
+			),
+		    'footer'		=> array(
+		        'type'		=> 'string',
+		        'default'	=> '',
+		    ),
+			'cells_per_row'	=> array(
+				'type'			=> 'integer',
+				'default'		=> 4,
+			),
+			'use_container'	=> array(
+				'type'			=> 'boolean',
+				'default'		=> false,
+			),
+			'show_authors'	=> array(
+				'type'			=> 'boolean',
+				'default'		=> true,
+			),
+			'most_recent'	=> array(
+				'type'			=> 'boolean',
+				'default'		=> true,
+			),
 		)
 	),
 	'render_callback'	=> function($attributes, $content = ''){

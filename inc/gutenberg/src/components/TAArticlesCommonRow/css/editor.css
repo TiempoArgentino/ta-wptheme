@@ -1,0 +1,10 @@
+.articles-list.common {
+    display: flex;
+    margin: 0 -0.25rem;
+}
+
+.articles-list.common .cell {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    flex: 100%;
+}

@@ -1,0 +1,11 @@
+.rb-list-with-actions{
+    margin-bottom: 1rem;
+}
+
+.rb-list-container.rb-list-with-actions .item .item-content{
+    padding: 0;
+}
+
+.rb-list-with-actions .item > .item-content{
+    display: flex;
+}

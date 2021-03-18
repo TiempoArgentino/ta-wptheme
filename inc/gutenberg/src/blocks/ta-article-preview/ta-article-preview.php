@@ -20,6 +20,10 @@ return array(
 			'type'				=> 'string',
 			'default'			=> 'article_post',
 		),
+		'layout'	=> array(
+			'type'			=> 'string',
+			'default'		=> 'common',
+		),
 		'desktop_horizontal' => array(
 			'type'				=> 'bool',
 			'default'			=> false,
