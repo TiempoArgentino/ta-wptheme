@@ -6,7 +6,7 @@
 <?php get_header(); ?>
 
 
-<div class="container">
+<?php TA_Blocks_Container_Manager::open_new(); ?>
     <?php if ( have_posts() ) : the_post(); the_content(); endif; ?>
     <?php
     $articles = [];
@@ -59,6 +59,6 @@
     //     ],
     // ));
     ?>
-</div>
+<?php TA_Blocks_Container_Manager::close(); ?>
 
 <?php get_footer(); ?>

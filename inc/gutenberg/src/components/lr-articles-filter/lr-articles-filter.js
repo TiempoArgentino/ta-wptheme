@@ -1,5 +1,5 @@
 const { Fragment } = wp.element;
-const { PanelBody, Spinner, RangeControl, CheckboxControl } = wp.components;
+const { PanelBody, Spinner, RangeControl, ToggleControl } = wp.components;
 
 import RBTermsSelector from '../../components/rb-terms-selector/rb-terms-selector.js';
 import styles from "./editor.css";
@@ -110,7 +110,7 @@ export const LRArticlesFilters = (props = {}) => {
     const RequiredTaxonomyCheckbox = ({taxName, taxObject}) => {
         const isChecked = getAttribute(taxName, {}).required;
         return (requiredTaxonomies &&
-            <CheckboxControl
+            <ToggleControl
                 label={"Taxonomia obligatoria"}
                 checked={ isChecked }
                 onChange={() => requiredTermChange(taxName, !isChecked)}
@@ -163,7 +163,7 @@ export const LRArticlesFilters = (props = {}) => {
     return (
         <div class={`lr-articles-filters-component ${getLayoutClass()}`}>
             {mostRecentFilter &&
-                <CheckboxControl
+                <ToggleControl
                     label={"Mas Recientes"}
                     checked={ getAttribute('most_recent', false) }
                     onChange={() => mostRecentFilterChange()}

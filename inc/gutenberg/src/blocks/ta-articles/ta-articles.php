@@ -1,5 +1,6 @@
 <?php
 define('TA_ARTICLES_CELLS_COUNT_VARNAME', 'ta_article_preview_cell_count');
+add_theme_support( 'align-wide' );
 /**
 *	Articles block
 *	@param TA_Article_Data|mixed[] articles									    Array of articles instances. Mixed if articles_type is set
@@ -28,6 +29,14 @@ return array(
 					],
 				],
 			),
+			'container'			=> array(
+				'type'					=> 'object',
+				'default'				=> [
+					'header_type'			=> 'common',
+					'color_context'			=> 'common',
+					'title'					=> '',
+				],
+			),
 			'articles'	    => array(
 				'type'                => 'array',
 				'default'             => null,
@@ -40,38 +49,18 @@ return array(
 				'type'				=> 'string',
 				'default'			=> null,
 			),
-		    'container_title'   => array(
-		        'type'				=> 'string',
-		        'default'			=> '',
-		    ),
-		    'header_right'		=> array(
-				'type'		        => 'string',
-				'default'	        => '',
-			),
-		    'color_context'		=> array(
-				'type'		=> 'string',
-				'default'	=> '',
-			),
-		    'footer'		=> array(
-		        'type'		=> 'string',
-		        'default'	=> '',
-		    ),
-			'cells_per_row'	=> array(
-				'type'			=> 'integer',
-				'default'		=> 4,
-			),
 			'use_container'	=> array(
 				'type'			=> 'boolean',
 				'default'		=> false,
-			),
-			'show_authors'	=> array(
-				'type'			=> 'boolean',
-				'default'		=> true,
 			),
 			'most_recent'	=> array(
 				'type'			=> 'boolean',
 				'default'		=> true,
 			),
+			'footer'		=> array(
+		        'type'		=> 'string',
+		        'default'	=> '',
+		    ),
 		)
 	),
 	'render_callback'	=> function($attributes, $content = ''){

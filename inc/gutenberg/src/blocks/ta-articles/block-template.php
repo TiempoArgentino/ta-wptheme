@@ -14,7 +14,7 @@ if( (!$articles || empty($articles)) || !$rows )
 
 $all_articles = $articles;
 $block_path = plugin_dir_path( __FILE__ );
-
+$use_container = true;
 ob_start();
 ?>
 
@@ -48,12 +48,8 @@ register_articles_block_cells_count(0);
 <?php
 $content = ob_get_clean();
 
-if( $use_container ){
-    $container_header_block->render(array(
-        'title'             => $container_title,
-        'header_right'      => $header_right,
-        'color_context'     => $color_context,
-    ), $content);
+if( $use_container && $container ){
+    $container_header_block->render($container, $content);
 }
 else
     echo $content;
