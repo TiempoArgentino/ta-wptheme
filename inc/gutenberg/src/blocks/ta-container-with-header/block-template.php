@@ -6,13 +6,12 @@ extract($block->get_render_attributes());
 
 if( !$title && !$content ) return '';
 
-
 $header_class = $header_right ? 'd-block d-lg-flex justify-content-between align-items-center' : '';
-
+$container_closed = TA_Blocks_Container_Manager::close();
 ?>
 
 <div>
-    <div class="container-md p-0 line-height-0 mt-3">
+    <div class="container-md line-height-0 mt-3">
             <div class="separator"></div>
     </div>
     <div class="container-with-header py-3 ta-context <?php echo esc_attr($color_context); ?>">
@@ -27,9 +26,11 @@ $header_class = $header_right ? 'd-block d-lg-flex justify-content-between align
             <?php endif; ?>
         </div>
         <div class="sub-blocks mt-3">
-            <div class="container px-0 px-md-1">
+            <div class="container">
                 <?php echo $content; ?>
             </div>
         </div>
     </div>
 </div>
+
+<?php $container_closed ? TA_Blocks_Container_Manager::reopen() : false; ?>

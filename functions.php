@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
+define('TA_ARTICLES_COMPATIBLE_POST_TYPES', ['ta_article', 'ta_audiovisual']);
 define('TA_THEME_PATH', get_template_directory());
 define('TA_THEME_URL', get_template_directory_uri());
 define('TA_ASSETS_PATH', TA_THEME_PATH . "/assets");
@@ -35,6 +36,8 @@ class TA_Theme{
 		}
 
 		require_once TA_THEME_PATH . '/inc/functions.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Blocks_Container.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Blocks_Container_Manager.php';
 		require_once TA_THEME_PATH . '/inc/classes/Data_Manager.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Data.php';

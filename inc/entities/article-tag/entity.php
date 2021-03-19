@@ -3,7 +3,7 @@
 return array(
     'id'            => 'ta_article_tag',
     'type'          => 'taxonomy',
-    'object_type'   => ['ta_article'],
+    'object_type'   => TA_ARTICLES_COMPATIBLE_POST_TYPES,
     'args'          => array(
         'labels' 			=> array(
             'name'                       => _x( 'Etiquetas', 'taxonomy general name', 'ta-genosha' ),
