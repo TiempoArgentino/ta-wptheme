@@ -104,7 +104,7 @@ class TA_Theme{
 			'hide_empty' => false,
 		));
 		foreach ($terms as $term) {
-			$rules[$term->slug . '/([^/]*)$'] = 'index.php?post_type=' . $post_type . '&ta_article=$matches[4]&name=$matches[5]';
+			$rules[$term->slug . '/([^/]*)$'] = 'index.php?post_type=' . $post_type . '&ta_article=$matches[1]&name=$matches[2]';
 		}
 		$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 	}
