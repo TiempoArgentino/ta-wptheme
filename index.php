@@ -11,7 +11,8 @@
         <div class="posts-content">
             <?php while( have_posts() ): the_post();?>
             <div class="post-content">
-                <?php the_content(); ?>
+                <?php
+                // the_content(); ?>
             </div>
             <?php endwhile; wp_reset_postdata();?>
         </div>

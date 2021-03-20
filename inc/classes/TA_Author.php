@@ -17,7 +17,7 @@ class TA_Author extends TA_Author_Data{
     }
 
     public function get_social(){
-        return "QUE VA ACA?";
+        return "redSocialAutorAImplementar";
     }
 
     public function get_photo(){

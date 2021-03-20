@@ -2,16 +2,16 @@
 
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 $articles_interest_block = RB_Gutenberg_Block::get_block('ta/articles-interest');
-$query = new WP_Query(array(
+$articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',
 ));
 
-if( !$query || is_wp_error($query) || !$query->post_count || !$articles_block )
+if( !$articles || empty($articles) || !$articles_block )
     return '';
 
 extract($articles_interest_block->get_render_attributes());
 $block_path = plugin_dir_path( __FILE__ );
-$articles = $query->posts;
+
 
 $articles_block->render(array(
     'articles'          => $articles,

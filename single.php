@@ -1,1 +1,1 @@
-asdasdasd
+Single template. Empty

@@ -121,10 +121,9 @@
     </div>
     <?php
     $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
-    $query = new WP_Query(array(
+    $articles = get_ta_articles_from_query(array(
         'post_type' => 'ta_article',
     ));
-    $articles = $query->posts;
 
     //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
     $articles_block->render(array(

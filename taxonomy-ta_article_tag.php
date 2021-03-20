@@ -5,7 +5,7 @@
 
 $tag = TA_Tag_Factory::get_tag(get_queried_object(), 'ta_article_tag');
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
-$query = new WP_Query(array(
+$articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',
     'tax_query' => array(
         array(
@@ -15,7 +15,6 @@ $query = new WP_Query(array(
         ),
     ),
 ));
-$articles = $query->posts;
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 

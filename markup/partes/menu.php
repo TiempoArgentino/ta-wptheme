@@ -1,3 +1,8 @@
+<?php
+$social_data = ta_get_social_data();
+$sections_menu = RB_Menu::get_theme_menu('sections-menu');
+$sections_menu_items = RB_Menu::get_menu_items('sections-menu');
+?>
 <div class="menu container-lg collapse" id="navbarToggleExternalContent">
     <div class="container">
         <div class="menu-header d-flex justify-content-between">
@@ -119,37 +124,30 @@
                             </a>
                         </div>
                     </div>
+                    <?php if( $social_data && !empty($social_data) ): ?>
                     <div class="redes-sociales d-flex my-4">
-                        <div class="twitter">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/twitter-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="instagram">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/instagram-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="facebook">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/facebook-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="youtube">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/youtube-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="spotify">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/spotify-grey-icon.svg" alt="">
-                            </a>
-                        </div>
+                        <?php
+                            foreach ($social_data as $social):
+                                ?>
+                                <div class="">
+                                    <a href="<?php echo esc_attr($social['url']); ?>">
+                                        <?php if( $social['image'] ): ?>
+                                        <img src="<?php echo esc_attr($social['image']); ?>" alt="<?php echo esc_attr($social['name']); ?>">
+                                        <?php else: ?>
+                                        <i class="<?php echo $social['fa']; ?>"></i>
+                                    <?php endif; ?>
+                                    </a>
+                                </div>
+                                <?php
+                            endforeach;
+                        ?>
                     </div>
+                    <?php endif; ?>
                     <div class="separator"></div>
                 </div>
             </div>
             <div class="d-block d-lg-flex flex-column flex-lg-row flex-fill">
+                <?php if( $sections_menu_items && !empty($sections_menu_items) ): ?>
                 <div class="menu-section-wrapper">
                     <div class="separator"></div>
                     <div class="accordion-menu-section" id="accordion1">
@@ -166,65 +164,36 @@
                                 data-parent="#accordion1">
                                 <div class="card-body pt-0 pb-3">
                                     <div class="menu-section">
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Política</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Economía</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Información General</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Mundo</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Gestión</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item destacados cultura mb-3">
-                                            <a href="">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-cultura.svg" alt="">
-                                                    <h6>Cultura</h6>
+                                        <?php
+                                        foreach ($sections_menu_items as $section_menu_item) {
+                                            if($section_menu_item->object != 'ta_article_section')
+                                                continue;
+                                            $section = TA_Section_Factory::get_section( get_term($section_menu_item->object_id, 'ta_article_section'));
+                                            if(!$section)
+                                                continue;
+
+                                            if(!ta_is_featured_section($section->slug)):
+                                            ?>
+                                                <div class="menu-item">
+                                                    <div>
+                                                        <a href="<?php echo esc_attr( $section->archive_url ); ?>">
+                                                            <p><?php echo esc_html($section->name); ?></p>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item destacados espectaculos mb-3">
-                                            <a href="">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-espectaculos.svg" alt="">
-                                                    <h6>Espectaculos</h6>
+                                            <?php else: ?>
+                                                <div class="menu-item destacados <?php echo esc_attr($section->slug); ?> mb-3">
+                                                    <a href="<?php echo esc_attr( $section->archive_url ); ?>">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-<?php echo esc_attr($section->slug); ?>.svg" alt="<?php echo esc_attr($section->name); ?>">
+                                                            <h6><?php echo esc_html($section->name); ?></h6>
+                                                        </div>
+                                                    </a>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item destacados deportes mb-3">
-                                            <a href="">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-deportes.svg" alt="">
-                                                    <h6>Deportes</h6>
-                                                </div>
-                                            </a>
-                                        </div>
+                                            <?php
+                                            endif;
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -233,6 +202,7 @@
                     </div>
                     <div class="separator d-none"></div>
                 </div>
+                <?php endif; ?>
                 <div class="menu-section-wrapper">
                     <div class="separator"></div>
                     <div class="accordion-menu-section" id="accordion2">
@@ -347,33 +317,25 @@
                             </a>
                         </div>
                     </div>
+                    <?php if( $social_data && !empty($social_data) ): ?>
                     <div class="redes-sociales d-flex my-4">
-                        <div class="twitter">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/twitter-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="instagram">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/instagram-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="facebook">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/facebook-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="youtube">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/youtube-grey-icon.svg" alt="">
-                            </a>
-                        </div>
-                        <div class="spotify">
-                            <a href="">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/spotify-grey-icon.svg" alt="">
-                            </a>
-                        </div>
+                        <?php
+                            foreach ($social_data as $social):
+                                ?>
+                                <div class="">
+                                    <a href="<?php echo esc_attr($social['url']); ?>">
+                                        <?php if( $social['image'] ): ?>
+                                        <img src="<?php echo esc_attr($social['image']); ?>" alt="<?php echo esc_attr($social['name']); ?>">
+                                        <?php else: ?>
+                                        <i class="<?php echo $social['fa']; ?>"></i>
+                                    <?php endif; ?>
+                                    </a>
+                                </div>
+                                <?php
+                            endforeach;
+                        ?>
                     </div>
+                    <?php endif; ?>
                     <div class="separator"></div>
                 </div>
             </div>

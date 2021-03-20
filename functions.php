@@ -12,6 +12,7 @@ define('TA_ASSETS_PATH',TA_THEME_PATH . "/assets");
 define('TA_ASSETS_URL', TA_THEME_URL . "/assets");
 define('TA_IMAGES_URL', TA_ASSETS_URL . "/img");
 define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
+define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 
 require_once TA_THEME_PATH. '/inc/gen-base-theme/gen-base-theme.php';
 
@@ -54,6 +55,8 @@ class TA_Theme{
 		        return false;
 		    return $check;
 		}, 10, 2);
+
+		self::customizer();
 	}
 
 	static public function add_themes_supports() {
@@ -71,21 +74,33 @@ class TA_Theme{
         RB_Wordpress_Framework::load_module('menu');
         register_nav_menus(
             array(
-                'navbar-menu' => __('Navbar menú'),
-                'dropwdown-header-menu' => __('Menú desplegable'),
-                'footer-menu' => __('Footer menú'),
+                'sections-menu' => __('Secciones'),
+                'special-menu' => __('Especiales'),
+				'extra-menu' => __('Extra'),
             )
         );
     }
 
 	static public function enqueue_scripts(){
 		wp_enqueue_style( 'bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css' );
+		wp_enqueue_style( 'fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css' );
 		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/style.css' );
+		wp_enqueue_script( 'bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery'] );
 	}
 
 	static public function register_gutenberg_categories(){
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
+
+	static public function customizer(){
+		RB_Wordpress_Framework::load_module('fields');
+        RB_Wordpress_Framework::load_module('customizer');
+        add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
+    }
+
+    static public function require_customizer_panel($wp_customize){
+        require TA_THEME_PATH . '/customizer.php';
+    }
 }
 
 TA_Theme::initialize();
@@ -145,3 +160,7 @@ add_action( 'rest_api_init', function () {
 		'permission_callback'	=> '__return_true',
 	) );
 } );
+
+function ta_print_header(){
+	include(TA_THEME_PATH . '/markup/partes/header.php');
+};

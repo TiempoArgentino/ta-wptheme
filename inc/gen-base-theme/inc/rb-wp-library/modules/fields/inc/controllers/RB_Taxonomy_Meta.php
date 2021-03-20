@@ -57,8 +57,9 @@ class RB_Taxonomy_Form_Field extends RB_Metabox_Column_Extension{
 
     //Displays the control on the add term form
     public function add_form_fields_container($term_obj){
+        $class = isset($this->metabox_settings['term_add_container_class']) ? $this->metabox_settings['term_add_container_class'] : '';
         ?>
-        <div class="form-field add-form-field <?php echo $this->metabox_settings['term_add_container_class']; ?>">
+        <div class="form-field add-form-field <?php echo esc_attr($class); ?>">
             <label for="tag-description"><?php echo $this->get_title(); ?></label>
             <?php $this->render_meta_field($term_obj); ?>
         </div>

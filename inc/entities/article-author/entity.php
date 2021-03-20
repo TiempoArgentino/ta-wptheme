@@ -122,20 +122,49 @@ return array(
                 'priority'		=> 'high',
                 'classes'		=> array('ta-metabox'),
                 'add_form'      => true,
+                'collapsible'   => true,
             ),
             'input'  => array(
+                'accordion'   => true,
                 'controls'		=> array(
                     'twitter'      => array(
-                        'label'     => __('Twitter', 'ta-genosha'),
-                        'input_type'    => 'text',
+                        'controller'    => array(// Field Settings
+                             'title' => 'Twitter',
+                             'collapsible'  => true,
+                             // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
+                         ),
+                        'controls'  => array(
+                            'username'      => array(
+                                'label'     => __('Nombre de usuario:', 'ta-genosha'),
+                                'input_type'    => 'text',
+                            ),
+                        ),
                     ),
                     'instagram'      => array(
-                        'label'     => __('Instagram', 'ta-genosha'),
-                        'input_type'    => 'text',
+                        'controller'    => array(// Field Settings
+                             'title' => 'Instagram',
+                             'collapsible'  => true,
+                             // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
+                         ),
+                        'controls'  => array(
+                            'username'      => array(
+                                'label'     => __('Nombre de usuario:', 'ta-genosha'),
+                                'input_type'    => 'text',
+                            ),
+                        ),
                     ),
                     'email'      => array(
-                        'label'     => __('Email', 'ta-genosha'),
-                        'input_type'    => 'text',
+                        'controller'    => array(// Field Settings
+                             'title' => 'Email',
+                             'collapsible'  => true,
+                             // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
+                         ),
+                        'controls'  => array(
+                            'username'      => array(
+                                'label'     => __('Dirección de Email:', 'ta-genosha'),
+                                'input_type'    => 'text',
+                            ),
+                        ),
                     ),
                 ),
             ),
