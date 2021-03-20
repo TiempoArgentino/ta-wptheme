@@ -1,5 +1,5 @@
 <?php
-
+return false;
 return array(
     'id'            => 'ta_micrositio',
     'type'          => 'taxonomy',

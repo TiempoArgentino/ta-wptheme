@@ -37,3 +37,8 @@ Domain Path: /languages
     background-position: top left;
     background-size: cover;
 }
+
+.ta-redes i{
+    font-size: 27px;
+    color: #849899;
+}

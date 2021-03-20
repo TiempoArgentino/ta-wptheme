@@ -12,6 +12,7 @@ define('TA_ASSETS_PATH', TA_THEME_PATH . "/assets");
 define('TA_ASSETS_URL', TA_THEME_URL . "/assets");
 define('TA_IMAGES_URL', TA_ASSETS_URL . "/img");
 define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
+define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 
 require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
 
@@ -26,9 +27,6 @@ class TA_Theme{
 
 		self::add_themes_supports();
 		self::register_menues();
-
-		add_filter('generate_rewrite_rules', [self::class, 'sections_rules']);
-		add_filter('post_type_link', [self::class, 'article_link'], 10, 2);
 
 
 		if (is_admin()) {
@@ -60,37 +58,37 @@ class TA_Theme{
 			return $check;
 		}, 10, 2);
 
+		self::customizer();
 		self::get_plugins_assets();
 	}
 
-	static public function add_themes_supports()
-	{
-		add_theme_support('post-thumbnails');
+	static public function add_themes_supports() {
+        add_theme_support('post-thumbnails');
 
-		//svg support
-		function cc_mime_types($mimes)
-		{
-			$mimes['svg'] = 'image/svg+xml';
-			return $mimes;
-		}
-		add_filter('upload_mimes', 'cc_mime_types');
-	}
+        //svg support
+        function cc_mime_types($mimes) {
+            $mimes['svg'] = 'image/svg+xml';
+            return $mimes;
+        }
+        add_filter('upload_mimes', 'cc_mime_types');
+    }
 
-	static private function register_menues()
-	{
-		RB_Wordpress_Framework::load_module('menu');
-		register_nav_menus(
-			array(
-				'navbar-menu' => __('Navbar menú'),
-				'dropwdown-header-menu' => __('Menú desplegable'),
-				'footer-menu' => __('Footer menú'),
-			)
-		);
-	}
+	static private function register_menues() {
+        RB_Wordpress_Framework::load_module('menu');
+        register_nav_menus(
+            array(
+                'sections-menu' => __('Secciones'),
+                'special-menu' => __('Especiales'),
+				'extra-menu' => __('Extra'),
+            )
+        );
+    }
 
 	static public function enqueue_scripts(){
 		wp_enqueue_style( 'bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css' );
+		wp_enqueue_style( 'fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css' );
 		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/style.css' );
+		wp_enqueue_script( 'bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery'] );
 	}
 
 	static public function register_gutenberg_categories()
@@ -98,46 +96,15 @@ class TA_Theme{
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
 
-	static public function sections_rules($wp_rewrite)
-	{
-		$rules = array();
-		$post_type = 'ta_article';
-		$terms = get_terms(array(
-			'taxonomy' => 'ta_article_section',
-			'hide_empty' => false,
-		));
-		foreach ($terms as $term) {
-			$rules[$term->slug . '/([^/]*)$'] = 'index.php?post_type=' . $post_type . '&ta_article=$matches[1]&name=$matches[2]';
-		}
-		$wp_rewrite->rules = $rules + $wp_rewrite->rules;
-	}
+	static public function customizer(){
+		RB_Wordpress_Framework::load_module('fields');
+        RB_Wordpress_Framework::load_module('customizer');
+        add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
+    }
 
-
-	static public function article_link($permalink, $post)
-	{
-
-		$get_terms = wp_get_post_terms($post->ID, array('ta_article_section'));
-		$taxonomy = isset($get_terms[0]) && $get_terms[0] ? $get_terms[0]->taxonomy : null;
-
-		if ($post->post_type == 'ta_article') {
-			if ($taxonomy == 'ta_article_section') {
-				$section_terms = get_the_terms($post, 'ta_article_section');
-				$term_slug = '';
-				if (!empty($section_terms)) {
-					foreach ($section_terms as $term) {
-						$term_slug = $term->slug;
-						$unixtime = strtotime($post->post_date);
-						$date = explode(" ", date('Y m d H i s', $unixtime));
-						break;
-					}
-				}
-				if ($post->post_status == 'publish') {
-					$permalink = get_home_url() . '/' . $term_slug . '/' . $post->post_name . '/';
-				}
-			}
-		}
-		return $permalink;
-	}
+    static public function require_customizer_panel($wp_customize){
+        require TA_THEME_PATH . '/customizer.php';
+    }
 	/**
 	 * Plugins
 	 */
@@ -207,3 +174,7 @@ add_action( 'rest_api_init', function () {
 		'permission_callback'	=> '__return_true',
 	) );
 } );
+
+function ta_print_header(){
+	include(TA_THEME_PATH . '/markup/partes/header.php');
+};

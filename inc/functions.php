@@ -253,3 +253,62 @@ function rb_tax_query($terms){
 
     return $final_query;
 }
+
+/**
+*   @return null|mixed[]                                                        Array with the social data stablished through the customizer
+*                                                                               control.
+*/
+function ta_get_social_data(){
+    $data = get_theme_mod('ta-social-data', null);
+    if($data){
+        $data = array_map( function($social_data){
+            $image = ta_get_social_image($social_data['name']);
+            $social_data['image'] = $image;
+            return $social_data;
+        }, $data );
+    }
+    return $data;
+}
+
+/**
+*   Return an image for the social contact if exists.
+*   @param string $name
+*   @return string|null                                                         Image URL
+*/
+function ta_get_social_image($name){
+    $image = '';
+    switch (strtolower( trim($name) )) {
+        case 'facebook':
+            $image = TA_THEME_URL . "/markup/assets/images/facebook-grey-icon.svg";
+        break;
+        case 'twitter':
+            $image = TA_THEME_URL . "/markup/assets/images/twitter-grey-icon.svg";
+        break;
+        case 'spotify':
+            $image = TA_THEME_URL . "/markup/assets/images/spotify-grey-icon.svg";
+        break;
+        case 'youtube':
+            $image = TA_THEME_URL . "/markup/assets/images/youtube-grey-icon.svg";
+        break;
+        case 'instagram':
+            $image = TA_THEME_URL . "/markup/assets/images/instagram-grey-icon.svg";
+        break;
+    }
+    return $image;
+}
+
+function ta_is_featured_section($slug){
+    switch($slug){
+        case 'cultura':
+            return true;
+        break;
+        case 'deportes':
+            return true;
+        break;
+        case 'espectaculos':
+            return true;
+        break;
+    }
+
+    return false;
+}

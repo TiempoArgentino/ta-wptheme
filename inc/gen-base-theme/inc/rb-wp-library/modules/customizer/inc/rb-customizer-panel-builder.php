@@ -4,7 +4,7 @@ class RB_Customizer_API{
 	public $sections = array();
 	public $configuration_function;
 
-	public function __construct($wp_customize_manager = null, $configuration_function){
+	public function __construct($wp_customize_manager, $configuration_function){
 		$this->wp_customize_manager = $wp_customize_manager;
 		$this->configuration_function = $configuration_function;
 	}
@@ -123,7 +123,7 @@ class RB_Customizer_Section{
 		'selector'	=> '',
 	);
 
-	public function __construct($wp_customize_manager = null, $id, $options, $selective_refresh = array()){
+	public function __construct($wp_customize_manager, $id, $options, $selective_refresh = array()){
 		$this->wp_customize_manager = $wp_customize_manager;
 		$this->id = $id;
 		$this->options = $options;

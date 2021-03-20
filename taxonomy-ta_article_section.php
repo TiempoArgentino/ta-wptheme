@@ -2,10 +2,9 @@
 /*
 *   Section articles archive template
 */
-
 $section = TA_Section_Factory::get_section(get_queried_object(), 'ta_article_section');
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
-$query = new WP_Query(array(
+$articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',
     'tax_query' => array(
         array(
@@ -15,12 +14,11 @@ $query = new WP_Query(array(
         ),
     ),
 ));
-$articles = $query->posts;
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 
 <?php get_header(); ?>
-    <?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+    <?php ta_print_header();  ?>
     <div class="py-3">
         <div class="container">
             <div class="section-title">
