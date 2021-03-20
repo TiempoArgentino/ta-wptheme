@@ -32,6 +32,7 @@ $can_register = get_option('users_can_register');
                                     <button type="submit" name="login" class="yellow-btn-white-text"><?php echo __('Ingresar', 'gen-theme-base') ?></button>
                                 </div>
                             </form>
+                            <?php if(get_option('users_can_register') !== 0):?>
                             <div class="sign-up-sign-in text-center mt-4">
                                 <div class="login mt-4">
                                     <div>
@@ -42,7 +43,7 @@ $can_register = get_option('users_can_register');
                                     </div>
                                 </div>
                             </div>
-
+                            <?php endif;?>
                         </div>
 
                     </div>
