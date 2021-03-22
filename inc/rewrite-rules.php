@@ -40,14 +40,6 @@ class Theme_Permalinks
             }
 
             switch ($tax_name):
-                case 'category': {
-                        $query['category_name'] = $name;
-                        break;
-                    }
-                case 'post_tag': {
-                        $query['tag'] = $name;
-                        break;
-                    }
                 case 'ta_article_section': {
                         $query['ta_article_section'] = $name;
                         break;
