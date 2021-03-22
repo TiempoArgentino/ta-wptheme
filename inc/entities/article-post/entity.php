@@ -19,7 +19,8 @@ return array(
         ),
         'public' 				=> true,
         'has_archive' 			=> 'articulos', //slug para archivo (usado por fecha en este caso)
-        'rewrite' 				=> true, //true para que si tenga url amigable y no definimos slug para poder sobre escribirlo como queramos
+        'rewrite' 				=>  true, //true para que si tenga url amigable y no definimos slug para poder sobre escribirlo como queramos
+        'taxonomies'			=> ['ta_article_section'],
         'menu_position'			=> 5,
         'menu_icon'				=> TA_ASSETS_URL . '/img/articles-icon.png',
         'supports'				=> array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),

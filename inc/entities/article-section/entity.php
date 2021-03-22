@@ -25,7 +25,7 @@ return array(
         ),
         'hierarchical'      => true,
         'label'             => __( 'Secciones' ),
-        'rewrite'           => array( 'slug' => 'seccion' ),
+        'rewrite'           => array( 'slug' => '', 'with_front' => true ),
         'show_in_rest'      => true, // This enables the REST API endpoint
         'query_var'         => true, // This allows us to append the taxonomy param to the custom post api request.
         'show_in_nav_menus' => true,
