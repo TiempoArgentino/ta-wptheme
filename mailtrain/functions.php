@@ -7,6 +7,7 @@ class Newsletter_Assets
     {
         add_action( 'wp_enqueue_scripts', [$this,'styles'] );
         add_action( 'wp_enqueue_scripts', [$this,'scripts'] );
+        add_action( 'widgets_init', [$this,'mailtrain_api_widgets_init'] );
     }
 
     public function styles()
@@ -18,6 +19,15 @@ class Newsletter_Assets
     {
         wp_enqueue_script( 'maitrain-front-js', get_template_directory_uri() . '/mailtrain/js/script.js', array(), null, true );
 
+    }
+
+    public function mailtrain_api_widgets_init() {
+        register_sidebar( array(
+            'name'          => __( 'Sidebar Notas', 'textdomain' ),
+            'id'            => 'sidebar-1',
+            'before_widget' => '',
+            'after_widget'  => '',
+        ) );
     }
 }
 

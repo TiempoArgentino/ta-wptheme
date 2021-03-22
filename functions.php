@@ -181,13 +181,3 @@ function ta_print_header(){
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
 
-
-function wpdocs_theme_slug_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Sidebar Notas', 'textdomain' ),
-        'id'            => 'sidebar-1',
-        'before_widget' => '',
-        'after_widget'  => '',
-    ) );
-}
-add_action( 'widgets_init', 'wpdocs_theme_slug_widgets_init' );
