@@ -14,10 +14,10 @@ class Theme_Permalinks
 
         $tax_name = 'ta_article_section';
 
-        if ($query['attachment']) :
+        if (isset($query['attachment'])) :
             $include_children = true;
             $name = $query['attachment'];
-        else :
+        elseif(isset($query['name'])):
             $include_children = false;
             $name = $query['name'];
         endif;

@@ -16,7 +16,7 @@ define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
 define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 
 require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
-require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
+//require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
 
 class TA_Theme{
 	static private $initialized = false;
@@ -180,3 +180,14 @@ add_action( 'rest_api_init', function () {
 function ta_print_header(){
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
+
+
+function wpdocs_theme_slug_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Sidebar Notas', 'textdomain' ),
+        'id'            => 'sidebar-1',
+        'before_widget' => '',
+        'after_widget'  => '',
+    ) );
+}
+add_action( 'widgets_init', 'wpdocs_theme_slug_widgets_init' );

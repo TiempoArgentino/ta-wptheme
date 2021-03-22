@@ -1,3 +1,4 @@
+
 <div class="container-with-header newsletter">
     <div class="py-4">
         <div class="container">
@@ -5,23 +6,26 @@
                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/envelope.svg" alt="" />
             </div>
             <div class="section-title">
-                <h4>Sumate a nuestro NEWSLETTER</h4>
+                <h4><?php echo __('Sumate a nuestro NEWSLETTER','gen-theme-base')?></h4>
             </div>
             <div class="subtitle">
-                <p>Podés ajustar tus preferencias y garantizar un contenido adecuado para tus intereses:</p>
+                <p><?php echo __('Podés ajustar tus preferencias y garantizar un contenido adecuado para tus intereses:','gen-theme-base')?></p>
             </div>
             <div class="newsletter-form d-flex flex-column justify-content-center">
-                <p><span>></span> Para recibir newsletters relacionados a este tema, dejanos tu e-mail acá:</p>
+                <p><span>></span> <?php echo __('Para recibir newsletters relacionados a este tema, dejanos tu e-mail acá:','gen-theme-base');?></p>
                 <div class="input-container position-relative">
-                    <input type="email" placeholder="completá con tu mail_">
+                    <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
+                            <?php dynamic_sidebar('sidebar-1'); ?>
+                    <?php } ?>
+                    <!--<input type="email" placeholder="completá con tu mail_">-->
                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/envelope.svg" alt="" class="input-icon envelope position-absolute" />
                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/send.svg" alt="" class="input-icon send position-absolute" />
                 </div>
-                <button class="mt-3">ENVIAR</button>
+                <!--<button class="mt-3">ENVIAR</button>-->
             </div>
             <div class="newsletter-options mt-4">
-                <p><span>></span> Para ver más opciones ingresá acá:</p>
-                <button class="uppercase">PERSONALIZAR</button>
+                <p><span>></span> <?php echo __('Para ver más opciones ingresá acá:','gen-theme-base')?></p>
+                <button class="uppercase"><?php echo __('PERSONALIZAR','gen-theme-base')?></button>
             </div>
         </div>
     </div>
