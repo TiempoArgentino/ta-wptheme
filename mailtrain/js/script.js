@@ -86,11 +86,14 @@
         var lists = $('.list-item-select');
         var id = $('#mailtrain_user_id').val();
         var list = [];
+
+        
         $.each(lists, function() {
             if($(this).is(':checked')) {
                 list.push($(this).val());
             }
         });
+        
         list.join(',');
 
 
@@ -105,7 +108,7 @@
                     url: ajax_mailtrain.url,
                     data: {
                         action: ajax_mailtrain.action,
-                        nonce: ajax_mailtrain.nonce,
+                        _ajax_nonce: ajax_mailtrain._ajax_nonce,
                         name: name,
                         email: email,
                         lists: list,

@@ -135,4 +135,9 @@
     display: inline-block;
 }
   /*# sourceMappingURL=newsletter.css.map */
-  
+  div#response-widget {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: none;
+}
