@@ -82,7 +82,7 @@
 
             if(user.val() === '') {
                 user.addClass('border-danger');
-                  $('.username_error').html('El email es obligatorio.');
+                $('.username_error').html('El email es obligatorio.');
             }
 
             if(user.val() === '') {

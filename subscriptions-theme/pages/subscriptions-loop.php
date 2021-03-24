@@ -6,9 +6,7 @@
         <div class="separator m-0"></div>
     </div>
     <div class="asociate-block-container">
-        <?php var_dump(subscriptions_proccess()->verify_subscription(wp_get_current_user()->ID))?>
-        <?php if (subscriptions_proccess()->verify_subscription(wp_get_current_user()->ID)) : ?>
-            
+        <?php if (subscriptions_proccess()->verify_subscription(wp_get_current_user()->ID)) : ?>           
             <div class="delivery-zones-popup">
                 <div class="popup">
                     <div class="container text-center">
