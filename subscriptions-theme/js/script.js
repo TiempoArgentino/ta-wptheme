@@ -329,4 +329,22 @@
             });
        });
     });
+
+    $(document).ready(function(){
+        $('#custom-price-input').on('keyup',function(){
+            if($(this).val().length >= 1){
+               $('.yellow-btn-white-text').css('color','#252B2D');
+            } else {
+                $('.yellow-btn-white-text').css('color','white');
+            }
+        });
+        $('.form-check-input').on('click',function(){
+            console.log('click');
+            if($(this).is(':checked')){
+                $('.payment-button-submit').css('color','#252B2D');
+            } else {
+                $('.payment-button-submit').css('color','white');
+            }
+        });
+    });
 })(jQuery);

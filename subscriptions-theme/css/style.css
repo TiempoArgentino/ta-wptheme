@@ -1466,3 +1466,43 @@ label.form-check-label.payment-title{
   background: var(--ta-espectaculos);
   color: white;
 }
+
+/** donations **/
+.subtitle-donations{
+  font-family: "Red Hat Display";
+  font-size: 1.4rem;
+}
+.item-subscription.item-donation .opt.digital{
+  margin-top: 5%;
+  border:none;
+}
+@media(min-width:768px) {
+  .title.text-center.donation-section-title {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.donation-footer{
+  font-family: "Red Hat Display";
+  font-size: 1.2rem;
+  letter-spacing: -0.1px;
+}
+.donation-footer a{
+  background-color: var(--ta-socios-fondos);
+    text-decoration: underline;
+    font-weight: 700;
+}
+.donation-footer .btns-container a{
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-gris-fondos);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 19px;
+  left: 50%;
+  line-height: 21px;
+  padding: 4px 10px;
+  text-decoration: none;
+}
