@@ -61,6 +61,13 @@ class TA_Theme{
 		}, 10, 2);
 
 		self::customizer();
+
+		if( is_admin() ){
+			require_once TA_THEME_PATH . '/inc/menu-items.php';
+		}
+
+		require_once TA_THEME_PATH . '/inc/classes/TA_Micrositio.php';
+		require_once TA_THEME_PATH . '/inc/micrositios.php';
 		self::get_plugins_assets();
 	}
 
@@ -114,7 +121,7 @@ class TA_Theme{
 	{
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
 		require_once TA_THEME_PATH . '/mailtrain/functions.php';
-		
+
 	}
 }
 
@@ -180,4 +187,3 @@ add_action( 'rest_api_init', function () {
 function ta_print_header(){
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
-

@@ -1,7 +1,6 @@
 <?php
-return false;
 return array(
-    'id'            => 'ta_micrositio',
+    'id'            => 'ta_article_micrositio',
     'type'          => 'taxonomy',
     'object_type'   => TA_ARTICLES_COMPATIBLE_POST_TYPES,
     'args'          => array(
@@ -26,9 +25,18 @@ return array(
         'hierarchical'      => true,
         'label'             => __( 'Micrositios' ),
         'rewrite'           => array( 'slug' => 'micrositio' ),
-        'show_in_rest'      => true, // This enables the REST API endpoint
-        'query_var'         => true, // This allows us to append the taxonomy param to the custom post api request.
-        'show_in_nav_menus' => true,
+        'capabilities' => array(
+            'manage_terms'  => false,
+            'edit_terms'    => false,
+            'delete_terms'  => false,
+            'assign_terms'  => 'edit_posts'
+        ),
+        'show_in_rest' => true, // This enables the REST API endpoint
+        'query_var' => true, // This allows us to append the taxonomy param to the custom post api request.
+        'show_in_nav_menus' 	=> true,
+        "rb_config"			=> array(
+            'unique'	=> true,
+        ),
     ),
     'metaboxes'     => array(
     ),
