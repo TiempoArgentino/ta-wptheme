@@ -16,7 +16,7 @@ define('TA_ASSETS_CSS_URL', TA_THEME_URL . "/css");
 define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 
 require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
-//require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
+require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
 
 class TA_Theme{
 	static private $initialized = false;

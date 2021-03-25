@@ -93,7 +93,7 @@
                                                                 </div>
                                                                 <div class="btns-container">
                                                                     <div class="d-flex justify-content-center mx-auto uppercase mt-3">
-                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
+                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="donation" id="button<?php echo get_the_ID() ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -153,7 +153,7 @@
                                 </div>
                                 <div id="minimum"></div>
                                 <div class="btns-container text-center mt-5">
-                                    <button class="yellow-btn-white-text" id="custom-next-2" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>" data-type="subscription"><?php echo __('SIGUIENTE', 'gen-base-theme') ?></button>
+                                    <button class="yellow-btn-white-text" id="custom-next-2" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>" data-type="donation"><?php echo __('SIGUIENTE', 'gen-base-theme') ?></button>
                                 </div>
                             </div>
                             <div class="info text-md-center mt-5">
@@ -223,6 +223,12 @@
                             </div>
                             <div class="info text-center mt-5">
                                 <h6 class="mt-2"><?php echo sprintf(__('Podrás %s %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b>', __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
+                            </div>
+                            <div class="ayuda text-md-center mb-4 mt-5">
+                                <h6><?php echo __('Si deseas obtener ayuda con el proceso de tu colaboración, podés escribir un mail a', 'gen-base-theme') ?>
+                                </h6>
+                                <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender'); ?>"><?php echo get_option('subscriptions_email_sender'); ?></a>
+                                </h6>
                             </div>
                         </div>
                     </div>
