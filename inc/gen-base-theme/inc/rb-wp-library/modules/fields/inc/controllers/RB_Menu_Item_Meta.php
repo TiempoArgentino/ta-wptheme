@@ -6,7 +6,7 @@ class RB_Menu_Item_Meta extends RB_Metabox_Base{
     use RB_Post_Methods;
     public $metabox_settings = array(
         'title'         => '',
-        'admin_page'	=> 'post',
+        'admin_page'	=> null,
         'context'		=> 'advanced',
         'priority'		=> 'default',
         'classes'		=> '',
@@ -50,7 +50,7 @@ class RB_Menu_Item_Meta extends RB_Metabox_Base{
     *   @param string $item_object                                  An object type from a menu item
     */
     public function is_on_admin_page($item_object){
-        if(!isset($this->metabox_settings['admin_page']))
+        if(!isset($this->metabox_settings['admin_page']) || empty($this->metabox_settings['admin_page']))
             return true;
 
         if(is_array($this->metabox_settings['admin_page'])){

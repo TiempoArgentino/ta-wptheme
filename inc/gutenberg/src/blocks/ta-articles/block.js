@@ -13,6 +13,8 @@ import useTAArticlesRowsContainer from '../../helpers/useTAArticlesRowsContainer
 import {useTAArticles} from '../../helpers/ta-article/ta-article';
 import { useTAArticlesManager } from '../../helpers/ta-article/lr-articles.js';
 import './css/editor.css';
+// import './gallery';
+
 
 registerBlockType( 'ta/articles', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.

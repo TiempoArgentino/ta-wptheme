@@ -57,6 +57,13 @@ class TA_Theme{
 		}, 10, 2);
 
 		self::customizer();
+
+		if( is_admin() ){
+			require_once TA_THEME_PATH . '/inc/menu-items.php';
+		}
+
+		require_once TA_THEME_PATH . '/inc/classes/TA_Micrositio.php';
+		require_once TA_THEME_PATH . '/inc/micrositios.php';
 	}
 
 	static public function add_themes_supports() {

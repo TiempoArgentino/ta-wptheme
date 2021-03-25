@@ -2,6 +2,10 @@
 $social_data = ta_get_social_data();
 $sections_menu = RB_Menu::get_theme_menu('sections-menu');
 $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
+$special_menu = RB_Menu::get_theme_menu('special-menu');
+$special_menu_items = RB_Menu::get_menu_items('special-menu');
+$extra_menu = RB_Menu::get_theme_menu('extra-menu');
+$extra_menu_items = RB_Menu::get_menu_items('extra-menu');
 ?>
 <div class="menu container-lg collapse" id="navbarToggleExternalContent">
     <div class="container">
@@ -165,7 +169,7 @@ $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
                                 <div class="card-body pt-0 pb-3">
                                     <div class="menu-section">
                                         <?php
-                                        foreach ($sections_menu_items as $section_menu_item) {
+                                        foreach ($sections_menu_items as $section_menu_item):
                                             if($section_menu_item->object != 'ta_article_section')
                                                 continue;
                                             $section = TA_Section_Factory::get_section( get_term($section_menu_item->object_id, 'ta_article_section'));
@@ -192,7 +196,7 @@ $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
                                                 </div>
                                             <?php
                                             endif;
-                                        }
+                                        endforeach;
                                         ?>
                                     </div>
                                 </div>
@@ -203,6 +207,8 @@ $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
                     <div class="separator d-none"></div>
                 </div>
                 <?php endif; ?>
+
+                <?php if( $special_menu_items && !empty($special_menu_items) ): ?>
                 <div class="menu-section-wrapper">
                     <div class="separator"></div>
                     <div class="accordion-menu-section" id="accordion2">
@@ -219,35 +225,25 @@ $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
                                 data-parent="#accordion2">
                                 <div class="card-body pt-0 pb-3">
                                     <div class="menu-section">
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Activo ambiental</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Hábitat & Pandemia</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <div>
-                                                <a href="">
-                                                    <p>Monitor de medios</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item destacados ver-mas">
-                                            <a href="">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-vermas.svg" alt="">
-                                                    <h6>Ver más</h6>
+                                        <?php
+                                        foreach ($special_menu_items as $special_menu_item):
+                                            if($special_menu_item->object != 'ta_article_micrositio')
+                                                continue;
+                                            $micrositio_term = get_term($special_menu_item->object_id, 'ta_article_micrositio');
+                                            $micrositio = $micrositio_term ? TA_Micrositio::get_micrositio( $micrositio_term->slug ) : null;
+                                            if(!$micrositio)
+                                                continue;
+                                            ?>
+                                            <div class="menu-item">
+                                                <div>
+                                                    <a href="<?php echo esc_attr($micrositio->archive_url); ?>">
+                                                        <p><?php echo esc_html($micrositio->get_name()); ?></p>
+                                                    </a>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                            <?php
+                                        endforeach;
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -255,54 +251,34 @@ $sections_menu_items = RB_Menu::get_menu_items('sections-menu');
                     </div>
                     <div class="separator  d-none"></div>
                 </div>
+                <?php endif; ?>
+
+                <?php if( $extra_menu_items && !empty($extra_menu_items) ): ?>
                 <div class="menu-section-wrapper">
                     <div class="separator"></div>
                     <div class="menu-section pb-3">
-                        <div class="menu-item destacados">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="d-flex">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/edimpresa-menu-icon.svg" alt="">
-                                    <p>Ediciones impresas</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-item destacados">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="d-flex">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/talleres-menu-icon.svg" alt="">
-                                    <p>TALLERES</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-item destacados">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="d-flex">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/participa-menu-icon.svg" alt="">
-                                    <p>PARTICIPÁ</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-item destacados">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="d-flex">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/podcast-menu-icon.svg" alt="">
-                                    <p>Podcasts de Tiempo</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-item destacados">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="d-flex">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/fotogaleria-menu-icon.svg" alt="">
-                                    <p>Fotogalería</p>
-                                </div>
-                            </a>
-                        </div>
+                        <?php
+                        foreach ($extra_menu_items as $extra_menu_item):
+                            $attachment_id = get_post_meta($extra_menu_item->ID, 'ta_menu_item_image', true);
+                            $img_url = $attachment_id ? wp_get_attachment_url($attachment_id) : '';
+                            ?>
+                            <div class="menu-item destacados">
+                                <a href="" class="d-flex align-items-center">
+                                    <div class="d-flex">
+                                        <?php if( $img_url ): ?>
+                                        <img src="<?php echo esc_attr($img_url); ?>" alt="">
+                                        <?php endif; ?>
+                                        <p><?php echo esc_html($extra_menu_item->title); ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php
+                        endforeach;
+                        ?>
                     </div>
-
-
                     <div class="separator d-none"></div>
                 </div>
+                <?php endif; ?>
             </div>
             <div class="menu-section-wrapper d-block d-lg-none">
                 <div class="ta-redes">
