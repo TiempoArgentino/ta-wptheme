@@ -65,7 +65,8 @@ function ta_render_article_preview($article, $settings = array()){
 
 	$config = array();
 	$article_preview_block = RB_Gutenberg_Block::get_block('ta/article-preview');
-	$layout = $article->isopinion ? 'opinion' : null;
+    $layout = isset($settings['layout']) ? $settings['layout'] : null;
+	$layout = !$layout && $article->isopinion ? 'opinion' : $layout;
 	$size = isset($settings['size']) ? $settings['size'] : null;
 	$desktop_horizontal = isset($settings['desktop_horizontal']) ? $settings['desktop_horizontal'] : false;
 

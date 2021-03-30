@@ -93,9 +93,9 @@ return array(
                 ),
             ),
         ),
-        'ta_article_related' => array(
+        'ta_article_sister_article' => array(
             'settings'  => array(
-                'title'             => __('Artículo Relacionado', 'ta-genosha'),
+                'title'             => __('Nota Hermana', 'ta-genosha'),
                 'context'           => 'side',
                 'priority'          => 'high',
                 'classes'           => array('ta-metabox'),

@@ -121,7 +121,7 @@ class TA_Article extends TA_Article_Data{
             );
         }
         else {
-            $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', TRUE );
+            $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
             $thumb_data = array(
                 'attachment'    => $attachment,
                 'url'           => wp_get_attachment_image_url($attachment->ID, $size, false),
@@ -149,5 +149,14 @@ class TA_Article extends TA_Article_Data{
     public function get_isopinion(){
         $author = $this->first_author;
         return $author && get_post_meta($this->post->ID, 'ta_article_isopinion', true);
+    }
+
+    /**
+    *   Returns the instance of the article stablished as related to this one
+    *   @return TA_Article_Factory|null
+    */
+    public function get_sister_article(){
+        $article_id = get_post_meta( $this->post->ID, 'ta_article_sister_article', true );
+        return !$article_id ? null : TA_Article_Factory::get_article( get_post($article_id) );
     }
 }

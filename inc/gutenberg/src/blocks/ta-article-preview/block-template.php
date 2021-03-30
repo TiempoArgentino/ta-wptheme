@@ -35,6 +35,9 @@ switch ($layout) {
     case 'opinion':
         include "$block_path/templates/opinion.php";
     break;
+    case 'common-tiny':
+        include "$block_path/templates/common-tiny.php";
+    break;
     default:
         include "$block_path/templates/common.php";
     break;

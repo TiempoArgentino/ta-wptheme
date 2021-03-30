@@ -1,3 +1,10 @@
+<?php
+$article = TA_Article_Factory::get_article($post);
+$sister_article = $article->get_sister_article();
+if(!$sister_article)
+    return;
+?>
+
 <div class="container-with-header">
     <div class="container-md mb-2 p-0">
         <div class="separator"></div>
@@ -10,27 +17,14 @@
     <div class="sub-blocks mt-3 mt-md-0">
         <div class="container">
             <div class="ta-articles-block fullwidth-row">
-                <div class="article-preview col-12 p-0 d-flex mt-3">
-                    <div class="col-3 p-0">
-                        <a href="">
-                            <div class="img-container position-relative">
-                                <div class="img-wrapper">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/taller.png" alt="" class="img-fluid" />
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="content mt-0 col-9">
-                        <div class="section-title">
-                            <h4>TEMA O SECCIÓN</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                ta_render_article_preview($article, array(
+                    'layout'                => 'common-tiny',
+                    'size'                  => 'common',
+                    'class'                 => 'col-12 p-0 d-flex mt-3',
+                    'desktop_horizontal'    => true,
+                ));
+                ?>
                 <!-- <div class="article-preview col-12 p-0 d-flex mt-3">
                     <div class="content mt-0 mt-lg-3 col-12 p-0">
                         <div class="section-title">
@@ -43,7 +37,6 @@
                         </div>
                     </div>
                 </div> -->
-
             </div>
         </div>
     </div>

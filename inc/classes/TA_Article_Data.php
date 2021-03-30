@@ -23,6 +23,7 @@ class TA_Article_Data extends Data_Manager{
         'url'               => '',
         'cintillo'          => '',
         'isopinion'         => false,
+        'sister_article'    => null,
     );
 
     public function get_thumbnail($variation = 'common', $size = 'full'){

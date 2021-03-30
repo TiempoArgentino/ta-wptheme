@@ -1,9 +1,9 @@
 <?php
 /*
-     *  Template general para artículos
-     *
-     */
-// the_post();
+*  Single article page template
+*
+*/
+$article = TA_Article_Factory::get_article($post);
 // $article_data = LR_Article::get_article($post);
 // $attributes = rb_get_query_var(array(
 //     'body_class'            => '',
@@ -36,7 +36,6 @@
 // $tags_ids = is_array($article_data->tags) ? array_map(function ($tag) {
 //     return $tag->term_id;
 // }, $article_data->tags) : null;
-
 ?>
 <?php get_header(); ?>
     <?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
@@ -134,7 +133,6 @@
         'layout'            => '',
         'use_container'     => true,
     ));
-
     ?>
     <div class="ta-context light-blue-bg">
         <?php   ?>
