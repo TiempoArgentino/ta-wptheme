@@ -23,7 +23,7 @@ class Newsletter_Assets
 
     public function mailtrain_api_widgets_init() {
         register_sidebar( array(
-            'name'          => __( 'Sidebar Notas', 'gen-theme-base' ),
+            'name'          => __( 'Newsletter Notas', 'gen-theme-base' ),
             'id'            => 'sidebar-1',
             'before_widget' => '',
             'after_widget'  => '',
