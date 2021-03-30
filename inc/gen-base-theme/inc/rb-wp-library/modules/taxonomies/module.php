@@ -43,10 +43,17 @@ if(!class_exists('RB_Taxonomies_Module')){
         	$tax_object = $wp_taxonomies[ $taxonomy ];
         	$rb_config_default = array(
         		'unique'	=> false,
+                'required'  => false,
                 'templates' => null,
         	);
         	$rb_config = isset($tax_object->rb_config) ? $tax_object->rb_config : [];
         	$tax_object->rb_config = array_merge($rb_config_default, $rb_config);
+            $tax_object->rb_config['labels'] = array(
+                'required_term_missing'    => "Please select a {$tax_object->labels->singular_name}",
+            );
+
+            if( isset($rb_config['labels']) )
+                $tax_object->rb_config['labels'] = array_merge($tax_object->rb_config['labels'], $rb_config['labels']);
         }
 
         /**

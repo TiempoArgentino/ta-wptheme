@@ -11,7 +11,7 @@ class Theme_Permalinks
 
     public function ta_section_change_request($query)
     {
-
+        $name = '';
         $tax_name = 'ta_article_section';
 
         if (isset($query['attachment'])) :

@@ -18,8 +18,18 @@ if(!class_exists('RB_Posts_Module')){
         *   the arguments array on register_post_type
         */
         static private function add_rb_config_support(){
+            add_filter( 'rest_prepare_ta_article', array(self::class, 'rest_add_rb_config'), 10, 3);
             add_filter( 'register_post_type_args', array(self::class, 'add_rb_config'), 10, 2);
             add_action( 'registered_post_type', array(self::class, 'redirect_post_type_templates'), 10, 2);
+        }
+
+        /**
+        *   Adds the rb_config to the post request response
+        */
+        static public function rest_add_rb_config($response, $post, $rest_request){
+            $post_type = get_post_type_object($post->post_type);
+            $response->data['rb_config'] = $post_type->rb_config;
+            return $response;
         }
 
         /**

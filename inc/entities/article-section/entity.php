@@ -31,6 +31,9 @@ return array(
         'show_in_nav_menus' => true,
         "rb_config"			=> array(
             'unique'	=> true,
+            'labels'    => array(
+                'required_term_missing'         => 'Es necesario seleccionar una sección antes de publicar un artículo',
+            ),
         ),
     ),
 );

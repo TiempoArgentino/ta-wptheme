@@ -24,8 +24,19 @@ class RB_Metabox extends RB_Metabox_Column_Extension{
     *   Registers the metabox to be used on the post edition page.
     */
     public function register_metabox(){
-        add_action( 'load-post.php', array($this, 'metabox_setup') );
-        add_action( 'load-post-new.php', array($this, 'metabox_setup') );
+        // add_action( 'load-post.php', array($this, 'metabox_setup') );
+        // add_action( 'load-post-new.php', array($this, 'metabox_setup') );
+        $this->metabox_setup();
+        // quick edit
+        if( isset($this->metabox_settings['quick_edit']) && $this->metabox_settings['quick_edit'] ){
+            $admin_pages = $this->get_admin_pages();
+            foreach($admin_pages as $admin_page){
+                add_filter( "manage_{$admin_page}_posts_columns", array($this, 'add_dummy_column'));
+                add_filter( "manage_edit-{$admin_page}_columns", array($this, 'remove_dummy_column'));
+            }
+            add_filter( "quick_edit_custom_box", array($this, 'render_quick_edit_content'), 10, 2);
+        }
+
     }
 
     // =========================================================================
@@ -88,5 +99,43 @@ class RB_Metabox extends RB_Metabox_Column_Extension{
         $post = get_post($post);
         return $post && !is_wp_error($post) && metadata_exists('post', $post->ID, $this->meta_id) ? get_post_meta( $post->ID, $this->meta_id, true ) : null;
     }
+
+
+    // =========================================================================
+    // QUICK EDIT
+    // =========================================================================
+
+    /**
+    *   Adds a placeholder column that will be hidden from the UI.
+    *   Wordpress needs a custom column to render a quick edit fild
+    */
+    public function add_dummy_column( $posts_columns ){
+        $posts_columns[$this->meta_id] = $this->meta_id;
+    	return $posts_columns;
+    }
+
+    // But remove it again on the edit screen (other screens to?)
+    public function remove_dummy_column($posts_columns){
+        // unset($posts_columns[$this->meta_id]);
+        return $posts_columns;
+    }
+
+    // Quick edit render
+    public function render_quick_edit_content( $column_name, $post_type ){
+        if ($column_name != $this->meta_id) return;
+
+        ?>
+        <fieldset id="<?php esc_attr($this->meta_id); ?>" class="inline-edit-col-left">
+            <div class="inline-edit-col">
+                <span class="title">-----------</span>
+                <div>
+                    <?php $this->render_meta_field(null); ?>
+                </div>
+            </div>
+        </fieldset>
+        <?php
+
+    }
+
 
 }

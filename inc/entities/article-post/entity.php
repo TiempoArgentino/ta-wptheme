@@ -31,13 +31,34 @@ return array(
         'post_per_page'			=> 10,
         'paged' 				=> $paged,
         'capability_type'		=> 'post', //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
-        // 'rb_config'             => array(
-        //     'templates'             => array(
-        //         'single'                => 'test.php'
-        //     ),
-        // ),
+        "rb_config"			=> array(
+            //     'templates'             => array(
+            //         'single'                => 'test.php'
+            //     ),
+            'required_taxonomies'   => array(
+                'ta_article_section'    => true,
+            ),
+        ),
     ),
     'metaboxes'     => array(
+        'ta_article_thumbnail_2' => array(
+            'settings'  => array(
+                'title'             => __('Imagen en bloques', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+                'quick_edit'        => true,
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        //'label'     => __('Logo a color', 'ta-genosha'),
+                        'type'          => 'RB_Media_Control',
+                        'store_value'   => 'id',
+                    ),
+                ),
+            ),
+        ),
         'ta_article_cintillo' => array(
             'settings'  => array(
                 'title'             => __('Cintillo', 'ta-genosha'),
