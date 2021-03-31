@@ -18,7 +18,7 @@
   .ta-context.user-tabs .separator {
     background-color: var(--ta-socios);
   }
-  .ta-context.user-tabs .btns-container button {
+  .ta-context.user-tabs .btns-container button, .ta-context.user-tabs .btns-container a {
     font-family: "Red Hat Display";
     font-style: normal;
     font-weight: 900;

@@ -13,7 +13,6 @@
                                 </button>
                                 <form method="post" id="image-profile" enctype="multipart/form-data">
                                     <div class="form-content">
-                                        <h4><?php echo __('Select a image', 'user-panel') ?></h4>
                                         <input type="file" name="profile_imagen" id="profile_image" />
                                         <input type="hidden" name="user_id" value="<?php echo wp_get_current_user()->ID ?>" />
                                         <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
