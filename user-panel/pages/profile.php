@@ -29,37 +29,21 @@
                         <h4><?php echo wp_get_current_user()->first_name . ' ' . wp_get_current_user()->last_name ?></h4>
                     </div>
                     <div class="plan d-flex align-items-center">
+                    <?php if(get_user_meta(wp_get_current_user()->ID, 'suscription_name', true) !== ''):?>
                         <div class="plan-icon mr-2">
                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/partner-yellow.svg" alt="">
                         </div>
                         <div class="type">
-                            <h6><?php echo get_user_meta(wp_get_current_user()->ID, 'suscription_name', true) ?></h6>
+                            <h6><?php echo get_user_meta(wp_get_current_user()->ID, 'suscription_name', true)?></h6>
                         </div>
+                    <?php endif;?>
                     </div>
                     <div class="separator mt-3"></div>
                 </div>
             </div>
             <div class="options mb-3 mt-md-5">
-                <div class="option new-notif mt-3">
-                    <button class="d-flex align-items-center">
-                        <div class="opt-icon">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/notif-icon.svg" alt="" class="img-fluid">
-                        </div>
-                        <div class="opt-title">
-                            <p>Notificaciones <span>(4)</span></p>
-                        </div>
-                    </button>
-                </div>
-                <div class="option mt-3">
-                    <button class="d-flex align-items-center">
-                        <div class="opt-icon">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/comments-icon.svg" alt="" class="img-fluid">
-                        </div>
-                        <div class="opt-title">
-                            <p>Tus Comentarios <span>(2)</span></p>
-                        </div>
-                    </button>
-                </div>
+                <?php do_action('profile_details') ?>
+
                 <div class="option mt-3">
                     <button class="d-flex align-items-center">
                         <div class="opt-icon">
@@ -82,8 +66,8 @@
                 </div>
             </div>
         </div>
-        <?php do_action('profile_details') ?>
+        
     </div>
-    <?php do_action('profile_extra_content') ?>
+    <?php //do_action('profile_extra_content') ?>
 
 </div>

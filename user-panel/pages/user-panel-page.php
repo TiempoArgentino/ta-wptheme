@@ -1,4 +1,5 @@
 <?php get_header() ?>
+<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
 <?php do_action('before_panel_user')?>
 
 <div class="container ta-context user-tabs gray-border mt-2 my-lg-5">
@@ -16,4 +17,5 @@
 </div>
 
 <?php do_action('after_panel_user')?>
+<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
 <?php get_footer() ?>

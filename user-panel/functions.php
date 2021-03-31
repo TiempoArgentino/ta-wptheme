@@ -10,6 +10,9 @@ class User_Panel_Theme
         
         add_filter('panel_tabs_profile', [$this, 'profile_tab']);
         add_filter('panel_tabs_account', [$this, 'account_tab']);
+
+        add_action('profile_details',[$this,'comments_count']);
+
     }
 
     public function styles()
@@ -40,6 +43,24 @@ class User_Panel_Theme
                 <p>'.__('Cuenta','gen-theme-base').'</p>
             </a>
         </li>';
+    }
+
+    public function comments_count()
+    {
+        $args = [
+            'user_id' => wp_get_current_user()->ID,
+            'count' => true,
+        ]; 
+        echo '<div class="option mt-3">
+            <button class="d-flex align-items-center">
+                <div class="opt-icon">
+                    <img src="'.get_template_directory_uri().'/assets/img/comments-icon.svg" alt="" class="img-fluid">
+                </div>
+                <div class="opt-title">
+                    <p>'.__('Tus comentarios: ','user-panel').'  <span>('.get_comments($args).')</span></p>
+                </div>
+            </button>
+        </div>';
     }
 }
 
