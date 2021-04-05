@@ -1,14 +1,4 @@
 <?php
-
-/**
- * Blocks Initializer
- *
- * Enqueue CSS/JS of all the blocks.
- *
- * @since   1.0.0
- * @package CGB
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -231,7 +221,11 @@ class GEN_Gutenberg_Build{
 	// Incluye el archivo .php principal de los bloques
 	// Deprecated. Already done in the enqueue_blocks_assets method
 	static private function require_blocks_files(){
-		foreach (new DirectoryIterator( self::get_blocks_path() ) as $block) {
+		$blocks_path = self::get_blocks_path();
+		if(!file_exists( $$blocks_path ))
+			return;
+
+		foreach (new DirectoryIterator( $blocks_path ) as $block) {
 			if($block->isDot()) continue;
 			$block_file = $block->getPathname() . '/' . $block->getBasename() . '.php';
 			if(file_exists($block_file))
@@ -241,7 +235,11 @@ class GEN_Gutenberg_Build{
 
 	//Incluye el archivo .php principal de los componentes
 	static private function require_components_files(){
-		foreach (new DirectoryIterator( self::get_components_path() ) as $component) {
+		$components_path = self::get_components_path();
+		if(!file_exists( $components_path ))
+			return;
+
+		foreach (new DirectoryIterator( $components_path ) as $component) {
 			if($component->isDot()) continue;
 			$component_php = $component->getPathname() . '/' . $component->getBasename() . '.php';
 			if(file_exists($component_php))
@@ -251,7 +249,11 @@ class GEN_Gutenberg_Build{
 
 	//Incluye el archivo .php principal de los helpers
 	static private function require_helpers_files(){
-		foreach (new DirectoryIterator( self::get_helpers_path() ) as $hocomponent) {
+		$helpers_path = self::get_helpers_path();
+		if(!file_exists( $helpers_path ))
+			return;
+
+		foreach (new DirectoryIterator( $helpers_path ) as $hocomponent) {
 			if($hocomponent->isDot()) continue;
 			$hocomponent_php = $hocomponent->getPathname() . '/' . $hocomponent->getBasename() . '.php';
 			if(file_exists($hocomponent_php))

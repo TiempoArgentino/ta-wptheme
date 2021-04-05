@@ -20,6 +20,9 @@ class TA_Article_Data extends Data_Manager{
         'thumbnail_common'  => null,
         'thumbnail_square'  => null,
         'thumbnail_16_9'    => null,
+        'thumbnail_alt_common'  => null,
+        'thumbnail_alt_square'  => null,
+        'thumbnail_alt_16_9'    => null,
         'url'               => '',
         'cintillo'          => '',
         'isopinion'         => false,
@@ -28,6 +31,15 @@ class TA_Article_Data extends Data_Manager{
 
     public function get_thumbnail($variation = 'common', $size = 'full'){
         $thumbnail_prop = 'thumbnail';
+
+        if(is_string($variation))
+            $thumbnail_prop = "{$thumbnail_prop}_$variation";
+        $this->$thumbnail_prop;
+        return $this->$thumbnail_prop;
+    }
+
+    public function get_thumbnail_alternative($variation = 'common', $size = 'full'){
+        $thumbnail_prop = 'thumbnail_alt';
 
         if(is_string($variation))
             $thumbnail_prop = "{$thumbnail_prop}_$variation";

@@ -41,7 +41,38 @@ return array(
         ),
     ),
     'metaboxes'     => array(
-        'ta_article_thumbnail_2' => array(
+        'ta_article_thumbnail_changed' => array(
+            'settings'  => array(
+                'title'             => __('Thumb changed', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        'input_type'          => 'checkbox',
+                    ),
+                ),
+            ),
+        ),
+        'ta_article_thumbnail_alt_changed' => array(
+            'settings'  => array(
+                'title'             => __('Thumb alt changed', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        //'label'     => __('Logo a color', 'ta-genosha'),
+                        'input_type'          => 'checkbox',
+                    ),
+                ),
+            ),
+        ),
+        'ta_article_thumbnail_alt' => array(
             'settings'  => array(
                 'title'             => __('Imagen en bloques', 'ta-genosha'),
                 'context'           => 'side',
