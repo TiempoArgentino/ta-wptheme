@@ -35,9 +35,7 @@ $author = $article->first_author;
                         <a href="">
                             <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/compartir.svg" alt="" />
                         </a>
-                        <a href="">
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/guardar.svg" alt="" />
-                        </a>
+                        <?php do_action('favorite_button_action')?>                    
                     </div>
                 </div>
             </div>
@@ -208,9 +206,7 @@ $author = $article->first_author;
                 <a href="">
                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/compartir.svg" alt="" />
                 </a>
-                <a href="">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/guardar.svg" alt="" />
-                </a>
+                <?php do_action('favorite_button_action')?> 
             </div>
         </div>
     </div>
