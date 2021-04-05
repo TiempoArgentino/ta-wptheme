@@ -350,4 +350,31 @@
             }
         });
     });
+    /**
+     * Paper chose
+     */
+
+    $(document).on('click','#payment-continue',function(e){
+        if($('#add-paper').is(':checked')) {
+            e.preventDefault();
+            $.ajax({
+                type:'post',
+                url: ajax_add_paper.url,
+                data:{
+                    action: ajax_add_paper.action,
+                    _ajax_nonce: ajax_add_paper._ajax_nonce,
+                    add_paper:ajax_add_paper.add_paper,
+                    price_paper:$('#add-paper').val()
+                },
+                success:function(res){
+                    if(res){
+                        window.location.href = $('#payment-continue a').attr('href');
+                    }
+                },
+                error: function(res){
+                    console.log(res);
+                }
+        });
+       }
+    });
 })(jQuery);

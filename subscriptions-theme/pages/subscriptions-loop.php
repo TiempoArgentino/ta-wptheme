@@ -1,5 +1,5 @@
 <?php get_header() ?>
-
+<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
 
 <div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
     <div class="line-height-0">
@@ -229,9 +229,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php   endwhile;
-                                        wp_reset_postdata(); endif?>
-                            
+                            <?php   
+                            endwhile;
+                            wp_reset_postdata(); 
+                            endif;
+                            ?>
                             </div>
                         </div>
                     </div>
@@ -312,15 +314,55 @@
                                     <p>$ <span id="price-paquete"></span></p>
                                 </div>
                                 <div class="checkbox-container text-center mt-3" id="paper-option">
-                                    <input type="checkbox" class="paper-checkbox" id="add-paper" name="addpaper">
-                                    <label for="add-paper"><?php echo __('Agregá el diario en papel por', 'gen-base-theme') ?> <b>$<span id="price-papper"></span></b></label>
+                                <?php
+                                     $args = array(
+                                        'post_type' => 'subscriptions',
+                                        'meta_query' => [
+                                            'relation' => 'AND',
+                                            [
+                                                'relation' => 'OR',
+                                                [
+                                                    'key' => '_is_donation',
+                                                    'compare' => 'NOT EXISTS'
+                                                ],
+                                                [
+                                                    'key' => '_is_donation',
+                                                    'value' => ['1'],
+                                                    'compare' => 'NOT IN'
+                                                ],
+                                            ],
+                                            [
+                                                'relation' => 'AND',
+                                                [
+                                                    'key' => '_is_special',
+                                                    'compare' => 'EXISTS'
+                                                ],
+                                                [
+                                                    'key' => '_is_special',
+                                                    'value' => ['1'],
+                                                    'compare' => 'IN'
+                                                ],
+                                            ]
+                                            
+                                        ]
+                                    );
+                                    $query = new WP_Query($args);
+                                    if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+                                ?>
+                                    <input type="checkbox" class="paper-checkbox" value="<?php echo get_post_meta(get_the_ID(), '_s_price', true)?>" id="add-paper" name="addpaper">
+                                    <label for="add-paper"><?php echo __('Agregá el diario en papel por', 'gen-base-theme') ?> <b>$<span id="price-papper"><?php echo get_post_meta(get_the_ID(), '_s_price', true)?></span></b></label>
+                                    <?php   
+                                        endwhile;
+                                        wp_reset_postdata(); 
+                                        endif;
+                                     ?>
                                 </div>
                             </div>
                             <div class="sign-up-sign-in text-center mt-4">
                                 <?php if (is_user_logged_in()) : ?>
                                     <div id="user-logged-in">
                                         <div class="btns-container text-center">
-                                            <button><a href="<?php echo get_permalink(get_option('subscriptions_payment_page')) ?>"><?php echo __('CONTINUAR AL PAGO', 'gen-base-theme') ?></a></button>
+                                            <button id="payment-continue"><a href="<?php echo get_permalink(get_option('subscriptions_payment_page')) ?>"><?php echo __('CONTINUAR AL PAGO', 'gen-base-theme') ?></a></button>
                                         </div>
                                     </div>
                                 <?php else : ?>
@@ -533,5 +575,5 @@
         </div>
     </div>
 </div>
-
+<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
 <?php get_footer(); ?>

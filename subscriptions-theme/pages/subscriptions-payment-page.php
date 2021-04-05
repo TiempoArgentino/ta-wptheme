@@ -2,8 +2,9 @@
 get_header();
 
 do_action('subscriptions_payment_page_header');
-?>
 
+?>
+<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
 <div class="container ta-context asociate gray-border mt-2 my-lg-5">
     <div class="line-height-0">
         <div class="separator m-0"></div>
@@ -132,4 +133,5 @@ do_action('subscriptions_payment_page_header');
         </div>
     </div>
 </div>
+<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
 <?php get_footer() ?>

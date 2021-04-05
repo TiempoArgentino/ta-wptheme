@@ -67,6 +67,4 @@
         </div>
         
     </div>
-    <?php //do_action('profile_extra_content') ?>
-
 </div>

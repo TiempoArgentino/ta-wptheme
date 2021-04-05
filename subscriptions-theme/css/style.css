@@ -1519,3 +1519,44 @@ label.form-check-label.payment-title{
   line-height: 25px;
   font-size: 24px;
 }
+.from-group.prices.price-container.mb-3 .amount {
+  display: inline-block;
+  height: 100%;
+  background-color: var(--ta-gris-imagen);
+}
+.from-group.prices.price-container.mb-3 .amount .price {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-gris-imagen);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  width: 100%;
+  height: 100%;
+}
+#paper-option label{
+  display: inline-block;
+  position: relative;
+    cursor: pointer;
+    padding: 0;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+}
+.monto{
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+}
+#paper-option .help{
+  font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
