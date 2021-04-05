@@ -256,4 +256,3 @@ add_action( 'rest_api_init', function () {
 
 
 ?>
-<div id="test"></div>
