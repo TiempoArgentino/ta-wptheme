@@ -18,8 +18,8 @@
                             <?php dynamic_sidebar('sidebar-1'); ?>
                     <?php } ?>
                     <!--<input type="email" placeholder="completá con tu mail_">-->
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/envelope.svg" alt="" class="input-icon envelope position-absolute" />
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/send.svg" alt="" class="input-icon send position-absolute" />
+                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/envelope.svg" alt="" class="input-icon envelope position-absolute" id="sobre" />
+                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/send.svg" alt="" class="input-icon send position-absolute" id="icono-newsletter" />
                 </div>
                 <!--<button class="mt-3">ENVIAR</button>-->
             </div>
