@@ -1204,3 +1204,6 @@
   .data-profile-content{
     display:none
   }
+  .close-btn{
+    cursor: pointer;
+  }

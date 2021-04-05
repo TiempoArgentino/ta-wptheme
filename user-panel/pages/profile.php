@@ -77,7 +77,7 @@
                     <?php foreach (balancer_user()->favorites_show_profile() as $f) : ?>
                         <div class="saved-article my-3">
                             <div class="saved-header d-flex align-items-start">
-                                <div class="close-btn mt-1">
+                                <div class="close-btn mt-1" data-post="<?php echo $f->{'ID'}?>" data-user="<?php echo wp_get_current_user()->ID?>">
                                     <img src="<?php echo get_template_directory_uri() ?>/assets/img/black-close.svg" alt="">
                                 </div>
                             </div>
