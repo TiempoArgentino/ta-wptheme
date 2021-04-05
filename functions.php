@@ -63,6 +63,7 @@ class TA_Theme{
 
 		self::customizer();
 		self::get_plugins_assets();
+		add_action( 'admin_menu', [__CLASS__,'remove_posts'] );
 	}
 
 	static public function add_themes_supports() {
@@ -117,6 +118,14 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
 		require_once TA_THEME_PATH . '/mailtrain/functions.php';
 	}
+
+	/**
+	 * Menus remove
+	 */
+	static public function remove_posts() {
+		remove_menu_page( 'edit.php' );
+	}
+
 }
 
 TA_Theme::initialize();
