@@ -49,7 +49,7 @@
                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/guardados-icon.svg" alt="" class="img-fluid">
                         </div>
                         <div class="opt-title">
-                            <p>Guardados <span>(5)</span></p>
+                            <p><?php echo __('Guardados','gen-theme-base')?> <span>(<?php echo balancer_user()->favorites_count()?>)</span></p>
                         </div>
                     </button>
                 </div>
