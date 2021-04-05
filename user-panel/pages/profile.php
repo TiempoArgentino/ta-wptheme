@@ -28,14 +28,14 @@
                         <h4><?php echo wp_get_current_user()->first_name . ' ' . wp_get_current_user()->last_name ?></h4>
                     </div>
                     <div class="plan d-flex align-items-center">
-                    <?php if(get_user_meta(wp_get_current_user()->ID, 'suscription_name', true) !== ''):?>
-                        <div class="plan-icon mr-2">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/partner-yellow.svg" alt="">
-                        </div>
-                        <div class="type">
-                            <h6><?php echo get_user_meta(wp_get_current_user()->ID, 'suscription_name', true)?></h6>
-                        </div>
-                    <?php endif;?>
+                        <?php if (get_user_meta(wp_get_current_user()->ID, 'suscription_name', true) !== '') : ?>
+                            <div class="plan-icon mr-2">
+                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partner-yellow.svg" alt="">
+                            </div>
+                            <div class="type">
+                                <h6><?php echo get_user_meta(wp_get_current_user()->ID, 'suscription_name', true) ?></h6>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="separator mt-3"></div>
                 </div>
@@ -44,12 +44,12 @@
                 <?php do_action('profile_details') ?>
 
                 <div class="option mt-3">
-                    <button class="d-flex align-items-center">
+                    <button class="d-flex align-items-center profile-data" data-open="#guardados">
                         <div class="opt-icon">
                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/guardados-icon.svg" alt="" class="img-fluid">
                         </div>
                         <div class="opt-title">
-                            <p><?php echo __('Guardados','gen-theme-base')?> <span>(<?php echo balancer_user()->favorites_count()?>)</span></p>
+                            <p><?php echo __('Guardados', 'gen-theme-base') ?> <span>(<?php echo balancer_user()->favorites_count() ?>)</span></p>
                         </div>
                     </button>
                 </div>
@@ -65,6 +65,49 @@
                 </div>
             </div>
         </div>
-        
+    </div>
+
+    <div class="user-block user-saved mt-4 data-profile-content" id="guardados">
+        <div class="container">
+            <div class="title text-center">
+                <h4><?php echo __('Guardadas', 'gen-theme-base') ?></h4>
+            </div>
+            <div class="saved">
+                <?php if (balancer_user()->favorites_show_profile()) : ?>
+                    <?php foreach (balancer_user()->favorites_show_profile() as $f) : ?>
+                        <div class="saved-article my-3">
+                            <div class="saved-header d-flex align-items-start">
+                                <div class="close-btn mt-1">
+                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/black-close.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="saved-body mt-3">
+                                <div class="article-title">
+                                    <p><?php echo $f->{'post_title'} ?></p>
+                                </div>
+                                <div class="author">
+                                    <small><?php echo __('Por:','gen-theme-base')?> <?php $autores = join(', ', wp_list_pluck(get_the_terms($f->{'ID'},'ta_article_author'), 'name')); echo $autores; ?></small>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <div class="clearall mb-4">
+                        <div class="clearall-btn text-center mt-4">
+                            <button><?php echo __('limpiar lista','gen-theme-base')?></button>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="saved-article my-3">
+                        <div class="saved-body mt-3">
+                            <div class="article-title text-center">
+                                <p><?php echo __('No tienes ninguna noticia guarda', 'gen-theme-base') ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+        </div>
+
     </div>
 </div>

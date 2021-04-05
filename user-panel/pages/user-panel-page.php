@@ -11,6 +11,9 @@
             </ul>
             <div class="tab-content">
                 <?php do_action('panel_user_content') ?>
+                <!-- guardadas -->
+
+                <!-- guardadas -->
             </div>
         </div>
     </div>
