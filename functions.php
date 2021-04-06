@@ -73,6 +73,25 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/inc/micrositios.php';
 		self::get_plugins_assets();
 		add_action( 'admin_menu', [__CLASS__,'remove_posts'] );
+		self::increase_curl_timeout();
+	}
+
+	static private function increase_curl_timeout(){
+		$timeout = 15;
+		RB_Filters_Manager::add_filter('ta_curl_http_request_args', 'http_request_args', function($request) use ($timeout){
+			$request['timeout'] = $timeout;
+			return $request;
+		}, array(
+			'priority'	=> 100,
+			'args'		=> 1,
+		));
+		RB_Filters_Manager::add_action('ta_chttp_api', 'http_request_args', function($handle) use ($timeout){
+			curl_setopt( $handle, CURLOPT_CONNECTTIMEOUT, $timeout );
+			curl_setopt( $handle, CURLOPT_TIMEOUT, $timeout );
+		}, array(
+			'priority'	=> 100,
+			'args'		=> 1,
+		));
 	}
 
 	static public function add_themes_supports() {
