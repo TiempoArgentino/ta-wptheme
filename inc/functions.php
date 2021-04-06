@@ -330,7 +330,6 @@ function crb_insert_attachment_from_url($url, $parent_post_id = null) {
 	$response = $http->request( $url );
 
 	if( is_wp_error($response) || $response['response']['code'] != 200 ) {
-        er();
 		return false;
 	}
 
