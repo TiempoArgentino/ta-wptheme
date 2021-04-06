@@ -27,31 +27,15 @@ jQuery(function($) {
         });
     }
 
-    function updatePostAttachment({ postID, attachmentID }){
-        wp.apiRequest({
-            data: {
-                meta: 'ta_article_thumbnail_alt',
-                value: attachmentID,
-                article_id: postID,
-            },
-            method: 'POST',
-            path: `/ta/v1/article/meta/`,
-            parse: false,
-        })
-            .then((data) => {
-                console.log(data);
-            });
-    }
-
     function updatePostMeta({ postID, attachmentID, metaKey }){
         wp.apiRequest({
             data: {
                 meta: metaKey,
                 value: attachmentID,
-                article_id: postID,
+                postID: postID,
             },
             method: 'POST',
-            path: `/ta/v1/article/meta/`,
+            path: `/ta/v1/post/meta/`,
             parse: false,
         })
             .then((data) => {

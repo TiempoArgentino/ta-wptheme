@@ -36,6 +36,7 @@ class TA_Theme{
 		}
 
 		require_once TA_THEME_PATH . '/inc/functions.php';
+		require_once TA_THEME_PATH . '/inc/rest.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Blocks_Container.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Blocks_Container_Manager.php';
 		require_once TA_THEME_PATH . '/inc/classes/Data_Manager.php';
@@ -133,81 +134,32 @@ class TA_Theme{
 
 TA_Theme::initialize();
 
-
-
+// Gutenberg block script enqueue outside post edition screen
 add_action('admin_enqueue_scripts', function(){
 	wp_enqueue_script( "ta-index-block-js" );
 });
-
-
-function get_etiquetas($request)
-{
-	// init the resource
-	$ch = curl_init();
-
-	curl_setopt_array($ch, array(
-		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
-		CURLOPT_RETURNTRANSFER    	=> true,
-		CURLOPT_POST				=> true,
-		CURLOPT_HTTPHEADER			=> 'Content-Type: application/json',
-		CURLOPT_POSTFIELDS			=> $request->get_body(),
-	));
-
-	// execute
-	$output = curl_exec($ch);
-
-	// free
-	curl_close($ch);
-
-	return $output;
-}
-
-add_action('rest_api_init', function () {
-	register_rest_route('ta/v1', '/etiquetador', array(
-		'methods' 				=> 'POST',
-		'callback' 				=> 'get_etiquetas',
-		'permission_callback'	=> '__return_true',
-	) );
-} );
-
-add_action( 'rest_api_init', function () {
-	register_rest_route( 'ta/v1', '/articles', array(
-		'methods' 				=> 'POST',
-		'callback' 				=> function($request){
-			$params = $request->get_json_params();
-			$articles = [];
-			$result = rb_get_posts($params['args']);
-			$posts = $result['posts'];
-			$query = $result['wp_query'];
-
-			if($posts && !empty($posts)){
-				foreach ($posts as $article_post) {
-					$article = TA_Article_Factory::get_article($article_post, 'article_post');
-					$article->populate(true);
-					$articles[] = $article;
-				}
-			}
-
-			$response = new WP_REST_Response($articles, 200);
-			$response->header('X-WP-TotalPages', $result['total_pages']);
-			return $response;
-		},
-		'permission_callback'	=> '__return_true',
-	) );
-} );
 
 function ta_print_header(){
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
 
-function ta_article_image_control($post, $meta_key, $image_url){
+function ta_article_image_control($post, $meta_key, $image_url, $args = array()){
+	$default_args = array(
+		'title'			=> '',
+		'description'	=> '',
+	);
+	extract( array_merge($default_args, $args) );
 	$image_url = is_string($image_url) ? $image_url : '';
 	$empty = !$image_url;
 	?>
 	<div id="test" class="ta-articles-images-controls" data-id="<?php echo esc_attr($post->ID); ?>" data-type="<?php echo esc_attr($post->post_type); ?>" data-metakey="<?php echo esc_attr($meta_key); ?>">
         <div class="image-selector">
-            <p class="title">Imagen Principal</p>
-            <p class="description">Se muestra en el artículo y en la portada</p>
+			<?php if($title): ?>
+            <p class="title"><?php echo esc_html($title); ?></p>
+			<?php endif; ?>
+			<?php if($description): ?>
+            <p class="description"><?php echo esc_html($description); ?></p>
+			<?php endif; ?>
             <div class="image-box">
                 <div class="bkg" style="background-image: url(<?php echo esc_attr($image_url); ?>);"></div>
                 <div class="content">
@@ -231,34 +183,18 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Test Column'
 	$featured_img_url = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['url'];
 	$featured_alt_url = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['url'];
 
-	ta_article_image_control($post, '_thumbnail_id', $featured_img_url);
-	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_url);
+	ta_article_image_control($post, '_thumbnail_id', $featured_img_url, array(
+		'title'			=> 'Imagen Principal',
+	));
+	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_url, array(
+		'title'			=> 'Imagen Portada',
+		'description'	=> 'Pisa la imagen principal en la portada',
+	));
 }, array(
     'position'      => 4,
     'column_class'  => 'test-class',
 ));
 
-add_action( 'rest_api_init', function () {
-	register_rest_route( 'ta/v1', '/article/meta', array(
-		'methods' 				=> 'POST',
-		'callback' 				=> function($request){
-			$params = $request->get_body_params();
-			$meta_key = isset($params['meta']) ? $params['meta'] : null;
-			$meta_value = isset($params['value']) ? $params['value'] : null;
-			$article_id = isset($params['article_id']) ? $params['article_id'] : null;
-			$article = $article_id ? TA_Article_Factory::get_article( get_post($article_id) ) : null;
-
-			if(!$article)
-				$response = new WP_REST_Response($article, 200);
-
-			$response = new WP_REST_Response(update_post_meta( $article_id, $meta_key, $meta_value ), 200);
-			return $response;
-		},
-		'permission_callback' => function () {
-	    	return current_user_can( 'edit_others_posts' );
-	    },
-	) );
-} );
 
 
 ?>
