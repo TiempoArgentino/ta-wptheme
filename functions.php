@@ -85,7 +85,7 @@ class TA_Theme{
 			'priority'	=> 100,
 			'args'		=> 1,
 		));
-		RB_Filters_Manager::add_action('ta_chttp_api', 'http_request_args', function($handle) use ($timeout){
+		RB_Filters_Manager::add_action('ta_curl_http_api', 'http_api_curl', function($handle) use ($timeout){
 			curl_setopt( $handle, CURLOPT_CONNECTTIMEOUT, $timeout );
 			curl_setopt( $handle, CURLOPT_TIMEOUT, $timeout );
 		}, array(
