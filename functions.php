@@ -134,6 +134,12 @@ class TA_Theme{
 TA_Theme::initialize();
 
 
+
+add_action('admin_enqueue_scripts', function(){
+	wp_enqueue_script( "ta-index-block-js" );
+});
+
+
 function get_etiquetas($request)
 {
 	// init the resource
