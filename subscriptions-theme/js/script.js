@@ -276,6 +276,7 @@
             var suscription_price = $(this).data('price');
             var suscription_name = $(this).data('name');
             var suscription_type = $(this).data('type');
+            var address = $(this).data('address');
             $.ajax({
                 type: 'post',
                 url: ajax_add_price_data.url,
@@ -286,7 +287,8 @@
                     suscription_id: suscription_id,
                     suscription_price: suscription_price,
                     suscription_name: suscription_name,
-                    suscription_type: suscription_type
+                    suscription_type: suscription_type,
+                    suscription_address: address
                 },
                 beforeSend: function(result) {
                    // console.log('before ' + suscription_id);
@@ -315,7 +317,8 @@
                         suscription_id: $('#custom-price-input').data('id'),
                         suscription_price:  $('#custom-price-input').val(),
                         suscription_name: $('#custom-price-input').data('name'),
-                        suscription_type: $('#custom-next-2').data('type')
+                        suscription_type: $('#custom-next-2').data('type'),
+                        suscription_address: $('#custom-price-input').data('address')
                     },
                     beforeSend: function(result) {
                     // console.log('before ' + suscription_id);
@@ -346,5 +349,32 @@
                 $('.payment-button-submit').css('color','white');
             }
         });
+    });
+    /**
+     * Paper chose
+     */
+
+    $(document).on('click','#payment-continue',function(e){
+        if($('#add-paper').is(':checked')) {
+            e.preventDefault();
+            $.ajax({
+                type:'post',
+                url: ajax_add_paper.url,
+                data:{
+                    action: ajax_add_paper.action,
+                    _ajax_nonce: ajax_add_paper._ajax_nonce,
+                    add_paper:ajax_add_paper.add_paper,
+                    price_paper:$('#add-paper').val()
+                },
+                success:function(res){
+                    if(res){
+                        window.location.href = $('#payment-continue a').attr('href');
+                    }
+                },
+                error: function(res){
+                    console.log(res);
+                }
+        });
+       }
     });
 })(jQuery);

@@ -140,4 +140,7 @@
     text-transform: uppercase;
     font-weight: bold;
     display: none;
+    font-family: "Libre Baskerville";
+    text-transform: capitalize;
+    font-size: 20px;
 }

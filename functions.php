@@ -17,6 +17,7 @@ define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 
 require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
 require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
+require_once TA_THEME_PATH . '/inc/widgets.php';
 
 class TA_Theme{
 	static private $initialized = false;
@@ -69,6 +70,7 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/inc/classes/TA_Micrositio.php';
 		require_once TA_THEME_PATH . '/inc/micrositios.php';
 		self::get_plugins_assets();
+		add_action( 'admin_menu', [__CLASS__,'remove_posts'] );
 	}
 
 	static public function add_themes_supports() {
@@ -119,10 +121,18 @@ class TA_Theme{
 	 */
 	static public function get_plugins_assets()
 	{
+		require_once TA_THEME_PATH . '/user-panel/functions.php';
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
 		require_once TA_THEME_PATH . '/mailtrain/functions.php';
-
 	}
+
+	/**
+	 * Menus remove
+	 */
+	static public function remove_posts() {
+		remove_menu_page( 'edit.php' );
+	}
+
 }
 
 TA_Theme::initialize();

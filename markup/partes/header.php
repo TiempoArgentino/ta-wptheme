@@ -1,3 +1,16 @@
+<!-- anuncio sobre header single -->
+<?php if(is_single()):?>
+    <?php if (is_active_sidebar('over-header-note')) { ?>
+<div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+    <div class="row d-flex">
+        <div class="col-9 mx-auto">
+            <?php dynamic_sidebar('over-header-note'); ?>          
+        </div>
+    </div>
+</div>
+<?php } ?>
+<?php endif;?>
+<!-- anuncio sobre header single -->
 <div class="header">
     <div class="container">
         <div class="desktop-ribbon d-none d-lg-block">

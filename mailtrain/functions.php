@@ -8,6 +8,8 @@ class Newsletter_Assets
         add_action( 'wp_enqueue_scripts', [$this,'styles'] );
         add_action( 'wp_enqueue_scripts', [$this,'scripts'] );
         add_action( 'widgets_init', [$this,'mailtrain_api_widgets_init'] );
+
+        add_filter('panel_tabs_newsletter', [$this, 'tab_newsletter']);
     }
 
     public function styles()
@@ -23,11 +25,20 @@ class Newsletter_Assets
 
     public function mailtrain_api_widgets_init() {
         register_sidebar( array(
-            'name'          => __( 'Sidebar Notas', 'gen-theme-base' ),
+            'name'          => __( 'Newsletter Notas', 'gen-theme-base' ),
             'id'            => 'sidebar-1',
             'before_widget' => '',
             'after_widget'  => '',
         ) );
+    }
+
+    public function tab_newsletter()
+    {
+        echo ' <li class="nav-item position-relative last-nav-item">
+            <a class="nav-link d-flex flex-row-reverse tab-select" id="news-tab" data-toggle="tab" href="#news" data-content="#newsletter">
+                <p>'.__('News','gen-theme-base').'</p>
+            </a>
+        </li>';
     }
 }
 

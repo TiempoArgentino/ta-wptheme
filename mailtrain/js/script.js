@@ -137,4 +137,7 @@
             });
         }
     });
+    $(document).on('click','#button-ma-widget-front', function(){
+        $('#sobre').hide();
+    });
 })(jQuery);
