@@ -136,6 +136,38 @@ class TA_Article extends TA_Article_Data{
         return $thumb_data;
     }
 
+    protected function get_thumbnail_alt_common($variation = null, $size = 'full'){
+        $thumbnail_id = get_post_meta($this->post->ID, 'ta_article_thumbnail_alt', true);
+        $attachment = $thumbnail_id ? get_post( $thumbnail_id ) : null;
+        $thumb_data = null;
+
+        if( !$attachment ){
+            $thumb_data = array(
+                'attachment'    => null,
+                'url'           => TA_IMAGES_URL . '/article-no-image.jpg',
+                'caption'       => '',
+                'author'        => null,
+                'position'      => null,
+                'alt'           => __('No hay imagen', 'ta-genosha'),
+                'is_default'    => true,
+            );
+        }
+        else {
+            $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+            $thumb_data = array(
+                'attachment'    => $attachment,
+                'url'           => wp_get_attachment_image_url($attachment->ID, $size, false),
+                'caption'       => has_excerpt($attachment) ? get_the_excerpt($attachment) : '',
+                'author'        => get_post_meta( $attachment->ID, 'ta_attachment_author', true ),
+                'position'      => ta_get_attachment_positions($attachment->ID),
+                'alt'           => $alt ? $alt : '',
+                'is_default'    => false,
+            );
+        }
+
+        return $thumb_data;
+    }
+
     /**
     *   @return string
     */

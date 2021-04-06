@@ -313,3 +313,118 @@ function ta_is_featured_section($slug){
 
     return false;
 }
+
+/**
+ * Insert an attachment from an URL address.
+ *
+ * @param  String $url
+ * @param  Int    $parent_post_id
+ * @return Int    Attachment ID
+ */
+function crb_insert_attachment_from_url($url, $parent_post_id = null) {
+
+	if( !class_exists( 'WP_Http' ) )
+		include_once( ABSPATH . WPINC . '/class-http.php' );
+
+	$http = new WP_Http();
+	$response = $http->request( $url );
+
+	if( is_wp_error($response) || $response['response']['code'] != 200 ) {
+        er();
+		return false;
+	}
+
+	$upload = wp_upload_bits( basename($url), null, $response['body'] );
+	if( !empty( $upload['error'] ) ) {
+		return false;
+	}
+
+	$file_path = $upload['file'];
+	$file_name = basename( $file_path );
+	$file_type = wp_check_filetype( $file_name, null );
+	$attachment_title = sanitize_file_name( pathinfo( $file_name, PATHINFO_FILENAME ) );
+	$wp_upload_dir = wp_upload_dir();
+
+	$post_info = array(
+		'guid'           => $wp_upload_dir['url'] . '/' . $file_name,
+		'post_mime_type' => $file_type['type'],
+		'post_title'     => $attachment_title,
+		'post_content'   => '',
+		'post_status'    => 'inherit',
+	);
+
+	// Create the attachment
+	$attach_id = wp_insert_attachment( $post_info, $file_path, $parent_post_id );
+
+	// Include image.php
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+	// Define attachment metadata
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $file_path );
+
+	// Assign metadata to attachment
+	wp_update_attachment_metadata( $attach_id,  $attach_data );
+
+	return $attach_id;
+
+}
+
+function create_new_edicion_impresa($args){
+    if(!$args || !is_array($args))
+        return false;
+
+    $default_args = array(
+        'oldId'                                 => null,
+        'printededition_date'                   => '',
+        'printededition_issueyear'              => '',
+        'printededition_issuenumber'            => '',
+        'printededition_issuefile'              => '',
+        'printededition_coversmall'             => '',
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+
+    $issuefile_attachment_id = crb_insert_attachment_from_url($printededition_issuefile);
+    $cover_attachment_id = crb_insert_attachment_from_url($printededition_coversmall);
+
+    if(!$issuefile_attachment_id || !$cover_attachment_id)
+        return false;
+
+    $import_date = $printededition_date;
+    $post_date = date("Y-m-d H:i:s", strtotime($import_date));
+
+    wp_insert_post(array(
+        'post_type'     => 'ta_ed_impresa',
+        'post_title'    => $post_date,
+        'post_date'     => $post_date,
+        'post_status'   => 'publish',
+        '_thumbnail_id' => $cover_attachment_id,
+        'meta_input'    => array(
+            'oldId'                             => $oldId,
+            'issueyear'                         => $printededition_issueyear,
+            '_issuenumber'                      => $printededition_issuenumber,
+            'issuefile_attachment_id'           => $issuefile_attachment_id,
+        ),
+    ));
+}
+
+function get_etiquetas($request){
+	// init the resource
+	$ch = curl_init();
+
+	curl_setopt_array($ch, array(
+		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
+		CURLOPT_RETURNTRANSFER    	=> true,
+		CURLOPT_POST				=> true,
+		CURLOPT_HTTPHEADER			=> 'Content-Type: application/json',
+		CURLOPT_POSTFIELDS			=> $request->get_body(),
+	));
+
+	// execute
+	$output = curl_exec($ch);
+
+	// free
+	curl_close($ch);
+
+	return $output;
+}
