@@ -3,10 +3,6 @@ const autoprefixer = require( 'autoprefixer' );
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const glob = require('glob');
 
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'); // $& means the whole matched string
-}
-
 //Generate object for webpack entry
 var entryObject = glob.sync(paths.relativeBlocksJS).reduce(
     function (entries, entry) {
@@ -23,12 +19,79 @@ var entryObject = glob.sync(paths.relativeBlocksJS).reduce(
     {}
 );
 
+console.log('ENTRIES:', entryObject);
+
 module.exports = {
     entry: entryObject,
-	output: {
-		filename: 'blocks/[name]/block.min.js',//'moduleName/script.js', [name] - key from entryObject
+    output: {
+        filename: (data) => {
+            console.log('Output file name:', data.chunk.name);
+            return `blocks/${data.chunk.name}/block.min.js`;
+        }, //'moduleName/script.js', [name] - key from entryObject
         path: paths.prod,
-		// chunkLoadingGlobal: 'testConfigChunks',
+        // chunkLoadingGlobal: 'testConfigChunks',
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: ({
+                chunk
+            }) => function() {
+                console.log('CHUNK NAME: ', chunk.name, '\n\n');
+                if (chunk.name) {
+                    if (chunk.name.startsWith('editorStyles__')) {
+                        return `blocks/${chunk.name.replace('editorStyles__', '')}/css/editor.min.css`;
+                    } else if (chunk.name.startsWith('frontStyles__')) {
+                        return `blocks/${chunk.name.replace('frontStyles__', '')}/css/style.min.css`;
+                    }
+                }
+                return `css/${chunk.name}-styles.min.css`;
+            },
+            // chunkFilename: "[name].css",
+        })
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                // blocksJs: {
+                // 	name: module => {
+                // 		return blockNameByMainScriptModule(module);
+                // 	},
+                // 	test: module => {
+                // 		return blockNameByMainScriptModule(module);
+                // 	},
+                // 	chunks: 'all',
+                // 	enforce: true,
+                // },
+                editorStyles: {
+                    name: module => {
+                        return blockNameByStyleModule(module, 'editor', 'editorStyles__');
+                    },
+                    test: (module, chunks) => {
+                        return module.type == 'css/mini-extract' && blockNameByStyleModule(module, 'editor', 'editorStyles__');
+                    },
+                    chunks: 'all',
+                    reuseExistingChunk: true,
+                    enforce: true,
+                },
+                frontStyles: {
+                    name: module => {
+                        return blockNameByStyleModule(module, 'style', 'frontStyles__');
+                    },
+                    test: module => {
+                        return module.type == 'css/mini-extract' && blockNameByStyleModule(module, 'style', 'frontStyles__');
+                    },
+                    chunks: 'all',
+                    enforce: true,
+                },
+                // styles: {
+                // 	name: 'styles',
+                // 	test: /\.s?css$/,
+                // 	chunks: 'all',
+                // 	enforce: true,
+                // 	priority: 20,
+                // },
+            }
+        },
     },
     module: {
         rules: [
@@ -42,7 +105,58 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.(scss|css)$/,
+                oneOf: [
+                    {
+                        test: function(name){
+                            return isEditorStylePath(name) || isFrontStylePath(name);
+                        },
+                        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                    },
+                    {
+                        test: name => true,
+                        use: ["style-loader", "css-loader", "sass-loader"],
+                    }
+                ]
+            },
         ]
     },
 	externals: require( paths.externals ),
 };
+
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'); // $& means the whole matched string
+}
+
+function isBlockCssPath(stylePath, cssFilename){
+	const path = require('path');
+    const pathSep = escapeRegExp(path.sep);
+	//gutenberg\\src\\blocks\\(.+?(?=\\))\\css\\${cssFilename}\.s?css$
+    const expresion = new RegExp(`gutenberg${pathSep}src${pathSep}blocks${pathSep}(.+?(?=${pathSep}))${pathSep}css${pathSep}${cssFilename}\\.s?css`);
+    const match = stylePath.match(expresion);
+    return match ? `${match[1]}` : null;
+}
+
+function blockNameByStyleModule(module, cssFilename = 'editor', prefix = '') {
+    const blockName = isBlockCssPath(module.identifier(), cssFilename);
+    return blockName ? `${prefix}${blockName}` : null;
+}
+
+function blockNameByMainScriptModule(module) {
+    const path = require('path');
+    const pathSep = escapeRegExp(path.sep);
+    //gutenberg\\src\\blocks\\(.+?(?=\\))\\css\\block.js$
+    const expresion = new RegExp(`gutenberg${pathSep}src${pathSep}blocks${pathSep}(.+?(?=${pathSep}))${pathSep}block\\.js`);
+    const match = module.identifier().match(expresion);
+    return match ? `${match[1]}` : null;
+}
+
+function isEditorStylePath(stylePath){
+	return isBlockCssPath(stylePath, 'editor');
+}
+
+function isFrontStylePath(stylePath){
+    return isBlockCssPath(stylePath, 'style');
+}
