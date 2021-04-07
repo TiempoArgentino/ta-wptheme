@@ -22,8 +22,9 @@ add_action( 'rest_api_init', function () {
 		       	'meta_value'       	=> $oldId,
 			));
 
-			if( $query->have_posts() )
-				return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
+            // Check if this article has been uploaded based on oldId
+			// if( $query->have_posts() )
+			// 	return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
 
 			$ed_impresa_id = create_new_edicion_impresa($args);
 
