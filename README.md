@@ -2,6 +2,7 @@
 
 # Scripts
 
+- `yarn install`: Installs the required dependencies
 - `yarn workspaces run start`: Starts development mode for all modules
 - `yarn workspaces run build`: Run builds scripts for all modules
 

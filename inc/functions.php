@@ -386,25 +386,27 @@ function create_new_edicion_impresa($args){
     $issuefile_attachment_id = crb_insert_attachment_from_url($printededition_issuefile);
     $cover_attachment_id = crb_insert_attachment_from_url($printededition_coversmall);
 
-    if(!$issuefile_attachment_id || !$cover_attachment_id)
-        return false;
+    // if(!$issuefile_attachment_id || !$cover_attachment_id)
+    //     return new WP_Error( 'attachment_upload_fail', __( "Ha habido un error al intentar crear los attachments necesarios para esta edicion impresa", "ta-theme" ) );
 
     $import_date = $printededition_date;
     $post_date = date("Y-m-d H:i:s", strtotime($import_date));
 
-    wp_insert_post(array(
+    $insert_result = wp_insert_post(array(
         'post_type'     => 'ta_ed_impresa',
         'post_title'    => $post_date,
         'post_date'     => $post_date,
         'post_status'   => 'publish',
-        '_thumbnail_id' => $cover_attachment_id,
+        '_thumbnail_id' => $cover_attachment_id ? $cover_attachment_id : null,
         'meta_input'    => array(
             'oldId'                             => $oldId,
             'issueyear'                         => $printededition_issueyear,
             '_issuenumber'                      => $printededition_issuenumber,
-            'issuefile_attachment_id'           => $issuefile_attachment_id,
+            'issuefile_attachment_id'           => $issuefile_attachment_id ? $issuefile_attachment_id : null,
         ),
     ));
+
+    return $insert_result; // WP_Error | 0 | post_id
 }
 
 function get_etiquetas($request){
