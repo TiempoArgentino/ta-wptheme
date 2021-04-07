@@ -104,13 +104,13 @@
                     </button>
                 </div>
                 <div class="tiempo-logo mr-lg-5">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt="">
+                    <a href="<?php echo home_url()?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
                 </div>
                 <div
                     class="weather d-none d-lg-flex flex-column align-content-center justify-content-start text-left  mr-5">
                     <div class="mt-2">
                         <div class="date">
-                            <p>Mié. 2 de Septiembre de 2020</p>
+                            <p class="text-capitalize"><?php echo date_i18n('l, j F , Y');?></p>
                         </div>
                         <div class="temp-city ta-gris-color">
                             <p>11.4º C <span>| Buenos Aires | Clima en todo el país</span></p>
@@ -126,16 +126,16 @@
                     </div>
                 </button>
                 <div class="profile-icon">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" class="img-fluid" alt="">
+                <a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" class="img-fluid" alt=""></a>
                 </div>
             </div>
             <div class="asociate-banner position-relative">
                 <div class="asociate-banner-bg">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt="">
+                <a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
                 </div>
                 <div class="asociate-banner-content position-absolute">
                     <div class="separator"></div>
-                    <p class="mt-1">ASOCIATE</p>
+                    <p class="mt-1"><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">ASOCIATE</a></p>
                 </div>
             </div>
         </div>

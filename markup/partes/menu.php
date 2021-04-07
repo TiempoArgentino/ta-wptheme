@@ -21,7 +21,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     </button>
                 </div>
                 <div class="tiempo-menu-logo mb-lg-3">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/ta-min-logo-color.svg" class="img-fluid" alt="">
+                <a href="<?php echo home_url()?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/ta-min-logo-color.svg" class="img-fluid" alt=""></a>
                 </div>
             </div>
             <div class="d-flex d-lg-none justify-content-between">
@@ -32,7 +32,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     </div>
                 </button>
                 <div class="profile-icon">
-                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" class="img-fluid" alt="">
+                <a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" class="img-fluid" alt=""></a>
                 </div>
             </div>
         </div>
@@ -93,7 +93,11 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                         <a href="">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" alt="">
-                                <p>INGRESAR</p>
+                                <?php if(is_user_logged_in()): ?>
+                                <p><a href="<?php echo get_permalink( get_option('user_panel_page') )?>">PERFIL</a></p>
+                                <?php else: ?>
+                                <p><a href="<?php echo get_permalink( get_option('user_login_page') )?>">INGRESAR</a></p>
+                                <?php endif;?>
                             </div>
                         </a>
                     </div>
@@ -103,14 +107,14 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                         <a href="">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-socios.svg" alt="">
-                                <h5>SEAMOS SOCIOS</h5>
+                                <h5><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">SEAMOS SOCIOS</a></h5>
                             </div>
                         </a>
                     </div>
                     <div class="menu-item">
                         <a href="">
                             <div>
-                                <p class="pl-3">Beneficios para socios</p>
+                                <p class="pl-3"><a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">Beneficios para socios</a></p>
                             </div>
                         </a>
                     </div>
