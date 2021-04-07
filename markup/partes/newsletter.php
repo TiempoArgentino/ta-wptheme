@@ -25,7 +25,7 @@
             </div>
             <div class="newsletter-options mt-4">
                 <p><span>></span> <?php echo __('Para ver más opciones ingresá acá:','gen-theme-base')?></p>
-                <button class="uppercase"><?php echo __('PERSONALIZAR','gen-theme-base')?></button>
+                <button class="uppercase"><?php echo __('Explorar Newsletters','gen-theme-base')?></button>
             </div>
         </div>
     </div>
