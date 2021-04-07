@@ -71,3 +71,6 @@
     max-width: min-content;
     padding: 0.2rem;
 }
+li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
+    display: none;
+}

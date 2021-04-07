@@ -224,6 +224,4 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Test Column'
     'column_class'  => 'test-class',
 ));
 
-
-
 ?>
