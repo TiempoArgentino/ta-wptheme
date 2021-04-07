@@ -3,3 +3,4 @@
 /node_modules
 /inc/modules/*/index.min.js
 /components/*/dist/index.min.js
+/inc/gutenberg/dist
