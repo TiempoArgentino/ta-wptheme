@@ -18,7 +18,7 @@ $articles = get_ta_articles_from_query(array(
 ?>
 
 <?php get_header(); ?>
-    <?php ta_print_header();  ?>
+ 
     <div class="py-3">
         <div class="container">
             <div class="section-title">

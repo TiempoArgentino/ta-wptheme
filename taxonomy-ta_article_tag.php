@@ -19,7 +19,7 @@ $articles = get_ta_articles_from_query(array(
 ?>
 
 <?php get_header(); ?>
-    <?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+
     <div class="tag-profile mt-3">
         <div class="container d-flex">
             <div class="section-title d-flex align-items-center mr-2">

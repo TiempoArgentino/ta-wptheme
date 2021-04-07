@@ -1,5 +1,5 @@
 <?php get_header() ?>
-<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+
 <?php do_action('before_panel_user')?>
 
 <div class="container ta-context user-tabs gray-border mt-2 my-lg-5">

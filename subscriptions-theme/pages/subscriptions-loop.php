@@ -1,5 +1,5 @@
 <?php get_header() ?>
-<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+
 
 <div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
     <div class="line-height-0">

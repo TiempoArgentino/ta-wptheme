@@ -38,7 +38,7 @@ $article = TA_Article_Factory::get_article($post);
 // }, $article_data->tags) : null;
 ?>
 <?php get_header(); ?>
-<?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+
 <?php
 //
 // if($posts && !empty($posts)){

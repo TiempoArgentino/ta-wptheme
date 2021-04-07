@@ -19,7 +19,7 @@ $articles = get_ta_articles_from_query(array(
 ?>
 
 <?php get_header(); ?>
-    <?php include_once(TA_THEME_PATH . '/markup/partes/header.php');  ?>
+
     <?php if( $author->description || $author->quote ): ?>
     <div class="mt-3">
         <div class="container">
