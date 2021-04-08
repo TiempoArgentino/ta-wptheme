@@ -42,24 +42,20 @@ do_action('header_thankyou_page');
                                 <h4 class="italic m-0"></h4>
                             </div>
                             <div class="asociate-wrapper">
-                                <div class="subtitle text-center mt-4">
+                                <!--<div class="subtitle text-center mt-4">
                                     <p>Muy pronto alguien de Tiempo Argentino te escribirá por e-mail para efectuar el pago.</p>
-                                </div>
-                                <!--<div class="title text-center mt-5">
-                                    <p><b>¿Querés contarnos un poco más de vos?</b></p>
+                                </div>-->
+                                <div class="title text-center mt-5">
+                                    <p><b><?php echo __('¿Querés contarnos un poco más de vos?','gen-theme-base')?></b></p>
                                 </div>
                                 <div class="text-center">
-                                    <p>De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias</p>
+                                    <p><?php echo __('De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias','gen-theme-base')?></p>
                                 </div>
                                 <div class="btns-container text-center">
-                                    <button>Personalizar</button>
+                                    <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('Personalizar','gen-theme-base')?></a></button>
                                 </div>
-                                <div class="text-center mt-4">
-                                    <p>o podés seguir navegando nuestro sitio y personalizar, desde tu perfil de usuario, en
-                                        otro momento</p>
-                                </div>-->
                                 <div class="btns-container text-center">
-                                    <button class="gray-btn-black-text"><a href="<?php echo home_url()?>">ir al sitio</a></button>
+                                    <button class="gray-btn-black-text"><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-theme-base')?></a></button>
                                 </div>
                             </div>
                         </div>

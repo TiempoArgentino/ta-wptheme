@@ -277,7 +277,7 @@
                                 <h6 class="mt-2"><?php echo sprintf(__('Podrás %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b> ' . __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
-                                <h6><?php echo __('Si deseas obtener ayuda con el proceso de asociación, podés escribir un mail a', 'gen-base-theme') ?>
+                                <h6><?php echo __('Si necesitás ayuda escibinos a', 'gen-base-theme') ?>
                                 </h6>
                                 <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender'); ?>"><?php echo get_option('subscriptions_email_sender'); ?></a>
                                 </h6>

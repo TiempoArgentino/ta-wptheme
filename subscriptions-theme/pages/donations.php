@@ -2,129 +2,308 @@
 
 
 <div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
-    <div class="line-height-0">
+    <div class="line-height-0 donation-container">
         <div class="separator m-0"></div>
     </div>
-    <div class="asociate-block-container">
-            <!-- loop container -->
-            <div class="section-title p-2">
-                <h4><?php echo __('apoyanos', 'gen-base-theme') ?><span class="ml-2"><?php echo __('ELEGÍ TU APORTE', 'gen-base-theme') ?></span></h4>
-            </div>
+    <div class="asociate-block-container donation-container">
+        <!-- loop container -->
+        <div class="section-title p-2">
+            <h4><?php echo __('apoyanos', 'gen-base-theme') ?><span class="ml-2"><?php echo __('ELEGÍ TU APORTE', 'gen-base-theme') ?></span></h4>
+        </div>
 
-            <div class="container">
-                <div class="container-with-header">
-                    <div class="py-2">
-                        <div class="subs-opt mt-3 mt-md-5">
-                            <div class="title text-center donation-section-title">
-                                <h4 class="italic"><?php echo __('Tu aporte nos hace posible llevar adelante nuestra labor periodística', 'gen-base-theme') ?></h4>
-                            </div>
-                            <div class="text-center subtitle-donations mt-5">
-                                <strong>Selecciona el importe con que deseas colaborar</strong>
-                            </div>
-                            <div class="opt-list">
-                                <div class="d-flex flex-column flex-lg-row justify-content-center">
-                                    <?php
-                                    $args = array(
-                                        'post_type' => 'subscriptions',
-                                        'meta_query' => [
-                                            'relation' => 'AND',
-                                            [
-                                                'key' => '_is_donation',
-                                                'compare' => 'EXISTS'
-                                            ],
-                                            [
-                                                'key' => '_is_donation',
-                                                'value' => ['1'],
-                                                'compare' => 'IN'
-                                            ],
-                                        ]
-                                    );
-                                    $query = new WP_Query($args);
+        <div class="container">
+            <div class="container-with-header">
+                <div class="py-2">
+                    <div class="subs-opt mt-3 mt-md-5">
+                        <div class="title text-center donation-section-title">
+                            <h4 class="italic"><?php echo __('Tu aporte nos hace posible llevar adelante nuestra labor periodística', 'gen-base-theme') ?></h4>
+                        </div>
+                        <div class="text-center subtitle-donations mt-5">
+                            <strong>Selecciona el importe con que deseas colaborar</strong>
+                        </div>
+                        <div class="opt-list">
+                            <div class="d-flex flex-column flex-lg-row justify-content-center">
+                                <?php
+                                $args = array(
+                                    'post_type' => 'subscriptions',
+                                    'meta_query' => [
+                                        'relation' => 'AND',
+                                        [
+                                            'key' => '_is_donation',
+                                            'compare' => 'EXISTS'
+                                        ],
+                                        [
+                                            'key' => '_is_donation',
+                                            'value' => ['1'],
+                                            'compare' => 'IN'
+                                        ],
+                                    ]
+                                );
+                                $query = new WP_Query($args);
 
-                                    if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+                                if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 
 
-                                            $price_main = get_post_meta(get_the_ID(), '_s_price', true);
-                                            $prices_extra = get_post_meta(get_the_ID(), '_prices_extra', true);
-                                            if ($prices_extra) {
-                                                array_push($prices_extra, $price_main);
-                                            }
-                                            $price_min = !$prices_extra ? $price_main : min($prices_extra);
-                                            $paper = get_post_meta($post->ID, '_physical', true);
+                                        $price_main = get_post_meta(get_the_ID(), '_s_price', true);
+                                        $prices_extra = get_post_meta(get_the_ID(), '_prices_extra', true);
+                                        if ($prices_extra) {
+                                            array_push($prices_extra, $price_main);
+                                        }
+                                        $price_min = !$prices_extra ? $price_main : min($prices_extra);
+                                        $paper = get_post_meta($post->ID, '_physical', true);
 
-                                    ?>
-                                            <div class="col-12 col-lg-6 p-0 pr-lg-3 item-subscription item-donation">
-                                                <div class="opt digital py-3">
-                                                    <div class="container">
-                                                        <div class="content">
-                                                            <div class="container p-0">
-                                                                <div class="amounts d-flex flex-wrap">
-                                                                    <div class="col-6 col-lg-4 p-1">
-                                                                        <div class="amount">
-                                                                            <button class="price" data-id="<?php echo get_the_ID() ?>" data-price="<?php echo get_post_meta(get_the_ID(), '_s_price', true) ?>">
-                                                                                <p><?php echo get_option('subscriptions_currency_symbol', 'ARS') . ' ' . get_post_meta(get_the_ID(), '_s_price', true) ?></p>
-                                                                            </button>
-                                                                        </div>
+                                ?>
+                                        <div class="col-12 col-lg-6 p-0 pr-lg-3 item-subscription item-donation">
+                                            <div class="opt digital py-3">
+                                                <div class="container">
+                                                    <div class="content">
+                                                        <div class="container p-0">
+                                                            <div class="amounts d-flex flex-wrap">
+                                                                <div class="col-6 col-lg-4 p-1">
+                                                                    <div class="amount">
+                                                                        <button class="price" data-id="<?php echo get_the_ID() ?>" data-price="<?php echo get_post_meta(get_the_ID(), '_s_price', true) ?>">
+                                                                            <p><?php echo get_option('subscriptions_currency_symbol', 'ARS') . ' ' . get_post_meta(get_the_ID(), '_s_price', true) ?></p>
+                                                                        </button>
                                                                     </div>
-                                                                    <?php
-                                                                    if (get_post_meta(get_the_ID(), '_prices_extra', true) && count(get_post_meta(get_the_ID(), '_prices_extra', true)) > 0) {
-                                                                        foreach (get_post_meta(get_the_ID(), '_prices_extra', true) as $key => $value) {
-                                                                            echo '<div class="col-6 col-lg-4 p-1">
+                                                                </div>
+                                                                <?php
+                                                                if (get_post_meta(get_the_ID(), '_prices_extra', true) && count(get_post_meta(get_the_ID(), '_prices_extra', true)) > 0) {
+                                                                    foreach (get_post_meta(get_the_ID(), '_prices_extra', true) as $key => $value) {
+                                                                        echo '<div class="col-6 col-lg-4 p-1">
                                                                                 <div class="amount">
                                                                                     <button class="price" data-id="' . get_the_ID() . '" data-price="' . $value . '">
                                                                                         <p>' . get_option('subscriptions_currency_symbol', 'ARS') . ' ' . $value . '</p>
                                                                                     </button>
                                                                                 </div>
                                                                             </div>';
-                                                                        }
                                                                     }
-                                                                    ?>
-                                                                    <?php
-                                                                    if (get_post_meta(get_the_ID(), '_price_custom', true)) {
-                                                                        echo ' <div class="col-6 col-lg-12 p-1">
+                                                                }
+                                                                ?>
+                                                                <?php
+                                                                if (get_post_meta(get_the_ID(), '_price_custom', true)) {
+                                                                    echo ' <div class="col-6 col-lg-12 p-1">
                                                                         <div class="amount other price-custom">
                                                                             <button class="custom-price-button open-price" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
                                                                                 <p>' . __('aportar más', 'gen-base-theme') . '</p>
                                                                             </button>
                                                                         </div>
                                                                     </div>';
-                                                                    }
-                                                                    ?>
-                                                                </div>
-                                                                <div class="btns-container">
-                                                                    <div class="d-flex justify-content-center mx-auto uppercase mt-3">
-                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="donation" id="button<?php echo get_the_ID() ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
-                                                                    </div>
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                            <div class="btns-container">
+                                                                <div class="d-flex justify-content-center mx-auto uppercase mt-3">
+                                                                    <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="donation" id="button<?php echo get_the_ID() ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php
-                                        endwhile;
-                                        wp_reset_postdata();
-                                        ?>  
+                                        </div>
+
+                                    <?php
+                                    endwhile;
+                                    wp_reset_postdata();
+                                    ?>
+                            </div>
+                            <div class="row flex-column pb-5">
+                                <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5 ">
+                                    <?php echo sprintf(__('Para recibir ayuda con el proceso de tu colaboración podés escribir un mail a %s', 'gen-theme-base'), '<a href="mailto:' . get_option('subscriptions_email_sender') . '" class="notif-link">' . get_option('subscriptions_email_sender') . '</a>') ?>
                                 </div>
-                                    <div class="row flex-column pb-5">
-                                        <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5 ">
-                                            <?php echo sprintf(__('Para recibir ayuda con el proceso de tu colaboración podés escribir un mail a %s','gen-theme-base'),'<a href="mailto:'.get_option('subscriptions_email_sender').'" class="notif-link">'.get_option('subscriptions_email_sender').'</a>') ?>
-                                        </div>
-                                        <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5">
-                                            <?php echo __('Si sos jubilado, estudiante o podés colaborar con un importe menor','gen-theme-base') ?>
-                                            <div class="btns-container text-center mt-3">
-                                                <a href="#" class="login-btn gray-btn-black-text"><?php echo __('INGRESA ACÁ','gen-theme-base')?></a>
-                                            </div>
-                                        </div>
+                                <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5">
+                                    <?php echo __('Si sos jubilado, estudiante o podés colaborar con un importe menor', 'gen-theme-base') ?>
+                                    <div class="btns-container text-center mt-3">
+                                        <button type="button" class="login-btn gray-btn-black-text" id="discount-button"><?php echo __('INGRESA ACÁ', 'gen-theme-base') ?></button>
                                     </div>
-                            <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- loop container -->
+    </div>
+    <!-- discounts -->
+    <div class="container ta-context apoyanos gray-border mt-2 my-lg-5" id="discount-data">
+        <div class="line-height-0">
+            <div class="separator m-0"></div>
+        </div>
+        <div class="apoyanos-block-container">
+            <div class="section-title p-2">
+                <h4>apoyanos<span class="ml-2">SOLICITAR UN DESCUENTO</span></h4>
+            </div>
+            <div class="container">
+                <div class="container-with-header">
+                    <div class="py-2">
+                    <?php
+                                $args = array(
+                                    'post_type' => 'subscriptions',
+                                    'meta_query' => [
+                                        'relation' => 'AND',
+                                        [
+                                            'key' => '_is_donation',
+                                            'compare' => 'EXISTS'
+                                        ],
+                                        [
+                                            'key' => '_is_donation',
+                                            'value' => ['1'],
+                                            'compare' => 'IN'
+                                        ],
+                                    ]
+                                );
+                                $query = new WP_Query($args);
+
+                                if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+
+
+                                        $price_main = get_post_meta(get_the_ID(), '_s_price', true);
+                                        $prices_extra = get_post_meta(get_the_ID(), '_prices_extra', true);
+                                        if ($prices_extra) {
+                                            array_push($prices_extra, $price_main);
+                                        }
+                                        $price_min = !$prices_extra ? $price_main : min($prices_extra);
+                                        $paper = get_post_meta($post->ID, '_physical', true);
+
+                                ?>
+                        <div class="subs-opt mt-3 mt-md-5">
+                            <div class="title text-center">
+                                <h4 class="italic m-0">Desde Tiempo Argentino queremos ofrecerte la </h4>
+                                <h4 class="italic m-0">posibilidad de apoyar
+                                    nuestro medio ofreciendote un </h4>
+                                <h4 class="italic m-0"><span><?php echo get_post_meta(get_the_ID(),'_discount',true)?>% de descuento</span> en tu aporte</h4>
+                            </div>
+                      
+                            <div class="apoyanos-wrapper">
+                            <?php $new_price = ($price_min * 20) / 100;?>
+                                <div class="discount  text-center mt-5">
+                                    <div class="wout-discount-price">
+                                        <p>ANTES: <?php echo get_option('subscriptions_currency_symbol', 'ARS')?> <?php echo $price_min?></p>
+                                    </div>
+                                    <div class="discount-price mx-auto">
+                                        <h4>AHORA: <?php echo get_option('subscriptions_currency_symbol', 'ARS')?> <?php echo $new_price?></h4>
+                                    </div>
+                                </div>
+                                <div class="btns-container text-center mt-4">
+                                <input type="hidden" id="new_price" data-type="donation" data-name="<?php echo get_the_title() ?>" data-id="<?php echo get_the_ID() ?>" value="<?php echo $new_price?>" />
+                                    <button type="button" data-payment_page="<?php echo get_permalink(get_option('subscriptions_payment_page')); ?>" id="next-discount">Siguiente</button>
+                                </div>
+                                <?php
+                                    endwhile;
+                                    wp_reset_postdata();
+                                    ?>
+                                 <?php endif; ?>
+                                <div class="text-center mt-5 ">
+                                    <p>Si necesitás un descuento mayor</p>
+                                </div>
+                                <div class="btns-container text-center mb-5">
+                                    <button class="gray-btn-black-text" id="next-contact">INGRESÁ ACÁ</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- loop container -->
+        </div>
     </div>
+    <!-- discounts -->
+    <!-- form -->
+    <div class="container ta-context apoyanos gray-border mt-2 my-lg-5" id="contact-form">
+    <div class="line-height-0">
+        <div class="separator m-0"></div>
+    </div>
+    <div class="apoyanos-block-container">
+        <div class="section-title p-2">
+            <h4>apoyanos<span class="ml-2">SOLICITAR UN DESCUENTO</span></h4>
+        </div>
+        <div class="container">
+            <div class="container-with-header">
+                <div class="py-2">
+                    <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
+                        <div class="apoyanos-wrapper">
+                            <div class="address-block">
+                                <div class="title text-center mt-4">
+                                    <p><b>Deseamos conocer tu situación:</b>
+                                    </p>
+                                </div>
+                                <div class="subtitle text-center mt-4">
+                                    <p class="m-0">Indicanos tu nombre, tu e-mail y por qué
+                                    </p>
+                                    <p>considerás que necesitás este descuento:</p>
+                                </div>
+                                <div class="form-container mt-4">
+                                    <div class="input-container">
+                                        <input type="text" placeholder="Nombre y Apellido" required name="name" id="name_support_us">
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="email" placeholder="Email" required name="email" id="email_support_us">
+                                    </div>
+                                    <div class="input-container text-center">
+                                        <label for="message">Escribinos un mensaje:</label>
+                                        <textarea rows="8" required name="msg" id="msg_support_us"></textarea>
+                                    </div>
+
+                                    <div class="btns-container text-center my-4">
+                                        <button type="button" id="send-contact">enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- form -->
+    <!-- gracias --> 
+    <div class="container ta-context asociate gray-border mt-2 my-lg-5" id="contact-thankyou">
+    <div class="line-height-0">
+        <div class="separator m-0"></div>
+    </div>
+    <div class="asociate-block-container">
+        <div class="section-title p-2">
+            <h4>apoyanos<span class="ml-2">SOLICITAR UN DESCUENTO</span></h4>
+        </div>
+        <div class="container">
+            <div class="container-with-header">
+                <div class="py-2">
+                    <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
+                        <div class="title text-center">
+                            <h4 class="italic m-0">Gracias <span id="name-thanks"></span></h4>
+                        </div>
+                        <div class="asociate-wrapper">
+                            <div class="subtitle text-center mt-4">
+                                <p>Muy pronto alguien de Tiempo Argentino te
+                                </p>
+                                <p>escribirá por e-mail. Mientras tanto podés </p>
+                                <p>seguir leyendo nuestro sitio.</p>
+                            </div>
+                            <div class="title text-center mt-5">
+                                <p><b>¿Querés contarnos un poco más de vos?</b></p>
+                            </div>
+                            <div class="text-center">
+                                <p>De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias</p>
+                            </div>
+                            <div class="btns-container text-center">
+                                <button>Personalizar</button>
+                            </div>
+                            <div class="text-center mt-4">
+                                <p>o podés seguir navegando nuestro sitio y personalizar en otro momento</p>
+                            </div>
+                            <div class="btns-container text-center">
+                                <button class="gray-btn-black-text">ir al sitio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- gracias --> 
 </div>
 <!-- custom price -->
 <div class="container ta-context asociate gray-border mt-2 my-lg-5" id="custom-price-row">
