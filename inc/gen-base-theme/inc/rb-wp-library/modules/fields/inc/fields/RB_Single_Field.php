@@ -47,7 +47,7 @@ class RB_Single_Field extends RB_Field{
     }
 
     public function get_sanitized_value($value){
-        return is_string($value) ? $value : '';
+        return is_array($value) || is_object($value) ? '' : $value;
     }
 
 }

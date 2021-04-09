@@ -383,8 +383,8 @@ function create_new_edicion_impresa($args){
     $args = array_merge($default_args, $args);
     extract($args);
 
-    $issuefile_attachment_id = crb_insert_attachment_from_url($printededition_issuefile);
-    $cover_attachment_id = crb_insert_attachment_from_url($printededition_coversmall);
+    $issuefile_attachment_id = import_media( array( 'url' => $printededition_issuefile ) );
+    $cover_attachment_id = import_media( array( 'url' => $printededition_coversmall ) );
 
     // if(!$issuefile_attachment_id || !$cover_attachment_id)
     //     return new WP_Error( 'attachment_upload_fail', __( "Ha habido un error al intentar crear los attachments necesarios para esta edicion impresa", "ta-theme" ) );
@@ -428,4 +428,285 @@ function get_etiquetas($request){
 	curl_close($ch);
 
 	return $output;
+}
+
+function import_status_to_string($status_code){
+    $status = 'draft';
+
+    if( $status_code == 20 || $status_code == 21 || $status_code == 23 )
+        $status = 'trash';
+    else if( $status_code == 17 )
+        $status = 'draft';
+    else if( $status_code == 19 )
+        $status = 'publish';
+
+    return $status;
+}
+
+/**
+*   @return WP_Post|null
+*/
+function get_edicion_impresa_by_date($date_string){
+    $timestamp = strtotime($date_string);
+    $date = $timestamp !== false ? getdate($timestamp) : null;
+
+    if( !$date )
+        return null;
+
+    $query = new WP_Query( array(
+        'post_type'     => 'ta_ed_impresa',
+        'date_query'    => array(
+            'year'          => $date['year'],
+            'month'         => $date['mon'],
+            'day'           => $date['mday'],
+            'hour'          => $date['hours'],
+            'minute'        => $date['minutes'],
+            'second'        => $date['seconds'],
+        ),
+    ) );
+
+    return $query && !is_wp_error($query) && $query->have_posts() ? $query->post : null;
+}
+
+/**
+*   @return WP_Error|WP_Term|null
+*/
+function get_or_create_photographer($photographer_data){
+    if( !$photographer_data || !is_array($photographer_data) || !isset($photographer_data['name']) )
+        return null;
+
+    // Photographer already exists
+    $photographer =  get_term_by('name', $photographer_data['name'], 'ta_photographer');
+    if( $photographer )
+        return $photographer;
+
+    $photographer_creation = wp_insert_term($photographer_data['name'], 'ta_photographer');
+    // New term fail
+    if( !$photographer_creation || is_wp_error($photographer_creation) )
+        return $photographer_creation;
+
+    $photographer = get_term($photographer_creation['term_id'], 'ta_photographer');
+    // Get term fail
+    if( !$photographer || is_wp_error($photographer) )
+        return $photographer;
+
+    // Add socials metadata
+    if( isset($photographer_data['social']) && is_array($photographer_data['social']) ){
+        $social_meta = [];
+        $twitter = isset($photographer_data['social']['twitter']) ? $photographer_data['social']['twitter'] : null;
+        $instagram = isset($photographer_data['social']['instagram']) ? $photographer_data['social']['instagram'] : null;
+        $email = isset($photographer_data['social']['email']) ? $photographer_data['social']['email'] : null;
+
+        if( $twitter ){
+            $social_meta['twitter'] = array(
+                'name'      => 'Twitter',
+                'url'       => isset($twitter['url']) ? $twitter['url'] : '',
+                'username'  => isset($twitter['user']) ? $twitter['user'] : '',
+            );
+        }
+
+        if( $instagram ){
+            $social_meta['instagram'] = array(
+                'name'      => 'Instagram',
+                'url'       => isset($instagram['url']) ? $instagram['url'] : '',
+                'username'  => isset($instagram['user']) ? $instagram['user'] : '',
+            );
+        }
+
+        if( $email ){
+            $social_meta['email'] = array(
+                'name'      => 'Email',
+                'username'  => $email,
+            );
+        }
+
+        add_term_meta( $photographer->term_id, 'ta_photographer_networks', $social_meta, true );
+    }
+
+    return $photographer;
+}
+
+function get_attachments($query_args){
+    $query = new WP_Query( array_merge(
+        $query_args,
+        array(
+            'post_type'     => 'attachment',
+            'post_status'   => 'inherit',
+        ),
+    ) );
+
+    return $query && !is_wp_error($query) && $query->have_posts() ? $query->posts : [];
+}
+
+/**
+*   Returns the attachment post of an imported media by its old url
+*   @param string $old_url                                                      URL from the old site
+*/
+function get_imported_attachment_by_old_url($old_url){
+    $attachments = get_attachments(array(
+        'posts_per_page'    => 1,
+        'page'              => 1,
+        'meta_key'         	=> 'old_url',
+        'meta_value'       	=> $old_url,
+    ));
+
+    return $attachments ? $attachments[0] : null;
+}
+
+/**
+*   @return int|WP_Error|false
+*/
+function import_media($media_data){
+    if( !is_array($media_data) || !isset($media_data['url']) )
+        return null;
+
+    // Check if it has already been uploaded
+    $attachment = get_imported_attachment_by_old_url($media_data['url']);
+    if($attachment){
+        return $attachment->ID;
+    }
+
+    // Create new attachment
+    $attachment_id = crb_insert_attachment_from_url($media_data['url']);
+
+    // Return fail
+    if( !$attachment_id || is_wp_error($attachment_id) )
+        return $attachment_id;
+
+    $attachment_data = array(
+        'ID'                => $attachment_id,
+        'tax_input'         => array(),
+        'meta_input'        => array(
+            'old_url'               => $media_data['url'],
+        ),
+    );
+
+    // Attachment title
+    if( isset($media_data['name']) )
+        $attachment_data['post_title'] = $media_data['name'];
+
+    // Photographer
+    $photographer = isset($media_data['author']) ? get_or_create_photographer($media_data['author']) : null;
+
+    if( $photographer && !is_wp_error($photographer) )
+        $attachment_data['tax_input']['ta_photographer'] = [$photographer->term_id];
+
+    // Update with final data
+    wp_update_post($attachment_data);
+
+    return $attachment_id;
+}
+
+/**
+*   @param string[] $tags
+*   @return int[]
+*/
+function get_or_create_tags($tags){
+    $tags_ids = [];
+    if(!is_array($tags))
+        return $tags_ids;
+
+    foreach($tags as $tag_name){
+        $term = get_term_by('name', $tag_name, 'ta_article_tag');
+        if(!$term){
+            $new_term_data = wp_insert_term( $tag_name, 'ta_article_tag');
+            $term = !is_wp_error($new_term_data) ? get_term($new_term_data['term_id'], 'ta_article_tag') : null;
+        }
+        if($term && !is_wp_error($term))
+            $tags_ids[] = $term->term_id;
+    }
+
+    return $tags_ids;
+}
+
+/**
+*   Uploads and returns attachments ids for a gallery
+*/
+function create_gallery($gallery_items){
+    $items_ids = [];
+    if( is_array($gallery_items) && !empty($gallery_items) ){
+        foreach($gallery_items as $gallery_item){
+            $attachment_id = import_media($gallery_item);
+            if($attachment_id && !is_wp_error($attachment_id))
+                $items_ids[] = $attachment_id;
+        }
+    }
+    return $items_ids;
+}
+
+/**
+*   Return the post type of a new imported article based on the import arguments
+*   @return string
+*/
+function get_import_article_post_type($args){
+    $post_type = 'ta_article';
+    if(isset($args['isaudiovisual']) && $args['isaudiovisual'])
+        $post_type = 'ta_audiovisual';
+    else if( isset($args['isphotogallery']) && is_array($args['isphotogallery']) && !empty($args['isphotogallery']) )
+        $post_type = 'ta_fotogaleria';
+    return $post_type;
+}
+
+function create_new_article($args){
+    if(!$args || !is_array($args))
+        return false;
+
+    $default_args = array(
+        'oldId'                                         => null,    // Done
+        'publicslug'                                    => null,    // Done - Saved as meta, ok?
+        'headline'                                      => null,    // Done
+        'section'                                       => null,    // Done
+        'leadtext'                                      => null,    // Done
+        'publicreleasedate'                             => null,    // Done
+        'coverimage'                                    => null,    // Done
+        'mainpicture'                                   => null,    // Done
+        'autores'                                       => null,
+        'articlebody'                                   => null,    // Done
+        'articlekeywords'                               => null,    // Done
+        'status'                                        => null,    // Done
+        'isopinion'                                     => null,    // Done
+        'isaudiovisual'                                 => null,    // Done
+        'printededition_date'                           => null,    // Done
+        'microsite'                                     => null,    // Done
+        'isphotogallery'                                => null,
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+
+    $coverimage_attachment_id = import_media($coverimage);
+    $mainpicture_attachment_id = import_media($mainpicture);
+    $section_term = $section ? get_term_by('slug', $section, 'ta_article_section') : null;
+    $micrositio_term = $microsite ? get_term_by('slug', $microsite, 'ta_article_micrositio') : null;
+    $edicion_impresa_post = $printededition_date ? get_edicion_impresa_by_date($printededition_date) : null;
+    // if(!$issuefile_attachment_id || !$cover_attachment_id)
+    //     return new WP_Error( 'attachment_upload_fail', __( "Ha habido un error al intentar crear los attachments necesarios para esta edicion impresa", "ta-theme" ) );
+
+    $import_date = $publicreleasedate;
+    $post_date = date("Y-m-d H:i:s", strtotime($import_date));
+    $post_type = get_import_article_post_type($args);
+
+    $insert_result = wp_insert_post(array(
+        'post_type'     => $post_type,
+        'post_date'     => $post_date,
+        'post_title'    => $headline,
+        'post_excerpt'  => $leadtext,
+        'post_content'  => "<!-- wp:html -->$articlebody<!-- /wp:html -->",
+        'post_status'   => import_status_to_string($status),
+        '_thumbnail_id' => $mainpicture_attachment_id ? $mainpicture_attachment_id : null,
+        'tax_input'     => array(
+            'ta_article_section'    => $section_term ? [$section_term->term_id] : [],
+            'ta_article_tag'        => get_or_create_tags($articlekeywords),
+            'ta_article_micrositio' => $micrositio_term ? [$micrositio_term->term_id] : [],
+        ),
+        'meta_input'    => array(
+            'oldId'                             => $oldId,
+            'ta_article_isopinion'              => $isopinion,
+            'ta_article_thumbnail_alt'          => $coverimage_attachment_id,
+            'ta_article_edicion_impresa'        => $edicion_impresa_post ? $edicion_impresa_post->ID : null,
+            'ta_article_gallery'                => $post_type == 'ta_fotogaleria' ? create_gallery($isphotogallery) : null,
+            'publicslug'                        => $publicslug,
+        ),
+    ));
+
+    return $insert_result; // WP_Error | 0 | post_id
 }

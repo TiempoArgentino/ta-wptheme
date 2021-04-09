@@ -144,5 +144,25 @@ return array(
                 ),
             ),
         ),
+        'ta_article_edicion_impresa' => array(
+            'settings'  => array(
+                'title'             => __('Edicion Impresa', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'        => array(
+                    'text'   => array(
+                        'label'                 => __('Edicion Impresa', 'ta-genosha'),
+                        // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
+                        'type'                  => 'RB_Post_Selector',
+                        'query_args'            => array(
+                            'post_type'             => 'ta_ed_impresa'
+                        ),
+                    ),
+                ),
+            ),
+        ),
     ),
 );
