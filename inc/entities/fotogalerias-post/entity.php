@@ -1,5 +1,4 @@
 <?php
-
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 return array(
     'id'            => 'ta_fotogaleria',
@@ -37,5 +36,27 @@ return array(
         // ),
     ),
     'metaboxes'     => array(
+        'ta_article_gallery' => array(
+            'settings'  => array(
+                'title'             => __('Galeria', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+                'quick_edit'        => true,
+            ),
+            'input'  => array(
+                'repeater'          => array(
+                    'item_title'        => 'Media ($n)',
+                    'accordion'         => true,
+                ),
+                'controls'		=> array(
+                    'media'      => array(
+                        //'label'     => __('Logo a color', 'ta-genosha'),
+                        'type'          => 'RB_Media_Control',
+                        'store_value'   => 'id',
+                    ),
+                ),
+            ),
+        ),
     ),
 );

@@ -15,14 +15,15 @@ add_action( 'rest_api_init', function () {
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
             $args = $request->get_json_params();
-			$oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
-			$query = new WP_Query(array(
-				'post_type'			=> 'ta_ed_impresa',
-			   	'meta_key'         	=> 'oldId',
-		       	'meta_value'       	=> $oldId,
-			));
 
-            // Check if this article has been uploaded based on oldId
+			// Check if this article has been uploaded based on oldId
+			// $oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
+			// $query = new WP_Query(array(
+			// 	'post_type'			=> 'ta_ed_impresa',
+			//    	'meta_key'         	=> 'oldId',
+		    //    	'meta_value'       	=> $oldId,
+			// ));
+			//
 			// if( $query->have_posts() )
 			// 	return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
 
@@ -40,6 +41,38 @@ add_action( 'rest_api_init', function () {
 	    	return current_user_can( 'edit_others_posts' );
 	    },
 	) );
+
+
+	register_rest_route( 'ta/v1', '/import/article', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$args = $request->get_json_params();
+
+			// Check if this article has been uploaded based on oldId
+			// $oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
+			// $query = new WP_Query(array(
+			// 	'post_type'			=> 'ta_article',
+			// 	'meta_key'         	=> 'oldId',
+			// 	'meta_value'       	=> $oldId,
+			// ));
+			// if( $query->have_posts() )
+			// 	return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
+
+			$article_id = create_new_article($args);
+
+			if( is_wp_error($article_id) )
+				return new WP_REST_Response($article_id->get_error_message(), 500);
+
+			if( $article_id === false )
+				return new WP_REST_Response('Ha habido un error al intentar crear el articulo', 500);
+
+			return new WP_REST_Response($article_id, 200);
+		},
+		'permission_callback' => function () {
+			return current_user_can( 'edit_others_posts' );
+		},
+	) );
+
 
     // Update post meta
 	register_rest_route( 'ta/v1', '/post/meta', array(
