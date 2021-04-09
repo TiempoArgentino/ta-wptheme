@@ -10,10 +10,7 @@
     --ta-cultura: #48b1a7;
     --ta-deportes: #ee813c;
   }
-  
-  .newsletter .envelope-icon {
-    display: none;
-  }
+
   .newsletter p {
     font-family: "Red Hat Display";
     font-style: normal;
@@ -143,4 +140,10 @@
     font-family: "Libre Baskerville";
     text-transform: capitalize;
     font-size: 20px;
+}
+.ta-context.newsletter-especial .envelope-icon, .ta-context .newsletter-personalizar .envelope-icon {
+  display: block !important;
+}
+.envelope-icon.text-left {
+  display: block !important;
 }
