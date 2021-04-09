@@ -469,6 +469,47 @@ function get_edicion_impresa_by_date($date_string){
 }
 
 /**
+*   Returns the social meta value based on imported social data
+*   @param mixed[] $social_data                                                 Imported social data for author/photographer
+*   @return mixed[]
+*/
+function generate_author_social_meta($social_data){
+    $social_meta = [];
+
+    if( !isset($social_data) || !is_array($social_data) || empty($social_data) )
+        return $social_meta;
+
+    $twitter = isset($social_data['twitter']) ? $social_data['twitter'] : null;
+    $instagram = isset($social_data['instagram']) ? $social_data['instagram'] : null;
+    $email = isset($social_data['email']) ? $social_data['email'] : null;
+
+    if( $twitter ){
+        $social_meta['twitter'] = array(
+            'name'      => 'Twitter',
+            'url'       => isset($twitter['url']) ? $twitter['url'] : '',
+            'username'  => isset($twitter['user']) ? $twitter['user'] : '',
+        );
+    }
+
+    if( $instagram ){
+        $social_meta['instagram'] = array(
+            'name'      => 'Instagram',
+            'url'       => isset($instagram['url']) ? $instagram['url'] : '',
+            'username'  => isset($instagram['user']) ? $instagram['user'] : '',
+        );
+    }
+
+    if( $email ){
+        $social_meta['email'] = array(
+            'name'      => 'Email',
+            'username'  => $email,
+        );
+    }
+
+    return $social_meta;
+}
+
+/**
 *   @return WP_Error|WP_Term|null
 */
 function get_or_create_photographer($photographer_data){
@@ -491,39 +532,41 @@ function get_or_create_photographer($photographer_data){
         return $photographer;
 
     // Add socials metadata
-    if( isset($photographer_data['social']) && is_array($photographer_data['social']) ){
-        $social_meta = [];
-        $twitter = isset($photographer_data['social']['twitter']) ? $photographer_data['social']['twitter'] : null;
-        $instagram = isset($photographer_data['social']['instagram']) ? $photographer_data['social']['instagram'] : null;
-        $email = isset($photographer_data['social']['email']) ? $photographer_data['social']['email'] : null;
-
-        if( $twitter ){
-            $social_meta['twitter'] = array(
-                'name'      => 'Twitter',
-                'url'       => isset($twitter['url']) ? $twitter['url'] : '',
-                'username'  => isset($twitter['user']) ? $twitter['user'] : '',
-            );
-        }
-
-        if( $instagram ){
-            $social_meta['instagram'] = array(
-                'name'      => 'Instagram',
-                'url'       => isset($instagram['url']) ? $instagram['url'] : '',
-                'username'  => isset($instagram['user']) ? $instagram['user'] : '',
-            );
-        }
-
-        if( $email ){
-            $social_meta['email'] = array(
-                'name'      => 'Email',
-                'username'  => $email,
-            );
-        }
-
+    $social_meta = isset($photographer_data['social']) ? generate_author_social_meta( $photographer_data['social'] ) : null;
+    if($social_meta && !empty($social_meta))
         add_term_meta( $photographer->term_id, 'ta_photographer_networks', $social_meta, true );
-    }
 
     return $photographer;
+}
+
+/**
+*   @return WP_Error|WP_Term|null
+*/
+function get_or_create_author($author_data){
+    if( !$author_data || !is_array($author_data) || !isset($author_data['name']) )
+        return null;
+
+    // Author already exists
+    $author =  get_term_by('name', $author_data['name'], 'ta_article_author');
+    if( $author )
+        return $author;
+
+    $author_creation = wp_insert_term($author_data['name'], 'ta_article_author');
+    // New term fail
+    if( !$author_creation || is_wp_error($author_creation) )
+        return $author_creation;
+
+    $author = get_term($author_creation['term_id'], 'ta_article_author');
+    // Get term fail
+    if( !$author || is_wp_error($author) )
+        return $author;
+
+    // Add socials metadata
+    $social_meta = isset($author_data['social']) ? generate_author_social_meta( $author_data['social'] ) : null;
+    if($social_meta && !empty($social_meta))
+        add_term_meta( $author->term_id, 'ta_author_networks', $social_meta, true );
+
+    return $author;
 }
 
 function get_attachments($query_args){
@@ -647,6 +690,29 @@ function get_import_article_post_type($args){
     return $post_type;
 }
 
+function generate_article_authors($authors_data){
+    $authors_result = array(
+        'authors'       => array(),
+        'rols'         => array(),
+    );
+
+    if(!$authors_data || !is_array($authors_data) || empty($authors_data))
+        return $authors_result;
+
+    foreach ($authors_data as $author_data) {
+        $author_term = get_or_create_author($author_data);
+        if(!$author_term || is_wp_error($author_term))
+            continue;
+        // Author id
+        $authors_result['authors'][] = $author_term->term_id;
+        // Rol
+        if( isset($author_data['rol']) && $author_data['rol'])
+            $authors_result['rols'][$author_term->term_id] = $author_data['rol'];
+    }
+
+    return $authors_result;
+}
+
 function create_new_article($args){
     if(!$args || !is_array($args))
         return false;
@@ -660,15 +726,15 @@ function create_new_article($args){
         'publicreleasedate'                             => null,    // Done
         'coverimage'                                    => null,    // Done
         'mainpicture'                                   => null,    // Done
-        'autores'                                       => null,
+        'autores'                                       => null,    // Done
         'articlebody'                                   => null,    // Done
         'articlekeywords'                               => null,    // Done
         'status'                                        => null,    // Done
         'isopinion'                                     => null,    // Done
-        'isaudiovisual'                                 => null,    // Done
+        'isaudiovisual'                                 => null,    // Done - Video url missing
         'printededition_date'                           => null,    // Done
         'microsite'                                     => null,    // Done
-        'isphotogallery'                                => null,
+        'isphotogallery'                                => null,    // Done
     );
     $args = array_merge($default_args, $args);
     extract($args);
@@ -684,6 +750,7 @@ function create_new_article($args){
     $import_date = $publicreleasedate;
     $post_date = date("Y-m-d H:i:s", strtotime($import_date));
     $post_type = get_import_article_post_type($args);
+    $authors_creation = generate_article_authors($autores);
 
     $insert_result = wp_insert_post(array(
         'post_type'     => $post_type,
@@ -694,6 +761,7 @@ function create_new_article($args){
         'post_status'   => import_status_to_string($status),
         '_thumbnail_id' => $mainpicture_attachment_id ? $mainpicture_attachment_id : null,
         'tax_input'     => array(
+            'ta_article_author'     => !empty($authors_creation['authors']) ? $authors_creation['authors'] : [],
             'ta_article_section'    => $section_term ? [$section_term->term_id] : [],
             'ta_article_tag'        => get_or_create_tags($articlekeywords),
             'ta_article_micrositio' => $micrositio_term ? [$micrositio_term->term_id] : [],
@@ -704,6 +772,7 @@ function create_new_article($args){
             'ta_article_thumbnail_alt'          => $coverimage_attachment_id,
             'ta_article_edicion_impresa'        => $edicion_impresa_post ? $edicion_impresa_post->ID : null,
             'ta_article_gallery'                => $post_type == 'ta_fotogaleria' ? create_gallery($isphotogallery) : null,
+            'ta_article_authors_rols'           => !empty($authors_creation['rols']) ? $authors_creation['rols'] : [],
             'publicslug'                        => $publicslug,
         ),
     ));

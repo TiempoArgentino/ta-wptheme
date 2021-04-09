@@ -131,6 +131,7 @@ return array(
                         'controller'    => array(// Field Settings
                              'title' => 'Twitter',
                              'collapsible'  => true,
+                             'group'        => true,
                              // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
                          ),
                         'controls'  => array(
@@ -144,6 +145,7 @@ return array(
                         'controller'    => array(// Field Settings
                              'title' => 'Instagram',
                              'collapsible'  => true,
+                             'group'        => true,
                              // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
                          ),
                         'controls'  => array(
@@ -157,6 +159,7 @@ return array(
                         'controller'    => array(// Field Settings
                              'title' => 'Email',
                              'collapsible'  => true,
+                             'group'        => true,
                              // 'description'   => 'Soy la description del grupo dentro del grupo (inception)',
                          ),
                         'controls'  => array(
