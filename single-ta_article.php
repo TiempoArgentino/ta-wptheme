@@ -143,9 +143,15 @@ $articles_interest_block->render(array(
 
     </div>
 </div>
+
 <div class="ta-context dark-blue-bg">
     <?php include_once(TA_THEME_PATH . '/markup/partes/relacionados-tema.php');  ?>
 </div>
+<?php if (sizeof(balancer_front()->show_interest()) > 0) : ?>
+    <div class="ta-context light-blue-bg">
+        <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
+    </div>
+<?php endif; ?>
 <div class="container-md">
     <div class="row">
         <div class="col-12 col-lg-8">
