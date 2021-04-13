@@ -756,7 +756,7 @@ function create_new_article($args){
         'post_type'     => $post_type,
         'post_date'     => $post_date,
         'post_title'    => $headline,
-        'post_excerpt'  => $leadtext,
+        'post_excerpt'  => wp_strip_all_tags($leadtext),
         'post_content'  => "<!-- wp:html -->$articlebody<!-- /wp:html -->",
         'post_status'   => import_status_to_string($status),
         '_thumbnail_id' => $mainpicture_attachment_id ? $mainpicture_attachment_id : null,

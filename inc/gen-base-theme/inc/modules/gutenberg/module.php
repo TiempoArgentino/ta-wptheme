@@ -139,7 +139,7 @@ class GEN_Gutenberg_Build{
 					wp_register_script(
 						"$block_name-block-js", // Handle.
 						"$block_dist_url/block.min.js", // Block.build.js: We register the block here. Built with Webpack.
-						array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
+						array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), // Dependencies, defined above.
 						null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 						true // Enqueue the script in the footer.
 					);

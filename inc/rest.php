@@ -42,7 +42,6 @@ add_action( 'rest_api_init', function () {
 	    },
 	) );
 
-
 	register_rest_route( 'ta/v1', '/import/article', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
@@ -72,7 +71,6 @@ add_action( 'rest_api_init', function () {
 			return current_user_can( 'edit_others_posts' );
 		},
 	) );
-
 
     // Update post meta
 	register_rest_route( 'ta/v1', '/post/meta', array(
@@ -109,8 +107,10 @@ add_action( 'rest_api_init', function () {
             if($posts && !empty($posts)){
                 foreach ($posts as $article_post) {
                     $article = TA_Article_Factory::get_article($article_post, 'article_post');
-                    $article->populate(true);
-                    $articles[] = $article;
+					if($article){
+						$article->populate(true);
+						$articles[] = $article;
+					}
                 }
             }
 
@@ -121,4 +121,35 @@ add_action( 'rest_api_init', function () {
         'permission_callback'	=> '__return_true',
     ) );
 
+	register_rest_route( 'ta/v1', '/authors', array(
+        'methods' 				=> 'POST',
+        'callback' 				=> function($request){
+            $params = $request->get_json_params();
+			$param_args = isset($params['args']) && is_array($params['args']) ? $params['args'] : [];
+            $authors = [];
+            $query_args = array_merge(
+				array(
+					'taxonomy' => 'ta_article_author',
+				),
+				$param_args,
+			);
+			$query = new WP_Term_Query($query_args);
+			$author_terms = $query && !is_wp_error($query) ? $query->get_terms() : null;
+
+            if($author_terms && !empty($author_terms)){
+                foreach ($author_terms as $author_term) {
+                    $author = TA_Author_Factory::get_author($author_term, 'article_author_term');
+					if($author){
+						$author->populate(true);
+						$authors[] = $author;
+					}
+                }
+            }
+
+            $response = new WP_REST_Response($authors, 200);
+            // $response->header('X-WP-TotalPages', $result['total_pages']);
+            return $response;
+        },
+        'permission_callback'	=> '__return_true',
+    ) );
 } );
