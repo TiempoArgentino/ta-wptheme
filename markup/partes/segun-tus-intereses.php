@@ -23,8 +23,7 @@
                     </div>
                 <?php endif;?>
                     <div class="ver-mas">
-                        <button><?php echo __('ver más','gen-theme-base')?><span class="ml-3"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/right-arrow.png"
-                                    alt="" /></span></button>
+                        <button><?php echo __('ver más','gen-theme-base')?><span class="ml-3"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/right-arrow.png" alt="" /></span></button>
                     </div>
                 </div>
             </div>

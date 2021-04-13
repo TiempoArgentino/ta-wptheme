@@ -1560,3 +1560,16 @@ label.form-check-label.payment-title{
     font-weight: 400;
     font-size: 14px;
 }
+
+ul#suggest-ul {
+  list-style: none;
+  width: 100%;
+  font-size: 20px;
+  background: white;
+}
+ul#suggest-ul li {
+  padding: 1.5% 0;
+  border-bottom: dotted 1px lightgray;
+  width: 95%;
+  cursor: pointer;
+}

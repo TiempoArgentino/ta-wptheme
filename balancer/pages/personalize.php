@@ -29,7 +29,7 @@
                                     <div class="input-icon">
                                         <img src="<?php echo get_template_directory_uri()?>/assets/img/localization-icon.svg" alt="">
                                     </div>
-
+                                    <div id="autocompletar"></div>
                                 </div>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                                 <?php foreach(balancer_personalize()->get_tags() as $key => $val):?>
                                         <div class="tema col-12 col-md-4 px-1">
                                             <div class="bg-color">
-                                                <button <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_categories',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_categories',true)) ? 'class="active"' : ''?> type="button">
-                                                <input type="checkbox" name="categorie[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_categories',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_categories',true)) ? 'checked="checked"' : ''?> class="categorie" value="<?php echo $key?>" /><?php echo $val?></button>
+                                                <button <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'class="active"' : ''?> type="button">
+                                                <input type="checkbox" name="categorie[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'checked="checked"' : ''?> class="categorie" value="<?php echo $key?>" /><?php echo $val?></button>
                                             </div>
                                         </div>
                                         <?php endforeach;?>
@@ -121,19 +121,26 @@
                                 <?php if(!empty(balancer_personalize()->get_taxonomies())):?>
                                     <?php foreach(balancer_personalize()->get_taxonomies() as $key => $val): ?>
                                         <?php 
-                            $args = [
-                                'post_type' => get_option('balancer_editorial_post_type'),
-                                'post_per_page' => 1,
-                                'post_status' => 'publish',
-                                'tax_query' => [
-                                    'taxonomy' => get_option('balancer_editorial_taxonomy'),
-                                    'field' => 'term_id',
-                                    'value' => $key
-                                ]
-                            ];
-                            $query = get_posts($args);  
-                            foreach($query as $t):
-                        ?>
+                                            $args = [
+                                                'post_type' => get_option('balancer_editorial_post_type'),
+                                                'numberposts' => 1,
+                                                'post_status' => 'publish',
+                                                'orderby' => 'rand',
+                                                'tax_query' => [
+                                                    'taxonomy' => get_option('balancer_editorial_taxonomy'),
+                                                    'field' => 'term_id',
+                                                    'terms' => $key
+                                                ]
+                                            ];
+                                            $query = get_posts($args);  
+                                            foreach($query as $t):
+                                                $authors = get_the_terms($t->{'ID'},get_option('balancer_editorial_autor'));
+                                                $post_author = [];
+                                                foreach($authors as $a){
+                                                    $post_author[] = $a->{'term_id'};
+                                                }
+                    
+                                        ?>
                                 <div class="articulo col-12 col-md-4">
                                     <button>
                                         <div class="line-height-0">
@@ -144,7 +151,7 @@
                                                 <p><?php echo $val;?></p>
                                             </div>
                                             <div class="description mt-2">
-                                                <p><input type="checkbox" name="ost-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_posts',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_posts',true)) ? 'checked="checked"' : ''?> class="post-item" value="<?php echo $key?>" /><?php echo $t->{'post_title'}?></p>
+                                                <p><input type="checkbox" name="ost-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) ? 'checked="checked"' : ''?> class="post-item" value="<?php echo $key?>" /><?php echo $t->{'post_title'}?></p>
                                             </div>
                                         </div>
                                     </button>
@@ -189,23 +196,44 @@
                             </div>
                             <div class="fotos my-3">
                                 <div class="row flex-wrap">
-                                <?php if(!empty(balancer_personalize()->get_articles())): ?>
-                                    <?php foreach(balancer_personalize()->get_articles() as $p): ?>
+                                <?php if(!empty(balancer_personalize()->get_authors())):?>
+                                    <?php foreach(balancer_personalize()->get_authors() as $key => $val):?>
+                                        <?php 
+                                            $args = [
+                                                'post_type' => get_option('balancer_editorial_post_type'),
+                                                'numberposts' => 1,
+                                                'post_status' => 'publish',
+                                                'orderby' => 'rand',
+                                                'tax_query' => [
+                                                    'taxonomy' => get_option('balancer_editorial_autor'),
+                                                    'field' => 'term_id',
+                                                    'terms' => $key
+                                                ]
+                                            ];
+                                            $query = get_posts($args);  
+                                            foreach($query as $t):
+                                                $taxos = get_the_terms($t->{'ID'},get_option('balancer_editorial_taxonomy'));
+                                                $post_tax = [];
+                                                foreach($taxos as $ta){
+                                                    $post_tax[] = $ta->{'term_id'};
+                                                }
+                    
+                                        ?>
                                     <div class="foto col-6 col-md-3 position-relative d-flex justify-content-center align-items-center mt-md-3">
                                         <div class="foto-block-container">
                                             <button id="firstPhoto">
                                                 <div class="img-container">
-                                                    <img src="<?php echo get_the_post_thumbnail_url($p->{'ID'})?>" alt=""
+                                                    <img src="<?php echo get_the_post_thumbnail_url($t->{'ID'})?>" alt=""
                                                         class="img-fluid">
                                                 </div>
                                                 <div class="checkbox-container">
-                                                <input type="checkbox" name="photo-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_photos',true)) && in_array($p->{'ID'},get_user_meta(wp_get_current_user()->ID,'_personalizer_photos',true)) ? 'checked="checked"' : ''?> class="photo foto-checkbox position-absolute" value="<?php echo $p->{'ID'}?>" />
+                                                <input type="checkbox" data-taxo="<?php echo json_encode($post_tax) ?>" name="photo-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> class="photo foto-checkbox position-absolute" value="<?php echo $key?>" />
                                                     
                                                 </div>
                                             </button>
                                         </div>
                                     </div>
-                                    <?php endforeach?>
+                                    <?php endforeach;endforeach?>
                     <?php endif;?>
                                 </div>
 
