@@ -1,5 +1,6 @@
 :root {
   --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
   --ta-gris-imagen: #ebebeb;
   --ta-celeste-fondos: #ebf7fe;
   --ta-negro-texto: #252b2d;
@@ -12,8 +13,24 @@
   --ta-cultura-bg: #e0fbf9;
   --ta-deportes: #ee813c;
   --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
 }
 
+.podcasts-block .podcast-preview .img-container {
+  width: 100%;
+}
+.podcasts-block .podcast-preview .img-container .img-wrapper {
+  background: initial;
+  background-size: cover;
+  background-position: top left;
+  background-image: url("/assets/images/tiny-art.png");
+  min-height: 75px;
+}
 .podcasts-block .podcast-preview p {
   font-family: "Caladea";
   font-style: normal;
@@ -34,12 +51,120 @@
   font-size: 12px;
   color: var(--ta-gris-subtexto);
 }
+.podcasts-block .podcast-preview.first-podcast .mejs__container {
+  width: 100% !important;
+  background: transparent;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls {
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__button {
+  position: relative;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__button button {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  border: 0 !important;
+  background: transparent;
+  outline: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__button button:focus {
+  outline: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__play:after,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__replay:after {
+  position: absolute;
+  content: "";
+  background: url("/assets/images/play-podcast.svg") no-repeat;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  transition: all 100ms linear;
+  pointer-events: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__pause:after {
+  position: absolute;
+  content: "";
+  background: url("/assets/images/pause-podcast.svg") no-repeat;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  transition: all 100ms linear;
+  pointer-events: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail {
+  padding: 0;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total {
+  height: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total:focus {
+  outline: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-buffering,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-loaded,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-handle,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-current,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-hovered,
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-float {
+  height: 100%;
+  border-radius: 10px;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-loaded {
+  height: 100%;
+  border-radius: 10px;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-total .mejs__time-current {
+  background: var(--ta-celeste) !important;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time-rail .mejs__time-handle-content {
+  display: none;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time {
+  color: var(--ta-celeste);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 55px;
+}
+.podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__time span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 auto;
+  line-height: 21px;
+}
 .podcasts-block .podcast-preview-container {
   overflow-y: auto;
   max-height: 254px;
 }
 
+@media (min-width: 992px) {
+  .podcasts-block .podcast-preview .img-container .img-wrapper {
+    min-height: 105px;
+  }
+}
 @media (min-width: 1200px) {
+  .podcasts-block .podcast-preview .img-container .img-wrapper {
+    min-height: 130px;
+  }
   .podcasts-block .podcast-preview p {
     font-size: 19px;
   }

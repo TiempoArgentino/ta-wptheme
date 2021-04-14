@@ -39,6 +39,13 @@ class Data_Manager{
         return;
     }
 
+    public function __isset($key){
+    	if(null===$this->__get($key)){
+    		return false;
+    	}
+    	return true;
+    }
+
     /**
     *   Sets the value of every property in the default array
     *   @param bool $recursive                                                  Indicates if properties of type Data_Manager should be

@@ -7,6 +7,10 @@ class TA_Author extends TA_Author_Data{
         $this->term = $term;
     }
 
+    public function get_ID(){
+        return $this->term->term_id;
+    }
+
     public function get_name(){
         return $this->term->name;
     }
@@ -17,13 +21,44 @@ class TA_Author extends TA_Author_Data{
     }
 
     public function get_social(){
-        return "redSocialAutorAImplementar";
+        $socials_meta = $this->socials;
+        $social = array(
+            'user'  => '',
+            'url'   => '',
+        );
+
+        if( $socials_meta ){
+            if( isset($socials_meta['twitter']) && isset($socials_meta['twitter']['username']) && $socials_meta['twitter']['username'] ){
+                $social['user'] = $socials_meta['twitter']['username'];
+                $social['url'] = 'https://twitter.com/' . $socials_meta['twitter']['username'];
+            }
+            else if( isset($socials_meta['instagram']) && isset($socials_meta['instagram']['username']) && $socials_meta['instagram']['username'] ){
+                $social['user'] = $socials_meta['instagram']['username'];
+                $social['url'] = 'https://instagram.com/' . $socials_meta['instagram']['username'];
+            }
+        }
+
+        return $social['user'] ? $social : null;
+    }
+
+    public function get_socials(){
+        $socials_meta = get_term_meta($this->term->term_id, "ta_author_networks", true);
+        return $socials_meta;
+    }
+
+    public function get_published_photo_url(){
+        $attachment_id = get_term_meta($this->term->term_id, "ta_author_photo", true);
+        $attachment_url = wp_get_attachment_image_url($attachment_id, 'full', false);
+        return $attachment_url ? $attachment_url : '';
     }
 
     public function get_photo(){
-        $attachment_id = get_term_meta($this->term->term_id, "ta_author_photo", true);
-        $attachment_url = wp_get_attachment_image_url($attachment_id, 'full', false);
+        $attachment_url = $this->get_published_photo_url();
         return $attachment_url ? $attachment_url : TA_ASSETS_URL . '/img/no-author.jpg';
+    }
+
+    public function get_has_photo(){
+        return $this->get_published_photo_url() !== '';
     }
 
     protected function get_archive_url(){

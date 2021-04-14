@@ -779,3 +779,16 @@ function create_new_article($args){
 
     return $insert_result; // WP_Error | 0 | post_id
 }
+
+
+/**
+*   Returns the photographer of an attachment
+*   @param int $attachment_id
+*   @return TA_Photographer|null
+*/
+function ta_get_attachment_photographer($attachment_id){
+    $photographer_terms = get_the_terms($attachment_id, 'ta_photographer');
+    if( !$photographer_terms || is_wp_error($photographer_terms) || empty($photographer_terms) )
+        return null;
+    return TA_Photographer::get_photographer($photographer_terms[0]->term_id);
+}

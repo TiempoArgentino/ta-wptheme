@@ -15,7 +15,6 @@ class RB_Term_Selector extends RB_Field_Control{
     public function get_dropdown(){
         extract($this->settings);
         extract($this->options);
-
         /*Dropdown generation*/
         $dropdown = '';
         $terms = get_terms($this->options);

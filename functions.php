@@ -53,6 +53,7 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 		RB_Filters_Manager::add_action('ta_theme_admin_scripts', 'admin_enqueue_scripts', array(self::class, 'admin_scripts'));

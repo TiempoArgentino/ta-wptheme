@@ -1,0 +1,106 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
+}
+
+.banner-beneficios {
+  background-color: var(--ta-celeste);
+}
+.banner-beneficios .title h2 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  color: white;
+  font-size: 23px;
+  line-height: 112.3%;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.banner-beneficios .subtitle p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  color: white;
+  font-size: 23px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+}
+.banner-beneficios .beneficios-icon {
+  max-width: 43px;
+  height: auto;
+}
+.banner-beneficios .beneficios-steps .step .step-icon div {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.3px;
+  color: white;
+}
+.banner-beneficios .beneficios-steps .step .content p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+.banner-beneficios .beneficios-steps .step .content p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+.beneficio .btns-container button {
+  background-color: transparent;
+  border: 2px solid var(--ta-celeste);
+  color: var(--ta-celeste);
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 19px;
+  line-height: 25px;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .banner-beneficios .title h2 {
+    font-size: 30px;
+    line-height: 112.3%;
+    letter-spacing: -0.5px;
+  }
+  .banner-beneficios .subtitle {
+    margin-left: 55px;
+  }
+  .banner-beneficios .subtitle p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .banner-beneficios .beneficios-steps .step .content p {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+  }
+}
+
+/*# sourceMappingURL=beneficios.css.map */
