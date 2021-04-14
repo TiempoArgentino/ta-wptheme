@@ -61,6 +61,9 @@ const TAAuthorsSelector = (props) => {
                 setDoingInitialFetch(false);
             })();
         }
+        else{
+            setDoingInitialFetch(false);
+        };        
     }, []);
 
     const addAuthor = ( { item } ) => {

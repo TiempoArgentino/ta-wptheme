@@ -126,8 +126,7 @@ const RBAutocomplete = (props) => {
 
     const onInputBlur = () => {
         setTimeout( () => {
-            // setIsFocused(false);
-
+            setIsFocused(false);
         }, 100);
     };
 
