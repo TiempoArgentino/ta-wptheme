@@ -141,5 +141,5 @@ $articles = get_ta_articles_from_query(array(
             </div>
         </div>
     </div>
-    <?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
+
 <?php get_footer(); ?>

@@ -65,5 +65,5 @@ do_action('header_thankyou_page');
         <?php endif; ?>
     </div>
 </div>
-<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
+
 <?php get_footer() ?>

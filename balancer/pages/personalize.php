@@ -227,7 +227,12 @@
                                                         class="img-fluid">
                                                 </div>
                                                 <div class="checkbox-container">
-                                                <input type="checkbox" data-taxo="<?php echo json_encode($post_tax) ?>" name="photo-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> class="photo foto-checkbox position-absolute" value="<?php echo $key?>" />
+                                                <input type="checkbox" 
+                                                data-taxo="<?php echo json_encode($post_tax) ?>"
+                                                 name="photo-item[]" 
+                                                 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> 
+                                                 class="photo foto-checkbox position-absolute"
+                                                  value="<?php echo $key?>" />
                                                     
                                                 </div>
                                             </button>

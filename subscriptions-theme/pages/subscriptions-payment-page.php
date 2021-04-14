@@ -133,5 +133,5 @@ do_action('subscriptions_payment_page_header');
         </div>
     </div>
 </div>
-<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
+
 <?php get_footer() ?>

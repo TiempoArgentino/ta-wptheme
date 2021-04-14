@@ -17,5 +17,5 @@
 </div>
 
 <?php do_action('after_panel_user')?>
-<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
+
 <?php get_footer() ?>

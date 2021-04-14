@@ -197,5 +197,5 @@ $articles_block->render(array(
 <div class="ta-context light-blue-bg">
     <?php   ?>
 </div>
-<?php include_once(TA_THEME_PATH . '/markup/partes/footer.php');  ?>
+
 <?php get_footer(); ?>
