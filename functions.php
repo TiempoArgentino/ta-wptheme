@@ -159,6 +159,7 @@ class TA_Theme{
 	 */
 	static public function get_plugins_assets()
 	{
+		require_once TA_THEME_PATH . '/balancer/functions.php';
 		require_once TA_THEME_PATH . '/user-panel/functions.php';
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
 		require_once TA_THEME_PATH . '/mailtrain/functions.php';
@@ -170,6 +171,7 @@ class TA_Theme{
 	static public function remove_posts() {
 		remove_menu_page( 'edit.php' );
 	}
+
 
 }
 

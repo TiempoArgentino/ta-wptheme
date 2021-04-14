@@ -215,14 +215,15 @@
         $('.close-popup').bind('click', function() {
             $('#pagoExitoso').removeClass('active')
         });
-    
-        $(".tema button").each(function(i, elem) {
+
+   
+        $(".tema button").each(function(i, elem) {           
             var chosenTopic = false
             $(elem).bind('click', function() {
                 if (!chosenTopic) {
-                    $(elem).addClass('active')
+                    $(elem).addClass('active');
                 } else {
-                    $(elem).removeClass('active')
+                    $(elem).removeClass('active')                 
                 }
                 chosenTopic = !chosenTopic
             })
