@@ -26,6 +26,7 @@ const TAArticleAuthorMetaBlock = (props) => {
 
     const metaFieldValue = meta && meta['ta_article_authors_rols'] ? meta['ta_article_authors_rols'] : {};
     const rol = metaFieldValue[author.term.term_id];
+    console.log('metaFieldValue', author.term.name, rol);
     function updateMetaValue( newRol ) {
         const mutatedValue = {...metaFieldValue};
         mutatedValue[author.term.term_id] = newRol;
@@ -53,7 +54,7 @@ const TAArticleAuthorMetaBlock = (props) => {
                         <div className="input-container">
                             <TextControl
                                 label="Rol"
-                                value={ rol }
+                                value={ rol ? rol : '' }
                                 onChange={ updateMetaValue }
                             />
                         </div>

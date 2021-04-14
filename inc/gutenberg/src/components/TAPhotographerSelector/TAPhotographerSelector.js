@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import RBAutocomplete from '../../components/RBAutocomplete/RBAutocomplete';
 import RBAutocompleteList from '../../components/RBAutocompleteList/RBAutocompleteList';
-import TAArticleAuthorMetaBlock from '../../components/TAArticleAuthorMetaBlock/TAArticleAuthorMetaBlock';
 const { apiFetch } = wp;
 import {
     remove as arrayRemove,
 } from 'lodash';
 
-function fetchAuthors({ args }){
+function fetchTermsData({ args }){
     return apiFetch({
         method: 'POST',
         data: {
             args: args,
         },
-        path: "/ta/v1/authors",
+        path: "/ta/v1/photographers",
         parse: false
     })
     .then((data) => {
@@ -21,69 +20,68 @@ function fetchAuthors({ args }){
     });
 };
 
-function autocompleteFetchAuthors({search, items}){
-    return fetchAuthors({
+function autocompleteFetchTermsData({search, items}){
+    return fetchTermsData({
         args: {
             name__like: search,
             orderby: 'name',
             order: 'ASC',
             hide_empty: false,
-            exclude: items ? items.map(author => author.term.term_id) : [],
+            exclude: items ? items.map(termData => termData.term.term_id) : [],
         },
     });
 }
 
-function fetchAuthorsById({ authorsIds }){
-    return fetchAuthors({
+function fetchTermsBy({ terms, field = 'include' }){
+    return fetchTermsData({
         args: {
             orderby: 'name',
             order: 'ASC',
             hide_empty: false,
-            include: authorsIds && authorsIds.length ? authorsIds : [],
+            [field]: terms && terms.length ? terms : [],
         },
     });
 }
 
-const TAAuthorsSelector = (props) => {
+const TAPhotographerSelector = (props) => {
     const {
-        authorsIds,
+        terms,
+        termsQueryField = 'include',
         onUpdate,
     } = props;
-    const [authors, setAuthors] = useState([]);
+    const [termsData, setTermsData] = useState([]);
     const [doingInitialFetch, setDoingInitialFetch] = useState(true);
 
     useEffect( () => {
-        if(authorsIds && authorsIds.length){
+        if(terms && terms.length){
             (async () => {
-                let authors = await fetchAuthorsById({ authorsIds: authorsIds});
-                setAuthors(authors && authors.length ? authors : []);
-                console.log('FETCH RES authors', authors);
+                let termsData = await fetchTermsBy({ terms: terms, field: termsQueryField });
+                setTermsData(termsData && termsData.length ? termsData : []);
                 setDoingInitialFetch(false);
             })();
         }
+        else{
+            setDoingInitialFetch(false);
+        };
     }, []);
 
     const addAuthor = ( { item } ) => {
-        const mutatedAuthors = [...authors, item];
-        setAuthors(mutatedAuthors);
-        updateEditorTerms({authors: mutatedAuthors});
+        const mutatedTermsData = [...termsData, item];
+        setTermsData(mutatedTermsData);
+        updateEditorTerms({termsData: mutatedTermsData});
     }
 
     const removeAuthor = ( { item } ) => {
-        const mutatedAuthors = [...authors];
-        arrayRemove(mutatedAuthors, authorN => authorN.name == item.name );
-        setAuthors( mutatedAuthors );
-        updateEditorTerms({authors: mutatedAuthors});
+        const mutatedTermsData = [...termsData];
+        arrayRemove(mutatedTermsData, termDataN => termDataN.name == item.name );
+        setTermsData( mutatedTermsData );
+        updateEditorTerms({termsData: mutatedTermsData});
     }
 
     const updateEditorTerms = (data) => {
         if(onUpdate)
             onUpdate(data);
     }
-
-    const renderAuthorItem = ({item, removeItem}) => {
-        return <TAArticleAuthorMetaBlock author = {item} onRemove = { removeItem } />;
-    };
 
     return (
         <>
@@ -92,18 +90,18 @@ const TAAuthorsSelector = (props) => {
             }
             {!doingInitialFetch &&
             <RBAutocompleteList
-                items = { authors }
+                items = { termsData }
                 autocompleteProps = {{
-                    placeholder: 'Buscar autor...',
-                    fetchResults: autocompleteFetchAuthors,
+                    placeholder: 'Buscar fotógrafo...',
+                    fetchResults: autocompleteFetchTermsData,
                     getItemLabel: ({ item }) => item.name,
                 }}
                 onAdd = { addAuthor }
                 onRemove = { removeAuthor }
-                itemRender = { renderAuthorItem }
             />
             }
         </>
     )
 };
-export default TAAuthorsSelector;
+
+export default TAPhotographerSelector;
