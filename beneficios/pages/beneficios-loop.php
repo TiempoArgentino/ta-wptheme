@@ -159,7 +159,7 @@
         </div>
         <div class="sub-blocks py-3">
             <div class="container">
-                <div class="ta-articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                     <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
@@ -213,7 +213,7 @@
                                                     <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) : ?>
                                                         <div id="fechas">
                                                             <?php foreach (get_post_meta(get_the_ID(), '_beneficio_date', true) as $key => $val) : ?>
-                                                                <label><input type="radio" data-button="#solicitar-<?php echo get_the_ID() ?>" <?php echo $check ?> class="select-dates" name="gender" value="<?php echo date('Y-m-d H:i:s', strtotime($val)); ?>"> <?php echo date_i18n('d M H:i',  strtotime($val)); ?>hs</label><br />
+                                                                <label><input type="radio" data-button="#solicitar-<?php echo get_the_ID() ?>" class="select-dates" name="gender" value="<?php echo date('Y-m-d H:i:s', strtotime($val)); ?>"> <?php echo date_i18n('d M H:i',  strtotime($val)); ?>hs</label><br />
                                                             <?php endforeach; ?>
                                                         </div>
                                                     <?php endif; ?>

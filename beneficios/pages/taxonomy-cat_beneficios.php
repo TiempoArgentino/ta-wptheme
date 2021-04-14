@@ -164,7 +164,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
         </div>
         <div class="sub-blocks py-3">
             <div class="container">
-                <div class="ta-articles-block d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                     <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
