@@ -23,7 +23,7 @@ return array(
         'taxonomies'			=> ['ta_article_section'],
         'menu_position'			=> 5,
         'menu_icon'				=> TA_ASSETS_URL . '/img/articles-icon.png',
-        'supports'				=> array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),
+        'supports'				=> array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'),
         'publicly_queryable' => true,
         'query_var'				=> true,
         'show_in_rest' 			=> true,
@@ -41,55 +41,24 @@ return array(
         ),
     ),
     'metaboxes'     => array(
-        'ta_article_thumbnail_changed' => array(
-            'settings'  => array(
-                'title'             => __('Thumb changed', 'ta-genosha'),
-                'context'           => 'side',
-                'priority'          => 'high',
-                'classes'           => array('ta-metabox'),
-            ),
-            'input'  => array(
-                'controls'		=> array(
-                    'logo'      => array(
-                        'input_type'          => 'checkbox',
-                    ),
-                ),
-            ),
-        ),
-        'ta_article_thumbnail_alt_changed' => array(
-            'settings'  => array(
-                'title'             => __('Thumb alt changed', 'ta-genosha'),
-                'context'           => 'side',
-                'priority'          => 'high',
-                'classes'           => array('ta-metabox'),
-            ),
-            'input'  => array(
-                'controls'		=> array(
-                    'logo'      => array(
-                        //'label'     => __('Logo a color', 'ta-genosha'),
-                        'input_type'          => 'checkbox',
-                    ),
-                ),
-            ),
-        ),
-        'ta_article_thumbnail_alt' => array(
-            'settings'  => array(
-                'title'             => __('Imagen en bloques', 'ta-genosha'),
-                'context'           => 'side',
-                'priority'          => 'high',
-                'classes'           => array('ta-metabox'),
-                'quick_edit'        => true,
-            ),
-            'input'  => array(
-                'controls'		=> array(
-                    'logo'      => array(
-                        //'label'     => __('Logo a color', 'ta-genosha'),
-                        'type'          => 'RB_Media_Control',
-                        'store_value'   => 'id',
-                    ),
-                ),
-            ),
-        ),
+        // 'ta_article_thumbnail_alt' => array(
+        //     'settings'  => array(
+        //         'title'             => __('Imagen en bloques', 'ta-genosha'),
+        //         'context'           => 'side',
+        //         'priority'          => 'high',
+        //         'classes'           => array('ta-metabox'),
+        //         'quick_edit'        => true,
+        //     ),
+        //     'input'  => array(
+        //         'controls'		=> array(
+        //             'logo'      => array(
+        //                 //'label'     => __('Logo a color', 'ta-genosha'),
+        //                 'type'          => 'RB_Media_Control',
+        //                 'store_value'   => 'id',
+        //             ),
+        //         ),
+        //     ),
+        // ),
         'ta_article_cintillo' => array(
             'settings'  => array(
                 'title'             => __('Cintillo', 'ta-genosha'),

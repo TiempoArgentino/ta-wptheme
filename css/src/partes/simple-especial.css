@@ -1,5 +1,6 @@
 :root {
   --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
   --ta-gris-imagen: #ebebeb;
   --ta-celeste-fondos: #ebf7fe;
   --ta-negro-texto: #252b2d;
@@ -7,8 +8,17 @@
   --ta-socios: #ffbb0f;
   --ta-socios-fondos: #ffe7a9;
   --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
   --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
   --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
 }
 
 .articulo-simple .categories h4,
@@ -58,6 +68,25 @@
   font-weight: 400;
   font-size: 12px;
 }
+.articulo-simple .author .author-img,
+.articulo-especial .author .author-img {
+  height: 60px;
+  min-height: 60px;
+  width: 60px;
+  background-image: url(../../assets/images/autor-foto-art.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+  position: relative;
+  border-radius: 8px;
+}
+.articulo-simple .author .author-img .author-icon,
+.articulo-especial .author .author-img .author-icon {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+}
 .articulo-simple .img-container .img-wrapper,
 .articulo-especial .img-container .img-wrapper {
   width: 100vw;
@@ -81,11 +110,6 @@
   font-weight: 400;
   font-size: 12px;
   color: var(--ta-celeste) !important;
-}
-.articulo-simple .author,
-.articulo-especial .author {
-  position: relative;
-  left: 10px;
 }
 .articulo-simple .author .author-icon,
 .articulo-especial .author .author-icon {
@@ -252,6 +276,16 @@
     position: relative;
     left: auto;
     margin-left: 0;
+  }
+  .articulo-simple .author .author-img,
+.articulo-especial .author .author-img {
+    width: 75px;
+    height: 75px;
+    min-height: 75px;
+  }
+  .articulo-simple .art-column-w-padding,
+.articulo-especial .art-column-w-padding {
+    padding-left: 85px;
   }
 }
 @media (min-width: 1200px) {

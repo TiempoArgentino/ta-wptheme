@@ -31,6 +31,23 @@ return array(
         'show_in_nav_menus' => true,
     ),
     'metaboxes'     => array(
+        'ta_photographer_is_from_tiempo_arg' => array(
+            'settings'  => array(
+                'title'             => __('Interno', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'        => array(
+                    'text'   => array(
+                        'label'             => __('Es de Tiempo Argentino', 'ta-genosha'),
+                        // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
+                        'input_type'            => 'checkbox',
+                    ),
+                ),
+            ),
+        ),
         'ta_photographer_networks' => array(
             'settings'  => array(
                 'title'			=> __('Redes y Contacto', 'ta-genosha'),

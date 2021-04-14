@@ -76,6 +76,11 @@ class TA_Article extends TA_Article_Data{
         return $this->authors ? $this->authors[0] : null;
     }
 
+    protected function get_authors_roles(){
+        $roles = get_post_meta($this->post->ID, 'ta_article_authors_rols', true);
+        return $roles && is_array($roles) ? $roles : [];
+    }
+
     /**
     *   Publication details
     *   @return string[]
@@ -126,7 +131,7 @@ class TA_Article extends TA_Article_Data{
                 'attachment'    => $attachment,
                 'url'           => wp_get_attachment_image_url($attachment->ID, $size, false),
                 'caption'       => has_excerpt($attachment) ? get_the_excerpt($attachment) : '',
-                'author'        => get_post_meta( $attachment->ID, 'ta_attachment_author', true ),
+                'author'        => ta_get_attachment_photographer($attachment->ID),
                 'position'      => ta_get_attachment_positions($attachment->ID),
                 'alt'           => $alt ? $alt : '',
                 'is_default'    => false,
@@ -158,7 +163,7 @@ class TA_Article extends TA_Article_Data{
                 'attachment'    => $attachment,
                 'url'           => wp_get_attachment_image_url($attachment->ID, $size, false),
                 'caption'       => has_excerpt($attachment) ? get_the_excerpt($attachment) : '',
-                'author'        => get_post_meta( $attachment->ID, 'ta_attachment_author', true ),
+                'author'        => ta_get_attachment_photographer($attachment->ID),
                 'position'      => ta_get_attachment_positions($attachment->ID),
                 'alt'           => $alt ? $alt : '',
                 'is_default'    => false,

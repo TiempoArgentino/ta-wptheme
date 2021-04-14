@@ -416,20 +416,26 @@
   font-size: 17px;
   line-height: 20px;
 }
-.asociate-block-container .asociate-wrapper h6,
+.asociate-block-container .asociate-wrapper h6, .asociate-block-container .asociate-wrapper p,
 .asociate-block-container .apoyanos-wrapper h6,
+.asociate-block-container .apoyanos-wrapper p,
 .apoyanos-block-container .asociate-wrapper h6,
-.apoyanos-block-container .apoyanos-wrapper h6 {
+.apoyanos-block-container .asociate-wrapper p,
+.apoyanos-block-container .apoyanos-wrapper h6,
+.apoyanos-block-container .apoyanos-wrapper p {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;
   margin-left: 10px;
   margin-bottom: 0;
 }
-.asociate-block-container .asociate-wrapper h6 a,
+.asociate-block-container .asociate-wrapper h6 a, .asociate-block-container .asociate-wrapper p a,
 .asociate-block-container .apoyanos-wrapper h6 a,
+.asociate-block-container .apoyanos-wrapper p a,
 .apoyanos-block-container .asociate-wrapper h6 a,
-.apoyanos-block-container .apoyanos-wrapper h6 a {
+.apoyanos-block-container .asociate-wrapper p a,
+.apoyanos-block-container .apoyanos-wrapper h6 a,
+.apoyanos-block-container .apoyanos-wrapper p a {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 500;
@@ -437,12 +443,23 @@
   word-wrap: break-word;
   word-break: break-all;
 }
-.asociate-block-container .asociate-wrapper h6 a.highlighted,
+.asociate-block-container .asociate-wrapper h6 a.highlighted, .asociate-block-container .asociate-wrapper p a.highlighted,
 .asociate-block-container .apoyanos-wrapper h6 a.highlighted,
+.asociate-block-container .apoyanos-wrapper p a.highlighted,
 .apoyanos-block-container .asociate-wrapper h6 a.highlighted,
-.apoyanos-block-container .apoyanos-wrapper h6 a.highlighted {
+.apoyanos-block-container .asociate-wrapper p a.highlighted,
+.apoyanos-block-container .apoyanos-wrapper h6 a.highlighted,
+.apoyanos-block-container .apoyanos-wrapper p a.highlighted {
   background-color: var(--ta-socios-fondos);
   text-decoration: underline;
+}
+.asociate-block-container .asociate-wrapper h6.subtitle,
+.asociate-block-container .apoyanos-wrapper h6.subtitle,
+.apoyanos-block-container .asociate-wrapper h6.subtitle,
+.apoyanos-block-container .apoyanos-wrapper h6.subtitle {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
 }
 .asociate-block-container .asociate-wrapper .your-amount-block .your-amount-input-container,
 .asociate-block-container .apoyanos-wrapper .your-amount-block .your-amount-input-container,
@@ -1207,6 +1224,13 @@
 .apoyanos-block-container .apoyanos-wrapper h6 {
     font-size: 19px;
     line-height: 25px;
+  }
+  .asociate-block-container .asociate-wrapper h6.subtitle,
+.asociate-block-container .apoyanos-wrapper h6.subtitle,
+.apoyanos-block-container .asociate-wrapper h6.subtitle,
+.apoyanos-block-container .apoyanos-wrapper h6.subtitle {
+    font-size: 24px;
+    line-height: 31.75px;
   }
   .asociate-block-container .asociate-wrapper .subtitle p,
 .asociate-block-container .apoyanos-wrapper .subtitle p,

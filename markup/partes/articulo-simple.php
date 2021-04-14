@@ -6,6 +6,7 @@ $date = $article->get_date_day('d/m/Y');
 $thumbnail = $article->get_thumbnail();
 $section = $article->section;
 $author = $article->first_author;
+$authors = $article->authors;
 ?>
 <div class="articulo-simple text-right my-4">
     <div class="container">
@@ -35,7 +36,7 @@ $author = $article->first_author;
                         <a href="">
                             <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/compartir.svg" alt="" />
                         </a>
-                        <?php do_action('favorite_button_action')?>                    
+                        <?php do_action('favorite_button_action')?>
                     </div>
                 </div>
             </div>
@@ -46,32 +47,41 @@ $author = $article->first_author;
                 </div>
                 <?php if( $thumbnail['author'] ): ?>
                 <div class="credits text-right mt-2">
-                    <p>Foto: <?php echo esc_html($thumbnail['author']); ?></p>
+                    <p>Foto: <?php echo esc_html($thumbnail['author']->name); ?></p>
                 </div>
                 <?php endif; ?>
             </div>
             <?php endif; ?>
-            <?php if($author && $author->name): ?>
-            <div class="d-flex flex-column flex-md-row">
-                <div class="author d-flex mx-2">
-                    <div class="author-icon mr-2">
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-pen.svg" alt="" />
-                    </div>
-                    <div class="author-info">
-                        <p>Por: <a href="<?php echo esc_attr($author->archive_url); ?>"><?php echo esc_html($author->name); ?></a></p>
-                        <?php if($author->position): ?>
-                        <p><?php echo esc_html($author->position); ?></p>
+            <?php if($article->authors && !empty($article->authors)): ?>
+            <div class="d-flex flex-column flex-md-row mt-2 mt-md-3">
+                <?php foreach($article->authors as $author): ?>
+                    <div class="author d-flex mx-2">
+                        <?php if(!$author->has_photo): ?>
+                        <div class="author-icon mr-2">
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-pen.svg" alt="" />
+                        </div>
+                        <?php else: ?>
+                        <div class="author-img" style="background-image: url('<?php echo esc_attr($author->photo); ?>');">
+                            <div class="author-icon mr-2">
+                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-pen.svg" alt="" />
+                            </div>
+                        </div>
                         <?php endif; ?>
-                        <?php if($author->social): ?>
-                        <a href="">@<?php echo esc_html($author->social); ?></a>
-                        <?php endif; ?>
+                        <div class="author-info">
+                            <p>Por: <a href="<?php echo esc_attr($author->archive_url); ?>"><?php echo esc_html($author->name); ?></a></p>
+                            <?php if(isset($article->authors_roles[$author->ID]) && $article->authors_roles[$author->ID]): ?>
+                            <p><?php echo esc_html($article->authors_roles[$author->ID]); ?></p>
+                            <?php endif; ?>
+                            <?php if($author->social): ?>
+                            <a href="<?php echo esc_attr($author->social['url']); ?>">@<?php echo esc_html($author->social['user']); ?></a>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
-        <?php endif; ?>
-
+            <?php endif; ?>
             <div class="article-body mt-3">
-                <div class="pl-lg-5">
+                <div class="art-column-w-padding">
                     <?php //echo $article->content;
                         echo apply_filters( 'the_content', $article->content );
                      ?>
@@ -206,7 +216,7 @@ $author = $article->first_author;
                 <a href="">
                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/compartir.svg" alt="" />
                 </a>
-                <?php do_action('favorite_button_action')?> 
+                <?php do_action('favorite_button_action')?>
             </div>
         </div>
     </div>

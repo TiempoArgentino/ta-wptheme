@@ -756,7 +756,7 @@ function create_new_article($args){
         'post_type'     => $post_type,
         'post_date'     => $post_date,
         'post_title'    => $headline,
-        'post_excerpt'  => $leadtext,
+        'post_excerpt'  => wp_strip_all_tags($leadtext),
         'post_content'  => "<!-- wp:html -->$articlebody<!-- /wp:html -->",
         'post_status'   => import_status_to_string($status),
         '_thumbnail_id' => $mainpicture_attachment_id ? $mainpicture_attachment_id : null,
@@ -778,4 +778,17 @@ function create_new_article($args){
     ));
 
     return $insert_result; // WP_Error | 0 | post_id
+}
+
+
+/**
+*   Returns the photographer of an attachment
+*   @param int $attachment_id
+*   @return TA_Photographer|null
+*/
+function ta_get_attachment_photographer($attachment_id){
+    $photographer_terms = get_the_terms($attachment_id, 'ta_photographer');
+    if( !$photographer_terms || is_wp_error($photographer_terms) || empty($photographer_terms) )
+        return null;
+    return TA_Photographer::get_photographer($photographer_terms[0]->term_id);
 }

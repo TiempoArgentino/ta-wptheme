@@ -53,6 +53,7 @@ class TA_Theme{
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 		RB_Filters_Manager::add_action('ta_theme_admin_scripts', 'admin_enqueue_scripts', array(self::class, 'admin_scripts'));
@@ -74,6 +75,17 @@ class TA_Theme{
 		self::get_plugins_assets();
 		add_action( 'admin_menu', [__CLASS__,'remove_posts'] );
 		self::increase_curl_timeout();
+		self::remove_quick_edit();
+	}
+
+	static private function remove_quick_edit(){
+		RB_Filters_Manager::add_filter('ta_remove_quick_edit', 'post_row_actions', function($actions){
+			unset($actions['inline hide-if-no-js']);
+			return $actions;
+		}, array(
+			'priority'	=> 10,
+			'args'		=> 1,
+		));
 	}
 
 	static private function increase_curl_timeout(){
@@ -227,4 +239,34 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Test Column'
     'column_class'  => 'test-class',
 ));
 
-?>
+
+
+
+function myguten_register_post_meta() {
+    register_post_meta( 'ta_article', 'ta_article_authors_rols', array(
+        'single' => true,
+        'type' => 'object',
+		'show_in_rest' => array(
+			'schema' => array(
+				'type'  => 'object',
+				'additionalProperties' => array(
+                     'type' => 'string',
+                 ),
+			),
+		),
+    ) );
+}
+add_action( 'init', 'myguten_register_post_meta' );
+
+function ta_article_thumbnail_alt_meta_register() {
+    register_post_meta( 'ta_article', 'ta_article_thumbnail_alt', array(
+        'single' 	=> true,
+        'type' 		=> 'number',
+		'show_in_rest' => array(
+			'schema' => array(
+				'type'  => 'number',
+			),
+		),
+    ) );
+}
+add_action( 'init', 'ta_article_thumbnail_alt_meta_register' );

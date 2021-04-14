@@ -52,13 +52,13 @@ function renderInside({ component, node }){
 *   Listens to addition or removal of nodes that matches the querySelector and
 *   mount/unmount the desired component in them as needed.
 */
-function hookComponentToNode(props){
+export function hookComponentToNode(props){
     const { component, querySelector } = props;
     hooks.push( props );
 
     // Current Elements
     document.querySelectorAll(querySelector).forEach((node, i) => {
-        renderInside({ component, node });
+        renderInside({ component: component(), node });
     });
 }
 
@@ -86,7 +86,7 @@ const obs = new MutationObserver(function(mutations, observer) {
                 cb: (node, hook) => {
                     console.log("Component mounted");
                     renderInside({
-                        component: hook.component,
+                        component: hook.component(),
                         node,
                     });
                 },
@@ -122,12 +122,12 @@ obs.observe(document.body, {
 *   TEST
 ************/
 // hookComponentToNode({
-//     component: <div className="ta_article_images_column">Test</div>,
+//     component: () => <div className="ta_article_images_columntest">Test</div>,
 //     querySelector: `.ta_article_images_column`,
 // });
 
 // Test control en attachment data
 // hookComponentToNode({
-//     component: <div className="ta_article_images_column">Test</div>,
+//     Item: <div className="ta_article_images_column">Test</div>,
 //     querySelector: `.compat-field-ta_attachment_author`,
 // });

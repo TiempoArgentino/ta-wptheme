@@ -13,6 +13,12 @@
   --ta-cultura-bg: #e0fbf9;
   --ta-deportes: #ee813c;
   --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
 }
 
 .article-preview {
@@ -23,6 +29,92 @@
 }
 .article-preview.vertical-article .img-container .img-wrapper {
   min-height: 183px;
+}
+.article-preview.benefits.requested > .container {
+  border: 1px solid var(--ta-celeste);
+  background-color: var(--ta-celeste-fondos);
+}
+.article-preview.benefits .container {
+  border: 1px solid var(--ta-gris-subtexto);
+}
+.article-preview.benefits .content .title p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.2px;
+  line-height: 22px;
+  margin: 0;
+}
+.article-preview.benefits .content .title p.discount {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  color: var(--ta-celeste);
+}
+.article-preview.benefits .content .options .btns-container {
+  flex-wrap: nowrap;
+}
+.article-preview.benefits .content .options .btns-container .request button,
+.article-preview.benefits .content .options .btns-container .see-description button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: transparent;
+  color: var(--ta-celeste);
+  font-size: 15px;
+  line-height: 20px;
+  border: none;
+}
+.article-preview.benefits .content .options .btns-container .request button:focus,
+.article-preview.benefits .content .options .btns-container .see-description button:focus {
+  outline: none;
+  border: none;
+}
+.article-preview.benefits .content .options .btns-container .request button {
+  padding: 3px 25px;
+  border: 2px solid var(--ta-celeste);
+  text-transform: uppercase;
+}
+.article-preview.benefits .content .options .btns-container .see-description button.collapsed img {
+  transform: rotate(90deg);
+}
+.article-preview.benefits .content .options .btns-container .see-description button img {
+  min-width: 10px;
+  height: auto;
+  transform: rotate(-90deg);
+  margin-left: 10px;
+}
+.article-preview.benefits .content .benefit-description .benefit-description-header .title p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-celeste);
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 17px;
+}
+.article-preview.benefits .content .benefit-description .benefit-description-header .category p {
+  font-size: 12px;
+  line-height: 15px;
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ta-gris-subtexto);
+  margin: 0;
+}
+.article-preview.benefits .content .benefit-description .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.article-preview.benefits .content .benefit-description .description p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
 }
 .article-preview.horizontal {
   max-width: 100%;
