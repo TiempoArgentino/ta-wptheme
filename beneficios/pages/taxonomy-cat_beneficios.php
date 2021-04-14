@@ -1,5 +1,9 @@
-<?php get_header() ?>
-<?php do_action('beneficios_loop_header') ?>
+<?php
+get_header();
+do_action('beneficios_taxonomy_header');
+$term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
+
+?>
 
 <!-- banner -->
 <div class="mt-3">
@@ -98,6 +102,7 @@
     </div>
 </div>
 <!-- buscador --->
+
 <!-- filtros -->
 
 <div class="mt-3">
@@ -110,7 +115,7 @@
         <div class="container mt-2">
             <div class="container">
                 <div class="article-tags d-flex flex-wrap mt-4">
-                    <div class="tag selected d-flex justify-content-center my-2">
+                    <div class="tag d-flex justify-content-center my-2">
                         <div class="content p-1">
                             <a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>">
                                 <p class="m-0"><?php echo __('Todos', 'gen-theme-base') ?></p>
@@ -119,7 +124,7 @@
                         <div class="triangle"></div>
                     </div>
                     <?php foreach (beneficios_front()->show_terms() as $t) : ?>
-                        <div class="tag d-flex justify-content-center my-2">
+                        <div class="tag <?php echo $term->slug === $t->{'slug'} ? 'selected' : '' ?> d-flex justify-content-center my-2">
                             <div class="content p-1">
                                 <a href="<?php echo get_term_link($t->{'term_id'}) ?>">
                                     <p class="m-0"><?php echo $t->{'name'} ?></p>
@@ -164,8 +169,14 @@
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'beneficios',
-                        'posts_per_page' => 12,
-                        'paged' => $paged,
+                        'numberposts' => 12,
+                        'tax_query' => [
+                            [
+                                'taxonomy' => 'cat_beneficios',
+                                'field' => 'id',
+                                'terms' => $term->term_id
+                            ]
+                        ],
                         'meta_query' => [
                             'relation' => 'AND',
                             [
@@ -206,7 +217,6 @@
                                             </a>
                                         </div>
                                         <div class="options mt-4">
-
                                             <?php if (is_user_logged_in()) : ?>
                                                 <!-- fcha -->
                                                 <?php if (!beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID())) : ?>
@@ -224,29 +234,30 @@
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                            <?php if(is_user_logged_in()):?>
-                                                <div class="request">
-                                                    <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
-                                                                                echo 'disabled';
-                                                                            } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
-                                                        <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
-                                                    </button>
-                                                </div>
-
-                                                <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
-                                                    <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
-                                                    <p>
-                                                        <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
-                                                    </p>
+                                                <?php if (is_user_logged_in()) : ?>
                                                     <div class="request">
-                                                        <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                        <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
+                                                                                    echo 'disabled';
+                                                                                } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
+                                                            <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="request">
-                                                    <button><a href="<?php echo get_permalink( get_option('subscriptions_login_register_page') )?>"><?php echo __('Iniciar Sesión.','gen-base-theme')?></a></button>
-                                                </div>
-                                            <?php endif?>
+
+                                                    <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
+                                                        <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
+                                                        <p>
+                                                            <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
+                                                        </p>
+                                                        <div class="request">
+                                                            <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                        </div>
+                                                    </div>
+                                                <?php else : ?>
+                                                    <div class="request">
+                                                        <button><a href="<?php echo get_permalink( get_option('subscriptions_login_register_page') )?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
+                                                    </div>
+                                                <?php endif ?>
+
                                                 <div class="see-description">
                                                     <button type="button" class="collapsed" data-content="#content<?php echo get_the_ID() ?>" data-toggle="collapse" data-target="#content<?php echo get_the_ID() ?>" aria-expanded="false" aria-controls="content<?php echo get_the_ID() ?>">
                                                         ver más <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/right-arrow.png" alt="" class="img-fluid" />
@@ -290,5 +301,4 @@
 
 <!-- beneficios -->
 
-<?php do_action('beneficios_loop_footer') ?>
 <?php get_footer() ?>

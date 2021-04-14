@@ -43,6 +43,6 @@ Domain Path: /languages
     color: #849899;
 }
 
-/* .bg-color input[type="checkbox"] {
-    height: 0;
-} */
+button a{
+    color: var(--ta-celeste) !important
+}
