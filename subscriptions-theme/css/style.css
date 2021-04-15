@@ -1573,3 +1573,7 @@ ul#suggest-ul li {
   width: 95%;
   cursor: pointer;
 }
+
+#historial-all{
+  display: none;
+}
