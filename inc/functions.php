@@ -732,6 +732,7 @@ function create_new_article($args){
         return false;
 
     $default_args = array(
+        'post_author'                                   => null,
         'oldId'                                         => null,    // Done
         'publicslug'                                    => null,    // Done - Saved as meta, ok?
         'headline'                                      => null,    // Done
@@ -773,6 +774,7 @@ function create_new_article($args){
         'post_excerpt'  => wp_strip_all_tags($leadtext),
         'post_content'  => "<!-- wp:html -->$articlebody<!-- /wp:html -->",
         'post_status'   => import_status_to_string($status),
+        'post_author'   => $post_author,
         '_thumbnail_id' => $mainpicture_attachment_id ? $mainpicture_attachment_id : null,
         'tax_input'     => array(
             'ta_article_author'     => !empty($authors_creation['authors']) ? $authors_creation['authors'] : [],
