@@ -292,4 +292,4 @@ function add_author_filter_to_posts_administration(){
     }
 
 }
-add_action('restrict_manage_posts','add_author_filter_to_posts_administration');
+//add_action('restrict_manage_posts','add_author_filter_to_posts_administration');
