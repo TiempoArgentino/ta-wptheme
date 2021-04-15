@@ -318,3 +318,18 @@ function filter_creator_query($query)
 }
 add_action('restrict_manage_posts', 'filter_by_creator', 10);
 add_action('parse_query', 'filter_creator_query', 10);
+
+
+/**
+ * columnas
+ */
+add_filter( 'manage_ta_article_posts_columns', 'author_column' );
+function author_column( $columns ) {
+  $columns['author'] = __( 'Creador' );
+  return $columns;
+}
+add_filter( 'manage_edit-ta_article_sortable_columns', 'author_order_column');
+function author_order_column( $columns ) {
+  $columns['author'] = 'author';
+  return $columns;
+}
