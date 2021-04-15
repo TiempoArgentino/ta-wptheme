@@ -19,7 +19,8 @@ require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
 require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
 require_once TA_THEME_PATH . '/inc/widgets.php';
 
-class TA_Theme{
+class TA_Theme
+{
 	static private $initialized = false;
 
 	static public function initialize()
@@ -66,20 +67,21 @@ class TA_Theme{
 
 		self::customizer();
 
-		if( is_admin() ){
+		if (is_admin()) {
 			require_once TA_THEME_PATH . '/inc/menu-items.php';
 		}
 
 		require_once TA_THEME_PATH . '/inc/classes/TA_Micrositio.php';
 		require_once TA_THEME_PATH . '/inc/micrositios.php';
 		self::get_plugins_assets();
-		add_action( 'admin_menu', [__CLASS__,'remove_posts'] );
+		add_action('admin_menu', [__CLASS__, 'remove_posts']);
 		self::increase_curl_timeout();
 		self::remove_quick_edit();
 	}
 
-	static private function remove_quick_edit(){
-		RB_Filters_Manager::add_filter('ta_remove_quick_edit', 'post_row_actions', function($actions){
+	static private function remove_quick_edit()
+	{
+		RB_Filters_Manager::add_filter('ta_remove_quick_edit', 'post_row_actions', function ($actions) {
 			unset($actions['inline hide-if-no-js']);
 			return $actions;
 		}, array(
@@ -88,56 +90,62 @@ class TA_Theme{
 		));
 	}
 
-	static private function increase_curl_timeout(){
+	static private function increase_curl_timeout()
+	{
 		$timeout = 15;
-		RB_Filters_Manager::add_filter('ta_curl_http_request_args', 'http_request_args', function($request) use ($timeout){
+		RB_Filters_Manager::add_filter('ta_curl_http_request_args', 'http_request_args', function ($request) use ($timeout) {
 			$request['timeout'] = $timeout;
 			return $request;
 		}, array(
 			'priority'	=> 100,
 			'args'		=> 1,
 		));
-		RB_Filters_Manager::add_action('ta_curl_http_api', 'http_api_curl', function($handle) use ($timeout){
-			curl_setopt( $handle, CURLOPT_CONNECTTIMEOUT, $timeout );
-			curl_setopt( $handle, CURLOPT_TIMEOUT, $timeout );
+		RB_Filters_Manager::add_action('ta_curl_http_api', 'http_api_curl', function ($handle) use ($timeout) {
+			curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, $timeout);
+			curl_setopt($handle, CURLOPT_TIMEOUT, $timeout);
 		}, array(
 			'priority'	=> 100,
 			'args'		=> 1,
 		));
 	}
 
-	static public function add_themes_supports() {
-        add_theme_support('post-thumbnails');
+	static public function add_themes_supports()
+	{
+		add_theme_support('post-thumbnails');
 
-        //svg support
-        function cc_mime_types($mimes) {
-            $mimes['svg'] = 'image/svg+xml';
-            return $mimes;
-        }
-        add_filter('upload_mimes', 'cc_mime_types');
-    }
-
-	static private function register_menues() {
-        RB_Wordpress_Framework::load_module('menu');
-        register_nav_menus(
-            array(
-                'sections-menu' => __('Secciones'),
-                'special-menu' => __('Especiales'),
-				'extra-menu' => __('Extra'),
-            )
-        );
-    }
-
-	static public function enqueue_scripts(){
-		wp_enqueue_style( 'bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css' );
-		wp_enqueue_style( 'fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css' );
-		wp_enqueue_style( 'ta_style', TA_ASSETS_CSS_URL . '/src/style.css' );
-		wp_enqueue_script( 'bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery'] );
+		//svg support
+		function cc_mime_types($mimes)
+		{
+			$mimes['svg'] = 'image/svg+xml';
+			return $mimes;
+		}
+		add_filter('upload_mimes', 'cc_mime_types');
 	}
 
-	static public function admin_scripts(){
+	static private function register_menues()
+	{
+		RB_Wordpress_Framework::load_module('menu');
+		register_nav_menus(
+			array(
+				'sections-menu' => __('Secciones'),
+				'special-menu' => __('Especiales'),
+				'extra-menu' => __('Extra'),
+			)
+		);
+	}
+
+	static public function enqueue_scripts()
+	{
+		wp_enqueue_style('bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css');
+		wp_enqueue_style('fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css');
+		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/style.css');
+		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
+	}
+
+	static public function admin_scripts()
+	{
 		wp_enqueue_style('ta_theme_admin_css', TA_ASSETS_CSS_URL . '/src/admin.css');
-		wp_enqueue_script( 'ta_theme_admin_js', TA_ASSETS_JS_URL . '/src/admin.js', ['jquery'] );
+		wp_enqueue_script('ta_theme_admin_js', TA_ASSETS_JS_URL . '/src/admin.js', ['jquery']);
 	}
 
 	static public function register_gutenberg_categories()
@@ -145,15 +153,17 @@ class TA_Theme{
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
 
-	static public function customizer(){
+	static public function customizer()
+	{
 		RB_Wordpress_Framework::load_module('fields');
-        RB_Wordpress_Framework::load_module('customizer');
-        add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
-    }
+		RB_Wordpress_Framework::load_module('customizer');
+		add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
+	}
 
-    static public function require_customizer_panel($wp_customize){
-        require TA_THEME_PATH . '/customizer.php';
-    }
+	static public function require_customizer_panel($wp_customize)
+	{
+		require TA_THEME_PATH . '/customizer.php';
+	}
 	/**
 	 * Plugins
 	 */
@@ -169,60 +179,61 @@ class TA_Theme{
 	/**
 	 * Menus remove
 	 */
-	static public function remove_posts() {
-		remove_menu_page( 'edit.php' );
+	static public function remove_posts()
+	{
+		remove_menu_page('edit.php');
 	}
-
-
 }
 
 TA_Theme::initialize();
 
 // Gutenberg block script enqueue outside post edition screen
-add_action('admin_enqueue_scripts', function(){
-	wp_enqueue_script( "ta-index-block-js" );
+add_action('admin_enqueue_scripts', function () {
+	wp_enqueue_script("ta-index-block-js");
 });
 
-function ta_print_header(){
+function ta_print_header()
+{
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
 
-function ta_article_image_control($post, $meta_key, $image_url, $args = array()){
+function ta_article_image_control($post, $meta_key, $image_url, $args = array())
+{
 	$default_args = array(
 		'title'			=> '',
 		'description'	=> '',
 	);
-	extract( array_merge($default_args, $args) );
+	extract(array_merge($default_args, $args));
 	$image_url = is_string($image_url) ? $image_url : '';
 	$empty = !$image_url;
-	?>
+?>
 	<div id="test" class="ta-articles-images-controls" data-id="<?php echo esc_attr($post->ID); ?>" data-type="<?php echo esc_attr($post->post_type); ?>" data-metakey="<?php echo esc_attr($meta_key); ?>">
-        <div class="image-selector">
-			<?php if($title): ?>
-            <p class="title"><?php echo esc_html($title); ?></p>
+		<div class="image-selector">
+			<?php if ($title) : ?>
+				<p class="title"><?php echo esc_html($title); ?></p>
 			<?php endif; ?>
-			<?php if($description): ?>
-            <p class="description"><?php echo esc_html($description); ?></p>
+			<?php if ($description) : ?>
+				<p class="description"><?php echo esc_html($description); ?></p>
 			<?php endif; ?>
-            <div class="image-box">
-                <div class="bkg" style="background-image: url(<?php echo esc_attr($image_url); ?>);"></div>
-                <div class="content">
-	    			<div class="controls when-not-empty">
-					    <div class="remove-btn">x</div>
+			<div class="image-box">
+				<div class="bkg" style="background-image: url(<?php echo esc_attr($image_url); ?>);"></div>
+				<div class="content">
+					<div class="controls when-not-empty">
+						<div class="remove-btn">x</div>
 					</div>
-				    <div class="text when-empty">Seleccionar imagen</div>
+					<div class="text when-empty">Seleccionar imagen</div>
 					<div class="text when-not-empty">Cambiar imagen</div>
 				</div>
-            </div>
-        </div>
-    </div>
-	<?php
+			</div>
+		</div>
+	</div>
+<?php
 }
 
 // POST COLUMN - Adding column to core post type
-rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', function($column, $post){
+rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', function ($column, $post) {
 	$article = TA_Article_Factory::get_article($post);
-	if(!$article)
+	if (!$article)
 		return;
 	$featured_img_url = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['url'];
 	$featured_alt_url = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['url'];
@@ -235,61 +246,75 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', 
 		'description'	=> 'Sobrescribe la imagen principal en la portada',
 	));
 }, array(
-    'position'      => 4,
-    'column_class'  => 'test-class',
+	'position'      => 4,
+	'column_class'  => 'test-class',
 ));
 
-function myguten_register_post_meta() {
-    register_post_meta( 'ta_article', 'ta_article_authors_rols', array(
-        'single' => true,
-        'type' => 'object',
+function myguten_register_post_meta()
+{
+	register_post_meta('ta_article', 'ta_article_authors_rols', array(
+		'single' => true,
+		'type' => 'object',
 		'show_in_rest' => array(
 			'schema' => array(
 				'type'  => 'object',
 				'additionalProperties' => array(
-                     'type' => 'string',
-                 ),
+					'type' => 'string',
+				),
 			),
 		),
-    ) );
+	));
 }
-add_action( 'init', 'myguten_register_post_meta' );
+add_action('init', 'myguten_register_post_meta');
 
-function ta_article_thumbnail_alt_meta_register() {
-    register_post_meta( 'ta_article', 'ta_article_thumbnail_alt', array(
-        'single' 	=> true,
-        'type' 		=> 'number',
+function ta_article_thumbnail_alt_meta_register()
+{
+	register_post_meta('ta_article', 'ta_article_thumbnail_alt', array(
+		'single' 	=> true,
+		'type' 		=> 'number',
 		'show_in_rest' => array(
 			'schema' => array(
 				'type'  => 'number',
 			),
 		),
-    ) );
+	));
 }
-add_action( 'init', 'ta_article_thumbnail_alt_meta_register' );
+add_action('init', 'ta_article_thumbnail_alt_meta_register');
 
 /**
  * filtro por creador
  */
-function add_author_filter_to_posts_administration(){
+function filter_by_creator($post_type)
+{
+	if ('ta_article' !== $post_type) {
+		return;
+	}
+	global $post;
 
-    global $post_type;
-    if($post_type == 'ta_article'){
+	$authors = get_users(array('role__in' => array('author', 'editor', 'administrator')));
 
-        $user_args = array(
-            'show_option_all'   => 'Creador',
-            'orderby'           => 'display_name',
-            'order'             => 'ASC',
-            'name'              => 'aurthor_admin_filter',
-            'who'               => 'authors',
-            'include_selected'  => true
-        );
-
-        if(isset($_GET['aurthor_admin_filter'])){
-             $user_args['selected'] = (int)sanitize_text_field($_GET['aurthor_admin_filter']);
-        }
-        wp_dropdown_users($user_args);
-    }
-
+	echo '<select id="author_filter" name="author_filter">';
+	echo '<option value="0"> Creador </option>';
+	foreach ($authors as $s) {
+		echo '<option value="' . $s->{'ID'} . '" ' . selected($s->{'ID'}, $_REQUEST['author_filter'], false) . ' >' . $s->{'display_name'} . ' </option>';
+	}
+	echo '</select>';
 }
-//add_action('restrict_manage_posts','add_author_filter_to_posts_administration');
+
+function filter_creator_query($query)
+{
+	if (!(is_admin() and $query->is_main_query())) {
+		return $query;
+	}
+
+	if ('ta_article' !== $query->query['post_type']) {
+		return $query;
+	}
+
+	if (isset($_REQUEST['author_filter']) &&  0 != $_REQUEST['author_filter']) {
+		$query->query_vars['author'] = $_REQUEST['author_filter'];
+	}
+	return $query;
+}
+add_action('restrict_manage_posts', 'filter_by_creator', 10);
+add_action('parse_query', 'filter_creator_query', 10);
