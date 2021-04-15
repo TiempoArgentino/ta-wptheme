@@ -6,6 +6,8 @@ class Beneficios_Assets {
     {
         add_action('wp_enqueue_scripts', [$this, 'styles']);
         add_action('wp_enqueue_scripts', [$this, 'scripts']);
+
+        add_filter('template_include', [$this,'search_template']); 
     }
     
     public function styles()
@@ -22,6 +24,18 @@ class Beneficios_Assets {
     {
         wp_enqueue_script('beneficios-front-js', get_template_directory_uri() . '/beneficios/js/script.js', array(), null, true);
     }
+
+    public function search_template($template)   
+    {    
+      global $wp_query;   
+      $post_type = get_query_var('post_type');   
+      if( $wp_query->is_search && $post_type == 'beneficios' )   
+      {
+        return locate_template('beneficios/pages/beneficios-search.php');  //  
+      }   
+      return $template;   
+    }
+      
 }
 
 function beneficios_assets()

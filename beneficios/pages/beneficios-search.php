@@ -174,6 +174,7 @@
                         'post_type' => 'beneficios',
                         'posts_per_page' => 12,
                         'paged' => $paged,
+                        's' => $_GET['s'],
                         'meta_query' => [
                             'relation' => 'AND',
                             [
@@ -288,7 +289,8 @@
                         <div class="col-12 pagination">
                             <button type="button" class="btn btn-block btn-text"><?php next_posts_link(__('ver más', 'beneficios'), $beneficios->max_num_pages); ?></button>
                         </div>
-
+                    <?php else: ?>
+                    <h3 class="text-center"><?php echo __('No hay beneficios con ese criterio','gen-theme-base')?></h3>
                     <?php endif; ?>
                 </div>
             </div>

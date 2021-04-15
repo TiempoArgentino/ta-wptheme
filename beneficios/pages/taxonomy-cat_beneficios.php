@@ -69,6 +69,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
 
 <div class="container mt-3">
     <div id="benefitsSearchBar" class="show mb-4" aria-labelledby="benefitsSearchBar" data-parent="#search-btn2">
+    <form action="<?php echo site_url('/'); ?>" method="get" id="searchform">
         <div class="search-bar-container px-3 pt-3 pb-4">
             <div class="close d-flex d-lg-none justify-content-end">
                 <div>
@@ -77,16 +78,21 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                     </button>
                 </div>
             </div>
+           
             <div class="input-container d-flex justify-content-center mt-3">
                 <div class="search-icon mr-2">
                     <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/search-icon-blue.svg" class="img-fluid" alt="">
                 </div>
+                
                 <div class="input-wrapper flex-fill">
-                    <input type="text" placeholder="Busca por ubicación o palabra clave" />
+                    <input type="text" name="s" placeholder="Busca por ubicación o palabra clave" />
                 </div>
                 <div class="search d-none d-lg-flex justify-content-center ml-3">
-                    <button><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
+                    <input type="hidden" name="post_type" value="beneficios" />
+                    
+                    <button type="submit"><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
                 </div>
+                
                 <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
                     <div>
                         <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
@@ -95,10 +101,12 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                     </div>
                 </div>
             </div>
+            
             <div class="search d-flex d-lg-none justify-content-center mt-4">
-                <button><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
+                <button type="submit"><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
             </div>
         </div>
+        </form>
     </div>
 </div>
 <!-- buscador --->
@@ -164,7 +172,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
         </div>
         <div class="sub-blocks py-3">
             <div class="container">
-                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-bleft">
                     <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
