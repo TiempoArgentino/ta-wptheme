@@ -267,3 +267,29 @@ function ta_article_thumbnail_alt_meta_register() {
     ) );
 }
 add_action( 'init', 'ta_article_thumbnail_alt_meta_register' );
+
+/**
+ * filtro por creador
+ */
+function add_author_filter_to_posts_administration(){
+
+    global $post_type;
+    if($post_type == 'ta_article'){
+
+        $user_args = array(
+            'show_option_all'   => 'Creador',
+            'orderby'           => 'display_name',
+            'order'             => 'ASC',
+            'name'              => 'aurthor_admin_filter',
+            'who'               => 'authors',
+            'include_selected'  => true
+        );
+
+        if(isset($_GET['aurthor_admin_filter'])){
+             $user_args['selected'] = (int)sanitize_text_field($_GET['aurthor_admin_filter']);
+        }
+        wp_dropdown_users($user_args);
+    }
+
+}
+add_action('restrict_manage_posts','add_author_filter_to_posts_administration');

@@ -136,10 +136,10 @@
                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/historial-icon.svg" alt="" class="img-fluid">
                             </div>
                             <div class="benefit-title">
-                                <p><?php echo __('Ver tu Historial', 'gen-theme-base') ?> <span>(<?php echo count(beneficios_panel()->show_user_beneficios(wp_get_current_user()->ID)) ?>)</span></p>
+                                <p><?php echo __('Ver tu Historial', 'gen-theme-base') ?> <span>(<?php echo count(beneficios_panel()->show_taken_beneficios(wp_get_current_user()->ID)) ?>)</span></p>
                             </div>
                         </button>
-                        <button class="d-flex align-items-center mt-3">
+                        <button class="d-flex align-items-center mt-3" id="historial-see-2">
                             <div class="benefit-icon mr-2">
                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/benefits-icon.svg" alt="" class="img-fluid">
                             </div>
@@ -149,11 +149,65 @@
                         </button>
                     </div>
                 </div>
+                
                 <!-- historial -->
-                <div class="subs-block mt-4" id="historial-all">
+                <div class="subs-block mt-4" id="historial-taken">
                     <div class="container">
                         <div class="title text-center">
                             <h4><?php echo __('Historial de beneficios', 'gen-theme-base') ?></h4>
+                        </div>
+                        <div class="your-subscription">
+                            <?php
+                            $user_data = beneficios_panel()->show_taken_beneficios(wp_get_current_user()->ID);
+                            $beneficios = [];
+                            foreach ($user_data as $b) {
+                                $beneficios[] = $b->{'id_beneficio'};
+                            }
+                            $args = [
+                                'post_type' => 'beneficios',
+                                'numberposts' => -1,
+                                'include' => $beneficios
+
+                            ];
+                            $historial = get_posts($args);
+
+                            foreach ($historial as $h) :
+                            ?>
+                                <div class="history-item my-3" id="history-<?php echo $h->{'ID'}?>">
+                                    <div class="history-header d-flex justify-content-end align-items-start">
+                                        <div class="close-btn delete-beneficio-user mt-1" data-id_beneficio="<?php echo $h->{'ID'}?>" data-user="<?php echo wp_get_current_user()->ID?>">
+                                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/black-close.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="history-body mt-2">
+                                        <div class="title">
+                                            <p><?php echo get_the_title($h->{'ID'}) ?></p>
+                                        </div>
+                                        <div class="description">
+                                            <p><?php echo get_the_excerpt($h->{'ID'}) ?></p>
+                                        </div>
+                                        <div class="date">
+                                            <small><?php echo get_the_date('d F Y', $h->{'ID'}) ?></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <!--<div class="clearall mb-4">
+                                <div class="btns-container text-center mt-4">
+                                    <button><?php echo __('limpiar lista', 'gen-theme-base') ?></button>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- historial -->
+
+
+                <!-- historial todos-->
+                <div class="subs-block mt-4" id="historial-all">
+                    <div class="container">
+                        <div class="title text-center">
+                            <h4><?php echo __('Todos tus beneficios', 'gen-theme-base') ?></h4>
                         </div>
                         <div class="your-subscription">
                             <?php
@@ -174,7 +228,7 @@
                             ?>
                                 <div class="history-item my-3" id="history-<?php echo $h->{'ID'}?>">
                                     <div class="history-header d-flex justify-content-end align-items-start">
-                                        <div class="close-btn delete-beneficio-user mt-1" data-id_beneficio="<?php echo $h->{'ID'}?>">
+                                        <div class="close-btn delete-beneficio-user mt-1" data-id_beneficio="<?php echo $h->{'ID'}?>" data-user="<?php echo wp_get_current_user()->ID?>">
                                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/black-close.svg" alt="">
                                         </div>
                                     </div>
@@ -191,14 +245,13 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            <div class="clearall mb-4">
+                            <!--<div class="clearall mb-4">
                                 <div class="btns-container text-center mt-4">
                                     <button><?php echo __('limpiar lista', 'gen-theme-base') ?></button>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
-
                 </div>
                 <!-- historial -->
             </div>
