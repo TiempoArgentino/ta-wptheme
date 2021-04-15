@@ -30,16 +30,20 @@ class Beneficios_Assets
         wp_localize_script('beneficios-front-js', 'beneficios_theme_ajax', [
             'action' => 'b_theme_ajax',
             'url' => admin_url('admin-ajax.php'),
-            'post_id' => isset($_POST['post_id']) ? $_POST['post_id'] : ''
+            'post_id' => isset($_POST['post_id']) ? $_POST['post_id'] : '',
+            'user' => isset($_POST['user']) ? $_POST['user'] : ''
         ]);
     }
 
     public function delete_user_history()
     {
         if (isset($_POST['action'])) {
-            if (isset($_POST['post_id'])) {
-                beneficios_panel()->delete_beneficio($_POST['post_id']);
-                wp_send_json_success();
+            if (isset($_POST['post_id']) && isset($_POST['user'])) {
+                if(beneficios_panel()->delete_beneficio($_POST['post_id'],$_POST['user'])){
+                    wp_send_json_success();
+                } else {
+                    wp_send_json_error();
+                }
                 wp_die();
             }
             wp_send_json_error();

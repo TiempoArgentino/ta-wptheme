@@ -1574,6 +1574,6 @@ ul#suggest-ul li {
   cursor: pointer;
 }
 
-#historial-all{
+#historial-all,#historial-taken{
   display: none;
 }
