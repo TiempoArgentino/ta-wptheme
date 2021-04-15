@@ -57,7 +57,7 @@ add_action( 'rest_api_init', function () {
 			// if( $query->have_posts() )
 			// 	return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
 
-			$article_id = create_new_article($args);
+			$article_id = create_new_article(array_merge($args, array( 'post_author' => 5 )));
 
 			if( is_wp_error($article_id) )
 				return new WP_REST_Response($article_id->get_error_message(), 500);
