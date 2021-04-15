@@ -46,3 +46,6 @@ Domain Path: /languages
 button a{
     color: var(--ta-celeste) !important
 }
+.sub-blocks .ta-articles-block {
+    overflow: hidden;
+}

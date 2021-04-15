@@ -49,6 +49,23 @@ register_articles_block_cells_count(0);
 $content = ob_get_clean();
 
 if( $use_container && $container ){
+    if(isset($container['use_term_format']) && $container['use_term_format']){
+        $term_data = ta_is_term_articles_block($block_attributes);
+        if( $term_data ){
+            $new_container_args = array();
+            $term_taxonomy = $term_data->term->taxonomy;
+            $term_slug = $term_data->term->slug;
+            $new_container_args['title'] = $term_data->name;
+            $new_container_args['header_link'] = $term_data->archive_url;
+
+            if(($term_taxonomy == 'ta_article_section') && ($term_slug == 'cultura' || $term_slug == 'deportes' || $term_slug == 'espectaculos')){
+                $new_container_args['color_context'] = $term_slug;
+                $new_container_args['header_type']  = 'common';
+            }
+
+            $container = array_merge( $container, $new_container_args );
+        }
+    }
     $container_header_block->render($container, $content);
 }
 else

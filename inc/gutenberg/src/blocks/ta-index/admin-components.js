@@ -40,12 +40,24 @@ function getNodeComponentHook(node){
 *   Render the component inside a container that goes into node, to not lose
 *   the node reference in DOM
 */
-function renderInside({ component, node }){
+function renderInside({ component, node, removeOldHtml }){
     const containerNode = document.createElement('div');
-    node.innerHTML = '';
+    if(removeOldHtml)
+        node.innerHTML = '';
     node.appendChild(containerNode);
     node.componentContainer = containerNode;
     render(component, containerNode);
+}
+
+function renderHook({ node, hook }){
+    renderInside({
+        component: hook.component({
+            node: node,
+            nodeBeforeMount: node.cloneNode( true ),
+        }),
+        node: node,
+        removeOldHtml: hook.removeOldHtml,
+    });
 }
 
 /**
@@ -53,12 +65,12 @@ function renderInside({ component, node }){
 *   mount/unmount the desired component in them as needed.
 */
 export function hookComponentToNode(props){
-    const { component, querySelector } = props;
+    const { component, querySelector, removeOldHtml } = props;
     hooks.push( props );
 
     // Current Elements
     document.querySelectorAll(querySelector).forEach((node, i) => {
-        renderInside({ component: component(), node });
+        renderHook({ node, hook });
     });
 }
 
@@ -85,10 +97,7 @@ const obs = new MutationObserver(function(mutations, observer) {
                 },
                 cb: (node, hook) => {
                     console.log("Component mounted");
-                    renderInside({
-                        component: hook.component(),
-                        node,
-                    });
+                    renderHook({ node, hook });
                 },
             });
         }

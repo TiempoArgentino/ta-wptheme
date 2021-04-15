@@ -202,6 +202,20 @@ function get_ta_articles_block_articles($block_attributes){
     return $final_articles;
 }
 
+function ta_is_term_articles_block($attributes){
+    $has_unique_section = isset($attributes['sections']) && isset($attributes['sections']['terms']) && $attributes['sections']['terms'] && count($attributes['sections']['terms']) == 1 ? $attributes['sections']['terms'][0] : false;
+    $has_unique_tag = isset($attributes['tags']) && isset($attributes['tags']['terms']) && $attributes['tags']['terms'] && count($attributes['tags']['terms']) == 1 ? $attributes['tags']['terms'][0] : false;
+    $has_unique_author = isset($attributes['author']) && isset($attributes['author']['terms']) && $attributes['author']['terms'] && count($attributes['author']['terms']) == 1 ? $attributes['author']['terms'][0] : false;
+
+    if($has_unique_section && !$has_unique_tag && !$has_unique_author)
+        return TA_Section_Factory::get_section(get_term($has_unique_section, 'ta_article_section'));
+    if($has_unique_tag && !$has_unique_author && !$has_unique_section)
+        return TA_Tag_Factory::get_tag(get_term($has_unique_tag, 'ta_article_tag'));
+    if($has_unique_author && !$has_unique_section && !$has_unique_tag)
+        return TA_Author_Factory::get_author(get_term($has_unique_author, 'ta_article_author'));
+
+    return false;
+}
 
 /**
 *   Devuelve una taxonomies query a usar en un WP_Query de articulos, en base a los

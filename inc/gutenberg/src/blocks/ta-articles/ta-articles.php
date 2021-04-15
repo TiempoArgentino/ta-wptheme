@@ -35,6 +35,8 @@ return array(
 					'header_type'			=> 'common',
 					'color_context'			=> 'common',
 					'title'					=> '',
+					'header_link'			=> '',
+					'use_term_format'		=> false,
 				],
 			),
 			'articles'	    => array(
