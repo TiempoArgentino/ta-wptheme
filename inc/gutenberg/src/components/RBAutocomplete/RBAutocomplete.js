@@ -127,7 +127,6 @@ const RBAutocomplete = (props) => {
     const onInputBlur = () => {
         setTimeout( () => {
             setIsFocused(false);
-
         }, 100);
     };
 
@@ -142,7 +141,7 @@ const RBAutocomplete = (props) => {
             const label = getItemLabel ? getItemLabel({ item }) : '';
             return (
                 <div className="result-item" onClick = { () => onItemSelect({ item }) }>
-                    <p className="label">{label}</p>
+                    <p className="title">{label}</p>
                 </div>
             );
         }) : [];

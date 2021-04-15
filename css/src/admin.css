@@ -74,3 +74,17 @@
 li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
     display: none;
 }
+
+.compat-item tr.compat-field-ta_photographer {
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.compat-item tr.compat-field-ta_photographer > .field{
+    width: 100%;
+}
+
+.compat-item tr.compat-field-ta_photographer > .field > input.text{
+    display: none;
+}

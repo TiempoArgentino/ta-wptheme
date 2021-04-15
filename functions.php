@@ -220,7 +220,7 @@ function ta_article_image_control($post, $meta_key, $image_url, $args = array())
 }
 
 // POST COLUMN - Adding column to core post type
-rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Test Column', function($column, $post){
+rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', function($column, $post){
 	$article = TA_Article_Factory::get_article($post);
 	if(!$article)
 		return;
@@ -228,19 +228,16 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Test Column'
 	$featured_alt_url = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['url'];
 
 	ta_article_image_control($post, '_thumbnail_id', $featured_img_url, array(
-		'title'			=> 'Imagen Principal',
+		'title'			=> 'Imagen Destacada',
 	));
 	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_url, array(
 		'title'			=> 'Imagen Portada',
-		'description'	=> 'Pisa la imagen principal en la portada',
+		'description'	=> 'Sobrescribe la imagen principal en la portada',
 	));
 }, array(
     'position'      => 4,
     'column_class'  => 'test-class',
 ));
-
-
-
 
 function myguten_register_post_meta() {
     register_post_meta( 'ta_article', 'ta_article_authors_rols', array(

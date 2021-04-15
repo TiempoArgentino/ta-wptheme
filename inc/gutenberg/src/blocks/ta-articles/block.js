@@ -111,6 +111,7 @@ registerBlockType( 'ta/articles', {
 			articlesFetchError,
 			articles,
 			renderArticlesControls,
+			isTermArticles,
 		} = useTAArticlesManager({
 			attributes,
 			setAttributes,
@@ -122,11 +123,15 @@ registerBlockType( 'ta/articles', {
 		} = selectedRowData ? selectedRowData : {};
 
 		const ContainerComp = attributes.use_container ? TAContainer : Fragment;
+		const usesTermFormat = isTermArticles && attributes.container.use_term_format;
 
         return (
 			<>
 				<ContainerComp
-					attributes = {attributes.container}
+					attributes = {{
+						...attributes.container,
+						title: usesTermFormat ? isTermArticles.name : attributes.container.title,
+					}}
 				>
 					<div className={`${className} ta-articles-block`}>
 						{ loadingArticles && <Spinner/> }
@@ -177,12 +182,12 @@ registerBlockType( 'ta/articles', {
 							<TAContainerControls
 								attributes = { attributes.container }
 								setAttributes = { ( newAttributes ) => {
-									console.log('newAttributes', newAttributes);
-									console.log(attributes);
 									setAttributes({
 										container: { ...attributes.container, ...newAttributes },
 									});
 								} }
+								termControls = {true}
+								isTermArticles = {isTermArticles}
 							/>
 						}
 					</PanelBody>
