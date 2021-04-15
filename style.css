@@ -42,3 +42,7 @@ Domain Path: /languages
     font-size: 27px;
     color: #849899;
 }
+
+.sub-blocks .ta-articles-block {
+    overflow: hidden;
+}

@@ -85,6 +85,23 @@ export function useTAArticlesManager( props = {} ){
 		setAttributes({ articles_data: newArticles});//saves the new article
 	};
 
+	const hasOnlyOneTermFilter = () => {
+		const { most_recent } = attributes;
+		const { section, tag, author } = lrTaxonomies;
+		const hasUniqueSection = section && section.termsData && section.termsData.length == 1 ? section.termsData[0] : false;
+		const hasUniqueTag = tag && tag.termsData && tag.termsData.length == 1 ? tag.termsData[0] : false;
+		const hasUniqueAuthor = author && author.termsData && author.termsData.length == 1 ? author.termsData[0] : false;
+
+		if( hasUniqueSection && !hasUniqueTag && !hasUniqueAuthor )
+			return hasUniqueSection;
+		if( hasUniqueTag && !hasUniqueSection && !hasUniqueAuthor )
+			return hasUniqueTag;
+		if( hasUniqueAuthor && !hasUniqueTag && !hasUniqueSection )
+			return hasUniqueAuthor;
+
+		return false;
+	};
+
 
 	//================================================
 	//	QUERY ARGS SETUP
@@ -135,7 +152,6 @@ export function useTAArticlesManager( props = {} ){
 
 	const {loading: loadingArticles, error: articlesFetchError} = articlesFetchStatus;
 	// const articlesPosts = articlesData ? articlesData.map( (article) => article.post ) : null;
-	console.log(articles);
 
 	// const {
 	// 	articles,
@@ -152,6 +168,7 @@ export function useTAArticlesManager( props = {} ){
 		articlesFetchError,
 		articles,
 		renderArticlesControls,
+		isTermArticles: hasOnlyOneTermFilter(),
 	};
 }
 
