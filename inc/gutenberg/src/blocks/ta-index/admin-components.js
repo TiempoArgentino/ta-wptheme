@@ -119,6 +119,8 @@ const obs = new MutationObserver(function(mutations, observer) {
             });
         }
     }
+
+    console.log('MutationObserver end');
 });
 
 obs.observe(document.body, {
