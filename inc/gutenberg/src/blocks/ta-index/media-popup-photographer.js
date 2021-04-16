@@ -12,7 +12,6 @@ const MediaPopupPhotographerSelector = (props) => {
     const [attachmentID, setAttachmentID] = useState(null);
     const inputRef = useRef(null);
     const value = termSlugs.join(',');
-    console.log(value);
 
     useEffect( () => {
         const labelFor = node.querySelector('input.text').attributes.id.value;
@@ -60,6 +59,8 @@ const MediaPopupPhotographerSelector = (props) => {
                         terms = { termSlugs }
                         termsQueryField = "slug"
                         onUpdate = { onUpdate }
+                        max = {1}
+                        sortable = {false}
                     />
                 </>
             }
