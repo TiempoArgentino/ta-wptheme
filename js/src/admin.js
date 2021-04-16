@@ -8,6 +8,10 @@ jQuery(function($) {
         return $elem.closest('.ta-articles-images-controls');
     }
 
+    function getValue($panel){
+        return $panel.data('metavalue');
+    }
+
     function getPostID($panel){
         return $panel.data('id');
     }
@@ -48,6 +52,7 @@ jQuery(function($) {
         e.stopPropagation();
         var $button = $(this);
         var $panel = getPanel($button);
+        const value = getValue($panel);
 
         var custom_uploader = wp.media({
             title: 'Establecer Imagen',
@@ -57,7 +62,10 @@ jQuery(function($) {
             button: {
                 text: 'Seleccionar Imagen'
             },
-        }).on('select', function() {
+            selected: value ? [value] : null,
+        });
+
+        custom_uploader.on('select', function() {
             var attachment = custom_uploader.state().get('selection').first().toJSON();
             // $(button).html('<img src="' + attachment.url + '" />').next().val(attachment.id).parent().next().show();
             setImage({
@@ -69,7 +77,16 @@ jQuery(function($) {
                 metaKey: getPanelMetaKey($panel),
                 attachmentID: attachment.id,
             });
-        }).open();
+        });
+
+        custom_uploader.on('open', function(){
+            if(value){
+                var selection = custom_uploader.state().get('selection');
+                selection.add(wp.media.attachment(value));
+            }
+        });
+
+        custom_uploader.open();
     });
 
     $('body').on('click', '.ta-articles-images-controls .content .remove-btn', function(e) {

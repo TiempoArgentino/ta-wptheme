@@ -197,17 +197,17 @@ function ta_print_header()
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };
 
-function ta_article_image_control($post, $meta_key, $image_url, $args = array())
+function ta_article_image_control($post, $meta_key, $attachment_id, $args = array())
 {
 	$default_args = array(
 		'title'			=> '',
 		'description'	=> '',
 	);
 	extract(array_merge($default_args, $args));
-	$image_url = is_string($image_url) ? $image_url : '';
+	$image_url = wp_get_attachment_url( $attachment_id );
 	$empty = !$image_url;
 ?>
-	<div id="test" class="ta-articles-images-controls" data-id="<?php echo esc_attr($post->ID); ?>" data-type="<?php echo esc_attr($post->post_type); ?>" data-metakey="<?php echo esc_attr($meta_key); ?>">
+	<div id="test" class="ta-articles-images-controls" data-id="<?php echo esc_attr($post->ID); ?>" data-type="<?php echo esc_attr($post->post_type); ?>" data-metakey="<?php echo esc_attr($meta_key); ?>" data-metavalue="<?php echo esc_attr($attachment_id); ?>">
 		<div class="image-selector">
 			<?php if ($title) : ?>
 				<p class="title"><?php echo esc_html($title); ?></p>
@@ -235,13 +235,13 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', 
 	$article = TA_Article_Factory::get_article($post);
 	if (!$article)
 		return;
-	$featured_img_url = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['url'];
-	$featured_alt_url = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['url'];
+	$featured_attachment_id = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['attachment']->ID;
+	$featured_alt_attachment_id = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['attachment']->ID;
 
-	ta_article_image_control($post, '_thumbnail_id', $featured_img_url, array(
+	ta_article_image_control($post, '_thumbnail_id', $featured_attachment_id, array(
 		'title'			=> 'Imagen Destacada',
 	));
-	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_url, array(
+	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_attachment_id, array(
 		'title'			=> 'Imagen Portada',
 		'description'	=> 'Sobrescribe la imagen principal en la portada',
 	));
