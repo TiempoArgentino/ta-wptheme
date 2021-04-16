@@ -8,9 +8,9 @@ function useAutocomplete({
     minLength = 3,
     requestURL,
     filterFetchArgs,
-    fetchResults,
+    fetchSuggestions,
 }){
-    const [results, setResults] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
     const [waitingInputEnd, setWaitingInputEnd] = useState(false);
     const [fetching, setFetching] = useState(false);
     const fetchTimeout = useRef(null);
@@ -23,7 +23,7 @@ function useAutocomplete({
         if( search.length < minLength ){
             setWaitingInputEnd(false);
             setFetching(false);
-            setResults([]);
+            setSuggestions([]);
             return;
         }
 
@@ -31,20 +31,20 @@ function useAutocomplete({
         fetchTimeout.current = setTimeout( async () => {
             setWaitingInputEnd(false);
             setFetching(true);
-            const newResults = await fetchResults({search, results});
-            if(search !== lastSearchedRef.current) //If searched query changed while fetching results
+            const newSuggestions = await fetchSuggestions({search, suggestions});
+            if(search !== lastSearchedRef.current) //If searched query changed while fetching suggestions
                 return;
             setFetching(false);
-            setResults(newResults);
+            setSuggestions(newSuggestions);
         }, timeout);
 
     }, [search]);
 
     return {
-        results,
+        suggestions,
         waitingInputEnd,
         fetching,
-        setResults,
+        setSuggestions,
     };
 }
 
@@ -58,12 +58,12 @@ function useAutocomplete({
 *       @param {string} search                                                          The submited search string
 *       @param {bool} waitingInputEnd                                                   Indicates if the component is waiting for the user to stop typing to generate suggestions
 *       @param {bool} fetching                                                          Indicates if a fetch is beeing perfomed
-*       @param {mixed[]} results                                                        Array with current results
+*       @param {mixed[]} suggestions                                                        Array with current suggestions
 *
 *   @param {callback} getItemLabel                                              Returns the label to show in the suggestions dropdown for the items. Recieves an object with `item` key
-*   @param {callback} fetchResults                                              A function that returns a promise that resolves into the suggestions. Recieves:
+*   @param {callback} fetchSuggestions                                              A function that returns a promise that resolves into the suggestions. Recieves:
 *       @param {string} search                                                          The current searched string
-*       @param {mixed[]} results                                                        Array with current results
+*       @param {mixed[]} suggestions                                                        Array with current suggestions
 *
 *   @param {string} placeholder                                                 The input placeholder text
 */
@@ -72,23 +72,24 @@ const RBAutocomplete = (props) => {
         onSelect,
         onSubmit,
         getItemLabel,
-        fetchResults,
+        fetchSuggestions,
         placeholder = '',
+        disabled = false,
     } = props;
 
     const [search, setSearch] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef(null);
     const {
-        results,
+        suggestions,
         waitingInputEnd,
         fetching,
-        setResults,
+        setSuggestions,
     } = useAutocomplete({
         search,
-        fetchResults,
+        fetchSuggestions,
     });
-    const hasResults = results && results.length > 0;
+    const hasSuggestions = suggestions && suggestions.length > 0;
 
     useEffect( () => {
         if(!inputRef.current)
@@ -109,7 +110,7 @@ const RBAutocomplete = (props) => {
                 search,
                 waitingInputEnd,
                 fetching,
-                results,
+                suggestions,
             });
         }
     }
@@ -136,8 +137,8 @@ const RBAutocomplete = (props) => {
         setSearch('');
     };
 
-    const getResultsList = () => {
-        const resultsItems = hasResults ? results.map( (item) => {
+    const getSuggestionsList = () => {
+        const suggestionsItems = hasSuggestions ? suggestions.map( (item) => {
             const label = getItemLabel ? getItemLabel({ item }) : '';
             return (
                 <div className="result-item" onClick = { () => onItemSelect({ item }) }>
@@ -145,13 +146,13 @@ const RBAutocomplete = (props) => {
                 </div>
             );
         }) : [];
-        return <div className="results-list">{resultsItems}</div>;
+        return <div className="results-list">{suggestionsItems}</div>;
     };
 
     return (
         <div className="rb-autocomplete">
-            <input ref={inputRef} type="text" placeholder = {placeholder} className="search-input" onChange = { (e) => setSearch(e.target.value) } onKeyDown={onKeyDown}/>
-            { isFocused && (waitingInputEnd || fetching || hasResults) &&
+            <input ref={inputRef} type="text" placeholder = {placeholder} disabled = {disabled} className="search-input" onChange = { (e) => setSearch(e.target.value) } onKeyDown={onKeyDown} />
+            { isFocused && (waitingInputEnd || fetching || hasSuggestions) &&
             <div className="dropdown">
                 <div className="status">
                     {waitingInputEnd &&
@@ -161,7 +162,7 @@ const RBAutocomplete = (props) => {
                     <span>Cargando...</span>
                     }
                 </div>
-                {getResultsList()}
+                {getSuggestionsList()}
             </div>
             }
         </div>
