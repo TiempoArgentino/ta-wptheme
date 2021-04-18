@@ -11,6 +11,18 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<!-- anuncio sobre portada -->
+<?php if(is_front_page()):?>
+    <?php if (is_active_sidebar('home_desk_1')) { ?>
+<div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+    <div class="row d-flex">
+        <div class="col-9 mx-auto">
+            <?php dynamic_sidebar('home_desk_1'); ?>          
+        </div>
+    </div>
+</div>
+<?php } ?>
+<?php endif;?>
 <!-- anuncio sobre header single -->
 <?php if(is_single()):?>
     <?php if (is_active_sidebar('over-header-note')) { ?>
