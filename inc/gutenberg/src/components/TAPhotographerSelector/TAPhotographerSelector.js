@@ -48,6 +48,8 @@ const TAPhotographerSelector = (props) => {
         terms,
         termsQueryField = 'include',
         onUpdate,
+        max = 0,
+        sortable = false,
     } = props;
     const [termsData, setTermsData] = useState([]);
     const [doingInitialFetch, setDoingInitialFetch] = useState(true);
@@ -65,22 +67,12 @@ const TAPhotographerSelector = (props) => {
         };
     }, []);
 
-    const addAuthor = ( { item } ) => {
-        const mutatedTermsData = [...termsData, item];
-        setTermsData(mutatedTermsData);
-        updateEditorTerms({termsData: mutatedTermsData});
-    }
-
-    const removeAuthor = ( { item } ) => {
-        const mutatedTermsData = [...termsData];
-        arrayRemove(mutatedTermsData, termDataN => termDataN.name == item.name );
-        setTermsData( mutatedTermsData );
-        updateEditorTerms({termsData: mutatedTermsData});
-    }
-
-    const updateEditorTerms = (data) => {
+    const updateEditorTerms = ({items}) => {
+        setTermsData( items );
         if(onUpdate)
-            onUpdate(data);
+            onUpdate({
+                termsData: items,
+            });
     }
 
     return (
@@ -93,11 +85,16 @@ const TAPhotographerSelector = (props) => {
                 items = { termsData }
                 autocompleteProps = {{
                     placeholder: 'Buscar fotógrafo...',
-                    fetchResults: autocompleteFetchTermsData,
+                    fetchSuggestions: autocompleteFetchTermsData,
                     getItemLabel: ({ item }) => item.name,
                 }}
-                onAdd = { addAuthor }
-                onRemove = { removeAuthor }
+                labels = {{
+                    maxReached: 'Se alcanzó la máxima cantidad de fotógrafos.',
+                }}
+                onChange = { updateEditorTerms }
+                getItemKey = { ({item}) => item.term.term_id }
+                sortable = {sortable}
+                max = {max}
             />
             }
         </>

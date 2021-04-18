@@ -2,6 +2,7 @@
 *   Replaces the terms selector for the ta_article_author taxonomy in gutenberg editor
 */
 import TAAuthorsSelector from '../../components/TAAuthorsSelector/TAAuthorsSelector';
+const { useSelect, useDispatch } = wp.data;
 
 let authorTaxonomy = wp.data.select('core').getTaxonomy( 'ta_article_author' );
 
@@ -25,13 +26,19 @@ function authorsEditorControl( OriginalComponent ) {
         if ( taxonomy !== 'ta_article_author' )
             return <OriginalComponent {...props} />;
 
-        const initialAuthors = wp.data.select( 'core/editor' ).getCurrentPostAttribute('ta_article_author');
+        const initialAuthors = useSelect(
+            ( select ) => select( 'core/editor' ).getCurrentPostAttribute('ta_article_author'),
+            []
+        );
+        const {editPost} = useDispatch( 'core/editor' );
 
         return (
             <TAAuthorsSelector
                 authorsIds = { initialAuthors }
+                sortable = { false }
+                max = {0}
                 onUpdate = { ({authors}) => {
-                    wp.data.dispatch( 'core/editor' ).editPost( {
+                    editPost( {
                         [ authorTaxonomy.rest_base ]: authors.map( author => author.term.term_id )
                     } );
                 } }

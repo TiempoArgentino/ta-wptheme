@@ -36,7 +36,7 @@ function autocompleteFetchAuthors({search, items}){
 function fetchAuthorsById({ authorsIds }){
     return fetchAuthors({
         args: {
-            orderby: 'name',
+            orderby: 'include',
             order: 'ASC',
             hide_empty: false,
             include: authorsIds && authorsIds.length ? authorsIds : [],
@@ -48,6 +48,8 @@ const TAAuthorsSelector = (props) => {
     const {
         authorsIds,
         onUpdate,
+        max = 0,
+        sortable = false,
     } = props;
     const [authors, setAuthors] = useState([]);
     const [doingInitialFetch, setDoingInitialFetch] = useState(true);
@@ -63,25 +65,15 @@ const TAAuthorsSelector = (props) => {
         }
         else{
             setDoingInitialFetch(false);
-        };        
+        };
     }, []);
 
-    const addAuthor = ( { item } ) => {
-        const mutatedAuthors = [...authors, item];
-        setAuthors(mutatedAuthors);
-        updateEditorTerms({authors: mutatedAuthors});
-    }
-
-    const removeAuthor = ( { item } ) => {
-        const mutatedAuthors = [...authors];
-        arrayRemove(mutatedAuthors, authorN => authorN.name == item.name );
-        setAuthors( mutatedAuthors );
-        updateEditorTerms({authors: mutatedAuthors});
-    }
-
-    const updateEditorTerms = (data) => {
+    const updateEditorTerms = ({items}) => {
+        setAuthors( items );
         if(onUpdate)
-            onUpdate(data);
+            onUpdate({
+                authors: items,
+            });
     }
 
     const renderAuthorItem = ({item, removeItem}) => {
@@ -89,7 +81,7 @@ const TAAuthorsSelector = (props) => {
     };
 
     return (
-        <>
+        <div className="ta-authors-selector">
             {doingInitialFetch &&
             <div className="loading">Cargando autores del articulo</div>
             }
@@ -98,15 +90,20 @@ const TAAuthorsSelector = (props) => {
                 items = { authors }
                 autocompleteProps = {{
                     placeholder: 'Buscar autor...',
-                    fetchResults: autocompleteFetchAuthors,
+                    fetchSuggestions: autocompleteFetchAuthors,
                     getItemLabel: ({ item }) => item.name,
                 }}
-                onAdd = { addAuthor }
-                onRemove = { removeAuthor }
+                labels = {{
+                    maxReached: 'Se alcanzó la máxima cantidad de autores.',
+                }}
                 itemRender = { renderAuthorItem }
+                onChange = { updateEditorTerms }
+                getItemKey = { ({item}) => item.term.term_id }
+                sortable = {sortable}
+                max = {max}
             />
             }
-        </>
+        </div>
     )
 };
 export default TAAuthorsSelector;
