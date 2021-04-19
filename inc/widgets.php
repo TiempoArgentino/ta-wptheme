@@ -13,6 +13,8 @@ class Widgets_Theme_TA
 
         add_filter('the_content', [$this,'insert_custom_content']);
 
+        add_filter('the_content', [$this,'insert_custom_content_2']);
+
         add_action('widgets_init', [$this,'home_mobile']);
 
         add_action('widgets_init', [$this, 'note_mobile']);
@@ -76,7 +78,7 @@ class Widgets_Theme_TA
     {
         $widgets = [
             'note_mob_1' => __('Note Header Mobile', 'gen-theme-base'),
-            'note_mob_2' => __('Home Mobile 1', 'gen-theme-base'),
+            'note_mob_2' => __('Note BoxMobile 3', 'gen-theme-base'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -93,9 +95,19 @@ class Widgets_Theme_TA
     public function middle_single()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio', 'gen-theme-base'),
+            'name'          => __('Nota medio (Desk / Mob)', 'gen-theme-base'),
             'id'            => 'middle-single-note',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5">',
+            'after_widget'  => '</div>',
+        ));
+    }
+
+    public function middle_single_mob()
+    {
+        register_sidebar(array(
+            'name'          => __('Nota medio (Mob)', 'gen-theme-base'),
+            'id'            => 'middle-single-note-mobile',
+            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-sm-none d-md-block">',
             'after_widget'  => '</div>',
         ));
     }
@@ -109,6 +121,13 @@ class Widgets_Theme_TA
         endif;
     }
 
+    public function insert_middle_mobile()
+    {
+        if (is_active_sidebar('middle-single-note-mobile')):
+            return dynamic_sidebar('middle-single-note-mobile');
+        endif;
+    }
+
     public function insert_custom_content($content) {
         
         ob_start();
@@ -117,6 +136,19 @@ class Widgets_Theme_TA
 
         if (is_single() && ! is_admin()) {
             return $this->insert_after_paragraph($widget_area_html, 2, $content);
+        }
+    
+        return $content;
+    }
+
+    public function insert_custom_content_2($content) {
+        
+        ob_start();
+        $this->insert_middle_mobile();
+        $widget_area_html = ob_get_clean();
+
+        if (is_single() && ! is_admin()) {
+            return $this->insert_after_paragraph($widget_area_html, 4, $content);
         }
     
         return $content;

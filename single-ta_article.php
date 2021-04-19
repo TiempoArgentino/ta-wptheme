@@ -151,6 +151,16 @@ $articles_interest_block->render(array(
 
 <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
 
+<?php if (is_active_sidebar('note_mob_2')) { ?>
+<div class="container d-block d-sm-none mt-md-3 mb-md-3">
+    <div class="row d-flex">
+        <div class="col-9 mx-auto">
+            <?php dynamic_sidebar('note_mob_2'); ?>          
+        </div>
+    </div>
+</div>
+<?php } ?>
+
 <div class="container-md">
     <div class="row">
         <div class="col-12 col-lg-8">

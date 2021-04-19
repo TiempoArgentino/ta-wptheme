@@ -1,0 +1,33 @@
+[
+    {
+      "lastname": "winer",
+      "name": "victor",
+      "street": "Isabel La Católica",
+      "streetnumber": 375,
+      "postal": "C1268ABP",
+      "piso": 5,
+      "dpto": "D",
+      "betweenstreets": "buenos aires y catamarca",
+      "phone": "1151072310",
+      "email": "malenawiner@gmail.com",
+      "categoryId": 3,
+      "pago": "mp",
+      "infopago": {
+        "id": "2c938084726e18d60172750000000000",
+        "payer_id": 100200300,
+        "payer_email": "test_user_XXXX@testuser.com",
+        "application_id": 1234567812345678,
+        "status": "authorized",
+        "reason": "Plan Pase Mensual Gold",
+        "date_created": "2020-06-02T08:37:42.734-04:00",
+        "init_point": "https://www.mercadopago.com/mlm/debits/new?preapproval_id=2c938084726e18d60172750000000000",
+        "sandbox_init_point": "https://sandbox.mercadopago.com/mlm/debits/new?preapproval_id=2c938084726e18d60172750000000000",
+        "frequency": 1,
+        "frequency_type": "months",
+        "transaction_amount": 1100,
+        "currency_id": "ARS",
+        "start_date": "2020-07-02T08:37:42.734-04:00",
+        "payment_method_id": "debvisa"
+      }
+    }
+]
