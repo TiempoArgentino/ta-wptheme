@@ -18,7 +18,6 @@ class Widgets_Theme_TA
         add_action('widgets_init', [$this,'home_mobile']);
 
         add_action('widgets_init', [$this, 'note_mobile']);
-
         
     }
 
@@ -175,9 +174,9 @@ class Widgets_Theme_TA
      * Middle note
      */
 
-     public function side_portada_desktop()
+     public function shortcode_portada($code,$group)
      {
-        //return ADF()->show_ad_by_code('box4_desktop');
+        return ADF()->show_ad_by_code($code,$group);
      }
 }
 
