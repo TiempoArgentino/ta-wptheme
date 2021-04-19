@@ -107,7 +107,7 @@ class Widgets_Theme_TA
         register_sidebar(array(
             'name'          => __('Nota medio (Mob)', 'gen-theme-base'),
             'id'            => 'middle-single-note-mobile',
-            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-sm-none d-md-block">',
+            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-block d-md-none d-lg-none">',
             'after_widget'  => '</div>',
         ));
     }
@@ -174,6 +174,11 @@ class Widgets_Theme_TA
      /**
      * Middle note
      */
+
+     public function side_portada_desktop()
+     {
+        return ADF()->show_ad_by_code('box4_desktop');
+     }
 }
 
 function widgets_ta()

@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
 <body <?php body_class(); ?>>
+
+<?php var_dump(widgets_ta()->side_portada_desktop())?>
+
 <?php wp_body_open(); ?>
 <!-- anuncio sobre portada -->
 <?php if(is_front_page()):?>
 <?php if (is_active_sidebar('home_desk_1')) { ?>
-<div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+<div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
             <?php dynamic_sidebar('home_desk_1'); ?>          
@@ -26,7 +29,7 @@
 <!-- anuncio sobre header single -->
 <?php if(is_single()):?>
 <?php if (is_active_sidebar('over-header-note')) { ?>
-<div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+<div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
             <?php dynamic_sidebar('over-header-note'); ?>          
@@ -35,7 +38,7 @@
 </div>
 <?php } ?>
 <?php if (is_active_sidebar('note_mob_1')) { ?>
-<div class="container d-block d-sm-none mt-md-3 mb-md-3">
+<div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
             <?php dynamic_sidebar('note_mob_1'); ?>          
