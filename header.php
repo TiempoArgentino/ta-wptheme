@@ -11,7 +11,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-<?php var_dump(widgets_ta()->side_portada_desktop())?>
+<?php //var_dump(widgets_ta()->side_portada_desktop())?>
 
 <?php wp_body_open(); ?>
 <!-- anuncio sobre portada -->

@@ -177,7 +177,7 @@ class Widgets_Theme_TA
 
      public function side_portada_desktop()
      {
-        return ADF()->show_ad_by_code('box4_desktop');
+        //return ADF()->show_ad_by_code('box4_desktop');
      }
 }
 
