@@ -94,9 +94,9 @@ class Widgets_Theme_TA
     public function middle_single()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio (Desk / Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 1 (Desk / Mob)', 'gen-theme-base'),
             'id'            => 'middle-single-note',
-            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5">',
+            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
         ));
     }
@@ -104,9 +104,9 @@ class Widgets_Theme_TA
     public function middle_single_mob()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio (Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 2 (Desk / Mob)', 'gen-theme-base'),
             'id'            => 'middle-single-note-mobile',
-            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-block d-md-none d-lg-none">',
+            'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
         ));
     }
