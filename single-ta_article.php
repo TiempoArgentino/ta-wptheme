@@ -65,7 +65,7 @@ $article = TA_Article_Factory::get_article($post);
 ?>
 <!-- widget sobre la nota -->
 <?php if (is_active_sidebar('over-single-note')) { ?>
-    <div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+    <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
         <div class="row d-flex">
             <div class="col-9 mx-auto">
                 <?php dynamic_sidebar('over-single-note'); ?>
@@ -107,7 +107,7 @@ $article = TA_Article_Factory::get_article($post);
                 ?>
             </div>
             <?php if (is_active_sidebar('side-single-note')) { ?>
-                <div class="d-sm-none d-md-block anuncio-side-single">
+                <div class="d-none d-sm-none d-md-block anuncio-side-single">
                     <?php dynamic_sidebar('side-single-note'); ?>
                 </div>
             <?php } ?>
@@ -115,7 +115,7 @@ $article = TA_Article_Factory::get_article($post);
     </div>
 </div>
 <?php if (is_active_sidebar('down-single-note')) { ?>
-    <div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+    <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
         <div class="row d-flex">
             <div class="col-9 mx-auto">
                 <?php dynamic_sidebar('down-single-note'); ?>
@@ -152,7 +152,7 @@ $articles_interest_block->render(array(
 <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
 
 <?php if (is_active_sidebar('note_mob_2')) { ?>
-<div class="container d-block d-sm-none mt-md-3 mb-md-3">
+<div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
             <?php dynamic_sidebar('note_mob_2'); ?>          
@@ -168,7 +168,7 @@ $articles_interest_block->render(array(
         </div>
         <div class="col-12 col-lg-4">
             <?php if (is_active_sidebar('side-comments-note')) { ?>
-                <div class="d-sm-none d-md-block anuncio-side-comments-single">
+                <div class="d-none d-sm-none d-md-block anuncio-side-comments-single">
                     <?php dynamic_sidebar('side-comments-note'); ?>
                 </div>
             <?php } ?>
@@ -178,7 +178,7 @@ $articles_interest_block->render(array(
 
 <!-- abajo comentarios -->
 <?php if (is_active_sidebar('down-comments-note')) { ?>
-    <div class="container d-sm-none d-md-block mt-md-3 mb-md-3">
+    <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
         <div class="row d-flex">
             <div class="col-9 mx-auto">
                 <?php dynamic_sidebar('down-comments-note'); ?>
