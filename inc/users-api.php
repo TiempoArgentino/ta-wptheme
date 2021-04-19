@@ -15,42 +15,12 @@ class Users_Api
     public function importar_user(WP_REST_Request $request)
     {
         header("HTTP/1.1 200 OK");
-        $data = $request->get_json_params();
-        $data2 = $request->get_params();
-        var_dump(gettype($data));
-        echo '-------';
-        var_dump(is_array($data));
+        $data = [$request->get_json_params()];
 
-        // foreach($data as $d){
-        //     $new = $this->new_user($d['Email'],$d['Nombre'],$d['Apellido']);
-        //     return $new;
-        // }
-        // //var_dump($data2);
-        // foreach($data2 as $d){
-        //     var_dump($d['Apelido']);
-
-
-        //     // $new = $this->new_user($d['Email'],$d['Nombre'],$d['Apellido']);
-        //     // return $new;
-        //     // if($new){
-        //     //     $address = [
-        //     //         'state' =>  '-',
-        //     //         'city' => '-',
-        //     //         'address' => $d['street'],
-        //     //         'number' => $d['streetnumber'],
-        //     //         'floor' => $d['piso'],
-        //     //         'apt' => $d['dpto'],
-        //     //         'zip' => $d['postal'],
-        //     //         'bstreet' => $d['betweenstreets'],
-        //     //         'observations' => ''
-        //     //     ];
-
-        //     //     update_user_meta( $new, '_user_address', $address);
-        //     //     update_user_meta($user_id,'_user_status','active');
-        //     // } else {
-        //     //     return $new;
-        //     // }
-        // }
+        foreach($data as $d){
+            $new = $this->new_user($d['Email'],$d['Nombre'],$d['Apellido']);
+            return $new;
+        }
     }
 
     public function import_users() //wp-json/suscriptores/v1/suscriptores/
