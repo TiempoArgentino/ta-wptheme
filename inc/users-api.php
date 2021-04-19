@@ -17,11 +17,14 @@ class Users_Api
         header("HTTP/1.1 200 OK");
         $data = $request->get_json_params();
         $data2 = $request->get_params();
+        var_dump(gettype($data));
+        echo '-------';
+        var_dump(is_array($data));
 
-        foreach($data as $d){
-            $new = $this->new_user($d['Email'],$d['Nombre'],$d['Apellido']);
-            return $new;
-        }
+        // foreach($data as $d){
+        //     $new = $this->new_user($d['Email'],$d['Nombre'],$d['Apellido']);
+        //     return $new;
+        // }
         // //var_dump($data2);
         // foreach($data2 as $d){
         //     var_dump($d['Apelido']);
