@@ -13,6 +13,10 @@ class Widgets_Theme_TA
 
         add_filter('the_content', [$this,'insert_custom_content']);
 
+        add_action('widgets_init', [$this,'home_mobile']);
+
+        add_action('widgets_init', [$this, 'note_mobile']);
+
         
     }
 
@@ -39,6 +43,40 @@ class Widgets_Theme_TA
             'down-single-note' => __('Abajo nota', 'gen-theme-base'),
             'down-comments-note' => __('Abajo comentarios', 'gen-theme-base'),
             'side-comments-note' => __('Lado comentarios', 'gen-theme-base'),
+        ];
+
+        foreach($widgets as $key => $val) {
+            register_sidebar(array(
+                'name'          => $val,
+                'id'            => $key,
+                'before_widget' => '',
+                'after_widget'  => '',
+            ));
+        }
+    }
+
+    public function home_mobile()
+    {
+        $widgets = [
+            'home_mob_1' => __('Header Mobile 1', 'gen-theme-base'),
+            'home_mob_2' => __('Home Mobile 1', 'gen-theme-base'),
+        ];
+
+        foreach($widgets as $key => $val) {
+            register_sidebar(array(
+                'name'          => $val,
+                'id'            => $key,
+                'before_widget' => '',
+                'after_widget'  => '',
+            ));
+        }
+    }
+
+    public function note_mobile()
+    {
+        $widgets = [
+            'note_mob_1' => __('Note Header Mobile', 'gen-theme-base'),
+            'note_mob_2' => __('Home Mobile 1', 'gen-theme-base'),
         ];
 
         foreach($widgets as $key => $val) {
