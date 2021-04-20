@@ -5,7 +5,7 @@ class Beneficios_Assets
 
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', [$this, 'styles']);
+       // add_action('wp_enqueue_scripts', [$this, 'styles']);
         add_action('wp_enqueue_scripts', [$this, 'scripts']);
 
         add_filter('template_include', [$this, 'search_template']);
