@@ -1,109 +1,53 @@
-import React, { useState, useEffect, useRef } from "react";
-import RBAutocomplete from '../../components/RBAutocomplete/RBAutocomplete';
 import RBAutocompleteList from '../../components/RBAutocompleteList/RBAutocompleteList';
 import TAArticleAuthorMetaBlock from '../../components/TAArticleAuthorMetaBlock/TAArticleAuthorMetaBlock';
+import RBTermsSelector from '../../components/RBTermsSelector/RBTermsSelector';
+import { fetchAuthors, useTAAuthors } from '../../helpers/useTAAuthors/useTAAuthors';
+const { addQueryArgs } = wp.url;
+const { Spinner } = wp.components;
 const { apiFetch } = wp;
-import {
-    remove as arrayRemove,
-} from 'lodash';
-
-function fetchAuthors({ args }){
-    return apiFetch({
-        method: 'POST',
-        data: {
-            args: args,
-        },
-        path: "/ta/v1/authors",
-        parse: false
-    })
-    .then((data) => {
-        return data.json();
-    });
-};
-
-function autocompleteFetchAuthors({search, items}){
-    return fetchAuthors({
-        args: {
-            name__like: search,
-            orderby: 'name',
-            order: 'ASC',
-            hide_empty: false,
-            exclude: items ? items.map(author => author.term.term_id) : [],
-        },
-    });
-}
-
-function fetchAuthorsById({ authorsIds }){
-    return fetchAuthors({
-        args: {
-            orderby: 'include',
-            order: 'ASC',
-            hide_empty: false,
-            include: authorsIds && authorsIds.length ? authorsIds : [],
-        },
-    });
-}
 
 const TAAuthorsSelector = (props) => {
     const {
-        authorsIds,
+        terms,
+        termsQueryField = 'include',
         onUpdate,
+        onSubmit,
+        onNewAuthor,
         max = 0,
         sortable = false,
+        disabled = false,
     } = props;
-    const [authors, setAuthors] = useState([]);
-    const [doingInitialFetch, setDoingInitialFetch] = useState(true);
 
-    useEffect( () => {
-        if(authorsIds && authorsIds.length){
-            (async () => {
-                let authors = await fetchAuthorsById({ authorsIds: authorsIds});
-                setAuthors(authors && authors.length ? authors : []);
-                console.log('FETCH RES authors', authors);
-                setDoingInitialFetch(false);
-            })();
-        }
-        else{
-            setDoingInitialFetch(false);
-        };
-    }, []);
+    const {
+        authors,
+        setAuthors,
+        loading,
+    } = useTAAuthors({ terms, termsQueryField });
 
-    const updateEditorTerms = ({items}) => {
-        setAuthors( items );
-        if(onUpdate)
+    const onChange = ({termsData, dataBeingFetched}) => {
+        // setAuthors( items );
+        if(onUpdate){
             onUpdate({
-                authors: items,
+                authors: termsData,
+                dataBeingFetched,
             });
+        }
     }
 
-    const renderAuthorItem = ({item, removeItem}) => {
-        return <TAArticleAuthorMetaBlock author = {item} onRemove = { removeItem } />;
+    const renderAuthorItem = ({item, key, index, removeItem}) => {
+        const { data: author, loading } = authors[index] ? authors[index] : {};
+        return <TAArticleAuthorMetaBlock key = {key} author = {author} onRemove = { removeItem } loading = {loading}/>;
     };
 
     return (
-        <div className="ta-authors-selector">
-            {doingInitialFetch &&
-            <div className="loading">Cargando autores del articulo</div>
-            }
-            {!doingInitialFetch &&
-            <RBAutocompleteList
-                items = { authors }
-                autocompleteProps = {{
-                    placeholder: 'Buscar autor...',
-                    fetchSuggestions: autocompleteFetchAuthors,
-                    getItemLabel: ({ item }) => item.name,
-                }}
-                labels = {{
-                    maxReached: 'Se alcanzó la máxima cantidad de autores.',
-                }}
-                itemRender = { renderAuthorItem }
-                onChange = { updateEditorTerms }
-                getItemKey = { ({item}) => item.term.term_id }
-                sortable = {sortable}
-                max = {max}
-            />
-            }
-        </div>
+        <RBTermsSelector
+            taxonomy = "ta_article_author"
+            terms = {terms}
+            termsQueryField = {termsQueryField}
+            onUpdate = {onChange}
+            renderItem = { renderAuthorItem }
+        />
     )
 };
+
 export default TAAuthorsSelector;

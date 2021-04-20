@@ -26,22 +26,32 @@ function authorsEditorControl( OriginalComponent ) {
         if ( taxonomy !== 'ta_article_author' )
             return <OriginalComponent {...props} />;
 
-        const initialAuthors = useSelect(
-            ( select ) => select( 'core/editor' ).getCurrentPostAttribute('ta_article_author'),
+        const authorsIds = useSelect(
+            ( select ) => select( 'core/editor' ).getEditedPostAttribute('ta_article_author'),
             []
         );
         const {editPost} = useDispatch( 'core/editor' );
+        const getEntityRecords = useSelect( ( select ) => select( 'core' ).getEntityRecords, [] );
 
+        console.log('authorsIds', authorsIds);
         return (
             <TAAuthorsSelector
-                authorsIds = { initialAuthors }
+                terms = { authorsIds }
                 sortable = { false }
                 max = {0}
-                onUpdate = { ({authors}) => {
+                onUpdate = { ({authors, dataBeingFetched}) => {
+                    if(dataBeingFetched)
+                        return;
                     editPost( {
-                        [ authorTaxonomy.rest_base ]: authors.map( author => author.term.term_id )
+                        [ authorTaxonomy.rest_base ]: authors.filter( author => author.data && !author.loading ).map( author => author.data.id )
                     } );
                 } }
+                onSubmit = { async ({search}) => {
+                    const terms = await getEntityRecords( 'taxonomy', 'ta_article_author', {
+                        search: search,
+                    });
+                    console.log(search, terms);
+                }}
             />
         );
     };

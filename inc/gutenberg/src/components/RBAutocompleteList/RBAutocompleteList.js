@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import RBAutocomplete from '../RBAutocomplete/RBAutocomplete';
 import { ReactSortable } from "react-sortablejs";
 const { Dashicon } = wp.components;
@@ -19,12 +19,16 @@ const RBAutocompleteList = (props) => {
         items,
         onChange,
         itemRender,
+        filterNewItem,
+        getItemLabel,
         autocompleteProps = {},
         getItemKey,
         sortable = false,
         handle = null,
         max = 0,
         labels = {},
+        disabled = false,
+        onSubmit,
     } = props;
 
     const {
@@ -47,16 +51,17 @@ const RBAutocompleteList = (props) => {
 
             for(let index = 0; index < amountToShow; index++){
                 const item = items[index];
-                const {name} = item;
+                const label = getItemLabel ? getItemLabel({item}) : '';
                 const remove = () => removeItem({ item, index, });
                 const key = getItemKey({item});
                 const itemComponent = itemRender ? itemRender({
                     item,
                     key,
+                    index,
                     removeItem: remove,
                 }) :
                     <div className="item" key={key}>
-                        <div className="title">{name}</div>
+                        <div className="title">{label}</div>
                         <div className="rmv-btn"><Dashicon className="icon" icon="no-alt" onClick = { remove }/></div>
                     </div>;
                 itemsComponents.push(itemComponent);
@@ -83,14 +88,17 @@ const RBAutocompleteList = (props) => {
             let needsUpdate = true;
             switch (action){
                 case 'add':
-                    if(max == 1) //Swap item
-                        newItems = [data.item];
+                    if(max == 1 || !hasMaxItems){
+                        const newItem = filterNewItem ? filterNewItem({ item: data.item }) : data.item;
+                        if(max == 1) //Swap item
+                            newItems = [newItem];
+                        else
+                            newItems = [...items, newItem ];
+                    }
                     else if (hasMaxItems){ // No change
                         needsUpdate = false;
                         break;
                     }
-                    else
-                        newItems = [...items, data.item];
                     break;
                 case 'remove':
                     newItems = [...items];
@@ -124,13 +132,19 @@ const RBAutocompleteList = (props) => {
         return fetchSuggestions ? fetchSuggestions({...data, items: items}) : [];
     }
 
+    const onSubmitInput = (data) => {
+        if(onSubmit)
+            onSubmit({...data, addItem});
+    };
+
     return (
         <div className="rb-autocomplete-list" ref={listRef}>
             <RBAutocomplete
                 {...autocompleteProps}
+                onSubmit = {onSubmitInput}
                 fetchSuggestions = { doFetchSuggestions }
                 onSelect = { addItem }
-                disabled = { hasMaxItems && max != 1 }
+                disabled = { disabled || (hasMaxItems && max != 1) }
             />
             { hasMaxItems && max != 1 && <p className="max-reached-label">{maxReachedLabel}</p> }
             {getItemsList()}

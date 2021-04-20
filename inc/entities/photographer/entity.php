@@ -29,6 +29,12 @@ return array(
         'show_in_rest'      => true, // This enables the REST API endpoint
         'query_var'         => true, // This allows us to append the taxonomy param to the custom post api request.
         'show_in_nav_menus' => true,
+        "rb_config"			=> array(
+            'unique'	=> true,
+            // 'labels'    => array(
+            //     'required_term_missing'         => 'Es necesario seleccionar una sección antes de publicar un artículo',
+            // ),
+        ),
     ),
     'metaboxes'     => array(
         'ta_photographer_is_from_tiempo_arg' => array(

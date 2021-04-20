@@ -1,6 +1,6 @@
 import React from "react";
 import './css/style.css';
-const { TextControl, PanelBody } = wp.components;
+const { TextControl, PanelBody, Spinner } = wp.components;
 const { useSelect } = wp.data;
 const { useEntityProp } = wp.coreData;
 
@@ -12,6 +12,7 @@ const TAArticleAuthorMetaBlock = (props) => {
     const {
         author,
         onRemove,
+        loading = false,
     } = props;
 
     const postType = useSelect(
@@ -25,7 +26,6 @@ const TAArticleAuthorMetaBlock = (props) => {
     );
 
     const metaFieldValue = meta && meta['ta_article_authors_rols'] ? meta['ta_article_authors_rols'] : {};
-    const rol = metaFieldValue[author.term.term_id];
 
     function updateMetaValue( newRol ) {
         const mutatedValue = {...metaFieldValue};
@@ -33,36 +33,51 @@ const TAArticleAuthorMetaBlock = (props) => {
         setMeta( { ...meta, 'ta_article_authors_rols': mutatedValue } );
     }
 
-    const photoStyle = {
-        backgroundImage: `url("${author.photo}")`,
-    };
+    const panelBody = () => {
+        if(!author)
+            return null;
+
+        const rol = metaFieldValue[author.term.term_id];
+        const photoStyle = {
+            backgroundImage: `url("${author.photo}")`,
+        };
+
+        return (
+            <div className="content">
+                <div className="author-data">
+                    <div className="photo-container">
+                        <div className="photo" style = {photoStyle}></div>
+                    </div>
+                </div>
+                <div className="meta-controls">
+                    <div className="input-container">
+                        <TextControl
+                            label="Rol"
+                            value={ rol ? rol : '' }
+                            onChange={ updateMetaValue }
+                        />
+                    </div>
+                    <div className="remove-author" onClick = { onRemove ? onRemove : false }>
+                        <p className="remove-btn">Remover Autor</p>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="ta-article-author-meta">
             <PanelBody
-                title={author.name}
+                title={
+                    <>
+                    {loading && <Spinner></Spinner>}
+                    {author && author.name}
+                    </>
+                }
                 icon="person"
                 initialOpen={false}
             >
-                <div className="content">
-                    <div className="author-data">
-                        <div className="photo-container">
-                            <div className="photo" style = {photoStyle}></div>
-                        </div>
-                    </div>
-                    <div className="meta-controls">
-                        <div className="input-container">
-                            <TextControl
-                                label="Rol"
-                                value={ rol ? rol : '' }
-                                onChange={ updateMetaValue }
-                            />
-                        </div>
-                        <div className="remove-author" onClick = { onRemove ? onRemove : false }>
-                            <p className="remove-btn">Remover Autor</p>
-                        </div>
-                    </div>
-                </div>
+                {panelBody()}
             </PanelBody>
         </div>
     )

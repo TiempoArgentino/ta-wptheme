@@ -808,3 +808,22 @@ function ta_get_attachment_photographer($attachment_id){
         return null;
     return TA_Photographer::get_photographer($photographer_terms[0]->term_id);
 }
+
+function rb_get_or_create_term($name, $taxonomy){
+    // Already exists
+    $term = get_term_by('name', $name, $taxonomy);
+    if( $term )
+        return $term;
+
+    $term_creation = wp_insert_term($name, $taxonomy);
+    // New term fail
+    if( !$term_creation || is_wp_error($term_creation) )
+        return $term_creation;
+
+    $term = get_term($term_creation['term_id'], $taxonomy);
+    // Get term fail
+    if( !$term || is_wp_error($term) )
+        return $term;
+
+    return $term;
+}

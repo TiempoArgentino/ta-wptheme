@@ -42,7 +42,7 @@ return array(
                 'context'           => 'side',
                 'priority'          => 'high',
                 'classes'           => array('ta-metabox'),
-                'quick_edit'        => true,
+                'quick_edit'        => false,
             ),
             'input'  => array(
                 'repeater'          => array(

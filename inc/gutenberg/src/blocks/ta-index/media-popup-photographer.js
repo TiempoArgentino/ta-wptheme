@@ -1,6 +1,6 @@
 import {hookComponentToNode} from './admin-components';
 import { render, unmountComponentAtNode } from "react-dom";
-import TAPhotographerSelector from '../../components/TAPhotographerSelector/TAPhotographerSelector';
+import RBTermsSelector from '../../components/RBTermsSelector/RBTermsSelector';
 const { useSelect } = wp.data;
 import React, { useState, useEffect, useRef } from "react";
 const $ = require('jquery');
@@ -15,7 +15,8 @@ const MediaPopupPhotographerSelector = (props) => {
 
     useEffect( () => {
         const labelFor = node.querySelector('input.text').attributes.id.value;
-        const value = node.querySelector('input.text').value.split(',');
+        const inputValue = node.querySelector('input.text').value;
+        const value = inputValue && inputValue.trim() ? inputValue.split(',') : [];
         const firstDashIdx = labelFor.indexOf("-");
         const secondDashIndx = labelFor.indexOf("-", firstDashIdx + 1);
         const attachmentID = labelFor.substring(firstDashIdx + 1, secondDashIndx);
@@ -24,10 +25,13 @@ const MediaPopupPhotographerSelector = (props) => {
         setPrepared(true);
     }, [node]);
 
-    const onUpdate = ({termsData}) => {
-        if(!termsData || !termsData.length)
+    const onUpdate = (data) => {
+        const {termsData, dataBeingFetched} = data
+        if(dataBeingFetched)
+            return;
+        if(!!termsData || !termsData.length)
             setTermSlugs([]);
-        const slugs = termsData.map( termData => termData.term.slug );
+        const slugs = termsData.map( termData => termData.data.slug );
         setTermSlugs(slugs);
         if(updateCallback)
             updateCallback({slugs});
@@ -55,10 +59,11 @@ const MediaPopupPhotographerSelector = (props) => {
             }
             { prepared &&
                 <>
-                    <TAPhotographerSelector
-                        terms = { termSlugs }
+                    <RBTermsSelector
+                        taxonomy = "ta_photographer"
+                        terms = {termSlugs}
                         termsQueryField = "slug"
-                        onUpdate = { onUpdate }
+                        onUpdate = {onUpdate}
                         max = {1}
                         sortable = {false}
                     />

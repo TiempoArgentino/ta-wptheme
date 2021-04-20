@@ -133,7 +133,7 @@ const RBAutocomplete = (props) => {
 
     const onItemSelect = ({ item }) => {
         if(onSelect)
-            onSelect( {item} );
+            onSelect( {item, setSearch} );
         setSearch('');
     };
 

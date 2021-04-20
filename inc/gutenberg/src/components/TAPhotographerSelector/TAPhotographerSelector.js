@@ -50,54 +50,32 @@ const TAPhotographerSelector = (props) => {
         onUpdate,
         max = 0,
         sortable = false,
+        disabled = false,
     } = props;
-    const [termsData, setTermsData] = useState([]);
-    const [doingInitialFetch, setDoingInitialFetch] = useState(true);
 
-    useEffect( () => {
-        if(terms && terms.length){
-            (async () => {
-                let termsData = await fetchTermsBy({ terms: terms, field: termsQueryField });
-                setTermsData(termsData && termsData.length ? termsData : []);
-                setDoingInitialFetch(false);
-            })();
-        }
-        else{
-            setDoingInitialFetch(false);
-        };
-    }, []);
-
-    const updateEditorTerms = ({items}) => {
-        setTermsData( items );
+    const onChange = ({items}) => {
         if(onUpdate)
             onUpdate({
-                termsData: items,
+                photographers: items,
             });
     }
 
     return (
-        <>
-            {doingInitialFetch &&
-            <div className="loading">Cargando autores del articulo</div>
-            }
-            {!doingInitialFetch &&
-            <RBAutocompleteList
-                items = { termsData }
-                autocompleteProps = {{
-                    placeholder: 'Buscar fotógrafo...',
-                    fetchSuggestions: autocompleteFetchTermsData,
-                    getItemLabel: ({ item }) => item.name,
-                }}
-                labels = {{
-                    maxReached: 'Se alcanzó la máxima cantidad de fotógrafos.',
-                }}
-                onChange = { updateEditorTerms }
-                getItemKey = { ({item}) => item.term.term_id }
-                sortable = {sortable}
-                max = {max}
-            />
-            }
-        </>
+        <RBTermsSelector
+            taxonomy = "ta_photographer"
+            terms = {terms}
+            termsQueryField = {termsQueryField}
+            onUpdate = {onChange}
+            renderItem = { renderAuthorItem }
+            autocompleteProps = {{
+                placeholder: 'Buscar fotógrafo...',
+                fetchSuggestions: autocompleteFetchTermsData,
+                getItemLabel: ({ item }) => item.name,
+            }}
+            labels = {{
+                maxReached: 'Se alcanzó la máxima cantidad de fotógrafos.',
+            }}
+        />
     )
 };
 
