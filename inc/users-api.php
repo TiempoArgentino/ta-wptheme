@@ -31,7 +31,7 @@ class Users_Api
                     if (!$new) {
                         header("HTTP/1.1 400 User No Created");
                     } else {
-                        header("HTTP/1.1 200 OK");
+                        
                         if($d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR') {
                             $dir = array_key_exists('address',$d) ? $d['address'] : '';
                             $dir_num = array_key_exists('address_number',$d) ? $d['address_number'] : '';
@@ -140,7 +140,7 @@ class Users_Api
                             update_user_meta($new, 'suscription',$id_category);
                             update_user_meta($new, 'suscription_name',$category);
                         }
-                        
+                        header("HTTP/1.1 200 OK");
                     }
                 } else {
                     header("HTTP/1.1 409 Data no found");
