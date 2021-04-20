@@ -73,12 +73,31 @@ $article = TA_Article_Factory::get_article($post);
         </div>
     </div>
 <?php } ?>
+<?php if (is_active_sidebar('note_mob_1')) { ?>
+    <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 mt-3">
+        <div class="row d-flex">
+            <div class="col-9 mx-auto">
+                <?php dynamic_sidebar('note_mob_1'); ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 <!-- widget sobre la nota -->
 <div class="container-fluid container-lg p-0 ">
     <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
         <div class="col-12 col-lg-8 p-0">
             <?php include_once(TA_THEME_PATH . '/markup/partes/articulo-simple.php');  ?>
+
             <?php include_once(TA_THEME_PATH . '/markup/partes/tags.php');  ?>
+            <?php if (is_active_sidebar('note_mob_1')) { ?>
+
+                <div class="row d-flex d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 mt-3">
+                    <div class="col-9 mx-auto">
+                        <?php dynamic_sidebar('note_mob_1'); ?>
+                    </div>
+                </div>
+
+            <?php } ?>
             <?php include_once(TA_THEME_PATH . '/markup/partes/mira-tambien.php');  ?>
             <div class="container-md mb-2 p-0">
                 <div class="separator"></div>
@@ -93,9 +112,15 @@ $article = TA_Article_Factory::get_article($post);
                 <div class="ta-context light-blue-bg">
                     <?php include_once(TA_THEME_PATH . '/markup/partes/newsletter.php');  ?>
                 </div>
+                <?php if (is_active_sidebar('note_mob_4')) { ?>
+                    <div class="d-block d-sm-none d-md-none d-lg-none text-center mx-auto mt-3">
+                        <?php dynamic_sidebar('note_mob_4'); ?>
+                    </div>
+                <?php } ?>
                 <div class="container-md mb-2 p-0 d-block d-md-none">
                     <div class="separator"></div>
                 </div>
+                 
                 <?php //include_once(TA_THEME_PATH . '/markup/partes/mas-leidas.php');
                 ?>
             </div>
@@ -152,13 +177,13 @@ $articles_interest_block->render(array(
 <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
 
 <?php if (is_active_sidebar('note_mob_2')) { ?>
-<div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
-    <div class="row d-flex">
-        <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('note_mob_2'); ?>          
+    <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
+        <div class="row d-flex">
+            <div class="col-9 mx-auto">
+                <?php dynamic_sidebar('note_mob_2'); ?>
+            </div>
         </div>
     </div>
-</div>
 <?php } ?>
 
 <div class="container-md">
@@ -173,6 +198,7 @@ $articles_interest_block->render(array(
                 </div>
             <?php } ?>
         </div>
+        
     </div>
 </div>
 
@@ -182,6 +208,15 @@ $articles_interest_block->render(array(
         <div class="row d-flex">
             <div class="col-9 mx-auto">
                 <?php dynamic_sidebar('down-comments-note'); ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<?php if (is_active_sidebar('note_mob_5')) { ?>
+    <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
+        <div class="row d-flex">
+            <div class="col-12 mx-auto text-center">
+                <?php dynamic_sidebar('note_mob_5'); ?>
             </div>
         </div>
     </div>

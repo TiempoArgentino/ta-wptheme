@@ -19,7 +19,7 @@
                             <h4 class="italic"><?php echo __('Tu aporte nos hace posible llevar adelante nuestra labor periodística', 'gen-base-theme') ?></h4>
                         </div>
                         <div class="text-center subtitle-donations mt-5">
-                            <strong>Selecciona el importe con que deseas colaborar</strong>
+                            <strong>Selecciona el importe con que deseás colaborar</strong>
                         </div>
                         <div class="opt-list">
                             <div class="d-flex flex-column flex-lg-row justify-content-center">
@@ -319,7 +319,7 @@
                 <div class="py-2">
                     <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4><?php echo __('¿Con qué importe deseas colaborar?', 'gen-base-theme') ?></h4>
+                            <h4><?php echo __('¿Con qué importe deseás colaborar?', 'gen-base-theme') ?></h4>
                         </div>
                         <div class="asociate-wrapper">
                             <div class="your-amount-block">
@@ -339,7 +339,7 @@
                                 <h6><?php echo sprintf(__('Recordá que el valor %s', 'gen-base-theme'), '<b>' . __('mínimo es', 'gen-base-theme') . ' <span id="minimo"></span></b>') ?> </h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
-                                <h6><?php echo __('Si deseas obtener ayuda con el proceso de tu colaboración, podés escribir un mail a', 'gen-base-theme') ?>
+                                <h6><?php echo __('Si deseás obtener ayuda con el proceso de tu colaboración, podés escribir un mail a', 'gen-base-theme') ?>
                                 </h6>
                                 <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender'); ?>"><?php echo get_option('subscriptions_email_sender'); ?></a>
                                 </h6>
@@ -404,7 +404,7 @@
                                 <h6 class="mt-2"><?php echo sprintf(__('Podrás %s %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b>', __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
-                                <h6><?php echo __('Si deseas obtener ayuda con el proceso de tu colaboración, podés escribir un mail a', 'gen-base-theme') ?>
+                                <h6><?php echo __('Si deseás obtener ayuda con el proceso de tu colaboración, podés escribir un mail a', 'gen-base-theme') ?>
                                 </h6>
                                 <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender'); ?>"><?php echo get_option('subscriptions_email_sender'); ?></a>
                                 </h6>
