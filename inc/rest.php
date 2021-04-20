@@ -185,35 +185,35 @@ add_action( 'rest_api_init', function () {
         'permission_callback'	=> '__return_true',
     ) );
 
-	register_rest_route( 'ta/v1', '/podcast-block', array(
-        'methods' 				=> 'POST',
-        'callback' 				=> function($request){
-            $params = $request->get_json_params();
-			$podcast_data = isset($params['args']) && is_array($params['args']) ? $params['args'] : [];
-            $authors = [];
-            $query_args = array_merge(
-				array(
-					'taxonomy' => 'ta_photographer',
-				),
-				$param_args,
-			);
-			$query = new WP_Term_Query($query_args);
-			$author_terms = $query && !is_wp_error($query) ? $query->get_terms() : null;
-
-            if($author_terms && !empty($author_terms)){
-                foreach ($author_terms as $author_term) {
-                    $author = TA_Photographer::get_photographer($author_term->term_id);
-					if($author){
-						$author->populate(true);
-						$authors[] = $author;
-					}
-                }
-            }
-
-            $response = new WP_REST_Response($authors, 200);
-            // $response->header('X-WP-TotalPages', $result['total_pages']);
-            return $response;
-        },
-        'permission_callback'	=> '__return_true',
-    ) );
+	// register_rest_route( 'ta/v1', '/podcast-block', array(
+    //     'methods' 				=> 'POST',
+    //     'callback' 				=> function($request){
+    //         $params = $request->get_json_params();
+	// 		$podcast_data = isset($params['args']) && is_array($params['args']) ? $params['args'] : [];
+    //         $authors = [];
+    //         $query_args = array_merge(
+	// 			array(
+	// 				'taxonomy' => 'ta_photographer',
+	// 			),
+	// 			$param_args,
+	// 		);
+	// 		$query = new WP_Term_Query($query_args);
+	// 		$author_terms = $query && !is_wp_error($query) ? $query->get_terms() : null;
+	//
+    //         if($author_terms && !empty($author_terms)){
+    //             foreach ($author_terms as $author_term) {
+    //                 $author = TA_Photographer::get_photographer($author_term->term_id);
+	// 				if($author){
+	// 					$author->populate(true);
+	// 					$authors[] = $author;
+	// 				}
+    //             }
+    //         }
+	//
+    //         $response = new WP_REST_Response($authors, 200);
+    //         // $response->header('X-WP-TotalPages', $result['total_pages']);
+    //         return $response;
+    //     },
+    //     'permission_callback'	=> '__return_true',
+    // ) );
 } );

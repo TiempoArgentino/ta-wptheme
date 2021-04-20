@@ -7,8 +7,14 @@ if(!$block) return '';
 $block_attributes = $block->get_render_attributes();
 extract($block_attributes);
 
-$anchor_response = file_get_contents('https://anchor.fm/s/22943604/podcast/rss');
+$anchor_response = @file_get_contents('https://anchor.fm/s/22943604/podcast/rss');
+if($anchor_response === false)
+    return;
 $rss_xml = simplexml_load_string($anchor_response, "SimpleXMLElement", LIBXML_NOCDATA);
+
+if(!$rss_xml || !$rss_xml->channel->item || empty($rss_xml->channel->item))
+    return;
+
 $episodes_xml = $rss_xml->channel->item;
 $latest_episode = ta_get_podcast_episode_data($episodes_xml[0]);
 $amount_of_episodes = count($episodes_xml);
@@ -86,7 +92,7 @@ ob_start();
 </div>
 <div class="btns-container">
     <div class="blue-bordered-btn d-flex justify-content-center mx-auto mt-3">
-        <button>SEGUIR EN SPOTIFY</button>
+        <a href="https://open.spotify.com/show/6hz0YpFvI9I7LggZT7bkM4" target="_blank"><button>SEGUIR EN SPOTIFY</button></a>
     </div>
 </div>
 
