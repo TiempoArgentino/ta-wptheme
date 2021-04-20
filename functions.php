@@ -140,6 +140,7 @@ class TA_Theme
 		wp_enqueue_style('fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css');
 		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/style.css');
 		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
+		wp_enqueue_script('ta-podcast', TA_ASSETS_JS_URL . '/src/ta-podcast.js', ['jquery']);
 	}
 
 	static public function admin_scripts()

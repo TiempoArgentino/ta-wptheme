@@ -28,7 +28,7 @@
   background: initial;
   background-size: cover;
   background-position: top left;
-  background-image: url("/assets/images/tiny-art.png");
+  background-image: url("../../../assets/img/tiny-art.png");
   min-height: 75px;
 }
 .podcasts-block .podcast-preview p {
@@ -80,7 +80,7 @@
 .podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__replay:after {
   position: absolute;
   content: "";
-  background: url("/assets/images/play-podcast.svg") no-repeat;
+  background: url("../../../assets/img/play-podcast.svg") no-repeat;
   width: 25px;
   height: 25px;
   top: 0;
@@ -94,7 +94,7 @@
 .podcasts-block .podcast-preview.first-podcast .mejs__container .mejs__controls .mejs__pause:after {
   position: absolute;
   content: "";
-  background: url("/assets/images/pause-podcast.svg") no-repeat;
+  background: url("../../../assets/img/pause-podcast.svg") no-repeat;
   width: 25px;
   height: 25px;
   top: 0;

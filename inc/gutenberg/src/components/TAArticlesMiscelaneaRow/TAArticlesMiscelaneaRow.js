@@ -5,7 +5,10 @@ const { Spinner, RangeControl } = wp.components;
 import './css/editor.css';
 
 export function getCellsAmount(rowConfig){
-    return 4;
+    console.log('rowConfig', rowConfig);
+    if(rowConfig.cells_amount == -1)
+        return rowConfig.articles ? rowConfig.articles.length : 4;
+    return rowConfig.cells_amount ? rowConfig.cells_amount : 4;
 }
 
 const Controls = null;
@@ -16,8 +19,10 @@ const TAArticlesMiscelaneaRow = (props = {}) => {
         cells,
         offset,
         isSelected,
+        cells_amount,
     } = props;
-
+    const cellsAmount = getCellsAmount(props);
+    console.log('cellsAmount', cellsAmount);
     const {
         hasArticles,
         getCellData,
@@ -28,6 +33,26 @@ const TAArticlesMiscelaneaRow = (props = {}) => {
     const secondCellData = getCellData(1);
     const thirdCellData = getCellData(2);
     const forthCellData = getCellData(3);
+
+    const getArticlesList = () => {
+        const cells = [];
+        for( let i = 1; i < cellsAmount; i++){
+            const cellData = getCellData(i);
+
+            cells.push(
+                <div className={ `cell common ${cellData.className}`}>
+                    { cellData.article &&
+                        <TAArticlePreview
+                            article = { cellData.article }
+                            size = "common"
+                            orientation = "horizontal"
+                        />
+                    }
+                </div>
+            );
+        }
+        return cells;
+    };
 
     return (
         <div className={`articles-list miscelanea ${className}`}>
@@ -45,35 +70,7 @@ const TAArticlesMiscelaneaRow = (props = {}) => {
 
             <div className="column">
 
-                <div className={ `cell common ${secondCellData.className}`}>
-                    { secondCellData.article &&
-                        <TAArticlePreview
-                            article = { secondCellData.article }
-                            size = "common"
-                            orientation = "horizontal"
-                        />
-                    }
-                </div>
-
-                <div className={ `cell common ${thirdCellData.className}`}>
-                    { thirdCellData.article &&
-                        <TAArticlePreview
-                            article = { thirdCellData.article }
-                            size = "common"
-                            orientation = "horizontal"
-                        />
-                    }
-                </div>
-
-                <div className={ `cell common ${forthCellData.className}`}>
-                    { forthCellData.article &&
-                        <TAArticlePreview
-                            article = { forthCellData.article }
-                            size = "common"
-                            orientation = "horizontal"
-                        />
-                    }
-                </div>
+                { getArticlesList() }
 
             </div>
         </div>

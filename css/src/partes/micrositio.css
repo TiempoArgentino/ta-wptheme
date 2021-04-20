@@ -7,6 +7,7 @@
   --ta-gris-subtexto: #849899;
   --ta-socios: #ffbb0f;
   --ta-socios-fondos: #ffe7a9;
+  --ta-socios-fondos2: #fff4d8;
   --ta-espectaculos: #ce0d54;
   --ta-espectaculos-bg: #f9f2f6;
   --ta-cultura: #48b1a7;
@@ -47,20 +48,34 @@
 .header-sticky-micrositio .header-content {
   padding: 5px 0;
 }
-.header-sticky-micrositio .header-content .asociate-banner-micrositio {
+
+.asociate-banner-micrositio {
   max-width: 35%;
 }
-.header-sticky-micrositio .header-content .asociate-banner-micrositio .asociate-banner-content {
+.asociate-banner-micrositio .asociate-banner-content {
   top: 0;
   left: 0;
   transform: none;
 }
-.header-sticky-micrositio .header-content .asociate-banner-micrositio .asociate-banner-content p {
+.asociate-banner-micrositio .asociate-banner-content p {
   font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 20px;
   text-decoration: underline;
+}
+.asociate-banner-micrositio .banner {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.asociate-banner-micrositio .banner p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
 }
 
 .banner-micrositio {
@@ -318,6 +333,14 @@
     flex: 1;
   }
 
+  .asociate-banner-micrositio .banner {
+    max-width: 90%;
+  }
+  .asociate-banner-micrositio .banner p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
   .header-micrositio .header-content .search-and-profile {
     flex: 1;
   }
@@ -362,6 +385,12 @@
   .slider-micrositio .carousel .carousel-item .carousel-caption .title p {
     font-size: 39px;
     line-height: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  .asociate-banner-micrositio .banner {
+    display: flex;
+    justify-content: center;
   }
 }
 

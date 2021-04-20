@@ -7,12 +7,19 @@
   --ta-gris-subtexto: #849899;
   --ta-socios: #ffbb0f;
   --ta-socios-fondos: #ffe7a9;
+  --ta-socios-fondos2: #fff4d8;
   --ta-espectaculos: #ce0d54;
   --ta-espectaculos-bg: #f9f2f6;
   --ta-cultura: #48b1a7;
   --ta-cultura-bg: #e0fbf9;
   --ta-deportes: #ee813c;
   --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
 }
 
 .ta-context.user-tabs .separator {
@@ -153,7 +160,7 @@
   padding-left: 40px;
 }
 .user-block-container .form-container .input-container input:not(:placeholder-shown):valid {
-  background: url(../../assets/images/correct-input.svg);
+  background: url(../../../assets/img/correct-input.svg);
   background-size: 26px;
   background-repeat: no-repeat;
   background-position: 97%;
@@ -162,7 +169,7 @@
   opacity: 0;
 }
 .user-block-container .form-container .input-container input:not(:placeholder-shown):invalid {
-  background: url(../../assets/images/wrong-input.svg);
+  background: url(../../../assets/img/wrong-input.svg);
   background-size: 26px;
   background-repeat: no-repeat;
   background-position: 97%;
@@ -278,7 +285,7 @@
   border-radius: 6px;
 }
 .user-block-container .user-tabs .tab-content .tab-pane .user-profile .img-container .img-wrapper {
-  background-image: url(../../assets/images/user-img.jpg);
+  background-image: url(../../../assets/img/user-img.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1065,7 +1072,7 @@
     max-width: 60%;
   }
   .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p {
-    font-size: 16px;
+    font-size: 14px;
     padding: 7px 15px;
   }
   .user-block-container .user-tabs .tab-content .tab-pane .title h4 {
@@ -1091,52 +1098,246 @@
   .user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-title p {
     font-size: 19px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .article-title p {
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .article-title p {
     font-size: 21px;
     line-height: 24px;
     letter-spacing: -0.1px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .date small {
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .date small {
     font-size: 16px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .description p {
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .description p {
     font-size: 19px;
     line-height: 25px;
     letter-spacing: -0.1px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment-title p {
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment-title p {
     font-size: 19px;
     line-height: 25px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment p {
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment p {
     font-size: 19px;
     line-height: 25px;
     letter-spacing: -0.1px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container {
     max-width: 1030px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container {
     min-width: 500px;
     height: 50px;
     border-radius: 30px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input {
     font-size: 19px;
     line-height: 25px;
     letter-spacing: -0.1px;
     height: 50px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container label, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container label {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container label,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container label {
     font-size: 19px;
     line-height: 25px;
     letter-spacing: -0.1px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support p {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support p {
     font-size: 19px;
     line-height: 25px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapse .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapsing .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapse .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapsing .subtitle p {
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapse .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapsing .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapse .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapsing .subtitle p {
     font-size: 19px;
     line-height: 25px;
   }
@@ -1188,12 +1389,19 @@
     line-height: 25px;
     letter-spacing: -0.1px;
   }
-  .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .freq p, .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .email-address p, .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p {
+  .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .freq p,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .email-address p,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p {
     font-size: 19px;
     line-height: 25px;
     letter-spacing: -0.1px;
   }
   .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .author small {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p {
     font-size: 16px;
   }
 }

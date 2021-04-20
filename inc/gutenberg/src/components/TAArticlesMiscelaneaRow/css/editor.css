@@ -9,4 +9,6 @@
 
 .articles-list.miscelanea .column:nth-child(2) {
     width: 50%;
+    overflow: auto;
+    max-height: 26rem;
 }

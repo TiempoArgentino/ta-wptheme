@@ -827,3 +827,15 @@ function rb_get_or_create_term($name, $taxonomy){
 
     return $term;
 }
+
+/**
+*   Returns podcast episode information base on it xml <item> from the podcast playlist rss
+*/
+function ta_get_podcast_episode_data($xml_episode){
+    return array(
+        'guid' => (string) $xml_episode->guid,
+        'title' => (string) $xml_episode->title,
+        'image' => (string) $xml_episode->children('itunes', true)->image->attributes()->href,
+        'audio' => (string) $xml_episode->enclosure->attributes()->url,
+    );
+}

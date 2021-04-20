@@ -1,0 +1,145 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-socios-fondos2: #fff4d8;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
+}
+
+.participa-block-container {
+  border: 1px solid var(--ta-gris-subtexto);
+}
+.participa-block-container .title h4 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+}
+.participa-block-container .title h4.italic {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24.8px;
+  letter-spacing: -0.2px;
+}
+.participa-block-container .title h4.pack-name {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+.participa-block-container .title h4 span {
+  background-color: var(--ta-socios-fondos);
+}
+.participa-block-container .subtitle p {
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.participa-block-container .participa-items {
+  max-width: 97%;
+  margin: 0 auto;
+}
+.participa-block-container .participa-items .item {
+  height: 320px;
+}
+.participa-block-container .participa-items .item img {
+  height: 180px;
+  width: auto;
+  margin: 0 auto;
+}
+.participa-block-container .participa-items .item .caption .title h3 {
+  font-size: 20px;
+  line-height: 112.3%;
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+.participa-block-container .participa-items .item .caption .subtitle p {
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.participa-block-container .participa-items .carousel-indicators li {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.participa-block-container .btns-container button {
+  border: none;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+@media (min-width: 992px) {
+  .participa-block-container .title h4.italic {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .participa-block-container .subtitle {
+    max-width: 80%;
+    margin: 30px auto;
+  }
+  .participa-block-container .subtitle p {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+  }
+  .participa-block-container .participa-items .item {
+    height: auto;
+  }
+  .participa-block-container .participa-items .item .caption .title h3 {
+    font-size: 30px;
+    line-height: 112.3%;
+  }
+  .participa-block-container .participa-items .item .caption .subtitle p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .participa-block-container .btns-container button {
+    font-size: 19px;
+    line-height: 25px;
+  }
+}
+
+/*# sourceMappingURL=participa.css.map */

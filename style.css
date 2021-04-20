@@ -49,3 +49,7 @@ button a{
 .sub-blocks .ta-articles-block {
     overflow: hidden;
 }
+
+.podcasts-block .podcast-playlist .podcast-preview.current {
+    background: #ffffff17;
+}

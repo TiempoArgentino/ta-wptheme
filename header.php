@@ -7,6 +7,12 @@
         href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Merriweather:wght@900&family=Red+Hat+Display:wght@400;500;700;900&family=Caladea:wght@700&display=swap"
         rel="stylesheet">
     <?php wp_head(); ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"
+            integrity="sha512-MgxzaA7Bkq7g2ND/4XYgoxUbehuHr3Q/bTuGn4lJkCxfxHEkXzR1Bl0vyCoHhKlMlE2ZaFymsJrRFLiAxQOpPg=="
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css"
+            integrity="sha512-RZKnkU75qu9jzuyC+OJGffPEsJKQa7oNARCA6/8hYsHk2sd7Sj89tUCWZ+mV4uAaUbuzay7xFZhq7RkKFtP4Dw=="
+            crossorigin="anonymous" />        
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
 <body <?php body_class(); ?>>
@@ -19,7 +25,7 @@
 <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('home_desk_1'); ?>          
+            <?php dynamic_sidebar('home_desk_1'); ?>
         </div>
     </div>
 </div>
@@ -31,7 +37,7 @@
 <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('over-header-note'); ?>          
+            <?php dynamic_sidebar('over-header-note'); ?>
         </div>
     </div>
 </div>
@@ -40,7 +46,7 @@
 <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
     <div class="row d-flex">
         <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('note_mob_1'); ?>          
+            <?php dynamic_sidebar('note_mob_1'); ?>
         </div>
     </div>
 </div>

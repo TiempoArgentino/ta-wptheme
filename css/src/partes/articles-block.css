@@ -147,7 +147,7 @@
 .article-preview .img-container .img-wrapper {
   min-height: 79px;
   max-width: 100%;
-  background: url("../../assets/images/interest-img.png") center no-repeat;
+  background: url("../../../assets/img/interest-img.png") center no-repeat;
   background-size: cover;
 }
 .article-preview .img-container .icons-container .article-icons {
@@ -231,7 +231,7 @@
 .article-preview.destacado .img-container .img-wrapper {
   height: 200px;
   width: 100%;
-  background: url("../../assets/images/interest-img.png") center no-repeat;
+  background: url("../../../assets/img/interest-img.png") center no-repeat;
   background-size: cover;
 }
 .article-preview.destacado .img-container .article-icons {
@@ -257,7 +257,7 @@
   display: inline-block;
 }
 .article-preview.destacado.principal .img-container .img-wrapper {
-  background: url("../../assets/images/destacada.jpg") center no-repeat;
+  background: url("../../../assets/img/destacada.jpg") center no-repeat;
   background-size: cover;
 }
 .article-preview.destacado.principal .content {
@@ -282,7 +282,7 @@
   background: #e6e7ed;
   border: 2px solid var(--ta-celeste);
   border-radius: 50%;
-  background: url("../../assets/images/autor-photo.jpg") top center no-repeat;
+  background: url("../../../assets/img/autor-photo.jpg") top center no-repeat;
 }
 .article-preview.autor .img-container .article-icons {
   top: initial;

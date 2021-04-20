@@ -22,6 +22,10 @@
   --ta-medios-bg: #f3f9ff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--ta-negro-texto);
   overflow-x: hidden !important;
@@ -31,6 +35,12 @@ body {
 
 a {
   color: var(--ta-negro-texto) !important;
+}
+a.scrollTo {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
 }
 
 .logged-user .welcome p {
@@ -657,11 +667,15 @@ a {
 .ta-context.micrositio.ambiental .context-color .category-title h4 {
   color: var(--ta-ambiental);
 }
+.ta-context.micrositio.ambiental .context-color .asociate-banner-micrositio p {
+  color: var(--ta-ambiental);
+}
+.ta-context.micrositio.ambiental .context-color .asociate-banner-micrositio .banner p a {
+  color: var(--ta-ambiental) !important;
+  text-decoration: underline;
+}
 .ta-context.micrositio.ambiental .context-color .header-content .separator {
   background-color: white;
-}
-.ta-context.micrositio.ambiental .context-color .header-content .asociate-banner-micrositio p {
-  color: var(--ta-ambiental);
 }
 .ta-context.micrositio.ambiental .context-bg {
   background-color: var(--ta-ambiental-bg);
@@ -736,6 +750,18 @@ a {
   border-top: 1px solid var(--ta-medios);
 }
 .ta-context.micrositio.medios .context-bg .topic-tag .content {
+  border: 1px solid var(--ta-medios);
+}
+.ta-context.sumate .context-bg, .ta-context.quienes-somos .context-bg {
+  background-color: var(--ta-celeste-fondos);
+}
+.ta-context.sumate .article-preview.ambiental, .ta-context.quienes-somos .article-preview.ambiental {
+  border: 1px solid var(--ta-ambiental);
+}
+.ta-context.sumate .article-preview.habitat, .ta-context.quienes-somos .article-preview.habitat {
+  border: 1px solid var(--ta-habitat);
+}
+.ta-context.sumate .article-preview.medios, .ta-context.quienes-somos .article-preview.medios {
   border: 1px solid var(--ta-medios);
 }
 
