@@ -11,9 +11,19 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this,'middle_single']);
 
+        add_action('widgets_init', [$this,'middle_single_2']);
+
+        add_action('widgets_init', [$this,'insert_middle_mob']);
+
+        add_action('widgets_init', [$this,'insert_middle_mob_1']);
+
         add_filter('the_content', [$this,'insert_custom_content']);
 
         add_filter('the_content', [$this,'insert_custom_content_2']);
+
+        add_filter('the_content', [$this,'insert_custom_content_3']);
+
+        add_filter('the_content', [$this,'insert_custom_content_4']);
 
         add_action('widgets_init', [$this,'home_mobile']);
 
@@ -90,29 +100,47 @@ class Widgets_Theme_TA
         }
     }
 
+      /**
+     * Middle note
+     */
 
     public function middle_single()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 1 (Desk / Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 1 (Desk)', 'gen-theme-base'),
             'id'            => 'middle-single-note',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
         ));
     }
 
-    public function middle_single_mob()
+    public function middle_single_2()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 2 (Desk / Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 2 (Desk)', 'gen-theme-base'),
             'id'            => 'middle-single-note-mobile',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
         ));
     }
-    /**
-     * Middle note
-     */
+    
+    public function middle_mobile()
+    {
+        $widgets = [
+            'note_mob_mid_1' => __('Note medio mobile', 'gen-theme-base'),
+            'note_mob_mid_2' => __('Note medio mobile', 'gen-theme-base'),
+        ];
+
+        foreach($widgets as $key => $val) {
+            register_sidebar(array(
+                'name'          => $val,
+                'id'            => $key,
+                'before_widget' => '',
+                'after_widget'  => '',
+            ));
+        }
+    }
+
     public function insert_middle()
     {
         if (is_active_sidebar('middle-single-note')):
@@ -124,6 +152,20 @@ class Widgets_Theme_TA
     {
         if (is_active_sidebar('middle-single-note-mobile')):
             return dynamic_sidebar('middle-single-note-mobile');
+        endif;
+    }
+
+    public function insert_middle_mob()
+    {
+        if (is_active_sidebar('note_mob_mid_1')):
+            return dynamic_sidebar('note_mob_mid_1');
+        endif;
+    }
+
+    public function insert_middle_mob_1()
+    {
+        if (is_active_sidebar('note_mob_mid_2')):
+            return dynamic_sidebar('note_mob_mid_2');
         endif;
     }
 
@@ -144,10 +186,36 @@ class Widgets_Theme_TA
         
         ob_start();
         $this->insert_middle_mobile();
-        $widget_area_html = ob_get_clean();
+        $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && ! is_admin()) {
-            return $this->insert_after_paragraph($widget_area_html, 4, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
+        }
+    
+        return $content;
+    }
+
+    public function insert_custom_content_3($content) {
+        
+        ob_start();
+        $this->insert_middle_mob();
+        $widget_area_html_2 = ob_get_clean();
+
+        if (is_single() && ! is_admin()) {
+            return $this->insert_after_paragraph($widget_area_html_2, 2, $content);
+        }
+    
+        return $content;
+    }
+
+    public function insert_custom_content_4($content) {
+        
+        ob_start();
+        $this->insert_middle_mob_1();
+        $widget_area_html_2 = ob_get_clean();
+
+        if (is_single() && ! is_admin()) {
+            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
         }
     
         return $content;

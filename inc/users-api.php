@@ -15,45 +15,55 @@ class Users_Api
     public function importar_user(WP_REST_Request $request)
     {
         header("HTTP/1.1 200 OK");
-        $data = $request->get_json_params();
-        if($data) {
+        $data = [$request->get_json_params()];
+        if ($data) {
             foreach ($data as $d) {
-                $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');
+
+                if($d['email'] === null) continue;
+
+                if (!get_user_by('email', $d['email'])) {
+
+                    $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');
 
                     $new = $this->new_user($d['email'], $d['name'], $d['lastname']);
+    
                     if ($new) {
                         $address = [
                             'state' =>  '-',
                             'city' => '-',
-                            'address' => $d['address'],
-                            'number' => $d['address_number'],
-                            'floor' => $d['floor'],
-                            'apt' => $d['number'],
-                            'zip' => $d['CPA'],
-                            'bstreet' => $d['between_streets'],
+                            'address' => $d['address'] !== null ? $d['address'] : '',
+                            'number' => $d['address_number'] !== null ? $d['address_number'] : '',
+                            'floor' => $d['floor'] !== null ? $d['floor'] : '',
+                            'apt' => $d['number'] !== null ? $d['number'] : '',
+                            'zip' => $d['CPA'] !== null ? $d['CPA'] : '',
+                            'bstreet' => $d['between_streets'] !== null ? $d['between_streets'] : '',
                             'observations' => ''
                         ];
-    
+
+                        $phone = $d['phone'] !== null ? $d['phone'] : '';
+
                         update_user_meta($new, '_user_address', $address);
                         update_user_meta($new, '_user_status', 'active'); //$user_status = 'active';'on-hold';
-                        update_user_meta($new, '_user_phone', $d['phone']);
-    
+                        update_user_meta($new, '_user_phone', $phone);
+
+                        
+
                         $create_order = [
                             'post_title' => $order_reference,
                             'post_status'   => 'publish',
                             'post_type'     => 'memberships',
                             'post_author'   => 1,
                         ];
-    
+
                         $create = wp_insert_post($create_order);
-    
-                        if ($d['infopago'] !== '') {
-    
+
+                        if ($d['infopago'] !== null) {
+
                             $period = $d['infopago'][0]['auto_recurring']['frequency_type'] === 'months' ? 'month' : 'day';
-    
-    
+
+
                             $sumo_mes = date('Y-m-d H:i:s', strtotime($d['infopago'][0]['next_payment_date']));
-    
+
                             $order_data = [
                                 '_member_order_reference' => $order_reference,
                                 '_member_order_status' => 'completed',
@@ -68,11 +78,11 @@ class Users_Api
                                 '_member_suscription_cost' => $d['infopago'][0]['auto_recurring']['transaction_amount'],
                                 'payment_type' => 'subscription'
                             ];
-    
+
                             foreach ($order_data as $key => $value) {
                                 add_post_meta($create, $key, $value);
                             }
-    
+
                             $payment_data = [
                                 'ID Suscripción' => $d['infopago'][0]['id'],
                                 'Referencia Externa' => 'create-by-api',
@@ -90,18 +100,28 @@ class Users_Api
                             ];
                             $id_subscription = $d['infopago'][0]['id'];
                             $app_id = $d['infopago'][0]['application_id'];
-    
+
                             add_post_meta($create, 'payment_data', $payment_data);
                             add_post_meta($create, 'payment_app_id', $app_id);
                             add_post_meta($create, 'id_subscription_data', $id_subscription);
+
+                            update_user_meta($new, 'suscription',235);
+                            update_user_meta($new, 'suscription_name',$d['infopago'][0]['reason']);
+                        } else {
+                            $id_category = $d['id_category'] !== null ? $d['id_category'] : '';
+                            $category = $d['category'] !== null ? $d['category'] : '';
+                            update_user_meta($new, 'suscription',$id_category);
+                            update_user_meta($new, 'suscription_name',$category);
                         }
+                        echo $new;
+                    } else {
+                        echo 'error';
                     }
-              
+                } else {
+                    echo 'el email ya existe';
+                }
             }
-        } else {
-           return json_encode('data empty');
-        }
-        
+        } 
     }
 
     public function import_users() //wp-json/suscriptores/v1/suscriptores/
@@ -112,7 +132,7 @@ class Users_Api
             array(
                 'methods' => 'POST',
                 'callback' => [$this, 'importar_user'],
-                'permission_callback' => '__return_true'
+                'permission_callback' => ''
             )
         );
     }
@@ -121,6 +141,7 @@ class Users_Api
     {
         $data = [
             'user_login' => $email,
+            'user_email' => $email,
             'first_name' => $first_name,
             'last_name' => $last_name,
             'display_name' => $first_name . ' ' . $last_name,
@@ -136,7 +157,7 @@ class Users_Api
             return $user_id;
         }
 
-        return 'error';
+        return is_wp_error($user_id);
     }
 
     public function create_user_meta($user_id)
