@@ -13,6 +13,8 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this,'middle_single_2']);
 
+        add_action('widgets_init', [$this,'middle_mobile']);
+
         add_action('widgets_init', [$this,'insert_middle_mob']);
 
         add_action('widgets_init', [$this,'insert_middle_mob_1']);
@@ -87,7 +89,11 @@ class Widgets_Theme_TA
     {
         $widgets = [
             'note_mob_1' => __('Note Header Mobile', 'gen-theme-base'),
-            'note_mob_2' => __('Note BoxMobile 3', 'gen-theme-base'),
+            'note_mob_2' => __('Note BoxMobile 2', 'gen-theme-base'),
+            'note_mob_3' => __('Note BoxMobile 3', 'gen-theme-base'),
+            'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-theme-base'),
+            'note_mob_5' => __('Note Comentarios Mobi', 'gen-theme-base'),
+            'note_mob_6' => __('Relacionados Mobi', 'gen-theme-base'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -127,16 +133,16 @@ class Widgets_Theme_TA
     public function middle_mobile()
     {
         $widgets = [
-            'note_mob_mid_1' => __('Note medio mobile', 'gen-theme-base'),
-            'note_mob_mid_2' => __('Note medio mobile', 'gen-theme-base'),
+            'note_mob_mid_1' => __('Note medio mobile 1', 'gen-theme-base'),
+            'note_mob_mid_2' => __('Note medio mobile 2', 'gen-theme-base'),
         ];
 
         foreach($widgets as $key => $val) {
             register_sidebar(array(
                 'name'          => $val,
                 'id'            => $key,
-                'before_widget' => '',
-                'after_widget'  => '',
+                'before_widget' => '<div class="d-block d-sm-none d-md-none d-lg-none mt-3 mb-3 max-auto col-12 text-center">',
+                'after_widget'  => '</div>',
             ));
         }
     }

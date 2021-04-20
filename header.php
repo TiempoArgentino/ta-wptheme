@@ -36,15 +36,6 @@
     </div>
 </div>
 <?php } ?>
-<?php if (is_active_sidebar('note_mob_1')) { ?>
-<div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
-    <div class="row d-flex">
-        <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('note_mob_1'); ?>          
-        </div>
-    </div>
-</div>
-<?php } ?>
 <?php endif;?>
 <!-- anuncio sobre header single -->
 <div class="header">
@@ -211,6 +202,17 @@
             <div class="row d-flex">
                 <div class="col-9 mx-auto">
                     <?php dynamic_sidebar('home_desk_2'); ?>          
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+<?php endif;?>
+<?php if(is_front_page()):?>
+    <?php if (is_active_sidebar('home_mob_1')) { ?>
+        <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
+            <div class="row d-flex">
+                <div class="col-12 mx-auto">
+                    <?php dynamic_sidebar('home_mob_1'); ?>          
                 </div>
             </div>
         </div>

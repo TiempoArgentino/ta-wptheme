@@ -18,7 +18,7 @@
                                 <p><?php echo sprintf(__('Ya cuentas con una %s', 'gen-theme-base'), '<b>' . __('suscripción') . '</b>') ?></p>
                             </div>
                             <div class="continue mt-3">
-                                <p><?php echo __('Si deseas actualizarla, puedes hacerlo desde tu perfil de usuario', 'gen-theme-base') ?></p>
+                                <p><?php echo __('Si deseás actualizarla, puedes hacerlo desde tu perfil de usuario', 'gen-theme-base') ?></p>
                                 <div class="btns-container">
                                     <button><a href="<?php echo get_permalink(get_option('subscriptions_profile')) ?>">ir a mi perfil</a></button>
                                 </div>
@@ -256,7 +256,7 @@
                 <div class="py-2">
                     <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4><?php echo __('¿Con qué importe deseas asociarte?', 'gen-base-theme') ?></h4>
+                            <h4><?php echo __('¿Con qué importe deseás asociarte?', 'gen-base-theme') ?></h4>
                         </div>
                         <div class="asociate-wrapper">
                             <div class="your-amount-block">
@@ -277,7 +277,7 @@
                                 <h6 class="mt-2"><?php echo sprintf(__('Podrás %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b> ' . __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
-                                <h6><?php echo __('Si necesitás ayuda escibinos a', 'gen-base-theme') ?>
+                                <h6><?php echo __('Si necesitás ayuda escribinos a', 'gen-base-theme') ?>
                                 </h6>
                                 <h6><a class="highlighted" href="mailto:<?php echo get_option('subscriptions_email_sender'); ?>"><?php echo get_option('subscriptions_email_sender'); ?></a>
                                 </h6>
@@ -530,7 +530,7 @@
                     <p>Debes <b>elegir un abono mensual</b> para continuar.</p>
                 </div>
                 <div class="ayuda mt-4">
-                    <h6>Si deseas obtener ayuda con el proceso de asociación, podés escribir un mail a <a href="mailto:suscripciones@tiempoargentino.com.ar">suscripciones@tiempoargentino.com.ar</a>
+                    <h6>Si deseás obtener ayuda con el proceso de asociación, podés escribir un mail a <a href="mailto:suscripciones@tiempoargentino.com.ar">suscripciones@tiempoargentino.com.ar</a>
                     </h6>
                 </div>
                 <div class="btns-container">

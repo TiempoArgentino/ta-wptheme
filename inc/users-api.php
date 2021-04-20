@@ -14,39 +14,51 @@ class Users_Api
 
     public function importar_user(WP_REST_Request $request)
     {
-        header("HTTP/1.1 200 OK");
-        $data = [$request->get_json_params()];
+        $data = $request->get_json_params();
         if ($data) {
             foreach ($data as $d) {
 
-                if($d['email'] === null) continue;
+                if(trim($d['email']) === null) continue;
+            
+                if (!get_user_by('email', trim($d['email']))) {
 
-                if (!get_user_by('email', $d['email'])) {
+                    $name = array_key_exists('name',$d) ? $d['name'] : '';
+                    $lastname = array_key_exists('lastname',$d) ? $d['lastname'] : '';
 
-                    $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');
+                    $new = $this->new_user(trim($d['email']), $name, $lastname);
+                  
+                    
+                    if (!$new) {
+                        header("HTTP/1.1 400 User No Created");
+                    } else {
+                        header("HTTP/1.1 200 OK");
+                        if($d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR') {
+                            $dir = array_key_exists('address',$d) ? $d['address'] : '';
+                            $dir_num = array_key_exists('address_number',$d) ? $d['address_number'] : '';
+                            $floor = array_key_exists('floor',$d) ? $d['floor'] : '';
+                            $number = array_key_exists('number',$d) ? $d['number'] : '';
+                            $CPA = array_key_exists('CPA',$d) ? $d['CPA'] : '';
+                            $between_streets = array_key_exists('between_streets',$d) ? $d['between_streets'] : '';
 
-                    $new = $this->new_user($d['email'], $d['name'], $d['lastname']);
-    
-                    if ($new) {
-                        $address = [
-                            'state' =>  '-',
-                            'city' => '-',
-                            'address' => $d['address'] !== null ? $d['address'] : '',
-                            'number' => $d['address_number'] !== null ? $d['address_number'] : '',
-                            'floor' => $d['floor'] !== null ? $d['floor'] : '',
-                            'apt' => $d['number'] !== null ? $d['number'] : '',
-                            'zip' => $d['CPA'] !== null ? $d['CPA'] : '',
-                            'bstreet' => $d['between_streets'] !== null ? $d['between_streets'] : '',
-                            'observations' => ''
-                        ];
-
-                        $phone = $d['phone'] !== null ? $d['phone'] : '';
-
-                        update_user_meta($new, '_user_address', $address);
+                            $address = [
+                                'state' =>  '-',
+                                'city' => '-',
+                                'address' => $dir,
+                                'number' => $dir_num,
+                                'floor' => $floor,
+                                'apt' => $number,
+                                'zip' => $CPA,
+                                'bstreet' => $between_streets,
+                                'observations' => ''
+                            ];
+                            update_user_meta($new, '_user_address', $address);
+                        }
+                        $phone = array_key_exists('phone',$d) AND $d['phone'] !== null ? $d['phone'] : '';
                         update_user_meta($new, '_user_status', 'active'); //$user_status = 'active';'on-hold';
-                        update_user_meta($new, '_user_phone', $phone);
+                        update_user_meta($new, '_user_phone', $phone);       
 
-                        
+                        $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');
+                       
 
                         $create_order = [
                             'post_title' => $order_reference,
@@ -57,7 +69,7 @@ class Users_Api
 
                         $create = wp_insert_post($create_order);
 
-                        if ($d['infopago'] !== null) {
+                        if (array_key_exists('infopago',$d) || $d['infopago'] !== null) {
 
                             $period = $d['infopago'][0]['auto_recurring']['frequency_type'] === 'months' ? 'month' : 'day';
 
@@ -71,7 +83,7 @@ class Users_Api
                                 '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago',
                                 '_member_user_id' => $new,
                                 '_member_renewal_date' => $sumo_mes,
-                                '_member_suscription_id' => 235,
+                                '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237,
                                 '_member_suscription_name' => $d['infopago'][0]['reason'],
                                 '_member_suscription_period' => $period,
                                 '_member_suscription_period_number' => $d['infopago'][0]['auto_recurring']['frequency'],
@@ -108,17 +120,30 @@ class Users_Api
                             update_user_meta($new, 'suscription',235);
                             update_user_meta($new, 'suscription_name',$d['infopago'][0]['reason']);
                         } else {
+
+                            $order_data = [
+                                '_member_order_reference' => $order_reference,
+                                '_member_order_status' => 'completed',
+                                '_member_payment_method' => 'bank',
+                                '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago',
+                                '_member_user_id' => $new,
+                                '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237,
+                                'payment_type' => 'subscription'
+                            ];
+
+                            foreach ($order_data as $key => $value) {
+                                add_post_meta($create, $key, $value);
+                            }
+
                             $id_category = $d['id_category'] !== null ? $d['id_category'] : '';
                             $category = $d['category'] !== null ? $d['category'] : '';
                             update_user_meta($new, 'suscription',$id_category);
                             update_user_meta($new, 'suscription_name',$category);
                         }
-                        echo $new;
-                    } else {
-                        echo 'error';
+                        
                     }
                 } else {
-                    echo 'el email ya existe';
+                    header("HTTP/1.1 409 Data no found");
                 }
             }
         } 
