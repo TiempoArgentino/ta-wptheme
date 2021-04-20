@@ -1,5 +1,7 @@
 const { Fragment } = wp.element;
+const { TextControl } = wp.components;
 import TASeparator from '../TASeparator/TASeparator';
+import RBContentEditable from '../../components/rb-contenteditable/rb-contenteditable';
 import './css/editor.css';
 
 const TAContainer = (props = {}) => {
@@ -7,6 +9,7 @@ const TAContainer = (props = {}) => {
         attributes = {},
         setAttributes,
         children = '',
+        titleEditable = true,
     } = props;
 
     const {
@@ -16,12 +19,18 @@ const TAContainer = (props = {}) => {
     } = attributes;
 
     const headerClass = header_type == 'special' ? 'special' : '';
+    const className = `ta-container ta-context ${color_context}`;
 
     return (
-        <div className="ta-container">
+        <div className={className}>
             <div className = { `container-header wp-block ${headerClass}` } >
                 <TASeparator/>
-                <div className="text">{title}</div>
+                <RBContentEditable
+                    content = {title}
+                    onBlur = { (title) => setAttributes({title}) }
+                    className="text"
+                    disabled = { !titleEditable }
+                />
             </div>
             <div className="container-content wp-block">
                 {children}

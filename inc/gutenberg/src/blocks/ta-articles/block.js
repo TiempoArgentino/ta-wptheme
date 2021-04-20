@@ -132,6 +132,8 @@ registerBlockType( 'ta/articles', {
 						...attributes.container,
 						title: usesTermFormat ? isTermArticles.name : attributes.container.title,
 					}}
+					titleEditable = { usesTermFormat ? false : true }
+					setAttributes = { (attr) => setAttributes({ container: {...container, ...attr}}) }
 				>
 					<div className={`${className} ta-articles-block`}>
 						{ loadingArticles && <Spinner/> }

@@ -14,3 +14,16 @@
     display: inline-block;
     color: #16a1dc;
 }
+
+.ta-context.dark-blue{
+    color: #fff;
+    background-color: #252b2d;
+}
+
+.ta-context.dark-blue .context-bkg-color{
+    background-color: #252b2d;
+}
+
+.ta-context.dark-blue .context-color{
+    background-color: #16a1dc;
+}

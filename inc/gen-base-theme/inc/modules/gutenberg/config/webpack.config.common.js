@@ -1,22 +1,21 @@
-const paths = require( './paths' );
-const autoprefixer = require( 'autoprefixer' );
+const paths = require('./paths');
+const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const glob = require('glob');
 
 //Generate object for webpack entry
 var entryObject = glob.sync(paths.relativeBlocksJS).reduce(
-    function (entries, entry) {
+    function(entries, entry) {
         const pathEscaped = escapeRegExp(paths.relativeBlocks);
         const regexpString = `${pathEscaped}\/([\\-\\w\\d_]+)\/block\\.js$`;
-        const regexp = new RegExp(regexpString,"g");
+        const regexp = new RegExp(regexpString, "g");
         var matchForRename = regexp.exec(entry);
 
         if (matchForRename !== null && typeof matchForRename[1] !== 'undefined')
             entries[matchForRename[1]] = entry;
 
         return entries;
-    },
-    {}
+    }, {}
 );
 
 console.log('ENTRIES:', entryObject);
@@ -94,8 +93,7 @@ module.exports = {
         },
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
@@ -107,9 +105,8 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                oneOf: [
-                    {
-                        test: function(name){
+                oneOf: [{
+                        test: function(name) {
                             return isEditorStylePath(name) || isFrontStylePath(name);
                         },
                         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
@@ -120,20 +117,33 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
+                        },
+                    },
+                ],
+            }
         ]
     },
-	externals: require( paths.externals ),
+    externals: require(paths.externals),
 };
 
 
 function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'); // $& means the whole matched string
+    return string.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'); // $& means the whole matched string
 }
 
-function isBlockCssPath(stylePath, cssFilename){
-	const path = require('path');
+function isBlockCssPath(stylePath, cssFilename) {
+    const path = require('path');
     const pathSep = escapeRegExp(path.sep);
-	//gutenberg\\src\\blocks\\(.+?(?=\\))\\css\\${cssFilename}\.s?css$
+    //gutenberg\\src\\blocks\\(.+?(?=\\))\\css\\${cssFilename}\.s?css$
     const expresion = new RegExp(`gutenberg${pathSep}src${pathSep}blocks${pathSep}(.+?(?=${pathSep}))${pathSep}css${pathSep}${cssFilename}\\.s?css`);
     const match = stylePath.match(expresion);
     return match ? `${match[1]}` : null;
@@ -153,10 +163,10 @@ function blockNameByMainScriptModule(module) {
     return match ? `${match[1]}` : null;
 }
 
-function isEditorStylePath(stylePath){
-	return isBlockCssPath(stylePath, 'editor');
+function isEditorStylePath(stylePath) {
+    return isBlockCssPath(stylePath, 'editor');
 }
 
-function isFrontStylePath(stylePath){
+function isFrontStylePath(stylePath) {
     return isBlockCssPath(stylePath, 'style');
 }

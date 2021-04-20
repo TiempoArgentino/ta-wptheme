@@ -7,6 +7,8 @@ const TAContainerControls = (props = {}) => {
         setAttributes,
         termControls = false,
         isTermArticles = false,
+        useColorContext = true,
+        useHeaderType = true,
     } = props;
 
     const {
@@ -35,6 +37,7 @@ const TAContainerControls = (props = {}) => {
                     value={ header_link }
                     onChange={ ( header_link ) => setAttributes( { header_link } ) }
                 />
+                { useColorContext &&
                 <SelectControl
                     label="Paleta de colores"
                     disabled = {usesTermFormat}
@@ -48,16 +51,19 @@ const TAContainerControls = (props = {}) => {
                     ] }
                     onChange={ ( color_context ) => { setAttributes( { color_context } ) } }
                 />
-                <SelectControl
-                    label="Tipo de header"
-                    // disabled = {usesTermFormat}
-                    value={ header_type }
-                    options={ [
-                        { label: 'Común', value: 'common' },
-                        { label: 'Especial', value: 'especial' },
-                    ] }
-                    onChange={ ( header_type ) => { setAttributes( { header_type } ) } }
-                />
+                }
+                { useHeaderType &&
+                    <SelectControl
+                        label="Tipo de header"
+                        // disabled = {usesTermFormat}
+                        value={ header_type }
+                        options={ [
+                            { label: 'Común', value: 'common' },
+                            { label: 'Especial', value: 'especial' },
+                        ] }
+                        onChange={ ( header_type ) => { setAttributes( { header_type } ) } }
+                    />
+                }
             </>
             }
 
