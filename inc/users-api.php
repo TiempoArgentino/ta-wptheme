@@ -15,7 +15,7 @@ class Users_Api
     public function importar_user(WP_REST_Request $request)
     {
         header("HTTP/1.1 200 OK");
-        $data = $request->get_json_params();
+        $data = [$request->get_json_params()];
         if($data) {
             foreach ($data as $d) {
                 $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');

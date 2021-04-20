@@ -11,6 +11,8 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this,'middle_single']);
 
+        add_action('widgets_init', [$this,'middle_single_2']);
+
         add_filter('the_content', [$this,'insert_custom_content']);
 
         add_filter('the_content', [$this,'insert_custom_content_2']);
@@ -94,17 +96,17 @@ class Widgets_Theme_TA
     public function middle_single()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 1 (Desk / Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 1 (Desk)', 'gen-theme-base'),
             'id'            => 'middle-single-note',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
         ));
     }
 
-    public function middle_single_mob()
+    public function middle_single_2()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 2 (Desk / Mob)', 'gen-theme-base'),
+            'name'          => __('Nota medio 2 (Desk)', 'gen-theme-base'),
             'id'            => 'middle-single-note-mobile',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
@@ -144,10 +146,10 @@ class Widgets_Theme_TA
         
         ob_start();
         $this->insert_middle_mobile();
-        $widget_area_html = ob_get_clean();
+        $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && ! is_admin()) {
-            return $this->insert_after_paragraph($widget_area_html, 4, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
         }
     
         return $content;

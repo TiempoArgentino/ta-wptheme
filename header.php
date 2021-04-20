@@ -15,15 +15,15 @@
 <?php wp_body_open(); ?>
 <!-- anuncio sobre portada -->
 <?php if(is_front_page()):?>
-<?php if (is_active_sidebar('home_desk_1')) { ?>
-<div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
-    <div class="row d-flex">
-        <div class="col-9 mx-auto">
-            <?php dynamic_sidebar('home_desk_1'); ?>          
+    <?php if (is_active_sidebar('home_desk_1')) { ?>
+        <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+            <div class="row d-flex">
+                <div class="col-9 mx-auto">
+                    <?php dynamic_sidebar('home_desk_1'); ?>          
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<?php } ?>
+    <?php } ?>
 <?php endif;?>
 <!-- anuncio sobre header single -->
 <?php if(is_single()):?>
@@ -204,3 +204,15 @@
 <div class="d-none d-lg-block">
     <?php include_once(TA_THEME_PATH . '/markup/partes/banner-covid.php');  ?>
 </div>
+<!-- anuncio sobre portada -->
+<?php if(is_front_page()):?>
+    <?php if (is_active_sidebar('home_desk_2')) { ?>
+        <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+            <div class="row d-flex">
+                <div class="col-9 mx-auto">
+                    <?php dynamic_sidebar('home_desk_2'); ?>          
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+<?php endif;?>
