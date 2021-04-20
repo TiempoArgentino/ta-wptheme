@@ -174,6 +174,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
 		require_once TA_THEME_PATH . '/mailtrain/functions.php';
 		require_once TA_THEME_PATH . '/beneficios/functions.php';
+		require_once TA_THEME_PATH . '/inc/users-api.php';
 	}
 
 	/**

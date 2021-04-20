@@ -13,8 +13,7 @@
     </div>
     <div class="sub-blocks mt-3">
         <div class="container px-0 px-md-1">
-            <div class="ta-articles-block d-flex"  id="your_interests">        
-            </div>
+            <div class="ta-articles-block d-flex"  id="your_interests"> </div>
             <div class="container">
                 <div class="btns-container d-flex justify-content-between justify-content-lg-end">
                 <?php if(is_user_logged_in()):?>

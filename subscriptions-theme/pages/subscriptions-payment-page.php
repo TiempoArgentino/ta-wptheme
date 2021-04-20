@@ -49,11 +49,15 @@ do_action('subscriptions_payment_page_header');
                                         <div id="msg-ok"></div>
                                         <form method="post" id="address-form" class="text-left">
                                             <div class="form-container mt-4">
-                                                <div class="input-container">
-                                                    <input type="text" name="state" placeholder="<?php echo __('Provincia', 'gen-theme-base') ?>" id="state" value="<?php echo $address[0]['state'] !== null ? $address[0]['state'] : ''; ?>" required />
+                                               <div class="input-container">
+                                                    <input type="hidden" name="state" id="state" value="Buenos Aires" />
                                                 </div>
                                                 <div class="input-container">
-                                                    <input type="text" placeholder="<?php echo __('Ciudad / Localidad', 'gen-theme-base') ?>" name="city" id="city" value="<?php echo $address[0]['city'] !== null ? $address[0]['city'] : ''; ?>" required />
+                                                    <select name="city" id="city">
+                                                        <option value="">-- ciudad / localidad --</option>
+                                                        <option value="CABA" <?php selected('CABA',$address[0]['city'])?>>CABA</option>
+                                                        <option value="La Plata" <?php selected('La Plata',$address[0]['city'])?>>La Plata</option>
+                                                    </select>
                                                 </div>
                                                 <div class="input-container">
                                                     <input type="text" placeholder="<?php echo __('Calle', 'gen-theme-base') ?>" name="address" id="address" value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required />
@@ -66,8 +70,13 @@ do_action('subscriptions_payment_page_header');
                                                         <input type="text" placeholder="<?php echo __('CP', 'gen-theme-base') ?>" name="zip" id="zip" value="<?php echo $address[0]['zip'] !== null ? $address[0]['zip'] : ''; ?>" required />
                                                     </div>
                                                 </div>
-                                                <div class="input-container">
-                                                    <input type="text" placeholder="<?php echo __('Dirección linea 2', 'gen-theme-base') ?> " name="address2" id="address2" value="<?php echo $address[0]['address2'] !== null ? $address[0]['address2'] : ''; ?>" />
+                                                <div class="d-flex">
+                                                    <div class="input-container mr-3 w-100">
+                                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-theme-base') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>" required />
+                                                    </div>
+                                                    <div class="input-container w-100">
+                                                        <input type="text" placeholder="<?php echo __('Dpto', 'gen-theme-base') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" required />
+                                                    </div>
                                                 </div>
                                                 <div class="input-container">
                                                     <input type="text" placeholder="<?php echo __('Entre calles', 'gen-theme-base') ?>" name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
