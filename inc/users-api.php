@@ -19,6 +19,8 @@ class Users_Api
         if ($data) {
             foreach ($data as $d) {
 
+                if($d['email'] === null) continue;
+
                 if (!get_user_by('email', $d['email'])) {
 
                     $order_reference = get_option('member_sku_prefix', 'TA-') . date('YmdHms');
@@ -29,18 +31,20 @@ class Users_Api
                         $address = [
                             'state' =>  '-',
                             'city' => '-',
-                            'address' => $d['address'],
-                            'number' => $d['address_number'],
-                            'floor' => $d['floor'],
-                            'apt' => $d['number'],
-                            'zip' => $d['CPA'],
-                            'bstreet' => $d['between_streets'],
+                            'address' => $d['address'] !== null ? $d['address'] : '',
+                            'number' => $d['address_number'] !== null ? $d['address_number'] : '',
+                            'floor' => $d['floor'] !== null ? $d['floor'] : '',
+                            'apt' => $d['number'] !== null ? $d['number'] : '',
+                            'zip' => $d['CPA'] !== null ? $d['CPA'] : '',
+                            'bstreet' => $d['between_streets'] !== null ? $d['between_streets'] : '',
                             'observations' => ''
                         ];
 
+                        $phone = $d['phone'] !== null ? $d['phone'] : '';
+
                         update_user_meta($new, '_user_address', $address);
                         update_user_meta($new, '_user_status', 'active'); //$user_status = 'active';'on-hold';
-                        update_user_meta($new, '_user_phone', $d['phone']);
+                        update_user_meta($new, '_user_phone', $phone);
 
                         
 
@@ -53,7 +57,7 @@ class Users_Api
 
                         $create = wp_insert_post($create_order);
 
-                        if (sizeof($d['infopago']) > 0) {
+                        if ($d['infopago'] !== null) {
 
                             $period = $d['infopago'][0]['auto_recurring']['frequency_type'] === 'months' ? 'month' : 'day';
 
@@ -104,8 +108,10 @@ class Users_Api
                             update_user_meta($new, 'suscription',235);
                             update_user_meta($new, 'suscription_name',$d['infopago'][0]['reason']);
                         } else {
-                            update_user_meta($new, 'suscription',$d['id_category']);
-                            update_user_meta($new, 'suscription_name',$d['category']);
+                            $id_category = $d['id_category'] !== null ? $d['id_category'] : '';
+                            $category = $d['category'] !== null ? $d['category'] : '';
+                            update_user_meta($new, 'suscription',$id_category);
+                            update_user_meta($new, 'suscription_name',$category);
                         }
                         echo $new;
                     } else {
@@ -115,9 +121,7 @@ class Users_Api
                     echo 'el email ya existe';
                 }
             }
-        } else {
-            return 'data empty';
-        }
+        } 
     }
 
     public function import_users() //wp-json/suscriptores/v1/suscriptores/
