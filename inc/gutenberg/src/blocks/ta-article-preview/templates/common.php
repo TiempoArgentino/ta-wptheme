@@ -9,13 +9,14 @@ $preview_class .= " $class";
     <?php if( $thumbnail_url ): ?>
     <div class="<?php echo esc_attr($thumb_cont_class); ?>">
         <a href="<?php echo esc_attr($url); ?>">
-            <div class="img-container position-relative">
-                <div class="img-wrapper" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>"></div>
-                <div class="icons-container">
-                    <div class="article-icons d-flex flex-column position-absolute">
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
+            <div class="img-container">
+                <div class="img-wrapper d-flex align-items-end" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>">
+                    <div class="icons-container">
+                        <div class="article-icons d-flex flex-column mb-2">
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
+                        </div>
                     </div>
                 </div>
             </div>

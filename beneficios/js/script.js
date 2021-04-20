@@ -42,4 +42,15 @@
                 
             });
         });
+
+        $(document).ready(function(){
+            if ($(window).width() >= 768) {
+                $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height",$('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').height() + 26 + 'px');
+
+                $( window ).resize(function() {
+                    $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height", "initial");
+                    $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height",$('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').height() + 26 + 'px');
+                  });
+            }
+        });
 })(jQuery);
