@@ -19,12 +19,22 @@ class Users_Api
             foreach ($data as $d) {
 
                 if(trim($d['email']) === null) {
-                    echo http_response_code(409).'\n';
+                    echo http_response_code(409).'\n No existe';
+                    continue;
+                }
+
+                if(empty($d['email']) || $d['email'] === '' || $d['email'] === ' '){
+                    echo http_response_code(409).'\n Vino Vacio';
+                    continue;
+                }
+
+                if(!filter_var($d['email'], FILTER_SANITIZE_EMAIL)){
+                    echo http_response_code(409).'\n No es email';
                     continue;
                 }
 
                 if(get_user_by('email', trim($d['email']))){
-                    echo http_response_code(409).'\n';
+                    echo http_response_code(409).'\n Ya existia';
                     continue;
                 }
             
@@ -37,7 +47,7 @@ class Users_Api
                   
                     
                     if (!$new) {
-                        echo http_response_code(400).'\n';
+                        echo http_response_code(400).'\n Error de no se creo';
                     } else {
                         
                         if($d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR') {
@@ -148,10 +158,10 @@ class Users_Api
                             update_user_meta($new, 'suscription',$id_category);
                             update_user_meta($new, 'suscription_name',$category);
                         }
-                        echo http_response_code(200).'\n';
+                        echo http_response_code(200).'\n Creado';
                     }
                 } else {
-                    echo http_response_code(404).'\n';
+                    echo http_response_code(404).'\n Dta vacio';
                 }
             }
         } 
