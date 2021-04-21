@@ -213,8 +213,7 @@
         </div>
     <?php } ?>
 <?php endif;?>
-<<<<<<< HEAD
-=======
+
 <?php if(is_front_page()):?>
     <?php if (is_active_sidebar('home_mob_1')) { ?>
         <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
@@ -226,4 +225,3 @@
         </div>
     <?php } ?>
 <?php endif;?>
->>>>>>> c91dd8ebe4d570e1d69389cf28d1cb56b1fdb6d6
