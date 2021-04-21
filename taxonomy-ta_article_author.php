@@ -30,7 +30,7 @@ $articles = get_ta_articles_from_query(array(
         <div class="container">
             <div class="ta-author-block px-3 py-4">
                 <div class="d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row flex-md-column justify-content-between justify-content-md-start px-4">
+                    <div class="d-flex flex-row flex-md-column justify-content-center justify-content-md-start px-4">
                         <?php if( $author->photo ): ?>
                         <div class="profile  position-relative ">
                             <div class="picture">
@@ -48,7 +48,7 @@ $articles = get_ta_articles_from_query(array(
                             <p><span>Tiempo Argentino</span></p>
                         </div>
                         <?php if( $author->networks ): ?>
-                        <div class="social-btns d-flex flex-column flex-md-row justify-content-around justify-content-md-start my-3">
+                        <div class="social-btns d-flex flex-column flex-md-row justify-content-around justify-content-md-start my-3 ml-3">
                             <?php if( isset($author->networks['twitter']) ): ?>
                             <a target="_blank" href="<?php echo esc_attr($author->networks['twitter']); ?>" class="mr-2">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-tw.svg" alt="">
@@ -67,7 +67,7 @@ $articles = get_ta_articles_from_query(array(
                         </div>
                         <?php endif; ?>
                     </div>
-                    <div class="author-name d-block d-md-none mt-3 px-4">
+                    <div class="author-name d-block d-md-none mt-3 px-3">
                         <p><?php echo esc_html($author->name); ?> <span>/ Tiempo Argentino</span></p>
                     </div>
                     <div class="author-content">

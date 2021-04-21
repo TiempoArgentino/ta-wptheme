@@ -44,12 +44,12 @@
 <?php } ?>
 <?php endif;?>
 <!-- anuncio sobre header single -->
-<div class="header">
+<div class="header mb-4">
     <div class="container">
         <div class="desktop-ribbon d-none d-lg-block">
             <div class="d-flex justify-content-between">
                 <div class="beneficios-socios d-flex align-items-center px-2">
-                    <p>Beneficios para SOCIOS</p>
+                    <p>Comunidad Tiempo</p>
                 </div>
                 <div class="d-flex justify-content-between flex-fill mx-2">
                     <div class="temas-importantes d-flex align-items-center">
@@ -155,7 +155,7 @@
                 </div>
                 <div class="asociate-banner-content position-absolute">
                     <div class="separator"></div>
-                    <p class="mt-1"><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">ASOCIATE</a></p>
+                    <p class="mt-1"><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">SUMATE</a></p>
                 </div>
             </div>
         </div>
@@ -198,9 +198,7 @@
     </div>
 </div>
 <?php include_once(TA_THEME_PATH . '/markup/partes/menu.php');  ?>
-<div class="d-none d-lg-block">
-    <?php include_once(TA_THEME_PATH . '/markup/partes/banner-covid.php');  ?>
-</div>
+
 <!-- anuncio sobre portada -->
 <?php if(is_front_page()):?>
     <?php if (is_active_sidebar('home_desk_2')) { ?>
