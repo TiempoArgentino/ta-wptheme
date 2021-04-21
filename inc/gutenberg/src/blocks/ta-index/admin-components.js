@@ -19,7 +19,7 @@ function doForEveryMatch(props){
         cb(node, filterResult);
     }
 
-    if( node.children && ( !filterResult || doMatchChilds ) ){
+    if( node.children && ( !filterResult && doMatchChilds ) ){
         for (let childNode of node.children) {
             doForEveryMatch({
                 ...props,
@@ -86,17 +86,16 @@ const obs = new MutationObserver(function(mutations, observer) {
         // look through all added nodes of this mutation
         for(let j=0; j<mutations[i].addedNodes.length; ++j) {
             const mutationNode = mutations[i].addedNodes[j];
-            const hook = getNodeComponentHook( mutationNode );
-            // console.log('Added node', mutations[i], mutationNode);
+            // console.log('mutationNode', mutations[i], mutationNode);
 
             doForEveryMatch({
                 node: mutationNode,
-                doMatchChilds: false,
+                doMatchChilds: true,
                 filter: (node) => {
                     return getNodeComponentHook( node );
                 },
                 cb: (node, hook) => {
-                    console.log("Component mounted");
+                    // console.log("Component mounted", mounted, node, hook);
                     renderHook({ node, hook });
                 },
             });
@@ -108,7 +107,7 @@ const obs = new MutationObserver(function(mutations, observer) {
 
             doForEveryMatch({
                 node: mutationNode,
-                doMatchChilds: false,
+                doMatchChilds: true,
                 filter: (node) => {
                     return node.componentContainer;
                 },
