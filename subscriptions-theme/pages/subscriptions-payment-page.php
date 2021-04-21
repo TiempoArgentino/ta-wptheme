@@ -15,7 +15,14 @@ do_action('subscriptions_payment_page_header');
             <h4><?php echo __('asociate', 'gen-base-theme') ?><span class="ml-2"><?php echo __('MÉTODO DE PAGO', 'gen-base-theme') ?></span></h4>
         </div>
         <div class="container">
-
+            <?php if(null !== Subscriptions_Sessions::get_session('flash_messages')): ?>
+            <div class="row">
+                <div class="col-7 mx-auto text-center alert alert-<?php echo Subscriptions_Sessions::get_session('flash_messages')['name']?>">
+                    <?php echo __('Ocurrio un error con tu pago','gen-theme-base')?><br />
+                    <i><?php echo Subscriptions_Sessions::get_session('flash_messages')['msg']?></i>
+                </div>
+            </div>
+            <?php endif; ?>
             <?php if (null === Subscriptions_Sessions::get_session('subscriptions_add_session') || !is_user_logged_in()) : ?>
                 <div class="subs-opt mt-3 mt-md-5">
                     <div class="title text-center">
