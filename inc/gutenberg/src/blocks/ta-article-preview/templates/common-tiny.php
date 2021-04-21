@@ -7,12 +7,13 @@ $section = $article->section;
     <div class="col-3 p-0">
         <a href="<?php echo esc_attr($url); ?>">
             <div class="img-container position-relative">
-                <div class="img-wrapper" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>"></div>
-                <div class="icons-container">
-                    <div class="article-icons d-flex flex-column position-absolute">
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
+                <div class="img-wrapper" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>">
+                    <div class="icons-container">
+                        <div class="article-icons d-flex flex-column position-absolute">
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
+                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
+                        </div>
                     </div>
                 </div>
             </div>

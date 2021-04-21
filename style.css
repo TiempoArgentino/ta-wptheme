@@ -12,13 +12,27 @@ Text Domain: gen-base-theme
 Domain Path: /languages
 */
 
+html {
+    margin-top: 0 !important;
+  }  
+
+#wpadminbar {
+    position: initial;
+}
+
 .article-preview .img-container img{
     height: 144px;
     max-width: 100%;
     object-fit: cover;
 }
 
+.ta-author-block .profile .picture {
+    height: 174px;
+    border-radius: 6px;
+}
+
 .ta-author-block .profile .picture img {
+    object-fit: cover;
     max-width: 11rem;
 }
 

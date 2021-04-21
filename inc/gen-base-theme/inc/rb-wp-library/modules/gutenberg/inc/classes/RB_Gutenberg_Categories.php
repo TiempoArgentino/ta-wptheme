@@ -19,6 +19,17 @@ class RB_Gutenberg_Categories {
     *   Filters the blocks categories, adding the ones added using the add_blocks_category method
     */
     public static function register_blocks_categories($categories, $post){
+        $categories_sorted = array();
+
+        foreach (self::$blocks_categories as $category_slug => $category_data) {
+            $categories_sorted[] = $category_data;
+        }
+
+        foreach ($categories as $category) {
+            $categories_sorted[] = $category;
+        }
+
+        return $categories_sorted;
         return array_merge($categories, self::$blocks_categories);
     }
 

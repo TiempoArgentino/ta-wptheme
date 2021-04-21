@@ -27,6 +27,7 @@
 .article-preview > div {
   flex: 0 1 auto;
 }
+
 .article-preview.vertical-article .img-container .img-wrapper {
   min-height: 183px;
 }
@@ -156,11 +157,12 @@
   /* top: 50%;
   transform: translateY(-50%); */
 }
+
 .article-preview .img-container .icons-container .article-icons img {
   max-width: 48px;
   height: auto;
-  margin: 5px 0;
 }
+
 .article-preview .content .category-title h4 {
   font-family: "Red Hat Display";
   font-style: normal;
@@ -322,10 +324,9 @@
   min-width: 100%;
   height: auto;
 }
-
 @media (min-width: 768px) {
   .article-preview .img-container .icons-container .article-icons img {
-    max-width: 25px;
+    max-width: 45px;
   }
   .article-preview.vertical-article .img-container .img-wrapper {
     min-height: 95px;

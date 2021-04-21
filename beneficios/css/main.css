@@ -29,10 +29,6 @@ body {
   transform: rotateX(0deg);
 }
 
-a {
-  color: var(--ta-negro-texto) !important;
-}
-
 .logged-user .welcome p {
   font-family: "Red Hat Display";
   font-style: normal;
@@ -81,7 +77,7 @@ a {
   background-color: var(--ta-negro-texto);
 }
 .header .desktop-ribbon p {
-  font-size: 16px;
+  font-size: 14px;
 }
 .header .desktop-ribbon .beneficios-socios {
   background-color: var(--ta-socios);
@@ -1110,6 +1106,10 @@ a {
   }
   .header .header-content .asociate-banner .asociate-banner-content p {
     font-size: 22px;
+  }
+
+  .header .desktop-ribbon p {
+    font-size: 16px;
   }
 
   .container-with-header .section-title h4 {
