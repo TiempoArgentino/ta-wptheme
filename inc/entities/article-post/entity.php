@@ -93,45 +93,45 @@ return array(
                 ),
             ),
         ),
-        'ta_article_sister_article' => array(
-            'settings'  => array(
-                'title'             => __('Nota Hermana', 'ta-genosha'),
-                'context'           => 'side',
-                'priority'          => 'high',
-                'classes'           => array('ta-metabox'),
-            ),
-            'input'  => array(
-                'controls'        => array(
-                    'text'   => array(
-                        'label'                 => __('Artículo', 'ta-genosha'),
-                        // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
-                        'type'                  => 'RB_Post_Selector',
-                        'query_args'            => array(
-                            'post_type'             => 'ta_article'
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'ta_article_edicion_impresa' => array(
-            'settings'  => array(
-                'title'             => __('Edicion Impresa', 'ta-genosha'),
-                'context'           => 'side',
-                'priority'          => 'high',
-                'classes'           => array('ta-metabox'),
-            ),
-            'input'  => array(
-                'controls'        => array(
-                    'text'   => array(
-                        'label'                 => __('Edicion Impresa', 'ta-genosha'),
-                        // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
-                        'type'                  => 'RB_Post_Selector',
-                        'query_args'            => array(
-                            'post_type'             => 'ta_ed_impresa'
-                        ),
-                    ),
-                ),
-            ),
-        ),
+        // 'ta_article_sister_article' => array(
+        //     'settings'  => array(
+        //         'title'             => __('Nota Hermana', 'ta-genosha'),
+        //         'context'           => 'side',
+        //         'priority'          => 'high',
+        //         'classes'           => array('ta-metabox'),
+        //     ),
+        //     'input'  => array(
+        //         'controls'        => array(
+        //             'text'   => array(
+        //                 'label'                 => __('Artículo', 'ta-genosha'),
+        //                 // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
+        //                 'type'                  => 'RB_Post_Selector',
+        //                 'query_args'            => array(
+        //                     'post_type'             => 'ta_article'
+        //                 ),
+        //             ),
+        //         ),
+        //     ),
+        // ),
+        // 'ta_article_edicion_impresa' => array(
+        //     'settings'  => array(
+        //         'title'             => __('Edicion Impresa', 'ta-genosha'),
+        //         'context'           => 'side',
+        //         'priority'          => 'high',
+        //         'classes'           => array('ta-metabox'),
+        //     ),
+        //     'input'  => array(
+        //         'controls'        => array(
+        //             'text'   => array(
+        //                 'label'                 => __('Edicion Impresa', 'ta-genosha'),
+        //                 // 'description'       => __('Tamaño recomendado 900 x 600 px.', 'ta-genosha'),
+        //                 'type'                  => 'RB_Post_Selector',
+        //                 'query_args'            => array(
+        //                     'post_type'             => 'ta_ed_impresa'
+        //                 ),
+        //             ),
+        //         ),
+        //     ),
+        // ),
     ),
 );

@@ -82,8 +82,11 @@ export const useFetchAndStore = (props) => {
     }, [storedData]);
 
     useEffect( () => {
+        console.log('VALUES CHANGED');
         let newStoredData = generateStoredData();
-        setStoredData(newStoredData && newStoredData.length ? newStoredData : []);
+        if(needsUpdateRef.current){
+            setStoredData(newStoredData && newStoredData.length ? newStoredData : []);
+        }
     }, [values]);
 
 

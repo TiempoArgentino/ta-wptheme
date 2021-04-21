@@ -252,7 +252,7 @@ rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', 
 	'column_class'  => 'test-class',
 ));
 
-function myguten_register_post_meta()
+function ta_article_authors_rols_meta_register()
 {
 	register_post_meta('ta_article', 'ta_article_authors_rols', array(
 		'single' => true,
@@ -267,7 +267,7 @@ function myguten_register_post_meta()
 		),
 	));
 }
-add_action('init', 'myguten_register_post_meta');
+add_action('init', 'ta_article_authors_rols_meta_register');
 
 function ta_article_thumbnail_alt_meta_register()
 {
@@ -282,6 +282,32 @@ function ta_article_thumbnail_alt_meta_register()
 	));
 }
 add_action('init', 'ta_article_thumbnail_alt_meta_register');
+
+function ta_article_sister_article_meta_register(){
+	register_post_meta('ta_article', 'ta_article_sister_article', array(
+		'single' 	=> true,
+		'type' 		=> 'number',
+		'show_in_rest' => array(
+			'schema' => array(
+				'type'  => 'number',
+			),
+		),
+	));
+}
+add_action('init', 'ta_article_sister_article_meta_register');
+
+function ta_article_edicion_impresa_meta_register(){
+	register_post_meta('ta_article', 'ta_article_edicion_impresa', array(
+		'single' 	=> true,
+		'type' 		=> 'number',
+		'show_in_rest' => array(
+			'schema' => array(
+				'type'  => 'number',
+			),
+		),
+	));
+}
+add_action('init', 'ta_article_edicion_impresa_meta_register');
 
 /**
  * filtro por creador

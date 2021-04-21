@@ -90,7 +90,7 @@ export default class RBPostsSelector extends Component{
         *   @param {function} filtersContent - Custom filters manager jsx
         */
         filtersContent: null,
-        fetchHook: null,
+        fetchHook: usePostsFetchMiddle,
     }
 
     constructor(props){

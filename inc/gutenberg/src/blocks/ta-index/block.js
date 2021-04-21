@@ -1,8 +1,10 @@
 import './required-taxonomies';
 import './etiquetador';
-import './authors-selector.js';
-import './article-alt-img-meta.js';
-import './media-popup-photographer.js';
+import './authors-selector';
+import './article-alt-img-meta';
+import './article-meta-nota-hermana';
+import './article-meta-edicion-impresa';
+import './media-popup-photographer';
 import {hookComponentToNode} from './admin-components';
 
 // setTimeout( () => {
