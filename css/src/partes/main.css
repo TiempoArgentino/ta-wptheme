@@ -33,6 +33,10 @@ a {
   color: var(--ta-negro-texto) !important;
 }
 
+a.ab-item {
+  color: #f0f0f1 !important;
+}
+
 .logged-user .welcome p {
   font-family: "Red Hat Display";
   font-style: normal;
@@ -837,6 +841,7 @@ a {
   margin: 3px;
   width: 31px;
   height: 31px;
+  padding: 0;
 }
 .btns-container .pagination button.active {
   font-family: "Red Hat Display";
