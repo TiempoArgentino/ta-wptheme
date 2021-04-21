@@ -14,7 +14,7 @@ class Users_Api
 
     public function importar_user(WP_REST_Request $request)
     {
-        $data = $request->get_json_params();
+        $data = [$request->get_json_params()];
         if ($data) {
             foreach ($data as $d) {
 
