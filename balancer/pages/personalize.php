@@ -64,8 +64,8 @@
                                 </p>
                             </div>
                             <div class="temas d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-left">
-                            <?php if(!empty(balancer_personalize()->get_tags())): ?>
-                                <?php foreach(balancer_personalize()->get_tags() as $key => $val):?>
+                            <?php if(!empty(balancer_personalize()->get_topics())): ?>
+                                <?php foreach(balancer_personalize()->get_topics() as $key => $val):?>
                                         <div class="tema col-12 col-md-4 px-1">
                                             <div class="bg-color">
                                                 <button <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'class="active"' : ''?> type="button">
