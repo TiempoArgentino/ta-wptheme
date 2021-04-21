@@ -1577,3 +1577,20 @@ ul#suggest-ul li {
 #historial-all,#historial-taken{
   display: none;
 }
+.block-message{
+  font-family: "Libre Baskerville";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+a.block-button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 16px;
+}

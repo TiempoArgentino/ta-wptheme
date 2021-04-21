@@ -14,6 +14,8 @@ class Subscriptions_Assets
 
         add_action('wp_ajax_nopriv_subscriptions-ajax-action', [$this, 'add_paper']);
         add_action('wp_ajax_subscriptions-ajax-action', [$this, 'add_paper']);
+
+        add_filter( 'protected_content', [$this,'contenido_protegido'], 10, 1 );
     }
 
     public function styles()
@@ -59,6 +61,20 @@ class Subscriptions_Assets
             echo wp_send_json_success();
             wp_die();
         }
+    }
+
+    public function contenido_protegido()
+    {
+        $msg = '<div class="text-center pt-5 pb-5 block-message">';
+        $msg .= SF()->show_message();
+        
+        $msg .= '<img src="'.get_stylesheet_directory_uri().'/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+
+        $msg .= '<a href="" class="block-button w-20 d-inline p-3 mx-auto text-uppercase">seamos socios</a>';
+
+        $msg .= '</div>';
+
+        return $msg;
     }
 }
 
