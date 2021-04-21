@@ -80,14 +80,20 @@ jQuery(function($) {
         });
 
         custom_uploader.on('open', function(){
-            if(value){
-                var selection = custom_uploader.state().get('selection');
-                const attachment = wp.media.attachment(value);
-                if(attachment){
-                    attachment.fetch();
-                    selection.add([attachment]);
+            setTimeout( () => {
+                if(value){
+                    var selection = custom_uploader.state().get('selection');
+                    const attachment = wp.media.attachment(value);
+                    if(attachment){
+                        attachment.fetch();
+                        selection.add([attachment]);
+                    }
                 }
-            }
+            }, 0);
+        });
+
+        custom_uploader.on('close', function(){
+            custom_uploader.detach();
         });
 
         custom_uploader.open();

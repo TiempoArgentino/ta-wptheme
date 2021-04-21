@@ -147,34 +147,40 @@ export default class RBItemSelector extends Component{
         return (
             <div class="rb-items-selector">
                 {this.props.topContent ? this.props.topContent : ''}
-                {!!this.hasItems() &&
-                <RBListWithActions
-                    items={this.props.items}
-                    getItemData={(item) => this.getSelectableItemData(item)}
-                    actions={[this.getAddAction(actionsDisabled)]}
-                    rowClassName={"item"}
-                    listClassName={"items-selector-list"}
-                />
-                }
-                {!this.hasItems() &&
-                <div className="no-items-container">
-                    <p>{this.props.noItemsLabel}</p>
-                </div>
-                }
-                {this.props.middleContent ? this.props.middleContent : ''}
-                <div className="selected-posts">
-                    <h2 class="title">{this.props.selectedLabel}</h2>
-                    <RBListWithActions
-                        items={this.props.selected}
-                        getItemData={(item) => this.getSelectedItemData(item)}
-                        actions={[{
-                            icon: 'minus',
-                            label: 'Remove',
-                            isDestructive: true,
-                            className: 'is-destructive',
-                            callback: (item) => {this.onSelectionChange(item, false)},
-                        }]}
-                    />
+                <div className="columns-container">
+                    <div className="selector-column">
+                        {!!this.hasItems() &&
+                        <RBListWithActions
+                            items={this.props.items}
+                            getItemData={(item) => this.getSelectableItemData(item)}
+                            actions={[this.getAddAction(actionsDisabled)]}
+                            rowClassName={"item"}
+                            listClassName={"items-selector-list"}
+                        />
+                        }
+                        {!this.hasItems() &&
+                        <div className="no-items-container">
+                            <p>{this.props.noItemsLabel}</p>
+                        </div>
+                        }
+                        {this.props.middleContent ? this.props.middleContent : ''}
+                    </div>
+                    <div className="selected-column">
+                        <div className="selected-posts">
+                            <h2 class="title" style={{marginTop: 0}}>{this.props.selectedLabel}</h2>
+                            <RBListWithActions
+                                items={this.props.selected}
+                                getItemData={(item) => this.getSelectedItemData(item)}
+                                actions={[{
+                                    icon: 'minus',
+                                    label: 'Remove',
+                                    isDestructive: true,
+                                    className: 'is-destructive',
+                                    callback: (item) => {this.onSelectionChange(item, false)},
+                                }]}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         )
