@@ -26,7 +26,13 @@ html {
     object-fit: cover;
 }
 
+.ta-author-block .profile .picture {
+    height: 174px;
+    border-radius: 6px;
+}
+
 .ta-author-block .profile .picture img {
+    object-fit: cover;
     max-width: 11rem;
 }
 
