@@ -213,7 +213,6 @@
         </div>
     <?php } ?>
 <?php endif;?>
-
 <?php if(is_front_page()):?>
     <?php if (is_active_sidebar('home_mob_1')) { ?>
         <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">

@@ -14,11 +14,29 @@ class Users_Api
 
     public function importar_user(WP_REST_Request $request)
     {
-        $data = $request->get_json_params();
+        $data = [$request->get_json_params()];
         if ($data) {
             foreach ($data as $d) {
 
-                if(trim($d['email']) === null) continue;
+                if(trim($d['email']) === null) {
+                    echo http_response_code(409).'\n No existe';
+                    continue;
+                }
+
+                if(empty($d['email']) || $d['email'] === '' || $d['email'] === ' '){
+                    echo http_response_code(409).'\n Vino Vacio';
+                    continue;
+                }
+
+                if(!filter_var($d['email'], FILTER_SANITIZE_EMAIL)){
+                    echo http_response_code(409).'\n No es email';
+                    continue;
+                }
+
+                if(get_user_by('email', trim($d['email']))){
+                    echo http_response_code(409).'\n Ya existia';
+                    continue;
+                }
             
                 if (!get_user_by('email', trim($d['email']))) {
 
@@ -29,7 +47,7 @@ class Users_Api
                   
                     
                     if (!$new) {
-                        header("HTTP/1.1 400 User No Created");
+                        echo http_response_code(400).'\n Error de no se creo';
                     } else {
                         
                         if($d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR') {
@@ -140,10 +158,10 @@ class Users_Api
                             update_user_meta($new, 'suscription',$id_category);
                             update_user_meta($new, 'suscription_name',$category);
                         }
-                        header("HTTP/1.1 200 OK");
+                        echo http_response_code(200).'\n Creado';
                     }
                 } else {
-                    header("HTTP/1.1 409 Data no found");
+                    echo http_response_code(404).'\n Dta vacio';
                 }
             }
         } 

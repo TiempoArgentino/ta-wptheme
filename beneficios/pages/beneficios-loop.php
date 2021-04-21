@@ -278,7 +278,7 @@
                                                 </div>
                                             </div>
                                             <div class="description mt-3">
-                                                <?php echo wp_trim_words(get_the_content(get_the_ID()), 55, null) ?>
+                                                <?php echo get_the_content(get_the_ID()) ?>
                                             </div>
                                         </div>
                                     </div>
