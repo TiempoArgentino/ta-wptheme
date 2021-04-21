@@ -23,11 +23,6 @@ class Users_Api
                     continue;
                 }
 
-                if(trim($d['email']) === '' || !empty(trim($d['email']))) {
-                    echo http_response_code(409).'\n';
-                    continue;
-                }
-
                 if(get_user_by('email', trim($d['email']))){
                     echo http_response_code(409).'\n';
                     continue;
