@@ -77,7 +77,7 @@ registerBlockType( 'ta/mow', {
                             {isSelected &&
                             <>
                                 <ol>
-                                    <li>Dirigase a <a href="https://mowplayer.com/app/playlists/971432865335" target="_blank">https://mowplayer.com/app/playlists/971432865335</a></li>
+                                    <li>Diríjase a <a href="https://mowplayer.com/app/playlists/971432865335" target="_blank">https://mowplayer.com/app/playlists/971432865335</a></li>
                                     <li>Busque la playlist que quiera agregar</li>
                                     <li>Haga click en "Get Code" y copie el código en "SINGLE JS"</li>
                                     <li>Pegue el código en la configuración del bloque</li>
