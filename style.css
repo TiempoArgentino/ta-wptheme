@@ -12,6 +12,14 @@ Text Domain: gen-base-theme
 Domain Path: /languages
 */
 
+html {
+    margin-top: 0 !important;
+  }  
+
+#wpadminbar {
+    position: initial;
+}
+
 .article-preview .img-container img{
     height: 144px;
     max-width: 100%;
