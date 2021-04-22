@@ -57,14 +57,19 @@ do_action('subscriptions_payment_page_header');
                                         <form method="post" id="address-form" class="text-left">
                                             <div class="form-container mt-4">
                                                <div class="input-container">
+                                               <select name="state" id="state">
+                                                    <option value=""> -- seleccionar -- </option>
+                                                    <option value="CABA" <?php selected('CABA',$address[0]['state'])?>>CABA</option>
+                                                    <option value="gba" <?php selected('gba',$address[0]['state'])?>>Gran Buenos Aires</option>
+                                                    <option value="PBA" <?php selected('PBA',$address[0]['state'])?>>Provincia de Buenos Aires</option>
+                                               </select>
                                                     <input type="hidden" name="state" id="state" value="Buenos Aires" />
                                                 </div>
                                                 <div class="input-container">
-                                                    <select name="city" id="city">
-                                                        <option value="">-- ciudad / localidad --</option>
-                                                        <option value="CABA" <?php selected('CABA',$address[0]['city'])?>>CABA</option>
-                                                        <option value="La Plata" <?php selected('La Plata',$address[0]['city'])?>>La Plata</option>
-                                                    </select>
+                                                <select name="city" id="city">
+                                                    <option value=""> -- seleccionar --</option>
+                                                </select>
+                                                <input type="hidden" id="localidad" value="<?php echo $address[0]['city']?>">
                                                 </div>
                                                 <div class="input-container">
                                                     <input type="text" placeholder="<?php echo __('Calle', 'gen-theme-base') ?>" name="address" id="address" value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required />

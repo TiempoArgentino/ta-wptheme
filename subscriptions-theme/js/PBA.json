@@ -1,0 +1,570 @@
+[
+    {
+        "Localidad": "25 de Mayo",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "3 de Febrero",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "A. Alsina",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "A. González Chávez",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Aguas Verdes",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Alberti",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Arrecifes",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Ayacucho",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Azul",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Bahía Blanca",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Balcarse",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Baradero",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Benito Juárez",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Berisso",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Bolívar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Bragado",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Brandsen",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Campana",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Capila del Señor",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Capitán Sarmiento",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carapachay",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carhue",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Cariló",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carlos Casares",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carlos Tejedor",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carmen de Areco",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Carmen de Patagones",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Castelli",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Cañuelas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Chacabuco",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Chascomús",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Chivilcoy",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Colón",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Coronel Dorrego",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Coronel Pringles",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Coronel Rosales",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Coronle Suárez",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Costa Azul",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Costa Chica",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Costa Esmeralda",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Costa del Este",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Daireaux",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Darregueira",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Del Viso",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Dolores",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Don Torcuato",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Ensenada",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Escobar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Exaltación de la Cruz",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Florentino Ameghino",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Garín",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Alvarado",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Alvear",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Arenales",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Belgrano",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Guido",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Lamadrid",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Las Heras",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Lavalle",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Madariaga",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Pacheco",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Paz",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Pinto",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Pueyrredón",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Rodríguez",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Viamonte",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Gral. Villegas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Guamaní",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Guernica",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Hipólito Yrigoyen",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Ing. Maschwitz",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Junín",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "La Plata",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Laprida",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Las Flores",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Las Toninas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Leandro N. Alem",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Lincoln",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Lobería",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Lobos",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Los Cardales",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Los Toldos",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Lucila del Mar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Luján",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Magdalena",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Maipú",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mar Chiquita",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mar de Ajó",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mar del Pampas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mar del Plata",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mar del Tuyú",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Marcos Paz",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Mercedes",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Miramar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Monte Castro",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Monte Hermoso",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Munro",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Navarro",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Necochea",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Olavarría",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Partido de la Costa",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pehuajó",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pellegrini",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pergamino",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pigüe",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pila",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pilar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pinamar",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pina del Sol",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Polvorines",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Pte. Perón",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Punta Indio",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Puán",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Ramallo",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Rauch",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Rivadavia",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Rojas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Roque Pérez",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Saavedra",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Saladillo",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Salliqueló",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Salto",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Andrés de Giles",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Antonio de Areco",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Antonio de Padua",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Bernardo",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Cayetano",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Clemente del Tuyú",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Nicolás",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Pedro",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "San Vicente",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Santa Teresita",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Suipacha",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Tandil",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Tapalqué",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Tordillo",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Tornquist",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Trenque Lauquen",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Tres Lomas",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Villa Gesel",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Villarino",
+        "Distrito": "PBA"
+    },
+    {
+        "Localidad": "Zárate",
+        "Distrito": "PBA"
+    }
+]

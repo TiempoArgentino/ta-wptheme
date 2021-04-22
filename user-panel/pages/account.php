@@ -31,16 +31,16 @@
                             <label for="email">E-mail: </label>
                             <input type="email" placeholder=" " name="user_email_account" id="user_email_account" value="<?php echo wp_get_current_user()->user_email ?>" disabled>
                         </div>
-                        <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center"
+                       <!-- <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center"
                             id="personalInfoInputContainer">
                             <label for="pais">País: </label>
-                            <input type="text" id="pais" placeholder=" " name="country_name" id="country_name" value="<?php echo user_panel_proccess()->get_user_country(wp_get_current_user()->ID) ?>" disabled>
+                            <input type="text" id="pais" placeholder=" " name="country_name" id="country_name" value="<?php //echo user_panel_proccess()->get_user_country(wp_get_current_user()->ID) ?>" disabled>
                         </div>
                         <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center"
                             id="personalInfoInputContainer">
                             <label for="provincia">Provincia: </label>
-                            <input type="text" id="provincia" name="state" placeholder=" " value="<?php echo $address[0]['state'] !== null ? $address[0]['state'] : ''; ?>" disabled>
-                        </div>
+                            <input type="text" id="provincia" name="state" placeholder=" " value="<?php //echo $address[0]['state'] !== null ? $address[0]['state'] : ''; ?>" disabled>
+                        </div>-->
                         <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center"
                             id="personalInfoInputContainer">
                             <label for="Contrasena">Contraseña: </label>
