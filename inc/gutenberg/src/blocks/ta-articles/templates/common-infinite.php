@@ -1,5 +1,4 @@
 <?php
-
 $cells_count = 0;
 $config = array(
     'cells_amount'      => 4,

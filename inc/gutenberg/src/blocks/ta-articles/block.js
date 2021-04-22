@@ -38,12 +38,6 @@ registerBlockType( 'ta/articles', {
 		const [ selectedRowIndex, setSelectedRowIndex ] = useState(0);
 		const currentRow = attributes.rows[selectedRowIndex];
 
-		const updateRowValue = ( index, valName, newValue ) => {
-			const row = attributes.rows[index];
-			row[valName] = newValue;
-			updateRow( index, row );
-		};
-
 		const updateRow = ( index, newData ) => {
 			const rows = attributes.rows.slice();
 			rows.splice(index, 1, newData)
@@ -86,10 +80,13 @@ registerBlockType( 'ta/articles', {
 
 		const {
 			renderRows,
+			renderRowControls,
 			selectedRowData,
 			getCellsCount,
+			addFormatDefaultAttributes,
 		} = useTAArticlesRowsContainer({
 			rows: attributes.rows,
+			updateRow,
 			onMoveRow: moveRow,
 			onClickRow: selectRow,
 			onRemoveRow: removeRow,
@@ -151,11 +148,7 @@ registerBlockType( 'ta/articles', {
 											rows: [ ...attributes.rows,
 												{
 													format: 'miscelanea',
-													cells: {
-														0: {
-															format: 'voice',
-														},
-													},
+													cells: [],
 												},
 											],
 										})
@@ -199,23 +192,7 @@ registerBlockType( 'ta/articles', {
 						icon="layout"
 						initialOpen={false}
 					>
-						<SelectControl
-							label="Formato"
-							value={ currentRow.format }
-							options={ [
-								{ label: 'Miscelanea', value: 'miscelanea' },
-								{ label: 'Común', value: 'common' },
-								{ label: 'Slider', value: 'slider' },
-							] }
-							onChange={ ( format ) => updateRowValue(selectedRowIndex, 'format', format) }
-						/>
-						{ RowControls &&
-						<RowControls
-							row = { currentRow }
-							index = { selectedRowIndex }
-							onUpdate = { ({row, index}) => updateRow(index, row) }
-						/>
-						}
+						{renderRowControls()}
 					</PanelBody>
 					}
 

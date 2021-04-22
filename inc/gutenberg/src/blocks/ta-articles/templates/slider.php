@@ -10,12 +10,21 @@ $printed_slides = 0;
 
 if( $slides_amount == 0 )
     return;
+
+if(!isset($GLOBALS['ta_article_slider_row_count']))
+    $GLOBALS['ta_article_slider_row_count'] = 0;
+else
+    $GLOBALS['ta_article_slider_row_count']++;
+
+$ta_article_slider_row_count = $GLOBALS['ta_article_slider_row_count'];
+$slider_id = "ta_slider__$ta_article_slider_row_count";
 register_articles_block_cells_count($slides_amount);
+
 ?>
 
 <div class="slider-micrositio ta-context micrositio ambiental my-3">
     <div class="context-bg">
-        <div id="sliderMicrositio" class="carousel slide context-color pt-3" data-ride="carousel">
+        <div id="<?php echo esc_attr($slider_id); ?>" class="carousel slide context-color pt-3" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     for ($i=0; $i < $slides_amount; $i++):
@@ -67,7 +76,7 @@ register_articles_block_cells_count($slides_amount);
                     for ($i=0; $i < $printed_slides; $i++):
                         $bullet_class = $i == 0 ? 'active' : '';
                     ?>
-                        <li data-target="#sliderMicrositio" data-slide-to="<?php echo esc_attr($i); ?>"
+                        <li data-target="#<?php echo esc_attr($slider_id); ?>" data-slide-to="<?php echo esc_attr($i); ?>"
                             class="d-flex align-items-center justify-content-center <?php echo esc_attr($bullet_class); ?>">
                             <p><?php echo $i + 1; ?></p>
                         </li>

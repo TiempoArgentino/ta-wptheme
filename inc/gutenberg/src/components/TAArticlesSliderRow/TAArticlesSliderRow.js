@@ -144,6 +144,9 @@ const data = {
     component: TAArticlesSliderRow,
     getCellsAmount,
     Controls: Controls,
+    defaultConfig: {
+        slides_amount: 4,
+    },
 };
 
 export default data;
