@@ -17,6 +17,12 @@ class Subscriptions_Assets
 
         add_filter('protected_content', [$this, 'contenido_protegido'], 10, 1);
         add_filter('user_logged_content', [$this, 'entrada_protegida'], 10, 1);
+
+        add_filter('bk_success_filter', [$this, 'bk_mailer_user_data']);
+        add_filter('mp_success_filter', [$this, 'mp_mailer_user_data']);
+
+        add_filter('bk_error_filter', [$this, 'bk_mailer_user_fail']);
+        add_filter('mp_error_filter', [$this, 'mp_mailer_user_fail']);
     }
 
     public function styles()
@@ -125,7 +131,7 @@ class Subscriptions_Assets
             $msg .= '</div>';
 
             return $msg;
-        } else if(!$role_in || !$authorized) {
+        } else if (!$role_in || !$authorized) {
             $msg = '<div class="text-center pt-5 pb-5 block-message">';
             $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-theme-base');
 
@@ -136,11 +142,96 @@ class Subscriptions_Assets
             $msg .= '</div>';
 
             return $msg;
-        } else if($role_in && $authorized) {
-           
+        } else if ($role_in && $authorized) {
+
             add_filter('the_content', function () {
                 return get_the_content($post_id);
             });
+        }
+    }
+
+    public function bk_mailer_user_data()
+    {
+
+        $user = get_userdata(wp_get_current_user()->ID);
+        $get_subscription = get_the_title(get_user_meta($user->ID, 'suscription', true));
+
+        $data = '{
+            "EMAIL":"' . $user->user_email . '",
+            "MERGE_EN_ESPERA":"yes",
+            "MERGE_DEBITO":"yes",
+            "MERGE_MEMBRESIA":"' . $get_subscription . '",
+            "FORCE_SUBSCRIBE":"yes"
+        }';
+
+        if(function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        }
+        
+        wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
+        exit();
+    }
+
+    public function bk_mailer_user_fail()
+    {
+
+        $user = get_userdata(wp_get_current_user()->ID);
+        $get_subscription = get_the_title(get_user_meta($user->ID, 'suscription', true));
+
+        $data = '{
+            "EMAIL":"' . $user->user_email . '",
+            "ERROR_DE_PAGO":"yes",
+            "MERGE_DEBITO":"yes",
+            "MERGE_MEMBRESIA":"' . $get_subscription . '",
+            "FORCE_SUBSCRIBE":"yes"
+        }';
+
+        if(function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        }
+        
+        wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
+        exit();
+    }
+
+    public function mp_mailer_user_data()
+    {
+
+        $user = get_userdata(wp_get_current_user()->ID);
+        $get_subscription = get_the_title(get_user_meta($user->ID, 'suscription', true));
+
+        $data = '{
+            "EMAIL":"' . $user->user_email . '",
+            "MERGE_MP":"yes",
+            "FORCE_SUBSCRIBE":"yes",
+            "MERGE_ACTIVO":"yes",
+            "MERGE_MEMBRESIA":"' . $get_subscription . '"
+        }';
+
+        if(function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        }
+        
+        wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
+        exit();
+    }
+
+    public function mp_mailer_user_fail()
+    {
+
+        $user = get_userdata(wp_get_current_user()->ID);
+        $get_subscription = get_the_title(get_user_meta($user->ID, 'suscription', true));
+
+        $data = '{
+            "EMAIL":"' . $user->user_email . '",
+            "MERGE_MP":"yes",
+            "FORCE_SUBSCRIBE":"yes",
+            "ERROR_DE_PAGO":"yes",
+            "MERGE_MEMBRESIA":"' . $get_subscription . '"
+        }';
+        
+        if(function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
         }
     }
 }
