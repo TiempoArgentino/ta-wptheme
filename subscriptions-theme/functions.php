@@ -10,12 +10,12 @@ class Subscriptions_Assets
 
         add_filter('panel_tabs_subscription', [$this, 'tab_subscription']);
 
-        add_filter('subscriptions_ajax_ext',[$this,'add_paper_vars']);
+        add_filter('subscriptions_ajax_ext', [$this, 'add_paper_vars']);
 
         add_action('wp_ajax_nopriv_subscriptions-ajax-action', [$this, 'add_paper']);
         add_action('wp_ajax_subscriptions-ajax-action', [$this, 'add_paper']);
 
-        add_filter( 'protected_content', [$this,'contenido_protegido'], 10, 1 );
+        add_filter('protected_content', [$this, 'contenido_protegido'], 10, 1);
     }
 
     public function styles()
@@ -48,16 +48,16 @@ class Subscriptions_Assets
             'add_paper' => $add_paper,
             'price_paper' => $price_paper
         ];
-        return subscriptions_proccess()->subscriptions_localize_script('ajax_add_paper', $fields);   
+        return subscriptions_proccess()->subscriptions_localize_script('ajax_add_paper', $fields);
     }
 
     public function add_paper()
     {
-        if(isset($_POST['add_paper'])){
+        if (isset($_POST['add_paper'])) {
             $old_price = Subscriptions_Sessions::get_session('subscriptions_add_session')['suscription_price'];
             $new_price = Subscriptions_Sessions::update_session('subscriptions_add_session', 'suscription_price', $old_price + $_POST['price_paper']);
             Subscriptions_Sessions::update_session('subscriptions_add_session', 'suscription_address', '1');
-            
+
             echo wp_send_json_success();
             wp_die();
         }
@@ -67,8 +67,8 @@ class Subscriptions_Assets
     {
         $msg = '<div class="text-center pt-5 pb-5 block-message">';
         $msg .= SF()->show_message();
-        
-        $msg .= '<img src="'.get_stylesheet_directory_uri().'/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+
+        $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
         $msg .= '<a href="" class="block-button w-20 d-inline p-3 mx-auto text-uppercase">seamos socios</a>';
 
