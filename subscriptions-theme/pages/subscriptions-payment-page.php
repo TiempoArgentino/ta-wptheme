@@ -63,7 +63,6 @@ do_action('subscriptions_payment_page_header');
                                                     <option value="gba" <?php selected('gba',$address[0]['state'])?>>Gran Buenos Aires</option>
                                                     <option value="PBA" <?php selected('PBA',$address[0]['state'])?>>Provincia de Buenos Aires</option>
                                                </select>
-                                                    <input type="hidden" name="state" id="state" value="Buenos Aires" />
                                                 </div>
                                                 <div class="input-container">
                                                 <select name="city" id="city">
@@ -84,10 +83,10 @@ do_action('subscriptions_payment_page_header');
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="input-container mr-3 w-100">
-                                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-theme-base') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>" required />
+                                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-theme-base') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
                                                     </div>
                                                     <div class="input-container w-100">
-                                                        <input type="text" placeholder="<?php echo __('Dpto', 'gen-theme-base') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" required />
+                                                        <input type="text" placeholder="<?php echo __('Dpto', 'gen-theme-base') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="input-container">

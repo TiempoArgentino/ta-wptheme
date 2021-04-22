@@ -410,42 +410,42 @@
           );
         }
       );
-    } else {
-      $("#state").on("change", function () {
-        var host = window.location.protocol + "//" + window.location.hostname;
-        var provincia = $(this).val();
-        var localidad = $("#localidad").val();
-
-        $.getJSON(
-          host +
-            "/wp-content/themes/tiempo-argentino-1/subscriptions-theme/js/" +
-            provincia +
-            ".json",
-          function (data) {
-            $("#city").prop("disabled", false);
-            var localidades = [];
-            $.each(data, function (index, value) {
-              var selected =
-                $("#city").val() === localidad ? 'selected="selected"' : "";
-              localidades.push(
-                '<option value="' +
-                  value.Localidad +
-                  '" ' +
-                  selected +
-                  ">" +
-                  value.Localidad +
-                  "</option>"
-              );
-            });
-
-            $("#city").html(localidades);
-            $("#city option[value='" + localidad + "']").attr(
-              "selected",
-              "selected"
-            );
-          }
-        );
-      });
     }
+
+    $("#state").on("change", function () {
+      var host = window.location.protocol + "//" + window.location.hostname;
+      var provincia = $(this).val();
+      var localidad = $("#localidad").val();
+
+      $.getJSON(
+        host +
+          "/wp-content/themes/tiempo-argentino-1/subscriptions-theme/js/" +
+          provincia +
+          ".json",
+        function (data) {
+          $("#city").prop("disabled", false);
+          var localidades = [];
+          $.each(data, function (index, value) {
+            var selected =
+              $("#city").val() === localidad ? 'selected="selected"' : "";
+            localidades.push(
+              '<option value="' +
+                value.Localidad +
+                '" ' +
+                selected +
+                ">" +
+                value.Localidad +
+                "</option>"
+            );
+          });
+
+          $("#city").html(localidades);
+          $("#city option[value='" + localidad + "']").attr(
+            "selected",
+            "selected"
+          );
+        }
+      );
+    });
   });
 })(jQuery);
