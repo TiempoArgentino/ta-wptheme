@@ -5,7 +5,8 @@
 *                                                                               from the articles array
 */
 export default function useArticleRowData({ articles, cells, offset = 0, isSelected }){
-    const hasArticles = articles && articles.length > offset;
+    const articlesLeft = articles && articles.length ? articles.length - offset : 0;
+    const hasArticles = articlesLeft > 0;
 
     const getArticle = (index) => {
         const actualIndex = index + offset;
@@ -25,6 +26,7 @@ export default function useArticleRowData({ articles, cells, offset = 0, isSelec
 
     return {
         getCellData,
+        articlesLeft,
         hasArticles,
         className,
     }

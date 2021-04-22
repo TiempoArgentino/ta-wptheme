@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import sliderRow from '../../components/TAArticlesSliderRow/TAArticlesSliderRow';
 import miscelaneaRow from '../../components/TAArticlesMiscelaneaRow/TAArticlesMiscelaneaRow';
 import commonRow, { getRowCellsAmount as commonRowCellsAmount } from '../../components/TAArticlesCommonRow/TAArticlesCommonRow';
 const { Spinner, Icon } = wp.components;
@@ -113,10 +114,12 @@ const useTAArticlesRowsContainer = (props = {}) => {
 function getRowData({row, index}){
     const { format } = row;
     let rowData;
-
     switch (format) {
         case 'common':
             rowData = commonRow;
+        break;
+        case 'slider':
+            rowData = sliderRow;
         break;
         default:
             rowData = miscelaneaRow;

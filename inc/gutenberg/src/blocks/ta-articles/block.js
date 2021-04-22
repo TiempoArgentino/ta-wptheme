@@ -205,6 +205,7 @@ registerBlockType( 'ta/articles', {
 							options={ [
 								{ label: 'Miscelanea', value: 'miscelanea' },
 								{ label: 'Común', value: 'common' },
+								{ label: 'Slider', value: 'slider' },
 							] }
 							onChange={ ( format ) => updateRowValue(selectedRowIndex, 'format', format) }
 						/>
