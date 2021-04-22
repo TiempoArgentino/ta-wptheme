@@ -53,4 +53,16 @@
                   });
             }
         });
+
+        $(document).on('click','.abrir-beneficio',function(e){
+            e.preventDefault();
+            var id = $(this).data('content');
+
+            if(!$(id).hasClass('show')){
+                $(id).slideDown().addClass('show');
+            } else {
+                $(id).slideUp().removeClass('show');
+            }
+            
+        });
 })(jQuery);
