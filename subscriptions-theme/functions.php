@@ -71,8 +71,11 @@ class Subscriptions_Assets
 
         $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-        $msg .= '<a href="" class="block-button w-20 d-inline p-3 mx-auto text-uppercase">seamos socios</a>';
+        $msg .= '<a href="' . get_permalink(get_option('subscriptions_loop_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Seamos socios', 'gen-theme-base') . '</a><br />';
 
+        $msg .= __('Si ya eres socio:', 'gen-theme-base');
+
+        $msg .= '<div class="d-block pt-3"><a href="' . get_permalink(get_option('subscriptions_login_register_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Inicia sesión', 'gen-theme-base') . '</a></div>';
         $msg .= '</div>';
 
         return $msg;
@@ -86,23 +89,58 @@ class Subscriptions_Assets
             return $content;
         }
 
-        $post_id = get_post_meta($wp_query->get_queried_object_id(),'_suscription',true);
+        $post_id = get_post_meta($wp_query->get_queried_object_id(), '_suscription', true);
+
         $user = get_userdata(wp_get_current_user()->ID);
 
-        $role_in = in_array(get_option('default_sucription_role'),$user->roles);
-        $admin = in_array('administrator',$user->roles);
+        $role_in = in_array(get_option('default_sucription_role'), $user->roles);
+        $admin = in_array('administrator', $user->roles);
 
-        $user_subscription = get_user_meta($user->ID,'suscription',true);
+        $active = get_user_meta($user->ID, '_user_status', true);
 
-        $authorized = in_array($user_subscription,$post_id);
+        $user_subscription = get_user_meta($user->ID, 'suscription', true);
 
+        $authorized = in_array($user_subscription, $post_id);
 
-        if (($role_in && $authorized)|| $admin) {
-            add_filter('the_content', function(){
+        if ($admin) {
+            add_filter('the_content', function () {
                 return get_the_content($post_id);
             });
-        } else {
-           return 'un error';
+        }
+        if ($post_id === '') {
+            add_filter('the_content', function () {
+                return get_the_content($post_id);
+            });
+        }
+
+
+        if ($active === null || $active !== 'active' || $active === '') {
+            $msg = '<div class="text-center pt-5 pb-5 block-message">';
+            $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía caducó o no tienes una, puedes actualizarla en tu perfil.', 'gen-theme-base');
+
+            $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+
+            $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+
+            $msg .= '</div>';
+
+            return $msg;
+        } else if(!$role_in || !$authorized) {
+            $msg = '<div class="text-center pt-5 pb-5 block-message">';
+            $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-theme-base');
+
+            $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+
+            $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+
+            $msg .= '</div>';
+
+            return $msg;
+        } else if($role_in && $authorized) {
+           
+            add_filter('the_content', function () {
+                return get_the_content($post_id);
+            });
         }
     }
 }
