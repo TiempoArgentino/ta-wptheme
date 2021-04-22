@@ -5,8 +5,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-global $ta_article_slider_row_count;
-$ta_article_slider_row_count = 0;
+
 define('TA_ARTICLES_COMPATIBLE_POST_TYPES', ['ta_article', 'ta_audiovisual']);
 define('TA_THEME_PATH', get_template_directory());
 define('TA_THEME_URL', get_template_directory_uri());

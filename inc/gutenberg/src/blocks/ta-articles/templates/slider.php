@@ -1,7 +1,7 @@
 <?php
 
 $config = array_merge(array(
-    'slides_amount'      => -1,
+    'slides_amount'      => 4,
 ), $row);
 extract($config);
 $is_first = true;
