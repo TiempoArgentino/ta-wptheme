@@ -208,7 +208,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                             <div class="article-preview vertical-article benefits d-flex flex-column mb-3 col-12 col-md-4 px-0 px-md-2 <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? 'requested' : '' ?>" data-term="<?php echo beneficios_front()->show_terms_slug_by_post(get_the_ID()) ?>">
                                 <div class="container p-2">
                                     <div class="">
-                                        <a href="<?php echo get_permalink(get_the_ID()) ?>">
+                                        <a href="#" data-content="#content<?php echo get_the_ID() ?>" class="abrir-beneficio">
                                             <div class="img-container position-relative">
                                                 <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>')center no-repeat;"></div>
                                             </div>
@@ -216,7 +216,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                     </div>
                                     <div class="content mt-2">
                                         <div class="title">
-                                            <a href="<?php echo get_permalink(get_the_ID()) ?>">
+                                            <a href="#" data-content="#content<?php echo get_the_ID() ?>" class="abrir-beneficio">
                                                 <p><?php echo get_the_title(get_the_ID()) ?></p>
 
                                                 <?php if (get_post_meta(get_the_ID(), '_beneficio_discount', true) !== null || get_post_meta(get_the_ID(), '_beneficio_discount', true) !== '') : ?>
@@ -289,7 +289,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                                 </div>
                                             </div>
                                             <div class="description mt-3">
-                                                <?php echo wp_trim_words(get_the_content(get_the_ID()), 55, null) ?>
+                                                <?php echo get_the_content(get_the_ID()) ?>
                                             </div>
                                         </div>
                                     </div>
