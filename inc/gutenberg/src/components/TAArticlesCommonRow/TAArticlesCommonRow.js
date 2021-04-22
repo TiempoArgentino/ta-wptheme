@@ -16,7 +16,6 @@ const Controls = ( { row, index, onUpdate } ) => {
         const rowConfig = {...row};
         rowConfig[attribute] = value;
 
-        console.log('UPDATING ROW', index);
         onUpdate({
             row: rowConfig,
             index,
@@ -112,6 +111,10 @@ const data = {
     component: TAArticlesCommonRow,
     getCellsAmount,
     Controls: Controls,
+    defaultConfig: {
+        cells_amount: 4,
+        fill: false,
+    },
 };
 
 export default data;

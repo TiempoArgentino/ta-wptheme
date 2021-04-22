@@ -24,9 +24,9 @@ foreach ($rows as $row) {
     $articles = array_slice($articles, $offset);
     $format = isset($row['format']) ? $row['format'] : null;
     switch($format){
-        // case 'slider':
-        //     include "$block_path/slider.php";
-        // break;
+        case 'slider':
+            include "$block_path/templates/slider.php";
+        break;
         case 'miscelanea':
             include "$block_path/templates/miscelanea.php";
         break;

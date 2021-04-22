@@ -5,7 +5,7 @@ const { Spinner, RangeControl } = wp.components;
 import './css/editor.css';
 
 export function getCellsAmount(rowConfig){
-    console.log('rowConfig', rowConfig);
+
     if(rowConfig.cells_amount == -1)
         return rowConfig.articles ? rowConfig.articles.length : 4;
     return rowConfig.cells_amount ? rowConfig.cells_amount : 4;
@@ -22,7 +22,7 @@ const TAArticlesMiscelaneaRow = (props = {}) => {
         cells_amount,
     } = props;
     const cellsAmount = getCellsAmount(props);
-    console.log('cellsAmount', cellsAmount);
+
     const {
         hasArticles,
         getCellData,
@@ -82,6 +82,9 @@ const data = {
     component: TAArticlesMiscelaneaRow,
     getCellsAmount,
     Controls,
+    defaultConfig: {
+        cells_amount: 4,
+    },
 };
 
 export default data;

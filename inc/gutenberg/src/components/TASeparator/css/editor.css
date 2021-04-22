@@ -14,3 +14,7 @@
 .ta-separator.right{
     text-align: right;
 }
+
+.ta-separator{
+    line-height: 0;
+}

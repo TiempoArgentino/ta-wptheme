@@ -35,10 +35,7 @@ $preview_class .= " $class";
                 <p><?php echo $title; ?></p>
             </a>
         </div>
-        <?php
-        if($authors):
-            $authors_text = "";
-        ?>
+        <?php if($authors): ?>
         <div class="article-info-container">
             <div class="author">
                 <p>Por:

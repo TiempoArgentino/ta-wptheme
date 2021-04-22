@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import sliderRow from '../../components/TAArticlesSliderRow/TAArticlesSliderRow';
 import miscelaneaRow from '../../components/TAArticlesMiscelaneaRow/TAArticlesMiscelaneaRow';
 import commonRow, { getRowCellsAmount as commonRowCellsAmount } from '../../components/TAArticlesCommonRow/TAArticlesCommonRow';
-const { Spinner, Icon } = wp.components;
+const { Spinner, Icon, SelectControl } = wp.components;
 import './css/editor.css';
 
 const useTAArticlesRowsContainer = (props = {}) => {
@@ -13,6 +14,7 @@ const useTAArticlesRowsContainer = (props = {}) => {
         selectedRowIndex,
         showEmpty = true,
         showControls = true,
+        updateRow,
     } = props;
 
     const hasRows = rows && rows.length > 0;
@@ -103,8 +105,48 @@ const useTAArticlesRowsContainer = (props = {}) => {
         );
     };
 
+    const changeRowFormat = ({ row, format }) => {
+        const { defaultConfig } = getRowData({ row: { format } });
+        const updatedRow = { ...row, ...defaultConfig, format };
+        updateRow(selectedRowIndex, updatedRow);
+    };
+
+    const renderRowControls = () => {
+        const {
+            Controls: RowControls,
+        } = selectedRowData ? selectedRowData : {};
+
+        return (
+            <>
+                {selectedRow &&
+                <>
+                    <SelectControl
+                        label="Formato"
+                        value={ selectedRow.format }
+                        options={ [
+                            { label: 'Miscelanea', value: 'miscelanea' },
+                            { label: 'Común', value: 'common' },
+                            { label: 'Slider', value: 'slider' },
+                        ] }
+                        onChange={ ( format ) => changeRowFormat({row: selectedRowIndex, format}) }
+                    />
+                    { RowControls &&
+                    <RowControls
+                        row = { selectedRow }
+                        index = { selectedRowIndex }
+                        onUpdate = { ({row, index}) => updateRow(index, row) }
+                    />
+                    }
+                </>
+                }
+            </>
+        )
+
+    }
+
     return {
         renderRows,
+        renderRowControls,
         selectedRowData,
         getCellsCount,
     }
@@ -113,10 +155,12 @@ const useTAArticlesRowsContainer = (props = {}) => {
 function getRowData({row, index}){
     const { format } = row;
     let rowData;
-
     switch (format) {
         case 'common':
             rowData = commonRow;
+        break;
+        case 'slider':
+            rowData = sliderRow;
         break;
         default:
             rowData = miscelaneaRow;
