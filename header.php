@@ -161,7 +161,8 @@
                                 </div>
                             </div>
                             <div class="user-img ml-2">
-                                <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/logged-profile-icon.svg" alt="">
+                                <a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/logged-profile-icon.svg" alt=""></a>
+                                <a href="<?php echo wp_logout_url( home_url() ); ?>">Salir</a>
                             </div>
                         </div>
                     </div>
