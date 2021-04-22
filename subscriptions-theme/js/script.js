@@ -261,13 +261,13 @@
         var p = $('.subscription-content p');
         var host = window.location.protocol + '//' + window.location.hostname;
         p.addClass('d-flex align-items-center');
-        p.prepend(`<img src="${host}/wp-content/themes/tiempo-argentino/assets/img/marker-vermas.svg" class="item-subscription">`);
+        p.prepend(`<img src="${host}/wp-content/themes/tiempo-argentino-1/assets/img/marker-vermas.svg" class="item-subscription">`);
     });
 
-    $(document).on('click','button.toggle',function(){
-        var target = $(this).data('target');
-        $(target).toggle();
-    });
+    // $(document).on('click','button.toggle',function(){
+    //     var target = $(this).data('target');
+    //     $(target).toggle();
+    // });
     /**
      * Ajax
      */

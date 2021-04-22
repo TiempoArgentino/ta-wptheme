@@ -1,5 +1,5 @@
 (function($){
-    console.log('tiempo balancer');
+    //console.log('tiempo balancer');
     $(document).ready(function() {
         $('#personalize-city').on('keyup',function(){
            if($(this).val().length > 3){
