@@ -16,6 +16,7 @@ class Subscriptions_Assets
         add_action('wp_ajax_subscriptions-ajax-action', [$this, 'add_paper']);
 
         add_filter('protected_content', [$this, 'contenido_protegido'], 10, 1);
+        add_filter('user_logged_content', [$this, 'entrada_protegida'], 10, 1);
     }
 
     public function styles()
@@ -75,6 +76,34 @@ class Subscriptions_Assets
         $msg .= '</div>';
 
         return $msg;
+    }
+
+    public function entrada_protegida($content)
+    {
+        global $wp_query;
+
+        if (!is_single()) {
+            return $content;
+        }
+
+        $post_id = get_post_meta($wp_query->get_queried_object_id(),'_suscription',true);
+        $user = get_userdata(wp_get_current_user()->ID);
+
+        $role_in = in_array(get_option('default_sucription_role'),$user->roles);
+        $admin = in_array('administrator',$user->roles);
+
+        $user_subscription = get_user_meta($user->ID,'suscription',true);
+
+        $authorized = in_array($user_subscription,$post_id);
+
+
+        if (($role_in && $authorized)|| $admin) {
+            add_filter('the_content', function(){
+                return get_the_content($post_id);
+            });
+        } else {
+           return 'un error';
+        }
     }
 }
 
