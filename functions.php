@@ -322,10 +322,12 @@ function filter_by_creator($post_type)
 
 	$authors = get_users(array('role__in' => array('author', 'editor', 'administrator')));
 
+	$filter = isset($_REQUEST['author_filter']) ? $_REQUEST['author_filter'] : '';
+
 	echo '<select id="author_filter" name="author_filter">';
 	echo '<option value="0"> Creador </option>';
 	foreach ($authors as $s) {
-		echo '<option value="' . $s->{'ID'} . '" ' . selected($s->{'ID'}, $_REQUEST['author_filter'], false) . ' >' . $s->{'display_name'} . ' </option>';
+		echo '<option value="' . $s->{'ID'} . '" ' . selected($s->{'ID'}, $filter, false) . ' >' . $s->{'display_name'} . ' </option>';
 	}
 	echo '</select>';
 }

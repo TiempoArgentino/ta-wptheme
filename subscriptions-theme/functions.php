@@ -98,9 +98,9 @@ class Subscriptions_Assets
         $id_post = get_post_meta($wp_query->get_queried_object_id(), '_suscription', true);
         $user = get_userdata(wp_get_current_user()->ID);
 
-        $role_in = in_array(get_option('default_sucription_role'), $user->roles);
+        $role_in = in_array(get_option('default_sucription_role'), [$user->roles]);
 
-        $admin = in_array('administrator', $user->roles);
+        $admin = in_array('administrator', [$user->roles]);
 
         if ($admin) {
             add_filter('the_content', function () {
