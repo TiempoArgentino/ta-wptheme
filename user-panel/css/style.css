@@ -1207,3 +1207,7 @@
   .close-btn{
     cursor: pointer;
   }
+  .opt-title a {
+    color: #212529 !important;
+    text-decoration: none !important;
+}

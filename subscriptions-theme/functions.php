@@ -95,58 +95,58 @@ class Subscriptions_Assets
             return $content;
         }
 
-        $post_id = get_post_meta($wp_query->get_queried_object_id(), '_suscription', true);
-
+        $id_post = get_post_meta($wp_query->get_queried_object_id(), '_suscription', true);
         $user = get_userdata(wp_get_current_user()->ID);
 
         $role_in = in_array(get_option('default_sucription_role'), $user->roles);
+
         $admin = in_array('administrator', $user->roles);
-
-        $active = get_user_meta($user->ID, '_user_status', true);
-
-        $user_subscription = get_user_meta($user->ID, 'suscription', true);
-
-        $authorized = in_array($user_subscription, $post_id);
 
         if ($admin) {
             add_filter('the_content', function () {
-                return get_the_content($post_id);
+                return get_the_content($id_post);
             });
         }
-        if ($post_id === '') {
+        if ($id_post === '' || !empty($id_post) || $id_post === null) {
             add_filter('the_content', function () {
-                return get_the_content($post_id);
+                return get_the_content($id_post);
             });
-        }
+        } else {
+            $active = get_user_meta($user->ID, '_user_status', true);
+
+            $user_subscription = get_user_meta($user->ID, 'suscription', true);
+
+            $authorized = in_array($user_subscription, $id_post);
 
 
-        if ($active === null || $active !== 'active' || $active === '') {
-            $msg = '<div class="text-center pt-5 pb-5 block-message">';
-            $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía caducó o no tienes una, puedes actualizarla en tu perfil.', 'gen-theme-base');
+            if ($active === null || $active !== 'active' || $active === '') {
+                $msg = '<div class="text-center pt-5 pb-5 block-message">';
+                $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía caducó o no tienes una, puedes actualizarla en tu perfil.', 'gen-theme-base');
 
-            $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+                $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-            $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
 
-            $msg .= '</div>';
+                $msg .= '</div>';
 
-            return $msg;
-        } else if (!$role_in || !$authorized) {
-            $msg = '<div class="text-center pt-5 pb-5 block-message">';
-            $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-theme-base');
+                return $msg;
+            } else if (!$role_in || !$authorized) {
+                $msg = '<div class="text-center pt-5 pb-5 block-message">';
+                $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-theme-base');
 
-            $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
+                $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-            $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
 
-            $msg .= '</div>';
+                $msg .= '</div>';
 
-            return $msg;
-        } else if ($role_in && $authorized) {
+                return $msg;
+            } else if ($role_in && $authorized) {
 
-            add_filter('the_content', function () {
-                return get_the_content($post_id);
-            });
+                add_filter('the_content', function () {
+                    return get_the_content($id_post);
+                });
+            }
         }
     }
 
@@ -164,10 +164,10 @@ class Subscriptions_Assets
             "FORCE_SUBSCRIBE":"yes"
         }';
 
-        if(function_exists('mailtrain_api')) {
-            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        if (function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE', $data);
         }
-        
+
         wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
         exit();
     }
@@ -186,10 +186,10 @@ class Subscriptions_Assets
             "FORCE_SUBSCRIBE":"yes"
         }';
 
-        if(function_exists('mailtrain_api')) {
-            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        if (function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE', $data);
         }
-        
+
         wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
         exit();
     }
@@ -208,10 +208,10 @@ class Subscriptions_Assets
             "MERGE_MEMBRESIA":"' . $get_subscription . '"
         }';
 
-        if(function_exists('mailtrain_api')) {
-            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+        if (function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE', $data);
         }
-        
+
         wp_redirect(get_permalink(get_option('subscriptions_thankyou')));
         exit();
     }
@@ -229,9 +229,9 @@ class Subscriptions_Assets
             "ERROR_DE_PAGO":"yes",
             "MERGE_MEMBRESIA":"' . $get_subscription . '"
         }';
-        
-        if(function_exists('mailtrain_api')) {
-            $membresia = mailtrain_api()->payment_user_data('25SCu2czE',$data);
+
+        if (function_exists('mailtrain_api')) {
+            $membresia = mailtrain_api()->payment_user_data('25SCu2czE', $data);
         }
     }
 }

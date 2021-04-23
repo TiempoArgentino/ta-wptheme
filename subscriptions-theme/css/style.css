@@ -1595,3 +1595,7 @@ a.block-button {
   font-size: 16px;
   max-width: 169px;
 }
+
+.btns-container a{
+  color:#252b2d !important
+  }

@@ -59,7 +59,7 @@
                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/preferencias-icon.svg" alt="" class="img-fluid">
                         </div>
                         <div class="opt-title">
-                            <p>Tus preferencias</p>
+                            <p><a href="<?php echo get_permalink( get_option('personalize'))?>">Tus preferencias</a></p>
                         </div>
                     </button>
                 </div>

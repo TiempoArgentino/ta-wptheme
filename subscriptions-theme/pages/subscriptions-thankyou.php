@@ -53,8 +53,6 @@ do_action('header_thankyou_page');
                                 </div>
                                 <div class="btns-container text-center">
                                     <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('Personalizar','gen-theme-base')?></a></button>
-                                </div>
-                                <div class="btns-container text-center">
                                     <button class="gray-btn-black-text"><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-theme-base')?></a></button>
                                 </div>
                             </div>
