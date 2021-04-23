@@ -1,4 +1,5 @@
 <?php
+
 function show_interest_front($query)
 {
     if(null !== $query && $query !== ''):
