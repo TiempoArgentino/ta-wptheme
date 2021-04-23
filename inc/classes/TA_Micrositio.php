@@ -15,6 +15,11 @@ class TA_Micrositio{
     static private $micrositios = array();
 
     /**
+    *   @property bool $initialized                                             Indicates if the initialize method has been executed
+    */
+    static private $initialized = false;
+
+    /**
     *   @property WP_Term Term asociado con el suplemento
     */
     public $term = null;
@@ -46,6 +51,13 @@ class TA_Micrositio{
     */
     public $has_custom_content = false;
 
+    static public function initialize(){
+        if( self::$initialized )
+            return
+        self::$initialized = true;
+        RB_Filters_Manager::add_filter('ta_micrositio_home_post_redirect', 'single_template', array(self::class, 'suplement_home_post_redirect'));
+    }
+
     /**
     *   @param string $slug                     String que identifica al suplemento y a su term
     *   @param array $settings                  Array de opciones, desarrollado en /micrositios/README.md
@@ -57,6 +69,7 @@ class TA_Micrositio{
         $this->priority = isset($settings['priority']) ? $settings['priority'] : $this->priority;
         self::$micrositios[$slug] = $this;
         //Algunos datos se establecen una vez que se asocia la instancia a su respectivo WP_Term
+
         RB_Filters_Manager::add_action("ta-setup-micrositio-$slug-entities", 'after_switch_theme',  array($this,'create_entities'));
         RB_Filters_Manager::add_action("ta-setup-micrositio-$slug-set-data", 'init',  array($this,'set_entities_data'), array(
             'priority'  => 100,
@@ -64,6 +77,22 @@ class TA_Micrositio{
 
         register_activation_hook( __FILE__, array( $this, 'after_switch_theme' ) );
         //register_deactivation_hook( __FILE__, array( $this, 'plugin_deactivation' ) );
+    }
+
+
+    /**
+    *   Redirecciona el post del home de suplemento a la pagina de la taxonomia del
+    *   suplemento. El post solo sirve para cargar el contenido personalizado del archive
+    *   de la taxonomia.
+    */
+    static public function suplement_home_post_redirect($template){
+        $post = get_queried_object();
+        if($post->post_type != 'ta_micrositio_home')
+            return $template;
+        $suplement = TA_Micrositio::get_micrositio($post->post_name);
+        wp_redirect( $suplement->archive_url );
+        exit;
+        return $template;
     }
 
     /**
@@ -94,6 +123,9 @@ class TA_Micrositio{
                 'post_title'    => $this->title,
                 'post_name'     => $this->slug,
                 'post_type'     => 'ta_micrositio_home',
+                'meta_input'    => array(
+                    'micrositio_slug'   => $this->slug,
+                ),
             ));
         }
     }
@@ -146,6 +178,10 @@ class TA_Micrositio{
         return $this->term ? !$this->term->count : true;
     }
 
+    public function get_content(){
+        return $this->has_custom_content ? $this->content_page->post_content : '';
+    }
+
     //Devuelve una configuración dado su nombre
     public function get_setting($setting_name){
         return isset($this->settings[$setting_name]) ? $this->settings[$setting_name] : null;
@@ -177,3 +213,5 @@ class TA_Micrositio{
         return $this->term ? $this->term->name : '';
     }
 }
+
+TA_Micrositio::initialize();
