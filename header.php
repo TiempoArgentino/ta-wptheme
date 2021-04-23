@@ -44,7 +44,7 @@
 <?php } ?>
 <?php endif;?>
 <!-- anuncio sobre header single -->
-<div class="header mb-4">
+<div class="header mb-4" id="headerDefault">
     <div class="container">
         <div class="desktop-ribbon d-none d-lg-block">
             <div class="d-flex justify-content-between">
@@ -112,11 +112,11 @@
                 </div>
             </div>
         </div>
-        <div class="header-content d-flex justify-content-between pb-1 pb-lg-3">
-            <div class="d-flex align-self-center pt-2">
+        <div class="header-content d-flex justify-content-between pb-1">
+            <div class="search-and-profile d-flex align-self-center pt-2">
                 <div class="hamburger-menu d-flex align-items-center mr-lg-5">
                     <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        data-target="#menu" aria-controls="menu"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
@@ -149,8 +149,8 @@
                 <a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" class="img-fluid" alt=""></a>
                 </div>
             </div>
-            <div class="asociate-banner position-relative">
-                <div class="asociate-banner-bg">
+            <div class="asociate-banner position-relative ml-2">
+                <div class="asociate-banner-bg h-100">
                 <a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
                 </div>
                 <div class="asociate-banner-content position-absolute">
