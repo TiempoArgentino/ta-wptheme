@@ -77,6 +77,8 @@ class TA_Theme
 		add_action('admin_menu', [__CLASS__, 'remove_posts']);
 		self::increase_curl_timeout();
 		self::remove_quick_edit();
+
+		add_action( 'save_post_ta_article', [self::class,'save_relatives_taxonomies'], 10, 2 );
 	}
 
 	static private function remove_quick_edit()
@@ -185,6 +187,40 @@ class TA_Theme
 	static public function remove_posts()
 	{
 		remove_menu_page('edit.php');
+	}
+	
+	static public function save_relatives_taxonomies($post_id,$post)
+	{
+		if(is_admin()) {
+			$tags = get_the_terms($post_id,'ta_article_tag'); //$tags->slug;
+
+			$topics = get_terms([
+				'taxonomy' => 'ta_article_tema',
+				'hide_empty' => false
+			]);
+
+			$places = get_terms([
+				'taxonomy' => 'ta_article_place',
+				'hide_empty' => false
+			]);
+
+			foreach($tags as $t){
+				$slug = $t->slug;
+
+				foreach($places as $p) {
+					if($slug === $p->slug) {
+						wp_set_post_terms( $post_id,$p->name,'ta_article_place');
+					}
+				}
+
+				foreach($topics as $tp) {
+					if($slug === $tp->slug) {
+						wp_set_post_terms( $post_id,$tp->term_id, 'ta_article_tema');
+					}
+				}
+			}
+			
+		}
 	}
 }
 
