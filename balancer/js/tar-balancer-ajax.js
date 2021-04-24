@@ -74,5 +74,11 @@
             }
             
         } 
-    })
+    });
+
+    $(document).ready(function(){
+        $('#close-cloud-tag').on('click',function(){
+            $('#cloud-tag-container').slideUp();
+        });
+    });
 })(jQuery);

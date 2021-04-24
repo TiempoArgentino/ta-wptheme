@@ -1,11 +1,11 @@
-<div class="container my-3 my-md-5">
+<div class="container my-3 my-md-5" id="cloud-tag-container">
     <div class="ta-context blue-border mx-2 mx-md-5">
         <div class="eleccion-contenido">
-            <div id="searchBarMenu" class="collapse show" aria-labelledby="searchBarMenu">
+            <div id="searchBarMenu">
                 <div class="px-3 pt-3 pb-4">
                     <div class="close d-flex justify-content-end">
                         <div>
-                            <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#searchBarMenu" aria-expanded="true" aria-controls="searchBarMenu">
+                            <button class="btn btn-link d-flex" id="close-cloud-tag">
                                 <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/close.svg" class="img-fluid" alt="">
                             </button>
                         </div>
