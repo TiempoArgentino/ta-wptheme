@@ -80,5 +80,21 @@ function place_ajax_response()
         
     }
 }
+/** tag cloud */
 
-?>
+function tag_cloud_template()
+{
+    if(function_exists('balancer_personalize')){
+
+        if(is_user_logged_in()) {
+           $topics = get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true);
+        }
+        require_once TA_THEME_PATH . '/balancer/tags/topics-cloud.php';
+
+    }
+}
+
+add_action('cloud_tag','tag_cloud_template');
+
+
+

@@ -67,9 +67,9 @@
                             <?php if(!empty(balancer_personalize()->get_topics())):?>
 
                                 <?php foreach(balancer_personalize()->get_topics() as $key => $val):?>
-                                    <div class="tema col-12 col-md-4 px-1 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'theme-selected' : ''?>" id="<?php echo $val?>">
+                                    <div class="tema col-12 col-md-4 px-1 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'theme-selected' : ''?>" id="<?php echo $val?>">
                                     <label>
-                                        <input type="checkbox" name="categorie[]" class="topic categorie" id="<?php echo $key?>" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'checked="checked"' : ''?> value="<?php echo $key?>">
+                                        <input type="checkbox" name="categorie[]" class="topic categorie" id="<?php echo $key?>" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'checked="checked"' : ''?> value="<?php echo $key?>">
                                         <?php echo $val?>
                                     </label>
                                 </div>
