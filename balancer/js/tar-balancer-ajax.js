@@ -26,4 +26,38 @@
         $('#personalize-city').val($(this).text());
         $('#suggest-ul').remove();
     });
+
+    $(document).ready(function(){
+        $(".topic").on('change', function() {
+            var temaID = $(this).attr('id')
+            var temaIDSelector = $('#'+temaID);
+            if ($(this).is(":checked")) {
+                $(temaIDSelector).parent().parent().addClass('theme-selected')
+            } else {
+                $(temaIDSelector).parent().parent().removeClass('theme-selected')
+            }
+        });
+
+        
+        $(".post-item").on('change', function() {
+            var temaID = $(this).attr('name')
+            //var temaIDSelector = $('#' + temaID);
+            if ($(this).is(":checked")) {
+                $(this).parent().parent().addClass('art-selected')
+            } else {
+                $(this).parent().parent().removeClass('art-selected')
+            }
+        });
+
+        $(".photo").on('change', function() {
+            // var temaID = $(this).attr('name')
+            // var temaIDSelector = $('#' + temaID);
+    
+            if ($(this).is(":checked")) {
+                $(this).parent().parent().parent().addClass('photo-selected')
+            } else {
+                $(this).parent().parent().parent().removeClass('photo-selected')
+            }
+        })
+    })
 })(jQuery);
