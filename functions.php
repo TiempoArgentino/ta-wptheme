@@ -18,6 +18,7 @@ define('TA_ASSETS_JS_URL', TA_THEME_URL . "/js");
 require_once TA_THEME_PATH . '/inc/gen-base-theme/gen-base-theme.php';
 require_once TA_THEME_PATH . '/inc/rewrite-rules.php';
 require_once TA_THEME_PATH . '/inc/widgets.php';
+require_once TA_THEME_PATH . '/inc/cooperativa.php';
 
 class TA_Theme
 {
@@ -141,8 +142,10 @@ class TA_Theme
 		wp_enqueue_style('bootstrap', TA_ASSETS_CSS_URL . '/libs/bootstrap/bootstrap.css');
 		wp_enqueue_style('fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css');
 		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/style.css');
+		wp_enqueue_style('ta_style_utils', TA_ASSETS_CSS_URL . '/utils.css');
 		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
 		wp_enqueue_script('ta-podcast', TA_ASSETS_JS_URL . '/src/ta-podcast.js', ['jquery']);
+		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 	}
 
 	static public function admin_scripts()
@@ -179,6 +182,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/beneficios/functions.php';
 		require_once TA_THEME_PATH . '/inc/users-api.php';
 		//require_once TA_THEME_PATH . '/avisos/bloques.php';
+		require_once TA_THEME_PATH . '/inc/bloques-otros/quienes-somos.php';
 	}
 
 	/**
