@@ -1,12 +1,3 @@
-<div id="sticky-abajo" class="d-none d-sm-none d-md-block d-lg-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-9 mx-auto">
-                <img src="https://tiempoar.test/wp-content/uploads/2021/04/970xx90.jpg" />
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="separator"></div>
     <div class="footer-content d-flex flex-column flex-lg-row justify-content-between my-3 mt-md-4 mb-md-5">
@@ -36,7 +27,51 @@
 
     </div>
 </div>
+<?php if (is_active_sidebar('footer_fixed')) { ?>
+    <div id="sticky-abajo" class="d-none d-sm-none d-md-block d-lg-block position-fixed text-center">
+        <div class="sticky-bajo">
+            <span class="cerrar-pop-abajo">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
+            </span>
+            <?php dynamic_sidebar('footer_fixed'); ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if (is_active_sidebar('footer_fixed_mobile')) { ?>
+    <div id="sticky-abajo" class="d-block d-sm-none d-md-none d-lg-none position-fixed text-center">
+        <div class="sticky-bajo mobile-fixed">
+            <span class="cerrar-pop-abajo mobile-pop-close">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
+            </span>
+            <?php dynamic_sidebar('footer_fixed_mobile'); ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if (is_active_sidebar('vslider_desktop')) { ?>
+    <div id="vslider" class="d-none d-sm-none d-md-block d-lg-block position-fixed text-center">
+        <div class="video-bajo">
+            <span class="cerrar-vslider-desktop">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
+            </span>
+            <?php dynamic_sidebar('vslider_desktop'); ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if (is_active_sidebar('vslider_desktop')) { ?>
+    <div id="vslider" class="d-block d-sm-none d-md-none d-lg-none position-fixed text-center">
+        <div class="video-bajo">
+            <span class="cerrar-vslider-desktop cerrar-video-abajo">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
+            </span>
+            <?php dynamic_sidebar('vslider_desktop'); ?>
+        </div>
+    </div>
+<?php } ?>
 
 <?php wp_footer(); ?>
 </body>
+
 </html>

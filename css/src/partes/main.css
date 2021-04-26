@@ -30,7 +30,7 @@ body {
   color: var(--ta-negro-texto);
   overflow-x: hidden !important;
   opacity: 0.99;
-  transform: rotateX(0deg);
+  /*transform: rotateX(0deg);*/
 }
 
 a {

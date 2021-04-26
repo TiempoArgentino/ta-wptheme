@@ -39,6 +39,92 @@ div#sticky-abajo {
     width: 100%;
     bottom: 0;
     z-index: 2000;
-    left: 50%;
-    transform: translate(-50%);
+    position: relative;
+}
+.sticky-bajo {
+    position: relative;
+    max-width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+}
+span.cerrar-pop-abajo{
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+}
+span.cerrar-pop-abajo img {
+    width: 24px;
+    height: 24px;
+}
+
+div#popup-avis {
+    z-index: 1500;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    align-items: center;
+    background: rgb(255 255 255 / 62%);
+    height: 100%;
+}
+
+div#popup-avis .popup{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    max-width: 800px;
+    position: relative;
+}
+div#popup-avis .popup img{
+    max-width: 800px;
+}
+span.cerrar-pop{
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+}
+span.cerrar-pop img {
+    width: 32px;
+    height: 32px;
+}
+
+div#popup-avis .popup.popup-mobile{
+    max-width: 320px;
+    margin-top: 50%;
+}
+.sticky-bajo.mobile-fixed {
+    position: relative;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+div#vslider {
+    z-index: 2000;
+    right: .3%;
+    position: fixed;
+    max-width: 500px;
+    bottom: 0;
+}
+.video-bajo{
+    position: relative;
+}
+span.cerrar-vslider-desktop{
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+}
+span.cerrar-vslider-desktop img {
+    width: 16px;
+    height: 16px;
 }
