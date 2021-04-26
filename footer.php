@@ -27,6 +27,9 @@
 
     </div>
 </div>
+
+<?php if (is_front_page()) : ?>
+
 <?php if (is_active_sidebar('footer_fixed')) { ?>
     <div id="sticky-abajo" class="d-none d-sm-none d-md-block d-lg-block position-fixed text-center">
         <div class="sticky-bajo">
@@ -71,6 +74,7 @@
     </div>
 <?php } ?>
 
+<?php endif?>
 <?php wp_footer(); ?>
 </body>
 
