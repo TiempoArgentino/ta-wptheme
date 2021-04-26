@@ -182,7 +182,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/beneficios/functions.php';
 		require_once TA_THEME_PATH . '/inc/users-api.php';
 		//require_once TA_THEME_PATH . '/avisos/bloques.php';
-		require_once TA_THEME_PATH . '/inc/bloques-otros/quienes-somos.php';
+		require_once TA_THEME_PATH . '/inc/bloques-otros/bloques-otros.php';
 	}
 
 	/**

@@ -1,5 +1,5 @@
 <?php
-add_filter( 'lzb/show_admin_menu', '__return_false' );
+
 if ( function_exists( 'lazyblocks' ) ) :
 
     lazyblocks()->add_block( array(
