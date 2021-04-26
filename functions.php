@@ -80,6 +80,8 @@ class TA_Theme
 		self::remove_quick_edit();
 
 		add_action( 'save_post_ta_article', [self::class,'save_relatives_taxonomies'], 10, 2 );
+
+		add_action('quienes_somos_banner', [self::class,'extra_home_content']);
 	}
 
 	static private function remove_quick_edit()
@@ -225,6 +227,11 @@ class TA_Theme
 			}
 			
 		}
+	}
+
+	public static function extra_home_content()
+	{
+		require_once TA_THEME_PATH . '/inc/extra/banner-home-qs.php';
 	}
 }
 

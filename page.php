@@ -7,7 +7,11 @@
 
 <?php TA_Blocks_Container_Manager::open_new(); ?>
     <?php if ( have_posts() ) : the_post(); 
-    
+
+        if(is_front_page()) {
+            do_action('quienes_somos_banner');
+        }
+
         if(is_front_page()) {
             do_action('cloud_tag');
         }
