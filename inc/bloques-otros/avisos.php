@@ -1,6 +1,7 @@
 <?php
-add_action('init','showcoso');
-function showcoso()
+//add_action('init','avisos_lista');
+
+function avisos_lista()
 {
     $avisos = ADDB()->get_all_data('tar_ads_manager_ads', 'ORDER BY name DESC LIMIT ', 200, 0);
     $coso = [];
@@ -14,95 +15,10 @@ function showcoso()
     return $coso;
 }
 
-if (function_exists('lazyblocks')) :
-
-    lazyblocks()->add_block(array(
-        'id' => 667,
-        'title' => 'Newsletter Home',
-        'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>',
-        'keywords' => array(),
-        'slug' => 'lazyblock/newsletter-home',
-        'description' => '',
-        'category' => 'design',
-        'category_label' => 'design',
-        'supports' => array(
-            'customClassName' => true,
-            'anchor' => true,
-            'align' => array(
-                0 => 'wide',
-                1 => 'full',
-            ),
-            'html' => false,
-            'multiple' => false,
-            'inserter' => true,
-        ),
-        'ghostkit' => array(
-            'supports' => array(
-                'spacings' => false,
-                'display' => false,
-                'scrollReveal' => false,
-                'frame' => false,
-                'customCSS' => false,
-            ),
-        ),
-        'controls' => array(
-            'control_cd49184764' => array(
-                'type' => 'url',
-                'name' => 'newsletter',
-                'default' => '',
-                'label' => 'Link a newsletter',
-                'help' => '',
-                'child_of' => '',
-                'placement' => 'content',
-                'width' => '100',
-                'hide_if_not_selected' => 'false',
-                'save_in_meta' => 'false',
-                'save_in_meta_name' => '',
-                'required' => 'false',
-                'placeholder' => '',
-                'characters_limit' => '',
-            ),
-        ),
-        'code' => array(
-            'output_method' => 'php',
-            'editor_html' => '<div class="text-align-center">Bloque newsletter portada</div>',
-            'editor_callback' => '',
-            'editor_css' => '',
-            'frontend_html' => '<div class="m-3 m-md-5">
-            <div class="ta-context blue-border newsletter newsletter-personalizar">
-                    <div class="py-4">
-                            <div class="container d-flex flex-column flex-md-row align-items-end text-center text-md-left">
-                                    <div class="w-100">
-                                            <div class="envelope-icon text-left">
-                                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/envelope.svg" alt="" />
-                                            </div>
-                                            <div class=" text-center">
-                                                    <div class="section-title">
-                                                            <h4>Sumate a nuestro NEWSLETTER</h4>
-                                                    </div>
-                                                    <div class="subtitle mt-2">
-                                                            <p class="mb-0">Recibí contenido adecuado a tus intereses. </p>
-                                                            <p>Podés personalizar el Newsletter para que se ajuste tus preferencias:</p>
-                                                    </div>
-                                                    <div class="newsletter-options mt-4">
-                                                            <button class="uppercase"><a href="<?php echo $attributes[\'newsletter\']; ?>">PERSONALIZAR</a></button>
-                                                    </div>
-                                            </div>
-                                    </div>
-                            </div>
-                    </div>
-            </div>
-    </div>',
-            'frontend_callback' => '',
-            'frontend_css' => '',
-            'show_preview' => 'always',
-            'single_output' => false,
-        ),
-        'condition' => array(),
-    ));
+if ( function_exists( 'lazyblocks' ) ) :
 
     lazyblocks()->add_block( array(
-        'id' => 10111,
+        'id' => 10513,
         'title' => 'Avisos',
         'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z" /></svg>',
         'keywords' => array(
@@ -145,48 +61,7 @@ if (function_exists('lazyblocks')) :
                 'save_in_meta' => 'false',
                 'save_in_meta_name' => '',
                 'required' => 'false',
-                'choices' => showcoso(),
-                'allow_null' => 'false',
-                'multiple' => 'false',
-                'output_format' => '',
-                'placeholder' => '',
-                'characters_limit' => '',
-            ),
-            'control_01a96149c1' => array(
-                'type' => 'select',
-                'name' => 'tamanio',
-                'default' => '-- seleccionar tamaño --',
-                'label' => 'Tamaño',
-                'help' => '',
-                'child_of' => '',
-                'placement' => 'content',
-                'width' => '100',
-                'hide_if_not_selected' => 'false',
-                'save_in_meta' => 'false',
-                'save_in_meta_name' => '',
-                'required' => 'false',
-                'choices' => array(
-                    array(
-                        'label' => '-- seleccionar tamaño --',
-                        'value' => '',
-                    ),
-                    array(
-                        'label' => '1/3',
-                        'value' => 'col-4',
-                    ),
-                    array(
-                        'label' => '1/4',
-                        'value' => 'col-3',
-                    ),
-                    array(
-                        'label' => '1/6',
-                        'value' => 'col-6',
-                    ),
-                    array(
-                        'label' => 'Entero',
-                        'value' => 'col-12',
-                    ),
-                ),
+                'choices' => avisos_lista(),
                 'allow_null' => 'false',
                 'multiple' => 'false',
                 'output_format' => '',
@@ -199,12 +74,10 @@ if (function_exists('lazyblocks')) :
             'editor_html' => '',
             'editor_callback' => '',
             'editor_css' => '',
-            'frontend_html' => '<div class="<?php echo $attributes[\'tamanio\']; ?>">
-        hola <?php echo $attributes[\'tamanio\']; ?>
-        <?php if(function_exists(\'widgets_ta\')): ?>
-            <?php echo widgets_ta()->shortcode_portada($attributes[\'aviso-1\'],$attributes[\'grupo-1\'])?>
-        <?php endif;?>
-    </div>',
+            'frontend_html' => '
+            <?php if(function_exists(\'widgets_ta\')): ?>
+                <?php echo widgets_ta()->shortcode_portada($attributes[\'aviso\'])?>
+            <?php endif;?>',
             'frontend_callback' => '',
             'frontend_css' => '',
             'show_preview' => 'always',
@@ -215,7 +88,7 @@ if (function_exists('lazyblocks')) :
     ) );
     
     lazyblocks()->add_block( array(
-        'id' => 10110,
+        'id' => 10512,
         'title' => 'Contenedor Avisos',
         'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z" /></svg>',
         'keywords' => array(
@@ -311,6 +184,5 @@ if (function_exists('lazyblocks')) :
         'condition' => array(
         ),
     ) );
-
-
+    
 endif;

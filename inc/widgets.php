@@ -248,9 +248,9 @@ class Widgets_Theme_TA
      * Middle note
      */
 
-     public function shortcode_portada($code,$group)
+     public function shortcode_portada($code)
      {
-        return ADF()->show_ad_by_code($code,$group);
+        return ADF()->show_ad($code);
      }
 }
 

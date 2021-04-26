@@ -1,3 +1,12 @@
+<div id="sticky-abajo" class="d-none d-sm-none d-md-block d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-9 mx-auto">
+                <img src="https://tiempoar.test/wp-content/uploads/2021/04/970xx90.jpg" />
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="separator"></div>
     <div class="footer-content d-flex flex-column flex-lg-row justify-content-between my-3 mt-md-4 mb-md-5">
@@ -27,6 +36,7 @@
 
     </div>
 </div>
+
 <?php wp_footer(); ?>
 </body>
 </html>
