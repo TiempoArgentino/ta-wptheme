@@ -162,11 +162,11 @@
                 </div>
                 <div class="asociate-banner position-relative">
                     <div class="asociate-banner-bg">
-                        <a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
+                        <a href="<?php echo get_permalink(65903) ?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
                     </div>
                     <div class="asociate-banner-content position-absolute">
                         <div class="separator"></div>
-                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>">SUMATE</a></p>
+                        <p class="mt-1"><a href="<?php echo get_permalink(65903) ?>">SUMATE</a></p>
                     </div>
                 </div>
             </div>
