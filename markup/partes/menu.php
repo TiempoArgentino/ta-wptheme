@@ -104,17 +104,17 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                 </div>
                 <div class="menu-section">
                     <div class="menu-item destacados seamos-socios">
-                        <a href="">
+                        <a href="<?php echo get_permalink( 65903  )?>">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-socios.svg" alt="">
-                                <h5><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">SEAMOS SOCIOS</a></h5>
+                                <h5>SEAMOS SOCIOS</h5>
                             </div>
                         </a>
                     </div>
                     <div class="menu-item">
-                        <a href="">
+                        <a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">
                             <div>
-                                <p class="pl-3"><a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">Beneficios para socios</a></p>
+                                <p class="pl-3">Beneficios para socios</p>
                             </div>
                         </a>
                     </div>
@@ -124,7 +124,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="separator"></div>
                     <div class="menu-section">
                         <div class="menu-item destacados">
-                            <a href="">
+                            <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
                                     <p>SOBRE TIEMPO</p>
@@ -289,7 +289,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="separator"></div>
                     <div class="menu-section">
                         <div class="menu-item destacados">
-                            <a href="">
+                            <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
                                     <p>SOBRE TIEMPO</p>
