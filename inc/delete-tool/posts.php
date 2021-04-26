@@ -53,7 +53,6 @@ class TA_Tools_Admin{
     
             foreach($posts as $p) {
                 wp_delete_post($p->ID, true);
-                echo 'borrado';
             }
     
         }
