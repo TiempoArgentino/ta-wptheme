@@ -46,11 +46,12 @@ class TA_Tools_Admin{
     
             $args = [
                 'author' => $_POST['usuarios-borralos'],
-                'post_type' => 'ta_article'
+                'post_type' => 'ta_article',
+                'posts_per_page' => -1 // no limit
             ];
     
             $posts = get_posts($args);
-    
+
             foreach($posts as $p) {
                 wp_delete_post($p->ID, true);
             }
