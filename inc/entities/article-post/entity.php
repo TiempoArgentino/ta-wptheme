@@ -30,7 +30,7 @@ return array(
         'show_in_nav_menus' 	=> true,
         'post_per_page'			=> 10,
         'paged' 				=> $paged,
-        'capability_type'		=> 'post', //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
+        'capability_type'		=> ['article', 'articles'], //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
         "rb_config"			=> array(
             //     'templates'             => array(
             //         'single'                => 'test.php'

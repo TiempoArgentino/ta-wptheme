@@ -29,7 +29,7 @@ return array(
             'manage_terms'  => false,
             'edit_terms'    => false,
             'delete_terms'  => false,
-            'assign_terms'  => 'edit_posts'
+            'assign_terms'  => 'assign_article_micrositio'
         ),
         'show_in_rest' => true, // This enables the REST API endpoint
         'query_var' => true, // This allows us to append the taxonomy param to the custom post api request.
