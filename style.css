@@ -14,7 +14,7 @@ Domain Path: /languages
 
 html {
     margin-top: 0 !important;
-  }  
+  }
 
 #wpadminbar {
     position: initial;
@@ -66,4 +66,24 @@ button a{
 
 .podcasts-block .podcast-playlist .podcast-preview.current {
     background: #ffffff17;
+}
+
+.ta-comentarios-block .single-comment.new{
+    animation-name: newComment;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+
+@keyframes newComment {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.75); }
+  100%{ filter: brightness(1); }
+}
+
+.ta-comentarios-block .general-error{
+    display: none;
+}
+
+.ta-comentarios-block .error-message{
+    color: red;
 }

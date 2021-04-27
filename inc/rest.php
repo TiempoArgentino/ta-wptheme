@@ -11,6 +11,36 @@
 // New Edicion Impresa
 add_action( 'rest_api_init', function () {
 
+	register_rest_route( 'ta/v1', '/comment', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+            $args = $request->get_json_params();
+			$comment = wp_handle_comment_submission( wp_unslash( $_POST ) );
+
+		    if ( is_wp_error( $comment ) ) {
+				$error_data = intval( $comment->get_error_data() );
+				if ( ! empty( $error_data ) ) {
+					return new WP_REST_Response($comment->get_error_message(), 400);
+				} else {
+					return new WP_REST_Response( 'Error desconocido.', 400);
+				}
+			}
+
+			ob_start();
+			get_template_part('parts/participation', 'comment', array( 'comment' => $comment ));
+			$template = ob_get_clean();
+
+
+			return new WP_REST_Response(array(
+				'comment'		=> $comment,
+				'template'		=> $template
+			), 200);
+		},
+		'permission_callback' => function () {
+	    	return true;
+	    },
+	) );
+
 	register_rest_route( 'ta/v1', '/edicion-impresa', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){

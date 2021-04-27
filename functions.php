@@ -82,6 +82,9 @@ class TA_Theme
 		add_action( 'save_post_ta_article', [self::class,'save_relatives_taxonomies'], 10, 2 );
 
 		add_action('quienes_somos_banner', [self::class,'extra_home_content']);
+		add_action('wp_insert_comment', function($id, $comment){
+			add_comment_meta( $comment->comment_ID, 'is_visitor', $comment->user_id == 0, true );
+		}, 2, 10);
 	}
 
 	static private function remove_quick_edit()
@@ -148,6 +151,13 @@ class TA_Theme
 		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
 		wp_enqueue_script('ta-podcast', TA_ASSETS_JS_URL . '/src/ta-podcast.js', ['jquery']);
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
+		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
+		wp_localize_script('ta_comments', 'wpRest',
+		  	array(
+				'restURL' 	=> get_rest_url(),
+				'nonce' 	=> wp_create_nonce( 'wp_rest' )
+			),
+		);
 	}
 
 	static public function admin_scripts()
@@ -161,22 +171,19 @@ class TA_Theme
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
 
-	static public function customizer()
-	{
+	static public function customizer(){
 		RB_Wordpress_Framework::load_module('fields');
 		RB_Wordpress_Framework::load_module('customizer');
 		add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
 	}
 
-	static public function require_customizer_panel($wp_customize)
-	{
+	static public function require_customizer_panel($wp_customize){
 		require TA_THEME_PATH . '/customizer.php';
 	}
 	/**
 	 * Plugins
 	 */
-	static public function get_plugins_assets()
-	{
+	static public function get_plugins_assets(){
 		require_once TA_THEME_PATH . '/balancer/functions.php';
 		require_once TA_THEME_PATH . '/user-panel/functions.php';
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
@@ -190,11 +197,10 @@ class TA_Theme
 	/**
 	 * Menus remove
 	 */
-	static public function remove_posts()
-	{
+	static public function remove_posts(){
 		remove_menu_page('edit.php');
 	}
-	
+
 	static public function save_relatives_taxonomies($post_id,$post)
 	{
 		if(is_admin()) {
@@ -225,7 +231,7 @@ class TA_Theme
 					}
 				}
 			}
-			
+
 		}
 	}
 
