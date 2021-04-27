@@ -82,7 +82,7 @@ class TA_Tools_Admin{
                 $args = [
                     'author' => $_POST['id'],
                     'post_type' => $_POST['types'],
-                    'posts_per_page' => -1 // no limit
+                    'posts_per_page' => 1 // no limit
                 ];
         
                 $posts = get_posts($args);
@@ -93,7 +93,7 @@ class TA_Tools_Admin{
                     $ids[] = $p->{'ID'};
                 }
 
-                echo wp_send_json_success($ids);
+                echo wp_send_json_success($posts[0]->{'ID'});
                 wp_die();
             } else {
                 echo wp_send_json_error();

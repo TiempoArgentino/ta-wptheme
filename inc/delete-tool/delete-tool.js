@@ -1,24 +1,40 @@
+
+
+
+
+
+
+
+
 (function ($) {
   $(document).ready(function () {
-    $("#borrar-articulos").on("click", async function () {
-        var id = $("#usuarios-borralos").val();
-        var types = $("#types").val();
-        const allIds = await $.ajax({
-          type: "post",
-          url: ajax_delete.url,
-          data: {
-            action: ajax_delete.action,
-            nonce: ajax_delete.nonce,
-            id: id,
-            types: types,
-          },
-        });
-        const datos = allIds.data;
-        for (const dato of datos) {
-          borrar(`${dato}`);
-        }
-      });
+    $("#borrar-articulos").on("click",function(){
+        coso();
+    });
   });
+
+
+  async function coso() {
+    var id = $("#usuarios-borralos").val();
+    var types = $("#types").val();
+    const allIds = await $.ajax({
+      type: "post",
+      url: ajax_delete.url,
+      data: {
+        action: ajax_delete.action,
+        nonce: ajax_delete.nonce,
+        id: id,
+        types: types,
+      },
+    });
+    const datos = allIds.data;
+    
+    if(!datos)
+        return;
+
+    borrar(datos);
+   
+  }
 
   async function borrar(id_post) {
     let result;
@@ -33,7 +49,7 @@
         }
       });
       $('#mensaje-fin').html(result.data);
-      return result;
+      coso();
     } catch (error) {
         $('#mensaje-fin').html(error.message);
     }
