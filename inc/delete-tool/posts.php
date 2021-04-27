@@ -9,41 +9,13 @@ class TA_Tools_Admin{
     {
         add_action('admin_menu', [$this,'menu_borrar']);
 
-        //add_action('admin_enqueue_scripts', [$this,'js']);
+        add_action('admin_enqueue_scripts', [$this,'js']);
 
         add_action( 'wp_ajax_nopriv_delete-article', [$this,'delete_ajax'] );
         add_action( 'wp_ajax_delete-article', [$this,'delete_ajax'] );
-    }
 
-    public function js()
-    {
-        wp_enqueue_script('delete-tool', get_stylesheet_directory_uri().'/inc/delete-tool/delete-tool.js');
-
-        wp_localize_script( 'delete-tool', 'ajax_delete', array(
-            'url'    => admin_url( 'admin-ajax.php' ),
-            'nonce'  => wp_create_nonce( 'my-ajax-nonce' ),
-            'action' => 'delete-article'
-        ) );
-    }
-
-    public function delete_ajax()
-    {
-        if(isset($_POST['action'])) {
-            $nonce = sanitize_text_field( $_POST['nonce'] );
-
-            if ( ! wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
-                die ( 'Busted!');
-            }
-
-            if(isset($_POST['id'])) {
-                delete_posts_by_user($_POST['id']);
-                echo wp_send_json_success();
-                wp_die();
-            } else {
-                echo wp_send_json_error();
-                wp_die();
-            }
-        }
+        add_action( 'wp_ajax_nopriv_delete-coso', [$this,'delete_coso'] );
+        add_action( 'wp_ajax_delete-coso', [$this,'delete_coso'] );
     }
 
     public function get_all_users()
@@ -65,6 +37,88 @@ class TA_Tools_Admin{
         echo $select;
     }
 
+    public function js()
+    {
+        wp_enqueue_script('delete-tool', get_stylesheet_directory_uri().'/inc/delete-tool/delete-tool.js');
+
+        wp_localize_script( 'delete-tool', 'ajax_delete', array(
+            'url'    => admin_url( 'admin-ajax.php' ),
+            'nonce'  => wp_create_nonce( 'my-ajax-nonce' ),
+            'action' => 'delete-article'
+        ) );
+
+        wp_localize_script( 'delete-tool', 'ajax_delete_coso', array(
+            'url'    => admin_url( 'admin-ajax.php' ),
+            'nonce'  => wp_create_nonce( 'my-ajax-nonce' ),
+            'action' => 'delete-coso'
+        ) );
+    }
+
+    public function delete_ajax()
+    {
+        if(isset($_POST['action'])) {
+            $nonce = sanitize_text_field( $_POST['nonce'] );
+
+            if ( ! wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
+                die ( 'Busted!');
+            }
+
+            if(isset($_POST['id'])) {
+                $args = [
+                    'author' => $_POST['id'],
+                    'post_type' => 'ta_article',
+                    'posts_per_page' => -1 // no limit
+                ];
+        
+                $posts = get_posts($args);
+
+                $ids = [];
+
+                foreach($posts as $p) {
+                    $ids[] = $p->{'ID'};
+                }
+
+                echo wp_send_json_success($ids);
+                wp_die();
+            } else {
+                echo wp_send_json_error();
+                wp_die();
+            }
+        }
+    }
+
+    public function delete_coso()
+    {
+        if(isset($_POST['action']) && $_POST['action'] === 'delete-coso') {
+            $nonce = sanitize_text_field( $_POST['nonce'] );
+
+            if ( ! wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
+                die ( 'Busted!');
+            }
+
+            if(isset($_POST['id_post'])) {
+                if($this->delete_posts_by_user($_POST['id_post'])){
+                    echo wp_send_json_success( 'delete id: '.$_POST['id_post'] );
+                } else {
+                    echo wp_send_json_error( 'no' );
+                }
+               
+                wp_die();
+            }
+
+            echo wp_send_json_error();
+            wp_die();
+        }
+    }
+    public function delete_posts_by_user($post_id){
+            $delete = wp_delete_post($post_id, true);
+            if($delete){
+                return true;
+            }
+            return false;
+    }
+    
+
     public function menu_borrar() {
         add_submenu_page(
             'tools.php',
@@ -76,25 +130,7 @@ class TA_Tools_Admin{
         );
     }
 
-    public function delete_posts_by_user($user_id){
-        if(isset($user_id)) {
     
-            $args = [
-                'author' => $user_id,
-                'post_type' => 'ta_article',
-                'posts_per_page' => -1 // no limit
-            ];
-    
-            $posts = get_posts($args);
-
-            $hola = count($posts);
-
-            for($i = 0;$i<$hola;$i++){
-               //wp_delete_post($posts[$i]->{'ID'}, true);
-               return $posts[$i]->{'ID'};
-            }
-        }
-    }
 }
 
 function ta_tools()
