@@ -35,7 +35,7 @@ class Newsletter_Assets
     public function tab_newsletter()
     {
         echo ' <li class="nav-item position-relative last-nav-item">
-            <a class="nav-link d-flex flex-row-reverse tab-select" id="news-tab" data-toggle="tab" href="#news" data-content="#newsletter">
+            <a class="nav-link d-flex flex-row-reverse tab-select" id="news-tab" data-toggle="tab" href="#news">
                 <p>'.__('News','gen-theme-base').'</p>
             </a>
         </li>';
