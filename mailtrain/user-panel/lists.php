@@ -1,6 +1,7 @@
 <?php do_action('before_newletter_page') ?>
 
 <div class="tab-pane" id="news">
+<?php if(mailtrain_api_user()->user_lists()) :?>
 <div class="news-list mt-4 mb-3">
     <div class="container">
         <div class="title text-center">
@@ -8,11 +9,7 @@
         </div>
         <div class="news-themes-dropdowns">
         <?php do_action('newletter_extra_content') ?>
-            <?php 
-
-            if(mailtrain_api_user()->user_lists()) :
-                foreach(mailtrain_api_user()->user_lists() as $key => $lists): 
-            ?>
+            <?php  foreach(mailtrain_api_user()->user_lists() as $key => $lists): ?>
             <div class="theme-dropdown py-3">
                 <button class="dropdown-btn collapsed" type="button" data-toggle="collapse"
                     data-target="#themeDropdown-<?php echo $lists?>" aria-expanded="false" aria-controls="themeDropdown-<?php echo $lists?>">
@@ -48,12 +45,7 @@
                     </div>
                 </div>
             </div>
-        <?php
-                //endforeach;
-            endforeach;
-
-        endif;
-        ?>
+        <?php endforeach; ?>
             
         </div>
         <div class="edit-themes">
@@ -63,5 +55,20 @@
         </div>
     </div>
 </div>
-
+<?php else: ?>
+    <div class="news-nolist mt-4 mb-3">
+    <div class="container">
+        <div class="title text-center">
+            <h4>¡Mantenete informada con la mirada de Tiempo!</h4>
+        </div>
+        <div class="subtitle text-center mt-4">
+            <p>Actualmente no estás suscrito a ninguno de nuestros newsletters. En la sección “informate” podrás ver los
+                temas disponibles que tenemos para vos. </p>
+        </div>
+        <div class="btns-container text-center py-3">
+            <button><a href="<?php echo get_permalink( get_option('mailtrain_loop_page') )?>">ver temas</a></button>
+        </div>
+    </div>
+</div>
+<?php endif;?>
 </div>
