@@ -52,10 +52,12 @@ class TA_Tools_Admin{
     
             $posts = get_posts($args);
 
-            foreach($posts as $p) {
-                wp_delete_post($p->ID, true);
+            $hola = count($posts);
+
+            for($i = 0;$i<$hola;$i++){
+               //var_dump($posts[$i]->{'ID'});
+               wp_delete_post($posts[$i]->{'ID'}, true);
             }
-    
         }
     }
 }
