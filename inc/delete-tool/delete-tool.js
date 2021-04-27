@@ -35,7 +35,7 @@
                     id_post:id_post
                 },
                 success: function(res){
-                    console.log(res.data)
+                    $('#mensaje-fin').html(res.data);
                 },
                 error: function(res) {
                     console.log(res)

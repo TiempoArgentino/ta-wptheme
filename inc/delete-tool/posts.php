@@ -33,6 +33,7 @@ class TA_Tools_Admin{
         $select .= '</select>
             <input type="button" name="borrar" id="borrar-articulos" class="button button-primary" value="Borrar" />
         </form></div>';
+        $select .= '<div id="mensaje-fin"></div>';
     
         echo $select;
     }
