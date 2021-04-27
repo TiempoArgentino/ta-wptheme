@@ -21,19 +21,33 @@ class TA_Tools_Admin{
     public function get_all_users()
     {
         $users = get_users(array( 'role__in' => array( 'administrator' ) ));
+
+        $post_types = get_post_types([
+            'public' => true
+        ],
+        'names',
+        'and');
+
+      
     
         $select = '<div class="wrap">
             <h1>Borrar Articulos por Usuario</h1>
-        <form method="post">';
+        <form method="post"> ';
     
-        $select .= '<label>Seleccionar usuario: </label><select name="usuarios-borralos" id="usuarios-borralos">';
+        $select .= '<label>Seleccionar usuario: </label> <select name="usuarios-borralos" id="usuarios-borralos">';
         foreach($users as $user) {
             $select .= '<option value="'.$user->ID.'">'.esc_html( $user->display_name ).'</option>';
         }
-        $select .= '</select>
-            <input type="button" name="borrar" id="borrar-articulos" class="button button-primary" value="Borrar" />
+        $select .= '</select><br /> ';
+
+        $select .= '<label>Tipo de post: </label> <select name="types" id="types">';
+        foreach($post_types as $key => $val) {
+            $select .= '<option value="'.$val.'">'.$val.'</option>';
+        }
+        $select .= '</select><br />';
+        $select .= '  <input type="button" name="borrar" id="borrar-articulos" class="button button-primary" value="Borrar" />
         </form></div>';
-        $select .= '<div id="mensaje-fin"></div>';
+        $select .= '<div id="mensaje-fin" style="display:block;font-size:16px; padding-top:10px; text-transform:uppercase;"></div></div>';
     
         echo $select;
     }
@@ -64,10 +78,10 @@ class TA_Tools_Admin{
                 die ( 'Busted!');
             }
 
-            if(isset($_POST['id'])) {
+            if(isset($_POST['id']) && isset($_POST['types'])) {
                 $args = [
                     'author' => $_POST['id'],
-                    'post_type' => 'ta_article',
+                    'post_type' => $_POST['types'],
                     'posts_per_page' => -1 // no limit
                 ];
         
