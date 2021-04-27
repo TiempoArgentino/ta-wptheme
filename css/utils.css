@@ -128,3 +128,7 @@ span.cerrar-vslider-desktop img {
     width: 16px;
     height: 16px;
 }
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
+    background-color: var(--ta-socios) !important;
+    border-color: var(--ta-socios) !important;
+}
