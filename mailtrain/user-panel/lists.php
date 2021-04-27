@@ -59,7 +59,7 @@
         </div>
         <div class="edit-themes">
             <div class="btns-container text-center py-3">
-                <button><a href="<?php echo get_permalink( get_option('mailtrain_loop_page') )?>">editar temas</a></button>
+                <button><a href="<?php echo get_permalink( get_option('mailtrain_loop_page') )?>">Editar temas</a></button>
             </div>
         </div>
     </div>
