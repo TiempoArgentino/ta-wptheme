@@ -132,3 +132,7 @@ span.cerrar-vslider-desktop img {
     background-color: var(--ta-socios) !important;
     border-color: var(--ta-socios) !important;
 }
+.personalizar button a {
+    color: #16a1dc !important;
+    text-decoration: none !IMPORTANT;
+}
