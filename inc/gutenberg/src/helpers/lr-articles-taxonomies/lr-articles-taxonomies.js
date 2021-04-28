@@ -5,7 +5,7 @@ import {useRbTerms, rbTaxQuery} from '../../helpers/rb-terms/rb-terms.js';
 /**
 *   Genera un objecto con datos para las taxonomias de articulo que se quieran.
 *   @return {object}
-*        @property {object} suplement
+*        @property {object} micrositio
 *        @property {object} tag
 *        @property {object} section
 *        @property {object} author
@@ -27,40 +27,40 @@ export const useLRArticlesTaxonomies = (props = {}) => {
     }
     const {
         taxQueryRelation = 'OR',
-        suplementProps = {},
+        micrositioProps = {},
         tagProps = {},
         sectionProps = {},
         authorProps = {},
         /*Indica que datos se quieren usar. Por limitacion de hooks, estos datos son inmutables
         * desde el momento en el que se asignan */
         usage = {
-            suplement: false,
+            micrositio: false,
             tag: false,
             section: false,
             author: false,
         },
     } = props;
-    const {suplement: useSuplements, tag: useTags, section: useSections, author: useAuthors, } = unmutableProps.current;
+    const {micrositio: useSuplements, tag: useTags, section: useSections, author: useAuthors, } = unmutableProps.current;
     let finalData = {};
     let taxQuery = {};
 
     //Suplementos
-    // if(useSuplements){
-    //     const {terms: suplements = [], queryArgs: suplementsQueryArgs = {}, fetchArgs: suplementsFetchArgs = {}, required: suplementsRequired = false} = suplementProps;
-    //     finalData.suplement = useRbTerms("lr-article-suplement", suplements, {
-    //         termsQueryArgs: {
-    //             only_include: true,
-    //             ...suplementsQueryArgs,
-    //             taxonomy: "lr-article-suplement",
-    //         },
-    //         fetchArgs: suplementsFetchArgs,
-    //     });
-    //     taxQuery["lr-article-suplement"] = {
-    //         required: suplementsRequired,
-    //         field: suplementsQueryArgs.field,
-    //         terms: suplements,
-    //     };
-    // }
+    if(useSuplements){
+        const {terms: micrositios = [], queryArgs: micrositiosQueryArgs = {}, fetchArgs: micrositiosFetchArgs = {}, required: micrositiosRequired = false} = micrositioProps;
+        finalData.micrositio = useRbTerms("ta_article_micrositio", micrositios, {
+            termsQueryArgs: {
+                only_include: true,
+                ...micrositiosQueryArgs,
+                taxonomy: "ta_article_micrositio",
+            },
+            fetchArgs: micrositiosFetchArgs,
+        });
+        taxQuery["ta_article_micrositio"] = {
+            required: micrositiosRequired,
+            field: micrositiosQueryArgs.field,
+            terms: micrositios,
+        };
+    }
 
     //Tags
     if(useTags){

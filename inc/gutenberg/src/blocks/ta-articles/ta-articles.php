@@ -14,7 +14,7 @@ return array(
 		lr_get_article_filters_attributes(array(
 			'amount'            => true,
 			'most_recent'		=> true,
-			'suplements'        => true,
+			'micrositios'       => true,
 			'sections'          => true,
 			'tags'              => true,
 			'authors'           => true,
