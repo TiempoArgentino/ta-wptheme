@@ -93,7 +93,7 @@ class Users_Api
 
 
                             $sumo_mes = date('Y-m-d H:i:s', strtotime($d['infopago'][0]['next_payment_date']));
-
+                            $user = get_user_by('id',$new);
                             $order_data = [
                                 '_member_order_reference' => $order_reference,
                                 '_member_order_status' => 'completed',
@@ -106,6 +106,7 @@ class Users_Api
                                 '_member_suscription_period' => $period,
                                 '_member_suscription_period_number' => $d['infopago'][0]['auto_recurring']['frequency'],
                                 '_member_suscription_cost' => $d['infopago'][0]['auto_recurring']['transaction_amount'],
+                                '_member_suscription_user_email' => $user->user_email,
                                 'payment_type' => 'subscription'
                             ];
 

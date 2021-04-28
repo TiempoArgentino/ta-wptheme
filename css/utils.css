@@ -139,3 +139,6 @@ span.cerrar-vslider-desktop img {
 .article-body img {
     max-width: 100%;
 }
+.participa-block-container .participa-items .item img{
+    width: auto !important;
+}
