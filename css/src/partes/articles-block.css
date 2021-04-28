@@ -235,6 +235,9 @@
   line-height: 14.88px;
   margin-bottom: 0;
 }
+.article-preview .content .article-info-container .author p a {
+  color: var(--ta-gris-subtexto) !important;
+}
 .article-preview .content .article-info-container .format-icon {
   margin-right: 10px;
 }
@@ -374,6 +377,9 @@
 }
 
 @media (min-width: 768px) {
+  /* .ta-articles-block.destacado-block .article-preview .content {
+    padding-left: 30px;
+  } */
   .article-preview .img-container .icons-container .article-icons img {
     width: 45px;
     max-width: initial;
@@ -393,6 +399,9 @@
   .article-preview.destacado.principal .img-container .img-wrapper {
     min-height: 432px;
   }
+  /* .article-preview.destacado .content {
+    padding-left: 0;
+  } */
 }
 @media (min-width: 992px) {
   .article-preview.vertical-article .img-container .img-wrapper {

@@ -40,7 +40,7 @@
         <?php } ?>
     <?php endif; ?>
     <!-- anuncio sobre header single -->
-    <div class="header mb-4">
+    <div class="header mb-4" id="headerDefault">
         <div class="container">
             <div class="desktop-ribbon d-none d-lg-block">
                 <div class="d-flex justify-content-between">
@@ -108,17 +108,19 @@
                     </div>
                 </div>
             </div>
-            <div class="header-content d-flex justify-content-between pb-1 pb-lg-3">
-                <div class="d-flex align-self-center pt-2">
+            <div class="header-content d-flex justify-content-between pb-1">
+                <div class="search-and-profile d-flex align-self-center pt-2">
                     <div class="hamburger-menu d-flex align-items-center mr-lg-5">
-                        <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
+                            data-target="#menu" aria-controls="menu"
+                            aria-expanded="false" aria-label="Toggle navigation">
                             <span></span>
                             <span></span>
                             <span></span>
                         </button>
                     </div>
                     <div class="tiempo-logo mr-lg-5">
-                        <a href="<?php echo home_url() ?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
+                        <a href="<?php echo home_url()?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
                     </div>
                     <div class="weather d-none d-lg-flex flex-column align-content-center justify-content-start text-left  mr-5">
                         <div class="mt-2">
@@ -257,4 +259,3 @@
             </div>
         <?php } ?>
     <?php endif; ?>
-

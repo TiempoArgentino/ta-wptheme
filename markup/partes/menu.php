@@ -7,13 +7,13 @@ $special_menu_items = RB_Menu::get_menu_items('special-menu');
 $extra_menu = RB_Menu::get_theme_menu('extra-menu');
 $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
 ?>
-<div class="menu container-lg collapse" id="navbarToggleExternalContent">
-    <div class="container">
+<div class="menu container-lg collapse" id="menu">
+    <div class="container p-0">
         <div class="menu-header d-flex justify-content-between">
             <div class="d-flex justify-content-between">
                 <div class="hamburger-menu">
                     <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        data-target="#menu" aria-controls="menu"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
@@ -161,7 +161,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="accordion-menu-section" id="accordion1">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#collapseOne"
+                                <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
                                     <h5>SECCIONES</h5>
@@ -218,7 +218,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="accordion-menu-section" id="accordion2">
                         <div class="card">
                             <div class="card-header" id="headingTwo">
-                                <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#collapseTwo"
+                                <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
                                     <h5>ESPECIALES</h5>
