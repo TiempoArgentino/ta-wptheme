@@ -119,7 +119,7 @@ button a{
 .single-comment .profile .picture .icon img {
     max-width: 30px;
     height: auto;
-    
+
 }
 
 .single-comment .profile .picture img {
@@ -130,7 +130,7 @@ button a{
     margin-left: 80px;
 }
 
-.with-reply .single-comment .profile .line-container {
+.comment-thread .single-comment .profile .line-container {
     display: flex;
     width: 100%;
     align-items: center;
@@ -139,7 +139,7 @@ button a{
     height: 100% !important;
 }
 
-.with-reply .single-comment .profile .line-container .line {
+.comment-thread .single-comment .profile .line-container .line {
     width: 1px;
     height: 100%;
     background: var(--ta-celeste);
