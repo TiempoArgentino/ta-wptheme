@@ -1,6 +1,7 @@
 <?php
 $defaults = array(
     'comment'   => null,
+    'author'    => null,
 );
 extract( array_merge( $defaults, $args ) );
 if(!$comment || empty($comment) )
@@ -18,6 +19,10 @@ if($user_data){
         $container_class .= " partner";
         $is_partner = true;
     }
+}
+if( $author ){
+    $avatar_url = $author->photo;
+    $name = $author->name;
 }
 ?>
 <div class="single-comment input d-flex justify-content-between my-md-4 <?php echo esc_attr($container_class); ?>">
@@ -45,3 +50,30 @@ if($user_data){
         </div>
     </div>
 </div>
+
+<?php
+
+if($comment->replies && !empty($comment->replies)){
+    global $post;
+    $article = TA_Article_Factory::get_article($post);
+
+    if($article && $article->first_author){
+        $reply = $comment->replies[0];
+        $reply_author = $article->first_author; // fallback to article first author
+        $reply_author_id = get_comment_meta($reply->comment_ID, 'ta_comment_author', true);
+
+        if($reply_author_id){
+            $author_term = get_term_by('term_id', $reply_author_id, 'ta_article_author');
+            $comment_meta_author = TA_Author_Factory::get_author($author_term);
+            $matching_article_authors = array_filter($article->authors, function($article_author) use ($comment_meta_author){ return $article_author->ID == $comment_meta_author->ID; });
+            if( !empty( $matching_article_authors ) )
+                $reply_author = $comment_meta_author;
+        }
+
+        get_template_part('parts/participation', 'comment', array(
+            'comment'   => $reply,
+            'author'    => $reply_author,
+        ));
+    }
+
+}

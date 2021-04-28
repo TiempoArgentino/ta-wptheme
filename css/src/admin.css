@@ -88,3 +88,12 @@ li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
 .compat-item tr.compat-field-ta_photographer > .field > input.text{
     display: none;
 }
+
+#custom-comment-meta-controls {
+    padding: 5px;
+}
+
+#replyrow #edithead{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -50,6 +50,7 @@ function renderInside({ component, node, removeOldHtml }){
 }
 
 function renderHook({ node, hook }){
+    console.log('renderHook', hook);
     renderInside({
         component: hook.component({
             node: node,
@@ -66,8 +67,8 @@ function renderHook({ node, hook }){
 */
 export function hookComponentToNode(props){
     const { component, querySelector, removeOldHtml } = props;
-    hooks.push( props );
-
+    const hook = props;
+    hooks.push( hook );
     // Current Elements
     document.querySelectorAll(querySelector).forEach((node, i) => {
         renderHook({ node, hook });
@@ -114,6 +115,7 @@ const obs = new MutationObserver(function(mutations, observer) {
                 cb: (node, componentContainer) => {
                     console.log("Component unmounted");
                     unmountComponentAtNode(componentContainer)
+                    componentContainer.parentNode.removeChild(componentContainer);
                 },
             });
         }
