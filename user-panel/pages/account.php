@@ -39,10 +39,12 @@
                             <input type="text" id="provincia" name="state" placeholder=" " value="<?php //echo $address[0]['state'] !== null ? $address[0]['state'] : ''; 
                                                                                                     ?>" disabled>
                         </div>-->
-                            <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center" id="personalInfoInputContainer">
-                                <label for="Contrasena">Contraseña: </label>
-                                <input type="password" id="Contrasena" placeholder=" " value="" disabled>
-                                <p><?php echo __('dejar en blanco sino se va a cambiar', 'gen-theme-base') ?></p>
+                            <div class="input-container col-12 col-md-5 mx-1 d-flex flex-column align-items-center" id="personalInfoInputContainer">
+                                <div class="d-flex align-items-center w-100">
+                                    <label for="Contrasena">Contraseña: </label>
+                                    <input type="password" id="Contrasena" placeholder=" " value="" disabled>
+                                </div>
+                                <p><?php echo __('dejar en blanco si no se va a cambiar', 'gen-theme-base') ?></p>
                             </div>
                         </div>
                         <div class="btns-container text-center d-flex justify-content-center mt-4">
@@ -96,17 +98,17 @@
                                     <label for="cp">CP: </label>
                                     <input type="text" id="cp" placeholder=" " value="S2000" disabled>
                                 </div>
-                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center">
+                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="deliveryInputContainer">
                                         <label for="cp">Piso: </label>
-                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-theme-base') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
+                                        <input type="text" placeholder=" " name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
                                 </div>
-                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center">
+                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="deliveryInputContainer">
                                     <label for="cp">Departamento: </label>
-                                    <input type="text" placeholder="<?php echo __('Dpto', 'gen-theme-base') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" />
+                                    <input type="text" placeholder=" " name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" />
                                 </div>
-                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center">
+                                <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="deliveryInputContainer">
                                     <label for="">Entre calles</label>
-                                    <input type="text" placeholder="<?php echo __('Entre calles', 'gen-theme-base') ?>" name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
+                                    <input type="text" placeholder=" " name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
                                 </div>
                             </div>
                             <div class="btns-container text-center d-flex justify-content-center my-4">
