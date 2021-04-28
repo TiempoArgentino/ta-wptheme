@@ -5,6 +5,7 @@ import './article-alt-img-meta';
 import './article-meta-nota-hermana';
 import './article-meta-edicion-impresa';
 import './media-popup-photographer';
+import './commentary-author-selector';
 // import {hookComponentToNode} from './admin-components';
 
 // setTimeout( () => {
