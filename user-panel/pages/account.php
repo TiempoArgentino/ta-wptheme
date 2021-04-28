@@ -23,7 +23,7 @@
                                 <label for="Contacto">Tel. Contacto: </label>
                                 <input type="tel" id="Contacto" placeholder=" " name="user_phone" id="user_phone" value="<?php echo user_panel_proccess()->get_user_phone(wp_get_current_user()->ID) ?>" disabled>
                             </div>
-                            <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center" id="personalInfoInputContainer">
+                            <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center">
                                 <label for="email">E-mail: </label>
                                 <input type="email" placeholder=" " name="user_email_account" id="user_email_account" value="<?php echo wp_get_current_user()->user_email ?>" disabled>
                             </div>
