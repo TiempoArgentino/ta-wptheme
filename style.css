@@ -90,7 +90,7 @@ button a{
 
 
 /** HOT FIX FOTOS EN COMENTARIOS - SACAR CUANDO ANGIE SUBA ARREGLOS **/
-.input-container .input .profile {
+/* .input-container .input .profile {
     height: 25px;
 }
 
@@ -98,5 +98,63 @@ button a{
     object-fit: cover;
     height: 87px;
     border-radius: 1rem;
+} */
+
+
+.single-comment .profile {
+    display: flex;
+    flex-direction: column;
 }
+
+.single-comment .profile .picture {
+    max-width: 60px;
+    height: auto;
+}
+
+.single-comment .profile .picture .icon {
+    bottom: -10px;
+    left: -10px;
+}
+
+.single-comment .profile .picture .icon img {
+    max-width: 30px;
+    height: auto;
+    
+}
+
+.single-comment .profile .picture img {
+    border-radius: 8px;
+}
+
+.single-comment .content {
+    margin-left: 80px;
+}
+
+.with-reply .single-comment .profile .line-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    height: 100% !important;
+}
+
+.with-reply .single-comment .profile .line-container .line {
+    width: 1px;
+    height: 100%;
+    background: var(--ta-celeste);
+}
+
+.single-comment .content {
+    min-height: 114px;
+}
+
+@media (min-width: 992px) {
+    .single-comment .profile .picture {
+        max-width: 70px;
+        height: auto;
+    }
+}
+
+
 /** END HOT FIX **/

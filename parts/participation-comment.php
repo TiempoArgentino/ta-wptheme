@@ -11,7 +11,8 @@ $avatar_url = get_avatar_url($comment->user_id);
 $name = $comment->comment_author;
 $date = date("j F o - H:i", strtotime($comment->comment_date));
 $content = $comment->comment_content;
-$is_partner = false;
+$is_partner = true;
+$has_reply = true;
 $user_data = get_userdata($comment->user_id);
 $container_class = "";
 if($user_data){
@@ -25,22 +26,79 @@ if( $author ){
     $name = $author->name;
 }
 ?>
-<div class="single-comment input d-flex justify-content-between my-md-4 <?php echo esc_attr($container_class); ?>">
-    <div class="profile  position-relative">
-        <div class="picture">
-            <img src="<?php echo esc_attr($avatar_url); ?>" alt="" />
-        </div>
-        <?php if($is_partner): ?>
-        <div class="partner-icon">
-            <div class="icon position-absolute">
-                <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
+
+<?php if($has_reply): ?>
+<div class="with-reply">
+    <div class="single-comment position-relative input d-flex justify-content-between my-3 my-md-4 <?php echo esc_attr($container_class); ?>">
+        <div class="profile position-absolute h-100">
+            <div class="picture position-relative mb-3 mb-md-4">
+                <img src="<?php echo esc_attr($avatar_url); ?>" alt="" class="img-fluid" />
+                <?php if($is_partner): ?>
+                    <div class="icon position-absolute">
+                        <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="line-container">
+                <div class="line"></div>
             </div>
         </div>
-        <?php endif; ?>
+        <div class="content w-100">
+            <div class="user-info">
+                <p><?php echo esc_html($name); ?><?php if($is_partner): ?> <span class="yellow-tag">|
+                        Socio</span><?php endif; ?></p>
+            </div>
+            <div class="date">
+                <p><?php echo esc_html($date); ?></p>
+            </div>
+            <div class="input-body">
+                <p><?php echo esc_html($content); ?></p>
+            </div>
+        </div>
     </div>
-    <div class="content ml-2 w-100">
+    <div
+        class="single-comment position-relative response input d-flex justify-content-between my-3 my-md-4 <?php echo esc_attr($container_class); ?>">
+        <div class="profile position-absolute h-100">
+            <div class="picture  position-relative">
+                <img src="<?php echo esc_attr($avatar_url); ?>" alt=""  class="img-fluid" />
+                <?php if($is_partner): ?>
+                    <div class="icon position-absolute">
+                        <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
+                    </div>
+                <?php endif; ?>
+            </div>
+            
+        </div>
+        <div class="content w-100">
+            <div class="user-info">
+                <p><?php echo esc_html($name); ?><?php if($is_partner): ?> <span class="yellow-tag">|
+                        Socio</span><?php endif; ?></p>
+            </div>
+            <div class="date">
+                <p><?php echo esc_html($date); ?></p>
+            </div>
+            <div class="input-body">
+                <p><?php echo esc_html($content); ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<?php else: ?>
+<div class="single-comment position-relative input d-flex justify-content-between my-md-4 <?php echo esc_attr($container_class); ?>">
+    <div class="profile  position-absolute h-100">
+        <div class="picture  position-relative">
+            <img src="<?php echo esc_attr($avatar_url); ?>" alt=""  class="img-fluid" />
+            <?php if($is_partner): ?>
+                <div class="icon position-absolute">
+                    <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="content w-100">
         <div class="user-info">
-            <p><?php echo esc_html($name); ?><?php if($is_partner): ?> <span class="yellow-tag">| Socio</span><?php endif; ?></p>
+            <p><?php echo esc_html($name); ?><?php if($is_partner): ?> <span class="yellow-tag">|
+                    Socio</span><?php endif; ?></p>
         </div>
         <div class="date">
             <p><?php echo esc_html($date); ?></p>
@@ -50,7 +108,7 @@ if( $author ){
         </div>
     </div>
 </div>
-
+<?php endif; ?>
 <?php
 
 if($comment->replies && !empty($comment->replies)){

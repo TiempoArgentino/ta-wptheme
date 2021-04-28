@@ -132,6 +132,8 @@
   }
   .user-block-container .form-container .input-container input,
   .user-block-container .form-container .input-container select {
+    background-color: transparent;
+    border: none;
     border-radius: 20px;
     font-size: 13px;
     height: 40px;
@@ -873,6 +875,7 @@
     border: none;
     height: 35px;
     padding-left: 5px;
+    background-color: transparent;
   }
   .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input:disabled:not(:placeholder-shown):valid, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input:disabled:not(:placeholder-shown):invalid,
   .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input:disabled:not(:placeholder-shown):valid,
