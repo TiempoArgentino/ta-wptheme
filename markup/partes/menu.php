@@ -7,13 +7,13 @@ $special_menu_items = RB_Menu::get_menu_items('special-menu');
 $extra_menu = RB_Menu::get_theme_menu('extra-menu');
 $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
 ?>
-<div class="menu container-lg collapse" id="navbarToggleExternalContent">
-    <div class="container">
+<div class="menu container-lg collapse" id="menu">
+    <div class="container p-0">
         <div class="menu-header d-flex justify-content-between">
             <div class="d-flex justify-content-between">
                 <div class="hamburger-menu">
                     <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        data-target="#menu" aria-controls="menu"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
@@ -104,17 +104,17 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                 </div>
                 <div class="menu-section">
                     <div class="menu-item destacados seamos-socios">
-                        <a href="">
+                        <a href="<?php echo get_permalink( 65903  )?>">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-socios.svg" alt="">
-                                <h5><a href="<?php echo get_permalink( get_option('subscriptions_loop_page') )?>">SEAMOS SOCIOS</a></h5>
+                                <h5>SEAMOS SOCIOS</h5>
                             </div>
                         </a>
                     </div>
                     <div class="menu-item">
-                        <a href="">
+                        <a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">
                             <div>
-                                <p class="pl-3"><a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">Beneficios para socios</a></p>
+                                <p class="pl-3">Beneficios para socios</p>
                             </div>
                         </a>
                     </div>
@@ -124,7 +124,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="separator"></div>
                     <div class="menu-section">
                         <div class="menu-item destacados">
-                            <a href="">
+                            <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
                                     <p>SOBRE TIEMPO</p>
@@ -161,7 +161,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="accordion-menu-section" id="accordion1">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#collapseOne"
+                                <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
                                     <h5>SECCIONES</h5>
@@ -218,7 +218,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="accordion-menu-section" id="accordion2">
                         <div class="card">
                             <div class="card-header" id="headingTwo">
-                                <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#collapseTwo"
+                                <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
                                     <h5>ESPECIALES</h5>
@@ -289,7 +289,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                     <div class="separator"></div>
                     <div class="menu-section">
                         <div class="menu-item destacados">
-                            <a href="">
+                            <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
                                     <p>SOBRE TIEMPO</p>

@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-container mt-4 mb-5">
                                 <div class="input-container">
-                                    <input type="text" placeholder="Buenos Aires_" id="personalize-city" class="with-icon" value="<?php echo get_user_meta(wp_get_current_user()->ID,'_personalizer_location',true)?>">
+                                    <input type="text" placeholder="Buenos Aires_" id="personalize-city" autocomplete="off" class="with-icon" value="<?php echo get_user_meta(wp_get_current_user()->ID,'_personalizer_location',true)?>">
                                     <div class="input-icon">
                                         <img src="<?php echo get_template_directory_uri()?>/assets/img/localization-icon.svg" alt="">
                                     </div>
@@ -64,22 +64,23 @@
                                 </p>
                             </div>
                             <div class="temas d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-left">
-                            <?php if(!empty(balancer_personalize()->get_topics())): ?>
+                            <?php if(!empty(balancer_personalize()->get_topics())):?>
+
                                 <?php foreach(balancer_personalize()->get_topics() as $key => $val):?>
-                                        <div class="tema col-12 col-md-4 px-1">
-                                            <div class="bg-color">
-                                                <button <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'class="active"' : ''?> type="button">
-                                                <input type="checkbox" name="categorie[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_tags',true)) ? 'checked="checked"' : ''?> class="categorie" value="<?php echo $key?>" /><?php echo $val?></button>
-                                            </div>
-                                        </div>
+                                    <div class="tema col-12 col-md-4 px-1 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'theme-selected' : ''?>" id="<?php echo $val?>">
+                                    <label>
+                                        <input type="checkbox" name="categorie[]" class="topic categorie" id="<?php echo $key?>" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'checked="checked"' : ''?> value="<?php echo $key?>">
+                                        <?php echo $val?>
+                                    </label>
+                                </div>
                                         <?php endforeach;?>
                                 <?php endif;?> 
                             </div>
-                            <div class="subtitle text-center mt-4 d-none d-md-block">
+                            <!--<div class="subtitle text-center mt-4 d-none d-md-block">
                                 <a href="">
-                                    <p><?php echo __('click aquí para cargar todos','gen-theme-base')?></p>
+                                    <p><?php //echo __('click aquí para cargar todos','gen-theme-base')?></p>
                                 </a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -116,8 +117,7 @@
                                 <h4><?php echo __('Elige los que más te interesen:','gen-theme-base')?>
                                 </h4>
                             </div>
-                            <div
-                                class="articulos d-flex flex-column flex-md-row flex-wrap align-items-center align-items-md-start justify-content-around my-3">
+                            <div class="periodismo articulos d-flex flex-column flex-md-row flex-wrap align-items-center align-items-md-start justify-content-left my-3">
                                 <?php if(!empty(balancer_personalize()->get_taxonomies())):?>
                                     <?php foreach(balancer_personalize()->get_taxonomies() as $key => $val): ?>
                                         <?php 
@@ -141,8 +141,9 @@
                                                 }
                     
                                         ?>
-                                <div class="articulo col-12 col-md-4">
-                                    <button>
+                                <div class="articulo col-12 col-md-4 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) ? 'art-selected' : ''?>" id="art-<?php echo $key?>">
+                                    <label>
+                                        <input type="checkbox" name="ost-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) ? 'checked="checked"' : ''?> class="post-item" value="<?php echo $key?>" id="<?php echo $key?>">
                                         <div class="line-height-0">
                                             <div class="separator m-0"></div>
                                         </div>
@@ -151,10 +152,10 @@
                                                 <p><?php echo $val;?></p>
                                             </div>
                                             <div class="description mt-2">
-                                                <p><input type="checkbox" name="ost-item[]" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) ? 'checked="checked"' : ''?> class="post-item" value="<?php echo $key?>" /><?php echo $t->{'post_title'}?></p>
+                                                <p><?php echo $t->{'post_title'}?></p>
                                             </div>
                                         </div>
-                                    </button>
+                                    </label>
                                 </div>
                                 <?php 
                                     endforeach;
@@ -219,23 +220,23 @@
                                                 }
                     
                                         ?>
-                                    <div class="foto col-6 col-md-3 position-relative d-flex justify-content-center align-items-center mt-md-3">
-                                        <div class="foto-block-container">
-                                            <button id="firstPhoto">
+                                    <div
+                                        class="foto col-6 col-md-3 position-relative d-flex justify-content-center align-items-center mt-3 mt-md-4 ">
+                                        <div class="foto-block-container" id="photo-1">
+                                            <label>
                                                 <div class="img-container">
-                                                    <img src="<?php echo get_the_post_thumbnail_url($t->{'ID'})?>" alt=""
+                                                    <img src="<?php echo get_the_post_thumbnail_url($t->{'ID'}) ? get_the_post_thumbnail_url($t->{'ID'}) : get_stylesheet_directory_uri().'/assets/img/sin-imagen.jpg'?>" alt="<?php echo $val?>"
                                                         class="img-fluid">
                                                 </div>
                                                 <div class="checkbox-container">
-                                                <input type="checkbox" 
-                                                data-taxo="<?php echo json_encode($post_tax) ?>"
-                                                 name="photo-item[]" 
-                                                 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> 
-                                                 class="photo foto-checkbox position-absolute"
-                                                  value="<?php echo $key?>" />
-                                                    
+                                                    <input type="checkbox"
+                                                    data-taxo="<?php echo json_encode($post_tax) ?>"
+                                                    class="photo foto-checkbox position-absolute"
+                                                    name="photo-item[]"
+                                                    <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> 
+                                                    value="<?php echo $key?>">
                                                 </div>
-                                            </button>
+                                            </label>
                                         </div>
                                     </div>
                                     <?php endforeach;endforeach?>
@@ -243,11 +244,11 @@
                                 </div>
 
                             </div>
-                            <div class="subtitle text-center mt-4 d-none d-md-block">
+                           <!-- <div class="subtitle text-center mt-4 d-none d-md-block">
                                 <a href="">
-                                    <p><?php echo __('click aquí para cargar todos','gen-theme-base')?></p>
+                                    <p><?php //echo __('click aquí para cargar todos','gen-theme-base')?></p>
                                 </a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,8 @@
 /*
 *   Section articles archive template
 */
-$section = TA_Section_Factory::get_section(get_queried_object(), 'ta_article_section');
+
+$section = TA_Section_Factory::get_section(get_queried_object_id(), 'ta_article_section');
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 $articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',

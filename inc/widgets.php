@@ -27,6 +27,8 @@ class Widgets_Theme_TA
 
         add_filter('the_content', [$this,'insert_custom_content_4']);
 
+        add_action('widgets_init', [$this,'home_desktop']);
+
         add_action('widgets_init', [$this,'home_mobile']);
 
         add_action('widgets_init', [$this, 'note_mobile']);
@@ -56,6 +58,27 @@ class Widgets_Theme_TA
             'down-single-note' => __('Abajo nota', 'gen-theme-base'),
             'down-comments-note' => __('Abajo comentarios', 'gen-theme-base'),
             'side-comments-note' => __('Lado comentarios', 'gen-theme-base'),
+        ];
+
+        foreach($widgets as $key => $val) {
+            register_sidebar(array(
+                'name'          => $val,
+                'id'            => $key,
+                'before_widget' => '',
+                'after_widget'  => '',
+            ));
+        }
+    }
+
+    public function home_desktop()
+    {
+        $widgets = [
+            'popup' => __('Popup Home', 'gen-theme-base'),
+            'popup_mobile' => __('Popup Mobile Home', 'gen-theme-base'),
+            'footer_fixed' => __('Fija Abajo Desktop', 'gen-theme-base'),
+            'footer_fixed_mobile' => __('Fija Abajo Mobile', 'gen-theme-base'),
+            'vslider_desktop' => __('VSlider Dektop','gen-theme-base'),
+            'vslider_mobile' => __('VSlider Mobile','gen-theme-base')
         ];
 
         foreach($widgets as $key => $val) {
@@ -248,9 +271,9 @@ class Widgets_Theme_TA
      * Middle note
      */
 
-     public function shortcode_portada($code,$group)
+     public function shortcode_portada($code)
      {
-        return ADF()->show_ad_by_code($code,$group);
+        return ADF()->show_ad($code);
      }
 }
 

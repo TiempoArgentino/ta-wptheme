@@ -110,7 +110,8 @@
                                                                 <p>Por: <?php echo get_post_meta(get_the_ID(), '_author_newsletter', true) ?></p>
                                                             </div>
                                                             <div class="checkbox-container text-right">
-                                                                <input type="checkbox" name="list-cid[]" class="topic-checkbox list-item-select" value="<?php echo get_post_meta(get_the_ID(), '_list_cid', true) ?>">
+                                                                <input type="checkbox" name="list-cid[]" data-listId="<?php echo get_the_ID()?>" class="topic-checkbox list-item-select" value="<?php echo get_post_meta(get_the_ID(), '_list_cid', true) ?>">
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,7 +182,7 @@
                                 <p>¿Querés ser socio?</p>
                             </div>
                             <div class="btns-container text-center">
-                                <a href="<?php echo get_permalink( get_option('suscriptions_loop_page') )?>"><button class="gray-btn-black-text">CLICK AQUÍ</button></a>
+                                <button class="gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>">CLICK AQUÍ</a></button>
                             </div>
                             <div class="text-center mt-4">
                                 <p><?php echo __('Podrás editar tus preferencias, desde tu perfil de usuario, cuando quieras.', 'gen-base-theme') ?></p>

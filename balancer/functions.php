@@ -1,8 +1,12 @@
 <?php
+
 function show_interest_front($query)
 {
     if(null !== $query && $query !== ''):
      foreach ($query as $art):
+        $location = get_user_meta(wp_get_current_user()->ID,'_personalizer_location',true);
+        
+        $post_location = get_the_terms($art->{'ID'},'ta_article_place');
 ?>
         <div class="article-preview m-2 col-12 col-lg-3 d-flex flex-column p-0">
             <div>
@@ -11,13 +15,17 @@ function show_interest_front($query)
                         <div class="img-wrapper">
                             <img src="<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>" alt="" style="width:100%" />
                         </div>
+                        <?php if(is_user_logged_in()):?>
                         <div class="icons-container">
                             <div class="article-icons d-flex flex-column position-absolute">
+                            <?php if($post_location[0]->{'name'} === $location):?>
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
+                            <?php endif;?>
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
                             </div>
                         </div>
+                        <?php endif;?>
                     </div>
                 </a>
             </div>
@@ -79,5 +87,24 @@ function place_ajax_response()
         
     }
 }
+/** tag cloud */
 
-?>
+function tag_cloud_template()
+{
+    if(function_exists('balancer_personalize')){
+
+        if(is_user_logged_in()) {
+           $topics = get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true);
+          // echo sizeof($topics);
+        }
+        if($topics === null) {
+            require_once TA_THEME_PATH . '/balancer/tags/topics-cloud.php';
+
+        }
+    }
+}
+
+add_action('cloud_tag','tag_cloud_template');
+
+
+

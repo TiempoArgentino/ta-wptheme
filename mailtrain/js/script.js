@@ -84,6 +84,7 @@
         var email = $('#mailtrain_email').val();
         var terms = $('#terms-and-conditions').is(':checked') ? 'yes' : 'no';
         var lists = $('.list-item-select');
+        var listId = $('.list-id');
         var id = $('#mailtrain_user_id').val();
         var list = [];
 
@@ -93,9 +94,17 @@
                 list.push($(this).val());
             }
         });
+
+        var ids = [];
+        $.each(lists, function() {
+            if($(this).is(':checked')) {
+                ids.push($(this).attr('data-listId'))
+            }
+        });
         
         list.join(',');
 
+        ids.join(',');
 
         if(list.length <= 0){
             $('#msg-ok').html('<div class="text-center alert alert-danger mt-3">Debes seleccionar al menos una lista.</div>');
@@ -113,10 +122,11 @@
                         email: email,
                         lists: list,
                         terms: terms,
-                        id: id
+                        id: id,
+                        ids:ids
                     },
                     success: function(response){
-                        console.log(response)
+                        console.log(response) //response
                         if(response === 'ok') {
                             $('#msg-ok').html('');
                             $('#thanks-newsletter').slideDown();

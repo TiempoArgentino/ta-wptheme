@@ -11,7 +11,7 @@
 <?php } ?>
 <?php endif;?>
 <!-- anuncio sobre header single -->
-<div class="header">
+<div class="header" id="headerDefault">
     <div class="container">
         <div class="desktop-ribbon d-none d-lg-block">
             <div class="d-flex justify-content-between">
@@ -83,7 +83,7 @@
             <div class="d-flex align-self-center pt-2">
                 <div class="hamburger-menu d-flex align-items-center mr-lg-5">
                     <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        data-target="#menu" aria-controls="menu"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>

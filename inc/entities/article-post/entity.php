@@ -23,7 +23,7 @@ return array(
         'taxonomies'			=> ['ta_article_section'],
         'menu_position'			=> 5,
         'menu_icon'				=> TA_ASSETS_URL . '/img/articles-icon.png',
-        'supports'				=> array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'),
+        'supports'				=> array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'comments'),
         'publicly_queryable' => true,
         'query_var'				=> true,
         'show_in_rest' 			=> true,

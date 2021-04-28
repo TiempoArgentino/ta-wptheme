@@ -16,7 +16,8 @@ class TA_Article extends TA_Article_Data{
     }
 
     protected function get_content(){
-        return get_the_content($this->post);
+
+        return get_the_content($this->post->ID);
     }
 
     protected function get_title(){
