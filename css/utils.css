@@ -136,3 +136,6 @@ span.cerrar-vslider-desktop img {
     color: #16a1dc !important;
     text-decoration: none !IMPORTANT;
 }
+.article-body img {
+    max-width: 100%;
+}

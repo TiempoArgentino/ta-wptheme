@@ -14,7 +14,7 @@ function show_interest_front($query)
                         </div>
                         <!-- iconos -->
                             <?php if(function_exists('balancer_front')) : ?>
-                                <?php balancer_front()->show_interest_post(wp_get_current_user()->ID,$art->{'ID'});?>
+                                <?php balancer_front()->show_interest_post(wp_get_current_user()->ID,$art->{'ID'},get_stylesheet_directory_uri().'/assets/img/icon-img-1.svg',get_stylesheet_directory_uri().'/assets/img/icon-img-2.svg',get_stylesheet_directory_uri().'/assets/img/icon-img-3.svg');?>
                             <?php endif; ?>
                         <!-- iconos -->
                     </div>
@@ -96,6 +96,3 @@ function tag_cloud_template()
 }
 
 add_action('cloud_tag','tag_cloud_template');
-
-
-
