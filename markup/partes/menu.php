@@ -267,7 +267,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                             $img_url = $attachment_id ? wp_get_attachment_url($attachment_id) : '';
                             ?>
                             <div class="menu-item destacados">
-                                <a href="" class="d-flex align-items-center">
+                                <a href="<?php echo $extra_menu_item->url?>" class="d-flex align-items-center">
                                     <div class="d-flex">
                                         <?php if( $img_url ): ?>
                                         <img src="<?php echo esc_attr($img_url); ?>" alt="">
