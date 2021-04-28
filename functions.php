@@ -68,6 +68,8 @@ class TA_Theme
 
 		self::customizer();
 
+		require_once TA_THEME_PATH . '/inc/comments-metaboxes.php';
+
 		if (is_admin()) {
 			require_once TA_THEME_PATH . '/inc/menu-items.php';
 		}
@@ -164,6 +166,7 @@ class TA_Theme
 	{
 		wp_enqueue_style('ta_theme_admin_css', TA_ASSETS_CSS_URL . '/src/admin.css');
 		wp_enqueue_script('ta_theme_admin_js', TA_ASSETS_JS_URL . '/src/admin.js', ['jquery']);
+		wp_enqueue_script('ta_admin_comments', TA_ASSETS_JS_URL . '/src/admin-comments.js', ['jquery', 'admin-comments']);
 	}
 
 	static public function register_gutenberg_categories()

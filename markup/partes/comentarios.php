@@ -100,7 +100,7 @@ function input_field_string(){
         <div class="ta-comentarios-block">
             <div class="px-md-5">
                 <div class="input-quantity">
-                    <p><?php echo esc_html($comments_amount); ?> Comentarios</p>
+                    <p><?php echo esc_html($comments_amount); ?> <?php echo $comments_amount == 1 ? "Comentario" : "Comentarios"; ?></p>
                 </div>
                 <?php
                 comment_form(array(

@@ -87,3 +87,16 @@ button a{
 .ta-comentarios-block .error-message{
     color: red;
 }
+
+
+/** HOT FIX FOTOS EN COMENTARIOS - SACAR CUANDO ANGIE SUBA ARREGLOS **/
+.input-container .input .profile {
+    height: 25px;
+}
+
+.input-container .input .profile img {
+    object-fit: cover;
+    height: 87px;
+    border-radius: 1rem;
+}
+/** END HOT FIX **/

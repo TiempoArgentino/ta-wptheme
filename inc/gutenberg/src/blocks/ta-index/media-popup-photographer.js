@@ -2,7 +2,7 @@ import {hookComponentToNode} from './admin-components';
 import { render, unmountComponentAtNode } from "react-dom";
 import RBTermsSelector from '../../components/RBTermsSelector/RBTermsSelector';
 const { useSelect } = wp.data;
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 const $ = require('jquery');
 
 const MediaPopupPhotographerSelector = (props) => {
@@ -10,7 +10,6 @@ const MediaPopupPhotographerSelector = (props) => {
     const [termSlugs, setTermSlugs] = useState([]);
     const [prepared, setPrepared] = useState(false);
     const [attachmentID, setAttachmentID] = useState(null);
-    const inputRef = useRef(null);
     const value = termSlugs.join(',');
 
     useEffect( () => {
@@ -35,7 +34,6 @@ const MediaPopupPhotographerSelector = (props) => {
         setTermSlugs(slugs);
         if(updateCallback)
             updateCallback({slugs});
-        // $(inputRef.current).val(value)
     };
 
     // const terms = useSelect( ( select, props ) => {
@@ -48,9 +46,6 @@ const MediaPopupPhotographerSelector = (props) => {
     //     console.log(terms);
     //     return terms;
     // } );
-
-    const inputID = `attachments-${attachmentID}-ta_photographer`;
-    const inputName = `attachments[${attachmentID}][ta_photographer]`;
 
     return (
         <>
