@@ -30,19 +30,19 @@ return array(
         'show_in_nav_menus' 	=> false,
         'post_per_page'			=> 10,
         'paged' 				=> $paged,
-        'capability_type'		=> 'suplement_home', //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
-        'capabilities' 			=> array(
-            'create_posts'			=> 'do_not_allow',
-            'publish_posts' 		=> 'publish_suplement_home',
-            'edit_posts' 			=> 'edit_suplement_home',
-            'edit_others_posts' 	=> 'edit_others_suplement_home',
-            'delete_posts' 			=> 'delete_suplement_home',
-            'delete_others_posts' 	=> 'delete_others_suplement_home',
-            'read_private_posts' 	=> 'read_private_suplement_home',
-            'edit_post' 			=> 'edit_suplement_home',
-            'delete_post' 			=> 'delete_suplement_home',
-            'read_post' 			=> 'read_suplement_home'
-        ),
+        // 'capability_type'		=> 'suplement_home', //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
+        // 'capabilities' 			=> array(
+        //     'create_posts'			=> 'do_not_allow',
+        //     'publish_posts' 		=> 'publish_suplement_home',
+        //     'edit_posts' 			=> 'edit_suplement_home',
+        //     'edit_others_posts' 	=> 'edit_others_suplement_home',
+        //     'delete_posts' 			=> 'delete_suplement_home',
+        //     'delete_others_posts' 	=> 'delete_others_suplement_home',
+        //     'read_private_posts' 	=> 'read_private_suplement_home',
+        //     'edit_post' 			=> 'edit_suplement_home',
+        //     'delete_post' 			=> 'delete_suplement_home',
+        //     'read_post' 			=> 'read_suplement_home'
+        // ),
         "rb_config"			=> array(),
     ),
     'metaboxes'     => array(
