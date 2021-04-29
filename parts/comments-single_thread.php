@@ -9,7 +9,11 @@ extract($template_args);
         <div class="profile position-absolute h-100">
             <div class="picture position-relative mb-3 mb-md-2">
                 <img src="<?php echo esc_attr($avatar_url); ?>" alt="" class="img-fluid" />
-                <?php if($is_partner): ?>
+                <?php if($author): ?>
+                    <div class="icon position-absolute">
+                        <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-blue.png" alt="" />
+                    </div>
+                <?php elseif($is_partner): ?>
                     <div class="icon position-absolute">
                         <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
                     </div>
@@ -23,7 +27,13 @@ extract($template_args);
         </div>
         <div class="content w-100">
             <div class="user-info">
-                <p><?php echo esc_html($name); ?><?php if($is_partner): ?> <span class="yellow-tag">| Socio</span><?php endif; ?></p>
+                    <p><?php echo esc_html($name); ?>
+                        <?php if($author): ?>
+                        <span class="blue-tag">| Autor</span>
+                        <?php elseif($is_partner): ?>
+                        <span class="yellow-tag">| Socio</span>
+                        <?php endif; ?>
+                    </p>
             </div>
             <div class="date">
                 <p><?php echo esc_html($date); ?></p>

@@ -952,6 +952,7 @@ function ta_get_commment_display_data($args = array()){
         'user_data'                 => get_userdata($comment->user_id),
         'container_class'           => "",
         'replay_template_args'      => null,
+        'author'                    => $author,
     );
 
     if($display_data['user_data']){
