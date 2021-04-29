@@ -839,3 +839,130 @@ function ta_get_podcast_episode_data($xml_episode){
         'audio' => (string) $xml_episode->enclosure->attributes()->url,
     );
 }
+
+function ta_get_top_level_comments($args = array()){
+    global $post;
+    $default_args = array(
+        'status'            => 'approve',
+        'post_id'           => $post->ID,
+        'orderby'           => ['meta_value' => 'ASC', 'comment_date' => 'DESC'],
+        'meta_key'          => 'is_visitor',
+        'parent__in'        => [0],
+        // 'comment__not_in'   => [],
+        'paged'             => 1,
+        'number'            => 10,
+    );
+    $args = array_merge($default_args, $args);
+
+    $comments = get_comments($args);
+
+    if(is_wp_error($comments))
+        return [];
+
+    foreach ($comments as $comment) {
+        $child_comments = get_comments(array(
+            'status'            => 'approve',
+            'meta_key'          => 'is_visitor',
+            'meta_value'        => false,
+            'parent__in'        => [$comment->comment_ID],
+            'number'            => 1,
+        ));
+        $comment->replies = $child_comments;
+    }
+
+    return $comments;
+}
+
+/**
+*   @return mixed[]                                                             The reply data
+*       @property WP_Comment comment                                                The comment instance
+*       @property TA_Author|null author                                             The article author assigned to the reply, if any. Not to be confused
+*                                                                                   with the comment user
+*/
+function ta_get_comment_reply_data($args = array()){
+    $default_args = array(
+        'comment_id'            => null,
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+    if(!$comment_id)
+        return null;
+
+    $replies = get_comments(array(
+        'status'            => 'approve',
+        'meta_key'          => 'is_visitor',
+        'meta_value'        => false,
+        'parent__in'        => [$comment_id],
+        'number'            => 1,
+    ));
+
+    $result = null;
+
+    if($replies && !empty($replies)){
+        $has_reply = true;
+        $reply = $replies[0];
+        $reply_author_id = get_comment_meta($reply->comment_ID, 'ta_comment_author', true);
+        $reply_author = null;
+
+        if($reply_author_id){
+            $author_term = get_term_by('term_id', $reply_author_id, 'ta_article_author');
+            $comment_meta_author = TA_Author_Factory::get_author($author_term);
+            if($comment_meta_author)
+                $reply_author = $comment_meta_author;
+        }
+
+        $result = array(
+            'comment'       => $reply,
+            'author'        => $reply_author,
+        );
+    }
+
+    return $result;
+}
+
+function ta_get_commment_display_data($args = array()){
+    $default_args = array(
+        'comment'       => null,
+        'author'        => null,
+        'show_reply'    => true,
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+    if(!$comment || empty($comment) )
+        return null;
+
+    $display_data = array(
+        'comment'                   => $comment,
+        'avatar_url'                => get_avatar_url($comment->user_id),
+        'name'                      => $comment->comment_author,
+        'date'                      => date("j F o - H:i", strtotime($comment->comment_date)),
+        'content'                   => $comment->comment_content,
+        'is_partner'                => false,
+        'reply_data'                => null,
+        'user_data'                 => get_userdata($comment->user_id),
+        'container_class'           => "",
+        'replay_template_args'      => null,
+    );
+
+    if($display_data['user_data']){
+        if(in_array('subscriber', $display_data['user_data']->roles)){
+            $display_data['container_class'] .= " partner";
+            $display_data['is_partner'] = true;
+        }
+    }
+    if( $author ){
+        $display_data['avatar_url'] = $author->photo;
+        $display_data['name'] = $author->name;
+    }
+    if($show_reply){
+        $display_data['reply_data'] = ta_get_comment_reply_data(array( 'comment_id' => $comment->comment_ID, ));
+    }
+
+    return $display_data;
+}
+
+function ta_get_comment_form_fields_as_string(){
+    ob_start();
+    get_template_part('parts/commentform','fields');
+    return ob_get_clean();
+}
