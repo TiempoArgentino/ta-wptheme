@@ -88,18 +88,12 @@ button a{
     color: red;
 }
 
-
-/** HOT FIX FOTOS EN COMENTARIOS - SACAR CUANDO ANGIE SUBA ARREGLOS **/
-.input-container .input .profile {
-    height: 25px;
+.separator-grey {
+    width: 100%;
+    height: 1px;
+    background-color: #00000024;
+    margin-bottom: 3rem;
 }
-
-.input-container .input .profile img {
-    object-fit: cover;
-    height: 87px;
-    border-radius: 1rem;
-}
-/** END HOT FIX **/
 
 /** HOT FIX FOTOS EN MICROSITIO SLIDER - SACAR CUANDO ANGIE SUBA ARREGLOS **/
 .slider-micrositio .carousel .carousel-item .carousel-caption a{

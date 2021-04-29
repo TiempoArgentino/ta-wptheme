@@ -27,13 +27,40 @@ add_action( 'rest_api_init', function () {
 			}
 
 			ob_start();
-			get_template_part('parts/participation', 'comment', array( 'comment' => $comment ));
+			get_template_part('parts/comments', 'single_thread', array( 'comment' => $comment ));
 			$template = ob_get_clean();
 
 
 			return new WP_REST_Response(array(
+				'total_amount'	=> get_comments_number($_POST['comment_post_ID']),
 				'comment'		=> $comment,
-				'template'		=> $template
+				'template'		=> $template,
+			), 200);
+		},
+		'permission_callback' => function () {
+	    	return true;
+	    },
+	) );
+
+	register_rest_route( 'ta/v1', '/template/comments', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+            $args = $request->get_json_params();
+
+			if(!is_array($args) || !isset($args['post_id']))
+				return new WP_REST_Response('', 200);
+
+			if(get_current_user_id()){
+				$args['author__not_in'] = [get_current_user_id()];
+			}
+
+			ob_start();
+			get_template_part('parts/article', 'comments', $args);
+			$template = ob_get_clean();
+
+			return new WP_REST_Response(array(
+				'total_amount'	=> get_comments_number($args['post_id']),
+				'template'		=> $template,
 			), 200);
 		},
 		'permission_callback' => function () {
@@ -45,7 +72,6 @@ add_action( 'rest_api_init', function () {
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
             $args = $request->get_json_params();
-
 			// Check if this article has been uploaded based on oldId
 			// $oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
 			// $query = new WP_Query(array(

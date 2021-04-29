@@ -33,7 +33,6 @@ function authorsEditorControl( OriginalComponent ) {
         const {editPost} = useDispatch( 'core/editor' );
         const getEntityRecords = useSelect( ( select ) => select( 'core' ).getEntityRecords, [] );
 
-        console.log('authorsIds', authorsIds);
         return (
             <TAAuthorsSelector
                 terms = { authorsIds }

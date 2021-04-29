@@ -88,8 +88,8 @@ RB_Filters_Manager::add_filter('ta_comment_reply_form', 'wp_comment_reply', func
         <div id="custom-comment-meta-controls">
 			<div class="meta-control">
 				<field class="field photographer-field">
-					<h3>Autor</h3>
-                    <p>El autor seleccionado debe corresponder con alguno de los autores del artículo. Sino, se seleccionará automáticamente. Si el artículo es de un solo autor, no hace falta llenar este campo.</p>
+					<!-- <h3>Autor</h3> -->
+                    <!-- <p>El autor seleccionado debe corresponder con alguno de los autores del artículo. Sino, se seleccionará automáticamente. Si el artículo es de un solo autor, no hace falta llenar este campo.</p> -->
 					<input rb-control-value type="hidden" class="text meta-value" id="ta_comment_author" name="ta_comment_author" value="">
 				</field>
 			</div>
