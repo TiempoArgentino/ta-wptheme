@@ -941,6 +941,7 @@ function ta_get_commment_display_data($args = array()){
     if(!$comment || empty($comment) )
         return null;
 
+    $user = get_user_by('ID', $comment->user_id);
     $display_data = array(
         'comment'                   => $comment,
         'avatar_url'                => get_avatar_url($comment->user_id),
@@ -953,6 +954,8 @@ function ta_get_commment_display_data($args = array()){
         'container_class'           => "",
         'replay_template_args'      => null,
         'author'                    => $author,
+        'user'                      => $user,
+        'user_manages_comments'     => $user && (in_array( 'editor', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles )),
     );
 
     if($display_data['user_data']){

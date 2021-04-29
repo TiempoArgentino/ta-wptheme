@@ -26,12 +26,13 @@ $comments_amount = get_comments_number($post->ID);
                 ?>
                 <div class="input-container" id="ta-comentarios">
                     <?php
-                    if(get_current_user_id()){
+                    $current_user_id = get_current_user_id();
+                    if($current_user_id){
             			get_template_part('parts/article', 'comments', array(
                             'post_id'           => $post->ID,
                             'paged'			  => 1,
                             'number'            => null,
-                            'author__in'        => [get_current_user_id()],
+                            'author__in'        => $current_user_id ? [$current_user_id] : null,
                         ));
                     }
                     ?>
@@ -40,7 +41,7 @@ $comments_amount = get_comments_number($post->ID);
         			get_template_part('parts/article', 'comments', array(
                         'post_id'               => $post->ID,
                         'paged'                 => 1,
-                        'author__not_in'        => [get_current_user_id()],
+                        'author__not_in'        => $current_user_id ? [$current_user_id] : null,
                     ));
                     ?>
                 </div>
