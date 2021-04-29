@@ -35,3 +35,9 @@ new TA_Micrositio('medios', array(
     'priority'              => 3,
     'custom_content'        => true,
 ));
+
+new TA_Micrositio('radiografia-del-vaciamiento', array(
+    'title'                 => 'Radiografías del Vaciamiento',
+    'priority'              => 3,
+    'custom_content'        => true,
+));
