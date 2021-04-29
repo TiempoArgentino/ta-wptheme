@@ -910,10 +910,15 @@ function ta_get_comment_reply_data($args = array()){
         $reply_author = null;
 
         if($reply_author_id){
-            $author_term = get_term_by('term_id', $reply_author_id, 'ta_article_author');
-            $comment_meta_author = TA_Author_Factory::get_author($author_term);
-            if($comment_meta_author)
-                $reply_author = $comment_meta_author;
+            $article_post = get_post($reply->comment_post_ID);
+            $article = TA_Article_Factory::get_article($article_post);
+            if($article && $article->authors && !empty($article->authors)){
+                $author_term = get_term_by('term_id', $reply_author_id, 'ta_article_author');
+                $comment_meta_author = TA_Author_Factory::get_author($author_term);
+                $matching_article_authors = array_filter($article->authors, function($article_author) use ($comment_meta_author){ return $article_author->ID == $comment_meta_author->ID; });
+                if( !empty( $matching_article_authors ) )
+                    $reply_author = $comment_meta_author;
+            }
         }
 
         $result = array(
