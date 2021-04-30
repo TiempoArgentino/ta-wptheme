@@ -15,7 +15,7 @@ export function useTAArticlesManager( props = {} ){
 	const {
 		attributes,
 		setAttributes,
-		taxonomiesFilters = {tag: true, section: true, author: true},
+		taxonomiesFilters = {tag: true, section: true, author: true, micrositio: true},
 	} = props;
 	const mostRecentTurnedOff = useRef(false);
 	const mostRecentWasActive = useRef(false);
@@ -87,17 +87,20 @@ export function useTAArticlesManager( props = {} ){
 
 	const hasOnlyOneTermFilter = () => {
 		const { most_recent } = attributes;
-		const { section, tag, author } = lrTaxonomies;
+		const { section, tag, author, micrositio } = lrTaxonomies;
 		const hasUniqueSection = section && section.termsData && section.termsData.length == 1 ? section.termsData[0] : false;
 		const hasUniqueTag = tag && tag.termsData && tag.termsData.length == 1 ? tag.termsData[0] : false;
 		const hasUniqueAuthor = author && author.termsData && author.termsData.length == 1 ? author.termsData[0] : false;
+		const hasUniqueMicrositio = micrositio && micrositio.termsData && micrositio.termsData.length == 1 ? micrositio.termsData[0] : false;
 
-		if( hasUniqueSection && !hasUniqueTag && !hasUniqueAuthor )
+		if( hasUniqueSection && !hasUniqueTag && !hasUniqueAuthor && !hasUniqueMicrositio )
 			return hasUniqueSection;
-		if( hasUniqueTag && !hasUniqueSection && !hasUniqueAuthor )
+		if( hasUniqueTag && !hasUniqueSection && !hasUniqueAuthor && !hasUniqueMicrositio )
 			return hasUniqueTag;
-		if( hasUniqueAuthor && !hasUniqueTag && !hasUniqueSection )
+		if( hasUniqueAuthor && !hasUniqueTag && !hasUniqueSection && !hasUniqueMicrositio )
 			return hasUniqueAuthor;
+		if( hasUniqueMicrositio && !hasUniqueAuthor && !hasUniqueTag && !hasUniqueSection )
+			return hasUniqueMicrositio;
 
 		return false;
 	};
@@ -111,6 +114,7 @@ export function useTAArticlesManager( props = {} ){
 		tagProps: attributes.tags,
 		sectionProps: attributes.sections,
 		authorProps: attributes.authors,
+		micrositioProps: attributes.micrositios,
 	});
 
 	let postsQueryArgs = {

@@ -91,7 +91,7 @@ function lr_get_article_filters_attributes($filters = array()){
     $default_filters = array(
         'most_recent'       => false,
         'amount'            => false,
-        'suplements'        => false,
+        'micrositios'        => false,
         'sections'          => false,
         'tags'              => false,
         'authors'           => false,
@@ -115,14 +115,14 @@ function lr_get_article_filters_attributes($filters = array()){
         );
     }
 
-    // if($filters['suplements']){
-    //     $attributes['suplements'] = array(
-    //         'type'		=> 'object',
-    // 		'default'	=> array(
-    // 			'terms'	=> null,
-    // 		),
-    //     );
-    // }
+    if($filters['micrositios']){
+        $attributes['micrositios'] = array(
+            'type'		=> 'object',
+    		'default'	=> array(
+    			'terms'	=> null,
+    		),
+        );
+    }
 
     if($filters['sections']){
         $attributes['sections'] = array(
@@ -166,9 +166,9 @@ function lr_get_query_args_from_articles_filters($filters){
     if( isset($filters['amount']) && $filters['amount'] !== null )
         $query_args['posts_per_page'] = $filters['amount'];
 
-    if( isset($filters['suplements']) || isset($filters['sections']) || isset($filters['tags']) || isset($filters['authors']) ){
+    if( isset($filters['micrositios']) || isset($filters['sections']) || isset($filters['tags']) || isset($filters['authors']) ){
         $query_args['tax_query'] = rb_tax_query(array(
-            // 'lr-article-suplement'  => isset($filters['suplements']) ? $filters['suplements'] : null,
+            'ta_article_micrositio' => isset($filters['micrositios']) ? $filters['micrositios'] : null,
             'ta_article_section'    => isset($filters['sections']) ? $filters['sections'] : null,
             'ta_article_tag'        => isset($filters['tags']) ? $filters['tags'] : null,
             'ta_article_author'     => isset($filters['authors']) ? $filters['authors'] : null,
@@ -206,13 +206,18 @@ function ta_is_term_articles_block($attributes){
     $has_unique_section = isset($attributes['sections']) && isset($attributes['sections']['terms']) && $attributes['sections']['terms'] && count($attributes['sections']['terms']) == 1 ? $attributes['sections']['terms'][0] : false;
     $has_unique_tag = isset($attributes['tags']) && isset($attributes['tags']['terms']) && $attributes['tags']['terms'] && count($attributes['tags']['terms']) == 1 ? $attributes['tags']['terms'][0] : false;
     $has_unique_author = isset($attributes['author']) && isset($attributes['author']['terms']) && $attributes['author']['terms'] && count($attributes['author']['terms']) == 1 ? $attributes['author']['terms'][0] : false;
+    $has_unique_micrositio = isset($attributes['micrositio']) && isset($attributes['micrositio']['terms']) && $attributes['micrositio']['terms'] && count($attributes['micrositio']['terms']) == 1 ? $attributes['micrositio']['terms'][0] : false;
 
-    if($has_unique_section && !$has_unique_tag && !$has_unique_author)
+    if($has_unique_section && !$has_unique_tag && !$has_unique_author && !$has_unique_micrositio)
         return TA_Section_Factory::get_section(get_term($has_unique_section, 'ta_article_section'));
-    if($has_unique_tag && !$has_unique_author && !$has_unique_section)
+    if($has_unique_tag && !$has_unique_author && !$has_unique_section && !$has_unique_micrositio)
         return TA_Tag_Factory::get_tag(get_term($has_unique_tag, 'ta_article_tag'));
-    if($has_unique_author && !$has_unique_section && !$has_unique_tag)
+    if($has_unique_author && !$has_unique_section && !$has_unique_tag && !$has_unique_micrositio)
         return TA_Author_Factory::get_author(get_term($has_unique_author, 'ta_article_author'));
+    if($has_unique_micrositio && !$has_unique_author && !$has_unique_section && !$has_unique_tag){
+        $micrositio_term = get_term($has_unique_micrositio, 'ta_article_micrositio');
+        return TA_Micrositio::get_micrositio($micrositio_term ? $micrositio_term->slug : null);
+    }
 
     return false;
 }
@@ -936,6 +941,7 @@ function ta_get_commment_display_data($args = array()){
     if(!$comment || empty($comment) )
         return null;
 
+    $user = get_user_by('ID', $comment->user_id);
     $display_data = array(
         'comment'                   => $comment,
         'avatar_url'                => get_avatar_url($comment->user_id),
@@ -947,6 +953,9 @@ function ta_get_commment_display_data($args = array()){
         'user_data'                 => get_userdata($comment->user_id),
         'container_class'           => "",
         'replay_template_args'      => null,
+        'author'                    => $author,
+        'user'                      => $user,
+        'user_manages_comments'     => $user && (in_array( 'editor', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles )),
     );
 
     if($display_data['user_data']){

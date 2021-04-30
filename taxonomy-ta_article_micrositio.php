@@ -11,7 +11,7 @@ $content = $micrositio->get_content();
     <?php //get_template_part('parts/common-header'); ?>
     <div id="main" class="index">
         <div class="posts-content">
-            <div class="post-content">
+            <div class="post-content ta-context micrositio <?php echo esc_attr($micrositio->slug); ?>">
                 <?php TA_Blocks_Container_Manager::open_new(); ?>
                 <?php echo apply_filters( 'the_content', $content ); ?>
                 <?php TA_Blocks_Container_Manager::close(); ?>

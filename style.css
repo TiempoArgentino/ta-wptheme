@@ -94,3 +94,9 @@ button a{
     background-color: #00000024;
     margin-bottom: 3rem;
 }
+
+/** HOT FIX FOTOS EN MICROSITIO SLIDER - SACAR CUANDO ANGIE SUBA ARREGLOS **/
+.slider-micrositio .carousel .carousel-item .carousel-caption a{
+    color: #fff!important;
+}
+/** END HOT FIX **/
