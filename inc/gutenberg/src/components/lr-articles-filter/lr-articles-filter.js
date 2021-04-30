@@ -25,7 +25,7 @@ export const LRArticlesFilters = (props = {}) => {
         *           @property {int} onChange - Funcion a correr cuando cambia el valor del filtro. Recibe el valor.
         */
         amountFilterProps = null,
-        suplementProps = null,
+        micrositioProps = null,
         tagProps = null,
         sectionProps = null,
         requiredTaxonomies = false,
@@ -64,11 +64,11 @@ export const LRArticlesFilters = (props = {}) => {
     *   @param {string} taxAttribute - Nombre del attribute que guarda los datos de
     *   la taxonomia
     *   @param {mixed[]} selectedTerms - Array de los terms por los cuales filtrar
-    *   @param {function} setSuplementData - Funcion para guardar los datos del suplemento.
+    *   @param {function} setTermsData - Funcion para guardar los datos del term.
     *   De estos datos solo se guarda el term_id en el attribute
     */
-    const termsChanged = (taxAttribute, selectedTerms, setSuplementsData) => {
-        setSuplementsData(selectedTerms);
+    const termsChanged = (taxAttribute, selectedTerms, setTermsData) => {
+        setTermsData(selectedTerms);
         if(setAttributes && attributes){
             let newAttrs = {};
             newAttrs[taxAttribute] = {...getAttribute(taxAttribute, {})};
@@ -182,20 +182,20 @@ export const LRArticlesFilters = (props = {}) => {
                 }
                 {taxonomiesData &&
                     <div class="panel-bodies">
-                        {taxonomiesData.suplement &&
+                        {taxonomiesData.micrositio &&
                             <PanelBody
-                                title="Suplementos"
+                                title="Micrositios"
                                 icon=""
-                                initialOpen={taxonomiesData.suplement.termsData && taxonomiesData.suplement.termsData.length > 0}
+                                initialOpen={taxonomiesData.micrositio.termsData && taxonomiesData.micrositio.termsData.length > 0}
                             >
-                                <RequiredTaxonomyCheckbox taxName={'suplements'} taxObject={taxonomiesData.suplement}/>
+                                <RequiredTaxonomyCheckbox taxName={'micrositios'} taxObject={taxonomiesData.micrositio}/>
                                 <LRTermSelector
-                                    taxData={taxonomiesData.suplement}
-                                    taxonomy={"lr-article-suplement"}
-                                    attributeName={"suplements"}
+                                    taxData={taxonomiesData.micrositio}
+                                    taxonomy={"ta_article_micrositio"}
+                                    attributeName={"micrositios"}
                                     labels={{
                                     }}
-                                    taxonomyProps={suplementProps}
+                                    taxonomyProps={micrositioProps}
                                 />
                             </PanelBody>
                         }

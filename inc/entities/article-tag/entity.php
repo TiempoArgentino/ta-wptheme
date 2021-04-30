@@ -29,6 +29,12 @@ return array(
         'show_in_rest'      => true, // This enables the REST API endpoint
         'query_var'         => true, // This allows us to append the taxonomy param to the custom post api request.
         'show_in_nav_menus' => true,
+        'capabilities' => array(
+            'manage_terms'  =>   'manage_article_tags',
+            'edit_terms'    =>   'edit_article_tags',
+            'delete_terms'  =>   'delete_article_tags',
+            'assign_terms'  =>   'assign_article_tags',
+        ),
     ),
     'metaboxes'     => array(
         'ta_article_tag_image' => array(

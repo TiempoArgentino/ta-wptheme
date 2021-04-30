@@ -58,6 +58,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
+		add_action('admin_init', array(self::class, 'clean_dashboard') );
 		RB_Filters_Manager::add_action('ta_theme_admin_scripts', 'admin_enqueue_scripts', array(self::class, 'admin_scripts'));
 
 		add_filter('gen_check_post_type_name_dash_error', function ($check, $post_type) {
@@ -241,6 +242,18 @@ class TA_Theme
 	public static function extra_home_content()
 	{
 		require_once TA_THEME_PATH . '/inc/extra/banner-home-qs.php';
+	}
+	
+	static public function clean_dashboard() {
+		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');//since 3.8
 	}
 }
 
