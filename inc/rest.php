@@ -118,7 +118,7 @@ add_action( 'rest_api_init', function () {
 			if( is_wp_error($article_id) )
 				return new WP_REST_Response($article_id->get_error_message(), 500);
 
-			if( $article_id === false )
+			if( !$article_id )
 				return new WP_REST_Response('Ha habido un error al intentar crear el articulo', 500);
 
 			return new WP_REST_Response($article_id, 200);
