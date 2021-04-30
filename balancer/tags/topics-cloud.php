@@ -21,8 +21,8 @@
 
                         <div class="container">
                             <div class="article-tags d-flex flex-wrap mt-4" id="cloud-tag-topics">
-                                <?php if(is_user_logged_in()) : ?>
-                                    <?php foreach(balancer_personalize()->get_topics() as $key => $val) : ?>
+                                <?php if(!is_user_logged_in()) : ?>
+                                    <?php foreach(balancer_personalize()->get_tags(16) as $key => $val) : ?>
                                     <div class="tag d-flex justify-content-center my-2">
                                         <div class="content p-1">
                                             <a href="#" data-key="<?php echo $key?>">
@@ -32,17 +32,11 @@
                                         <div class="triangle"></div>
                                     </div>
                                     <?php endforeach?>
-                                <?php else: ?>
-                                    <?php foreach(balancer_personalize()->get_tags() as $key => $val) : ?>
-                                    <div class="tag d-flex justify-content-center my-2">
-                                        <div class="content p-1">
-                                            <a href="#" data-key="<?php echo $key?>">
-                                                <p class="m-0"><?php echo $val?></p>
-                                            </a>
-                                        </div>
-                                        <div class="triangle"></div>
-                                    </div>
-                                    <?php endforeach?>
+                                    <div class="btns-container d-none d-md-flex align-items-center">
+                                        <button type="button"  id="ver-mas-cloud" data-toggle="collapse" data-target="#seeAllTags" aria-expanded="false"
+                                            aria-controls="seeAllTags" class="collapsed">ver más<img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/right-arrow.png" alt=""
+                                                class="img-fluid" /></button>
+                                    </div>                                   
                                 <?php endif;?>
                             </div>
                             <div class="container-md mb-2 p-0 d-none">
@@ -53,7 +47,7 @@
 
                     </div>
                     <div class="ver-mas d-flex justify-content-center mt-4">
-                        <button id="ver-mas-cloud"><?php echo __('VER MÁS','gen-theme-base')?></button>
+                        <button><?php echo __('Listo','gen-theme-base')?></button>
                     </div>
                 </div>
             </div>
