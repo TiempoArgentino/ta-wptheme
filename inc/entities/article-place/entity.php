@@ -29,6 +29,12 @@ return array(
         'show_in_rest'      => true, // This enables the REST API endpoint
         'query_var'         => true, // This allows us to append the taxonomy param to the custom post api request.
         'show_in_nav_menus' => true,
+        'capabilities' => array(
+            'manage_terms'  =>   'manage_article_places',
+            'edit_terms'    =>   'edit_article_places',
+            'delete_terms'  =>   'delete_article_places',
+            'assign_terms'  =>   'assign_article_places',
+        ),
         "rb_config"			=> array(
             'unique'	=> true,
         ),
