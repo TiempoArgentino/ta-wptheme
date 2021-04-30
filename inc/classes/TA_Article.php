@@ -38,6 +38,11 @@ class TA_Article extends TA_Article_Data{
         return $sections && !is_wp_error($sections) ? TA_Section_Factory::get_section( get_term($sections[0]->term_id) ) : null;
     }
 
+    protected function get_micrositio(){
+        $micrositios = get_the_terms($this->post, 'ta_article_micrositio');
+        return $micrositios && !is_wp_error($micrositios) ? TA_Micrositio::get_micrositio( $micrositios[0]->slug ) : null;
+    }
+
     protected function get_url(){
         return get_permalink($this->post);
     }

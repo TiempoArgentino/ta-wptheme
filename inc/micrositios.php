@@ -5,32 +5,33 @@
 */
 
 // Creacion de un nuevo suplemento
-// new LR_Suplemento('test', array(
+// new TA_Micrositio('test', array(
 //     'title'                 => 'Test',
 //     'priority'              => 2,
 //     //'custom_content'       => true,
 //     //'public'             => false,
 // ));
 
-// Eliminacion del suplemento (ademas de borrar el anterior new LR_Suplemento)
+// Eliminacion del suplemento (ademas de borrar el anterior new TA_Micrositio)
 // add_action('init', function(){
-//     LR_Suplemento::delete_suplement( 'test' );
+//     TA_Micrositio::delete_suplement( 'test' );
 // });
 
 new TA_Micrositio('ambiental', array(
     'title'                 => 'Activo ambiental',
     'priority'              => 1,
+    'custom_content'        => true,
     // 'public'                => false,
 ));
 
 new TA_Micrositio('habitat', array(
     'title'                 => 'Hábitat & Pandemia',
     'priority'              => 2,
-    // 'custom_content'        => true,
+    'custom_content'        => true,
 ));
 
 new TA_Micrositio('medios', array(
     'title'                 => 'Monitor de medios',
     'priority'              => 3,
-    // 'custom_content'        => true,
+    'custom_content'        => true,
 ));
