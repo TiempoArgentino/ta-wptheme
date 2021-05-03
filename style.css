@@ -11,16 +11,15 @@ Tags:
 Text Domain: gen-base-theme
 Domain Path: /languages
 */
-
 html {
     margin-top: 0 !important;
-  }
+}
 
 #wpadminbar {
     position: initial;
 }
 
-.article-preview .img-container img{
+.article-preview .img-container img {
     height: 144px;
     max-width: 100%;
     object-fit: cover;
@@ -52,14 +51,15 @@ html {
     background-size: cover;
 }
 
-.ta-redes i{
+.ta-redes i {
     font-size: 27px;
     color: #849899;
 }
 
-button a{
+button a {
     color: var(--ta-celeste) !important
 }
+
 .sub-blocks .ta-articles-block {
     overflow: hidden;
 }
@@ -68,23 +68,31 @@ button a{
     background: #ffffff17;
 }
 
-.ta-comentarios-block .single-comment.new{
+.ta-comentarios-block .single-comment.new {
     animation-name: newComment;
     animation-iteration-count: 1;
     animation-duration: 1s;
 }
 
 @keyframes newComment {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.75); }
-  100%{ filter: brightness(1); }
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.75);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
 }
 
-.ta-comentarios-block .general-error{
+.ta-comentarios-block .general-error {
     display: none;
 }
 
-.ta-comentarios-block .error-message{
+.ta-comentarios-block .error-message {
     color: red;
 }
 
@@ -96,7 +104,61 @@ button a{
 }
 
 /** HOT FIX FOTOS EN MICROSITIO SLIDER - SACAR CUANDO ANGIE SUBA ARREGLOS **/
-.slider-micrositio .carousel .carousel-item .carousel-caption a{
-    color: #fff!important;
+.slider-micrositio .carousel .carousel-item .carousel-caption a {
+    color: #fff !important;
 }
+
 /** END HOT FIX **/
+/* ESTILOS DE .btns-container .pagination button, adaptados para funcionar con el nav de wordpress
+reemplazar en styles de angie
+ */
+.pagination-articles {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-articles .page-numbers {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-articles .page-numbers {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid var(--ta-gris-subtexto);
+    color: var(--ta-gris-subtexto)!important; /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+    margin: 3px;
+    width: 31px;
+    height: 31px;
+    padding: 0;
+}
+
+.pagination-articles .page-numbers.prev, .pagination-articles .page-numbers.next {
+    border-color: transparent;
+}
+
+.pagination-articles .page-numbers.current {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    background-color: var(--ta-negro-texto);
+    border: 1px solid var(--ta-negro-texto);
+    color: var(--ta-celeste-fondos)!important; /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+}
+
+@media (min-width: 992px) {
+    .pagination-articles .page-numbers {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 992px) {
+    .pagination-articles .page-numbers {
+        font-size: 19px;
+    }
+}

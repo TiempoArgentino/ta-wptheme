@@ -23,10 +23,10 @@ return array(
 			'rows'			=> array(
 				'type'					=> 'array',
 				'default'				=> [
-					[
-						'format'	=> 'miscelanea',
-						'cells'		=> null,
-					],
+					// [
+					// 	'format'	=> 'miscelanea',
+					// 	'cells'		=> null,
+					// ],
 				],
 			),
 			'container'			=> array(

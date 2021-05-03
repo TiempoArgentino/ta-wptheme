@@ -69,30 +69,11 @@ $articles = get_ta_articles_from_query(array(
         <?php endif; ?>
     </div>
     <div class="py-3">
-        <div class="container-fluid container-lg mt-3">
-            <div class="d-flex flex-column flex-md-row">
-                <div class="col-12 col-md-8 p-0">
-                    <?php
-                        $articles_block->render(array(
-                            'articles'          => $articles,
-                            'articles_type'     => 'article_post',
-                            'layout'            => '',
-                            'cells_per_row'     => 3,
-                        ));
-                    ?>
-                </div>
-                <div class="col-12 col-md-4 p-0">
-                    <?php include_once(TA_THEME_PATH . '/markup/partes/seamos-socios.php');  ?>
-                </div>
-            </div>
-            <div class="btns-container">
-                <div class="pagination d-none d-lg-flex justify-content-center">
-                    <button class="active">1</button>
-                    <button>2</button>
-                    <button>3</button>
-                </div>
-            </div>
-        </div>
+        <?php get_template_part('parts/archive', 'simple', array(
+            'articles'              => $articles,
+            // 'max_num_pages'         => $wp_query->max_num_pages,
+            // 'current_page'          => max(1, get_query_var('paged')),
+        )); ?>
     </div>
 
 <?php get_footer(); ?>
