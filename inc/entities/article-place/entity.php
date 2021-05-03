@@ -33,7 +33,7 @@ return array(
             'manage_terms'  =>   'manage_article_places',
             'edit_terms'    =>   'edit_article_places',
             'delete_terms'  =>   'delete_article_places',
-            'assign_terms'  =>   'assign_article_places',
+            'assign_terms'  =>   'edit_articles',
         ),
         "rb_config"			=> array(
             'unique'	=> true,

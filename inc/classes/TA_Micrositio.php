@@ -20,6 +20,11 @@ class TA_Micrositio{
     static private $initialized = false;
 
     /**
+    *   @property bool $setting_up_entities                                     Indicates if important entities are being set up
+    */
+    static private $setting_up_entities = false;
+
+    /**
     *   @property WP_Term Term asociado con el suplemento
     */
     public $term = null;
@@ -55,6 +60,9 @@ class TA_Micrositio{
         if( self::$initialized )
             return
         self::$initialized = true;
+        RB_Filters_Manager::add_action("ta-theme-activation-micrositio-status", 'after_switch_theme', function(){
+            TA_Micrositio::$setting_up_entities = true;
+        });
         RB_Filters_Manager::add_filter('ta_micrositio_home_post_redirect', 'single_template', array(self::class, 'suplement_home_post_redirect'));
     }
 
@@ -70,7 +78,7 @@ class TA_Micrositio{
         self::$micrositios[$slug] = $this;
         //Algunos datos se establecen una vez que se asocia la instancia a su respectivo WP_Term
 
-        RB_Filters_Manager::add_action("ta-setup-micrositio-$slug-entities", 'after_switch_theme',  array($this,'create_entities'));
+        RB_Filters_Manager::add_action("ta-setup-micrositio-$slug-entities", 'after_switch_theme', array($this,'create_entities'));
         RB_Filters_Manager::add_action("ta-setup-micrositio-$slug-set-data", 'init',  array($this,'set_entities_data'), array(
             'priority'  => 100,
         ));
@@ -79,6 +87,9 @@ class TA_Micrositio{
         //register_deactivation_hook( __FILE__, array( $this, 'plugin_deactivation' ) );
     }
 
+    static public function is_setting_up_entities(){
+        return self::$setting_up_entities;
+    }
 
     /**
     *   Redirecciona el post del home de suplemento a la pagina de la taxonomia del
@@ -211,6 +222,31 @@ class TA_Micrositio{
 
     public function get_name(){
         return $this->term ? $this->term->name : '';
+    }
+
+    public function get_sponsor(){
+        $sponsor_meta = get_term_meta($this->term->term_id, 'ta_micrositio_sponsor', true);
+        $result = array(
+            'logo'      => null,
+            'name'      => '',
+            'link'      => '',
+        );
+
+        if($sponsor_meta && is_array($sponsor_meta)){
+            if(isset($sponsor_meta['logo']) && $sponsor_meta['logo']){
+                $result['logo'] = wp_get_attachment_url($sponsor_meta['logo']);
+            }
+
+            if(isset($sponsor_meta['name']) && $sponsor_meta['name']){
+                $result['name'] = $sponsor_meta['name'];
+            }
+
+            if(isset($sponsor_meta['link']) && $sponsor_meta['link']){
+                $result['link'] = $sponsor_meta['link'];
+            }
+        }
+
+        return $result;
     }
 }
 

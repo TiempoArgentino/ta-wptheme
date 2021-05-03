@@ -33,7 +33,7 @@ return array(
             'manage_terms'  =>   'manage_article_tags',
             'edit_terms'    =>   'edit_article_tags',
             'delete_terms'  =>   'delete_article_tags',
-            'assign_terms'  =>   'assign_article_tags',
+            'assign_terms'  =>   'edit_articles',
         ),
     ),
     'metaboxes'     => array(

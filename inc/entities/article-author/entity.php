@@ -33,7 +33,7 @@ return array(
             'manage_terms'  =>   'manage_article_authors',
             'edit_terms'    =>   'edit_article_authors',
             'delete_terms'  =>   'delete_article_authors',
-            'assign_terms'  =>   'assign_article_authors',
+            'assign_terms'  =>   'edit_articles',
         ),
     ),
     'metaboxes'     => array(

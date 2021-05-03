@@ -1,4 +1,29 @@
 <?php
+// Prevent slug modification
+RB_Filters_Manager::add_filter( 'ta_prevent_micrositio_slug_change', 'wp_update_term_data', function( $data, $term_id, $taxonomy ) {
+    if ( $taxonomy == 'ta_article_micrositio' && !TA_Micrositio::is_setting_up_entities() ){
+        $old_term = get_term($term_id);
+        if($old_term->slug != $data['slug']){
+            $data['slug'] = $old_term->slug;
+            // wp_die('No está permitida la modificación del slug de un micrositio. Si intento editar este campo a través de un formulario, comuniqueselo a un administrador.', 'Error');
+        }
+    }
+    return $data;
+}, array(
+    'priority'      => 20,
+    'accepted_args' => 3,
+) );
+
+// Prevent the manual creation of new micrositio terms
+RB_Filters_Manager::add_filter( 'ta_prevent_new_micrositio_term', 'pre_insert_term', function( $term, $taxonomy ) {
+    if ( $taxonomy == 'ta_article_micrositio' && !TA_Micrositio::is_setting_up_entities() )
+        $term = new WP_Error( 'invalid_term', 'No esta permitido agregar terms de micrositio manualmente. Estos se deben establecer desde el codigo en <b>inc\micrositios.php</b>' );
+    return $term;
+}, array(
+    'priority'      => 20,
+    'accepted_args' => 2,
+) );
+
 return array(
     'id'            => 'ta_article_micrositio',
     'type'          => 'taxonomy',
@@ -26,10 +51,10 @@ return array(
         'label'             => __( 'Micrositios' ),
         'rewrite'           => array( 'slug' => 'micrositio' ),
         'capabilities' => array(
-            'manage_terms'  => false,
-            'edit_terms'    => false,
+            'manage_terms'  => 'edit_micrositios_terms',
+            'edit_terms'    => 'edit_micrositios_terms',
             'delete_terms'  => false,
-            'assign_terms'  => 'assign_article_micrositio'
+            'assign_terms'  => 'edit_articles'
         ),
         'show_in_rest' => true, // This enables the REST API endpoint
         'query_var' => true, // This allows us to append the taxonomy param to the custom post api request.
@@ -39,5 +64,31 @@ return array(
         ),
     ),
     'metaboxes'     => array(
+        'ta_micrositio_sponsor' => array(
+            'settings'  => array(
+                'title'             => __('Sponsor', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+                'quick_edit'        => true,
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        'label'     => __('Logo', 'ta-genosha'),
+                        'type'          => 'RB_Media_Control',
+                        'store_value'   => 'id',
+                    ),
+                    'name'      => array(
+                        'label'     => __('Nombre', 'ta-genosha'),
+                        'input_type'            => 'text',
+                    ),
+                    'link'      => array(
+                        'label'     => __('Link', 'ta-genosha'),
+                        'input_type'            => 'text',
+                    ),
+                ),
+            ),
+        ),
     ),
 );
