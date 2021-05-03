@@ -309,3 +309,8 @@ export function useLRArticlesFetch( props ) {
 		response,
 	};
 }
+
+
+export function isArticlePostType(postType){
+	return postType == 'ta_article' || postType == 'ta_fotogaleria' || postType == 'ta_audiovisual';
+}

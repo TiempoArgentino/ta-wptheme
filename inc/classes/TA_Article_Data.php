@@ -29,6 +29,7 @@ class TA_Article_Data extends Data_Manager{
         'isopinion'             => false,
         'sister_article'        => null,
         'micrositio'            => null,
+        'participation'         => null,
     );
 
     public function get_thumbnail($variation = 'common', $size = 'full'){

@@ -10,7 +10,7 @@
     <?php include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
     <?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
     <?php include_once(TA_THEME_PATH . "/markup/partes/comentarios.php");  ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
+    <?php // include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
     <?php include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
 <?php include_once(TA_THEME_PATH . "/markup/partes/relacionados-tema.php");  ?>

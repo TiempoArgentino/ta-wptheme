@@ -1,15 +1,45 @@
 <?php
+if(!comments_open($post))
+    return;
+$article = TA_Article_Factory::get_article($post);
 $comments_amount = get_comments_number($post->ID);
+$header_title = $article->participation['use'] ? 'PREGUNTÁ Y PARTICIPÁ' : 'COMENTARIOS';
 ?>
 <div class="container-with-header">
     <div>
         <div class="section-title">
-            <h4>COMENTARIOS</h4>
+            <h4><?php echo $header_title; ?></h4>
         </div>
     </div>
     <div class="mt-3">
         <div class="ta-comentarios-block">
             <div class="px-md-5">
+                <?php if($article->participation['use']): ?>
+                <div class="header-container">
+                    <div class="d-flex align-items-end">
+                        <?php if($article->participation['use_live_date'] && $article->participation['live_date']): ?>
+                        <div class="date">
+                            <p><?php echo date('d F G:i\h\s', $article->participation['live_date']); ?> - </p>
+                        </div>
+                        <?php endif; ?>
+                        <?php
+                        if($article->participation['live_title']):
+                            $anchor_href = $article->participation['live_link'] ? "href='".esc_attr($article->participation['live_link'])."'" : '';
+                        ?>
+                        <div class="title">
+                            <a <?php echo $anchor_href; ?>><p><?php echo $article->participation['live_title']; ?></p></a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="author-name">
+                        <p><?php get_template_part('parts/article','authors_links', array( 'authors' => $article->authors )); ?></p>
+                    </div>
+                    <div class="description mt-3">
+                        <p>El autor responderá preguntas de esta noticia. <span>¡Es tu momento de participar!</span></p>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 <div class="input-quantity">
                     <p><span class="comments-amount"><?php echo esc_html($comments_amount); ?></span> <?php echo $comments_amount == 1 ? "Comentario" : "Comentarios"; ?></p>
                 </div>

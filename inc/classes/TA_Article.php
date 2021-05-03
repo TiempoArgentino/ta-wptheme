@@ -187,6 +187,26 @@ class TA_Article extends TA_Article_Data{
     }
 
     /**
+    *   @return mixed[]
+    */
+    public function get_participation(){
+        $participation_meta = get_post_meta($this->post->ID, 'ta_article_participation', true);
+        $result = array(
+            'use'                   => false,
+            'use_live_date'         => false,
+            'live_title'            => '',
+            'live_link'             => '',
+            'live_date'             => null,
+        );
+
+        if($participation_meta && is_array($participation_meta)){
+            $result = array_merge($result, $participation_meta);
+        }
+
+        return $result;
+    }
+
+    /**
     *   @return bool
     */
     public function get_isopinion(){

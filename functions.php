@@ -243,7 +243,7 @@ class TA_Theme
 	{
 		require_once TA_THEME_PATH . '/inc/extra/banner-home-qs.php';
 	}
-	
+
 	static public function clean_dashboard() {
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
@@ -378,6 +378,39 @@ function ta_article_edicion_impresa_meta_register(){
 	));
 }
 add_action('init', 'ta_article_edicion_impresa_meta_register');
+
+function ta_article_participation_meta_register(){
+	register_post_meta('ta_article', 'ta_article_participation', array(
+		'single' 	=> true,
+		'type' 		=> 'object',
+		'show_in_rest' => array(
+			'schema' => array(
+				'type'  => 'object',
+				'properties' => array(
+					'use' => array(
+						'type' => 'boolean',
+					),
+					'use_live_date' => array(
+						'type' => 'boolean',
+					),
+					'live_date' => array(
+						'type' => 'number',
+					),
+					'live_title'  => array(
+						'type' => 'string',
+					),
+					'live_link'  => array(
+						'type' => 'string',
+					),
+				),
+				// 'additionalProperties' => array(
+				// 	'type' => 'string',
+				// ),
+			),
+		),
+	));
+}
+add_action('init', 'ta_article_participation_meta_register');
 
 /**
  * filtro por creador

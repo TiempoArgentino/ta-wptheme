@@ -68,5 +68,5 @@ const TAEdicionImpresaPanel = () => {
 
 registerPlugin( 'ta-ed-impresa', {
     render: TAEdicionImpresaPanel,
-    // icon: 'format-image',
+    icon: 'media-document',
 } );
