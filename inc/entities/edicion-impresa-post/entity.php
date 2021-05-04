@@ -1,5 +1,5 @@
 <?php
-
+flush_rewrite_rules();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 return array(
     'id'            => 'ta_ed_impresa',
@@ -18,7 +18,7 @@ return array(
             'not_found_in_trash' => __( 'No se encontraron Ediciones Impresas' ),
         ),
         'public' 				=> true,
-        'has_archive' 			=> 'articulos', //slug para archivo (usado por fecha en este caso)
+        'has_archive' 			=> 'ediciones-impresas', //slug para archivo (usado por fecha en este caso)
         'rewrite' 				=> true, //true para que si tenga url amigable y no definimos slug para poder sobre escribirlo como queramos
         'menu_position'			=> 5,
         'menu_icon'				=> TA_ASSETS_URL . '/img/articles-icon.png',

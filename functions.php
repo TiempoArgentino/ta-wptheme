@@ -46,6 +46,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Edicion_Impresa.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author.php';
