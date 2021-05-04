@@ -36,4 +36,26 @@ return array(
         //     ),
         // ),
     ),
+    'metaboxes'     => array(
+        'issuefile_attachment_id' => array(
+            'settings'  => array(
+                'title'             => __('Imagen en bloques', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+                'quick_edit'        => true,
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        //'label'     => __('Logo a color', 'ta-genosha'),
+                        'button_label'  => 'Seleccionar PDF',
+                        'type'          => 'RB_Media_Control',
+                        'store_value'   => 'id',
+                        'mime_type'     => ['application/pdf'],
+                    ),
+                ),
+            ),
+        ),
+    ),
 );
