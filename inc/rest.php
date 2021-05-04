@@ -104,15 +104,19 @@ add_action( 'rest_api_init', function () {
 			$args = $request->get_json_params();
 
 			// Check if this article has been uploaded based on oldId
-			// $oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
-			// $query = new WP_Query(array(
-			// 	'post_type'			=> 'ta_article',
-			// 	'meta_key'         	=> 'oldId',
-			// 	'meta_value'       	=> $oldId,
-			// ));
-			// if( $query->have_posts() )
-			// 	return new WP_REST_Response('Ya existe una edicion impresa con dicha ID', 500);
+			$oldId = isset($args['oldId']) ? $args['oldId'] : $args['oldId'];
+			if(!$oldId)
+				return new WP_REST_Response('No se paso un oldId', 500);
 
+			$query = new WP_Query(array(
+				'post_type'			=> ['ta_article', 'ta_audiovisual', 'ta_fotogaleria'],
+				'meta_key'         	=> 'oldId',
+				'meta_value'       	=> $oldId,
+			));
+			if( $query->have_posts() )
+				return new WP_REST_Response('Ya existe un articulo con la oldId pasada', 409);
+
+			// Try to create a new post
 			$article_id = create_new_article(array_merge($args, array( 'post_author' => 5 )));
 
 			if( is_wp_error($article_id) )

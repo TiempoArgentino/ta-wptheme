@@ -67,7 +67,7 @@ const TANotaHermanaPanel = () => {
 
 registerPlugin( 'ta-article-nota-hermana', {
     render: TANotaHermanaPanel,
-    // icon: 'format-image',
+    icon: 'media-document',
 } );
 
 

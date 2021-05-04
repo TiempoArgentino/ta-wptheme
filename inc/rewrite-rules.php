@@ -20,7 +20,7 @@ class Theme_Permalinks
         elseif(isset($query['name'])):
             $include_children = false;
             $name = $query['name'];
-        else: 
+        else:
             $name = '';
         endif;
 

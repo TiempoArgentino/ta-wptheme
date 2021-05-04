@@ -1,5 +1,5 @@
 <?php
-
+flush_rewrite_rules();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 return array(
     'id'            => 'ta_ed_impresa',
@@ -18,7 +18,7 @@ return array(
             'not_found_in_trash' => __( 'No se encontraron Ediciones Impresas' ),
         ),
         'public' 				=> true,
-        'has_archive' 			=> 'articulos', //slug para archivo (usado por fecha en este caso)
+        'has_archive' 			=> 'ediciones-impresas', //slug para archivo (usado por fecha en este caso)
         'rewrite' 				=> true, //true para que si tenga url amigable y no definimos slug para poder sobre escribirlo como queramos
         'menu_position'			=> 5,
         'menu_icon'				=> TA_ASSETS_URL . '/img/articles-icon.png',
@@ -35,5 +35,27 @@ return array(
         //         'single'                => 'test.php'
         //     ),
         // ),
+    ),
+    'metaboxes'     => array(
+        'issuefile_attachment_id' => array(
+            'settings'  => array(
+                'title'             => __('PDF Portada', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+                'quick_edit'        => true,
+            ),
+            'input'  => array(
+                'controls'		=> array(
+                    'logo'      => array(
+                        //'label'     => __('Logo a color', 'ta-genosha'),
+                        'button_label'  => 'Seleccionar PDF',
+                        'type'          => 'RB_Media_Control',
+                        'store_value'   => 'id',
+                        'mime_type'     => ['application/pdf'],
+                    ),
+                ),
+            ),
+        ),
     ),
 );

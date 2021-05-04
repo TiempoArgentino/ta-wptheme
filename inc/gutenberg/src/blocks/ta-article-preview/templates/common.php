@@ -24,6 +24,8 @@ $preview_class .= " $class";
     </div>
     <?php endif; ?>
     <div class="content <?php echo esc_attr($info_class); ?>">
+        <?php if($article instanceof TA_Edicion_Impresa): ?>
+        <?php endif; ?>
         <?php if($cintillo): ?>
         <div class="article-border"></div>
         <div class="category-title">

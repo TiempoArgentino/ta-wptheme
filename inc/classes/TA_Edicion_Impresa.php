@@ -4,7 +4,7 @@
 *   Common article data
 */
 
-class TA_Article extends TA_Article_Data{
+class TA_Edicion_Impresa extends TA_Article_Data{
     public $post = null;
 
     public function __construct($post){
@@ -16,7 +16,6 @@ class TA_Article extends TA_Article_Data{
     }
 
     protected function get_content(){
-
         return get_the_content($this->post->ID);
     }
 
@@ -57,34 +56,6 @@ class TA_Article extends TA_Article_Data{
             }
         }
         return $tags;
-    }
-
-    /**
-    *   @return LR_Author[]|null
-    */
-    #[Data_Manager_Array]
-    protected function get_authors(){
-        $authors_terms = get_the_terms($this->post, 'ta_article_author');
-        $authors = null;
-        if(is_array($authors_terms) && !empty($authors_terms)){
-            $authors = [];
-            foreach($authors_terms as $author_term){
-                $authors[] = TA_Author_Factory::get_author($author_term);
-            }
-        }
-        return $authors;
-    }
-
-    /**
-    *   @return LR_Author|null
-    */
-    protected function get_first_author(){
-        return $this->authors ? $this->authors[0] : null;
-    }
-
-    protected function get_authors_roles(){
-        $roles = get_post_meta($this->post->ID, 'ta_article_authors_rols', true);
-        return $roles && is_array($roles) ? $roles : [];
     }
 
     /**
@@ -206,20 +177,4 @@ class TA_Article extends TA_Article_Data{
         return $result;
     }
 
-    /**
-    *   @return bool
-    */
-    public function get_isopinion(){
-        $author = $this->first_author;
-        return $author && get_post_meta($this->post->ID, 'ta_article_isopinion', true);
-    }
-
-    /**
-    *   Returns the instance of the article stablished as related to this one
-    *   @return TA_Article_Factory|null
-    */
-    public function get_sister_article(){
-        $article_id = get_post_meta( $this->post->ID, 'ta_article_sister_article', true );
-        return !$article_id ? null : TA_Article_Factory::get_article( get_post($article_id) );
-    }
 }

@@ -1,6 +1,6 @@
 <?php
 $article = TA_Article_Factory::get_article($post);
-$sister_article = $article->get_sister_article();
+$sister_article = $article->sister_article;
 if(!$sister_article)
     return;
 ?>

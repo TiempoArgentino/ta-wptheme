@@ -97,3 +97,15 @@ li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
     display: flex;
     flex-wrap: wrap;
 }
+
+body.taxonomy-ta_article_micrositio .form-field.term-slug-wrap {
+    display: none;
+}
+
+body.taxonomy-ta_article_micrositio #col-left {
+    display: none;
+}
+
+body.taxonomy-ta_article_micrositio #col-right {
+    width: 100%;
+}

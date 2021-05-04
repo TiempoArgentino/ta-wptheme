@@ -12,6 +12,7 @@ $col_lg = 0;
 $col_lg_fill = 0;
 $leftovers = 0;
 $preview_class = '';
+$cells_amount = $cells_amount == -1 ? count($articles) : $cells_amount;
 // if( $cells_per_row > 0  ){
 //     if($cells_per_row <= 4)
 //         $col_lg = 12 / $cells_per_row;
@@ -34,9 +35,8 @@ else if( $cells_per_row == 5 )
         <?php
             if( $articles ){
                 for ($i=0; $i < $cells_amount; $i++) {
-                    $article_data = isset($articles[$i]) ? $articles[$i] : null;
-                    $article = $articles_type ? TA_Article_Factory::get_article($article_data, $articles_type) : $article_data;
-
+                    $article = isset($articles[$i]) ? $articles[$i] : null;
+                    // $article = $articles_type ? TA_Article_Factory::get_article($article_data, $articles_type) : $article_data;
                     if(!$article)
                         break;
 
