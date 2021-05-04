@@ -16,11 +16,43 @@ class TA_Edicion_Impresa extends TA_Article_Data{
     }
 
     protected function get_content(){
-        return get_the_content($this->post->ID);
+        $content = apply_filters( 'the_content',  get_the_content($this->post->ID) );
+        ob_start();
+        $articles_query = new WP_Query(array(
+            'post_type'     => 'ta_article',
+            'meta_key'      => 'ta_article_edicion_impresa',
+        ));
+        $articles = [];
+
+        if( $articles_query->have_posts() ){
+            $articles = array_map(function($post){
+                return TA_Article_Factory::get_article($post);
+            }, $articles_query->posts);
+        }
+
+        if(!empty($articles)){
+            $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
+            $articles_block->render(array(
+                'articles'          => $articles,
+                'container'         => array(
+                    'title'             => 'Artículos',
+                ),
+                'rows'              => array(
+                    array(
+                        'format'            => 'common',
+                        'cells_amount'      => -1,
+                        'cells_per_row'     => 2,
+                    ),
+                ),
+            ));
+        }
+
+        $content .= ob_get_clean();
+        return $content;
     }
 
     protected function get_title(){
-        return get_the_title($this->post);
+        return get_the_date('d/m/o', $this->post);
     }
 
     protected function get_excerpt(){
@@ -57,34 +89,34 @@ class TA_Edicion_Impresa extends TA_Article_Data{
         }
         return $tags;
     }
-
-    /**
-    *   Publication details
-    *   @return string[]
-    */
-    protected function get_publication_info(){
-        return array(
-            'day'           => $this->get_date_day(),
-            'time'          => $this->get_date_time(),
-        );
-    }
-
-    /**
-    *   Publication day
-    *   @param string $format                                                   Date format
-    *   @return string
-    */
-    public function get_date_day($format = 'j \d\e F \d\e Y'){
-        return get_the_date($format, $this->post);
-    }
-
-    /**
-    *   Publication time
-    *   @return string
-    */
-    public function get_date_time(){
-        return get_the_date('H:i', $this->post);
-    }
+    // DATE DATE IS REMOVED SINCE THE TITLE ALREADY SHOWS IT
+    // /**
+    // *   Publication details
+    // *   @return string[]
+    // */
+    // protected function get_publication_info(){
+    //     return array(
+    //         'day'           => $this->get_date_day(),
+    //         'time'          => $this->get_date_time(),
+    //     );
+    // }
+    //
+    // /**
+    // *   Publication day
+    // *   @param string $format                                                   Date format
+    // *   @return string
+    // */
+    // public function get_date_day($format = 'j \d\e F \d\e Y'){
+    //     return get_the_date($format, $this->post);
+    // }
+    //
+    // /**
+    // *   Publication time
+    // *   @return string
+    // */
+    // public function get_date_time(){
+    //     return get_the_date('H:i', $this->post);
+    // }
 
     protected function get_thumbnail_common($variation = null, $size = 'full'){
         $thumbnail_id = get_post_thumbnail_id($this->post);

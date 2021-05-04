@@ -6,9 +6,7 @@ $section = TA_Section_Factory::get_section(get_queried_object(), 'ta_article_sec
 $articles = [];
 
 if( $wp_query->have_posts() ){
-    foreach ($wp_query->posts as $ed_impresa_post) {
-        $articles[] = TA_Article_Factory::get_article($ed_impresa_post);
-    }
+    $articles = array_map(function($post){ return TA_Article_Factory::get_article($post); }, $wp_query->posts);
 }
 
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');

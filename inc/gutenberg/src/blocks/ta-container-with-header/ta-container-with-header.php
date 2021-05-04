@@ -17,6 +17,10 @@ return array(
 			'type'		=> 'string',
 			'default'	=> '',
 		),
+		'header_type'	=> array(
+			'type'		=> 'string',
+			'default'	=> 'common',
+		),
 		'class'				=> array(
 			'type'		=> 'string',
 			'default'	=> '',

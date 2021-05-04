@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes();
+add_filter( 'wp_title', function(){
+    er();
+}, 5465446544, 2 );
+
+ ?>>
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">

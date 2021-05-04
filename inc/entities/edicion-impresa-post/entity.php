@@ -1,5 +1,17 @@
 <?php
-flush_rewrite_rules();
+
+// FILTERS THE TITLE OF A EDICION IMPRESA POST PAGE
+RB_Filters_Manager::add_filter('ta_ed_impresa_single_title', 'document_title_parts', function($title_parts){
+    if(is_single() && get_post_type() == 'ta_ed_impresa'){
+        global $post;
+        $ed_impresa = TA_Article_Factory::get_article($post);
+        $title_parts['title'] = 'Edición Impresa ' . $ed_impresa->title;
+    }
+    return $title_parts;
+}, array(
+    'accepted_args' => 1,
+));
+
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 return array(
     'id'            => 'ta_ed_impresa',

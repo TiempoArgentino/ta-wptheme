@@ -41,7 +41,7 @@ $preview_class .= " $class";
         <div class="article-info-container">
             <div class="author">
                 <p>Por:
-                    <?php include plugin_dir_path( __FILE__ ) . "/authors-links.php"; ?>
+                    <?php get_template_part('parts/article','authors_links', array( 'authors' => $authors )); ?>
                 </p>
             </div>
         </div>
