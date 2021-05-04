@@ -26,6 +26,8 @@ window.addEventListener("resize", function () {
   $(document).ready(function () {
     $(".tab-cooperativa").on("click", function () {
       $(".categorias-titulo").html("Seleccionar categoría");
+      $(".member").show().addClass("d-flex");
+      $(".select-categorias").val('');
     });
 
     $(".select-categorias").on("change", function () {

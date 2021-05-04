@@ -1,13 +1,24 @@
 <?php
-$articles = [];
-
-
-if($wp_query->have_posts()){
-    $articles = array_map(function($post){
-        return TA_Article_Factory::get_article($post);
-    },$wp_query->posts);
-}
-$articles_block = RB_Gutenberg_Block::get_block('ta/articles');
+$query = get_posts([
+    'post_type' => 'ta_article',
+    'posts_per_page' => 5,
+    'orderby' => 'ta_article_count',
+    'order' => 'DESC',
+    'meta_query' => [
+        [
+            'key' => 'ta_article_count',
+            'compare' => 'LIKE',
+            'type'      => 'NUMERIC',
+            'compare'   => 'EXISTS'
+        ]
+    ],
+    'date_query' => [
+        [
+            'column' => 'post_date_gmt',
+            'after'  => get_option('balancer_editorial_days') . ' days ago',
+        ]
+    ]
+]);
 
 ?>
 
@@ -30,11 +41,12 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                             <div
                                 class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                                 <div class="w-100">
-                                    <!-- <div class="article-preview d-flex mb-3">
+                                <?php foreach($query as $art) : ?>
+                                    <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
                                             <a href="">
                                                 <div class="img-container position-relative">
-                                                    <div class="img-wrapper">
+                                                    <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;">
 
                                                     </div>
                                                 </div>
@@ -43,25 +55,12 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                                         <div class="content col-7">
                                             <div class="description">
                                                 <a href="">
-                                                    <p>El grupo "infectadura" reapareció.
-                                                    </p>
+                                                    <p><?php echo $art->{'post_title'}?></p>
                                                 </a>
                                             </div>
                                         </div>
-                                    </div> -->
-                                    <?php 
-                                        $articles_block->render(array(
-                                            'articles'          => $articles,
-                                            'articles_type'     => 'article_post',
-                                            'rows'              => array(
-                                                array(
-                                                    'format'            => 'common',
-                                                    'cells_amount'      => -1,
-                                                    'cells_per_row'     => 1,
-                                                ),
-                                            ),
-                                        ));
-                                    ?>
+                                    </div>
+                                <?php endforeach?>
                                 </div>
                             </div>
                         </div>
@@ -71,12 +70,12 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                             <div
                                 class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                                 <div class="w-100">
-
-                                    <!-- <div class="article-preview d-flex mb-3">
+                                <?php foreach($query as $art) : ?>
+                                   <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
                                             <a href="">
                                                 <div class="img-container position-relative">
-                                                    <div class="img-wrapper">
+                                                    <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;">
 
                                                     </div>
                                                 </div>
@@ -85,25 +84,12 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                                         <div class="content col-7">
                                             <div class="description">
                                                 <a href="">
-                                                    <p>El grupo "infectadura" reapareció.
-                                                    </p>
+                                                    <p><?php echo $art->{'post_title'}?> </p>
                                                 </a>
                                             </div>
                                         </div>
-                                    </div> -->
-                                    <?php 
-                                        $articles_block->render(array(
-                                            'articles'          => $articles,
-                                            'articles_type'     => 'article_post',
-                                            'rows'              => array(
-                                                array(
-                                                    'format'            => 'common',
-                                                    'cells_amount'      => -1,
-                                                    'cells_per_row'     => 1,
-                                                ),
-                                            ),
-                                        ));
-                                    ?>
+                                    </div>
+                                    <?php endforeach?>
                                 </div>
                             </div>
                         </div>
