@@ -39,7 +39,7 @@ return array(
     'metaboxes'     => array(
         'issuefile_attachment_id' => array(
             'settings'  => array(
-                'title'             => __('Imagen en bloques', 'ta-genosha'),
+                'title'             => __('PDF Portada', 'ta-genosha'),
                 'context'           => 'side',
                 'priority'          => 'high',
                 'classes'           => array('ta-metabox'),
