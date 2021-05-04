@@ -1,6 +1,6 @@
 <?php
 
-function show_interest_front($query)
+function aaashow_interest_front($query)
 {
     if(null !== $query && $query !== ''):
      foreach ($query as $art):
