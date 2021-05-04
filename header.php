@@ -27,8 +27,9 @@
             </div>
         <?php } ?>
     <?php endif; ?>
-    <!-- anuncio sobre header single -->
+    <!-- anuncio sobre portada -->
     <?php if (is_single()) : ?>
+        <!-- anuncio single seccion autor tag-->
         <?php if (is_active_sidebar('over-header-note')) { ?>
             <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
                 <div class="row d-flex">
@@ -38,8 +39,21 @@
                 </div>
             </div>
         <?php } ?>
+        <!-- anuncio single seccion autor tag-->
     <?php endif; ?>
-    <!-- anuncio sobre header single -->
+    <!-- taxonomia -->
+    <?php if (is_tax()) : ?>
+        <?php if (is_active_sidebar('seccion_head_1')) { ?>
+            <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+                <div class="row d-flex">
+                    <div class="col-9 mx-auto text-center">
+                        <?php dynamic_sidebar('seccion_head_1'); ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php endif; ?>
+    <!-- taxonomia -->
     <div class="header mb-4" id="headerDefault">
         <div class="container">
             <div class="desktop-ribbon d-none d-lg-block">
@@ -111,16 +125,14 @@
             <div class="header-content d-flex justify-content-between pb-1">
                 <div class="search-and-profile d-flex align-self-center pt-2">
                     <div class="hamburger-menu d-flex align-items-center mr-lg-5">
-                        <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse"
-                            data-target="#menu" aria-controls="menu"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        <button id="menuBtn" type="button" class="collapsed" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                             <span></span>
                             <span></span>
                             <span></span>
                         </button>
                     </div>
                     <div class="tiempo-logo mr-lg-5">
-                        <a href="<?php echo home_url()?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
+                        <a href="<?php echo home_url() ?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
                     </div>
                     <div class="weather d-none d-lg-flex flex-column align-content-center justify-content-start text-left  mr-5">
                         <div class="mt-2">
@@ -233,6 +245,29 @@
             </div>
         <?php } ?>
     <?php endif; ?>
+     <!-- taxonomia -->
+     <?php if (is_tax()) : ?>
+        <?php if (is_active_sidebar('seccion_head_2')) { ?>
+            <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+                <div class="row d-flex">
+                    <div class="col-9 mx-auto text-center">
+                        <?php dynamic_sidebar('seccion_head_2'); ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <?php if (is_active_sidebar('seccion_mob_1')) { ?>
+            <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
+                <div class="row d-flex">
+                    <div class="col-12 mx-auto text-center">
+                        <?php dynamic_sidebar('seccion_mob_1'); ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php endif; ?>
+    <!-- taxonomia -->
     <!-- pops -->
     <?php if (is_front_page()) : ?>
         <?php if (is_active_sidebar('popup')) { ?>

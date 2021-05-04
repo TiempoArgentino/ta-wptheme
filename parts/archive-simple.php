@@ -4,9 +4,9 @@ $defaults = array(
     'max_num_pages'     => $wp_query ? $wp_query->max_num_pages : null,
     'current_page'      => max(1, get_query_var('paged')),
 );
-extract( array_merge( $defaults, $args ) );
+extract(array_merge($defaults, $args));
 
-if(!$articles)
+if (!$articles)
     return;
 
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
@@ -15,21 +15,54 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
     <div class="d-flex flex-column flex-md-row">
         <div class="col-12 col-md-8 p-0">
             <?php
-                $articles_block->render(array(
-                    'articles'          => $articles,
-                    'articles_type'     => 'article_post',
-                    'rows'              => array(
-                        array(
-                            'format'            => 'common',
-                            'cells_amount'      => -1,
-                            'cells_per_row'     => 3,
-                        ),
+            $articles_block->render(array(
+                'articles'          => $articles,
+                'articles_type'     => 'article_post',
+                'rows'              => array(
+                    array(
+                        'format'            => 'common',
+                        'cells_amount'      => -1,
+                        'cells_per_row'     => 3,
                     ),
-                ));
+                ),
+            ));
             ?>
         </div>
         <div class="col-12 col-md-4 p-0">
+
+            <?php if (is_active_sidebar('seccion_mob_3')) { ?>
+                <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
+                    <div class="row d-flex">
+                        <div class="col-12 mx-auto text-center">
+                            <?php dynamic_sidebar('seccion_mob_3'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
             <?php include_once(TA_THEME_PATH . '/markup/partes/seamos-socios.php');  ?>
+
+            <?php if (is_active_sidebar('seccion_desk_1')) { ?>
+                <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+                    <div class="row d-flex">
+                        <div class="col-9 mx-auto text-center">
+                            <?php dynamic_sidebar('seccion_desk_1'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <?php if (is_active_sidebar('seccion_desk_2')) { ?>
+                <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
+                    <div class="row d-flex">
+                        <div class="col-9 mx-auto text-center">
+                            <?php dynamic_sidebar('seccion_desk_2'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+
         </div>
     </div>
     <?php
@@ -37,4 +70,18 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
         'total'     => $max_num_pages,
         'current'   => $current_page,
     )); ?>
+
+    <?php if (is_active_sidebar('seccion_mob_4')) { ?>
+        <div class="row d-block d-sm-none d-md-none d-lg-none">
+
+            <div class="container  mt-md-3 mb-md-3 text-center mt-3">
+                <div class="row d-flex">
+                    <div class="col-12 mx-auto text-center">
+                        <?php dynamic_sidebar('seccion_mob_4'); ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <?php } ?>
 </div>
