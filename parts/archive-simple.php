@@ -17,7 +17,6 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
             <?php
             $articles_block->render(array(
                 'articles'          => $articles,
-                'articles_type'     => 'article_post',
                 'rows'              => array(
                     array(
                         'format'            => 'common',

@@ -13,14 +13,29 @@ $header_link_tag = $header_link ? 'href="'. esc_attr($header_link) .'"' : '';
 
 <div class="container-with-header ta-context <?php echo esc_attr($color_context); ?> py-3">
     <div class="context-color">
+        <?php if($header_type == 'common'): ?>
         <div class="container line-height-0">
             <div class="separator m-0"></div>
         </div>
+        <?php endif; ?>
         <div class="context-bg  py-3">
             <div class="container <?php echo esc_attr($header_class); ?>">
+                <?php if($header_type == 'common'): ?>
                 <a <?php echo $header_link_tag; ?> class="section-title">
                     <h4><?php echo $title; ?></h4>
                 </a>
+                <?php elseif($header_type == 'especial'): ?>
+                <div class="article-tags ta-blue-bg m-0">
+                        <div class="tag d-flex my-2">
+                            <div class="content p-1">
+                                <a <?php echo $header_link_tag; ?>>
+                                    <p class="m-0"><?php echo $title; ?></p>
+                                </a>
+                            </div>
+                            <div class="triangle"></div>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="sub-blocks mt-3">
                 <div class="container">

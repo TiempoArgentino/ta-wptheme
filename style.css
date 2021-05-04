@@ -162,3 +162,9 @@ reemplazar en styles de angie
         font-size: 19px;
     }
 }
+/* END HOTFIX ESTILOS  .btns-container .pagination button */
+
+
+.article-preview .content .article-info-container .author p{
+    display: inline;
+}

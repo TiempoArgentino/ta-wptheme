@@ -31,6 +31,20 @@ return array(
         'post_per_page'			=> 10,
         'paged' 				=> $paged,
         'capability_type'		=> ['article', 'articles'], //para poder cambiar el tipo de regla (apuntar a una pagina por ejemplo con pagename),
+        'capabilities'          => array(
+            'delete_others_posts'               => 'delete_others_articles',
+            'delete_posts'                      => 'delete_articles',
+            'delete_private_posts'              => 'delete_private_articles',
+            'delete_published_posts'            => 'delete_published_articles',
+            'edit_others_posts'                 => 'edit_others_articles',
+            'edit_posts'                        => 'edit_articles',
+            'edit_private_posts'                => 'edit_private_articles',
+            'edit_published_posts'              => 'edit_published_articles',
+            'publish_posts'                     => 'publish_articles',
+            'read_private_posts'                => 'read_private_articles',
+            'create_posts'                      => 'create_articles',
+        ),
+        'map_meta_cap'          => true,
         "rb_config"			=> array(
             //     'templates'             => array(
             //         'single'                => 'test.php'
