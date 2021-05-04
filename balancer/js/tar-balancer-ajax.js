@@ -62,12 +62,12 @@
     });
 
     $(document).ready(function(){
+       // console.log($('#cloud-tag-topics .tag').length);
         if($('#cloud-tag-topics').length) {
             
             var $div = $('#cloud-tag-topics .tag');
-            if($div.length > 8) {
-                $div.slice(8,16).removeClass('d-flex').addClass('d-none');
-            
+            if($div.length > 6) {
+                $div.slice(6,16).removeClass('d-flex').addClass('d-none');
                 $('#ver-mas-cloud').on('click',function(){
                     $div.slice(0,16).removeClass('d-none').addClass('d-flex');
                 });

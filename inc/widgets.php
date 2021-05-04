@@ -33,9 +33,8 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this, 'note_mobile']);
 
-        // add_action('wp',[$this,'portada']);
+        add_action('widgets_init', [$this, 'seccion_desktop_widgets']);
 
-        // add_filter('the_content',[$this,'coso'],10,1);
         
     }
 
@@ -280,27 +279,33 @@ class Widgets_Theme_TA
         return ADF()->show_ad($code);
      }
 
-     /** test portada */
-     public function portada()
-     {
-        //global $post;
-        $post_content = get_the_content(get_option('page_on_front')); // Get the post_content
-        $blocks = parse_blocks($post_content);
+     /**
+      * Sección
+      */
+      public function seccion_desktop_widgets()
+      {
+          $widgets = [
+              'seccion_head_1' => __('Sección header 1', 'gen-theme-base'),
+              'seccion_head_2' => __('Sección header 2', 'gen-theme-base'),
+              'seccion_desk_1' => __('Sección box 1', 'gen-theme-base'),
+              'seccion_desk_2' => __('Sección box 2', 'gen-theme-base'),
+              'seccion_mob_1' => __('Sección Mobi 1', 'gen-theme-base'),
+              'seccion_mob_2' => __('Sección Mobi 2', 'gen-theme-base'),
+              'seccion_mob_3' => __('Sección Mobi 3', 'gen-theme-base'),
+              'seccion_mob_4' => __('Sección Mobi 4', 'gen-theme-base'),
+            ];
+  
+          foreach($widgets as $key => $val) {
+              register_sidebar(array(
+                  'name'          => $val,
+                  'id'            => $key,
+                  'before_widget' => '',
+                  'after_widget'  => '',
+              ));
+          }
+      }
 
 
-        var_dump(serialize_block( $blocks ));
-
-     }
-
-     public function coso($content)
-     {
-         if(is_front_page())
-         {
-             return $content.' el coso';
-         }
-
-         return $content;
-     }
 }
 
 function widgets_ta()
@@ -309,19 +314,3 @@ function widgets_ta()
 }
 
 widgets_ta();
-
-// add_filter('render_block', function($block_content, $block) {
-
-//     $post_content = get_the_content(get_option('page_on_front')); // Get the post_content
-
-//     $blocks = parse_blocks($post_content);
-
-//     if(count($blocks) > 1 && $blocks[0]['blockName'] == 'ta/articles'){
-//             if('ta/articles' === $blocks[0]['blockName']) {
-//                 // Add your custom HTML after the block
-//                 $block_content = $block_content . '<div>Test addition</div>';
-//         }
-//         return $block_content; 
-//     }
-    
-// }, 10, 2);
