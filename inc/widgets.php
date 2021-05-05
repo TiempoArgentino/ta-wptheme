@@ -35,7 +35,9 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this, 'seccion_desktop_widgets']);
 
-        
+        add_action('widgets_init', [$this, 'micrositio_widgets']);
+
+        add_action('widgets_init', [$this, 'blockes_widgets']);
     }
 
     public function home_desktop_widgets()
@@ -305,7 +307,41 @@ class Widgets_Theme_TA
           }
       }
 
+      /**
+       * micrositio
+       */
+      public function micrositio_widgets()
+      {
+          $widgets = [
+              'micrositio_head_1' => __('Micrositio header', 'gen-theme-base'),
+              'micrositio_mob_1' => __('Micrositio mob header', 'gen-theme-base'),
+            ];
+  
+          foreach($widgets as $key => $val) {
+              register_sidebar(array(
+                  'name'          => $val,
+                  'id'            => $key,
+                  'before_widget' => '',
+                  'after_widget'  => '',
+              ));
+          }
+      }
 
+      public function blockes_widgets()
+      {
+          $widgets = [
+              'block_widget' => __('Bloque Publicidad', 'gen-theme-base'),
+            ];
+  
+          foreach($widgets as $key => $val) {
+              register_sidebar(array(
+                  'name'          => $val,
+                  'id'            => $key,
+                  'before_widget' => '',
+                  'after_widget'  => '',
+              ));
+          }
+      }
 }
 
 function widgets_ta()
