@@ -292,7 +292,7 @@ if ( function_exists( 'lazyblocks' ) ) :
                                     <ul class="nav nav-tabs justify-content-between justify-content-md-start" id="tab">
                                             <?php foreach (cooperativa()->parent_terms() as $p) : ?>
                                                     <li class="nav-item position-relative">
-                                                            <a class="nav-link tab-cooperativa d-flex flex-row-reverse <?php echo $p->slug == \'contenido\' ? \'active\' : \'\' ?>" id="<?php echo $p->slug ?>-tab" data-toggle="tab" href="#<?php echo $p->slug ?>">
+                                                            <a class="nav-link tab-cooperativa d-flex flex-row-reverse <?php echo $p->slug == \'todos\' ? \'active\' : \'\' ?>" id="<?php echo $p->slug ?>-tab" data-toggle="tab" href="#<?php echo $p->slug ?>">
                                                                     <div></div>
                                                                     <p><?php echo $p->name ?></p>
                                                             </a>
@@ -302,7 +302,7 @@ if ( function_exists( 'lazyblocks' ) ) :
                                     <!-- contenido -->
                                     <div class="tab-content">
                                             <?php foreach (cooperativa()->parent_terms() as $p) : ?>
-                                                    <div class="tab-pane my-md-4 <?php echo $p->slug == \'contenido\' ? \'active\' : \'\' ?>" id="<?php echo $p->slug ?>">
+                                                    <div class="tab-pane my-md-4 <?php echo $p->slug == \'todos\' ? \'active\' : \'\' ?>" id="<?php echo $p->slug ?>">
                                                             <?php
                                                             $childs = cooperativa()->child_terms($p->term_id);
     
@@ -339,7 +339,7 @@ if ( function_exists( 'lazyblocks' ) ) :
                                                                                             <div class="member d-flex flex-md-column align-items-center m-2 <?php echo $classes?>">
                                                                                                     <div class="profile-img mr-2">
                                                                                                             <div class="img-container">
-                                                                                                                    <div class="img-wrapper"></div>
+                                                                                                                    <div class="img-wrapper" style="background-image:url(\'<?php echo get_the_post_thumbnail_url($member->{\'ID\'})?>\') !important"></div>
                                                                                                             </div>
                                                                                                     </div>
                                                                                                     <div class="content text-left text-md-center mt-3">

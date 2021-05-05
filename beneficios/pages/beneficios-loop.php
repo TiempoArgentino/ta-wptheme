@@ -190,7 +190,7 @@
                         ]
                     ];
                     $beneficios = new WP_Query($args);
-
+                   // var_dump($beneficios);
                     ?>
                     <?php if ($beneficios->have_posts()) : ?>
                         <?php while ($beneficios->have_posts()) : $beneficios->the_post(); ?>

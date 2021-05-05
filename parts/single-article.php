@@ -120,7 +120,7 @@ $authors = $article->authors;
                     <div class="separator"></div>
                 </div>
 
-                <?php //include_once(TA_THEME_PATH . '/markup/partes/mas-leidas.php');
+                <?php include_once(TA_THEME_PATH . '/markup/partes/mas-leidas.php');
                 ?>
             </div>
             <div class="container-md mb-2 p-0 d-none d-md-block">
@@ -221,20 +221,5 @@ $articles_interest_block->render(array(
     </div>
 <?php } ?>
 <!-- abajo comentarios -->
-<?php
-$articles_block = RB_Gutenberg_Block::get_block('ta/articles');
-$articles = get_ta_articles_from_query(array(
-    'post_type' => 'ta_article',
-));
 
-//include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
-$articles_block->render(array(
-    'articles'          => $articles,
-    'articles_type'     => 'article_post',
-    'container_title'   => 'También podés leer',
-    'color_context'     => 'light-blue-bg',
-    'layout'            => '',
-    'use_container'     => true,
-));
-
-?>
+<?php get_template_part('parts/podes', 'leer', ['post_id' => get_the_ID()]); ?>

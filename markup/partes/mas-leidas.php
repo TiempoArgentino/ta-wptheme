@@ -1,101 +1,101 @@
-<div class="container-with-header mt-4">
-    <div class="container">
-        <div class="section-title">
-            <h4>LAS MÁS LEÍDAS</h4>
-        </div>
-    </div>
-    <div class="sub-blocks light-blue-bg py-3 mt-3">
-        <div class="container">
-            <div class="ta-articles-block fullwidth-row">
-                <div class="article-preview mt-3 col-12 d-flex flex-row flex-lg-column p-0">
-                    <div>
-                        <a href="">
-                            <div class="img-container w-100 pr-2 pr-lg-0">
-                                <div class="img-wrapper">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiny-art.png" alt="" />
+<?php
+$query = get_posts([
+    'post_type' => 'ta_article',
+    'posts_per_page' => 5,
+    'orderby' => 'ta_article_count',
+    'order' => 'DESC',
+    'meta_query' => [
+        [
+            'key' => 'ta_article_count',
+            'compare' => 'LIKE',
+            'type'      => 'NUMERIC',
+            'compare'   => 'EXISTS'
+        ]
+    ],
+    'date_query' => [
+        [
+            'column' => 'post_date_gmt',
+            'after'  => get_option('balancer_editorial_days') . ' days ago',
+        ]
+    ]
+]);
+
+?>
+
+<div class="ta-context user-tabs gray-border mas-leidas mt-2 my-lg-5">
+    <div class="user-block-container">
+        <div class="container p-md-0">
+            <div class="user-tabs  mas-leidas">
+                <ul class="nav nav-tabs" id="tab">
+                    <li class="nav-item position-relative">
+                        <a class="nav-link active d-flex flex-row-reverse" id="most-read-tab" data-toggle="tab"
+                            href="#most-read">
+                            <div></div>
+                            <p>Más leídas</p>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane pt-3" id="related">
+                        <div class="container">
+                            <div
+                                class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                                <div class="w-100">
+                                <?php foreach($query as $art) : ?>
+                                    <div class="article-preview d-flex mb-3">
+                                        <div class="col-5 p-0">
+                                            <a href="">
+                                                <div class="img-container position-relative">
+                                                    <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;">
+
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="content col-7">
+                                            <div class="description">
+                                                <a href="">
+                                                    <p><?php echo $art->{'post_title'}?></p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach?>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="content mt-0 mt-lg-3">
-                        <div class="section-title">
-                            <h4>TEMA O SECCIÓN</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
-                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="article-preview mt-3 col-12 d-flex flex-row flex-lg-column p-0">
-                    <div>
-                        <a href="">
-                            <div class="img-container w-100 pr-2 pr-lg-0">
-                                <div class="img-wrapper">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiny-art.png" alt="" />
+                    <div class="tab-pane active pt-3" id="most-read">
+                        <div class="container">
+                            <div
+                                class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
+                                <div class="w-100">
+                                <?php foreach($query as $art) : ?>
+                                   <div class="article-preview d-flex mb-3">
+                                        <div class="col-5 p-0">
+                                            <a href="">
+                                                <div class="img-container position-relative">
+                                                    <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;">
+
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="content col-7">
+                                            <div class="description">
+                                                <a href="">
+                                                    <p><?php echo $art->{'post_title'}?> </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php endforeach?>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="content mt-0 mt-lg-3">
-                        <div class="section-title">
-                            <h4>TEMA O SECCIÓN</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>El grupo "infectadura" reapareció con una nueva carta inesperada. </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-preview mt-3 col-12 d-flex flex-row flex-lg-column p-0">
-                    <div class="content">
-                        <div class="section-title">
-                            <h4>POLÍTICA</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>Este es un título para nota de ejemplo.</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-preview mt-3 col-12 d-flex flex-row flex-lg-column p-0">
-                    <div class="content">
-                        <div class="section-title">
-                            <h4>ECONOMÍA</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>Un cuarto ejemplo de título de nota relacionada con economía, que tenga tres
-                                    renglones y que
-                                    si
-                                    se extiende termine en...</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-preview mt-3 col-12 d-flex flex-row flex-lg-column p-0">
-                    <div class="content">
-                        <div class="section-title">
-                            <h4>INTERÉS GENERAL</h4>
-                        </div>
-                        <div class="description">
-                            <a href="">
-                                <p>Un cuarto ejemplo de título de nota relacionada con economía, que tenga tres
-                                    renglones y
-                                    punto.
-                                </p>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-    <div class="container-md mb-2 p-0">
-        <div class="separator"></div>
     </div>
 </div>
