@@ -619,7 +619,7 @@ function get_imported_attachment_by_old_url($old_url){
 *   @return int|WP_Error|false
 */
 function import_media($media_data){
-    if( !is_array($media_data) || !isset($media_data['url']) )
+    if( !is_array($media_data) || !isset($media_data['url']) || !is_string($media_data['url']) || !trim($media_data['url']) )
         return null;
 
     // Check if it has already been uploaded
@@ -801,6 +801,57 @@ function create_new_article($args){
     return $insert_result; // WP_Error | 0 | post_id
 }
 
+/**
+*   Check if an article image was wrongly set during importation and removes it (main and cover)
+*   @return int|false|WP_Error                                                  Post id if an update was applied. False if no update was needed.
+*                                                                               WP_Error on error.
+*/
+function correct_article_images($args){
+    if(!$args || !is_array($args))
+        return false;
+
+    $default_args = array(
+        'post_author'                                   => null,
+        'oldId'                                         => null,    // Done
+        'coverimage'                                    => null,    // Done
+        'mainpicture'                                   => null,    // Done
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+
+    $query = new WP_Query(array(
+        'post_type'			=> ['ta_article', 'ta_audiovisual', 'ta_fotogaleria'],
+        'meta_key'         	=> 'oldId',
+        'meta_value'       	=> $oldId,
+        'posts_per_page'    => 1,
+    ));
+
+    $update_result = false;
+
+    if($query->have_posts()){
+        $post = $query->posts[0];
+        $update_post_args = array();
+
+        if($mainpicture && isset($mainpicture['url']) && ( !is_string($mainpicture['url']) || !trim($mainpicture['url']) ) ){
+            $update_post_args['_thumbnail_id'] = -1;
+        }
+
+        if($coverimage && isset($coverimage['url']) && ( !is_string($coverimage['url']) || !trim($coverimage['url']) ) ){
+            $update_post_args['meta_input'] = array(
+                'ta_article_thumbnail_alt'  => null,
+            );
+        }
+
+        if(!empty($update_post_args)){
+            $update_post_args = array_merge($update_post_args, array(
+                'ID'            => $post->ID,
+            ));
+            $update_result = wp_update_post($update_post_args, true);
+        }
+    }
+
+    return $update_result; // WP_Error | 0 | post_id
+}
 
 /**
 *   Returns the photographer of an attachment
