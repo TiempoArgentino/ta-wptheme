@@ -27,7 +27,7 @@ window.addEventListener("resize", function () {
     $(".tab-cooperativa").on("click", function () {
       $(".categorias-titulo").html("Seleccionar categoría");
       $(".member").show().addClass("d-flex");
-      $(".select-categorias").val('');
+      $(".select-categorias").val("");
     });
 
     $(".select-categorias").on("change", function () {
@@ -92,16 +92,21 @@ window.addEventListener("resize", function () {
     });
   });
 
-  $(document).ready(function(){
-
-    $('form input[type="text"], form input[type="password"]').on('keyup',function(){
-      if($('form input[type="text"], form input[type="password"]').last().val().length > 6) {
-        $('button.yellow-btn-white-text').css('color','#252b2d');
-      } else {
-        $('button.yellow-btn-white-text').css('color','white');
+  $(document).ready(function () {
+    $('form input[type="text"], form input[type="password"]').on(
+      "keyup",
+      function () {
+        if (
+          $('form input[type="text"], form input[type="password"]').last().val()
+            .length > 6
+        ) {
+          $("button.yellow-btn-white-text").css("color", "#252b2d");
+        } else {
+          $("button.yellow-btn-white-text").css("color", "white");
+        }
       }
-    });
-
+    );
   });
 
+ 
 })(jQuery);

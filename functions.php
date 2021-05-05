@@ -152,10 +152,13 @@ class TA_Theme
 		wp_enqueue_style('fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css');
 		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/style.css');
 		wp_enqueue_style('ta_style_utils', TA_ASSETS_CSS_URL . '/utils.css');
+		wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',['jquery'] );
 		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
 		wp_enqueue_script('ta-podcast', TA_ASSETS_JS_URL . '/src/ta-podcast.js', ['jquery']);
+		wp_enqueue_script('tw-js', 'https://platform.twitter.com/widgets.js');
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
+		
 		wp_localize_script('ta_comments', 'wpRest',
 		  	array(
 				'restURL' 	=> get_rest_url(),

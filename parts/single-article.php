@@ -221,6 +221,7 @@ $articles_interest_block->render(array(
     </div>
 <?php } ?>
 <!-- abajo comentarios -->
+
 <?php
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 $articles = get_ta_articles_from_query(array(
@@ -236,5 +237,4 @@ $articles_block->render(array(
     'layout'            => '',
     'use_container'     => true,
 ));
-
 ?>
