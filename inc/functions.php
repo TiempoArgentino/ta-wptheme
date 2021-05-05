@@ -821,6 +821,7 @@ function correct_article_images($args){
 
     $query = new WP_Query(array(
         'post_type'			=> ['ta_article', 'ta_audiovisual', 'ta_fotogaleria'],
+        'post_status' 		=> array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'),
         'meta_key'         	=> 'oldId',
         'meta_value'       	=> $oldId,
         'posts_per_page'    => 1,

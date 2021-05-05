@@ -110,6 +110,7 @@ add_action( 'rest_api_init', function () {
 
 			$query = new WP_Query(array(
 				'post_type'			=> ['ta_article', 'ta_audiovisual', 'ta_fotogaleria'],
+				'post_status' 		=> array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'),
 				'meta_key'         	=> 'oldId',
 				'meta_value'       	=> $oldId,
 			));
