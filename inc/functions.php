@@ -826,28 +826,32 @@ function correct_article_images($args){
         'posts_per_page'    => 1,
     ));
 
+    if( is_wp_error($query))
+        return $query;
+
+    if(!$query->have_posts()){
+        return new WP_Error('oldId_post_not_found', 'No se encontro articulo ese oldId');
+    }
+
     $update_result = false;
+    $post = $query->posts[0];
+    $update_post_args = array();
 
-    if($query->have_posts()){
-        $post = $query->posts[0];
-        $update_post_args = array();
+    if($mainpicture && isset($mainpicture['url']) && ( !is_string($mainpicture['url']) || !trim($mainpicture['url']) ) ){
+        $update_post_args['_thumbnail_id'] = -1;
+    }
 
-        if($mainpicture && isset($mainpicture['url']) && ( !is_string($mainpicture['url']) || !trim($mainpicture['url']) ) ){
-            $update_post_args['_thumbnail_id'] = -1;
-        }
+    if($coverimage && isset($coverimage['url']) && ( !is_string($coverimage['url']) || !trim($coverimage['url']) ) ){
+        $update_post_args['meta_input'] = array(
+            'ta_article_thumbnail_alt'  => null,
+        );
+    }
 
-        if($coverimage && isset($coverimage['url']) && ( !is_string($coverimage['url']) || !trim($coverimage['url']) ) ){
-            $update_post_args['meta_input'] = array(
-                'ta_article_thumbnail_alt'  => null,
-            );
-        }
-
-        if(!empty($update_post_args)){
-            $update_post_args = array_merge($update_post_args, array(
-                'ID'            => $post->ID,
-            ));
-            $update_result = wp_update_post($update_post_args, true);
-        }
+    if(!empty($update_post_args)){
+        $update_post_args = array_merge($update_post_args, array(
+            'ID'            => $post->ID,
+        ));
+        $update_result = wp_update_post($update_post_args, true);
     }
 
     return $update_result; // WP_Error | 0 | post_id
