@@ -470,19 +470,3 @@ function author_order_column( $columns ) {
   $columns['author'] = 'author';
   return $columns;
 }
-
-
-function wporg_block_wrapper( $block_content, $block ) {
-
-    if ( $block['blockName'] === 'ta/articles' ) {
-        $content = '<div class="wp-block-paragraph">';
-        $content .= $block_content;
-		$content .= 'hola';
-		$content .= is_active_sidebar('block_widget') ? dynamic_sidebar('block_widget') : '';
-        $content .= '</div>';
-        return $content;
-    } 
-    return $block_content;
-}
- 
-//add_filter( 'render_block', 'wporg_block_wrapper', 10, 2 );
