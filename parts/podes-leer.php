@@ -1,7 +1,12 @@
 <?php
-$terms = get_the_terms(get_queried_object_id(),'ta_article_tag');
 
-$term = join(', ', wp_list_pluck($terms, 'slug'));
+$terms = get_the_terms($args['post_id'],'ta_article_tag');
+
+$term = [];
+
+foreach($terms as $t) {
+    $term[] = $t->{'slug'};
+}
 
 $query = get_posts([
     'post_type' => 'ta_article',
@@ -10,12 +15,11 @@ $query = get_posts([
         [
             'taxonomy' => 'ta_article_tag',
             'field'    => 'slug',
-            'terms' => [$term]
+            'terms' => $term
         ]
     ]
 ]);
 
-var_dump($query);
 ?>
 <div class="mt-3">
     <div class="container">
@@ -39,7 +43,7 @@ var_dump($query);
                             <div class="col-5 col-md-12 p-0">
                                 <a href="">
                                     <div class="img-container position-relative">
-                                        <div class="img-wrapper">
+                                        <div class="img-wrapper" style="background: url('<?php echo get_the_post_thumbnail_url($art->{'ID'})?>') center no-repeat !important; background-size:cover">
 
                                         </div>
                                     </div>
