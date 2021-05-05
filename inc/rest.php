@@ -98,6 +98,54 @@ add_action( 'rest_api_init', function () {
 	    },
 	) );
 
+	register_rest_route( 'ta/v1', '/import/delete-duplicated-trash', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			global $wpdb;
+
+			$results = $wpdb->get_results( "
+				SELECT p1.post_title, p1.ID
+					FROM $wpdb->posts p1
+					JOIN (
+						SELECT *, COUNT(*)
+						FROM $wpdb->posts
+						WHERE
+							post_status = 'trash'
+							AND (
+								post_type = 'ta_article'
+								OR post_type = 'ta_audiovisual'
+								OR post_type = 'ta_fotogaleria'
+							)
+						GROUP BY post_title
+						HAVING count(*) > 1
+					) p2
+						ON p1.post_status = p2.post_status
+						AND p1.post_type = p2.post_type
+						AND p1.post_title = p2.post_title
+					ORDER BY p1.post_title
+			");
+			//w3cp_posts
+
+			if(is_wp_error($results))
+				return new WP_REST_Response($ids, 500);
+
+			$ids = [];
+			if(is_array($results) && !empty($results)){
+				$duplicated_amount = count($results) - 1;
+				for ($i=0; $i < $duplicated_amount; $i++) {
+					$post_data = $results[$i];
+					if(wp_delete_post( (int) $post_data->ID, $force_delete = true ))
+						$ids[] = (int) $post_data->ID;
+				}
+			}
+
+			return new WP_REST_Response($ids, 200);
+		},
+		'permission_callback' => function () {
+			return current_user_can( 'edit_others_posts' );
+		},
+	) );
+
 	register_rest_route( 'ta/v1', '/import/article', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
