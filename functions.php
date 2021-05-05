@@ -211,6 +211,9 @@ class TA_Theme
 		if(is_admin()) {
 			$tags = get_the_terms($post_id,'ta_article_tag'); //$tags->slug;
 
+			if(!$tags || !is_array($tags) || empty($tags))
+				return;
+
 			$topics = get_terms([
 				'taxonomy' => 'ta_article_tema',
 				'hide_empty' => false
@@ -221,18 +224,18 @@ class TA_Theme
 				'hide_empty' => false
 			]);
 
-			foreach($tags as $t){
-				$slug = $t->slug;
+			foreach($tags as $tag){
+				$slug = $tag->slug;
 
-				foreach($places as $p) {
-					if($slug === $p->slug) {
-						wp_set_post_terms( $post_id,$p->name,'ta_article_place');
+				foreach($places as $place) {
+					if($slug === $place->slug) {
+						wp_set_post_terms( $post_id,$place->name,'ta_article_place');
 					}
 				}
 
-				foreach($topics as $tp) {
-					if($slug === $tp->slug) {
-						wp_set_post_terms( $post_id,$tp->term_id, 'ta_article_tema');
+				foreach($topics as $topic) {
+					if($slug === $topic->slug) {
+						wp_set_post_terms( $post_id,$topic->term_id, 'ta_article_tema');
 					}
 				}
 			}
