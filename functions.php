@@ -59,7 +59,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
-		add_action('admin_init', array(self::class, 'clean_dashboard') );
+		add_action('admin_init', array(self::class, 'clean_dashboard'));
 		RB_Filters_Manager::add_action('ta_theme_admin_scripts', 'admin_enqueue_scripts', array(self::class, 'admin_scripts'));
 
 		add_filter('gen_check_post_type_name_dash_error', function ($check, $post_type) {
@@ -83,11 +83,11 @@ class TA_Theme
 		self::increase_curl_timeout();
 		self::remove_quick_edit();
 
-		add_action( 'save_post_ta_article', [self::class,'save_relatives_taxonomies'], 10, 2 );
+		add_action('save_post_ta_article', [self::class, 'save_relatives_taxonomies'], 10, 2);
 
-		add_action('quienes_somos_banner', [self::class,'extra_home_content']);
-		add_action('wp_insert_comment', function($id, $comment){
-			add_comment_meta( $comment->comment_ID, 'is_visitor', $comment->user_id == 0, true );
+		add_action('quienes_somos_banner', [self::class, 'extra_home_content']);
+		add_action('wp_insert_comment', function ($id, $comment) {
+			add_comment_meta($comment->comment_ID, 'is_visitor', $comment->user_id == 0, true);
 		}, 2, 10);
 	}
 
@@ -152,17 +152,20 @@ class TA_Theme
 		wp_enqueue_style('fontawesome', TA_ASSETS_CSS_URL . '/libs/fontawesome/css/all.min.css');
 		wp_enqueue_style('ta_style', TA_ASSETS_CSS_URL . '/src/style.css');
 		wp_enqueue_style('ta_style_utils', TA_ASSETS_CSS_URL . '/utils.css');
-		wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',['jquery'] );
+		wp_enqueue_style('onboarding', TA_ASSETS_CSS_URL . '/onboarding.css');
+		wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', ['jquery']);
 		wp_enqueue_script('bootstrap', TA_ASSETS_JS_URL . '/libs/bootstrap/bootstrap.min.js', ['jquery']);
 		wp_enqueue_script('ta-podcast', TA_ASSETS_JS_URL . '/src/ta-podcast.js', ['jquery']);
 		wp_enqueue_script('tw-js', 'https://platform.twitter.com/widgets.js');
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
-		
-		wp_localize_script('ta_comments', 'wpRest',
-		  	array(
+
+		wp_localize_script(
+			'ta_comments',
+			'wpRest',
+			array(
 				'restURL' 	=> get_rest_url(),
-				'nonce' 	=> wp_create_nonce( 'wp_rest' )
+				'nonce' 	=> wp_create_nonce('wp_rest')
 			),
 		);
 	}
@@ -179,19 +182,22 @@ class TA_Theme
 		rb_add_gutenberg_category('ta-blocks', 'Tiempo Argentino', null);
 	}
 
-	static public function customizer(){
+	static public function customizer()
+	{
 		RB_Wordpress_Framework::load_module('fields');
 		RB_Wordpress_Framework::load_module('customizer');
 		add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
 	}
 
-	static public function require_customizer_panel($wp_customize){
+	static public function require_customizer_panel($wp_customize)
+	{
 		require TA_THEME_PATH . '/customizer.php';
 	}
 	/**
 	 * Plugins
 	 */
-	static public function get_plugins_assets(){
+	static public function get_plugins_assets()
+	{
 		require_once TA_THEME_PATH . '/balancer/functions.php';
 		require_once TA_THEME_PATH . '/user-panel/functions.php';
 		require_once TA_THEME_PATH . '/subscriptions-theme/functions.php';
@@ -205,16 +211,17 @@ class TA_Theme
 	/**
 	 * Menus remove
 	 */
-	static public function remove_posts(){
+	static public function remove_posts()
+	{
 		remove_menu_page('edit.php');
 	}
 
-	static public function save_relatives_taxonomies($post_id,$post)
+	static public function save_relatives_taxonomies($post_id, $post)
 	{
-		if(is_admin()) {
-			$tags = get_the_terms($post_id,'ta_article_tag'); //$tags->slug;
+		if (is_admin()) {
+			$tags = get_the_terms($post_id, 'ta_article_tag'); //$tags->slug;
 
-			if(!$tags || !is_array($tags) || empty($tags))
+			if (!$tags || !is_array($tags) || empty($tags))
 				return;
 
 			$topics = get_terms([
@@ -227,22 +234,21 @@ class TA_Theme
 				'hide_empty' => false
 			]);
 
-			foreach($tags as $tag){
+			foreach ($tags as $tag) {
 				$slug = $tag->slug;
 
-				foreach($places as $place) {
-					if($slug === $place->slug) {
-						wp_set_post_terms( $post_id,$place->name,'ta_article_place');
+				foreach ($places as $place) {
+					if ($slug === $place->slug) {
+						wp_set_post_terms($post_id, $place->name, 'ta_article_place');
 					}
 				}
 
-				foreach($topics as $topic) {
-					if($slug === $topic->slug) {
-						wp_set_post_terms( $post_id,$topic->term_id, 'ta_article_tema');
+				foreach ($topics as $topic) {
+					if ($slug === $topic->slug) {
+						wp_set_post_terms($post_id, $topic->term_id, 'ta_article_tema');
 					}
 				}
 			}
-
 		}
 	}
 
@@ -251,16 +257,17 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/extra/banner-home-qs.php';
 	}
 
-	static public function clean_dashboard() {
-		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
-		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
-		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
-		remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
-		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
-		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
-		remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
-		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');//since 3.8
+	static public function clean_dashboard()
+	{
+		remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
+		remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
+		remove_meta_box('dashboard_primary', 'dashboard', 'side');
+		remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
+		remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+		remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');
+		remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+		remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
+		remove_meta_box('dashboard_activity', 'dashboard', 'normal'); //since 3.8
 	}
 }
 
@@ -283,7 +290,7 @@ function ta_article_image_control($post, $meta_key, $attachment_id, $args = arra
 		'description'	=> '',
 	);
 	extract(array_merge($default_args, $args));
-	$image_url = wp_get_attachment_url( $attachment_id );
+	$image_url = wp_get_attachment_url($attachment_id);
 	$empty = !$image_url;
 ?>
 	<div id="test" class="ta-articles-images-controls" data-id="<?php echo esc_attr($post->ID); ?>" data-type="<?php echo esc_attr($post->post_type); ?>" data-metakey="<?php echo esc_attr($meta_key); ?>" data-metavalue="<?php echo esc_attr($attachment_id); ?>">
@@ -360,7 +367,8 @@ function ta_article_thumbnail_alt_meta_register()
 }
 add_action('init', 'ta_article_thumbnail_alt_meta_register');
 
-function ta_article_sister_article_meta_register(){
+function ta_article_sister_article_meta_register()
+{
 	register_post_meta('ta_article', 'ta_article_sister_article', array(
 		'single' 	=> true,
 		'type' 		=> 'number',
@@ -373,7 +381,8 @@ function ta_article_sister_article_meta_register(){
 }
 add_action('init', 'ta_article_sister_article_meta_register');
 
-function ta_article_edicion_impresa_meta_register(){
+function ta_article_edicion_impresa_meta_register()
+{
 	register_post_meta('ta_article', 'ta_article_edicion_impresa', array(
 		'single' 	=> true,
 		'type' 		=> 'number',
@@ -386,7 +395,8 @@ function ta_article_edicion_impresa_meta_register(){
 }
 add_action('init', 'ta_article_edicion_impresa_meta_register');
 
-function ta_article_participation_meta_register(){
+function ta_article_participation_meta_register()
+{
 	register_post_meta('ta_article', 'ta_article_participation', array(
 		'single' 	=> true,
 		'type' 		=> 'object',
@@ -463,13 +473,15 @@ add_action('parse_query', 'filter_creator_query', 10);
 /**
  * columnas
  */
-add_filter( 'manage_ta_article_posts_columns', 'author_column' );
-function author_column( $columns ) {
-  $columns['author'] = __( 'Creador' );
-  return $columns;
+add_filter('manage_ta_article_posts_columns', 'author_column');
+function author_column($columns)
+{
+	$columns['author'] = __('Creador');
+	return $columns;
 }
-add_filter( 'manage_edit-ta_article_sortable_columns', 'author_order_column');
-function author_order_column( $columns ) {
-  $columns['author'] = 'author';
-  return $columns;
+add_filter('manage_edit-ta_article_sortable_columns', 'author_order_column');
+function author_order_column($columns)
+{
+	$columns['author'] = 'author';
+	return $columns;
 }
