@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('ta-context portada'); ?>>
 
 
     <?php wp_body_open(); ?>
