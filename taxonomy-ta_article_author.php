@@ -4,7 +4,6 @@
 */
 
 $author = TA_Author_Factory::get_author(get_queried_object(), 'ta_article_author');
-$articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 $articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',
     'tax_query' => array(

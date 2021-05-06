@@ -98,6 +98,20 @@ registerBlockType( 'ta/articles', {
 		const cellsCount = getCellsCount();
 
 		useEffect( () => {
+			if(!attributes.rows || attributes.rows.length <= 0 ){
+				setAttributes({
+					rows: [
+						{
+							format: 'miscelanea',
+							cells: null,
+						}
+					],
+				});
+			}
+
+		}, []);
+
+		useEffect( () => {
 			setAttributes({
 				amount: cellsCount,
 			});

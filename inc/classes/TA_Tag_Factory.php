@@ -18,7 +18,8 @@ class TA_Tag_Factory{
                 if( is_a($data, 'WP_Term') && $data->taxonomy == 'ta_article_tag' ){
                     if( array_key_exists($data->term_id, self::$ta_tags) )
                         return self::$ta_tags[$data->term_id];
-                    return new TA_Tag($data);
+                    self::$ta_tags[$data->term_id] = new TA_Tag($data);
+                    return self::$ta_tags[$data->term_id];
                 }
             break;
         }

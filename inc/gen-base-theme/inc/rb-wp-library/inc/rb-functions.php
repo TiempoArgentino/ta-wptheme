@@ -510,6 +510,14 @@ function rb_get_posts($query_args = array(), $post_filter = null){
     if(is_array($query_args))
         $args = wp_parse_args($query_args, $default_args);
 
+    if(isset($args['posts_per_page']) && $args['posts_per_page'] <= 0 ){
+        return array(
+            'posts'         => [],
+            'wp_query'      => null,
+            'total_pages'   => 1,
+        );
+    }
+
     // =========================================================================
     // TAXONOMY
     // =========================================================================

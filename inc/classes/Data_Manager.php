@@ -11,6 +11,8 @@ class Data_Manager{
     */
     public $populated_values = array();
 
+    private $populated = false;
+
     public function __construct($defaults = null){
         $this->populated_values = $this->defaults;
     }
@@ -52,8 +54,10 @@ class Data_Manager{
     *                                                                           populated as well
     */
     public function populate($recursive = false){
+        if($this->populated)
+            return false;
+        $this->populated = true;
         $reflection = new ReflectionObject($this);
-
         foreach ($this->defaults as $prop_name => $default_value) {
             $this->$prop_name; //generates the new value
             $prop_val = $this->$prop_name; //stores the new value

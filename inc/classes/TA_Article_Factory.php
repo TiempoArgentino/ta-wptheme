@@ -21,12 +21,14 @@ class TA_Article_Factory{
                     if( $post->post_type == 'ta_article' ){
                         if( array_key_exists($post->ID, self::$ta_articles) )
                             return self::$ta_articles[$post->ID];
-                        return new TA_Article($post);
+                        self::$ta_articles[$post->ID] = new TA_Article($post);
+                        return self::$ta_articles[$post->ID];
                     }
                     else if( $post->post_type == 'ta_ed_impresa' ){
                         if( array_key_exists($post->ID, self::$ta_articles) )
                             return self::$ta_articles[$post->ID];
-                        return new TA_Edicion_Impresa($post);
+                        self::$ta_articles[$post->ID] = new TA_Edicion_Impresa($post);
+                        return self::$ta_articles[$post->ID];
                     }
                 break;
             }

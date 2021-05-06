@@ -8,8 +8,6 @@ $articles = [];
 if( $wp_query->have_posts() ){
     $articles = array_map(function($post){ return TA_Article_Factory::get_article($post); }, $wp_query->posts);
 }
-
-$articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 

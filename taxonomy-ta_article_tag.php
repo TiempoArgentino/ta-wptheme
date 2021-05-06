@@ -4,7 +4,6 @@
 */
 
 $tag = TA_Tag_Factory::get_tag(get_queried_object(), 'ta_article_tag');
-$articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 $articles = get_ta_articles_from_query(array(
     'post_type' => 'ta_article',
     'tax_query' => array(

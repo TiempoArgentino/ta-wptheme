@@ -100,7 +100,7 @@ function lr_get_article_filters_attributes($filters = array()){
     $attributes = array();
 
     if($filters['amount']){
-        $amount_default = is_array($filters['amount']) && isset($filters['amount']['default']) ? $filters['amount']['default'] : 4;
+        $amount_default = is_array($filters['amount']) && isset($filters['amount']['default']) ? $filters['amount']['default'] : 0;
         $attributes['amount'] = array(
             'type'      => 'integer',
             'default'   => $amount_default,
@@ -188,7 +188,9 @@ function get_ta_articles_block_articles($block_attributes){
     }
     else if( $articles_data && is_array($articles_data) && !empty($articles_data) ){
         foreach($articles_data as $article_data){
-            $final_articles[] = TA_Article_Factory::get_article($article_data['data'], $article_data['type']);
+            $article = TA_Article_Factory::get_article($article_data['data'], isset($article_data['type']) ? $article_data['type'] : 'article_post');
+            if($article)
+                $final_articles[] = $article;
         }
     }
     else if( $most_recent ){

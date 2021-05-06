@@ -15,7 +15,8 @@ class TA_Section_Factory{
                 if( $data && is_a($data, 'WP_Term') && $data->taxonomy == 'ta_article_section' ){
                     if( array_key_exists($data->term_id, self::$ta_sections) )
                         return self::$ta_sections[$data->term_id];
-                    return new TA_Section($data);
+                    self::$ta_sections[$data->term_id] = new TA_Section($data);
+                    return self::$ta_sections[$data->term_id];     
                 }
             break;
         }

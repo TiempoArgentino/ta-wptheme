@@ -8,6 +8,9 @@ if(!$block) return '';
 $block_attributes = $block->get_render_attributes();
 extract($block_attributes);
 
+// if(!$amount || $amount <= 0)
+//     return '';
+
 $articles = get_ta_articles_block_articles($block_attributes);
 if( (!$articles || empty($articles)) || !$rows )
     return '';
