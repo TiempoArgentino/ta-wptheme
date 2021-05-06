@@ -16,7 +16,7 @@ class Subscriptions_Assets
         add_action('wp_ajax_subscriptions-ajax-action', [$this, 'add_paper']);
 
         add_filter('protected_content', [$this, 'contenido_protegido'], 10, 1);
-        add_filter('user_logged_content', [$this, 'entrada_protegida'], 10, 1);
+        add_filter('the_content', [$this, 'entrada_protegida'], 1);
 
         add_filter('bk_success_filter', [$this, 'bk_mailer_user_data']);
         add_filter('mp_success_filter', [$this, 'mp_mailer_user_data']);
@@ -103,14 +103,10 @@ class Subscriptions_Assets
         $admin = in_array('administrator', [$user->roles]);
 
         if ($admin) {
-            add_filter('the_content', function () {
-                return get_the_content($id_post);
-            });
+                return $content;
         }
         if ($id_post === '' || !empty($id_post) || $id_post === null) {
-            add_filter('the_content', function () {
-                return get_the_content($id_post);
-            });
+                return $content;
         } else {
             $active = get_user_meta($user->ID, '_user_status', true);
 
@@ -142,10 +138,7 @@ class Subscriptions_Assets
 
                 return $msg;
             } else if ($role_in && $authorized) {
-
-                add_filter('the_content', function () {
-                    return get_the_content($id_post);
-                });
+                return $content;
             }
         }
     }
