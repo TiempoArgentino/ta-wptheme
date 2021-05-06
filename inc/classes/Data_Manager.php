@@ -58,8 +58,9 @@ class Data_Manager{
             return false;
         $this->populated = true;
         $reflection = new ReflectionObject($this);
+
         foreach ($this->defaults as $prop_name => $default_value) {
-            $this->$prop_name; //generates the new value
+            // $this->$prop_name; //generates the new value
             $prop_val = $this->$prop_name; //stores the new value
             $this->$prop_name = $this->$prop_name;
 
