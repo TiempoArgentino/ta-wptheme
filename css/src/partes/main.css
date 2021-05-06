@@ -310,7 +310,17 @@ a.ab-item {
   margin: 0 auto;
 }
 .menu .menu-section-wrapper .menu-section {
-  padding-top: 15px;
+  padding: 31px 0;
+}
+
+.menu .menu-section-wrapper .menu-section .menu-item .search-icon {
+  padding: 31px 0;
+}
+.menu .menu-section-wrapper .menu-section .menu-item.profile {
+  padding-top: 31px;
+}
+.menu .menu-section-wrapper .card-body .menu-section {
+  padding: 0;
 }
 .menu .menu-section-wrapper .menu-section .menu-item {
   margin-bottom: 10px;
@@ -348,7 +358,7 @@ a.ab-item {
 .menu .menu-section-wrapper .card button {
   text-decoration: none;
   outline: none;
-  padding: 0.75rem 1.25rem;
+  padding: 31px 1.25rem;
 }
 .menu .menu-section-wrapper .card button:focus {
   box-shadow: none;
@@ -1148,6 +1158,12 @@ a.ab-item {
   }
 }
 @media (min-width: 992px) {
+  .menu .menu-items-container {
+    margin-left: -15px;
+  }
+  .menu .menu-section-wrapper:first-child .menu-section {
+    margin-left: 25px;
+  }
   .article-tags .btns-container {
     width: max-content;
   }
