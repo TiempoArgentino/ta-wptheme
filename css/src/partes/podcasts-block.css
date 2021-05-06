@@ -24,6 +24,17 @@
 .podcasts-block .podcast-preview .img-container {
   width: 100%;
 }
+.podcasts-block .podcast-preview .video-container .video-wrapper {
+  aspect-ratio: 3 / 2;
+  height: auto;
+}
+.podcasts-block .podcast-preview .video-container .video-wrapper img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+}
 .podcasts-block .podcast-preview .img-container .img-wrapper {
   background: initial;
   background-size: cover;
@@ -156,7 +167,21 @@
   max-height: 254px;
 }
 
+@media (min-width: 768px) {
+  .podcasts-block {
+    max-height: 425px;
+  }
+
+  .podcasts-block .podcast-preview-container {
+    max-height: initial;
+  }
+}
+
 @media (min-width: 992px) {
+  .podcasts-block {
+    max-height: 600px;
+  }
+  
   .podcasts-block .podcast-preview .img-container .img-wrapper {
     min-height: 105px;
   }
