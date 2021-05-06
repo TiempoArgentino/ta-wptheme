@@ -104,7 +104,7 @@ if( !$micrositio )
                             </button>
                         </div>
                         <div class="tiempo-logo mr-lg-5">
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt="">
+                            <a href="<?php echo home_url()?>"><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-logo.svg" class="img-fluid" alt=""></a>
                         </div>
                     </div>
                     <div class="search-and-profile d-none d-lg-flex justify-content-end align-items-center">

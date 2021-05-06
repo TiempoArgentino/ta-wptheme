@@ -3,16 +3,19 @@
 
 function avisos_lista()
 {
-    $avisos = ADDB()->get_all_data('tar_ads_manager_ads', 'ORDER BY name DESC LIMIT ', 200, 0);
-    $coso = [];
-    foreach($avisos as $aviso)
-    {
-       $coso[] = [
-           'label' => $aviso->{'group'}.' - '.$aviso->{'name'},
-           'value' => $aviso->{'ID'}
-       ];
+    if(function_exists('ADDB')) {
+        $avisos = ADDB()->get_all_data('tar_ads_manager_ads', 'ORDER BY name DESC LIMIT ', 200, 0);
+        $coso = [];
+        foreach($avisos as $aviso)
+        {
+        $coso[] = [
+            'label' => $aviso->{'group'}.' - '.$aviso->{'name'},
+            'value' => $aviso->{'ID'}
+        ];
+        }
+        return $coso;
     }
-    return $coso;
+    
 }
 
 if ( function_exists( 'lazyblocks' ) ) :
