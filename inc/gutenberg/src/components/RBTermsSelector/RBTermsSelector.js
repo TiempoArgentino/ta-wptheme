@@ -15,7 +15,7 @@ function autocompleteFetchTerms({taxonomy, search, termsData}){
             hide_empty: false,
             exclude: termsData ? termsData.map(term => term.data.id) : [],
         },
-    });
+    }).then( response => response.json() );
 }
 
 const RBTermsSelector = (props) => {
@@ -129,7 +129,7 @@ const RBTermsSelector = (props) => {
                             loading: true,
                             originalValue: search,
                             fetchPromise: async () => {
-                                const term = await fetchOrCreateTerm({ name: search, taxonomy });
+                                const { term } = await fetchOrCreateTerm({ name: search, taxonomy });
                                 // if( term && !termsData.find( item => item.data.id == term.id ) )
                                 //     onChange( { items: [...terms, term] } );
                                 return term;

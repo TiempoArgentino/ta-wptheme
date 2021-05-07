@@ -7,27 +7,13 @@ export function fetchTerms(args){
     const { taxonomy, queryArgs } = args;
     let path = `/wp/v2/${taxonomy}`;
     path = queryArgs ? addQueryArgs(path, queryArgs) : path;
+    console.log('Searching', path);
     return apiFetch({
         method: 'GET',
         path,
         parse: false
-    })
-    .then((data) => {
-        return data.json();
     });
 };
-
-export async function fetchTerm({ name, taxonomy }){
-    let path = `/wp/v2/${taxonomy}`;
-    const terms = await fetchTerms({
-        taxonomy,
-        queryArgs: {
-            search: name,
-        },
-    });
-    let term = terms && terms.length && terms[0].name.trim().toLowerCase() == name.trim().toLowerCase() ? terms[0] : null;
-    return term;
-}
 
 export function createTerm({ name, taxonomy, args = {} }){
     return apiFetch({
@@ -39,15 +25,51 @@ export function createTerm({ name, taxonomy, args = {} }){
         path: `/wp/v2/${taxonomy}`,
         parse: false
     })
-    .then((data) => {
-        return data.json();
-    });
 };
 
 export async function fetchOrCreateTerm({ name, taxonomy }){
-    let term = await fetchTerm({ name, taxonomy });
-    term = term ? term : await createTerm({ name, taxonomy });
-    return term;
+    let result = {
+        term: null,
+        error: false,
+        isNew: true,
+    };
+
+    let createTermResult = await createTerm({ name, taxonomy })
+    // TERM CREATION SUCCESS
+    .then( data => data.json() )
+    // TERM CREATION FAIL - TERM EXIST OR ERROR
+    .catch( async (response) => {
+        response = await response.json();
+
+        // ERROR
+        if( response.code != "term_exists" ){
+            result.error = data;
+            return response;
+        }
+
+        // Term exists - Fetch
+        const data = response.data;
+        result.isNew = false;
+        let fetchTermResult = await fetchTerms({
+            taxonomy,
+            queryArgs: {
+                include: data.term_id,
+            },
+         })
+         // EXISTING TERM FETCH SUCCESS
+        .then( async (response) => {
+            const data = await response.json();
+            result.term = data && data.length == 1 ? data[0] : null;
+        } )
+        // FETCH EXISTING TERM ERROR
+        .catch( async (response) => {
+            result.error = await response.json();
+        } );
+
+        return response;
+    } );
+
+    return result;
 }
 
 export const useTerms = (props) => {
@@ -59,7 +81,8 @@ export const useTerms = (props) => {
             queryArgs: {
                 [termsQueryField]: termFieldValue,
             },
-        });
+        })
+        .then( data => data.json() );
         return fetchResult && fetchResult.length == 1 ? fetchResult[0] : null;
     }
 
