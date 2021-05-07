@@ -7,7 +7,7 @@ $title_class = $desktop_horizontal ? '' : 'w-75 mx-md-auto';
 $preview_class = $desktop_horizontal ? 'd-flex py-3' : 'py-2 d-flex flex-row flex-md-column';
 ?>
 
-<div class="article-preview autor mb-3">
+<div class="article-preview autor light-blue-bg context-bg mb-3">
     <div class="<?php echo esc_attr($preview_class); ?>">
         <div class="<?php echo esc_attr($thumb_cont_class); ?>">
             <a href="">
