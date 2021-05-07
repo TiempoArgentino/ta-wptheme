@@ -260,7 +260,7 @@
     var host = window.location.protocol + "//" + window.location.hostname;
     p.addClass("d-flex align-items-center");
     p.prepend(
-      `<img src="${host}/wp-content/themes/tiempo-argentino-1/assets/img/marker-vermas.svg" class="item-subscription">`
+      `<img src="${host}/wp-content/themes/tiempo-argentino/assets/img/marker-vermas.svg" class="item-subscription">`
     );
   });
 
@@ -387,7 +387,7 @@
 
       $.getJSON(
         host +
-          "/wp-content/themes/tiempo-argentino-1/subscriptions-theme/js/" +
+          "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
           provincia +
           ".json",
         function (data) {
@@ -419,7 +419,7 @@
 
       $.getJSON(
         host +
-          "/wp-content/themes/tiempo-argentino-1/subscriptions-theme/js/" +
+          "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
           provincia +
           ".json",
         function (data) {

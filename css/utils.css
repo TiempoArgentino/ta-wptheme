@@ -142,3 +142,11 @@ span.cerrar-vslider-desktop img {
 .participa-block-container .participa-items .item img{
     width: auto !important;
 }
+
+/**
+fix avisos
+*/
+.wp-block-lazyblock-contenedor-avisos{
+    display: flex;
+    justify-content: center;
+}
