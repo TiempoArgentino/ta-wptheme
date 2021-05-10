@@ -35,8 +35,8 @@ return array(
             'delete_terms'  =>   'delete_article_temas',
             'assign_terms'  =>   'assign_article_temas',
         ),
-        "rb_config"			=> array(
-            'unique'	=> true,
-        ),
+        // "rb_config"			=> array(
+        //     'unique'	=> true,
+        // ),
     ),
 );
