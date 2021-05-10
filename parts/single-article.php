@@ -197,7 +197,6 @@ $articles_interest_block->render(array(
                 </div>
             <?php } ?>
         </div>
-
     </div>
 </div>
 
