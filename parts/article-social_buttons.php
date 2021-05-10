@@ -6,13 +6,13 @@ extract(array_merge($defaults, $args));
 
 ?>
 <div class="social-btns">
-                    <a href="">
+                    <a href="" class="ml-2">
                         <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/comentar.svg" alt="" />
                     </a>
-                    <a tabindex="0" id="share-popover" data-bs-toggle="popover" data-bs-trigger="focus">
+                    <a class="ml-2" tabindex="0" id="share-popover" data-bs-toggle="popover" data-bs-trigger="focus">
                         <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/compartir.svg" alt="" />
                     </a>
-                    <a href="">
+                    <a class="ml-2" href="">
                         <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/guardar.svg" alt="" />
                     </a>
                 </div>
