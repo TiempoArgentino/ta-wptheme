@@ -10,6 +10,7 @@
         <div class="news-themes-dropdowns">
         <?php do_action('newletter_extra_content') ?>
             <?php  foreach(mailtrain_api_user()->user_lists() as $key => $lists): ?>
+                <?php var_dump($lists)?>
             <div class="theme-dropdown py-3">
                 <button class="dropdown-btn collapsed" type="button" data-toggle="collapse"
                     data-target="#themeDropdown-<?php echo $lists?>" aria-expanded="false" aria-controls="themeDropdown-<?php echo $lists?>">
@@ -40,7 +41,7 @@
                             <small>Por: <?php echo get_post_meta($lists,'_author_newsletter',true)?></small>
                         </div>
                         <div class="btns-container text-center mt-3">
-                            <button class="gray-btn-black-text">DESUSCRIBIRME</button>
+                            <button class="gray-btn-black-text" data-listId="<?php echo $lists?>">DESUSCRIBIRME</button>
                         </div>
                     </div>
                 </div>
