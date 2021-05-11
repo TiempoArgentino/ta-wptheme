@@ -81,3 +81,20 @@
     text-shadow: 0px 0px 3px #000000;
     background: #16a1dc;
 }
+
+.ta-articles-rows .balancer-overlay {
+    position: absolute;
+    top: 0px;
+    left: -80px;
+    max-width: 80px;
+    z-index: 1;
+    background: #16a1dcd6;
+    padding: 0.25rem 1rem;
+    user-select: none;
+}
+
+.ta-articles-rows .balancer-overlay img {
+    height: auto;
+    width: 100%;
+    filter: contrast(0) brightness(3.5);
+}

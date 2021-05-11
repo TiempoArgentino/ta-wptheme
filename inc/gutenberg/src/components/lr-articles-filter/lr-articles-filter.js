@@ -50,7 +50,7 @@ export const LRArticlesFilters = (props = {}) => {
     } = props;
 
     const useAmountFilter = amountFilter || amountFilterProps;
-    const {max: maxAmount, min: minAmount = 1, onChange: onAmountChange} = amountFilterProps ? amountFilterProps : {};
+    const {max: maxAmount, min: minAmount = 1} = amountFilterProps ? amountFilterProps : {};
 
     /**
     *   Devuelve si existe el campo name de attributes. Si no existe, devuelve default.
@@ -79,11 +79,9 @@ export const LRArticlesFilters = (props = {}) => {
             onTermsChange(taxAttribute, selectedTerms);
     };
 
-    const amountChanged = (newAmount) => {
+    const updateAttribute = ({ attribute, value }) => {
         if(setAttributes)
-            setAttributes({amount: newAmount});
-        else if(onAmountChange)
-            onAmountChange(newAmount);
+            setAttributes({[attribute]: value});
     }
 
     const requiredTermChange = (taxAttribute, isRequired) => {
@@ -96,12 +94,6 @@ export const LRArticlesFilters = (props = {}) => {
         else if(onRequiredTermsChange)
             onRequiredTermsChange(taxAttribute, isRequired);
     };
-
-    const mostRecentFilterChange = () => {
-        const mostRecentFilter = getAttribute('most_recent', false);
-        setAttributes && attributes ? setAttributes({most_recent: !mostRecentFilter}) : false;
-        onMostRecentToggle ? onMostRecentToggle(!mostRecentFilter) : false;
-    }
 
     const onlyShowMostRecentFilter = () => {
         return toggleFiltersWithMostRecent && mostRecentFilter && !getAttribute('most_recent', false);
@@ -166,7 +158,7 @@ export const LRArticlesFilters = (props = {}) => {
                 <ToggleControl
                     label={"Mas Recientes"}
                     checked={ getAttribute('most_recent', false) }
-                    onChange={() => mostRecentFilterChange()}
+                    onChange={(value) => updateAttribute({ attribute: 'most_recent', value })}
                 />
             }
             {!onlyShowMostRecentFilter() &&
@@ -175,7 +167,7 @@ export const LRArticlesFilters = (props = {}) => {
                     <RangeControl
                         label = "Cantidad de articulos"
                         value={ getAttribute('amount', 0) }
-                        onChange={(amount) => amountChanged(amount)}
+                        onChange={(value) => updateAttribute({ attribute: 'amount', value })}
                         min={ minAmount }
                         max={ maxAmount }
                     />

@@ -86,7 +86,6 @@ registerBlockType( 'ta/articles', {
 			addFormatDefaultAttributes,
 		} = useTAArticlesRowsContainer({
 			rows: attributes.rows,
-			updateRow,
 			onMoveRow: moveRow,
 			onClickRow: selectRow,
 			onRemoveRow: removeRow,
@@ -206,7 +205,7 @@ registerBlockType( 'ta/articles', {
 						icon="layout"
 						initialOpen={false}
 					>
-						{renderRowControls()}
+						{renderRowControls({ updateRow, balancerFilter: true })}
 					</PanelBody>
 					}
 

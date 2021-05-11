@@ -16,6 +16,7 @@ if( (!$articles || empty($articles)) || !$rows )
     return '';
 
 $all_articles = $articles;
+$articles_left = $all_articles;
 $block_path = plugin_dir_path( __FILE__ );
 $use_container = true;
 ob_start();
@@ -23,19 +24,58 @@ ob_start();
 
 <?php
 foreach ($rows as $row) {
-    $offset = get_articles_block_cells_count();
-    $articles = array_slice($articles, $offset);
+    $is_balanced = isset($row['use_balacer_articles']) ? $row['use_balacer_articles'] : false;
+    $allows_fallback = isset($row['balancer_allow_fallback']) ? $row['balancer_allow_fallback'] : false;
+    $articles = [];
     $format = isset($row['format']) ? $row['format'] : null;
+    $renderer = null;
+    $cells_count = null;
+    $balancer_articles = [];
+
     switch($format){
         case 'slider':
-            include "$block_path/templates/slider.php";
+            $renderer = new TAArticlesSliderRow($row);
         break;
         case 'miscelanea':
-            include "$block_path/templates/miscelanea.php";
+            $renderer = new TAArticlesMiscelaneaRow($row);
         break;
         default:
-            include "$block_path/templates/common-infinite.php";
+            $renderer = new TAArticlesCommonRow($row);
         break;
+    }
+
+    $balanced_cells_count = $renderer->get_cells_count_if_balanced();
+
+    if($is_balanced){
+        $balancer_articles_ids = balancer_front()->balancer($balanced_cells_count);
+        $balancer_articles = get_ta_articles_from_query(array(
+            'post_type'         => array('ta_article','ta_fotogaleria','ta_audiovisual'),
+            // 'posts_per_page'    => 6,
+            'post__in'          => $balancer_articles_ids,
+        ));
+        $articles = $balancer_articles;
+    }
+
+    // Fallback to articles from arguments if balancer articles aren't enough to fill the row
+    $balancer_articles_count = count($balancer_articles);
+    $balancer_needs_fallback = $balancer_articles_count < $balanced_cells_count && $allows_fallback;
+
+    if( !$is_balanced || $balancer_needs_fallback ){
+        $offset = get_articles_block_cells_count();
+        $articles = array_merge($articles, array_slice($articles_left, $offset));
+    }
+
+    $renderer->set_articles($articles);
+
+    if($renderer)
+        $cells_count = $renderer->render();
+
+    if(is_int($cells_count)){
+        if(!$is_balanced || $balancer_needs_fallback){
+            $cells_count -= $balancer_articles_count;
+            if($cells_count > 0)
+                register_articles_block_cells_count($cells_count);
+        }
     }
 }
 register_articles_block_cells_count(0);
