@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import sliderRow from '../../components/TAArticlesSliderRow/TAArticlesSliderRow';
 import miscelaneaRow from '../../components/TAArticlesMiscelaneaRow/TAArticlesMiscelaneaRow';
 import commonRow, { getRowCellsAmount as commonRowCellsAmount } from '../../components/TAArticlesCommonRow/TAArticlesCommonRow';
-const { Spinner, Icon, SelectControl } = wp.components;
 import './css/editor.css';
+import balancerImage from './balancer.png';
+const { Spinner, Icon, SelectControl, ToggleControl, Tooltip } = wp.components;
 
 const useTAArticlesRowsContainer = (props = {}) => {
     const {
@@ -50,7 +51,19 @@ const useTAArticlesRowsContainer = (props = {}) => {
             const className = `articles-row ${isSelected ? 'selected' : ''}`;
             const isFirst = index == 0;
             const isLast = index == rows.length - 1;
-            cellsRendered += rowData.getCellsAmount(row);
+            let balancerText;
+
+            if(row.use_balacer_articles){
+                if(row.balancer_allow_fallback)
+                    balancerText = "Los artículos que se visualizan en esta fila son los que se mostrarían en el caso de que no se encuentren otros en el balanceador.";
+                else
+                    balancerText = "Esta fila muestra artículos del balanceador. En caso de que no se encuentren, no se mostrará.";
+            }
+
+            // Only count the row cells if it uses articles from the filters
+            if(!row.use_balacer_articles || row.balancer_allow_fallback)
+                cellsRendered += rowData.getCellsAmount(row);
+
 
             return (
                 <div className={className} onClick = { () => rowClickHandler({
@@ -59,6 +72,13 @@ const useTAArticlesRowsContainer = (props = {}) => {
                     RowComponent,
                     Controls: rowData.Controls,
                 }) }>
+                    {row.use_balacer_articles &&
+                    <Tooltip text = {balancerText}>
+                        <div class="balancer-overlay">
+                            <img src={balancerImage}/>
+                        </div>
+                    </Tooltip>
+                    }
                     { showControls &&
                     <>
                         <div className="row-controls">
@@ -105,16 +125,21 @@ const useTAArticlesRowsContainer = (props = {}) => {
         );
     };
 
-    const changeRowFormat = ({ row, format }) => {
-        const { defaultConfig } = getRowData({ row: { format } });
-        const updatedRow = { ...row, ...defaultConfig, format };
-        updateRow(selectedRowIndex, updatedRow);
-    };
-
-    const renderRowControls = () => {
+    const renderRowControls = (args = {}) => {
         const {
             Controls: RowControls,
         } = selectedRowData ? selectedRowData : {};
+
+        const {
+            balancerFilter = false,
+            updateRow,
+        } = args;
+
+        const changeRowFormat = ({ row, format }) => {
+            const { defaultConfig } = getRowData({ row: { format } });
+            const updatedRow = { ...row, ...defaultConfig, format };
+            updateRow(selectedRowIndex, updatedRow);
+        };
 
         return (
             <>
@@ -128,8 +153,24 @@ const useTAArticlesRowsContainer = (props = {}) => {
                             { label: 'Común', value: 'common' },
                             { label: 'Slider', value: 'slider' },
                         ] }
-                        onChange={ ( format ) => changeRowFormat({row: selectedRowIndex, format}) }
+                        onChange={ ( format ) => changeRowFormat({row: selectedRow, format}) }
                     />
+                    {balancerFilter &&
+                    <>
+                        <ToggleControl
+                            label={"Usar artículos del balanceador"}
+                            checked={ selectedRow.use_balacer_articles }
+                            onChange={(value) => updateRow(selectedRowIndex, {...selectedRow, use_balacer_articles: value}) }
+                        />
+                        {selectedRow.use_balacer_articles &&
+                        <ToggleControl
+                            label={"Si el balanceador no tiene artículos suficientes, mostrar los correspondientes a los filtros establecidos."}
+                            checked={ selectedRow.balancer_allow_fallback }
+                            onChange={(value) => updateRow(selectedRowIndex, {...selectedRow, balancer_allow_fallback: value}) }
+                        />
+                        }
+                    </>
+                    }
                     { RowControls &&
                     <RowControls
                         row = { selectedRow }

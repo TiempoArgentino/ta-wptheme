@@ -51,7 +51,7 @@ $sponsor = $article->micrositio->get_sponsor();
 
             <div class="article-body mt-3">
                 <div class="px-lg-5">
-                    <?php echo $article->content; ?>
+                    <?php echo apply_filters( 'the_content', $article->content ); ?>
                 </div>
             </div>
 

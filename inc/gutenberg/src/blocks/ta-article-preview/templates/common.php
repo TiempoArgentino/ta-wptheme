@@ -13,9 +13,7 @@ $preview_class .= " $class";
                 <div class="img-wrapper d-flex align-items-end" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>">
                     <div class="icons-container">
                         <div class="article-icons d-flex flex-column mb-2">
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-1.svg" alt="" />
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-2.svg" alt="" />
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/icon-img-3.svg" alt="" />
+                            <?php get_template_part( 'parts/article', 'balancer_icons', array( 'article' => $article ) ); ?>
                         </div>
                     </div>
                 </div>

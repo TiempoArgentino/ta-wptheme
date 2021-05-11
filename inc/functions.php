@@ -1,6 +1,10 @@
 <?php
 
-function get_ta_articles_from_query($query_args){
+function get_ta_articles_from_query($query_args, $args = array()){
+    $default_args = array(
+        'populate'  => false,
+    );
+    $args = array_merge($default_args, $args);
     $articles = [];
 	$result = rb_get_posts($query_args);
 	$posts = $result['posts'];
@@ -9,8 +13,11 @@ function get_ta_articles_from_query($query_args){
 	if($posts && !empty($posts) && !is_wp_error($posts)){
 		foreach ($posts as $article_post) {
 			$article = TA_Article_Factory::get_article($article_post, 'article_post');
-			$article->populate(true);
-			$articles[] = $article;
+            if($article){
+                if($args['populate'])
+                    $article->populate(true);
+                $articles[] = $article;
+            }
 		}
 	}
 

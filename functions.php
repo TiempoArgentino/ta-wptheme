@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-
+error_reporting(E_ALL ^ E_WARNING);
 define('TA_ARTICLES_COMPATIBLE_POST_TYPES', ['ta_article', 'ta_audiovisual']);
 define('TA_THEME_PATH', get_template_directory());
 define('TA_THEME_URL', get_template_directory_uri());
