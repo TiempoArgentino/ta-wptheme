@@ -150,3 +150,7 @@ fix avisos
     display: flex;
     justify-content: center;
 }
+
+li#wp-admin-bar-new-post {
+    display: none;
+}

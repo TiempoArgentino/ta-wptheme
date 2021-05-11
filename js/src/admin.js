@@ -115,6 +115,10 @@ jQuery(function($) {
         });
     });
 
+    $(document).ready(function(){
+        var link = $('li#wp-admin-bar-new-content a.ab-item:first-child').attr('href');
+        $('li#wp-admin-bar-new-content a.ab-item:first-child').attr('href', link + '?post_type=ta_article');
+      });
     // var $wp_inline_edit = inlineEditPost.edit;
     // inlineEditPost.edit = function(id) {
     //     $wp_inline_edit.apply(this, arguments);

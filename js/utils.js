@@ -108,6 +108,11 @@ window.addEventListener("resize", function () {
     );
   });
 
+  $(document).ready(function(){
+    var link = $('li#wp-admin-bar-new-content a.ab-item:first-child').attr('href');
+    $('li#wp-admin-bar-new-content a.ab-item:first-child').attr('href', link + '?post_type=ta_article');
+  });
+
   // $(document).ready(function () {
   //   $("#asociate-popover").popover({
   //     container: ".asociate-popover .popover-container",
