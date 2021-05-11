@@ -4,7 +4,7 @@
         $(this).html('Guardar')
         $('.delivery-info .input-container').each(function(i, elem) {
             $(elem).addClass('editing')
-            $(`#${elem.id} input`).removeAttr('disabled');
+            $(`#${elem.id}input`).prop('disabled',false);
         })
 
         $("#finishEditingDeliveryInfo").css({
@@ -17,7 +17,7 @@
         $(this).html('Guardar');
         $('.personal-info .input-container').each(function(i, elem) {
             $(elem).addClass('editing')
-            $(`#${elem.id} input`).removeAttr('disabled');
+            $(`#${elem.id}input`).prop('disabled',false);
         })
 
         $("#finishEditingPersonalInfo").css({
