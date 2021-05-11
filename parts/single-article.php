@@ -31,7 +31,7 @@ $authors = $article->authors;
 <div class="container-fluid container-lg p-0 ">
     <div class="d-flex col-12 flex-column flex-lg-row align-items-start p-0">
         <div class="col-12 col-lg-8 p-0">
-            
+
             <!-- ARTICLE BODY -->
             <div class="articulo-simple text-right my-4">
                 <?php TA_Blocks_Container_Manager::open_new(); ?>
@@ -74,7 +74,7 @@ $authors = $article->authors;
 
                         <div class="article-body mt-3">
                             <div class="art-column-w-padding">
-                                <?php echo $article->content; ?>
+                                <?php echo apply_filters( 'the_content', $article->content ); ?>
                             </div>
                         </div>
                         <?php get_template_part( 'parts/article', 'social_buttons', array( 'class' => 'text-right mt-3' ) ); ?>

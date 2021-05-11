@@ -47,13 +47,15 @@ foreach ($rows as $row) {
     $balanced_cells_count = $renderer->get_cells_count_if_balanced();
 
     if($is_balanced){
-        $balancer_articles_ids = balancer_front()->balancer($balanced_cells_count);
-        $balancer_articles = get_ta_articles_from_query(array(
-            'post_type'         => array('ta_article','ta_fotogaleria','ta_audiovisual'),
-            // 'posts_per_page'    => 6,
-            'post__in'          => $balancer_articles_ids,
-        ));
-        $articles = $balancer_articles;
+        $balancer_articles_ids = balancer_front()->balancer($balanced_cells_count, true);
+        if($balancer_articles_ids && !empty($balancer_articles_ids)){
+            $balancer_articles = get_ta_articles_from_query(array(
+                'post_type'         => array('ta_article','ta_fotogaleria','ta_audiovisual'),
+                // 'posts_per_page'    => 6,
+                'post__in'          => $balancer_articles_ids,
+            ));
+            $articles = $balancer_articles;
+        }
     }
 
     // Fallback to articles from arguments if balancer articles aren't enough to fill the row
@@ -74,7 +76,7 @@ foreach ($rows as $row) {
         if(!$is_balanced || $balancer_needs_fallback){
             $cells_count -= $balancer_articles_count;
             if($cells_count > 0)
-                register_articles_block_cells_count($cells_count);
+                update_articles_block_cells_count($cells_count);
         }
     }
 }

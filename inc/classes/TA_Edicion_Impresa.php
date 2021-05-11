@@ -16,7 +16,7 @@ class TA_Edicion_Impresa extends TA_Article_Data{
     }
 
     protected function get_content(){
-        $content = apply_filters( 'the_content',  get_the_content($this->post->ID) );
+        $content = get_the_content($this->post->ID);
         ob_start();
         $articles_query = new WP_Query(array(
             'post_type'     => 'ta_article',
