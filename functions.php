@@ -457,7 +457,7 @@ function filter_creator_query($query)
 		return $query;
 	}
 
-	if ('ta_article' !== $query->query['post_type']) {
+	if ($query->query['post_type'] == 'ta_article') {
 		return $query;
 	}
 

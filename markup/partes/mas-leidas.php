@@ -54,7 +54,7 @@ $query = get_posts([
                                         </div>
                                         <div class="content col-7">
                                             <div class="description">
-                                                <a href="">
+                                                <a href="<?php echo get_permalink( $art->{'ID'} )?>">
                                                     <p><?php echo $art->{'post_title'}?></p>
                                                 </a>
                                             </div>
@@ -83,7 +83,7 @@ $query = get_posts([
                                         </div>
                                         <div class="content col-7">
                                             <div class="description">
-                                                <a href="">
+                                                <a href="<?php echo get_permalink( $art->{'ID'} )?>">
                                                     <p><?php echo $art->{'post_title'}?> </p>
                                                 </a>
                                             </div>
