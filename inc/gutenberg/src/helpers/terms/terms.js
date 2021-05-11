@@ -36,7 +36,10 @@ export async function fetchOrCreateTerm({ name, taxonomy }){
 
     let createTermResult = await createTerm({ name, taxonomy })
     // TERM CREATION SUCCESS
-    .then( data => data.json() )
+    .then( async (response) => {
+        const data = await response.json();
+        result.term = data;
+    })
     // TERM CREATION FAIL - TERM EXIST OR ERROR
     .catch( async (response) => {
         response = await response.json();
