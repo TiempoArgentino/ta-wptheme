@@ -265,7 +265,7 @@ const checkArticlesState = (newArticlesIds, articlesData) => {
 	else{
 		for( let i = 0; i < newArticlesIds.length; i++){
 			const articleID = newArticlesIds[i];
-			const index = articlesData.findIndex( (article) => article.post.ID == articleID );
+			const index = articlesData.findIndex( (article) => article.ID == articleID );
 			if(index == -1){
 				needsFetch = true;
 				break;

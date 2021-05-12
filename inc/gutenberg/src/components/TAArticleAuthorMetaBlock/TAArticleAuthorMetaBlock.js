@@ -29,7 +29,7 @@ const TAArticleAuthorMetaBlock = (props) => {
 
     function updateMetaValue( newRol ) {
         const mutatedValue = {...metaFieldValue};
-        mutatedValue[author.term.term_id] = newRol;
+        mutatedValue[author.ID] = newRol;
         setMeta( { ...meta, 'ta_article_authors_rols': mutatedValue } );
     }
 
@@ -37,7 +37,7 @@ const TAArticleAuthorMetaBlock = (props) => {
         if(!author)
             return null;
 
-        const rol = metaFieldValue[author.term.term_id];
+        const rol = metaFieldValue[author.ID];
         const photoStyle = {
             backgroundImage: `url("${author.photo}")`,
         };

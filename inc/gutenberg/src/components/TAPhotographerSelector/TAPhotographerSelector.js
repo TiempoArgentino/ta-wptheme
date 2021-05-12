@@ -6,11 +6,12 @@ import {
     remove as arrayRemove,
 } from 'lodash';
 
-function fetchTermsData({ args }){
+function fetchTermsData({ queryArgs, options: [] }){
     return apiFetch({
         method: 'POST',
         data: {
-            args: args,
+            queryArgs,
+            options,
         },
         path: "/ta/v1/photographers",
         parse: false
@@ -22,7 +23,7 @@ function fetchTermsData({ args }){
 
 function autocompleteFetchTermsData({search, items}){
     return fetchTermsData({
-        args: {
+        queryArgs: {
             name__like: search,
             orderby: 'name',
             order: 'ASC',
@@ -34,7 +35,7 @@ function autocompleteFetchTermsData({search, items}){
 
 function fetchTermsBy({ terms, field = 'include' }){
     return fetchTermsData({
-        args: {
+        queryArgs: {
             orderby: 'name',
             order: 'ASC',
             hide_empty: false,
