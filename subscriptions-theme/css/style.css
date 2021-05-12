@@ -1456,6 +1456,10 @@ label.form-check-label.payment-title{
   background-color: var(--ta-socios);
   color: var(--ta-negro-texto);
 }
+.payment-button-submit:active, .payment-button-submit:focus{
+  background-color: var(--ta-socios);
+  color: var(--ta-negro-texto);
+}
 .alert {
   display: block;
   line-height: 30px;

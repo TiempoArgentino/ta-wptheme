@@ -5,7 +5,7 @@
         </div>
         <div class="btns-container d-none d-lg-block">
             <div class="personalizar">
-                <button>PERSONALIZAR</button>
+                <button><a href="<?php echo get_permalink(get_option('personalize'))?>">PERSONALIZAR</a></button>
             </div>
         </div>
     </div>
