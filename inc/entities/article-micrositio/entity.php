@@ -53,7 +53,7 @@ return array(
         'capabilities' => array(
             'manage_terms'  => 'edit_micrositios_terms',
             'edit_terms'    => 'edit_micrositios_terms',
-            'delete_terms'  => false,
+            'delete_terms'  => 'delete_micrositios_terms',
             'assign_terms'  => 'edit_articles'
         ),
         'show_in_rest' => true, // This enables the REST API endpoint
