@@ -230,6 +230,9 @@ add_action( 'rest_api_init', function () {
         'callback' 				=> function($request){
             $params = $request->get_json_params();
             $articles = [];
+			// $default_options = array(
+			// 	'populate'	=> false,
+			// );
             $result = rb_get_posts($params['args']);
             $posts = $result['posts'];
             $query = $result['wp_query'];
@@ -238,8 +241,45 @@ add_action( 'rest_api_init', function () {
                 foreach ($posts as $article_post) {
                     $article = TA_Article_Factory::get_article($article_post, 'article_post');
 					if($article){
-						$article->populate(true);
-						$articles[] = $article;
+						$article_scheme = array(
+							'ID'				=> $article->ID,
+							'title'				=> $article->title,
+							'excerpt'			=> $article->excerpt,
+							'thumbnail_common'	=> $article->thumbnail_common,
+							'date'				=> $article->date,
+							'isopinion'			=> $article->isopinion,
+							'cintillo'			=> $article->cintillo,
+							'first_author'		=> $article->first_author,
+						);
+
+						$article_scheme['authors'] = $article->authors ? array_map( function($author){
+							return array(
+								'ID'				=> $author->ID,
+								'name'				=> $author->name,
+								'photo'				=> $author->photo,
+								'has_photo'			=> $author->has_photo,
+							);
+						}, $article->authors ) : null;
+
+						$article_scheme['section'] = $article->section ? array(
+							'name'			=> $article->section->name,
+							'slug'			=> $article->section->slug,
+							'archive_url'	=> $article->section->archive_url,
+						) : null;
+
+						$article_scheme['micrositio'] = $article->micrositio ? array(
+							'title'			=> $article->micrositio->title,
+							'slug'			=> $article->micrositio->slug,
+						) : null;
+
+						// $article_scheme['micrositio'] = $article->micrositio ? array(
+						// 	'title'			=> $article->micrositio->title,
+						// 	'slug'			=> $article->micrositio->slug,
+						// ) : null;
+
+
+						// $article->populate(true);
+						$articles[] = $article_scheme;
 					}
                 }
             }
@@ -270,8 +310,13 @@ add_action( 'rest_api_init', function () {
                 foreach ($author_terms as $author_term) {
                     $author = TA_Author_Factory::get_author($author_term, 'article_author_term');
 					if($author){
-						$author->populate(true);
-						$authors[] = $author;
+						// $author->populate(true);
+						$authors[] = array(
+							'ID'				=> $author->ID,
+							'name'				=> $author->name,
+							'photo'				=> $author->photo,
+							'has_photo'			=> $author->has_photo,
+						);
 					}
                 }
             }
@@ -287,7 +332,7 @@ add_action( 'rest_api_init', function () {
         'methods' 				=> 'POST',
         'callback' 				=> function($request){
             $params = $request->get_json_params();
-			$param_args = isset($params['args']) && is_array($params['args']) ? $params['args'] : [];
+			$param_args = isset($params['queryArgs']) && is_array($params['queryArgs']) ? $params['queryArgs'] : [];
             $authors = [];
             $query_args = array_merge(
 				array(
@@ -302,8 +347,11 @@ add_action( 'rest_api_init', function () {
                 foreach ($author_terms as $author_term) {
                     $author = TA_Photographer::get_photographer($author_term->term_id);
 					if($author){
-						$author->populate(true);
-						$authors[] = $author;
+						$authors[] = array(
+							'ID'			=> $author->ID,
+							'name'			=> $author->name,
+							'is_from_ta'	=> $author->is_from_ta,
+						);
 					}
                 }
             }

@@ -74,7 +74,7 @@ export const LRArticlesSelector = (props = {}) => {
             fetchHook = { useArticlesFetch }
             getItemData = { (article) => {
                 return {
-                    id: article.post.ID,
+                    id: article.ID,
                     detail: article.title,
                 };
             }}
