@@ -261,22 +261,23 @@ add_action( 'rest_api_init', function () {
 							);
 						}, $article->authors ) : null;
 
-						$article_scheme['section'] = $article->section ? array(
-							'name'			=> $article->section->name,
-							'slug'			=> $article->section->slug,
-							'archive_url'	=> $article->section->archive_url,
+						$article_scheme['first_author'] = $article->first_author ? array(
+							'ID'				=> $article->first_author->ID,
+							'name'				=> $article->first_author->name,
+							'photo'				=> $article->first_author->photo,
+							'has_photo'			=> $article->first_author->has_photo,
 						) : null;
 
-						$article_scheme['micrositio'] = $article->micrositio ? array(
-							'title'			=> $article->micrositio->title,
-							'slug'			=> $article->micrositio->slug,
-						) : null;
-
+						// $article_scheme['section'] = $article->section ? array(
+						// 	'name'			=> $article->section->name,
+						// 	'slug'			=> $article->section->slug,
+						// 	'archive_url'	=> $article->section->archive_url,
+						// ) : null;
+						//
 						// $article_scheme['micrositio'] = $article->micrositio ? array(
 						// 	'title'			=> $article->micrositio->title,
 						// 	'slug'			=> $article->micrositio->slug,
 						// ) : null;
-
 
 						// $article->populate(true);
 						$articles[] = $article_scheme;

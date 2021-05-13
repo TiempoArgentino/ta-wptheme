@@ -8,7 +8,6 @@ if(!$authors || empty($authors) )
 
 $amount = count($authors);
 ?>
-
 <?php for ($i=0; $i < $amount; $i++): ?>
     <a href="<?php echo esc_attr($authors[$i]->archive_url); ?>"><?php echo esc_html($authors[$i]->name); ?></a><?php
         if( isset($authors[$i + 1]) ){

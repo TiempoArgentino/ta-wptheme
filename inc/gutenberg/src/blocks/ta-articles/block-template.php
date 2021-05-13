@@ -24,10 +24,15 @@ ob_start();
 
 <?php
 foreach ($rows as $row) {
-    $is_balanced = isset($row['use_balacer_articles']) ? $row['use_balacer_articles'] : false;
-    $allows_fallback = isset($row['balancer_allow_fallback']) ? $row['balancer_allow_fallback'] : false;
+    $row = array_merge(array(
+        'format'                    => 'common',
+        'use_balacer_articles'      => false,
+        'balancer_allow_fallback'   => false,
+    ), $row);
+    $is_balanced = $row['use_balacer_articles'];
+    $allows_fallback = $row['balancer_allow_fallback'];
     $articles = [];
-    $format = isset($row['format']) ? $row['format'] : null;
+    $format = $row['format'];
     $renderer = null;
     $cells_count = null;
     $balancer_articles = [];

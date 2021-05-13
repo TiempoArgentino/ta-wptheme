@@ -137,7 +137,13 @@ const useTAArticlesRowsContainer = (props = {}) => {
 
         const changeRowFormat = ({ row, format }) => {
             const { defaultConfig } = getRowData({ row: { format } });
-            const updatedRow = { ...row, ...defaultConfig, format };
+            const updatedRow = {
+                use_balacer_articles: false,
+                balancer_allow_fallback: false,
+                ...row,
+                ...defaultConfig,
+                format,
+            };
             updateRow(selectedRowIndex, updatedRow);
         };
 

@@ -1,5 +1,4 @@
 ( ($) => {
-    console.log('TEST');
     let coreOpenFunction = window.commentReply.open;
     let coreCloseFunction = window.commentReply.close;
 

@@ -38,9 +38,7 @@ $preview_class .= " $class";
         <?php if($authors): ?>
         <div class="article-info-container">
             <div class="author">
-                <p>Por:
-                    <?php get_template_part('parts/article','authors_links', array( 'authors' => $authors )); ?>
-                </p>
+                <p>Por <?php get_template_part('parts/article','authors_links', array( 'authors' => $authors )); ?></p>
             </div>
         </div>
         <?php endif; ?>

@@ -18,7 +18,7 @@ if(!$sister_article)
         <div class="container">
             <div class="ta-articles-block fullwidth-row">
                 <?php
-                ta_render_article_preview($article, array(
+                ta_render_article_preview($sister_article, array(
                     'layout'                => 'common-tiny',
                     'size'                  => 'common',
                     'class'                 => 'col-12 p-0 d-flex mt-3',

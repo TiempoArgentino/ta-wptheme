@@ -94,7 +94,7 @@ $sponsor = $article->micrositio->get_sponsor();
                         <div class="content mt-0 col-9">
                             <div class="description">
                                 <a target="_blank" <?php echo $href; ?>>
-                                    <p><span class="ta-celeste-color">Activo ambiental es una producción de Tiempo
+                                    <p><span class="ta-celeste-color"><?php echo esc_html($article->micrositio->name); ?> es una producción de Tiempo
                                             Argentino</span> realizada gracias
                                         a la
                                         cooperación de la <span><?php echo esc_html($sponsor['name']); ?></span></p>
@@ -116,7 +116,6 @@ $sponsor = $article->micrositio->get_sponsor();
     <?php // include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
     <?php include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
-<?php include_once(TA_THEME_PATH . "/markup/partes/relacionados-tema.php");  ?>
 <div class="container">
     <?php include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
     <?php include(TA_THEME_PATH . "/markup/partes/ultimas-ambientales.php");  ?>
