@@ -151,18 +151,7 @@ class TA_Article extends TA_Article_Data{
         $attachment = $thumbnail_id ? get_post( $thumbnail_id ) : null;
         $thumb_data = null;
 
-        if( !$attachment ){
-            $thumb_data = array(
-                'attachment'    => null,
-                'url'           => TA_IMAGES_URL . '/article-no-image.jpg',
-                'caption'       => '',
-                'author'        => null,
-                'position'      => null,
-                'alt'           => __('No hay imagen', 'ta-genosha'),
-                'is_default'    => true,
-            );
-        }
-        else {
+        if( $attachment ){
             $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
             $thumb_data = array(
                 'attachment'    => $attachment,

@@ -19,7 +19,7 @@ $header_title = $article->participation['use'] ? 'PREGUNTÁ Y PARTICIPÁ' : 'COM
                     <div class="d-flex align-items-end">
                         <?php if($article->participation['use_live_date'] && $article->participation['live_date']): ?>
                         <div class="date">
-                            <p><?php echo date('d F G:i\h\s', $article->participation['live_date']); ?> - </p>
+                            <p><?php echo date('d F G:i\h\s', $article->participation['live_date'] / 1000); ?> - </p>
                         </div>
                         <?php endif; ?>
                         <?php
@@ -85,9 +85,9 @@ $header_title = $article->participation['use'] ? 'PREGUNTÁ Y PARTICIPÁ' : 'COM
             </div>
         </div>
     </div>
-    <?php 
+    <?php
             if(function_exists('tweets_search_front')){
                 echo tweets_search_front()->get_tweets(get_queried_object_id());
             }
-        ?>  
+        ?>
 </div>

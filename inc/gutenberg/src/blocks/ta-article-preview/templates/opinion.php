@@ -10,7 +10,7 @@ $preview_class = $desktop_horizontal ? 'd-flex py-3' : 'py-2 d-flex flex-row fle
 <div class="article-preview autor light-blue-bg context-bg mb-3">
     <div class="<?php echo esc_attr($preview_class); ?>">
         <div class="<?php echo esc_attr($thumb_cont_class); ?>">
-            <a href="">
+            <a href="<?php echo esc_attr($url); ?>">
                 <div class="img-container position-relative">
                     <div class="img-wrapper" style='background-image: url("<?php echo $author->photo; ?>")' alt="<?php echo esc_attr($author->name); ?>"></div>
                 </div>
@@ -23,14 +23,11 @@ $preview_class = $desktop_horizontal ? 'd-flex py-3' : 'py-2 d-flex flex-row fle
                 </a>
             </div>
             <div class="article-info-container d-block">
+                <?php if($author): ?>
                 <div class="author">
-                    <p>Por:
-                    <?php
-                        $authors = [$author];
-                        include plugin_dir_path( __FILE__ ) . "/authors-links.php";
-                    ?>
-                    </p>
+                    <p>Por <?php get_template_part('parts/article','authors_links', array( 'authors' => [$author] )); ?></p>
                 </div>
+            <?php endif; ?>
             </div>
         </div>
     </div>

@@ -98,10 +98,6 @@ $authors = $article->authors;
 
             <?php } ?>
             <?php include_once(TA_THEME_PATH . '/markup/partes/mira-tambien.php');  ?>
-            <div class="container-md mb-2 p-0">
-                <div class="separator"></div>
-            </div>
-            <?php include_once(TA_THEME_PATH . '/markup/partes/audiovisual.php');  ?>
         </div>
         <div class="col-12 col-lg-4 p-0">
             <div class="d-flex flex-column flex-lg-column-reverse">
@@ -169,9 +165,9 @@ $articles_interest_block->render(array(
     </div>
 </div>
 
-<div class="ta-context dark-blue-bg">
-    <?php include_once(TA_THEME_PATH . '/markup/partes/relacionados-tema.php');  ?>
-</div>
+<!-- <div class="ta-context dark-blue-bg">
+    <?php //include_once(TA_THEME_PATH . '/markup/partes/relacionados-tema.php');  ?>
+</div> -->
 
 <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
 
