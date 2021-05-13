@@ -10,8 +10,7 @@ function show_interest_front($query)
                     <a href="">
                         <div class="img-container position-relative">
                             <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;background-size: cover;">
-                            </div>
-                            <!-- iconos -->
+                                 <!-- iconos -->
                             <?php if (function_exists('balancer_front')) : ?>
                                 <div class="iconos-container">
                                     <div class="article-icons d-flex flex-column position-absolute">
@@ -26,6 +25,8 @@ function show_interest_front($query)
                                 </div>
                             <?php endif; ?>
                             <!-- iconos -->
+                            </div>
+                           
                         </div>
                     </a>
                 </div>
