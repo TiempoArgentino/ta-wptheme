@@ -129,13 +129,15 @@ reemplazar en styles de angie
     font-style: normal;
     font-weight: 400;
     background-color: transparent;
-    border-radius: 50%;
-    border: 1px solid var(--ta-gris-subtexto);
+    /* border-radius: 50%; */
+    /* border: 1px solid var(--ta-gris-subtexto); */
     color: var(--ta-gris-subtexto)!important; /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
-    margin: 3px;
-    width: 31px;
+    /* margin: 3px; */
+    /* width: 31px; */
     height: 31px;
     padding: 0;
+    margin: 0 5px;
+    border: none;
 }
 
 .pagination-articles .page-numbers.prev, .pagination-articles .page-numbers.next {
@@ -146,9 +148,11 @@ reemplazar en styles de angie
     font-family: "Red Hat Display";
     font-style: normal;
     font-weight: 900;
-    background-color: var(--ta-negro-texto);
-    border: 1px solid var(--ta-negro-texto);
-    color: var(--ta-celeste-fondos)!important; /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+    /* background-color: var(--ta-negro-texto); */
+    /* border: 1px solid var(--ta-negro-texto);
+    color: var(--ta-celeste-fondos)!important; */ /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+    border: none;
+    color: var(--ta-negro-texto) !important;
 }
 
 @media (min-width: 992px) {

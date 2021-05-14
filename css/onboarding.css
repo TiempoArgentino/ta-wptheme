@@ -76,6 +76,17 @@
     margin: 0 auto;
     background-color: var(--ta-celeste-fondos);
   }
+  .popover.share {
+    min-width: 0;
+    border-radius: 0;
+    border-color: var(--ta-celeste);
+  }
+  .popover.share .arrow::before {
+    border-color: var(--ta-celeste);
+  }
+  .popover.share .arrow:after{
+    border-bottom-color: var(--ta-celeste-fondos);
+  }
   .popover.asociate .arrow {
     left: 78.5% !important;
   }
@@ -186,6 +197,9 @@
     .popover {
       min-width: 300px;
       margin: 0;
+    }
+    .popover.share {
+      min-width: 0;
     }
     .popover.asociate .arrow {
       left: 61% !important;

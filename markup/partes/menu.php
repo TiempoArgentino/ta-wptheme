@@ -70,11 +70,11 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                 </div>
             </div>
         </div>
-        <div class="d-block d-lg-flex flex-column flex-lg-row">
+        <div class="menu-items-container d-block d-lg-flex flex-column flex-lg-row">
             <div class="menu-section-wrapper">
                 <div class="separator"></div>
-                <div class="menu-section d-none d-lg-block pt-0">
-                    <div class="menu-item destacados">
+                <div class="menu-section d-none d-lg-block p-0">
+                    <div class="menu-item destacados m-0">
                         <div class="d-flex align-items-center">
                             <button id="search-btn2" class="search-icon mr-3 btn btn-link d-flex collapsed"
                                 data-toggle="collapse" data-target="#searchBarMenu" aria-expanded="false"
@@ -87,9 +87,9 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                         </div>
                     </div>
                 </div>
-                <div class="menu-section d-none d-lg-block pt-0">
-                    <div class="separator"></div>
-                    <div class="menu-item destacados mt-3">
+                <div class="separator"></div>
+                <div class="menu-section d-none d-lg-block p-0">
+                    <div class="menu-item destacados profile m-0">
                         <a href="">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" alt="">
@@ -260,7 +260,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                 <?php if( $extra_menu_items && !empty($extra_menu_items) ): ?>
                 <div class="menu-section-wrapper">
                     <div class="separator"></div>
-                    <div class="menu-section pb-3">
+                    <div class="menu-section">
                         <?php
                         foreach ($extra_menu_items as $extra_menu_item):
                             $attachment_id = get_post_meta($extra_menu_item->ID, 'ta_menu_item_image', true);

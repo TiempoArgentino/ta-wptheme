@@ -21,9 +21,9 @@ $amount_of_episodes = count($episodes_xml);
 ob_start();
 ?>
 
-<div class="podcasts-block d-flex flex-column flex-md-row">
-    <div class="col-12 col-md-6 podcast-preview first-podcast pb-3" data-episode="<?php echo esc_attr(json_encode($latest_episode)); ?>">
-        <div class="video-container position-relative mt-3">
+<div class="podcasts-block d-flex flex-column flex-md-row overflow-hidden">
+    <div class="col-12 col-md-6 podcast-preview first-podcast pb-3 px-0" data-episode="<?php echo esc_attr(json_encode($latest_episode)); ?>">
+        <div class="video-container position-relative">
             <div class="video-wrapper">
                 <img src="<?php echo esc_attr($latest_episode['image']); ?>" alt="" class="img-fluid w-100" />
             </div>
@@ -65,7 +65,7 @@ ob_start();
             $episode = ta_get_podcast_episode_data($episodes_xml[$i]);
             $class = $i == 0 ? 'current' : '';
         ?>
-        <div class="podcast-preview d-flex mt-3 <?php echo esc_attr($class); ?>" data-episode="<?php echo esc_attr(json_encode($episode)); ?>">
+        <div class="podcast-preview d-flex mb-3 <?php echo esc_attr($class); ?>" data-episode="<?php echo esc_attr(json_encode($episode)); ?>">
             <div class="col-5 pl-0 img-container d-none d-md-block">
                 <div class="img-wrapper" style="background-image: url('<?php echo esc_attr($episode['image']); ?>');"></div>
             </div>

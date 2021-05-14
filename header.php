@@ -174,8 +174,8 @@
                         </div>
                     <?php endif ?>
                 </div>
-                <div class="asociate-banner position-relative">
-                    <div class="asociate-banner-bg">
+                <div class="asociate-banner position-relative ml-md-3">
+                    <div class="asociate-banner-bg h-100 ">
                         <a href="<?php echo get_permalink(65903) ?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
                     </div>
                     <div class="asociate-banner-content position-absolute">
