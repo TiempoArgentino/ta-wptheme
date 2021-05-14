@@ -154,3 +154,48 @@ fix avisos
 li#wp-admin-bar-new-post {
     display: none;
 }
+
+
+.article-preview .content .article-info-container .author p{
+    display: inline;
+}
+
+@media (min-width: 992px) {
+    .article-preview .img-container .icons-container .article-icons img {
+        max-width: 33px;
+    }
+}
+
+@media (min-width: 768px) {
+    .article-preview .img-container .icons-container .article-icons img {
+        width: 45px;
+        max-width: initial;
+    }
+}
+
+@media (min-width: 500px) {
+    .article-preview .img-container .icons-container .article-icons img {
+        width: 60px;
+    }
+}
+
+@media (min-width: 400px) {
+    .article-preview .img-container .icons-container .article-icons img {
+        width: 50px;
+    }
+}
+@media (min-width: 360px) {
+    .article-preview .img-container .icons-container .article-icons img {
+        width: 40px;
+    }
+}
+
+.article-preview .img-container .icons-container .article-icons img {
+    width: 35px;
+    height: 100%;
+    margin-top: 5px;
+}
+.article-preview .img-container .icons-container .article-icons {
+    min-height: 33px;
+    bottom: 0;
+}

@@ -114,6 +114,7 @@ class Cooperativa_TA
         $args = [
             'post_type' => 'cooperativa',
             'post_status' => 'publish',
+            'numberposts' => -1,
             'tax_query' => [
                 [
                     'taxonomy' => 'sector',

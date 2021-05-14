@@ -7,19 +7,22 @@ function show_interest_front($query)
 ?>
             <div class="article-preview vertical-article d-flex flex-column mb-3 col-12 col-md-3">
                 <div>
-                    <a href="">
+                    <a href="<?php echo get_permalink($art->{'ID'}) ?>">
                         <div class="img-container position-relative">
-                            <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;background-size: cover;">
-                            </div>
+                            <div class="img-wrapper" style="background:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>') center no-repeat !important;background-size: cover;"></div>
                             <!-- iconos -->
                             <?php if (function_exists('balancer_front')) : ?>
-                                <?php balancer_front()->show_interest_post(
-                                    wp_get_current_user()->ID,
-                                    $art->{'ID'},
-                                    get_stylesheet_directory_uri() . '/assets/img/icon-img-1.svg',
-                                    get_stylesheet_directory_uri() . '/assets/img/icon-img-2.svg',
-                                    get_stylesheet_directory_uri() . '/assets/img/icon-img-3.svg'
-                                ); ?>
+                                <div class="iconos-container">
+                                    <div class="article-icons d-flex flex-column position-absolute">
+                                        <?php balancer_front()->show_interest_post(
+                                            wp_get_current_user()->ID,
+                                            $art->{'ID'},
+                                            get_stylesheet_directory_uri() . '/assets/img/icon-img-1.svg',
+                                            get_stylesheet_directory_uri() . '/assets/img/icon-img-2.svg',
+                                            get_stylesheet_directory_uri() . '/assets/img/icon-img-3.svg'
+                                        ); ?>
+                                    </div>
+                                </div>
                             <?php endif; ?>
                             <!-- iconos -->
                         </div>
@@ -92,7 +95,6 @@ function tag_cloud_template()
 
         if (is_user_logged_in()) {
             $topics = get_user_meta(wp_get_current_user()->ID, '_personalizer_topics', true);
-            // echo sizeof($topics);
         }
         if ($topics === null) {
             require_once TA_THEME_PATH . '/balancer/tags/topics-cloud.php';

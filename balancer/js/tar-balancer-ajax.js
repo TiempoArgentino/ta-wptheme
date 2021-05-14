@@ -62,7 +62,6 @@
     });
 
     $(document).ready(function(){
-       // console.log($('#cloud-tag-topics .tag').length);
         if($('#cloud-tag-topics').length) {
             
             var $div = $('#cloud-tag-topics .tag');
