@@ -1,14 +1,32 @@
 <?php
 
+/**
+*   @param WP_Query|mixed[]                                                     A wordpress query intance, or an array of arguments
+*                                                                               to query for
+*   @param mixed[] $args {
+*       @property bool populate                                                 Wheter to populate the article instance properties.
+*       @property bool populate_recursive                                       If populate is true, indicates if properties of type Data_Manager should
+*                                                                               be populated as well.
+*   }
+*/
 function get_ta_articles_from_query($query_args, $args = array()){
     $default_args = array(
-        'populate'  => false,
+        'populate'              => false,
+        'populate_recursive'    => false,
     );
     $args = array_merge($default_args, $args);
     $articles = [];
-	$result = rb_get_posts($query_args);
-	$posts = $result['posts'];
-	$query = $result['wp_query'];
+    $posts = null;
+    $query = null;
+    if(is_object($query_args)){
+        $posts = $query_args->posts;
+        $query = $query_args;
+    }
+    else{
+        $result = rb_get_posts($query_args);
+        $posts = $result['posts'];
+        $query = $result['wp_query'];
+    }
 
 	if($posts && !empty($posts) && !is_wp_error($posts)){
 		foreach ($posts as $article_post) {
