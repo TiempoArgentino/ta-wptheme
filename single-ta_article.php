@@ -26,7 +26,7 @@ $article_part_slug = $article->micrositio ? 'special_article' : 'article';
       title: "",
       content: function () {
         return (
-          '<ul class="d-flex justify-content-between m-0">' +
+          '<ul class="d-flex justify-content-between align-items-center m-0">' +
           '<li class="mr-2 mt-0">' +
           '<a href="https://facebook.com/sharer.php?u=<?php echo get_permalink( get_queried_object_id() )?>" target="_blank">' +
           '<img class="img-fluid m-0" src="<?php echo get_stylesheet_directory_uri()?>/assets/img/fb-share-popover.svg">' +

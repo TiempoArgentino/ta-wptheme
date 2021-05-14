@@ -116,9 +116,9 @@
             </div>
         </div>
         <div class="container mt-2">
-            <div class="container">
+            <div class="container p-0">
                 <div class="article-tags d-flex flex-wrap mt-4">
-                    <div class="tag selected d-flex justify-content-center my-2">
+                    <div class="tag mx-1 selected d-flex justify-content-center my-2">
                         <div class="content p-1">
                             <a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>">
                                 <p class="m-0"><?php echo __('Todos', 'gen-theme-base') ?></p>
@@ -127,7 +127,7 @@
                         <div class="triangle"></div>
                     </div>
                     <?php foreach (beneficios_front()->show_terms() as $t) : ?>
-                        <div class="tag d-flex justify-content-center my-2">
+                        <div class="tag mx-1 d-flex justify-content-center my-2">
                             <div class="content p-1">
                                 <a href="<?php echo get_term_link($t->{'term_id'}) ?>">
                                     <p class="m-0"><?php echo $t->{'name'} ?></p>

@@ -75,17 +75,19 @@
 
         window.onscroll = function () {
             if (desktop.matches) {
-                if (window.pageYOffset >= 140) {
+                if (window.pageYOffset > 140) {
+                    $("body").css("padding-top", "139px");
                     headerStickyDesktop.addClass("sticky-default");
                     menuSticky.removeClass('menu-desktop');
                     menuSticky.addClass('menu-sticky-desktop');
                 } else {
+                    $("body").css("padding-top", "0");
                     headerStickyDesktop.removeClass("sticky-default");
                     menuSticky.removeClass('menu-sticky-desktop');
                     menuSticky.addClass('menu-desktop');
                 }
             } else {
-                if (window.pageYOffset >= 65) {
+                if (window.pageYOffset > 65) {
                     headerStickyDesktop.removeClass("sticky-default");
                     menuSticky.addClass('menu-sticky-desktop');
                 } else {
