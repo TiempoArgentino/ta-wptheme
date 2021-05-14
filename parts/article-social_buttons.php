@@ -12,9 +12,7 @@ extract(array_merge($defaults, $args));
                     <a tabindex="0" id="share-popover" data-bs-toggle="popover" data-bs-trigger="focus">
                         <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/compartir.svg" alt="" />
                     </a>
-                    <a href="">
-                        <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/guardar.svg" alt="" />
-                    </a>
+                    <?php do_action('favorite_button_action')?>
                 </div>
 <!-- <div class="social-btns <?php //echo esc_attr($class); ?>">
     <a href="">

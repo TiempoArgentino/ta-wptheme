@@ -163,13 +163,3 @@ reemplazar en styles de angie
     }
 }
 /* END HOTFIX ESTILOS  .btns-container .pagination button */
-
-
-.article-preview .content .article-info-container .author p{
-    display: inline;
-}
-
-.article-preview.vertical-article .img-container .img-wrapper {
-    aspect-ratio: 3 / 2;
-    height: initial;
-  }
