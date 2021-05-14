@@ -34,11 +34,7 @@ $sponsor = $article->micrositio->get_sponsor();
                 <div class="img-wrapper">
                     <img src="<?php echo esc_attr($article->thumbnail_common['url']); ?>" alt="" class="img-fluid w-100" />
                 </div>
-                <?php if($article->thumbnail_common['author']): ?>
-                <div class="credits text-right text-md-left mt-2">
-                    <p>Foto: <?php echo esc_html($article->thumbnail_common['author']->name); ?></p>
-                </div>
-                <?php endif; ?>
+                <?php get_template_part('parts/image', 'copyright', array('photographer' => $article->thumbnail_common['author'])); ?>
                 <?php if($article->thumbnail_common['caption']): ?>
                 <div class="bajada mt-3">
                     <p><?php echo esc_html($article->thumbnail_common['caption']); ?></p>
