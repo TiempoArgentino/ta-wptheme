@@ -2,18 +2,9 @@
 /*
 *   Author articles archive template
 */
-
+global $wp_query;
 $author = TA_Author_Factory::get_author(get_queried_object(), 'ta_article_author');
-$articles = get_ta_articles_from_query(array(
-    'post_type' => 'ta_article',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'ta_article_author',
-            'field'    => 'term_id',
-            'terms'    => $author->term->term_id,
-        ),
-    ),
-));
+$articles = get_ta_articles_from_query($wp_query);
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 
@@ -97,11 +88,6 @@ $articles = get_ta_articles_from_query(array(
                             </div>
                             <?php endif; ?>
                         </div>
-                    </div>
-                </div>
-                <div class="btns-container">
-                    <div class="ver-mas text-right">
-                        <button id="myBtn">ver más<span class="ml-3 "><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/right-arrow.png" alt=""></span></button>
                     </div>
                 </div>
             </div>

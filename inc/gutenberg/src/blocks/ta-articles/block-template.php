@@ -18,7 +18,6 @@ if( (!$articles || empty($articles)) || !$rows )
 $all_articles = $articles;
 $articles_left = $all_articles;
 $block_path = plugin_dir_path( __FILE__ );
-$use_container = true;
 ob_start();
 ?>
 

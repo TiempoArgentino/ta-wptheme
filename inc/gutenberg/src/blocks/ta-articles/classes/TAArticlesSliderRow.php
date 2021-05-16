@@ -43,11 +43,13 @@ class TAArticlesSliderRow extends TAArticlesBlockRow{
                                 $item_class = $printed_slides == 0 ? 'active' : '';
                             ?>
                             <div class="carousel-item <?php echo esc_attr($item_class); ?>">
-                                <div class="img-container">
-                                    <img class="d-block w-100" src="<?php echo esc_attr($thumbnail_url); ?>"
-                                        alt="Third slide">
-                                    <div class="overlay"></div>
-                                </div>
+                                <a href="<?php echo esc_attr($article->url); ?>">
+                                    <div class="img-container">
+                                        <img class="d-block w-100" src="<?php echo esc_attr($thumbnail_url); ?>"
+                                            alt="Third slide">
+                                        <div class="overlay"></div>
+                                    </div>
+                                </a>
                                 <div class="carousel-caption text-left pt-0 mb-md-4">
                                     <div class="separator"></div>
                                     <?php if($article->cintillo): ?>

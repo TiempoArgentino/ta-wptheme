@@ -2,18 +2,9 @@
 /*
 *   Section articles archive template
 */
-
+global $wp_query;
 $section = TA_Section_Factory::get_section(get_queried_object(), 'ta_article_section');
-$articles = get_ta_articles_from_query(array(
-    'post_type' => 'ta_article',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'ta_article_section',
-            'field'    => 'term_id',
-            'terms'    => $section->term->term_id,
-        ),
-    ),
-));
+$articles = get_ta_articles_from_query($wp_query);
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 <?php get_header(); ?>
