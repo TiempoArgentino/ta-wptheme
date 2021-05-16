@@ -199,3 +199,6 @@ li#wp-admin-bar-new-post {
     min-height: 33px;
     bottom: 0;
 }
+.temas .tema label{
+    text-transform: capitalize;
+}

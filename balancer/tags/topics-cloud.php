@@ -25,8 +25,8 @@
                                     <?php foreach(balancer_personalize()->get_tags(16) as $key => $val) : ?>
                                     <div class="tag d-flex justify-content-center my-2">
                                         <div class="content p-1">
-                                            <a href="#" data-key="<?php echo $key?>">
-                                                <p class="m-0"><?php echo $val?></p>
+                                            <a href="#">
+                                                <p class="m-0 cloud-item" data-id="<?php echo $key?>"><?php echo $val?></p>
                                             </a>
                                         </div>
                                         <div class="triangle"></div>

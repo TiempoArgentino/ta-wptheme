@@ -80,4 +80,25 @@
             $('#cloud-tag-container').slideUp();
         });
     });
+
+    $(document).on('click', '.cloud-item', function(){
+        var id = $(this).data('id');
+        $.ajax({
+            type:'post',
+            url: balancer_cloud_ajax.url,
+            data:{
+                action: balancer_cloud_ajax.action,
+                id:id
+            },
+            success: function(res) {
+                if(res.success) {
+                    $(this).parent().parent().parent().remove();
+                }
+                
+            },
+            error: function(res) {
+                console.log(res)
+            }
+        });
+    });
 })(jQuery);
