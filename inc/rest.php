@@ -94,7 +94,7 @@ add_action( 'rest_api_init', function () {
 			return new WP_REST_Response($ed_impresa_id, 200);
 		},
 		'permission_callback' => function () {
-	    	return current_user_can( 'edit_others_posts' );
+	    	return current_user_can( 'edit_eds_impresas' );
 	    },
 	) );
 
@@ -142,7 +142,7 @@ add_action( 'rest_api_init', function () {
 			return new WP_REST_Response($ids, 200);
 		},
 		'permission_callback' => function () {
-			return current_user_can( 'edit_others_posts' );
+			return current_user_can( 'delete_published_articles' );
 		},
 	) );
 
@@ -177,7 +177,7 @@ add_action( 'rest_api_init', function () {
 			return new WP_REST_Response($article_id, 200);
 		},
 		'permission_callback' => function () {
-			return current_user_can( 'edit_others_posts' );
+			return current_user_can( 'edit_published_articles' );
 		},
 	) );
 
@@ -186,7 +186,6 @@ add_action( 'rest_api_init', function () {
 		'callback' 				=> function($request){
 			$args = $request->get_json_params();
 
-			// Try to create a new post
 			$update_result = correct_article_images(array_merge($args, array( 'post_author' => 5 )));
 
 			if( is_wp_error($update_result) )
@@ -198,7 +197,7 @@ add_action( 'rest_api_init', function () {
 			return new WP_REST_Response($update_result, 200);
 		},
 		'permission_callback' => function () {
-			return current_user_can( 'edit_others_posts' );
+			return current_user_can( 'edit_published_articles' );
 		},
 	) );
 
@@ -226,7 +225,9 @@ add_action( 'rest_api_init', function () {
     register_rest_route('ta/v1', '/etiquetador', array(
         'methods' 				=> 'POST',
         'callback' 				=> 'get_etiquetas',
-        'permission_callback'	=> '__return_true',
+		'permission_callback' 	=> function ($request) {
+	    	return current_user_can( 'edit_articles' );
+	    },
     ) );
 
     register_rest_route( 'ta/v1', '/articles', array(
