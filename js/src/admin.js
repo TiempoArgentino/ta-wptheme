@@ -32,7 +32,7 @@ jQuery(function($) {
     }
 
     function updatePostMeta({ postID, attachmentID, metaKey }){
-        wp.apiRequest({
+        return wp.apiRequest({
             data: {
                 meta: metaKey,
                 value: attachmentID,
@@ -41,17 +41,31 @@ jQuery(function($) {
             method: 'POST',
             path: `/ta/v1/post/meta/`,
             parse: false,
-        })
-            .then((data) => {
-                console.log(data);
-            });
+        });
     }
 
-    $('body').on('click', '.ta-articles-images-controls .content', function(e) {
+    function isLoading($panel){
+        return $panel.hasClass('loading');
+    }
+
+    function setLoadingStatus($panel){
+        $panel.addClass('loading');
+    }
+
+    function endLoadingStatus($panel){
+        $panel.removeClass('loading');
+    }
+
+    $('body').on('click', '.ta-articles-images-controls:not(.loading) .content', function(e) {
         e.preventDefault();
         e.stopPropagation();
         var $button = $(this);
         var $panel = getPanel($button);
+
+        if(isLoading($panel))
+            return;
+        setLoadingStatus($panel);
+
         const value = getValue($panel);
 
         var custom_uploader = wp.media({
@@ -68,15 +82,23 @@ jQuery(function($) {
         custom_uploader.on('select', function() {
             var attachment = custom_uploader.state().get('selection').first().toJSON();
             // $(button).html('<img src="' + attachment.url + '" />').next().val(attachment.id).parent().next().show();
-            setImage({
-                $panel,
-                imageURL: attachment.url,
-            });
+
             updatePostMeta({
                 postID: getPostID($panel),
                 metaKey: getPanelMetaKey($panel),
                 attachmentID: attachment.id,
-            });
+            })
+            .then( (data) => {
+                setImage({
+                    $panel,
+                    imageURL: attachment.url,
+                });
+                endLoadingStatus($panel);
+            })
+            .catch( (response) => {
+                alert(`ERROR: ${response.responseJSON.message}`);
+                endLoadingStatus($panel);
+            })
         });
 
         custom_uploader.on('open', function(){
@@ -99,20 +121,31 @@ jQuery(function($) {
         custom_uploader.open();
     });
 
-    $('body').on('click', '.ta-articles-images-controls .content .remove-btn', function(e) {
+    $('body').on('click', '.ta-articles-images-controls:not(.loading) .content .remove-btn', function(e) {
         e.preventDefault();
         e.stopPropagation();
         // $(this).hide().prev().val('-1').prev().html('Set featured Image');
         var $panel = getPanel($(this));
-        setImage({
-            $panel,
-            imageURL: '',
-        });
+        if(isLoading($panel))
+            return;
+
+        setLoadingStatus($panel);
         updatePostMeta({
             postID: getPostID($panel),
             metaKey: getPanelMetaKey($panel),
             attachmentID: null,
-        });
+        })
+        .then( (data) => {
+            setImage({
+                $panel,
+                imageURL: '',
+            });
+            endLoadingStatus($panel);
+        })
+        .catch( (response) => {
+            alert(`ERROR: ${response.responseJSON.message}`);
+            endLoadingStatus($panel);
+        })
     });
 
     $(document).ready(function(){

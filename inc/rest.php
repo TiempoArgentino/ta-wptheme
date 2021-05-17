@@ -214,8 +214,12 @@ add_action( 'rest_api_init', function () {
 			$response = new WP_REST_Response(update_post_meta( $post_id, $meta_key, $meta_value ), 200);
 			return $response;
 		},
-		'permission_callback' => function () {
-	    	return current_user_can( 'edit_others_posts' );
+		'permission_callback' => function ($request) {
+			$params = $request->get_body_params();
+			$post_id = isset($params['postID']) ? $params['postID'] : null;
+			if(!$post_id)
+				return false;
+	    	return current_user_can( 'edit_post', $post_id );
 	    },
 	) );
 
