@@ -202,3 +202,5 @@ li#wp-admin-bar-new-post {
 .temas .tema label{
     text-transform: capitalize;
 }
+.cloud-item{
+    cursor: pointer;}

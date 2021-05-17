@@ -25,9 +25,9 @@
                                     <?php foreach(balancer_personalize()->get_tags(16) as $key => $val) : ?>
                                     <div class="tag d-flex justify-content-center my-2">
                                         <div class="content p-1">
-                                            <a href="#">
+                                            <!--<a href="#" class="cloud-link">-->
                                                 <p class="m-0 cloud-item" data-id="<?php echo $key?>"><?php echo $val?></p>
-                                            </a>
+                                            <!--</a>-->
                                         </div>
                                         <div class="triangle"></div>
                                     </div>
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="ver-mas d-flex justify-content-center mt-4">
-                        <button><?php echo __('Listo','gen-theme-base')?></button>
+                        <button id="listo-cloud"><?php echo __('Listo','gen-theme-base')?></button>
                     </div>
                 </div>
             </div>

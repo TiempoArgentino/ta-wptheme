@@ -105,7 +105,7 @@ class Balancer_TA
                     posts_balancer_db()->update_data('balancer_session',['content' => maybe_serialize($new_data)],['id_session'=>$_COOKIE['balancer']],['%s'],['%s']);
                 }
 
-                wp_send_json_success();
+                wp_send_json_success($_POST['id']);
                 wp_die();
                 
             } else {
