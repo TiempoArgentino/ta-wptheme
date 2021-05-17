@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RBAutocompleteList from '../../components/RBAutocompleteList/RBAutocompleteList';
 import { fetchTerms, useTerms, fetchOrCreateTerm } from '../../helpers/terms/terms';
-const { useDispatch } = wp.data;
+const { useSelect } = wp.data;
 const { apiFetch } = wp;
 const { Spinner } = wp.components;
 
@@ -32,6 +32,38 @@ const RBTermsSelector = (props) => {
         labels = {},
     } = props;
 
+    const userCapabilities = {
+        canCreate: undefined,
+        canRead: undefined,
+        canUpdate: undefined,
+        canDelete: undefined,
+    };
+    const [isPreparing, setIsPreparing] = useState(true);
+
+    useEffect( () => {
+        // const canUser = useSelect( (select) => select('core').canUser );
+        // wp.data.select( 'core' ).canUser( 'create', 'users' )
+        const capabilityCheckUnsubscribe = wp.data.subscribe(() => {
+            userCapabilities.canCreate = wp.data.select( 'core' ).canUser( 'create', taxonomy );
+            userCapabilities.canRead = wp.data.select( 'core' ).canUser( 'read', taxonomy );
+            userCapabilities.canUpdate = wp.data.select( 'core' ).canUser( 'update', taxonomy );
+            userCapabilities.canDelete = wp.data.select( 'core' ).canUser( 'delete', taxonomy );
+
+            console.log(taxonomy, userCapabilities);
+            // if some capability is beeing fetched
+            if( Object.values(userCapabilities).find( capability => capability === undefined ) )
+                return;
+
+            setIsPreparing(false);
+            // capabilityCheckUnsubscribe();
+        });
+
+        return () => {
+            capabilityCheckUnsubscribe();
+        };
+    }, []);
+
+
     const {
         termsData,
         setTermsData,
@@ -58,10 +90,6 @@ const RBTermsSelector = (props) => {
     const onChange = ({items}) => {
         setTermsData(items);
     }
-
-    useEffect( () => {
-
-    }, [termsData]);
 
     const fetchSuggestions = (data) => {
         return autocompleteFetchTerms({ ...data, taxonomy, termsData });
