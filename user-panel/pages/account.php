@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="support text-center">
-                        <p>Deseo <a href="mailto:pagos@tiempoar.com.ar"><b>contactar con soporte</b></a></p>
+                        <p>Deseo <a href="mailto:pagostiempo@gmail.com"><b>contactar con soporte</b></a></p>
                     </div>
                 </div>
             </div>

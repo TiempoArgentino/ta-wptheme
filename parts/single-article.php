@@ -104,9 +104,9 @@ $authors = $article->authors;
                 <div class="container-md p-0 line-height-0 mt-3 d-block d-md-none">
                     <div class="separator"></div>
                 </div>
-                <div class="ta-context light-blue-bg">
-                    <?php include_once(TA_THEME_PATH . '/markup/partes/newsletter.php');  ?>
-                </div>
+               <!-- <div class="ta-context light-blue-bg">
+                    <?php // include_once(TA_THEME_PATH . '/markup/partes/newsletter.php');  ?>
+                </div>-->
                 <?php if (is_active_sidebar('note_mob_4')) { ?>
                     <div class="d-block d-sm-none d-md-none d-lg-none text-center mx-auto mt-3">
                         <?php dynamic_sidebar('note_mob_4'); ?>

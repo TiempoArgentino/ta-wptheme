@@ -107,7 +107,7 @@ do_action('subscriptions_payment_page_header');
                                         </div>
                                         <div class="ayuda text-center my-4">
                                             <h6>Ante cualquier duda, podés escribirnos a</h6>
-                                            <h6><a class="highlighted" href="mailto:pagos@tiempoar.com.ar">pagos@tiempoar.com.ar</a></h6>
+                                            <h6><a class="highlighted" href="mailto:pagostiempo@gmail.com">pagostiempo@gmail.com</a></h6>
                                             <h6> o <b>llamarnos
                                                     al <a href="tel:4342-5511">4342-5511</a>.</b>
                                         </div>
