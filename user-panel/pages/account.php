@@ -88,27 +88,27 @@
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="Calle">Calle: </label>
-                                    <input type="text" id="Calle" name="address" required placeholder=" " value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required disabled>
+                                    <input type="text" id="Calle" class="input-account" name="address" required placeholder=" " value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required disabled>
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="Numero">Número: </label>
-                                    <input type="number" name="number" id="Numero" placeholder=" " value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required disabled>
+                                    <input type="number" name="number" class="input-account" id="Numero" placeholder=" " value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required disabled>
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="cp">CP: </label>
-                                    <input type="text" id="cp" placeholder=" " value="S2000" disabled>
+                                    <input type="text" id="cp" placeholder=" " class="input-account" value="S2000" disabled>
                                 </div>
                                 <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                         <label for="cp">Piso: </label>
-                                        <input type="text" placeholder=" " name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
+                                        <input type="text" placeholder=" " class="input-account" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
                                 </div>
                                 <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="cp">Departamento: </label>
-                                    <input type="text" placeholder=" " name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" />
+                                    <input type="text" placeholder=" " class="input-account" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>" />
                                 </div>
                                 <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="">Entre calles</label>
-                                    <input type="text" placeholder=" " name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
+                                    <input type="text" placeholder=" " class="input-account" name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
                                 </div>
                             </div>
                             <div class="btns-container text-center d-flex justify-content-center my-4">
