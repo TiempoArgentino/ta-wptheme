@@ -3,8 +3,8 @@
         event.preventDefault();
         $(this).html('Guardar')
         $('.delivery-info .input-container').each(function(i, elem) {
-            $(elem).addClass('editing')
-            $(`#${elem.id}input`).prop('disabled',false);
+            $(elem).addClass('editing');
+            $(`.input-account`).prop('disabled',false);
         })
 
         $("#finishEditingDeliveryInfo").css({
@@ -17,7 +17,7 @@
         $(this).html('Guardar');
         $('.personal-info .input-container').each(function(i, elem) {
             $(elem).addClass('editing')
-            $(`#${elem.id}input`).prop('disabled',false);
+             $(`.input-account`).prop('disabled',false);   
         })
 
         $("#finishEditingPersonalInfo").css({
