@@ -3,11 +3,13 @@
         <div class="section-title">
             <h4><?php echo __('SEGÚN TUS INTERESES','gen-theme-base')?></h4>
         </div>
+        <?php if(is_user_logged_in()): ?>
         <div class="btns-container d-none d-lg-block">
             <div class="personalizar">
                 <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-theme-base')?></a></button>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="sub-blocks mt-3">
         <div class="container px-0 px-md-1">
@@ -58,11 +60,13 @@
                endif;?>
             </div>
             <div class="container">
+            <?php if(is_user_logged_in()): ?>
                 <div class="btns-container d-flex justify-content-between justify-content-lg-end">
                     <div class="personalizar d-block d-lg-none">
                         <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-theme-base')?></a></button>
                     </div>
                 </div>
+            <?php endif; ?>
             </div>
         </div>
     </div>
