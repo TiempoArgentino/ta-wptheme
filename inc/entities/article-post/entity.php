@@ -42,7 +42,6 @@ return array(
             'edit_published_posts'              => 'edit_published_articles',
             'publish_posts'                     => 'publish_articles',
             'read_private_posts'                => 'read_private_articles',
-            'create_posts'                      => 'create_articles',
         ),
         'map_meta_cap'          => true,
         "rb_config"			=> array(
