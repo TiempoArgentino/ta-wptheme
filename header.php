@@ -12,7 +12,7 @@
 </head>
 
 <body <?php body_class('ta-context portada'); ?>>
-
+    <?php var_dump(get_theme_mod('ta-social-data'))?>
 
     <?php wp_body_open(); ?>
     <!-- anuncio sobre portada -->
