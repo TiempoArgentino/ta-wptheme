@@ -278,13 +278,7 @@ add_action('admin_enqueue_scripts', function () {
 	wp_enqueue_script("ta-index-block-js");
 });
 
-function ta_print_header()
-{
-	include(TA_THEME_PATH . '/markup/partes/header.php');
-};
-
-function ta_article_image_control($post, $meta_key, $attachment_id, $args = array())
-{
+function ta_article_image_control($post, $meta_key, $attachment_id, $args = array()){
 	$default_args = array(
 		'title'			=> '',
 		'description'	=> '',
@@ -312,32 +306,50 @@ function ta_article_image_control($post, $meta_key, $attachment_id, $args = arra
 				</div>
 			</div>
 		</div>
+		<div class="when-loading">
+			Cargando...
+		</div>
 	</div>
 <?php
 }
 
-// POST COLUMN - Adding column to core post type
-rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', function ($column, $post) {
-	$article = TA_Article_Factory::get_article($post);
-	if (!$article)
-		return;
-	$featured_attachment_id = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['attachment']->ID;
-	$featured_alt_attachment_id = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['attachment']->ID;
+if(current_user_can('edit_articles')){
+	// POST COLUMN - Adding column to core post type
+	rb_add_posts_list_column('ta_article_images_column', 'ta_article', 'Imágenes', function ($column, $post) {
+		$article = TA_Article_Factory::get_article($post);
+		if (!$article || !current_user_can('edit_post', $post->ID )){
+			?><p>No puedes editar las imágenes de este artículo.</p><?php
+			return;
+		}
 
-	ta_article_image_control($post, '_thumbnail_id', $featured_attachment_id, array(
-		'title'			=> 'Imagen Destacada',
-	));
-	ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_attachment_id, array(
-		'title'			=> 'Imagen Portada',
-		'description'	=> 'Sobrescribe la imagen principal en la portada',
-	));
-}, array(
-	'position'      => 4,
-	'column_class'  => 'test-class',
-));
+		$featured_attachment_id = $article->thumbnail_common['is_default'] ? '' : $article->thumbnail_common['attachment']->ID;
+		$featured_alt_attachment_id = $article->thumbnail_alt_common['is_default'] ? '' : $article->thumbnail_alt_common['attachment']->ID;
 
-function ta_article_authors_rols_meta_register()
-{
+		ta_article_image_control($post, '_thumbnail_id', $featured_attachment_id, array(
+			'title'			=> 'Imagen Destacada',
+		));
+		ta_article_image_control($post, 'ta_article_thumbnail_alt', $featured_alt_attachment_id, array(
+			'title'			=> 'Imagen Portada',
+			'description'	=> 'Sobrescribe la imagen principal en la portada',
+		));
+	}, array(
+		'position'      => 4,
+		'column_class'  => '',
+		'should_add'	=> function(){
+			$queried_object = get_queried_object();
+			if(!$queried_object || $queried_object->name != 'ta_article')
+				return false;
+
+			if(!current_user_can('edit_articles'))
+				return false;
+			return true;
+		}
+	));
+}
+
+
+
+function ta_article_authors_rols_meta_register(){
 	register_post_meta('ta_article', 'ta_article_authors_rols', array(
 		'single' => true,
 		'type' => 'object',
@@ -353,8 +365,7 @@ function ta_article_authors_rols_meta_register()
 }
 add_action('init', 'ta_article_authors_rols_meta_register');
 
-function ta_article_thumbnail_alt_meta_register()
-{
+function ta_article_thumbnail_alt_meta_register(){
 	register_post_meta('ta_article', 'ta_article_thumbnail_alt', array(
 		'single' 	=> true,
 		'type' 		=> 'number',
@@ -367,8 +378,7 @@ function ta_article_thumbnail_alt_meta_register()
 }
 add_action('init', 'ta_article_thumbnail_alt_meta_register');
 
-function ta_article_sister_article_meta_register()
-{
+function ta_article_sister_article_meta_register(){
 	register_post_meta('ta_article', 'ta_article_sister_article', array(
 		'single' 	=> true,
 		'type' 		=> 'number',
@@ -381,8 +391,7 @@ function ta_article_sister_article_meta_register()
 }
 add_action('init', 'ta_article_sister_article_meta_register');
 
-function ta_article_edicion_impresa_meta_register()
-{
+function ta_article_edicion_impresa_meta_register(){
 	register_post_meta('ta_article', 'ta_article_edicion_impresa', array(
 		'single' 	=> true,
 		'type' 		=> 'number',
@@ -395,8 +404,7 @@ function ta_article_edicion_impresa_meta_register()
 }
 add_action('init', 'ta_article_edicion_impresa_meta_register');
 
-function ta_article_participation_meta_register()
-{
+function ta_article_participation_meta_register(){
 	register_post_meta('ta_article', 'ta_article_participation', array(
 		'single' 	=> true,
 		'type' 		=> 'object',
@@ -432,8 +440,7 @@ add_action('init', 'ta_article_participation_meta_register');
 /**
  * filtro por creador
  */
-function filter_by_creator($post_type)
-{
+function filter_by_creator($post_type){
 	if ('ta_article' !== $post_type) {
 		return;
 	}
@@ -451,8 +458,7 @@ function filter_by_creator($post_type)
 	echo '</select>';
 }
 
-function filter_creator_query($query)
-{
+function filter_creator_query($query){
 	if (!(is_admin() and $query->is_main_query())) {
 		return $query;
 	}
@@ -474,14 +480,12 @@ add_action('parse_query', 'filter_creator_query', 10);
  * columnas
  */
 add_filter('manage_ta_article_posts_columns', 'author_column');
-function author_column($columns)
-{
+function author_column($columns){
 	$columns['author'] = __('Creador');
 	return $columns;
 }
 add_filter('manage_edit-ta_article_sortable_columns', 'author_order_column');
-function author_order_column($columns)
-{
+function author_order_column($columns){
 	$columns['author'] = 'author';
 	return $columns;
 }

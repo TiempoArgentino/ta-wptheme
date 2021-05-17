@@ -1,5 +1,9 @@
 <?php
 
+function ta_print_header(){
+	include(TA_THEME_PATH . '/markup/partes/header.php');
+};
+
 /**
 *   @param WP_Query|mixed[]                                                     A wordpress query intance, or an array of arguments
 *                                                                               to query for

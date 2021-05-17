@@ -2,7 +2,7 @@
     margin-bottom: 2rem;
 }
 
-.ta-articles-images-controls:not(.empty) .when-empty {
+.ta-articles-images-controls:not(.empty) .when-empty, .ta-articles-images-controls:not(.loading) .when-loading {
     display: none;
 }
 
@@ -10,14 +10,23 @@
     display: none;
 }
 
-.image-box {
+.ta-articles-images-controls.loading .image-box .content{
+    display: none;
+}
+
+.ta-articles-images-controls .image-box {
     width: 5rem;
     height: 5rem;
     position: relative;
     border: dashed 2px;
+    box-sizing: border-box;
 }
 
-.image-box .bkg {
+.ta-articles-images-controls.loading .image-box {
+    border-width: 0;
+}
+
+.ta-articles-images-controls .image-box .bkg {
     width: 100%;
     height: 100%;
     background-position: top left;
@@ -25,7 +34,7 @@
     background-repeat: no-repeat;
 }
 
-.image-box .content {
+.ta-articles-images-controls .image-box .content {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,21 +48,21 @@
     user-select: none;
 }
 
-.image-selector .title {
+.ta-articles-images-controls .image-selector .title {
     margin-bottom: 0;
 }
 
-.image-selector .description {
+.ta-articles-images-controls.image-selector .description {
     font-size: 11px;
 }
 
-.image-box .content .controls {
+.ta-articles-images-controls .image-box .content .controls {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.image-box .content .controls .remove-btn {
+.ta-articles-images-controls .image-box .content .controls .remove-btn {
     background: red;
     display: flex;
     align-items: center;
@@ -71,6 +80,7 @@
     max-width: min-content;
     padding: 0.2rem;
 }
+
 li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
     display: none;
 }
