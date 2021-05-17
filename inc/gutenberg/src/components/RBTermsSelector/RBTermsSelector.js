@@ -32,30 +32,29 @@ const RBTermsSelector = (props) => {
         labels = {},
     } = props;
 
-    const userCapabilities = {
+    const [isPreparing, setIsPreparing] = useState(true);
+    const [userCapabilities, setUserCapabilities] = useState({
         canCreate: undefined,
         canRead: undefined,
-        canUpdate: undefined,
-        canDelete: undefined,
-    };
-    const [isPreparing, setIsPreparing] = useState(true);
+    });
 
     useEffect( () => {
         // const canUser = useSelect( (select) => select('core').canUser );
         // wp.data.select( 'core' ).canUser( 'create', 'users' )
         const capabilityCheckUnsubscribe = wp.data.subscribe(() => {
-            userCapabilities.canCreate = wp.data.select( 'core' ).canUser( 'create', taxonomy );
-            userCapabilities.canRead = wp.data.select( 'core' ).canUser( 'read', taxonomy );
-            userCapabilities.canUpdate = wp.data.select( 'core' ).canUser( 'update', taxonomy );
-            userCapabilities.canDelete = wp.data.select( 'core' ).canUser( 'delete', taxonomy );
+            const canCreate = wp.data.select( 'core' ).canUser( 'create', taxonomy );
+            const canRead = wp.data.select( 'core' ).canUser( 'read', taxonomy );
 
-            console.log(taxonomy, userCapabilities);
             // if some capability is beeing fetched
-            if( Object.values(userCapabilities).find( capability => capability === undefined ) )
+            if( (canCreate === undefined) || (canRead === undefined) )
                 return;
 
+            setUserCapabilities({
+                canCreate,
+                canRead,
+            });
             setIsPreparing(false);
-            // capabilityCheckUnsubscribe();
+            capabilityCheckUnsubscribe();
         });
 
         return () => {
@@ -67,7 +66,7 @@ const RBTermsSelector = (props) => {
     const {
         termsData,
         setTermsData,
-        loading,
+        loading: loadingTerms,
     } = useTerms({ taxonomy, terms, termsQueryField,
         onChange: (data) => {
             const {dataBeingFetched} = data;
@@ -85,6 +84,7 @@ const RBTermsSelector = (props) => {
         inputPlaceholder = "Buscar...",
         loading: loadingLabel = "Cargando...",
         maxReached: maxReachedLabel = "No se pueden agregar mas terms",
+        userNotAllowedToRead: userNotAllowedToReadLabel = "Usted no posee los permisos necesarios para leer estos datos.",
     } = labels;
 
     const onChange = ({items}) => {
@@ -105,90 +105,78 @@ const RBTermsSelector = (props) => {
         return null;
     }
 
+    const loading = loadingTerms || isPreparing;
+
     return (
         <div className="ta-authors-selector">
             {loading &&
             <div className="loading"><Spinner/>{loadingLabel}</div>
             }
             {!loading &&
-            <RBAutocompleteList
-                items = { termsData }
-                autocompleteProps = {{
-                    placeholder: inputPlaceholder,
-                    fetchSuggestions: fetchSuggestions,
-                    getItemLabel: ({item}) => item.name,
-                    onSubmit: async (data) => {
-                        // const { search, addItem } = data;
-                        // const comparableSearch = search.trim().toLowerCase();
-                        // if( termsData.find( term => term.data.name.toLowerCase() == comparableSearch ) )
-                        //     return;
-                        // addItem
-                        // setTermsData([...termsData, {
-                        //     data: {
-                        //         name: search,
-                        //     },
-                        //     loading: true,
-                        //     originalValue: search,
-                        //     fetchPromise: async () => {
-                        //         const term = await fetchOrCreateTerm({ name: search, taxonomy });
-                        //         // if( term && !termsData.find( item => item.data.id == term.id ) )
-                        //         //     onChange( { items: [...terms, term] } );
-                        //         return term;
-                        //     },
-                        //     fetchFilter: (storedData) => {
-                        //         return {
-                        //             ...storedData,
-                        //             originalValue: storedData.data[termFieldName],
-                        //         };
-                        //     },
-                        // }]);
-                    },
-                }}
-                onSubmit = {async (data) => {
-                    const { search, addItem } = data;
-                    const comparableSearch = search.trim().toLowerCase();
-                    if( termsData.find( term => term.data.name.toLowerCase() == comparableSearch ) )
-                        return;
-                    addItem({
-                        item: {
-                            data: {
-                                name: search,
-                            },
-                            loading: true,
-                            originalValue: search,
-                            fetchPromise: async () => {
-                                const { term } = await fetchOrCreateTerm({ name: search, taxonomy });
-                                // if( term && !termsData.find( item => item.data.id == term.id ) )
-                                //     onChange( { items: [...terms, term] } );
-                                return term;
-                            },
-                            fetchFilter: (storedData) => {
-                                return {
-                                    ...storedData,
-                                    originalValue: storedData.data[termFieldName],
-                                };
-                            },
-                        },
-                    });
-                }}
-                labels = {{
-                    maxReached: maxReachedLabel,
-                }}
-                itemRender = { renderItem }
-                onChange = { onChange }
-                getItemKey = { ({item}) => item[termFieldName] }
-                filterNewItem = { ({item}) => {
-                    return item.data ? item : {
-                        data: item,
-                        loading: false,
-                        originalValue:  item[termFieldName],
-                    }
-                }}
-                getItemLabel = { getItemLabel }
-                sortable = {sortable}
-                max = {max}
-                disabled = {disabled}
-            />
+            <>
+                {!userCapabilities.canRead && // User does not have the read capability for this taxonomy
+                <p>{userNotAllowedToReadLabel}</p>
+                }
+                {userCapabilities.canRead &&
+                    <RBAutocompleteList
+                        items = { termsData }
+                        autocompleteProps = {{
+                            placeholder: inputPlaceholder,
+                            fetchSuggestions: fetchSuggestions,
+                            getItemLabel: ({item}) => item.name,
+                        }}
+                        onSubmit = {async (data) => {
+                            // If user is not allowed to create, return
+                            if(!userCapabilities.canCreate){
+                                // alert('User is not allowed to create terms for this taxonomy');
+                                return;
+                            }
+                            const { search, addItem } = data;
+                            const comparableSearch = search.trim().toLowerCase();
+                            if( termsData.find( term => term.data.name.toLowerCase() == comparableSearch ) )
+                                return;
+                            addItem({
+                                item: {
+                                    data: {
+                                        name: search,
+                                    },
+                                    loading: true,
+                                    originalValue: search,
+                                    fetchPromise: async () => {
+                                        const { term } = await fetchOrCreateTerm({ name: search, taxonomy });
+                                        // if( term && !termsData.find( item => item.data.id == term.id ) )
+                                        //     onChange( { items: [...terms, term] } );
+                                        return term;
+                                    },
+                                    fetchFilter: (storedData) => {
+                                        return {
+                                            ...storedData,
+                                            originalValue: storedData.data[termFieldName],
+                                        };
+                                    },
+                                },
+                            });
+                        }}
+                        labels = {{
+                            maxReached: maxReachedLabel,
+                        }}
+                        itemRender = { renderItem }
+                        onChange = { onChange }
+                        getItemKey = { ({item}) => item[termFieldName] }
+                        filterNewItem = { ({item}) => {
+                            return item.data ? item : {
+                                data: item,
+                                loading: false,
+                                originalValue:  item[termFieldName],
+                            }
+                        }}
+                        getItemLabel = { getItemLabel }
+                        sortable = {sortable}
+                        max = {max}
+                        disabled = {disabled}
+                    />
+                }
+            </>
             }
         </div>
     )
