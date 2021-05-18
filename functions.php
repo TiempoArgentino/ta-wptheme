@@ -163,6 +163,7 @@ class TA_Theme
 				'sections-menu' => __('Secciones'),
 				'special-menu' => __('Especiales'),
 				'extra-menu' => __('Extra'),
+				'importante-menu' => __('Importante')
 			)
 		);
 	}

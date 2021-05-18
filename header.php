@@ -12,8 +12,6 @@
 </head>
 
 <body <?php body_class('ta-context portada'); ?>>
-
-
     <?php wp_body_open(); ?>
     <!-- anuncio sobre portada -->
     <?php if (is_front_page()) : ?>
@@ -59,7 +57,7 @@
             <div class="desktop-ribbon d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="beneficios-socios d-flex align-items-center px-2">
-                        <p>Comunidad Tiempo</p>
+                        <p><a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>"><?php echo __('Comunidad Tiempo', 'gen-theme-base') ?></a></p>
                     </div>
                     <div class="d-flex justify-content-between flex-fill mx-2">
                         <div class="temas-importantes d-flex align-items-center">
@@ -68,56 +66,42 @@
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/importante-icon.svg" alt="">
                                 </div>
                                 <div>
-                                    <p>IMPORTANTE ></p>
+                                    <p><?php echo __('IMPORTANTE >', 'gen-theme-base') ?></p>
                                 </div>
                             </div>
-                            <div class='d-flex justify-content-between'>
-                                <a href="">
-                                    <p class="mx-3">Activo Ambiental</p>
-                                </a>
-                                <a href="">
-                                    <p class="mx-3">Hábitat y pandemia</p>
-                                </a>
-                                <a href="">
-                                    <p class="mx-3">Monitor de Medios</p>
-                                </a>
-                            </div>
+                            <?php
+                            $importante_menu_items = RB_Menu::get_menu_items('importante-menu');
+
+                            if ($importante_menu_items && !empty($importante_menu_items)) :
+                                foreach ($importante_menu_items as $menu) :
+                            ?>
+                                    <div class='d-flex justify-content-between'>
+                                        <a href="<?php echo $menu->url ?>">
+                                            <p class="mx-3"><?php echo esc_html($menu->title); ?></p>
+                                        </a>
+                                    </div>
+                            <?php endforeach;
+                            endif; ?>
                         </div>
+                        <!-- redes -->
+
                         <div class="redes d-flex">
-                            <div class="twitter">
-                                <a href="">
-                                    <div>
-                                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/twitter-white-icon.svg" class="img-fluid" alt="">
+                            <?php
+                            $social_data = ta_get_social_data();
+                            if($social_data && !empty($social_data)):
+                                foreach ($social_data as $social) :
+                                ?>
+                                    <div class="<?php echo $social['name'] ?>">
+                                        <a href="<?php echo esc_attr($social['url']); ?>" target="_blank">
+                                            <div>
+                                                <img src="<?php echo ta_get_social_image($social['name'], 'white') ?>" class="img-fluid" alt="">
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="instagram">
-                                <a href="">
-                                    <div>
-                                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/instagram-white-icon.svg" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="facebook">
-                                <a href="">
-                                    <div>
-                                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/facebook-white-icon.svg" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="youtube">
-                                <a href="">
-                                    <div>
-                                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/youtube-white-icon.svg" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="spotify">
-                                <a href="">
-                                    <div><img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/spotify-white-icon.svg" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
+                                <?php
+                                endforeach;
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -176,11 +160,11 @@
                 </div>
                 <div class="asociate-banner position-relative ml-md-3">
                     <div class="asociate-banner-bg h-100 ">
-                        <a href="<?php echo get_permalink(65903) ?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
+                        <a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"> <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/asociate-banner.svg" class="img-fluid" alt=""></a>
                     </div>
                     <div class="asociate-banner-content position-absolute">
                         <div class="separator"></div>
-                        <p class="mt-1"><a href="<?php echo get_permalink(65903) ?>">SUMATE</a></p>
+                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('SUMATE','gen-theme-base')?></a></p>
                     </div>
                 </div>
             </div>
@@ -248,8 +232,8 @@
             </div>
         <?php } ?>
     <?php endif; ?>
-     <!-- taxonomia -->
-     <?php if (is_tax()) : ?>
+    <!-- taxonomia -->
+    <?php if (is_tax()) : ?>
         <?php if (is_active_sidebar('seccion_head_2')) { ?>
             <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">
                 <div class="row d-flex">
