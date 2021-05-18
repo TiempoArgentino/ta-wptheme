@@ -57,6 +57,7 @@
 }
 .articulo-simple .social-btns a,
 .articulo-especial .social-btns a {
+  margin-left: 10px;
   text-decoration: none;
 }
 .articulo-simple .date,
@@ -283,9 +284,13 @@
     height: 75px;
     min-height: 75px;
   }
-  .articulo-simple .art-column-w-padding,
-.articulo-especial .art-column-w-padding {
+  .articulo-simple .art-column-w-lpadding,
+.articulo-especial .art-column-w-lpadding {
     padding-left: 85px;
+  }
+  .articulo-simple .art-column-w-xpadding,
+.articulo-especial .art-column-w-xpadding {
+    padding: 0 85px;
   }
 }
 @media (min-width: 1200px) {

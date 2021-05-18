@@ -13,7 +13,7 @@ $sponsor = $article->micrositio->get_sponsor();
                 <h4 class="subtheme"><?php echo $article->section->name; ?></h4>
                 <?php endif; ?>
             </div>
-            <div class="px-lg-5">
+            <div class="art-column-w-xpadding">
                 <?php if($article->title): ?>
                 <div class="title mt-2">
                     <h1><?php echo esc_html($article->title); ?></h1>
@@ -46,7 +46,7 @@ $sponsor = $article->micrositio->get_sponsor();
             <?php get_template_part('parts/article','authors_data', array( 'article' => $article )); ?>
 
             <div class="article-body mt-3">
-                <div class="px-lg-5">
+                <div class="art-column-w-xpadding">
                     <?php echo apply_filters( 'the_content', $article->content ); ?>
                 </div>
             </div>
