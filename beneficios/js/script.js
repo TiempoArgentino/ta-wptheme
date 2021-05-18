@@ -44,16 +44,38 @@
         });
 
         //Calcula height de art. destacado cuando es miscelanea
-        $(document).ready(function(){
+        $(document).ready(function () {
             if ($(window).width() >= 768) {
-                $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height",$('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').height() + 26 + 'px');
-
-                $( window ).resize(function() {
-                    $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height", "initial");
-                    $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height",$('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').height() + 26 + 'px');
-                  });
+              $(".ta-articles-block.d-flex.flex-column .destacado .img-wrapper").css(
+                "padding-bottom",
+                parseInt(
+                  $(
+                    ".ta-articles-block.d-flex.flex-column .destacado .img-wrapper"
+                  ).css("padding-bottom")
+                ) +
+                  27 +
+                  "px"
+              );
+              /* $('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').css("height",$('.ta-articles-block.d-flex.flex-column .destacado .img-wrapper').height() + 26 + 'px'); */
+        
+              $(window).resize(function () {
+                $(".ta-articles-block.d-flex.flex-column .destacado .img-wrapper").css(
+                  "padding-bottom",
+                  "66.66%"
+                );
+                $(".ta-articles-block.d-flex.flex-column .destacado .img-wrapper").css(
+                    "padding-bottom",
+                    parseInt(
+                      $(
+                        ".ta-articles-block.d-flex.flex-column .destacado .img-wrapper"
+                      ).css("padding-bottom")
+                    ) +
+                      27 +
+                      "px"
+                  );
+              });
             }
-        });
+          });
 
         $(document).on('click','.abrir-beneficio',function(e){
             e.preventDefault();
