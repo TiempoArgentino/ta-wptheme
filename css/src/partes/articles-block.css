@@ -28,8 +28,18 @@
   flex: 0 1 auto;
 }
 
+.article-preview .img-container .img-wrapper {
+  position: relative !important;
+}
+
+.article-preview .img-container .img-wrapper .icons-container {
+  position: absolute !important;
+  bottom: 0;
+}
+
 .article-preview .img-container .img-wrapper, .article-preview.destacado .img-container .img-wrapper  {
-  aspect-ratio: 3 / 2;
+  /* aspect-ratio: 3 / 2; */
+  padding-bottom: 66.66%;
   height: initial;
 }
 
@@ -153,7 +163,9 @@
 .article-preview .img-container .img-wrapper {
   /* min-height: 79px;
   max-width: 100%; */
-  background: url("../../assets/images/interest-img.png") center no-repeat;
+  background-image: url("../../assets/images/interest-img.png");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 .article-preview .img-container .icons-container .article-icons {
@@ -254,7 +266,9 @@
 .article-preview.destacado .img-container .img-wrapper {
 /*   height: 185px; */
   width: 100%;
-  background: url("../../../assets/img/interest-img.png") center no-repeat;
+  background-image: url("../../../assets/img/interest-img.png");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 .article-preview.destacado .img-container .article-icons {
@@ -270,7 +284,7 @@
   display: inline-block;
 }
 .article-preview.destacado.principal .img-container::after {
-  background: linear-gradient(180deg, rgba(37, 43, 45, 0) 46.37%, #2e2a26 90.52%);
+  background-color: linear-gradient(180deg, rgba(37, 43, 45, 0) 46.37%, #2e2a26 90.52%);
   content: "";
   position: absolute;
   left: 0;
@@ -280,7 +294,9 @@
   display: inline-block;
 }
 .article-preview.destacado.principal .img-container .img-wrapper {
-  background: url("../../../assets/img/destacada.jpg") center no-repeat;
+  background-image: url("../../../assets/img/destacada.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 .article-preview.destacado.principal .content {
@@ -302,10 +318,13 @@
   height: 79px;
   width: 79px;
   display: block;
-  background: #e6e7ed;
+  background-color: #e6e7ed;
   border: 2px solid var(--ta-celeste);
   border-radius: 50%;
-  background: url("../../../assets/img/autor-photo.jpg") top center no-repeat;
+  background-image: url("../../../assets/img/autor-photo.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-bottom: 0;
 }
 .article-preview.autor .img-container .article-icons {
   top: initial;

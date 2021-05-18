@@ -69,7 +69,7 @@ $authors = $article->authors;
                         <?php get_template_part('parts/article','authors_data', array( 'article' => $article )); ?>
 
                         <div class="article-body mt-3">
-                            <div class="art-column-w-padding">
+                            <div class="art-column-w-lpadding">
                                 <?php echo apply_filters( 'the_content', $article->content ); ?>
                             </div>
                         </div>
