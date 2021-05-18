@@ -113,7 +113,6 @@ $sponsor = $article->micrositio->get_sponsor();
     <?php include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
 <div class="container">
-    <?php include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
-    <?php include(TA_THEME_PATH . "/markup/partes/ultimas-ambientales.php");  ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/podes-leer.php");  ?>
+    <?php //include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
+    <?php get_template_part('parts/article', 'tambien_podes_leer', ['post_id' => get_the_ID()]); ?>
 </div>

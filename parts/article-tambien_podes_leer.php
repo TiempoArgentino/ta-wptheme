@@ -1,6 +1,13 @@
 <?php
-$terms = get_the_terms(get_queried_object_id(),'ta_article_tag');
-$term = wp_list_pluck($terms, 'slug');
+if(!isset($args['post_id']) || !$args['post_id'])
+    return;
+
+$terms_objects = get_the_terms($args['post_id'],'ta_article_tag');
+
+if(!$terms_objects || is_wp_error($terms_objects) || empty($terms_objects))
+    return;
+
+$terms_slugs = wp_list_pluck($terms_objects, 'slug');
 
 $args = [
     'post_type'         => 'ta_article',
@@ -9,9 +16,9 @@ $args = [
         [
             'taxonomy'  => 'ta_article_tag',
             'field'     => 'slug',
-            'terms'     => $term
-        ]
-    ]
+            'terms'     => $terms_slugs
+        ],
+    ],
 ];
 
 $articles = get_ta_articles_from_query($args);
