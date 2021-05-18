@@ -204,3 +204,15 @@ li#wp-admin-bar-new-post {
 .cloud-item {
   cursor: pointer;
 }
+
+#page-404 h1, #page-404 h2, #page-404 h3{
+  font-family: 'Libre Baskerville';
+  font-weight: 400;
+  font-style: italic;
+}
+div#page-404 img {
+  max-width: 150px;
+}
+div#page-404 {
+  background: #EBF1F2;
+}
