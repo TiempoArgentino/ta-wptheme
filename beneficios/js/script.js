@@ -94,6 +94,7 @@
         const desktop = window.matchMedia("(min-width: 768px)");
         var menuSticky = $("#menu");
         var headerStickyDesktop = $("#headerDefault");
+        var searchBar = $("#searchBar");
 
         window.onscroll = function () {
             if (desktop.matches) {
@@ -102,11 +103,13 @@
                     headerStickyDesktop.addClass("sticky-default");
                     menuSticky.removeClass('menu-desktop');
                     menuSticky.addClass('menu-sticky-desktop');
+                    searchBar.addClass('searchBarFixed');
                 } else {
                     $("body").css("padding-top", "0");
                     headerStickyDesktop.removeClass("sticky-default");
                     menuSticky.removeClass('menu-sticky-desktop');
                     menuSticky.addClass('menu-desktop');
+                    searchBar.removeClass('searchBarFixed');
                 }
             } else {
                 if (window.pageYOffset > 65) {
