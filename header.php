@@ -12,8 +12,6 @@
 </head>
 
 <body <?php body_class('ta-context portada'); ?>>
-    <?php var_dump(get_theme_mod('ta-social-data'))?>
-
     <?php wp_body_open(); ?>
     <!-- anuncio sobre portada -->
     <?php if (is_front_page()) : ?>
@@ -59,7 +57,7 @@
             <div class="desktop-ribbon d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="beneficios-socios d-flex align-items-center px-2">
-                        <p>Comunidad Tiempo</p>
+                        <p><?php echo __('Comunidad Tiempo','gen-theme-base')?></p>
                     </div>
                     <div class="d-flex justify-content-between flex-fill mx-2">
                         <div class="temas-importantes d-flex align-items-center">
@@ -68,20 +66,21 @@
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/importante-icon.svg" alt="">
                                 </div>
                                 <div>
-                                    <p>IMPORTANTE ></p>
+                                    <p><?php echo __('IMPORTANTE >','gen-theme-base')?></p>
                                 </div>
                             </div>
+                            <?php
+                                $importante_menu_items = RB_Menu::get_menu_items('importante-menu');
+                                   
+                                if($importante_menu_items && !empty($importante_menu_items)): 
+                                    foreach($importante_menu_items as $menu) :
+                            ?>
                             <div class='d-flex justify-content-between'>
-                                <a href="">
-                                    <p class="mx-3">Activo Ambiental</p>
-                                </a>
-                                <a href="">
-                                    <p class="mx-3">Hábitat y pandemia</p>
-                                </a>
-                                <a href="">
-                                    <p class="mx-3">Monitor de Medios</p>
+                                <a href="<?php echo $menu->url?>">
+                                    <p class="mx-3"><?php echo esc_html($menu->title); ?></p>
                                 </a>
                             </div>
+                            <?php endforeach; endif; ?>
                         </div>
                         <div class="redes d-flex">
                             <div class="twitter">
