@@ -6,7 +6,9 @@ extract($block->get_render_attributes());
 
 if( !$title && !$content ) return '';
 
-$header_class = $header_right ? 'd-block d-lg-flex justify-content-between align-items-center' : '';
+$has_header_right = $header_right && is_callable($header_right) ? true : false;
+$has_footer = $footer && is_callable($footer) ? true : false;
+$header_class = $has_header_right ? 'd-block d-lg-flex justify-content-between align-items-center' : '';
 $container_closed = TA_Blocks_Container_Manager::close();
 $header_link_tag = $header_link ? 'href="'. esc_attr($header_link) .'"' : '';
 ?>
@@ -26,20 +28,22 @@ $header_link_tag = $header_link ? 'href="'. esc_attr($header_link) .'"' : '';
                 </a>
                 <?php elseif($header_type == 'especial'): ?>
                 <div class="article-tags ta-blue-bg m-0">
-                        <div class="tag d-flex my-2">
-                            <div class="content p-1">
-                                <a <?php echo $header_link_tag; ?>>
-                                    <p class="m-0"><?php echo $title; ?></p>
-                                </a>
-                            </div>
-                            <div class="triangle"></div>
+                    <div class="tag d-flex my-2">
+                        <div class="content p-1">
+                            <a <?php echo $header_link_tag; ?>>
+                                <p class="m-0"><?php echo $title; ?></p>
+                            </a>
                         </div>
+                        <div class="triangle"></div>
                     </div>
+                </div>
                 <?php endif; ?>
+                <?php if($has_header_right){ call_user_func($header_right); }?>
             </div>
             <div class="sub-blocks mt-3">
                 <div class="container">
                     <?php echo $content; ?>
+                    <?php if($has_footer){ call_user_func($footer); }?>
                 </div>
             </div>
         </div>

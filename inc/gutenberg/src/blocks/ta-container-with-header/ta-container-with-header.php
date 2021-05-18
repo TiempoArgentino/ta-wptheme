@@ -29,6 +29,10 @@ return array(
 			'type'		=> 'bool',
 			'default'	=> true,
 		),
+		'footer'		=> array(
+			'type'		=> 'string',
+			'default'	=> '',
+		),
 		'header_right'		=> array(
 			'type'		=> 'string',
 			'default'	=> '',

@@ -10,7 +10,7 @@ do_action('beneficios_post_header');
             <?php
             while (have_posts()) : the_post();
             ?>
-                <div class="px-lg-5">
+                <div class="art-column-w-xpadding">
                     <div class="title mt-2">
                         <h1><?php echo get_the_title() ?></h1>
                     </div>
@@ -48,7 +48,7 @@ do_action('beneficios_post_header');
                     </div>
                 </div>
                 <div class="article-body mt-3">
-                    <div class="px-lg-5">
+                    <div class="art-column-w-xpadding">
                         <?php the_content() ?>
                     </div>
                     <?php if (!beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID())) : ?>

@@ -88,6 +88,12 @@ a.ab-item {
   height: 100%;
   width: auto;
 }
+.searchBarFixed {
+  position: fixed;
+  width: 100%;
+  top: 62px;
+  z-index: 99999;
+}
 .header.header-micrositio {
   position: static;
 }
@@ -1122,6 +1128,34 @@ a.ab-item {
 
 #more {
   display: none;
+}
+
+.mas-leidas .user-block-container .user-tabs .nav.nav-tabs {
+  background-color: white;
+  border: 1px solid var(--ta-celeste);
+  border-bottom: none;
+}
+
+.mas-leidas .user-block-container .user-tabs .tab-content {
+  border: 1px solid var(--ta-celeste);
+  border-top: none;
+}
+
+.mas-leidas .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active {
+  background-color: white;
+  padding-top: 5px;
+  
+}
+.mas-leidas .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active > div,
+.mas-leidas .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active p {
+  border: none;
+  
+}
+
+.mas-leidas .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active p {
+  color: var(--ta-celeste);
+  border-bottom: 2px solid var(--ta-celeste);
+  padding-bottom: 25px;
 }
 
 @media (min-width: 500px) and (max-width: 992px) {

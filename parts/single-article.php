@@ -69,7 +69,7 @@ $authors = $article->authors;
                         <?php get_template_part('parts/article','authors_data', array( 'article' => $article )); ?>
 
                         <div class="article-body mt-3">
-                            <div class="art-column-w-padding">
+                            <div class="art-column-w-lpadding">
                                 <?php echo apply_filters( 'the_content', $article->content ); ?>
                             </div>
                         </div>
@@ -147,19 +147,6 @@ $articles_interest_block->render(array(
     'color_context'     => 'light-blue-bg',
 ));
 ?>
-<div class="container-md p-0">
-    <div class="separator"></div>
-</div>
-
-<div class="d-block d-md-none">
-    <?php //include(TA_THEME_PATH . '/markup/partes/taller-relacionado.php');
-    ?>
-</div>
-<div class="container-md">
-    <div class="col-12 col-lg-8">
-
-    </div>
-</div>
 
 <!-- <div class="ta-context dark-blue-bg">
     <?php //include_once(TA_THEME_PATH . '/markup/partes/relacionados-tema.php');  ?>
@@ -213,4 +200,4 @@ $articles_interest_block->render(array(
 <?php } ?>
 <!-- abajo comentarios -->
 
-<?php get_template_part('parts/podes', 'leer', ['post_id' => get_the_ID()]); ?>
+<?php get_template_part('parts/article', 'tambien_podes_leer', ['post_id' => get_the_ID()]); ?>
