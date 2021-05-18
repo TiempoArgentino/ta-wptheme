@@ -18,16 +18,16 @@ $defaults = array(
     /**
     *   @param int $format
     */
-    'format'                    => '?paged=%#%',
+    'format'                    => null,
     /**
     *   @param int $custom_search
     */
     'custom_search'                    => false
 );
 extract( array_merge( $defaults, $args ) );
-if (!$custom_search) {
-    $base = get_pagenum_link(1) . '%_%';
-}
+// if (!$custom_search) {
+//     $base = get_pagenum_link(1) . '%_%';
+// }
 
 if ($total <= 1)
     return;
@@ -43,9 +43,9 @@ if ($total <= 1)
         'next_text'     => __('<i class="fas fa-angle-double-right"></i>'),
     );
 
-    if ($format)
+    if ($format !== null)
         $settings['format'] = $format;
-    if ($base)
+    if ($base !== null)
         $settings['base'] = $base;
 
     echo paginate_links($settings);

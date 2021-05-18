@@ -89,6 +89,27 @@ class TA_Theme
 		add_action('wp_insert_comment', function ($id, $comment) {
 			add_comment_meta($comment->comment_ID, 'is_visitor', $comment->user_id == 0, true);
 		}, 2, 10);
+
+		self::redirect_searchs();
+		flush_rewrite_rules();
+	}
+
+	/**
+	*	Adds filters to redirect, in case of needed, a request to the correct search page
+	*/
+	static private function redirect_searchs(){
+		RB_Filters_Manager::add_action('ta_theme_searchg_template_redirect', 'template_include', function($template){
+			global $wp_query;
+			if( !$wp_query->is_search )
+				return $template;
+
+			$post_type = get_query_var('post_type');
+			if( $post_type == 'ta_article' ){
+				return locate_template('search-ta_article.php');
+			}
+
+			return $template;
+		});
 	}
 
 	static private function remove_quick_edit()
