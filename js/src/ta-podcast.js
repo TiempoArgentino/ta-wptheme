@@ -9,7 +9,7 @@
         const episodeData = getEpisodeData($episode);
         $playingEpisode.data('episode', episodeData);
         $playingEpisode.find('.video-wrapper img').attr('src', episodeData.image);
-        $playingEpisode.find('.title .episode-number').text(episodeData.text);
+        $playingEpisode.find('.title .episode-number').text(episodeData.title);
         $playingEpisode.find('.podcast-player audio').attr('src', episodeData.audio);
         $playingEpisode.find('.podcast-player audio')[0].setCurrentTime(0);
         $playingEpisode.find('.podcast-player audio')[0].play();

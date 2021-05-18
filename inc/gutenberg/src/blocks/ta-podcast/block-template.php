@@ -27,9 +27,9 @@ ob_start();
             <div class="video-wrapper">
                 <img src="<?php echo esc_attr($latest_episode['image']); ?>" alt="" class="img-fluid w-100" />
             </div>
-            <div class="play-btn">
-                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/play.svg" alt="" class="position-absolute" />
-            </div>
+            <!-- <div class="play-btn">
+                <img src="<?php //echo TA_THEME_URL; ?>/markup/assets/images/play.svg" alt="" class="position-absolute" />
+            </div> -->
         </div>
         <div class="content mt-3">
             <div class="d-flex align-items-center">
