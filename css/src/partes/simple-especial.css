@@ -124,8 +124,8 @@
 .articulo-especial .author a {
   color: var(--ta-celeste) !important;
 }
-.articulo-simple .article-body p,
-.articulo-especial .article-body p {
+.articulo-simple .article-body,
+.articulo-especial .article-body {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 400;

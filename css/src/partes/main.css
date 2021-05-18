@@ -975,7 +975,7 @@ a.ab-item {
 }
 
 .featured-quote .quote-body p {
-  font-family: "Libre Baskerville" !important;
+  font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 20px;
@@ -984,7 +984,7 @@ a.ab-item {
 }
 .featured-quote .author-quoted p {
   color: var(--ta-gris-subtexto);
-  font-family: "Libre Baskerville" !important;
+  font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
