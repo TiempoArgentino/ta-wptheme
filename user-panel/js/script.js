@@ -1,5 +1,5 @@
 (function($){
-    $("#editDeliveryInfo").click(function(event) {
+    $("#address-button").click(function(event) {
         event.preventDefault();
         $(this).html('Guardar')
         $('.delivery-info .input-container').each(function(i, elem) {
@@ -12,9 +12,13 @@
         });
     });
 
+    $(document).on('click','#editDInfo' ,function(){
+        $('#edit-delivery-form').submit();
+    });
+
     $("#editPersonalInfo").click(function(event) {
         event.preventDefault();
-        $(this).html('Guardar');
+
         $('.personal-info .input-container').each(function(i, elem) {
             $(elem).addClass('editing')
              $(`.input-account`).prop('disabled',false);   
@@ -23,6 +27,12 @@
         $("#finishEditingPersonalInfo").css({
             display: "block"
         });
+        $(this).hide();
+        $('#editInfo').show();
+    });
+    
+    $(document).on('click','#editInfo',function(){
+        $('#edit-info-form').submit();
     });
 
     $(document).on('click','.profile-data',function(){

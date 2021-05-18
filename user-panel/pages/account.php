@@ -9,7 +9,7 @@
             <div class="info-forms">
                 <div class="personal-info">
                     <?php $address = get_user_meta(get_current_user_id(), '_user_address', false); ?>
-                    <form method="post">
+                    <form method="post" id="edit-info-form">
                         <div class="form-container d-flex flex-wrap justify-content-md-between mx-auto mt-4">
                             <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center" id="">
                                 <label for="Nombre">Nombre: </label>
@@ -48,8 +48,10 @@
                             </div>
                         </div>
                         <div class="btns-container text-center d-flex justify-content-center mt-4">
-                            <button id="editPersonalInfo">Editar datos</button>
-                            <button id="finishEditingPersonalInfo" class="gray-btn-black-text">Cerrar</button>
+                            <input type="hidden" name="user_id" value="<?php echo wp_get_current_user()->ID ?>">
+                            <button type="button" id="editPersonalInfo">Editar datos</button>
+                            <input type="submit" id="editInfo" style="display: none;" name="update_profile" value="Guardar" />
+                            <button type="button" id="finishEditingPersonalInfo" class="gray-btn-black-text">Cerrar</button>
                         </div>
                     </form>
                 </div>
@@ -60,7 +62,7 @@
                                 <p>Datos para recibir la Edición Impresa</p>
                             </div>
                             <div class="dropdown-icon mr-2">
-                                <img src="../../assets/images/arrow.svg" alt="" />
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/arrow.svg" alt="" />
                             </div>
                         </div>
                     </button>
@@ -112,8 +114,8 @@
                                 </div>
                             </div>
                             <div class="btns-container text-center d-flex justify-content-center my-4">
-                                <button id="editDeliveryInfo">Editar datos</button>
-                                <button id="finishEditingDeliveryInfo" class="gray-btn-black-text">Cerrar</button>
+                                <button type="button" id="editDeliveryInfo">Editar datos</button>
+                                <button type="button" id="finishEditingDeliveryInfo" class="gray-btn-black-text">Cerrar</button>
                             </div>
                         </div>
                     </div>
