@@ -88,17 +88,19 @@
                         <div class="redes d-flex">
                             <?php
                             $social_data = ta_get_social_data();
-                            foreach ($social_data as $social) :
-                            ?>
-                                <div class="<?php echo $social['name'] ?>">
-                                    <a href="<?php echo esc_attr($social['url']); ?>" target="_blank">
-                                        <div>
-                                            <img src="<?php echo ta_get_social_image($social['name'], 'white') ?>" class="img-fluid" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php
-                            endforeach;
+                            if($social_data && !empty($social_data)):
+                                foreach ($social_data as $social) :
+                                ?>
+                                    <div class="<?php echo $social['name'] ?>">
+                                        <a href="<?php echo esc_attr($social['url']); ?>" target="_blank">
+                                            <div>
+                                                <img src="<?php echo ta_get_social_image($social['name'], 'white') ?>" class="img-fluid" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php
+                                endforeach;
+                            endif;
                             ?>
                         </div>
                     </div>
