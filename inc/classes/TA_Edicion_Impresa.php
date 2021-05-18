@@ -19,9 +19,10 @@ class TA_Edicion_Impresa extends TA_Article_Data{
         $content = get_the_content($this->post->ID);
         ob_start();
         $articles_query = new WP_Query(array(
-            'post_type'     => 'ta_article',
-            'meta_key'      => 'ta_article_edicion_impresa',
-            'meta_value'    => $this->post->ID,
+            'post_type'         => 'ta_article',
+            'meta_key'          => 'ta_article_edicion_impresa',
+            'meta_value'        => $this->post->ID,
+            'posts_per_page'    => -1,
         ));
         $articles = [];
 
