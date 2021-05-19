@@ -90,15 +90,15 @@
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="Calle">Calle: </label>
-                                    <input type="text" id="Calle" class="input-account" name="address" required placeholder=" " value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required disabled>
+                                    <input type="text" id="address" class="input-account" name="address" required placeholder=" " value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required disabled>
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="Numero">Número: </label>
-                                    <input type="number" name="number" class="input-account" id="Numero" placeholder=" " value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required disabled>
+                                    <input type="number" name="number" class="input-account" id="number" placeholder=" " value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required disabled>
                                 </div>
                                 <div class="input-container  col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                     <label for="cp">CP: </label>
-                                    <input type="text" id="cp" placeholder=" " class="input-account" value="S2000" disabled>
+                                    <input type="text" id="zip" name="zip" placeholder=" " class="input-account" value="<?php echo $address[0]['zip'] !== null ? $address[0]['zip'] : ''; ?>" disabled>
                                 </div>
                                 <div class="input-container col-12 col-md-5 mx-1 d-flex align-items-center d-flex align-items-center" id="">
                                         <label for="cp">Piso: </label>
@@ -115,6 +115,7 @@
                             </div>
                             <div class="btns-container text-center d-flex justify-content-center my-4">
                                 <button type="button" id="editDeliveryInfo">Editar datos</button>
+                                <button type="button" id="address-button-2" style="display: none;">Guardar</button>
                                 <button type="button" id="finishEditingDeliveryInfo" class="gray-btn-black-text">Cerrar</button>
                             </div>
                         </div>
