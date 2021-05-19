@@ -446,9 +446,9 @@ a.ab-item {
   width: 73px;
 }
 
-/* .light-blue-bg {
+.light-blue-bg {
   background-color: var(--ta-celeste-fondos);
-} */
+}
 
 .tiempo-blue-bg {
   background-color: var(--ta-celeste);
