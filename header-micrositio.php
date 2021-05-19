@@ -12,8 +12,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-
     <?php wp_body_open(); ?>
     <?php include_once(TA_THEME_PATH . '/markup/partes/micrositio/header-micrositio.php');  ?>
     <?php if (is_active_sidebar('micrositio_head_1')) { ?>
