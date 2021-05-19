@@ -16,6 +16,7 @@ export function useTAArticlesManager( props = {} ){
 		attributes,
 		setAttributes,
 		taxonomiesFilters = {tag: true, section: true, author: true, micrositio: true},
+		extraQueryArgs = {},
 	} = props;
 	const mostRecentTurnedOff = useRef(false);
 	const mostRecentWasActive = useRef(false);
@@ -61,6 +62,7 @@ export function useTAArticlesManager( props = {} ){
 						<LRArticlesSelector
 							articles={articles}
 							onSelectionChange={(articles) => onSelectionChange(articles)}
+							postsArgs = {extraQueryArgs}
 						/>
 					</>
 				</PanelBody>
@@ -119,6 +121,7 @@ export function useTAArticlesManager( props = {} ){
 
 	let postsQueryArgs = {
 		post_type: 'ta_article',
+		...extraQueryArgs,
 	};
 
 	if(attributes.most_recent){

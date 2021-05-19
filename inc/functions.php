@@ -210,13 +210,14 @@ function get_ta_articles_block_articles($block_attributes){
     else if( $articles_data && is_array($articles_data) && !empty($articles_data) ){
         foreach($articles_data as $article_data){
             $article = TA_Article_Factory::get_article($article_data['data'], isset($article_data['type']) ? $article_data['type'] : 'article_post');
-            if($article)
+            if($article && ( !$article->post || $article->post->post_status == 'publish' ) )
                 $final_articles[] = $article;
         }
     }
     else if( $most_recent ){
         $query_args = array(
-            'post_type'	=> 'ta_article',
+            'post_type'		=> 'ta_article',
+			'post_status'	=> 'publish',
         );
         $query_args = array_merge(lr_get_query_args_from_articles_filters($block_attributes), $query_args);
         $final_articles = get_ta_articles_from_query($query_args);
