@@ -96,6 +96,11 @@
   left: 50%;
   margin-left: -50vw;
 }
+.articulo-simple .article-body .img-container .img-wrapper,
+.articulo-especial .article-body .img-container .img-wrapper {
+  left: unset;
+  margin-left: unset;
+}
 .articulo-simple .img-container .credits p,
 .articulo-especial .img-container .credits p {
   font-family: "Libre Baskerville";
