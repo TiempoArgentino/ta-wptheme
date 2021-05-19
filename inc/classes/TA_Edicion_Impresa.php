@@ -9,7 +9,7 @@ class TA_Edicion_Impresa extends TA_Article_Data{
 
     public function __construct($post){
         $this->defaults = array_merge($this->defaults, array(
-            'issue_pdf_'    => null,
+            'issue_pdf'    => null,
         ));
         $this->post = $post;
     }
@@ -22,7 +22,7 @@ class TA_Edicion_Impresa extends TA_Article_Data{
     *   Returns the pdf attachment if any
     *   @return WP_Post|null
     */
-    protected function get_issue_pdf_(){
+    protected function get_issue_pdf(){
         $attachment_id = get_post_meta($this->post->ID, 'issuefile_attachment_id', true);
         $attachment = $attachment_id ? get_post( $attachment_id ) : null;
         return $attachment ? array(
