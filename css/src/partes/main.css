@@ -510,6 +510,10 @@ a.ab-item {
     }
   } */
 }
+.ta-context.light-blue .context-bg {
+  background-color: var(--ta-celeste-fondos);
+}
+
 .ta-context.blue-tiempo .context-color .article-preview .content .article-info-container p {
   color: white !important;
 }

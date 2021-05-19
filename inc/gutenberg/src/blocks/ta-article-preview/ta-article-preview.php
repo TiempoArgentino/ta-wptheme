@@ -36,6 +36,10 @@ return array(
 			'type'			=> 'bool',
 			'default'		=> true,
 		),
+		'deactivate_opinion_layout'	=> array(
+			'type'				=> 'boolean',
+			'default'			=> false,
+		),
 	),
 	'render_callback'	=> function($attributes, $content = ''){
 		ob_start();

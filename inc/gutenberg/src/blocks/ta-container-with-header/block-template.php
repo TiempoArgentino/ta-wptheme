@@ -6,10 +6,11 @@ extract($block->get_render_attributes());
 
 if( !$title && !$content ) return '';
 
+global $is_rendering_inner_blocks;
 $has_header_right = $header_right && is_callable($header_right) ? true : false;
 $has_footer = $footer && is_callable($footer) ? true : false;
 $header_class = $has_header_right ? 'd-block d-lg-flex justify-content-between align-items-center' : '';
-$container_closed = TA_Blocks_Container_Manager::close();
+$container_closed = !$is_rendering_inner_blocks ? TA_Blocks_Container_Manager::close() : null;
 $header_link_tag = $header_link ? 'href="'. esc_attr($header_link) .'"' : '';
 ?>
 

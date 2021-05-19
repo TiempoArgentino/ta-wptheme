@@ -91,7 +91,44 @@ class TA_Theme
 		}, 2, 10);
 
 		self::redirect_searchs();
-		flush_rewrite_rules();
+		self::filter_contents();
+	}
+
+	/**
+	*	Filter the content if it has blocks and identifies top level blocks that
+	*	have inner blocks, storing a flag $is_rendering_inner_blocks that indicates
+	*	to any render wheter it is inside a block or not
+	*/
+	static private function filter_contents(){
+		global $is_rendering_inner_blocks;
+		$is_rendering_inner_blocks = false;
+		RB_Filters_Manager::add_action('ta_identify_top_level_parent_blocks', 'the_content', function($content){
+			if(!has_blocks($content))
+		        return $content;
+
+		    global $is_rendering_inner_blocks;
+		    $parsed_blocks = parse_blocks( $content );
+		    $content = "";
+			$wpautop_priority = has_filter( 'the_content', 'wpautop' );
+			if($wpautop_priority !== false)
+				remove_filter( 'the_content', 'wpautop', $wpautop_priority );
+		    foreach ($parsed_blocks as $parsed_block){
+		        if(isset($parsed_block['innerBlocks']) && !empty($parsed_block['innerBlocks'])){
+		            $is_rendering_inner_blocks = true;
+		        }
+
+		        $content .= render_block($parsed_block);
+		        $is_rendering_inner_blocks = false;
+		    }
+
+			if($wpautop_priority !== false)
+				add_filter( 'the_content', '_restore_wpautop_hook', $wpautop_priority );
+
+		    return $content;
+		}, array(
+			'priority'		=> 0,
+			'accepted_args'	=> 1,
+		));
 	}
 
 	/**

@@ -3,7 +3,8 @@
 class TAArticlesMiscelaneaRow extends TAArticlesBlockRow{
 
     protected $default_args = array(
-        'slides_amount'     => 4,
+        'slides_amount'             => 4,
+        'deactivate_opinion_layout' => false,
     );
 
     public function get_cells_count_if_balanced(){
@@ -19,9 +20,10 @@ class TAArticlesMiscelaneaRow extends TAArticlesBlockRow{
         $regular_3 =isset($articles[3]) ? $articles[3] : null;
 
         $regular_config = array(
-            'size'                  => 'common',
-            'class'                 => '',
-            'desktop_horizontal'    => true,
+            'size'                      => 'common',
+            'class'                     => '',
+            'desktop_horizontal'        => true,
+            'deactivate_opinion_layout' => $deactivate_opinion_layout,
         );
 
         ?>
@@ -30,8 +32,9 @@ class TAArticlesMiscelaneaRow extends TAArticlesBlockRow{
             <div class="col-12 col-md-6">
                 <?php
                 ta_render_article_preview($featured, array(
-                    'size'  => 'large',
-                    'class' => '',
+                    'size'                      => 'large',
+                    'class'                     => '',
+                    'deactivate_opinion_layout' => $deactivate_opinion_layout,
                 ));
                 ?>
             </div>

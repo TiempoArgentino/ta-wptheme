@@ -19,9 +19,10 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                 'articles'          => $articles,
                 'rows'              => array(
                     array(
-                        'format'            => 'common',
-                        'cells_amount'      => -1,
-                        'cells_per_row'     => 3,
+                        'format'                    => 'common',
+                        'cells_amount'              => -1,
+                        'cells_per_row'             => 3,
+                        'deactivate_opinion_layout' => true,
                     ),
                 ),
             ));
