@@ -32,18 +32,30 @@ $can_register = get_option('users_can_register');
                                     <button type="submit" name="login" class="yellow-btn-white-text"><?php echo __('Ingresar', 'gen-theme-base') ?></button>
                                 </div>
                             </form>
-                            <?php if(get_option('users_can_register') !== 0):?>
-                            <div class="sign-up-sign-in text-center mt-4">
-                                <div class="login mt-4">
-                                    <div>
-                                        <p><?php echo __('¿No sos miembro?', 'gen-theme-base') ?></p>
+
+                            <div class="login-opt-container d-flex flex-column flex-lg-row justify-content-lg-around mt-3 mt-lg-5">
+                                <div class="reset-password-button mt-4">
+                                    <div class="text-center mt-4">
+                                        <p>¿Olvidaste tu contraseña?</p>
                                     </div>
-                                    <div class="btns-container text-center" id="login-button">
-                                        <button class="login-btn gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_register_page')) ?>"><?php echo __('Crear cuenta', 'gen-theme-base') ?></a></button>
+                                    <div class="btns-container text-center">
+                                        <button class="gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_lost_password_page'))?>">RECUPERAR</a></button>
                                     </div>
                                 </div>
+                                <?php if (get_option('users_can_register') !== 0) : ?>
+                                    <div class="sign-up-sign-in text-center mt-4">
+                                        <div class="login mt-4">
+                                            <div>
+                                                <p><?php echo __('¿No sos miembro?', 'gen-theme-base') ?></p>
+                                            </div>
+                                            <div class="btns-container text-center" id="login-button">
+                                                <button class="login-btn gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_register_page')) ?>"><?php echo __('Crear cuenta', 'gen-theme-base') ?></a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                            <?php endif;?>
+
                         </div>
 
                     </div>
