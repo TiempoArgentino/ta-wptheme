@@ -3,7 +3,7 @@ $article = TA_Article_Factory::get_article($post);
 
 $date = $article->get_date_day('d/m/Y');
 
-$thumbnail = $article->get_thumbnail();
+$thumbnail = $article->thumbnail_common;
 $section = $article->section;
 $author = $article->first_author;
 $authors = $article->authors;
