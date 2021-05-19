@@ -199,7 +199,19 @@ class TA_Article extends TA_Article_Data{
     */
     public function get_isopinion(){
         $author = $this->first_author;
-        return $author && get_post_meta($this->post->ID, 'ta_article_isopinion', true);
+        $meta_value = get_post_meta($this->post->ID, 'ta_article_isopinion', true);
+        // Sanitize meta value. Some of the articles imported stored "true" and "false" instead
+        // of boolean.
+        if(!is_bool($meta_value)){
+            if(is_string($meta_value)){
+                $meta_value = strtolower(trim($meta_value));
+                $meta_value = $meta_value == "true" ? true : false;
+            }
+            else{
+                $meta_value = !!$meta_value;
+            }
+        }
+        return $author && $meta_value;
     }
 
     /**
