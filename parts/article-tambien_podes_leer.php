@@ -36,7 +36,7 @@ $articles_block->render(array(
     'use_container'     => true,
     'container'         => array(
         'header_type'			=> 'common',
-        'color_context'			=> 'light-blue-bg',
+        'color_context'			=> 'light-blue',
         'title'					=> 'TAMBIÉN PODÉS LEER',
         // 'header_link'			=> '',
         // 'use_term_format'		=> false,
