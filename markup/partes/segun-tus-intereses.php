@@ -25,7 +25,7 @@ $articles_block->render(array(
     'use_container'     => true,
     'container'         => array(
         'header_type'			=> 'common',
-        'color_context'			=> 'light-blue',
+        'color_context'			=> 'light-blue-bg',
         'title'					=> __('SEGÚN TUS INTERESES','gen-theme-base'),
         'header_right'          => function(){
             if(is_user_logged_in()): ?>
