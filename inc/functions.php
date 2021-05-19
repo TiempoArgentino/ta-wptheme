@@ -86,25 +86,17 @@ function get_articles_block_cells_count(){
 
 /**
 *	@param TA_Article_Data $article
-*	@param mixed[] $settings
+*	@param mixed[] $render_settings 											Article preview render arguments. See block `ta/article-preview`
 */
-function ta_render_article_preview($article, $settings = array()){
+function ta_render_article_preview($article, $render_settings = array()){
 	if(!$article)
 		return;
 
-	$config = array();
 	$article_preview_block = RB_Gutenberg_Block::get_block('ta/article-preview');
-    $layout = isset($settings['layout']) ? $settings['layout'] : null;
-	$layout = !$layout && $article->isopinion ? 'opinion' : $layout;
-	$size = isset($settings['size']) ? $settings['size'] : null;
-	$desktop_horizontal = isset($settings['desktop_horizontal']) ? $settings['desktop_horizontal'] : false;
-
-	$article_preview_block->render( array(
-		'article'				=> $article,
-		'layout'				=> $layout,
-		'size'					=> $size,
-		'desktop_horizontal'	=> $desktop_horizontal,
-	) );
+	$args = array_merge(array(
+		'article'		=> $article,
+	), $render_settings);
+	$article_preview_block->render( $args );
 }
 
 

@@ -28,9 +28,10 @@ $articles_block->render(array(
     'articles'          => $articles,
     'rows'              => array(
         array(
-            'format'            => 'common',
-            'cells_amount'      => -1,
-            'cells_per_row'     => 4,
+            'format'                    => 'common',
+            'cells_amount'              => -1,
+            'cells_per_row'             => 4,
+            'deactivate_opinion_layout' => true,
         ),
     ),
     'use_container'     => true,

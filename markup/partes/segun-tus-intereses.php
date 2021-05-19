@@ -10,16 +10,17 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 
 if(!$articles_block)
     return;
-    
+
 $articles = array_map(function($post){ return TA_Article_Factory::get_article($post); }, $posts);
 $articles_block->render(array(
     'articles'          => $articles,
     'rows'              => array(
         array(
-            'format'            => 'common',
-            'cells_amount'      => 4,
-            'cells_per_row'     => 4,
-            'fill'              => true,
+            'format'                    => 'common',
+            'cells_amount'              => 4,
+            'cells_per_row'             => 4,
+            'fill'                      => true,
+            'deactivate_opinion_layout' => true,
         ),
     ),
     'use_container'     => true,

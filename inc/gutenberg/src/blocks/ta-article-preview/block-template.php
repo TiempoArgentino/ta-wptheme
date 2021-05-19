@@ -31,6 +31,9 @@ if($size == 'large')
 // if($desktop_horizontal == true)
 //     $class .= ' horizontal';
 
+if(!$deactivate_opinion_layout)
+    $layout = !$layout && $article->isopinion ? 'opinion' : $layout;
+
 switch ($layout) {
     case 'opinion':
         include "$block_path/templates/opinion.php";
