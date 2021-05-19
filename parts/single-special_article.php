@@ -107,12 +107,13 @@ $sponsor = $article->micrositio->get_sponsor();
     </div>
     <?php endif; ?>
     <?php //include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
-    <?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
+</div>
+<?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
+<div class="container">
     <?php include_once(TA_THEME_PATH . "/markup/partes/comentarios.php");  ?>
     <?php // include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
     <?php //include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
-<div class="container">
-    <?php //include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
-    <?php get_template_part('parts/article', 'tambien_podes_leer', ['post_id' => get_the_ID()]); ?>
-</div>
+
+<?php //include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
+<?php get_template_part('parts/article', 'tambien_podes_leer', ['post_id' => get_the_ID()]); ?>
