@@ -106,11 +106,11 @@ $sponsor = $article->micrositio->get_sponsor();
         <div class="separator"></div>
     </div>
     <?php endif; ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
+    <?php //include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
     <?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
     <?php include_once(TA_THEME_PATH . "/markup/partes/comentarios.php");  ?>
     <?php // include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
+    <?php //include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
 <div class="container">
     <?php //include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
