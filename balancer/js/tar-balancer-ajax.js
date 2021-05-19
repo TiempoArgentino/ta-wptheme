@@ -11,21 +11,22 @@
       $("#cloud-tag-container").slideUp();
         
       
-      if(!tagOpen) {
+      if(!tagOpen || tagOpen === null) {
           localStorage.setItem('tagOpen',true);
       }
 
     });
+
+    $('#listo-cloud').on('click',function(){
+      if(!tagOpen || tagOpen === null) {
+        localStorage.setItem('tagOpen',true);
+    }
+      $("#cloud-tag-container").slideUp();     
+       
+    });
   });
 
-  $('#listo-cloud').on('click',function(){
-    $("#cloud-tag-container").slideUp();
-        
-      
-      if(!tagOpen) {
-          localStorage.setItem('tagOpen',true);
-      }
-  });
+  
 
   $(document).ready(function () {
     $(".cloud-item").on("click", function () {

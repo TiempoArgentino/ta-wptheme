@@ -230,3 +230,6 @@ input#editInfo, input#editDInfo {
   text-transform: uppercase;
   min-width: 130px;
 }
+.ta-context.quienes-somos.mt-3 .img-container {
+  padding-bottom: 0px !IMPORTANT;
+}

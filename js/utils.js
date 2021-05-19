@@ -141,7 +141,7 @@ window.addEventListener("resize", function () {
           return (
             '<div class="d-flex justify-content-between align-items-start">' +
             '<p class="popover-title">Con tu aporte sostenés este Medio</p>' +
-            '<button type="button" id="close" class="close">' +
+            '<button type="button" id="close-1" class="close">' +
             '<img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid">' +
             "</button>" +
             "</div>"
@@ -171,7 +171,7 @@ window.addEventListener("resize", function () {
         html: true,
         sanitize: false,
         title: function () {
-          return '<div class="d-flex justify-content-between align-items-start"><p class="popover-title">Personalizá tu experiencia de lectura</p><button type="button" id="close" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>';
+          return '<div class="d-flex justify-content-between align-items-start"><p class="popover-title">Personalizá tu experiencia de lectura</p><button type="button" id="close-2" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>';
         },
         content: function () {
           return '<p>Completá solo 3 pasos</p><div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 2 de 4</span><button id="go-to-3">siguiente</button></div>';
@@ -189,7 +189,7 @@ window.addEventListener("resize", function () {
         title: function () {
           return (
             '<div class="d-flex justify-content-between align-items-start"><p class="popover-title">Tus preferencias se señalan en íconos:</p>' +
-            '<button type="button" id="close" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>'
+            '<button type="button" id="close-3" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>'
           );
         },
         content: function () {
@@ -211,7 +211,7 @@ window.addEventListener("resize", function () {
         title: function () {
           return (
             '<div class="d-flex justify-content-between align-items-start"><p class="popover-title">Tus configuraciones y actividad</p>' +
-            '<button type="button" id="close" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>'
+            '<button type="button" id="close-4" class="close"><img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid"></button></div>'
           );
         },
         content: function () {
@@ -311,7 +311,7 @@ window.addEventListener("resize", function () {
         }
       }
 
-      $(document).on("click", "#close", cancelOnboarding);
+      $(document).on("click", ".close", cancelOnboarding);
 
       function cancelOnboarding() {
         $(".asociate-opacity-bg").remove();
@@ -322,6 +322,11 @@ window.addEventListener("resize", function () {
         $("#personaliza-popover").popover("hide");
         $("#iconos-popover").popover("hide");
         $("#config-popover").popover("hide");
+
+        var end = localStorage.getItem("onboardingClose");
+        if (!end) {
+          localStorage.setItem("onboardingClose", true);
+        }
       }
     }
   });
