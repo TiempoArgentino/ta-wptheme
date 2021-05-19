@@ -32,29 +32,36 @@ const RBTermsSelector = (props) => {
         labels = {},
     } = props;
 
-    const [isPreparing, setIsPreparing] = useState(true);
+    const [fetchingCapabilities, setFetchingCapabilities] = useState(true);
     const [userCapabilities, setUserCapabilities] = useState({
         canCreate: undefined,
         canRead: undefined,
     });
+    const canUser = useSelect( (select) => select('core').canUser );
+
+    const initializeCapabilities = () => {
+        if(!fetchingCapabilities)
+            return true;
+
+        const capabilities = {
+            canCreate: canUser( 'create', taxonomy ),
+            canRead: canUser( 'read', taxonomy ),
+        };
+
+        if( (capabilities.canCreate === undefined) || (capabilities.canRead === undefined) )
+            return false;
+
+        setUserCapabilities(capabilities);
+        setFetchingCapabilities(false);
+        return true;
+    };
 
     useEffect( () => {
-        // const canUser = useSelect( (select) => select('core').canUser );
-        // wp.data.select( 'core' ).canUser( 'create', 'users' )
+        // Fetch outside to trigger subscribe
+        initializeCapabilities();
         const capabilityCheckUnsubscribe = wp.data.subscribe(() => {
-            const canCreate = wp.data.select( 'core' ).canUser( 'create', taxonomy );
-            const canRead = wp.data.select( 'core' ).canUser( 'read', taxonomy );
-
-            // if some capability is beeing fetched
-            if( (canCreate === undefined) || (canRead === undefined) )
-                return;
-
-            setUserCapabilities({
-                canCreate,
-                canRead,
-            });
-            setIsPreparing(false);
-            capabilityCheckUnsubscribe();
+            if(initializeCapabilities())
+                capabilityCheckUnsubscribe();
         });
 
         return () => {
@@ -105,7 +112,7 @@ const RBTermsSelector = (props) => {
         return null;
     }
 
-    const loading = loadingTerms || isPreparing;
+    const loading = loadingTerms || fetchingCapabilities;
 
     return (
         <div className="ta-authors-selector">

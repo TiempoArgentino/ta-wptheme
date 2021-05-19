@@ -103,7 +103,6 @@ class TA_Theme
 		global $is_rendering_inner_blocks;
 		$is_rendering_inner_blocks = false;
 		RB_Filters_Manager::add_action('ta_identify_top_level_parent_blocks', 'the_content', function($content){
-			var_dump(has_filter( 'the_content', 'wpautop' ));
 			if(!has_blocks($content))
 		        return $content;
 
