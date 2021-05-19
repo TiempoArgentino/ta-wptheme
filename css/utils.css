@@ -216,3 +216,17 @@ div#page-404 img {
 div#page-404 {
   background: #EBF1F2;
 }
+input#editInfo, input#editDInfo {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  min-width: 130px;
+}
