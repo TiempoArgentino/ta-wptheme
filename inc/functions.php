@@ -462,7 +462,7 @@ function get_etiquetas($request){
 		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
 		CURLOPT_RETURNTRANSFER    	=> true,
 		CURLOPT_POST				=> true,
-		CURLOPT_HTTPHEADER			=> 'Content-Type: application/json',
+		CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
 		CURLOPT_POSTFIELDS			=> $request->get_body(),
 	));
 
@@ -472,7 +472,7 @@ function get_etiquetas($request){
 	// free
 	curl_close($ch);
 
-	return $output;
+	return json_decode($output);
 }
 
 function import_status_to_string($status_code){
