@@ -172,39 +172,10 @@
     </div>
     <div id="searchBar" class="collapse my-4" aria-labelledby="searchBar" data-parent="#search-btn">
         <div class="container">
-            <form id="searchform" method="get" action="<?php echo home_url('/'); ?>">
-                <div class="search-bar-container px-3 pt-3 pb-4">
-                    <div class="close d-flex d-lg-none justify-content-end">
-                        <div>
-                            <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#searchBar" aria-expanded="true" aria-controls="searchBar">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/close.svg" class="img-fluid" alt="">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="input-container d-flex justify-content-center mt-3">
-                        <div class="search-icon mr-2">
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/search-icon-blue.svg" class="img-fluid" alt="">
-                        </div>
-                        <div class="input-wrapper flex-fill">
-                            <input type="text" name="s" placeholder="Buscar en Tiempo Argentino..." value="<?php the_search_query(); ?>"/>
-                            <input type="hidden" name="post_type" value="ta_article" />
-                        </div>
-                        <div class="search d-none d-lg-flex justify-content-center ml-3">
-                            <button type="submit">BUSCAR</button>
-                        </div>
-                        <div class="close d-flex justify-content-end align-items-center ml-3">
-                            <div>
-                                <button class="btn btn-link d-none d-lg-flex" data-toggle="collapse" data-target="#searchBar" aria-expanded="true" aria-controls="searchBar">
-                                    <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/close.svg" class="img-fluid" alt="">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search d-flex d-lg-none justify-content-center mt-4">
-                        <button type="submit">BUSCAR</button>
-                    </div>
-                </div>
-            </form>
+            <?php get_template_part('parts/common', 'searchform', array(
+                'search_query'  => get_search_query(),
+                'close_button'  => true,
+            )); ?>
         </div>
     </div>
     <?php include_once(TA_THEME_PATH . '/markup/partes/menu.php');  ?>
