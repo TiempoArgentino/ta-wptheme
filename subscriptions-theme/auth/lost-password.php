@@ -23,7 +23,7 @@
                                 <div class="subtitle text-center mt-4">
                                     <form method="post" class="subscritpions-form" id="lost-password-form" action="<?php echo wp_lostpassword_url(); ?>">
                                         <div class="input-container">
-                                            <input type="email" name="user_login" autocomplete="off" value="" id="user_login" class="form-control" placeholder="<?php echo __('Ingresa tu email','subscriptions')?>" required />
+                                            <input type="email" name="user_login" autocomplete="off" value="" id="user_login" class="form-control" placeholder="<?php echo __('Ingresá tu email','subscriptions')?>" required />
                                         </div>
                                         <div class="btns-container text-center mt-3">
                                         <button type="submit" name="send-password" class="yellow-btn-white-text reset-password"><?php echo __( 'Recuperar contraseña', 'personalize-login' ); ?></button>

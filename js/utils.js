@@ -140,7 +140,7 @@ window.addEventListener("resize", function () {
         title: function () {
           return (
             '<div class="d-flex justify-content-between align-items-start">' +
-            '<p class="popover-title">Con tu aporte sostenés este Medio</p>' +
+            '<p class="popover-title">Con tu aporte sostenés este medio</p>' +
             '<button type="button" id="close-1" class="close">' +
             '<img src="wp-content/themes/tiempo-argentino/assets/img/close.svg" class="img-fluid">' +
             "</button>" +
@@ -149,7 +149,7 @@ window.addEventListener("resize", function () {
         },
         content: function () {
           return (
-            "<p>Hace una contribución o sumate como Socio/a</p>" +
+            "<p>Asociate a la comunidad</p>" +
             '<div class="d-flex justify-content-between align-items-end">' +
             '<span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 1 de 4</span>' +
             '<button id="go-to-2">siguiente</button>' +
@@ -216,7 +216,7 @@ window.addEventListener("resize", function () {
         },
         content: function () {
           return (
-            "<p>Ingresa a tu panel de usuario y personalizá tu experiencia</p>" +
+            "<p>Ingresá a tu panel de usuario y personalizá tu experiencia</p>" +
             '<div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 4 de 4</span>' +
             '<button id="end">entendido</button></div>'
           );
