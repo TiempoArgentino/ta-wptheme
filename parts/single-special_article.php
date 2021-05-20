@@ -31,7 +31,7 @@ $sponsor = $article->micrositio->get_sponsor();
             </div>
             <?php if( !$article->thumbnail_common['is_default'] ): ?>
             <div class="img-container mt-3">
-                <div class="img-wrapper">
+                <div class="img-wrapper" id="article-main-image">
                     <img src="<?php echo esc_attr($article->thumbnail_common['url']); ?>" alt="" class="img-fluid w-100" />
                 </div>
                 <?php get_template_part('parts/image', 'copyright', array('photographer' => $article->thumbnail_common['author'])); ?>
