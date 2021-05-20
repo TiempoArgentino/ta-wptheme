@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 const { useSelect, useDispatch, registerGenericStore } = wp.data;
+const {apiFetch} = wp;
 
 /**
 *   Utilizes the etiquetador API to return suggested tags for an article.
@@ -37,17 +38,19 @@ export function useEtiquetador(props){
         myHeaders.append("Content-Type", "application/json");
 
         const requestOptions = {
+            path: `/ta/v1/etiquetador`,
+            // parse: false,
             method: 'POST',
             headers: myHeaders,
-            body: JSON.stringify({
+            data: {
               query_string: text,
               keywords_qty: `${amount}`,
-            }),
+            },
             redirect: 'follow'
         };
 
-        fetch("https://tiempoar-supervised-learning.herokuapp.com/api/textrank", requestOptions)
-            .then( response => response.json() )
+        apiFetch( requestOptions )
+            // .then( response => response.json() )
             .catch( error => {
                 console.log('ERROR', error);
                 setError(error);
