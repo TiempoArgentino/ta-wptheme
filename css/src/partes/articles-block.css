@@ -71,6 +71,9 @@
 .article-preview.benefits .content .options .btns-container {
   flex-wrap: nowrap;
 }
+.article-preview.benefits .content .options .btns-container .request button a {
+  color: var(--ta-celeste) !important;
+}
 .article-preview.benefits .content .options .btns-container .request button,
 .article-preview.benefits .content .options .btns-container .see-description button {
   font-family: "Red Hat Display";
