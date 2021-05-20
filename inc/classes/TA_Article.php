@@ -205,12 +205,13 @@ class TA_Article extends TA_Article_Data{
         if(!is_bool($meta_value)){
             if(is_string($meta_value)){
                 $meta_value = strtolower(trim($meta_value));
-                $meta_value = $meta_value == "true" ? true : false;
+                $meta_value = $meta_value == "true" || $meta_value == "1" ? true : false;
             }
             else{
-                $meta_value = !!$meta_value;
+                $meta_value = boolval($meta_value);
             }
         }
+
         return $author && $meta_value;
     }
 

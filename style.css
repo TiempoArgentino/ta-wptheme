@@ -173,3 +173,7 @@ reemplazar en styles de angie
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+.ta-celeste-color{
+    color: var(--ta-celeste);
+}

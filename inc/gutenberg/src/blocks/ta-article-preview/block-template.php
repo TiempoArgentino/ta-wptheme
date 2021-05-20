@@ -32,7 +32,7 @@ if($size == 'large')
 //     $class .= ' horizontal';
 
 if(!$deactivate_opinion_layout)
-    $layout = !$layout && $article->isopinion ? 'opinion' : $layout;
+    $layout = $article->isopinion ? 'opinion' : $layout;
 
 switch ($layout) {
     case 'opinion':

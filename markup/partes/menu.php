@@ -37,38 +37,10 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
             </div>
         </div>
         <div id="searchBarMenu" class="collapse mb-4" aria-labelledby="searchBarMenu" data-parent="#search-btn2">
-            <div class="search-bar-container px-3 pt-3 pb-4">
-                <div class="close d-flex d-lg-none justify-content-end">
-                    <div>
-                        <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#searchBarMenu"
-                            aria-expanded="true" aria-controls="searchBarMenu">
-                            <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/close.svg" class="img-fluid" alt="">
-                        </button>
-                    </div>
-                </div>
-                <div class="input-container d-flex justify-content-center mt-3">
-                    <div class="search-icon mr-2">
-                        <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/search-icon-blue.svg" class="img-fluid" alt="">
-                    </div>
-                    <div class="input-wrapper flex-fill">
-                        <input type="text" placeholder="buscar en Tiempo Argentino_" />
-                    </div>
-                    <div class="search d-none d-lg-flex justify-content-center ml-3">
-                        <button>BUSCAR</button>
-                    </div>
-                    <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
-                        <div>
-                            <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#searchBarMenu"
-                                aria-expanded="true" aria-controls="searchBarMenu">
-                                <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/close.svg" class="img-fluid" alt="">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="search d-flex d-lg-none justify-content-center mt-4">
-                    <button>BUSCAR</button>
-                </div>
-            </div>
+            <?php get_template_part('parts/common', 'searchform', array(
+                'search_query'  => get_search_query(),
+                'close_button'  => true,
+            )); ?>
         </div>
         <div class="menu-items-container d-block d-lg-flex flex-column flex-lg-row">
             <div class="menu-section-wrapper">
