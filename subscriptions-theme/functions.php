@@ -40,7 +40,7 @@ class Subscriptions_Assets
         echo '<li class="nav-item position-relative">
         <a class="nav-link d-flex flex-row-reverse tab-select" id="subscriptions-tab" data-toggle="tab" href="#subscriptions" data-content="#subscription">
             <div></div>
-            <p>' . __('Subscripciones', 'gen-theme-base') . '</p>
+            <p>' . __('Subscripciones', 'gen-base-theme') . '</p>
 
         </a>
     </li>';
@@ -77,11 +77,11 @@ class Subscriptions_Assets
 
         $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-        $msg .= '<a href="' . get_permalink(get_option('subscriptions_loop_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Seamos socios', 'gen-theme-base') . '</a><br />';
+        $msg .= '<a href="' . get_permalink(get_option('subscriptions_loop_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Seamos socios', 'gen-base-theme') . '</a><br />';
 
-        $msg .= __('Si ya eres socio:', 'gen-theme-base');
+        $msg .= __('Si ya eres socio:', 'gen-base-theme');
 
-        $msg .= '<div class="d-block pt-3"><a href="' . get_permalink(get_option('subscriptions_login_register_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Inicia sesión', 'gen-theme-base') . '</a></div>';
+        $msg .= '<div class="d-block pt-3"><a href="' . get_permalink(get_option('subscriptions_login_register_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Inicia sesión', 'gen-base-theme') . '</a></div>';
         $msg .= '</div>';
 
         return $msg;
@@ -117,22 +117,22 @@ class Subscriptions_Assets
 
             if ($active === null || $active !== 'active' || $active === '') {
                 $msg = '<div class="text-center pt-5 pb-5 block-message">';
-                $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía caducó o no tienes una, puedes actualizarla en tu perfil.', 'gen-theme-base');
+                $msg .= __('Hola :', 'gen-base-theme') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía caducó o no tienes una, puedes actualizarla en tu perfil.', 'gen-base-theme');
 
                 $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-base-theme') . '</a><br />';
 
                 $msg .= '</div>';
 
                 return $msg;
             } else if (!$role_in || !$authorized) {
                 $msg = '<div class="text-center pt-5 pb-5 block-message">';
-                $msg .= __('Hola :', 'gen-theme-base') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-theme-base');
+                $msg .= __('Hola :', 'gen-base-theme') . ' ' . wp_get_current_user()->first_name . ' ' . __('parece que tu membresía no es para este contenido, puedes cambiar el tipo en tu perfil personal.', 'gen-base-theme');
 
                 $msg .= '<img src="' . get_stylesheet_directory_uri() . '/subscriptions-theme/img/protected.png" class="img-fluid d-block mx-auto mt-3 mb-5">';
 
-                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-theme-base') . '</a><br />';
+                $msg .= '<a href="' . get_permalink(get_option('user_panel_page')) . '" class="block-button d-block p-3 mx-auto text-uppercase">' . __('Mi Perfil', 'gen-base-theme') . '</a><br />';
 
                 $msg .= '</div>';
 

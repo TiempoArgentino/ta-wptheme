@@ -5,14 +5,14 @@
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('PERSONALIZAR','gen-theme-base')?><span class="ml-2"><?php echo __('LOCALIZACIÓN','gen-theme-base')?></span></h4>
+            <h4><?php echo __('PERSONALIZAR','gen-base-theme')?><span class="ml-2"><?php echo __('LOCALIZACIÓN','gen-base-theme')?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
                 <div class="py-2">
                     <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4 class="italic m-0"><?php echo __('Hola','gen-theme-base')?></h4>
+                            <h4 class="italic m-0"><?php echo __('Hola','gen-base-theme')?></h4>
                             <h4 class="italic m-0"><?php echo wp_get_current_user()->first_name. ' ' .wp_get_current_user()->last_name?></h4>
                         </div>
                         <div class="asociate-wrapper">
@@ -20,7 +20,7 @@
                                 <img src="<?php echo get_template_directory_uri()?>/assets/img/localizacion.svg" alt="" class="img-fluid w-75">
                             </div>
                             <div class="subtitle text-center mt-4">
-                                <p><?php echo __('Queremos ofrecerte contenido acorde a tu localización. Por ello, indicanos desde dónde nos leés:','gen-theme-base')?>
+                                <p><?php echo __('Queremos ofrecerte contenido acorde a tu localización. Por ello, indicanos desde dónde nos leés:','gen-base-theme')?>
                                 </p>
                             </div>
                             <div class="form-container mt-4 mb-5">
@@ -40,8 +40,8 @@
     </div>
     <div class="container">
         <div class="btns-container d-flex justify-content-between mt-3">
-            <button class="gray-btn-black-text w-50" id="skip-1"><?php echo __('omitir','gen-theme-base')?></button>
-            <button class="w-50" id="next-1" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-theme-base')?></button>
+            <button class="gray-btn-black-text w-50" id="skip-1"><?php echo __('omitir','gen-base-theme')?></button>
+            <button class="w-50" id="next-1" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-base-theme')?></button>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('PERSONALIZAR','gen-theme-base')?><span class="ml-2"><?php echo __('temas','gen-theme-base')?></span></h4>
+            <h4><?php echo __('PERSONALIZAR','gen-base-theme')?><span class="ml-2"><?php echo __('temas','gen-base-theme')?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
@@ -60,7 +60,7 @@
                     <div class="subs-opt mt-3 mt-md-5">
                         <div class="asociate-wrapper">
                             <div class="subtitle text-center mt-4">
-                                <p><?php echo __('Seleccioná los temas que más te interesan','gen-theme-base')?>
+                                <p><?php echo __('Seleccioná los temas que más te interesan','gen-base-theme')?>
                                 </p>
                             </div>
                             <div class="temas d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-left">
@@ -78,7 +78,7 @@
                             </div>
                             <!--<div class="subtitle text-center mt-4 d-none d-md-block">
                                 <a href="">
-                                    <p><?php //echo __('click aquí para cargar todos','gen-theme-base')?></p>
+                                    <p><?php //echo __('click aquí para cargar todos','gen-base-theme')?></p>
                                 </a>
                             </div>-->
                         </div>
@@ -89,8 +89,8 @@
     </div>
     <div class="container">
         <div class="btns-container d-flex justify-content-between mt-3">
-            <button class="gray-btn-black-text w-50" id="skip-2"><?php echo __('omitir','gen-theme-base')?></button>
-            <button class="w-50" id="next-2" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-theme-base')?></button>
+            <button class="gray-btn-black-text w-50" id="skip-2"><?php echo __('omitir','gen-base-theme')?></button>
+            <button class="w-50" id="next-2" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-base-theme')?></button>
         </div>
     </div>
 </div>
@@ -102,7 +102,7 @@
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('PERSONALIZAR','gen-theme-base')?><span class="ml-2"><?php echo __('PERIODISMO','gen-theme-base')?></span></h4>
+            <h4><?php echo __('PERSONALIZAR','gen-base-theme')?><span class="ml-2"><?php echo __('PERIODISMO','gen-base-theme')?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
@@ -110,11 +110,11 @@
                     <div class="subs-opt mt-3 mt-md-5">
                         <div class="asociate-wrapper">
                             <div class="subtitle text-center mt-4">
-                                <p><?php echo __('Estos son algunos artículos de Tiempo Argentino publicados recientemente.','gen-theme-base')?>
+                                <p><?php echo __('Estos son algunos artículos de Tiempo Argentino publicados recientemente.','gen-base-theme')?>
                                 </p>
                             </div>
                             <div class="title text-center mt-4">
-                                <h4><?php echo __('Elige los que más te interesen:','gen-theme-base')?>
+                                <h4><?php echo __('Elige los que más te interesen:','gen-base-theme')?>
                                 </h4>
                             </div>
                             <div class="periodismo articulos d-flex flex-column flex-md-row flex-wrap align-items-center align-items-md-start justify-content-left my-3">
@@ -170,8 +170,8 @@
     </div>
     <div class="container">
         <div class="btns-container d-flex justify-content-between mt-3">
-            <button class="gray-btn-black-text w-50" id="skip-3"><?php echo __('omitir','gen-theme-base')?></button>
-            <button class="w-50" id="next-3" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-theme-base')?></button>
+            <button class="gray-btn-black-text w-50" id="skip-3"><?php echo __('omitir','gen-base-theme')?></button>
+            <button class="w-50" id="next-3" data-user="<?php echo wp_get_current_user()->ID?>"><?php echo __('siguiente','gen-base-theme')?></button>
         </div>
     </div>
 
@@ -184,7 +184,7 @@
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('PERSONALIZAR','gen-theme-base')?><span class="ml-2"><?php echo __('emociones','gen-theme-base')?></span></h4>
+            <h4><?php echo __('PERSONALIZAR','gen-base-theme')?><span class="ml-2"><?php echo __('emociones','gen-base-theme')?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
@@ -192,7 +192,7 @@
                     <div class="subs-opt mt-3 mt-md-5">
                         <div class="asociate-wrapper">
                             <div class="title text-center mt-4">
-                                <h4><?php echo __('¿Cuáles de estas fotos te emocionan?','gen-theme-base')?>
+                                <h4><?php echo __('¿Cuáles de estas fotos te emocionan?','gen-base-theme')?>
                                 </h4>
                             </div>
                             <div class="fotos my-3">
@@ -246,7 +246,7 @@
                             </div>
                            <!-- <div class="subtitle text-center mt-4 d-none d-md-block">
                                 <a href="">
-                                    <p><?php //echo __('click aquí para cargar todos','gen-theme-base')?></p>
+                                    <p><?php //echo __('click aquí para cargar todos','gen-base-theme')?></p>
                                 </a>
                             </div>-->
                         </div>
@@ -271,23 +271,23 @@
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('PERSONALIZAR','gen-theme-base')?><span class="ml-2"><?php echo __('Finalizar','gen-theme-base')?></span></h4>
+            <h4><?php echo __('PERSONALIZAR','gen-base-theme')?><span class="ml-2"><?php echo __('Finalizar','gen-base-theme')?></span></h4>
         </div>
         <div class="container">
             <div class="container-with-header">
                 <div class="py-2">
                     <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                         <div class="title text-center">
-                            <h4 class="italic m-0"><span class="ml-2"><?php echo __('Gracias','gen-theme-base')?> </h4>
+                            <h4 class="italic m-0"><span class="ml-2"><?php echo __('Gracias','gen-base-theme')?> </h4>
                             <h4 class="italic m-0"><?php echo wp_get_current_user()->first_name. ' ' .wp_get_current_user()->last_name?></h4>
                         </div>
                         <div class="asociate-wrapper">
                             <div class="subtitle text-center mt-4">
-                                <p><?php echo __('Estamos trabajando para que disfrutes de una experiencia informativa única','gen-theme-base')?>
+                                <p><?php echo __('Estamos trabajando para que disfrutes de una experiencia informativa única','gen-base-theme')?>
                                 </p>
                             </div>
                             <div class="btns-container text-center mt-4">
-                                <button><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-theme-base')?></a></button>
+                                <button><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-base-theme')?></a></button>
                             </div>
                             <div class="text-center my-5">
                                 <p><?php echo __('Podrás editar tus preferencias, desde tu perfil de usuario, cuando quieras.','gen-theme-base')?></p>

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Tiempo Argentino\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:59-0300\n"
-"PO-Revision-Date: 2021-05-20 11:25+0000\n"
+"PO-Revision-Date: 2021-04-07 20:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
 "Language: es_ES\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.2; wp-5.7.2"
+"X-Loco-Version: 2.5.2; wp-5.7"
 
 #: customizer.php:17
 msgid "Ajustes Globales"
@@ -1017,11 +1017,11 @@ msgstr ""
 
 #: subscriptions-theme/auth/user-panel.php:77
 msgid "Edit your subscription"
-msgstr "Editar membresía"
+msgstr ""
 
 #: subscriptions-theme/auth/user-panel.php:78
 msgid "Remember, the minimun for this transaction is: "
-msgstr "Recuerda, el mínimo para esta transacción es:"
+msgstr ""
 
 #: subscriptions-theme/auth/user-panel.php:83
 msgid "Cambiar mi plan"

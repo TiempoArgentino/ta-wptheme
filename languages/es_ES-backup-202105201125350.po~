@@ -1017,7 +1017,7 @@ msgstr ""
 
 #: subscriptions-theme/auth/user-panel.php:77
 msgid "Edit your subscription"
-msgstr "Editar membresía"
+msgstr ""
 
 #: subscriptions-theme/auth/user-panel.php:78
 msgid "Remember, the minimun for this transaction is: "

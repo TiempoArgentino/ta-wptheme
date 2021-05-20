@@ -27,12 +27,12 @@ $articles_block->render(array(
     'container'         => array(
         'header_type'			=> 'common',
         'color_context'			=> 'light-blue',
-        'title'					=> __('SEGÚN TUS INTERESES','gen-theme-base'),
+        'title'					=> __('SEGÚN TUS INTERESES','gen-base-theme'),
         'header_right'          => function(){
             if(is_user_logged_in()): ?>
             <div class="btns-container d-none d-lg-block">
                 <div class="personalizar">
-                    <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-theme-base')?></a></button>
+                    <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-base-theme')?></a></button>
                 </div>
             </div>
             <?php endif;
@@ -41,7 +41,7 @@ $articles_block->render(array(
             if(is_user_logged_in()): ?>
                 <div class="btns-container d-flex justify-content-between justify-content-lg-end">
                     <div class="personalizar d-block d-lg-none">
-                        <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-theme-base')?></a></button>
+                        <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('PERSONALIZAR','gen-base-theme')?></a></button>
                     </div>
                 </div>
             <?php endif;

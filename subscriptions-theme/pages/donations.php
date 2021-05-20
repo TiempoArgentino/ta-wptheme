@@ -109,12 +109,12 @@
                             </div>
                             <div class="row flex-column pb-5">
                                 <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5 ">
-                                    <?php echo sprintf(__('Para recibir ayuda con el proceso de tu colaboración podés escribir un mail a %s', 'gen-theme-base'), '<a href="mailto:' . get_option('subscriptions_email_sender') . '" class="notif-link">' . get_option('subscriptions_email_sender') . '</a>') ?>
+                                    <?php echo sprintf(__('Para recibir ayuda con el proceso de tu colaboración podés escribir un mail a %s', 'gen-base-theme'), '<a href="mailto:' . get_option('subscriptions_email_sender') . '" class="notif-link">' . get_option('subscriptions_email_sender') . '</a>') ?>
                                 </div>
                                 <div class="col-md-7 mx-auto col-12 donation-footer text-center mt-5">
-                                    <?php echo __('Si sos jubilado, estudiante o podés colaborar con un importe menor', 'gen-theme-base') ?>
+                                    <?php echo __('Si sos jubilado, estudiante o podés colaborar con un importe menor', 'gen-base-theme') ?>
                                     <div class="btns-container text-center mt-3">
-                                        <button type="button" class="login-btn gray-btn-black-text" id="discount-button"><?php echo __('INGRESA ACÁ', 'gen-theme-base') ?></button>
+                                        <button type="button" class="login-btn gray-btn-black-text" id="discount-button"><?php echo __('INGRESA ACÁ', 'gen-base-theme') ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -11,14 +11,14 @@
                 <div class="popup">
                     <div class="container text-center">
                         <div class="title mt-2">
-                            <h4 class=italic><?php echo sprintf(__('Hola %s', 'gen-theme-base'), wp_get_current_user()->first_name) ?></h4>
+                            <h4 class=italic><?php echo sprintf(__('Hola %s', 'gen-base-theme'), wp_get_current_user()->first_name) ?></h4>
                         </div>
                         <div class="popup-content">
                             <div class="aviso">
-                                <p><?php echo sprintf(__('Ya cuentas con una %s', 'gen-theme-base'), '<b>' . __('suscripción') . '</b>') ?></p>
+                                <p><?php echo sprintf(__('Ya cuentas con una %s', 'gen-base-theme'), '<b>' . __('suscripción') . '</b>') ?></p>
                             </div>
                             <div class="continue mt-3">
-                                <p><?php echo __('Si deseás actualizarla, puedes hacerlo desde tu perfil de usuario', 'gen-theme-base') ?></p>
+                                <p><?php echo __('Si deseás actualizarla, puedes hacerlo desde tu perfil de usuario', 'gen-base-theme') ?></p>
                                 <div class="btns-container">
                                     <button><a href="<?php echo get_permalink(get_option('subscriptions_profile')) ?>">ir a mi perfil</a></button>
                                 </div>

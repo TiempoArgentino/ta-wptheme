@@ -46,14 +46,14 @@ do_action('header_thankyou_page');
                                     <p>Muy pronto alguien de Tiempo Argentino te escribirá por e-mail para efectuar el pago.</p>
                                 </div>-->
                                 <div class="title text-center mt-5">
-                                    <p><b><?php echo __('¿Querés contarnos un poco más de vos?','gen-theme-base')?></b></p>
+                                    <p><b><?php echo __('¿Querés contarnos un poco más de vos?','gen-base-theme')?></b></p>
                                 </div>
                                 <div class="text-center">
-                                    <p><?php echo __('De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias','gen-theme-base')?></p>
+                                    <p><?php echo __('De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias','gen-base-theme')?></p>
                                 </div>
                                 <div class="btns-container text-center">
-                                    <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('Personalizar','gen-theme-base')?></a></button>
-                                    <button class="gray-btn-black-text"><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-theme-base')?></a></button>
+                                    <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('Personalizar','gen-base-theme')?></a></button>
+                                    <button class="gray-btn-black-text"><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-base-theme')?></a></button>
                                 </div>
                             </div>
                         </div>

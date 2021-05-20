@@ -6,7 +6,7 @@
     <div class="container-with-header">
         <div class="container">
             <div class="section-title">
-                <h4><?php echo __('Beneficios', 'gen-theme-base') ?></h4>
+                <h4><?php echo __('Beneficios', 'gen-base-theme') ?></h4>
             </div>
         </div>
         <div class="container mt-2 px-0 px-md-3">
@@ -17,39 +17,39 @@
                             <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/white-gift.svg" alt="">
                         </div>
                         <div class="title">
-                            <h2><?php echo __('Participá de los sorteos semanales', 'gen-theme-base') ?></h2>
+                            <h2><?php echo __('Participá de los sorteos semanales', 'gen-base-theme') ?></h2>
                         </div>
                     </div>
                     <div class="subtitle mt-3 mt-md-1">
-                        <p><?php echo __('¿Cómo hago para obtener beneficios?', 'gen-theme-base') ?></p>
+                        <p><?php echo __('¿Cómo hago para obtener beneficios?', 'gen-base-theme') ?></p>
                     </div>
                     <div class="beneficios-steps">
                         <div class="step d-flex align-items-start">
                             <div class="step-icon d-flex mr-2 mx-md-2">
-                                <div class="mr-1"><?php echo __('1', 'gen-theme-base') ?></div>
+                                <div class="mr-1"><?php echo __('1', 'gen-base-theme') ?></div>
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/vector-steps.svg" alt="">
                             </div>
                             <div class="content">
-                                <p><span><?php echo __('Elegí hasta 3 beneficios.', 'gen-theme-base') ?> </span><?php echo __('El orden en que los elijas se tomará cómo el orden de prioridad.', 'gen-theme-base') ?>
+                                <p><span><?php echo __('Elegí hasta 3 beneficios.', 'gen-base-theme') ?> </span><?php echo __('El orden en que los elijas se tomará cómo el orden de prioridad.', 'gen-base-theme') ?>
                                 </p>
                             </div>
                         </div>
                         <div class="step d-flex align-items-start">
                             <div class="step-icon d-flex mr-2 mx-md-2">
-                                <div class="mr-1"><?php echo __('2', 'gen-theme-base') ?></div>
+                                <div class="mr-1"><?php echo __('2', 'gen-base-theme') ?></div>
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/vector-steps.svg" alt="">
                             </div>
                             <div class="content">
-                                <p><?php echo sprintf(__('Haremos un %s para distribuirlos.', 'gen-theme-base'), '<span>' . __('sorteo', 'gen-theme-base') . '</span>') ?></p>
+                                <p><?php echo sprintf(__('Haremos un %s para distribuirlos.', 'gen-base-theme'), '<span>' . __('sorteo', 'gen-base-theme') . '</span>') ?></p>
                             </div>
                         </div>
                         <div class="step d-flex align-items-start">
                             <div class="step-icon d-flex mr-2 mx-md-2">
-                                <div class="mr-1"><?php echo __('3', 'gen-theme-base') ?></div>
+                                <div class="mr-1"><?php echo __('3', 'gen-base-theme') ?></div>
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/vector-steps.svg" alt="">
                             </div>
                             <div class="content">
-                                <p><?php echo sprintf(__('Te enviaremos un %s si fuiste favorecido. Te sugerimos solicitar más de uno para no quedarte sin nada.', 'gen-theme-base'), '<span>' . __('email', 'gen-theme-base') . '</span>') ?></p>
+                                <p><?php echo sprintf(__('Te enviaremos un %s si fuiste favorecido. Te sugerimos solicitar más de uno para no quedarte sin nada.', 'gen-base-theme'), '<span>' . __('email', 'gen-base-theme') . '</span>') ?></p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                 <div class="search d-none d-lg-flex justify-content-center ml-3">
                     <input type="hidden" name="post_type" value="beneficios" />
                     
-                    <button type="submit"><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
+                    <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
                 </div>
                 
                 <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
@@ -99,7 +99,7 @@
             </div>
             
             <div class="search d-flex d-lg-none justify-content-center mt-4">
-                <button type="submit"><?php echo __('BUSCAR', 'gen-theme-base') ?></button>
+                <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
             </div>
         </div>
         </form>
@@ -112,7 +112,7 @@
     <div class="container-with-header">
         <div class="container">
             <div class="section-title">
-                <h4><?php echo __('FILTRAR POR:', 'gen-theme-base') ?></h4>
+                <h4><?php echo __('FILTRAR POR:', 'gen-base-theme') ?></h4>
             </div>
         </div>
         <div class="container mt-2">
@@ -121,7 +121,7 @@
                     <div class="tag mx-1 selected d-flex justify-content-center my-2">
                         <div class="content p-1">
                             <a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>">
-                                <p class="m-0"><?php echo __('Todos', 'gen-theme-base') ?></p>
+                                <p class="m-0"><?php echo __('Todos', 'gen-base-theme') ?></p>
                             </a>
                         </div>
                         <div class="triangle"></div>
@@ -162,7 +162,7 @@
     <div class="container-with-header py-3">
         <div class="container">
             <div class="section-title">
-                <h4><?php echo __('RESULTADOS POR FILTRO Y/O BÚSQUEDA', 'gen-theme-base') ?></h4>
+                <h4><?php echo __('RESULTADOS POR FILTRO Y/O BÚSQUEDA', 'gen-base-theme') ?></h4>
             </div>
         </div>
         <div class="sub-blocks py-3">

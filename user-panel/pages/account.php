@@ -44,7 +44,7 @@
                                     <label for="Contrasena">Contraseña: </label>
                                     <input type="password" id="Contrasena" class="input-account" placeholder=" " value="" disabled>
                                 </div>
-                                <p><?php echo __('dejar en blanco si no se va a cambiar', 'gen-theme-base') ?></p>
+                                <p><?php echo __('dejar en blanco si no se va a cambiar', 'gen-base-theme') ?></p>
                             </div>
                         </div>
                         <div class="btns-container text-center d-flex justify-content-center mt-4">

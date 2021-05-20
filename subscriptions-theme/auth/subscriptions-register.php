@@ -10,7 +10,7 @@ $can_register = get_option('users_can_register');
     </div>
     <div class="asociate-block-container">
         <div class="section-title p-2">
-            <h4><?php echo __('Tiempo Argentino', 'gen-theme-base') ?><span class="ml-2"><?php echo __('Crear cuenta', 'gen-theme-base') ?></span></h4>
+            <h4><?php echo __('Tiempo Argentino', 'gen-base-theme') ?><span class="ml-2"><?php echo __('Crear cuenta', 'gen-base-theme') ?></span></h4>
         </div>
         <div class="container">
             <!-- register form -->
@@ -18,7 +18,7 @@ $can_register = get_option('users_can_register');
                 <div class="col-md-6 mx-auto col-12" id="form-register-container">
 
                     <div class="title text-center mt-5 mb-3">
-                        <h4 class="italic m-0"><?php echo __('Crear cuenta', 'gen-theme-base') ?></h4>
+                        <h4 class="italic m-0"><?php echo __('Crear cuenta', 'gen-base-theme') ?></h4>
                         <h4 class="italic m-0"></h4>
                     </div>
                     <?php do_action('subscriptions_before_register_form') ?>

@@ -23,7 +23,7 @@ if (!$micrositio)
             <div class="desktop-ribbon d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="beneficios-socios d-flex align-items-center px-2">
-                        <p><a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>"><?php echo __('Comunidad Tiempo', 'gen-theme-base') ?></a></p>
+                        <p><a href="<?php echo get_permalink(get_option('beneficios_loop_page')) ?>"><?php echo __('Comunidad Tiempo', 'gen-base-theme') ?></a></p>
                     </div>
                     <div class="d-flex justify-content-between flex-fill mx-2">
                         <div class="temas-importantes d-flex align-items-center">
@@ -32,7 +32,7 @@ if (!$micrositio)
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/importante-icon.svg" alt="">
                                 </div>
                                 <div>
-                                    <p><?php echo __('IMPORTANTE >', 'gen-theme-base') ?></p>
+                                    <p><?php echo __('IMPORTANTE >', 'gen-base-theme') ?></p>
                                 </div>
                             </div>
                             <?php
@@ -129,7 +129,7 @@ if (!$micrositio)
                     </div>
                     <div class="asociate-banner-content position-absolute">
                         <div class="separator"></div>
-                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('SUMATE','gen-theme-base')?></a></p>
+                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('SUMATE','gen-base-theme')?></a></p>
                     </div>
                 </div>
             </div>

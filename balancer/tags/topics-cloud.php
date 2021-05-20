@@ -12,10 +12,10 @@
                     </div>
                     <div class="input-container">
                         <div class="title">
-                            <p><?php echo __('Queremos ofrecerte mejor contenido:','gen-theme-base')?></p>
+                            <p><?php echo __('Queremos ofrecerte mejor contenido:','gen-base-theme')?></p>
                         </div>
                         <div>
-                            <p><?php echo sprintf(__('Selecciona los %s y sobre los que querés informarte:','gen-theme-base'),'<span>'.__('temas que te interesan','gen-theme-base').'</span>')?>  </p>
+                            <p><?php echo sprintf(__('Selecciona los %s y sobre los que querés informarte:','gen-base-theme'),'<span>'.__('temas que te interesan','gen-base-theme').'</span>')?>  </p>
                         </div>
                         <!-- tags -->
 
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="ver-mas d-flex justify-content-center mt-4">
-                        <button id="listo-cloud"><?php echo __('Listo','gen-theme-base')?></button>
+                        <button id="listo-cloud"><?php echo __('Listo','gen-base-theme')?></button>
                     </div>
                 </div>
             </div>

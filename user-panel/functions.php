@@ -30,7 +30,7 @@ class User_Panel_Theme
         echo ' <li class="nav-item position-relative">
             <a class="nav-link d-flex flex-row-reverse active tab-select tab-active" id="profile-tab" data-toggle="tab" href="#profile" data-content="#profile">
                 <div></div>
-                <p>' . __('Perfil', 'gen-theme-base') . '</p>
+                <p>' . __('Perfil', 'gen-base-theme') . '</p>
             </a>
         </li>';
     }
@@ -40,7 +40,7 @@ class User_Panel_Theme
         echo ' <li class="nav-item position-relative ">
             <a class="nav-link d-flex flex-row-reverse tab-select" id="account-tab" data-toggle="tab" href="#account" data-content="#account">
                 <div></div>
-                <p>'.__('Cuenta','gen-theme-base').'</p>
+                <p>'.__('Cuenta','gen-base-theme').'</p>
             </a>
         </li>';
     }

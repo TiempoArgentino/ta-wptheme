@@ -18,7 +18,7 @@ do_action('subscriptions_payment_page_header');
             <?php if(null !== Subscriptions_Sessions::get_session('flash_messages')): ?>
             <div class="row">
                 <div class="col-7 mx-auto text-center alert alert-<?php echo Subscriptions_Sessions::get_session('flash_messages')['name']?>">
-                    <?php echo __('Ocurrio un error con tu pago','gen-theme-base')?><br />
+                    <?php echo __('Ocurrio un error con tu pago','gen-base-theme')?><br />
                     <i><?php echo Subscriptions_Sessions::get_session('flash_messages')['msg']?></i>
                 </div>
             </div>
@@ -71,38 +71,38 @@ do_action('subscriptions_payment_page_header');
                                                 <input type="hidden" id="localidad" value="<?php echo $address[0]['city']?>">
                                                 </div>
                                                 <div class="input-container">
-                                                    <input type="text" placeholder="<?php echo __('Calle', 'gen-theme-base') ?>" name="address" id="address" value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required />
+                                                    <input type="text" placeholder="<?php echo __('Calle', 'gen-base-theme') ?>" name="address" id="address" value="<?php echo $address[0]['address'] !== null ? $address[0]['address'] : ''; ?>" required />
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="input-container mr-3 w-100">
-                                                        <input type="text" placeholder="<?php echo __('Número', 'gen-theme-base') ?>" name="number" id="number" value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required />
+                                                        <input type="text" placeholder="<?php echo __('Número', 'gen-base-theme') ?>" name="number" id="number" value="<?php echo $address[0]['number'] !== null ? $address[0]['number'] : ''; ?>" required />
                                                     </div>
                                                     <div class="input-container w-100">
-                                                        <input type="text" placeholder="<?php echo __('CP', 'gen-theme-base') ?>" name="zip" id="zip" value="<?php echo $address[0]['zip'] !== null ? $address[0]['zip'] : ''; ?>" required />
+                                                        <input type="text" placeholder="<?php echo __('CP', 'gen-base-theme') ?>" name="zip" id="zip" value="<?php echo $address[0]['zip'] !== null ? $address[0]['zip'] : ''; ?>" required />
                                                     </div>
                                                 </div>
                                                 <div class="d-flex">
                                                     <div class="input-container mr-3 w-100">
-                                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-theme-base') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
+                                                        <input type="text" placeholder="<?php echo __('Piso', 'gen-base-theme') ?>" name="floor" id="floor" value="<?php echo $address[0]['floor'] !== null ? $address[0]['floor'] : ''; ?>"/>
                                                     </div>
                                                     <div class="input-container w-100">
-                                                        <input type="text" placeholder="<?php echo __('Dpto', 'gen-theme-base') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>"/>
+                                                        <input type="text" placeholder="<?php echo __('Dpto', 'gen-base-theme') ?>" name="apt" id="apt" value="<?php echo $address[0]['apt'] !== null ? $address[0]['apt'] : ''; ?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="input-container">
-                                                    <input type="text" placeholder="<?php echo __('Entre calles', 'gen-theme-base') ?>" name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
+                                                    <input type="text" placeholder="<?php echo __('Entre calles', 'gen-base-theme') ?>" name="bstreet" id="bstreet" value="<?php echo $address[0]['bstreet'] !== null ? $address[0]['bstreet'] : ''; ?>" />
                                                 </div>
                                                 <div class="input-container">
-                                                    <textarea name="observations" placeholder="<?php echo __('Observaciones', 'gen-theme-base') ?>" class="form-control" id="observations" cols="30" rows="4"><?php echo $address[0]['observations'] !== null ? $address[0]['observations'] : ''; ?></textarea>
+                                                    <textarea name="observations" placeholder="<?php echo __('Observaciones', 'gen-base-theme') ?>" class="form-control" id="observations" cols="30" rows="4"><?php echo $address[0]['observations'] !== null ? $address[0]['observations'] : ''; ?></textarea>
                                                 </div>
                                                 <div class="btns-container text-center mt-4">
-                                                    <button type="button" name="address-button" id="address-button"><?php echo __('Confirmar', 'gen-theme-base') ?></button>
+                                                    <button type="button" name="address-button" id="address-button"><?php echo __('Confirmar', 'gen-base-theme') ?></button>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="info text-center mt-5">
                                             <h6>
-                                                <?php echo sprintf(__('La distribuidora necesita %s para asignar el envío del diario para que lo recibas en tu casa', 'gen-theme-base'), '<b>' . __('15 días', 'gen-theme-base') . '</b>') ?>
+                                                <?php echo sprintf(__('La distribuidora necesita %s para asignar el envío del diario para que lo recibas en tu casa', 'gen-base-theme'), '<b>' . __('15 días', 'gen-base-theme') . '</b>') ?>
                                             </h6>
                                         </div>
                                         <div class="ayuda text-center my-4">

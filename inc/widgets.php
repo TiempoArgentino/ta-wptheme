@@ -42,7 +42,7 @@ class Widgets_Theme_TA
 
     public function home_desktop_widgets()
     {
-        $widgets = ['home_desk_1' => __('Home Desktop 1', 'gen-theme-base'),'home_desk_2' => __('Home Desktop 2', 'gen-theme-base')];
+        $widgets = ['home_desk_1' => __('Home Desktop 1', 'gen-base-theme'),'home_desk_2' => __('Home Desktop 2', 'gen-base-theme')];
 
         foreach($widgets as $key => $val) {
             register_sidebar(array(
@@ -57,12 +57,12 @@ class Widgets_Theme_TA
     public function note_desktop_widgets()
     {
         $widgets = [
-            'over-header-note' => __('Sobre header en nota', 'gen-theme-base'),
-            'over-single-note' => __('Sobre la nota', 'gen-theme-base'),
-            'side-single-note' => __('Sidebar nota', 'gen-theme-base'),
-            'down-single-note' => __('Abajo nota', 'gen-theme-base'),
-            'down-comments-note' => __('Abajo comentarios', 'gen-theme-base'),
-            'side-comments-note' => __('Lado comentarios', 'gen-theme-base'),
+            'over-header-note' => __('Sobre header en nota', 'gen-base-theme'),
+            'over-single-note' => __('Sobre la nota', 'gen-base-theme'),
+            'side-single-note' => __('Sidebar nota', 'gen-base-theme'),
+            'down-single-note' => __('Abajo nota', 'gen-base-theme'),
+            'down-comments-note' => __('Abajo comentarios', 'gen-base-theme'),
+            'side-comments-note' => __('Lado comentarios', 'gen-base-theme'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -78,12 +78,12 @@ class Widgets_Theme_TA
     public function home_desktop()
     {
         $widgets = [
-            'popup' => __('Popup Home', 'gen-theme-base'),
-            'popup_mobile' => __('Popup Mobile Home', 'gen-theme-base'),
-            'footer_fixed' => __('Fija Abajo Desktop', 'gen-theme-base'),
-            'footer_fixed_mobile' => __('Fija Abajo Mobile', 'gen-theme-base'),
-            'vslider_desktop' => __('VSlider Dektop','gen-theme-base'),
-            'vslider_mobile' => __('VSlider Mobile','gen-theme-base')
+            'popup' => __('Popup Home', 'gen-base-theme'),
+            'popup_mobile' => __('Popup Mobile Home', 'gen-base-theme'),
+            'footer_fixed' => __('Fija Abajo Desktop', 'gen-base-theme'),
+            'footer_fixed_mobile' => __('Fija Abajo Mobile', 'gen-base-theme'),
+            'vslider_desktop' => __('VSlider Dektop','gen-base-theme'),
+            'vslider_mobile' => __('VSlider Mobile','gen-base-theme')
         ];
 
         foreach($widgets as $key => $val) {
@@ -99,8 +99,8 @@ class Widgets_Theme_TA
     public function home_mobile()
     {
         $widgets = [
-            'home_mob_1' => __('Header Mobile 1', 'gen-theme-base'),
-            'home_mob_2' => __('Home Mobile 1', 'gen-theme-base'),
+            'home_mob_1' => __('Header Mobile 1', 'gen-base-theme'),
+            'home_mob_2' => __('Home Mobile 1', 'gen-base-theme'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -116,12 +116,12 @@ class Widgets_Theme_TA
     public function note_mobile()
     {
         $widgets = [
-            'note_mob_1' => __('Note Header Mobile', 'gen-theme-base'),
-            'note_mob_2' => __('Note BoxMobile 2', 'gen-theme-base'),
-            'note_mob_3' => __('Note BoxMobile 3', 'gen-theme-base'),
-            'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-theme-base'),
-            'note_mob_5' => __('Note Comentarios Mobi', 'gen-theme-base'),
-            'note_mob_6' => __('Relacionados Mobi', 'gen-theme-base'),
+            'note_mob_1' => __('Note Header Mobile', 'gen-base-theme'),
+            'note_mob_2' => __('Note BoxMobile 2', 'gen-base-theme'),
+            'note_mob_3' => __('Note BoxMobile 3', 'gen-base-theme'),
+            'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-base-theme'),
+            'note_mob_5' => __('Note Comentarios Mobi', 'gen-base-theme'),
+            'note_mob_6' => __('Relacionados Mobi', 'gen-base-theme'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -141,7 +141,7 @@ class Widgets_Theme_TA
     public function middle_single()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 1 (Desk)', 'gen-theme-base'),
+            'name'          => __('Nota medio 1 (Desk)', 'gen-base-theme'),
             'id'            => 'middle-single-note',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
@@ -151,7 +151,7 @@ class Widgets_Theme_TA
     public function middle_single_2()
     {
         register_sidebar(array(
-            'name'          => __('Nota medio 2 (Desk)', 'gen-theme-base'),
+            'name'          => __('Nota medio 2 (Desk)', 'gen-base-theme'),
             'id'            => 'middle-single-note-mobile',
             'before_widget' => '<div class="col-7 mx-auto mt-5 mb-5 d-none d-ms-none d-md-block d-lg-block">',
             'after_widget'  => '</div>',
@@ -161,8 +161,8 @@ class Widgets_Theme_TA
     public function middle_mobile()
     {
         $widgets = [
-            'note_mob_mid_1' => __('Note medio mobile 1', 'gen-theme-base'),
-            'note_mob_mid_2' => __('Note medio mobile 2', 'gen-theme-base'),
+            'note_mob_mid_1' => __('Note medio mobile 1', 'gen-base-theme'),
+            'note_mob_mid_2' => __('Note medio mobile 2', 'gen-base-theme'),
         ];
 
         foreach($widgets as $key => $val) {
@@ -287,14 +287,14 @@ class Widgets_Theme_TA
       public function seccion_desktop_widgets()
       {
           $widgets = [
-              'seccion_head_1' => __('Sección header 1', 'gen-theme-base'),
-              'seccion_head_2' => __('Sección header 2', 'gen-theme-base'),
-              'seccion_desk_1' => __('Sección box 1', 'gen-theme-base'),
-              'seccion_desk_2' => __('Sección box 2', 'gen-theme-base'),
-              'seccion_mob_1' => __('Sección Mobi 1', 'gen-theme-base'),
-              'seccion_mob_2' => __('Sección Mobi 2', 'gen-theme-base'),
-              'seccion_mob_3' => __('Sección Mobi 3', 'gen-theme-base'),
-              'seccion_mob_4' => __('Sección Mobi 4', 'gen-theme-base'),
+              'seccion_head_1' => __('Sección header 1', 'gen-base-theme'),
+              'seccion_head_2' => __('Sección header 2', 'gen-base-theme'),
+              'seccion_desk_1' => __('Sección box 1', 'gen-base-theme'),
+              'seccion_desk_2' => __('Sección box 2', 'gen-base-theme'),
+              'seccion_mob_1' => __('Sección Mobi 1', 'gen-base-theme'),
+              'seccion_mob_2' => __('Sección Mobi 2', 'gen-base-theme'),
+              'seccion_mob_3' => __('Sección Mobi 3', 'gen-base-theme'),
+              'seccion_mob_4' => __('Sección Mobi 4', 'gen-base-theme'),
             ];
   
           foreach($widgets as $key => $val) {
@@ -313,8 +313,8 @@ class Widgets_Theme_TA
       public function micrositio_widgets()
       {
           $widgets = [
-              'micrositio_head_1' => __('Micrositio header', 'gen-theme-base'),
-              'micrositio_mob_1' => __('Micrositio mob header', 'gen-theme-base'),
+              'micrositio_head_1' => __('Micrositio header', 'gen-base-theme'),
+              'micrositio_mob_1' => __('Micrositio mob header', 'gen-base-theme'),
             ];
   
           foreach($widgets as $key => $val) {
@@ -330,7 +330,7 @@ class Widgets_Theme_TA
       public function blockes_widgets()
       {
           $widgets = [
-              'block_widget' => __('Bloque Publicidad', 'gen-theme-base'),
+              'block_widget' => __('Bloque Publicidad', 'gen-base-theme'),
             ];
   
           foreach($widgets as $key => $val) {
