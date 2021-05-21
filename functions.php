@@ -91,6 +91,8 @@ class TA_Theme
 			add_comment_meta($comment->comment_ID, 'is_visitor', $comment->user_id == 0, true);
 		}, 2, 10);
 
+		add_action('wp_head',[self::class,'head_script']);
+
 		self::redirect_searchs();
 		self::filter_contents();
 	}
@@ -99,6 +101,12 @@ class TA_Theme
 		load_theme_textdomain( 'gen-base-theme', get_template_directory() . '/languages' );
 	}
 	
+	static public function head_script()
+	{
+		if(is_single()) { //mow player para 1 video en las internas
+			echo '<script async src="https://mowplayer.com/dist/player.js"></script>';
+		}
+	}
 
 	/**
 	*	Filter the content if it has blocks and identifies top level blocks that
