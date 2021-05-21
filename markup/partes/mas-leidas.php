@@ -44,7 +44,7 @@ $query = get_posts([
                                 <?php foreach($query as $art) : ?>
                                     <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
-                                            <a href="">
+                                            <a href="<?php echo get_permalink( $art->{'ID'} )?>">
                                                 <div class="img-container position-relative">
                                                     <div class="img-wrapper" style="background-image:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>');">
 
@@ -73,7 +73,7 @@ $query = get_posts([
                                 <?php foreach($query as $art) : ?>
                                    <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
-                                            <a href="">
+                                            <a href="<?php echo get_permalink( $art->{'ID'} )?>">
                                                 <div class="img-container position-relative">
                                                     <div class="img-wrapper" style="background-image:url('<?php echo get_the_post_thumbnail_url($art->{'ID'}) ?>');">
 
