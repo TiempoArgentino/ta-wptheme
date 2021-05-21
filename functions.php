@@ -82,6 +82,7 @@ class TA_Theme
 		add_action('admin_menu', [__CLASS__, 'remove_posts']);
 		self::increase_curl_timeout();
 		self::remove_quick_edit();
+		add_action( 'after_setup_theme', [self::class,'languages_path'] );
 
 		add_action('save_post_ta_article', [self::class, 'save_relatives_taxonomies'], 10, 2);
 
@@ -93,6 +94,11 @@ class TA_Theme
 		self::redirect_searchs();
 		self::filter_contents();
 	}
+
+	static public function languages_path() {
+		load_theme_textdomain( 'gen-base-theme', get_template_directory() . '/languages' );
+	}
+	
 
 	/**
 	*	Filter the content if it has blocks and identifies top level blocks that
