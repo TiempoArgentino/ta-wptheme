@@ -136,10 +136,11 @@
                                             foreach($query as $t):
                                                 $authors = get_the_terms($t->{'ID'},get_option('balancer_editorial_autor'));
                                                 $post_author = [];
-                                                foreach($authors as $a){
-                                                    $post_author[] = $a->{'term_id'};
+                                                if($authors || $authors != null) {
+                                                    foreach($authors as $a){
+                                                        $post_author[] = $a->{'term_id'};
+                                                    }
                                                 }
-                    
                                         ?>
                                 <div class="articulo col-12 col-md-4 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_taxonomy',true)) ? 'art-selected' : ''?>" id="art-<?php echo $key?>">
                                     <label>
@@ -215,8 +216,10 @@
                                             foreach($query as $t):
                                                 $taxos = get_the_terms($t->{'ID'},get_option('balancer_editorial_taxonomy'));
                                                 $post_tax = [];
-                                                foreach($taxos as $ta){
-                                                    $post_tax[] = $ta->{'term_id'};
+                                                if($taxos || $taxos != null) {
+                                                    foreach($taxos as $ta){
+                                                        $post_tax[] = $ta->{'term_id'};
+                                                    }
                                                 }
                     
                                         ?>
