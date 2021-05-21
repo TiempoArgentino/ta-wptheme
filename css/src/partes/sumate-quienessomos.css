@@ -342,6 +342,7 @@
 .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper,
 .quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper {
   min-height: 80px;
+  min-width: 80px;
   width: auto;
   background-image: url(../../../assets/img/author-photo.png);
   background-position: top left;
