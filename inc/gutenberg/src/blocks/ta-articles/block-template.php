@@ -28,7 +28,7 @@ foreach ($rows as $row) {
         'use_balacer_articles'      => false,
         'balancer_allow_fallback'   => false,
     ), $row);
-    $is_balanced = $row['use_balacer_articles'];
+    $is_balanced = $row['use_balacer_articles'] && function_exists('balancer_front');
     $allows_fallback = $row['balancer_allow_fallback'];
     $articles = [];
     $format = $row['format'];
