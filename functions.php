@@ -46,10 +46,12 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_Article.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Edicion_Impresa.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_Author.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag.php';
@@ -218,6 +220,7 @@ class TA_Theme
 		wp_enqueue_script('tw-js', 'https://platform.twitter.com/widgets.js');
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
+		wp_enqueue_script("ta-balancer-front-block-js", ['react', 'reactdom']);
 
 		wp_localize_script(
 			'ta_comments',

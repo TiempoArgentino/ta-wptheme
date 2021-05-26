@@ -14,6 +14,7 @@
         }
     },
     "dependencies": {
+        "@wordpress/api-fetch": "^5.1.0",
         "array-move": "^3.0.1",
         "autoprefixer": "^10.2.3",
         "css-loader": "^5.0.1",

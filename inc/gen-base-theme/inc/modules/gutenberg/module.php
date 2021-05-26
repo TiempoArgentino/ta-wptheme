@@ -93,6 +93,10 @@ class GEN_Gutenberg_Build{
 	 */
 	static public function enqueue_blocks_assets(){
 
+		$default_block_args = array(
+			'script_dependencies'	=> array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ),
+		);
+
 		foreach (new DirectoryIterator( self::get_src_path() . '/blocks' ) as $block) {
 			if($block->isDot()) continue;
 			$block_name = $block->getBasename();
@@ -108,6 +112,7 @@ class GEN_Gutenberg_Build{
 			if( !$block_args || !is_array($block_args) || !isset($block_args['id']) )
 				continue;
 
+			$block_args = array_merge($default_block_args, $block_args);
 			$rb_block = new RB_Gutenberg_Block($block_args['id']);
 
 			// Attributes registration
@@ -139,7 +144,7 @@ class GEN_Gutenberg_Build{
 					wp_register_script(
 						"$block_name-block-js", // Handle.
 						"$block_dist_url/block.min.js", // Block.build.js: We register the block here. Built with Webpack.
-						array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), // Dependencies, defined above.
+						$block_args['script_dependencies'], // Dependencies, defined above.
 						null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 						true // Enqueue the script in the footer.
 					);
