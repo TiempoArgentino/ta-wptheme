@@ -17,7 +17,7 @@
                             <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/white-gift.svg" alt="">
                         </div>
                         <div class="title">
-                            <h2><?php echo __('Participá de los sorteos semanales', 'gen-base-theme') ?></h2>
+                            <h2><?php echo __('Beneficios para la Comunidad Tiempo', 'gen-base-theme') ?></h2>
                         </div>
                     </div>
                     <div class="subtitle mt-3 mt-md-1">
@@ -30,7 +30,7 @@
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/vector-steps.svg" alt="">
                             </div>
                             <div class="content">
-                                <p><span><?php echo __('Elegí hasta 3 beneficios.', 'gen-base-theme') ?> </span><?php echo __('El orden en que los elijas se tomará cómo el orden de prioridad.', 'gen-base-theme') ?>
+                                <p><span><?php echo __('Elegí hasta 3 beneficios.', 'gen-base-theme') ?> </span><?php echo __('El orden en que los elijas se tomará como el orden de prioridad.', 'gen-base-theme') ?>
                                 </p>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/vector-steps.svg" alt="">
                             </div>
                             <div class="content">
-                                <p><?php echo sprintf(__('Te enviaremos un %s si fuiste favorecido. Te sugerimos solicitar más de uno para no quedarte sin nada.', 'gen-base-theme'), '<span>' . __('email', 'gen-base-theme') . '</span>') ?></p>
+                                <p><?php echo sprintf(__('Te enviaremos un %s si ganaste. Te sugerimos solicitar más de uno para no quedarte sin nada.', 'gen-base-theme'), '<span>' . __('email', 'gen-base-theme') . '</span>') ?></p>
                             </div>
                         </div>
                     </div>
