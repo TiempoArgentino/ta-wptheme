@@ -7,7 +7,7 @@
     <div class="asociate-block-container">
 
         <div class="section-title p-2">
-            <h4><?php echo __('Tiempo Argentino', 'gen-theme-base') ?><span class="ml-2"><?php echo __('Recuperar contraseña', 'gen-theme-base') ?></span></h4>
+            <h4><?php echo __('Tiempo Argentino', 'gen-base-theme') ?><span class="ml-2"><?php echo __('Recuperar contraseña', 'gen-base-theme') ?></span></h4>
         </div>
         <?php if (!is_user_logged_in()) : ?>
             <div class="container">
@@ -15,7 +15,7 @@
                     <div class="py-2">
                         <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                             <div class="title text-center">
-                                <h4 class="italic m-0"><?php echo __('Recuperar contraseña', 'gen-theme-base') ?></h4>
+                                <h4 class="italic m-0"><?php echo __('Recuperar contraseña', 'gen-base-theme') ?></h4>
                                 <h4 class="italic m-0"></h4>
                             </div>
                             <div class="asociate-wrapper">
@@ -23,7 +23,7 @@
                                 <div class="subtitle text-center mt-4">
                                     <form method="post" class="subscritpions-form" id="lost-password-form" action="<?php echo wp_lostpassword_url(); ?>">
                                         <div class="input-container">
-                                            <input type="email" name="user_login" autocomplete="off" value="" id="user_login" class="form-control" placeholder="<?php echo __('Ingresa tu email','subscriptions')?>" required />
+                                            <input type="email" name="user_login" autocomplete="off" value="" id="user_login" class="form-control" placeholder="<?php echo __('Ingresá tu email','subscriptions')?>" required />
                                         </div>
                                         <div class="btns-container text-center mt-3">
                                         <button type="submit" name="send-password" class="yellow-btn-white-text reset-password"><?php echo __( 'Recuperar contraseña', 'personalize-login' ); ?></button>
@@ -44,7 +44,7 @@
                     <div class="py-2">
                         <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                             <div class="title text-center">
-                                <h4 class="italic m-0"><?php echo sprintf(__('Hola %s, ya estas logueado.', 'gen-theme-base'), '<span>' . wp_get_current_user()->first_name . '</span>') ?></h4>
+                                <h4 class="italic m-0"><?php echo sprintf(__('Hola %s, ya estas logueado.', 'gen-base-theme'), '<span>' . wp_get_current_user()->first_name . '</span>') ?></h4>
                                 <h4 class="italic m-0"></h4>
                             </div>
                             <div class="btns-container text-center mt-5">

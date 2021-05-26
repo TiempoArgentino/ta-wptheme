@@ -49,7 +49,7 @@
                             <img src="<?php echo get_template_directory_uri() ?>/assets/img/guardados-icon.svg" alt="" class="img-fluid">
                         </div>
                         <div class="opt-title">
-                            <p><?php echo __('Guardados', 'gen-theme-base') ?> <span>(<?php echo balancer_user()->favorites_count() ?>)</span></p>
+                            <p><?php echo __('Guardados', 'gen-base-theme') ?> <span>(<?php echo balancer_user()->favorites_count() ?>)</span></p>
                         </div>
                     </button>
                 </div>
@@ -70,7 +70,7 @@
     <div class="user-block user-saved mt-4 data-profile-content" id="guardados">
         <div class="container">
             <div class="title text-center">
-                <h4><?php echo __('Guardadas', 'gen-theme-base') ?></h4>
+                <h4><?php echo __('Guardadas', 'gen-base-theme') ?></h4>
             </div>
             <div class="saved">
                 <?php if (balancer_user()->favorites_show_profile()) : ?>
@@ -86,21 +86,21 @@
                                     <p><?php echo $f->{'post_title'} ?></p>
                                 </div>
                                 <div class="author">
-                                    <small><?php echo __('Por:','gen-theme-base')?> <?php $autores = join(', ', wp_list_pluck(get_the_terms($f->{'ID'},'ta_article_author'), 'name')); echo $autores; ?></small>
+                                    <small><?php echo __('Por:','gen-base-theme')?> <?php $autores = join(', ', wp_list_pluck(get_the_terms($f->{'ID'},'ta_article_author'), 'name')); echo $autores; ?></small>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                     <div class="clearall mb-4">
                         <div class="clearall-btn text-center mt-4">
-                            <button><?php echo __('limpiar lista','gen-theme-base')?></button>
+                            <button><?php echo __('limpiar lista','gen-base-theme')?></button>
                         </div>
                     </div>
                 <?php else : ?>
                     <div class="saved-article my-3">
                         <div class="saved-body mt-3">
                             <div class="article-title text-center">
-                                <p><?php echo __('No tienes ninguna noticia guarda', 'gen-theme-base') ?></p>
+                                <p><?php echo __('No tienes ninguna noticia guarda', 'gen-base-theme') ?></p>
                             </div>
                         </div>
                     </div>

@@ -50,7 +50,7 @@ function renderInside({ component, node, removeOldHtml }){
 }
 
 function renderHook({ node, hook }){
-    console.log('renderHook', hook);
+    // console.log('renderHook', hook);
     renderInside({
         component: hook.component({
             node: node,
@@ -113,7 +113,7 @@ const obs = new MutationObserver(function(mutations, observer) {
                     return node.componentContainer;
                 },
                 cb: (node, componentContainer) => {
-                    console.log("Component unmounted");
+                    // console.log("Component unmounted");
                     unmountComponentAtNode(componentContainer)
                     componentContainer.parentNode.removeChild(componentContainer);
                 },

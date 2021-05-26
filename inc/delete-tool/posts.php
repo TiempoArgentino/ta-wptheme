@@ -137,8 +137,8 @@ class TA_Tools_Admin{
     public function menu_borrar() {
         add_submenu_page(
             'tools.php',
-            __( 'Borrar Articulos', 'gen-theme-base' ),
-            __( 'Borrar Articulos', 'gen-theme-base' ),
+            __( 'Borrar Articulos', 'gen-base-theme' ),
+            __( 'Borrar Articulos', 'gen-base-theme' ),
             'manage_options',
             'borrar-articulos',
             [$this,'get_all_users']

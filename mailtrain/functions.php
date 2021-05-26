@@ -25,7 +25,7 @@ class Newsletter_Assets
 
     public function mailtrain_api_widgets_init() {
         register_sidebar( array(
-            'name'          => __( 'Newsletter Notas', 'gen-theme-base' ),
+            'name'          => __( 'Newsletter Notas', 'gen-base-theme' ),
             'id'            => 'sidebar-1',
             'before_widget' => '',
             'after_widget'  => '',
@@ -36,7 +36,7 @@ class Newsletter_Assets
     {
         echo ' <li class="nav-item position-relative last-nav-item">
             <a class="nav-link d-flex flex-row-reverse tab-select" id="news-tab" data-toggle="tab" href="#news">
-                <p>'.__('News','gen-theme-base').'</p>
+                <p>'.__('News','gen-base-theme').'</p>
             </a>
         </li>';
     }

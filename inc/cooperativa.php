@@ -17,23 +17,23 @@ class Cooperativa_TA
          */
     
         $labels = [
-            'name' => __( 'Cooperativa', 'gen-theme-base' ),
-            'singular_name' => __( 'Cooperativa', 'gen-theme-base' ),
-            'menu_name' => __( 'Cooperativa', 'gen-theme-base' ),
-            'all_items' => __( 'Todes', 'gen-theme-base' ),
-            'add_new' => __( 'Añadir', 'gen-theme-base' ),
-            'add_new_item' => __( 'Añadir', 'gen-theme-base' ),
-            'edit_item' => __( 'Editar', 'gen-theme-base' ),
-            'new_item' => __( 'Añadir', 'gen-theme-base' ),
-            'view_item' => __( 'Ver', 'gen-theme-base' ),
-            'view_items' => __( 'Ver', 'gen-theme-base' ),
-            'search_items' => __( 'Buscar', 'gen-theme-base' ),
-            'parent' => __( 'Superior', 'gen-theme-base' ),
-            'parent_item_colon' => __( 'Superior', 'gen-theme-base' ),
+            'name' => __( 'Cooperativa', 'gen-base-theme' ),
+            'singular_name' => __( 'Cooperativa', 'gen-base-theme' ),
+            'menu_name' => __( 'Cooperativa', 'gen-base-theme' ),
+            'all_items' => __( 'Todes', 'gen-base-theme' ),
+            'add_new' => __( 'Añadir', 'gen-base-theme' ),
+            'add_new_item' => __( 'Añadir', 'gen-base-theme' ),
+            'edit_item' => __( 'Editar', 'gen-base-theme' ),
+            'new_item' => __( 'Añadir', 'gen-base-theme' ),
+            'view_item' => __( 'Ver', 'gen-base-theme' ),
+            'view_items' => __( 'Ver', 'gen-base-theme' ),
+            'search_items' => __( 'Buscar', 'gen-base-theme' ),
+            'parent' => __( 'Superior', 'gen-base-theme' ),
+            'parent_item_colon' => __( 'Superior', 'gen-base-theme' ),
         ];
     
         $args = [
-            'label' => __( 'Cooperativa', 'gen-theme-base' ),
+            'label' => __( 'Cooperativa', 'gen-base-theme' ),
             'labels' => $labels,
             'description' => '',
             'public' => true,
@@ -68,14 +68,14 @@ class Cooperativa_TA
          */
     
         $labels = [
-            'name' => __( 'Sectores', 'gen-theme-base' ),
-            'singular_name' => __( 'Sector', 'gen-theme-base' ),
-            'menu_name' => __( 'Sectores', 'gen-theme-base' ),
+            'name' => __( 'Sectores', 'gen-base-theme' ),
+            'singular_name' => __( 'Sector', 'gen-base-theme' ),
+            'menu_name' => __( 'Sectores', 'gen-base-theme' ),
         ];
     
         
         $args = [
-            'label' => __( 'Sectores', 'gen-theme-base' ),
+            'label' => __( 'Sectores', 'gen-base-theme' ),
             'labels' => $labels,
             'public' => true,
             'publicly_queryable' => true,

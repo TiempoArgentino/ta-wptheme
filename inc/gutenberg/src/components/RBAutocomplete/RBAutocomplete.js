@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import './css/style.css';
-const { apiFetch } = wp;
 
 function useAutocomplete({
     search,

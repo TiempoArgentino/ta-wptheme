@@ -5,7 +5,7 @@
 <div class="news-list mt-4 mb-3">
     <div class="container">
         <div class="title text-center">
-            <h4><?php echo __('Recibes actualizaciones de estos temas:','gen-theme-base')?></h4>
+            <h4><?php echo __('Recibes actualizaciones de estos temas:','gen-base-theme')?></h4>
         </div>
         <div class="news-themes-dropdowns">
         <?php do_action('newletter_extra_content') ?>

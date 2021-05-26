@@ -48,6 +48,9 @@ class Users_Api
                     
                     if (!$new) {
                         echo http_response_code(400).'\n Error de no se creo';
+                        /**
+                         * sino se importo, reintentar
+                         */
                     } else {
                         
                         if($d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR') {
@@ -87,21 +90,32 @@ class Users_Api
 
                         $create = wp_insert_post($create_order);
 
-                        if (array_key_exists('infopago',$d) || $d['infopago'] !== null) {
+                        $payment_type = $d['payment'];
+
+                        $id_category = $d['id_category'];
+
+                        if($id_category == '1'){
+                            $category_id = 235;
+                        } else if($id_category == '2') {
+                            $category_id = 295;
+                        } else if($id_category == '3' || $id_category == '5') {
+                            $category_id = 237;
+                        }
+
+                        if($payment_type != 'DEBIT' && array_key_exists('infopago',$d)) { //sino es debito, arma mercadopago
 
                             $period = $d['infopago'][0]['auto_recurring']['frequency_type'] === 'months' ? 'month' : 'day';
-
 
                             $sumo_mes = date('Y-m-d H:i:s', strtotime($d['infopago'][0]['next_payment_date']));
                             $user = get_user_by('id',$new);
                             $order_data = [
                                 '_member_order_reference' => $order_reference,
                                 '_member_order_status' => 'completed',
-                                '_member_payment_method' => $d['payment'] === 'DEBIT' ? 'bank' : 'mp',
-                                '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago',
+                                '_member_payment_method' => 'mp',
+                                '_member_payment_method_title' => 'Mercadopago',
                                 '_member_user_id' => $new,
                                 '_member_renewal_date' => $sumo_mes,
-                                '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237,
+                                '_member_suscription_id' => $category_id, //segun id de categoria
                                 '_member_suscription_name' => $d['infopago'][0]['reason'],
                                 '_member_suscription_period' => $period,
                                 '_member_suscription_period_number' => $d['infopago'][0]['auto_recurring']['frequency'],
@@ -136,17 +150,18 @@ class Users_Api
                             add_post_meta($create, 'payment_app_id', $app_id);
                             add_post_meta($create, 'id_subscription_data', $id_subscription);
 
-                            update_user_meta($new, 'suscription',235);
+                            update_user_meta($new, 'suscription',$category_id);
                             update_user_meta($new, 'suscription_name',$d['infopago'][0]['reason']);
+
                         } else {
 
                             $order_data = [
                                 '_member_order_reference' => $order_reference,
                                 '_member_order_status' => 'completed',
                                 '_member_payment_method' => 'bank',
-                                '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago',
+                                '_member_payment_method_title' =>'Automatic bank debit',
                                 '_member_user_id' => $new,
-                                '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237,
+                                '_member_suscription_id' => $category_id, //segun categoria
                                 'payment_type' => 'subscription'
                             ];
 
@@ -154,11 +169,85 @@ class Users_Api
                                 add_post_meta($create, $key, $value);
                             }
 
-                            $id_category = $d['id_category'] !== null ? $d['id_category'] : '';
+                            //$id_category = $d['id_category'] !== null ? $d['id_category'] : '';
                             $category = $d['category'] !== null ? $d['category'] : '';
-                            update_user_meta($new, 'suscription',$id_category);
+                            update_user_meta($new, 'suscription',$category_id);
                             update_user_meta($new, 'suscription_name',$category);
                         }
+ 
+
+                        // if (array_key_exists('infopago',$d) || $d['infopago'] !== null) { //mal validación, el objeto es vacio
+
+                        //     $period = $d['infopago'][0]['auto_recurring']['frequency_type'] === 'months' ? 'month' : 'day';
+
+                        //     $sumo_mes = date('Y-m-d H:i:s', strtotime($d['infopago'][0]['next_payment_date']));
+                        //     $user = get_user_by('id',$new);
+                        //     $order_data = [
+                        //         '_member_order_reference' => $order_reference,
+                        //         '_member_order_status' => 'completed',
+                        //         '_member_payment_method' => $d['payment'] === 'DEBIT' ? 'bank' : 'mp', //ta mal
+                        //         '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago', //ta mal
+                        //         '_member_user_id' => $new,
+                        //         '_member_renewal_date' => $sumo_mes,
+                        //         '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237, //ta mal, no es lo mismo digital + papel que papel solo
+                        //         '_member_suscription_name' => $d['infopago'][0]['reason'],
+                        //         '_member_suscription_period' => $period,
+                        //         '_member_suscription_period_number' => $d['infopago'][0]['auto_recurring']['frequency'],
+                        //         '_member_suscription_cost' => $d['infopago'][0]['auto_recurring']['transaction_amount'],
+                        //         '_member_suscription_user_email' => $user->user_email,
+                        //         'payment_type' => 'subscription'
+                        //     ];
+
+                        //     foreach ($order_data as $key => $value) {
+                        //         add_post_meta($create, $key, $value);
+                        //     }
+
+                        //     $payment_data = [
+                        //         'ID Suscripción' => $d['infopago'][0]['id'],
+                        //         'Referencia Externa' => 'create-by-api',
+                        //         'ID Cliente' => $d['infopago'][0]['payer_id'],
+                        //         'Estado MP' => $d['infopago'][0]['status'],
+                        //         'Suscripción MP' => $d['infopago'][0]['reason'],
+                        //         'Creada' => $d['infopago'][0]['date_created'],
+                        //         'Init Point' => $d['infopago'][0]['init_point'],
+                        //         'Sandbox Init Point' => $d['infopago'][0]['sandbox_init_point'],
+                        //         'ID Plan' => $d['infopago'][0]['preapproval_plan_id'],
+                        //         'ID Medio de Pago' => $d['infopago'][0]['payment_method_id'],
+                        //         'Frecuencia' => $d['infopago'][0]['auto_recurring']['frequency'] . ' ' . $d['infopago'][0]['auto_recurring']['frequency_type'],
+                        //         'Pago' => $d['infopago'][0]['auto_recurring']['transaction_amount'] . ' ' . $d['infopago'][0]['auto_recurring']['currency_id'],
+                        //         'Inicio' => $d['infopago'][0]['auto_recurring']['start_date']
+                        //     ];
+                        //     $id_subscription = $d['infopago'][0]['id'];
+                        //     $app_id = $d['infopago'][0]['application_id'];
+
+                        //     add_post_meta($create, 'payment_data', $payment_data);
+                        //     add_post_meta($create, 'payment_app_id', $app_id);
+                        //     add_post_meta($create, 'id_subscription_data', $id_subscription);
+
+                        //     update_user_meta($new, 'suscription',235);
+                        //     update_user_meta($new, 'suscription_name',$d['infopago'][0]['reason']);
+                            
+                        // } else {
+
+                        //     $order_data = [
+                        //         '_member_order_reference' => $order_reference,
+                        //         '_member_order_status' => 'completed',
+                        //         '_member_payment_method' => 'bank',
+                        //         '_member_payment_method_title' => $d['payment'] === 'DEBIT' ? 'Automatic bank debit' : 'Mercadopago',
+                        //         '_member_user_id' => $new,
+                        //         '_member_suscription_id' => $d['category'] === 'SOCIO' || $d['category'] === 'SUSCRIPTOR' ? 235 : 237,
+                        //         'payment_type' => 'subscription'
+                        //     ];
+
+                        //     foreach ($order_data as $key => $value) {
+                        //         add_post_meta($create, $key, $value);
+                        //     }
+
+                        //     $id_category = $d['id_category'] !== null ? $d['id_category'] : '';
+                        //     $category = $d['category'] !== null ? $d['category'] : '';
+                        //     update_user_meta($new, 'suscription',$id_category);
+                        //     update_user_meta($new, 'suscription_name',$category);
+                        // }
                         echo http_response_code(200).'\n Creado';
                     }
                 } else {

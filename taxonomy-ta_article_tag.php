@@ -2,18 +2,9 @@
 /*
 *   Tags articles archive template
 */
-
+global $wp_query;
 $tag = TA_Tag_Factory::get_tag(get_queried_object(), 'ta_article_tag');
-$articles = get_ta_articles_from_query(array(
-    'post_type' => 'ta_article',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'ta_article_tag',
-            'field'    => 'term_id',
-            'terms'    => $tag->term->term_id,
-        ),
-    ),
-));
+$articles = get_ta_articles_from_query($wp_query);
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 

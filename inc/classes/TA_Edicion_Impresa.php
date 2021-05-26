@@ -8,6 +8,9 @@ class TA_Edicion_Impresa extends TA_Article_Data{
     public $post = null;
 
     public function __construct($post){
+        $this->defaults = array_merge($this->defaults, array(
+            'issue_pdf'    => null,
+        ));
         $this->post = $post;
     }
 
@@ -15,12 +18,26 @@ class TA_Edicion_Impresa extends TA_Article_Data{
         return $this->post->ID;
     }
 
+    /**
+    *   Returns the pdf attachment if any
+    *   @return WP_Post|null
+    */
+    protected function get_issue_pdf(){
+        $attachment_id = get_post_meta($this->post->ID, 'issuefile_attachment_id', true);
+        $attachment = $attachment_id ? get_post( $attachment_id ) : null;
+        return $attachment ? array(
+            'url'   => wp_get_attachment_url($attachment->ID),
+        ) : null;
+    }
+
     protected function get_content(){
         $content = get_the_content($this->post->ID);
         ob_start();
         $articles_query = new WP_Query(array(
-            'post_type'     => 'ta_article',
-            'meta_key'      => 'ta_article_edicion_impresa',
+            'post_type'         => 'ta_article',
+            'meta_key'          => 'ta_article_edicion_impresa',
+            'meta_value'        => $this->post->ID,
+            'posts_per_page'    => -1,
         ));
         $articles = [];
 
@@ -155,18 +172,7 @@ class TA_Edicion_Impresa extends TA_Article_Data{
         $attachment = $thumbnail_id ? get_post( $thumbnail_id ) : null;
         $thumb_data = null;
 
-        if( !$attachment ){
-            $thumb_data = array(
-                'attachment'    => null,
-                'url'           => TA_IMAGES_URL . '/article-no-image.jpg',
-                'caption'       => '',
-                'author'        => null,
-                'position'      => null,
-                'alt'           => __('No hay imagen', 'ta-genosha'),
-                'is_default'    => true,
-            );
-        }
-        else {
+        if( $attachment ){
             $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
             $thumb_data = array(
                 'attachment'    => $attachment,

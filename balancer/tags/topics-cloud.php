@@ -12,22 +12,22 @@
                     </div>
                     <div class="input-container">
                         <div class="title">
-                            <p><?php echo __('Queremos ofrecerte mejor contenido:','gen-theme-base')?></p>
+                            <p><?php echo __('Queremos ofrecerte mejor contenido:','gen-base-theme')?></p>
                         </div>
                         <div>
-                            <p><?php echo sprintf(__('Selecciona los %s y sobre los que querés informarte:','gen-theme-base'),'<span>'.__('temas que te interesan','gen-theme-base').'</span>')?>  </p>
+                            <p><?php echo sprintf(__('Selecciona los %s y sobre los que querés informarte:','gen-base-theme'),'<span>'.__('temas que te interesan','gen-base-theme').'</span>')?>  </p>
                         </div>
                         <!-- tags -->
 
                         <div class="container">
                             <div class="article-tags d-flex flex-wrap mt-4" id="cloud-tag-topics">
                                 <?php if(!is_user_logged_in()) : ?>
-                                    <?php foreach(balancer_personalize()->get_tags(16) as $key => $val) : ?>
+                                    <?php foreach(balancer_personalize()->get_topics(16) as $key => $val) : ?>
                                     <div class="tag d-flex justify-content-center my-2">
                                         <div class="content p-1">
-                                            <a href="#" data-key="<?php echo $key?>">
-                                                <p class="m-0"><?php echo $val?></p>
-                                            </a>
+                                            <!--<a href="#" class="cloud-link">-->
+                                                <p class="m-0 cloud-item" data-id="<?php echo $key?>"><?php echo $val?></p>
+                                            <!--</a>-->
                                         </div>
                                         <div class="triangle"></div>
                                     </div>
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="ver-mas d-flex justify-content-center mt-4">
-                        <button><?php echo __('Listo','gen-theme-base')?></button>
+                        <button id="listo-cloud"><?php echo __('Listo','gen-base-theme')?></button>
                     </div>
                 </div>
             </div>

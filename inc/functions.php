@@ -1,14 +1,36 @@
 <?php
 
+function ta_print_header(){
+	include(TA_THEME_PATH . '/markup/partes/header.php');
+};
+
+/**
+*   @param WP_Query|mixed[]                                                     A wordpress query intance, or an array of arguments
+*                                                                               to query for
+*   @param mixed[] $args {
+*       @property bool populate                                                 Wheter to populate the article instance properties.
+*       @property bool populate_recursive                                       If populate is true, indicates if properties of type Data_Manager should
+*                                                                               be populated as well.
+*   }
+*/
 function get_ta_articles_from_query($query_args, $args = array()){
     $default_args = array(
-        'populate'  => false,
+        'populate'              => false,
+        'populate_recursive'    => false,
     );
     $args = array_merge($default_args, $args);
     $articles = [];
-	$result = rb_get_posts($query_args);
-	$posts = $result['posts'];
-	$query = $result['wp_query'];
+    $posts = null;
+    $query = null;
+    if(is_object($query_args)){
+        $posts = $query_args->posts;
+        $query = $query_args;
+    }
+    else{
+        $result = rb_get_posts($query_args);
+        $posts = $result['posts'];
+        $query = $result['wp_query'];
+    }
 
 	if($posts && !empty($posts) && !is_wp_error($posts)){
 		foreach ($posts as $article_post) {
@@ -64,25 +86,17 @@ function get_articles_block_cells_count(){
 
 /**
 *	@param TA_Article_Data $article
-*	@param mixed[] $settings
+*	@param mixed[] $render_settings 											Article preview render arguments. See block `ta/article-preview`
 */
-function ta_render_article_preview($article, $settings = array()){
+function ta_render_article_preview($article, $render_settings = array()){
 	if(!$article)
 		return;
 
-	$config = array();
 	$article_preview_block = RB_Gutenberg_Block::get_block('ta/article-preview');
-    $layout = isset($settings['layout']) ? $settings['layout'] : null;
-	$layout = !$layout && $article->isopinion ? 'opinion' : $layout;
-	$size = isset($settings['size']) ? $settings['size'] : null;
-	$desktop_horizontal = isset($settings['desktop_horizontal']) ? $settings['desktop_horizontal'] : false;
-
-	$article_preview_block->render( array(
-		'article'				=> $article,
-		'layout'				=> $layout,
-		'size'					=> $size,
-		'desktop_horizontal'	=> $desktop_horizontal,
-	) );
+	$args = array_merge(array(
+		'article'		=> $article,
+	), $render_settings);
+	$article_preview_block->render( $args );
 }
 
 
@@ -196,13 +210,14 @@ function get_ta_articles_block_articles($block_attributes){
     else if( $articles_data && is_array($articles_data) && !empty($articles_data) ){
         foreach($articles_data as $article_data){
             $article = TA_Article_Factory::get_article($article_data['data'], isset($article_data['type']) ? $article_data['type'] : 'article_post');
-            if($article)
+            if($article && ( !$article->post || $article->post->post_status == 'publish' ) )
                 $final_articles[] = $article;
         }
     }
     else if( $most_recent ){
         $query_args = array(
-            'post_type'	=> 'ta_article',
+            'post_type'		=> 'ta_article',
+			'post_status'	=> 'publish',
         );
         $query_args = array_merge(lr_get_query_args_from_articles_filters($block_attributes), $query_args);
         $final_articles = get_ta_articles_from_query($query_args);
@@ -284,14 +299,15 @@ function rb_tax_query($terms){
 }
 
 /**
+*	@param string $format														The icon format. See ta_get_social_image
 *   @return null|mixed[]                                                        Array with the social data stablished through the customizer
 *                                                                               control.
 */
-function ta_get_social_data(){
+function ta_get_social_data($format = "grey"){
     $data = get_theme_mod('ta-social-data', null);
     if($data){
-        $data = array_map( function($social_data){
-            $image = ta_get_social_image($social_data['name']);
+        $data = array_map( function($social_data) use ($format){
+            $image = ta_get_social_image($social_data['name'], $format);
             $social_data['image'] = $image;
             return $social_data;
         }, $data );
@@ -302,25 +318,26 @@ function ta_get_social_data(){
 /**
 *   Return an image for the social contact if exists.
 *   @param string $name
+*	@param string $format														The icon format. Accepts 'grey', 'white'
 *   @return string|null                                                         Image URL
 */
-function ta_get_social_image($name){
+function ta_get_social_image($name, $format = "grey"){
     $image = '';
     switch (strtolower( trim($name) )) {
         case 'facebook':
-            $image = TA_THEME_URL . "/markup/assets/images/facebook-grey-icon.svg";
+            $image = TA_THEME_URL . "/markup/assets/images/facebook-$format-icon.svg";
         break;
         case 'twitter':
-            $image = TA_THEME_URL . "/markup/assets/images/twitter-grey-icon.svg";
+            $image = TA_THEME_URL . "/markup/assets/images/twitter-$format-icon.svg";
         break;
         case 'spotify':
-            $image = TA_THEME_URL . "/markup/assets/images/spotify-grey-icon.svg";
+            $image = TA_THEME_URL . "/markup/assets/images/spotify-$format-icon.svg";
         break;
         case 'youtube':
-            $image = TA_THEME_URL . "/markup/assets/images/youtube-grey-icon.svg";
+            $image = TA_THEME_URL . "/markup/assets/images/youtube-$format-icon.svg";
         break;
         case 'instagram':
-            $image = TA_THEME_URL . "/markup/assets/images/instagram-grey-icon.svg";
+            $image = TA_THEME_URL . "/markup/assets/images/instagram-$format-icon.svg";
         break;
     }
     return $image;
@@ -445,7 +462,7 @@ function get_etiquetas($request){
 		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
 		CURLOPT_RETURNTRANSFER    	=> true,
 		CURLOPT_POST				=> true,
-		CURLOPT_HTTPHEADER			=> 'Content-Type: application/json',
+		CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
 		CURLOPT_POSTFIELDS			=> $request->get_body(),
 	));
 
@@ -455,7 +472,7 @@ function get_etiquetas($request){
 	// free
 	curl_close($ch);
 
-	return $output;
+	return json_decode($output);
 }
 
 function import_status_to_string($status_code){

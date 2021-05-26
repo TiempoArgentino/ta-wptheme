@@ -56,6 +56,7 @@ const TAEdicionImpresaPanel = () => {
                 posts = { postData ? [postData] : [] }
                 postsArgs = {{
                     post_type: 'ta_ed_impresa',
+                    post_status: ['publish', 'future'],
                 }}
                 max = {1}
                 onSelectionChange = { (data) => updateMetaValue(data) }

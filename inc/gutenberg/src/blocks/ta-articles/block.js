@@ -125,6 +125,9 @@ registerBlockType( 'ta/articles', {
 		} = useTAArticlesManager({
 			attributes,
 			setAttributes,
+			extraQueryArgs: {
+				post_status: ['publish', 'future'],
+			},
 			// taxonomiesFilters = {tag: true, section: true, author: true},
 		});
 

@@ -40,6 +40,13 @@ abstract class RB_Objects_List_Column{
     */
     public $position = null;
 
+    /**
+    *   @property callback|null $should_add
+    *   A function that returns a bool indicating wheter the column should be added or not
+    *   If the value is null, the column will always be added
+    */
+    protected $should_add = null;
+
     public function __construct($id, $admin_pages, $title, $render_callback, $args = array()) {
         $this->id = $id;
         $this->admin_pages = $admin_pages;
@@ -47,6 +54,7 @@ abstract class RB_Objects_List_Column{
         $this->render_callback = $render_callback;
         $this->cell_class = isset($args['cell_class']) && is_string($args['cell_class']) ? $args['cell_class'] : $this->cell_class;
         $this->position = isset($args['position']) && is_int($args['position']) ? $args['position'] : $this->position;
+        $this->should_add = isset($args['should_add']) && is_callable($args['should_add']) ? $args['should_add'] : $this->should_add;
         $this->column_setup();
     }
 
@@ -82,6 +90,8 @@ abstract class RB_Objects_List_Column{
     */
     public function add_column_base($columns){
         $original_columns = $columns;
+        if(!$this->check_should_add())
+            return $original_columns;
         $columns_amount = count($original_columns);
         $position = is_int($this->position) && $this->position >= 0 && $this->position < $columns_amount ? $this->position : $columns_amount;
 
@@ -90,6 +100,17 @@ abstract class RB_Objects_List_Column{
         else
             array_splice( $columns, $position, 0, array( $this->id => $this->title) );
         return $columns;
+    }
+
+    /**
+    *   @return bool Wheter the column should be added, based on a callback provided
+    *   on construct through the arg `should_add`. If no callback was provided, then
+    *   `true` is returned.
+    */
+    public function check_should_add(){
+        if(!$this->should_add || !is_callable($this->should_add))
+            return true;
+        return call_user_func($this->should_add);
     }
 
     /**

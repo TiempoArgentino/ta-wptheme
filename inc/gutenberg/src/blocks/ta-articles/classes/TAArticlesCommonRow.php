@@ -3,9 +3,10 @@
 class TAArticlesCommonRow extends TAArticlesBlockRow{
 
     protected $default_args = array(
-        'cells_amount'      => 4,
-        'cells_per_row'     => 4,
-        'fill'              => false,
+        'cells_amount'              => 4,
+        'cells_per_row'             => 4,
+        'fill'                      => false,
+        'deactivate_opinion_layout' => false,
     );
 
     public function get_cells_count_if_balanced(){
@@ -58,8 +59,9 @@ class TAArticlesCommonRow extends TAArticlesBlockRow{
                         <div class="<?php echo esc_attr($class); ?>">
                             <?php
                             ta_render_article_preview($article, array(
-                                'size'  => $size,
-                                'class' => $preview_class,
+                                'size'                      => $size,
+                                'class'                     => $preview_class,
+                                'deactivate_opinion_layout' => $deactivate_opinion_layout,
                             ));
                             ?>
                         </div>

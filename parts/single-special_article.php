@@ -13,7 +13,7 @@ $sponsor = $article->micrositio->get_sponsor();
                 <h4 class="subtheme"><?php echo $article->section->name; ?></h4>
                 <?php endif; ?>
             </div>
-            <div class="px-lg-5">
+            <div class="art-column-w-xpadding">
                 <?php if($article->title): ?>
                 <div class="title mt-2">
                     <h1><?php echo esc_html($article->title); ?></h1>
@@ -31,14 +31,10 @@ $sponsor = $article->micrositio->get_sponsor();
             </div>
             <?php if( !$article->thumbnail_common['is_default'] ): ?>
             <div class="img-container mt-3">
-                <div class="img-wrapper">
+                <div class="img-wrapper" id="article-main-image">
                     <img src="<?php echo esc_attr($article->thumbnail_common['url']); ?>" alt="" class="img-fluid w-100" />
                 </div>
-                <?php if($article->thumbnail_common['author']): ?>
-                <div class="credits text-right text-md-left mt-2">
-                    <p>Foto: <?php echo esc_html($article->thumbnail_common['author']->name); ?></p>
-                </div>
-                <?php endif; ?>
+                <?php get_template_part('parts/image', 'copyright', array('photographer' => $article->thumbnail_common['author'])); ?>
                 <?php if($article->thumbnail_common['caption']): ?>
                 <div class="bajada mt-3">
                     <p><?php echo esc_html($article->thumbnail_common['caption']); ?></p>
@@ -50,7 +46,7 @@ $sponsor = $article->micrositio->get_sponsor();
             <?php get_template_part('parts/article','authors_data', array( 'article' => $article )); ?>
 
             <div class="article-body mt-3">
-                <div class="px-lg-5">
+                <div class="art-column-w-xpadding">
                     <?php echo apply_filters( 'the_content', $article->content ); ?>
                 </div>
             </div>
@@ -110,14 +106,14 @@ $sponsor = $article->micrositio->get_sponsor();
         <div class="separator"></div>
     </div>
     <?php endif; ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
-    <?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
+    <?php //include_once(TA_THEME_PATH . "/markup/partes/newsletter-especial.php");  ?>
+</div>
+<?php include(TA_THEME_PATH . "/markup/partes/segun-tus-intereses.php");  ?>
+<div class="container">
     <?php include_once(TA_THEME_PATH . "/markup/partes/comentarios.php");  ?>
     <?php // include_once(TA_THEME_PATH . "/markup/partes/pregunta-y-participa.php");  ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
+    <?php //include_once(TA_THEME_PATH . "/markup/partes/conversemos.php");  ?>
 </div>
-<div class="container">
-    <?php include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
-    <?php include(TA_THEME_PATH . "/markup/partes/ultimas-ambientales.php");  ?>
-    <?php include_once(TA_THEME_PATH . "/markup/partes/podes-leer.php");  ?>
-</div>
+
+<?php //include(TA_THEME_PATH . "/markup/partes/mas-leidas-especial.php");  ?>
+<?php get_template_part('parts/article', 'tambien_podes_leer', ['post_id' => get_the_ID()]); ?>

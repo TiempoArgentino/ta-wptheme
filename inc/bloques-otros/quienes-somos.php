@@ -1373,7 +1373,7 @@ if ( function_exists( 'lazyblocks' ) ) :
                                                                                             </div>
                                                                                             <a href="">
                                                                                                     <div class="img-container position-relative">
-                                                                                                            <div class="img-wrapper" style="background:url(\'<?php echo $attributes[\'articulo-imagen-2\'][\'url\']?>\') center no-repeat">
+                                                                                                            <div class="img-wrapper" style="background:url(\'<?php echo $attributes[\'articulo-imagen-3\'][\'url\']?>\') center no-repeat">
     
                                                                                                             </div>
                                                                                                     </div>
@@ -1381,13 +1381,13 @@ if ( function_exists( 'lazyblocks' ) ) :
                                                                                     </div>
                                                                                     <div class="content p-2 mt-md-2">
                                                                                             <div>
-                                                                                            <a href="<?php echo $attributes[\'link-articulo-2\']?>">
-                                                                                                            <p><?php echo $attributes[\'titulo-articulo-2\']?></p>
+                                                                                            <a href="<?php echo $attributes[\'link-articulo-3\']?>">
+                                                                                                            <p><?php echo $attributes[\'titulo-articulo-3\']?></p>
                                                                                                     </a>
                                                                                             </div>
                                                                                             <div class="article-info-container">
                                                                                                     <div class="author">
-                                                                                                    <p>Por: <?php echo $attributes[\'autor-articulo-2\']?></p>
+                                                                                                    <p>Por: <?php echo $attributes[\'autor-articulo-3\']?></p>
                                                                                                     </div>
                                                                                             </div>
                                                                                     </div>
