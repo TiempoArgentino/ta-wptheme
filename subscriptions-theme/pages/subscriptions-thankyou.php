@@ -38,7 +38,7 @@ do_action('header_thankyou_page');
                         <div class="subs-opt mw-md-60 mx-auto mt-3 mt-md-5">
                             <div class="title text-center">
                                 <h4 class="italic m-0"><?php echo __('Gracias', 'gen-base-theme') ?> <span><?php echo wp_get_current_user()->first_name . ' ' . wp_get_current_user()->last_name ?></span>, </h4>
-                                <h4 class="italic m-0"><?php echo __('por elegir Tiempo Argentino, un medio autogestionado es posible gracias a personas como vos!', 'gen-base-theme') ?></h4>
+                                <h4 class="italic m-0"><?php echo __('por elegir Tiempo Argentino. ¡Un medio autogestionado es posible gracias a personas como vos!', 'gen-base-theme') ?></h4>
                                 <h4 class="italic m-0"></h4>
                             </div>
                             <div class="asociate-wrapper">
@@ -49,7 +49,7 @@ do_action('header_thankyou_page');
                                     <p><b><?php echo __('¿Querés contarnos un poco más de vos?','gen-base-theme')?></b></p>
                                 </div>
                                 <div class="text-center">
-                                    <p><?php echo __('De esta forma podremos ofrecerte contenidos de acuerdo a tus preferencias','gen-base-theme')?></p>
+                                    <p><?php echo __('Podemos ofrecerte contenidos de acuerdo a tus preferencias','gen-base-theme')?></p>
                                 </div>
                                 <div class="btns-container text-center">
                                     <button><a href="<?php echo get_permalink(get_option('personalize'))?>"><?php echo __('Personalizar','gen-base-theme')?></a></button>

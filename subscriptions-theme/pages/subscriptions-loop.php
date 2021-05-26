@@ -274,7 +274,7 @@
                             </div>
                             <div class="info text-md-center mt-5">
                                 <h6><?php echo sprintf(__('Recordá que el valor %s', 'gen-base-theme'), '<b>' . __('mínimo es', 'gen-base-theme') . ' <span id="minimo"></span></b>') ?> </h6>
-                                <h6 class="mt-2"><?php echo sprintf(__('Podrás %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b> ' . __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
+                                <h6 class="mt-2"><?php echo sprintf(__('Podés %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b> ' . __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
                             </div>
                             <div class="ayuda text-md-center mb-4 mt-5">
                                 <h6><?php echo __('Si necesitás ayuda escribinos a', 'gen-base-theme') ?>
@@ -385,7 +385,7 @@
                                 <?php endif; ?>
                             </div>
                             <div class="info text-center mt-5">
-                                <h6 class="mt-2"><?php echo sprintf(__('Podrás %s %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b>', __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
+                                <h6 class="mt-2"><?php echo sprintf(__('Podés %s %s', 'gen-base-theme'), '<b>' . __('suspender tu abono', 'gen-base-theme') . '</b>', __('cuando quieras desde tu perfil de usuario', 'gen-base-theme')) ?></h6>
                             </div>
                         </div>
                     </div>

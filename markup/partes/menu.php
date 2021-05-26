@@ -53,7 +53,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                                 aria-controls="searchBarMenu">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/search-icon.svg" class="img-fluid" alt="">
-                                    <p>BUSCAR</p>
+                                    <p><?php echo __('BUSCAR','gen-base-theme')?></p>
                                 </div>
                             </button>
                         </div>
@@ -66,9 +66,9 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/profile-icon.svg" alt="">
                                 <?php if(is_user_logged_in()): ?>
-                                <p><a href="<?php echo get_permalink( get_option('user_panel_page') )?>">PERFIL</a></p>
+                                <p><a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><?php echo __('PERFIL','gen-base-theme')?></a></p>
                                 <?php else: ?>
-                                <p><a href="<?php echo get_permalink( get_option('user_login_page') )?>">INGRESAR</a></p>
+                                <p><a href="<?php echo get_permalink( get_option('user_login_page') )?>"><?php echo __('INGRESAR','gen-base-theme')?></a></p>
                                 <?php endif;?>
                             </div>
                         </a>
@@ -79,14 +79,14 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                         <a href="<?php echo get_permalink( 65903  )?>">
                             <div class="d-flex align-items-center">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/marker-socios.svg" alt="">
-                                <h5>SEAMOS SOCIOS</h5>
+                                <h5><?php echo __('ASOCIATE','gen-base-theme')?></h5>
                             </div>
                         </a>
                     </div>
                     <div class="menu-item">
                         <a href="<?php echo get_permalink( get_option('beneficios_loop_page') )?>">
                             <div>
-                                <p class="pl-3">Beneficios para socios</p>
+                                <p class="pl-3"><?php echo __('Beneficios para la comunidad','gen-base-theme')?></p>
                             </div>
                         </a>
                     </div>
@@ -99,7 +99,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                             <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
-                                    <p>SOBRE TIEMPO</p>
+                                    <p><?php echo __('SOBRE TIEMPO','gen-base-theme')?></p>
                                 </div>
                             </a>
                         </div>
@@ -136,7 +136,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                                 <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
-                                    <h5>SECCIONES</h5>
+                                    <h5><?php echo __('SECCIONES','gen-base-theme')?></h5>
                                 </button>
                             </div>
 
@@ -193,7 +193,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                                 <button class="btn btn-link d-flex px-md-0" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/gray-arrow.svg" class="accordion-arrow" alt="">
-                                    <h5>ESPECIALES</h5>
+                                    <h5>E<?php echo __('SPECIALES','gen-base-theme')?></h5>
                                 </button>
                             </div>
 
@@ -264,7 +264,7 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                             <a href="<?php echo get_permalink( 65814 )?>">
                                 <div class="d-flex align-items-center">
                                     <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/tiempo-min-logo.svg" alt="">
-                                    <p>SOBRE TIEMPO</p>
+                                    <p><?php echo __('SOBRE TIEMPO','gen-base-theme')?></p>
                                 </div>
                             </a>
                         </div>

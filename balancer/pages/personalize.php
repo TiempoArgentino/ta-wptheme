@@ -114,7 +114,7 @@
                                 </p>
                             </div>
                             <div class="title text-center mt-4">
-                                <h4><?php echo __('Elige los que más te interesen:','gen-base-theme')?>
+                                <h4><?php echo __('Eligí los que más te interesen:','gen-base-theme')?>
                                 </h4>
                             </div>
                             <div class="periodismo articulos d-flex flex-column flex-md-row flex-wrap align-items-center align-items-md-start justify-content-left my-3">
@@ -293,7 +293,7 @@
                                 <button><a href="<?php echo home_url()?>"><?php echo __('ir al sitio','gen-base-theme')?></a></button>
                             </div>
                             <div class="text-center my-5">
-                                <p><?php echo __('Podrás editar tus preferencias, desde tu perfil de usuario, cuando quieras.','gen-theme-base')?></p>
+                                <p><?php echo __('Podés editar tus preferencias, desde tu perfil de usuario, cuando quieras.','gen-theme-base')?></p>
                             </div>
                         </div>
                     </div>
