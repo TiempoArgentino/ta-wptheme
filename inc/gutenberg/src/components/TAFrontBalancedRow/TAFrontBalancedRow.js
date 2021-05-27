@@ -75,6 +75,7 @@ const TAFrontBalancedRow = (props) => {
     const {
         rowArgs,
         onArticlesFetched,
+        articlesRequestArgs,
     } = props;
 
     const [loading, setIsLoading] = useState(true);
@@ -87,16 +88,13 @@ const TAFrontBalancedRow = (props) => {
         apiFetch({
             path: `wp-json/ta/v1/balancer-db/articles`,
             method: 'POST',
-            // data: {
-            //     articles: [...fetchedArticles],
-            //     row_args: rowArgs,
-            // },
+            data: articlesRequestArgs,
         })
             .then((response) => {
                 setFetchedArticles(response.articles);
                 if(onArticlesFetched){
                     onArticlesFetched({
-                        articlesIds: response.articles.map( article => article.id ),
+                        articlesIds: response.articles.map( article => article.postId ),
                     });
                 }
                 console.log('Fetch Articles Response', response);
@@ -162,12 +160,10 @@ async function getBalancedArticles(data) {
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
         credentials: "same-origin", // include, *same-origin, omit
-
         headers: new fetch.Headers({
             // Authorization: "Basic " + encode(`${process.env.TAUSER}:${process.env.TAPASSWORD}`),
             "Content-Type": "application/json",
         }),
-
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(data), // body data type must match "Content-Type" header

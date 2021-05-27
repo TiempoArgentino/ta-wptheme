@@ -14,18 +14,13 @@ function ta_render_articles_block_row($articles_left = [], $row = [], $offset = 
         'use_balacer_articles'      => false,
         'balancer_allow_fallback'   => false,
     ), $row);
-    $is_balanced = $row['use_balacer_articles'] && function_exists('balancer_front');
+    $is_balanced = false;//$row['use_balacer_articles'] && function_exists('balancer_front');
     $allows_fallback = $row['balancer_allow_fallback'];
     $articles = [];
     $format = $row['format'];
     $renderer = null;
     $cells_count = null;
     $balancer_articles = [];
-
-    if($row['use_balacer_articles']){
-        ?> <div class="ta-articles-balanced-row mb-4" data-row="<?php echo esc_attr(json_encode($row)); ?>">Cargando...</div> <?php
-        return 0;
-    }
 
     switch($format){
         case 'slider': $renderer = new TAArticlesSliderRow($row); break;
@@ -34,6 +29,13 @@ function ta_render_articles_block_row($articles_left = [], $row = [], $offset = 
     }
 
     $balanced_cells_count = $renderer->get_cells_count_if_balanced();
+    if($row['use_balacer_articles']){
+        ?> <div class="ta-articles-balanced-row mb-4"
+        data-count="<?php echo esc_attr($balanced_cells_count); ?>"
+        data-row="<?php echo esc_attr(json_encode($row)); ?>">Cargando...</div> <?php
+        return 0; // 0 rows rendered. Will render from the client with balancer data
+    }
+
 
     if($is_balanced){
         $balancer_articles_ids = balancer_front()->balancer($balanced_cells_count, true);

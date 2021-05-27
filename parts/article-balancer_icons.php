@@ -3,9 +3,9 @@ $defaults = array(
     'article'   => null,
 );
 
-if(!function_exists('balancer_front'))
+// if(!function_exists('balancer_front'))
     return;
-    
+
 extract( array_merge( $defaults, $args ) );
 if(!$article || empty($article) )
     return;

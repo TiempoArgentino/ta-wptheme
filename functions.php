@@ -230,6 +230,35 @@ class TA_Theme
 				'nonce' 	=> wp_create_nonce('wp_rest')
 			),
 		);
+
+		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
+		$most_viewed_query = new WP_Query(array(
+			'post_type' 	=> 'ta_article',
+		    'orderby' 		=> 'ta_article_count',
+		    'order' 		=> 'DESC',
+		    'meta_query' 	=> [
+		        [
+		            'key' 		=> 'ta_article_count',
+		            'compare' 	=> 'LIKE',
+		            'type'      => 'NUMERIC',
+		            'compare'   => 'EXISTS'
+		        ]
+		    ],
+		    'date_query' => [
+		        [
+		            'column' => 'post_date_gmt',
+		            'after'  => get_option('balancer_editorial_days') . ' days ago',
+		        ]
+		    ]
+		));
+
+		wp_localize_script(
+			'ta_comments',
+			'taMostViewed',
+			array(
+				'ids' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
+			),
+		);
 	}
 
 	static public function admin_scripts()
