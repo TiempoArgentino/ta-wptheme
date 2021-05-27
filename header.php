@@ -126,7 +126,7 @@
                                 <p class="text-capitalize"><?php echo date_i18n('l, j F , Y'); ?></p>
                             </div>
                             <div class="temp-city ta-gris-color">
-                                <p>11.4º C <span>| Buenos Aires | Clima en todo el país</span></p>
+                                <p><span id="clima"></span><span> | Buenos Aires <!--| Clima en todo el país--></span></p>
                             </div>
                         </div>
                     </div>

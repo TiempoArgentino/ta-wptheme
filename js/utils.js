@@ -23,6 +23,26 @@ window.addEventListener("resize", function () {
 });
 
 (function ($) {
+  
+  const url = "https://ws.smn.gob.ar/map_items/weather";
+
+  $(document).ready(function () {
+    var settings = {
+      url: url,
+      method: "GET",
+      timeout: 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+      var data = response;
+      $.each(data, function (i, e) {
+        if (e.name === "Capital Federal") {
+          $("#clima").html(`${e.weather.tempDesc}`);
+        }
+      });
+    });
+  });
+
   $(document).ready(function () {
     $(".tab-cooperativa").on("click", function () {
       $(".categorias-titulo").html("Seleccionar categoría");
@@ -155,7 +175,7 @@ window.addEventListener("resize", function () {
             '<button id="go-to-2">siguiente</button>' +
             "</div>"
           );
-        }
+        },
       });
       $("#personaliza-popover").popover({
         container: ".personaliza-popover .popover-container",
@@ -175,7 +195,7 @@ window.addEventListener("resize", function () {
         },
         content: function () {
           return '<p>Completá solo 3 pasos</p><div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 2 de 4</span><button id="go-to-3">siguiente</button></div>';
-        }
+        },
       });
 
       $("#iconos-popover").popover({
@@ -198,7 +218,7 @@ window.addEventListener("resize", function () {
             '<div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 3 de 4</span>' +
             '<button id="go-to-4">siguiente</button></div>'
           );
-        }
+        },
       });
       $("#config-popover").popover({
         container: ".config-popover .popover-container",
@@ -220,7 +240,7 @@ window.addEventListener("resize", function () {
             '<div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 4 de 4</span>' +
             '<button id="end">entendido</button></div>'
           );
-        }
+        },
       });
 
       //First popover
@@ -245,7 +265,7 @@ window.addEventListener("resize", function () {
         $("#asociate-popover").popover("hide");
         $("html, body").animate(
           {
-            scrollTop: $("#personaliza-popover").offset().top - 200
+            scrollTop: $("#personaliza-popover").offset().top - 200,
           },
           500
         );
@@ -267,7 +287,7 @@ window.addEventListener("resize", function () {
         $("#personaliza-popover").popover("hide");
         $("html, body").animate(
           {
-            scrollTop: $("#iconos-popover").offset().top - 200
+            scrollTop: $("#iconos-popover").offset().top - 200,
           },
           500
         );
@@ -330,4 +350,6 @@ window.addEventListener("resize", function () {
       }
     }
   });
+
+  
 })(jQuery);
