@@ -95,6 +95,27 @@ class TA_Theme
 
 		self::redirect_searchs();
 		self::filter_contents();
+
+		add_action('admin_head',[self::class,'not_admin']);
+	}
+
+	static public function not_admin()
+	{
+		if(is_admin()) {
+			$user = wp_get_current_user();
+			$roles = $user->roles;
+
+			if(!in_array('administrator',$roles)) {
+				echo '<style>
+				.wp-block-lazyblock-contenedor-avisos{
+					padding: 20px 20px 0 20px !important;
+				}
+				.wp-block-lazyblock-contenedor-avisos .lzb-content-controls, .wp-block-lazyblock-contenedor-avisos .lzb-preview-server{
+					display: none !important;   
+				}
+				</style>';
+			}
+		}
 	}
 
 	static public function languages_path() {
