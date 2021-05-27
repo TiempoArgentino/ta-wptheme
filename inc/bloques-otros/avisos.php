@@ -5,15 +5,15 @@ function avisos_lista()
 {
     if(function_exists('ADDB')) {
         $avisos = ADDB()->get_all_data('tar_ads_manager_ads', 'ORDER BY name DESC LIMIT ', 200, 0);
-        $coso = [];
+        $avisos_show = [];
         foreach($avisos as $aviso)
         {
-        $coso[] = [
+        $avisos_show[] = [
             'label' => $aviso->{'group'}.' - '.$aviso->{'name'},
             'value' => $aviso->{'ID'}
         ];
         }
-        return $coso;
+        return $avisos_show;
     }
     
 }
@@ -79,7 +79,7 @@ if ( function_exists( 'lazyblocks' ) ) :
             'editor_css' => '',
             'frontend_html' => '
             <?php if(function_exists(\'widgets_ta\')): ?>
-                <?php echo widgets_ta()->shortcode_portada($attributes[\'aviso\'])?>
+                <?php  echo widgets_ta()->shortcode_portada($attributes[\'aviso\']);?>
             <?php endif;?>',
             'frontend_callback' => '',
             'frontend_css' => '',

@@ -118,7 +118,8 @@ class TA_Theme
 		}
 	}
 
-	static public function languages_path() {
+	static public function languages_path() 
+	{
 		load_theme_textdomain( 'gen-base-theme', get_template_directory() . '/languages' );
 	}
 	
