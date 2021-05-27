@@ -1,4 +1,4 @@
-import apiFetch from '@wordpress/api-fetch';
+const { apiFetch } = wp;
 const { Spinner } = wp.components;
 const { useState, useEffect, render, Fragment } = wp.element;
 
@@ -86,7 +86,7 @@ const TAFrontBalancedRow = (props) => {
     // Fetch articles from the new database
     useEffect( () => {
         apiFetch({
-            path: `wp-json/ta/v1/balancer-db/articles`,
+            path: `/ta/v1/balancer-db/articles`,
             method: 'POST',
             data: articlesRequestArgs,
         })
@@ -116,7 +116,7 @@ const TAFrontBalancedRow = (props) => {
             return;
 
         apiFetch({
-            path: `wp-json/ta/v1/balancer-row`,
+            path: `/ta/v1/balancer-row`,
             method: 'POST',
             data: {
                 articles: [...fetchedArticles],
