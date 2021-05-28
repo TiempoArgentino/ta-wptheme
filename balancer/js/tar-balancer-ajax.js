@@ -9,8 +9,8 @@
 
     $("#close-cloud-tag").on("click", function () {
       $("#cloud-tag-container").slideUp();
-        
-      
+
+
       if(!tagOpen || tagOpen === null) {
           localStorage.setItem('tagOpen',true);
       }
@@ -21,12 +21,12 @@
       if(!tagOpen || tagOpen === null) {
         localStorage.setItem('tagOpen',true);
     }
-      $("#cloud-tag-container").slideUp();     
-       
+      $("#cloud-tag-container").slideUp();
+
     });
   });
 
-  
+
 
   $(document).ready(function () {
     $(".cloud-item").on("click", function () {
