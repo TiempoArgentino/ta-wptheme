@@ -1,4 +1,5 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
+import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds} from './tagsCloud.js';
 
 ( ($) => {
 	let fetchedArticles = [];
@@ -27,18 +28,26 @@ import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalan
 	}
 
 	$(document).ready( async () => {
-		if(!postBalancerLoadPreferences)
+		if(!postsBalancer)
 			return;
 
 		try {
-			const userPreference = await postBalancerLoadPreferences();
-			const taPreferences = {
-				authors: userPreference.info.authors,
-				tags: userPreference.info.tags,
-				sections: userPreference.info.cats,
-			};
+			let taPreferences = {};
+			// If logged and has selected tags from the tags cloud
+			// it doesn't use the data from the balancer (current post data, etc)
+			if(!postsBalancerData.isLogged && userCompletedPersonalization()){
+				taPreferences.tags = getCloudLocalStorageIds();
+			}
+			else{
+				const userPreference = await postsBalancer.loadPreferences();
+				taPreferences = {
+					authors: userPreference.info.authors,
+					tags: userPreference.info.tags,
+					sections: userPreference.info.cats,
+				};
+			}
+
 			const  { render } = wp.element;
-			const fetchedArticlesIds = [];
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
 
@@ -75,6 +84,7 @@ import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalan
 		catch (e) {
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			balancedRows.forEach( balancedRow => balancedRow.remove() );
+			console.log(e);
 		}
 	} );
 
