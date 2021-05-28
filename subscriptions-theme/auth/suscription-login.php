@@ -43,16 +43,16 @@ $can_register = get_option('users_can_register');
                                     </div>
                                 </div>
                                 <?php if (get_option('users_can_register') !== 0) : ?>
-                                    <div class="sign-up-sign-in text-center mt-4">
+                                   <!-- <div class="sign-up-sign-in text-center mt-4">
                                         <div class="login mt-4">
                                             <div>
-                                                <p><?php echo __('¿No sos miembro?', 'gen-base-theme') ?></p>
+                                                <p><?php //echo __('¿No sos miembro?', 'gen-base-theme') ?></p>
                                             </div>
                                             <div class="btns-container text-center" id="login-button">
-                                                <button class="login-btn gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_register_page')) ?>"><?php echo __('Crear cuenta', 'gen-base-theme') ?></a></button>
+                                                <button class="login-btn gray-btn-black-text"><a href="<?php //echo get_permalink(get_option('subscriptions_register_page')) ?>"><?php //echo __('Crear cuenta', 'gen-base-theme') ?></a></button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 <?php endif; ?>
                             </div>
 
