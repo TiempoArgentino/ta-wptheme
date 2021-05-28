@@ -12,15 +12,15 @@
         <div class="col-12 col-lg-7">
             <div>
                 <div class="address">
-                    <p class="mb-1">México 437, Ciudad de Buenos Aires</p>
+                    <p class="mb-1"><?php echo get_option( 'datos_footer_option_name' )['direccin_0']?></p>
                 </div>
                 <div class="legal-info">
-                    <p class="mb-0"><span>Editores:</span> Maby Sosa, Pablo Taranto, Randy Stagnaro y Ricardo Gotta</p>
-                    <p><span>Registro de Propiedad Intelectual:</span> En trámite</p>
+                    <p class="mb-0"><span>Editores:</span> <?php echo get_option( 'datos_footer_option_name' )['editores_1']?></p>
+                    <p><span>Registro de Propiedad Intelectual:</span> <?php echo get_option( 'datos_footer_option_name' )['registro_n_o_texto_2']?></p>
                 </div>
             </div>
             <div class="edition mt-3">
-                <p class="mb-0"><span class="ta-celeste-color">Edición Nº 1592</span> / 2 de Septiembre de 2020</p>
+                <p class="mb-0"><span class="ta-celeste-color">Edición Nº <?php echo get_option( 'datos_footer_option_name' )['n_edicin_3']?></span> / <?php echo get_option( 'datos_footer_option_name' )['fecha_4']?></p>
                 <p class="derechos">Algunos derechos reservados</p>
             </div>
         </div>
