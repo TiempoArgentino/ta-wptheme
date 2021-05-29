@@ -55,7 +55,7 @@ class TA_Article extends TA_Article_Data{
                 $tags[] = TA_Tag_Factory::get_tag($tag_term);
             }
         }
-        return $tags;
+        return !empty($tags) ? $tags : null;
     }
 
     /**
@@ -71,7 +71,23 @@ class TA_Article extends TA_Article_Data{
                 $authors[] = TA_Author_Factory::get_author($author_term);
             }
         }
-        return $authors;
+        return !empty($authors) ? $authors : null;
+    }
+
+    /**
+    *   @return WP_Term[]|null
+    */
+    protected function get_temas(){
+        $temas_terms = get_the_terms($this->post, 'ta_article_tema');
+        return $temas_terms && !is_wp_error($temas_terms) ? $temas_terms : null;
+    }
+
+    /**
+    *   @return WP_Term[]|null
+    */
+    protected function get_lugares(){
+        $lugares_terms = get_the_terms($this->post, 'ta_article_place');
+        return $lugares_terms && !is_wp_error($lugares_terms) ? $lugares_terms : null;
     }
 
     /**

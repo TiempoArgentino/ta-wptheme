@@ -13,6 +13,8 @@ class TA_Article_Data extends Data_Manager{
         'date'                  => '',
         'section'               => null,
         'tags'                  => null,
+        'temas'                 => null,
+        'lugares'               => null,
         'publication_info'      => '',
         'content'               => '',
         'authors'               => null,

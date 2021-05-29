@@ -40,11 +40,18 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 			}
 			else{
 				const userPreference = await postsBalancer.loadPreferences();
+
 				taPreferences = {
-					authors: userPreference.info.authors,
-					tags: userPreference.info.tags,
-					sections: userPreference.info.cats,
+					authors: [],
+					tags: [],
+					sections: [],
+					locations: [],
+					topics: [],
 				};
+
+				if( userPreference.info ){
+					taPreferences = { ...taPreferences, ...userPreference.info };
+				}
 			}
 
 			const  { render } = wp.element;

@@ -59,6 +59,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_DB.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 		add_action('admin_init', array(self::class, 'clean_dashboard'));
@@ -232,25 +233,7 @@ class TA_Theme
 		);
 
 		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
-		$most_viewed_query = new WP_Query(array(
-			'post_type' 	=> 'ta_article',
-		    'orderby' 		=> 'ta_article_count',
-		    'order' 		=> 'DESC',
-		    'meta_query' 	=> [
-		        [
-		            'key' 		=> 'ta_article_count',
-		            'compare' 	=> 'LIKE',
-		            'type'      => 'NUMERIC',
-		            'compare'   => 'EXISTS'
-		        ]
-		    ],
-		    'date_query' => [
-		        [
-		            'column' => 'post_date_gmt',
-		            'after'  => get_option('balancer_editorial_days') . ' days ago',
-		        ]
-		    ]
-		));
+		$most_viewed_query = ta_get_latest_most_viewed_query();
 
 		wp_localize_script(
 			'ta_comments',
