@@ -1,6 +1,7 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
 import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds} from './tagsCloud.js';
 
+// TODO: REMOVE LOGS
 ( ($) => {
 	let fetchedArticles = [];
 	const mostViewedArticlesIds = taMostViewed && taMostViewed.ids ? [...taMostViewed.ids] : [];
@@ -40,17 +41,38 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 			}
 			else{
 				const userPreference = await postsBalancer.loadPreferences();
+				const fieldsScheme = {
+					cats: {
+						apiField: "sections",
+						default: [],
+					},
+					tags: {
+						apiField: "tags",
+						default: [],
+					},
+					authors: {
+						apiField: "authors",
+						default: [],
+					},
+					locations: {
+						apiField: "locations",
+						default: [],
+					},
+					topics: {
+						apiField: "topics",
+						default: [],
+					},
+				}
 
-				taPreferences = {
-					authors: [],
-					tags: [],
-					sections: [],
-					locations: [],
-					topics: [],
-				};
+				if(userPreference.info){
+					for (var balancerFieldName in fieldsScheme) {
+						if (!fieldsScheme.hasOwnProperty(balancerFieldName))
+							continue;
 
-				if( userPreference.info ){
-					taPreferences = { ...taPreferences, ...userPreference.info };
+						const { default: defaultVal, apiField } = fieldsScheme[balancerFieldName];
+						const userPrefValue = userPreference.info[balancerFieldName];
+						taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
+					}
 				}
 			}
 
@@ -86,7 +108,8 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 				, rowElem);
 			}
 
-			renderNextRow();
+			if(balancedRows && balancedRows.length)
+				renderNextRow();
 		}
 		catch (e) {
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");

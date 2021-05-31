@@ -2,75 +2,6 @@ const { apiFetch } = wp;
 const { Spinner } = wp.components;
 const { useState, useEffect, render, Fragment } = wp.element;
 
-const testArticles = [
-    {
-        id: 2323,
-        title: "Artículo de prueba que sale de nueva base de datos",
-        url: "google.com",
-        cintillo: "Cintillo",
-        thumbnail: "https://images6.alphacoders.com/103/thumb-1920-1038319.jpg",
-        isopinion: false,
-        section: 2323,
-        authors: [
-            {
-                id: 2323,
-                name: "Jorge Claudio",
-                url: "https://www.cabroworld.com/wp-content/uploads/2017/10/kukk.jpg",
-                photo: "https://www.cabroworld.com/wp-content/uploads/2017/10/kukk.jpg",
-            },
-        ],
-        tags: [2323],
-        temas: [2323],
-        places: [2323],
-    },
-    {
-        id: 73,
-        title: "Otro artículo de prueba placeholder",
-        url: "google.com",
-        cintillo: "",
-        thumbnail: "https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/",
-        isopinion: true,
-        section: 2323,
-        authors: [
-            {
-                id: 2323,
-                name: "Juana Gonzales",
-                url: "https://images-na.ssl-images-amazon.com/images/I/81YDuTWSHyL.png",
-                photo: "https://images-na.ssl-images-amazon.com/images/I/81YDuTWSHyL.png",
-            },
-        ],
-        tags: [2323],
-        temas: [2323],
-        places: [2323],
-    },
-    {
-        id: 4744,
-        title: "Tercer test de prueba de artículo que sale de la nueva base de datos",
-        url: "google.com",
-        cintillo: "",
-        thumbnail: "https://images8.alphacoders.com/108/1081458.jpg",
-        isopinion: false,
-        section: 2323,
-        authors: [],
-        tags: [2323],
-        temas: [2323],
-        places: [2323],
-    },
-    {
-        id: 456456,
-        title: "Contundente desmentida de Pfizer a la denuncia de Patricia Bullrich sobre un supuesto pedido de coimas",
-        url: "google.com",
-        cintillo: "",
-        thumbnail: "https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg",
-        isopinion: false,
-        section: 2323,
-        authors: [],
-        tags: [2323],
-        temas: [2323],
-        places: [2323],
-    },
-];
-
 const TAFrontBalancedRow = (props) => {
     const {
         rowArgs,
@@ -85,24 +16,32 @@ const TAFrontBalancedRow = (props) => {
 
     // Fetch articles from the new database
     useEffect( () => {
-        apiFetch({
-            path: `/ta/v1/balancer-db/articles`,
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+
+        var requestOptions = {
             method: 'POST',
-            data: articlesRequestArgs,
-        })
+            headers: headers,
+            body: JSON.stringify(articlesRequestArgs),
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:3003/api/posts/personalized", requestOptions)
+            .then(response => response.json())
             .then((response) => {
-                setFetchedArticles(response.articles);
-                if(onArticlesFetched){
+                console.log('Fetch Articles Response', response);
+                setFetchedArticles(response);
+                if (onArticlesFetched) {
                     onArticlesFetched({
-                        articlesIds: response.articles.map( article => article.postId ),
+                        articlesIds: response.map(article => article.postId),
                     });
                 }
-                console.log('Fetch Articles Response', response);
             })
             .catch(function(error) {
+                console.log(error);
                 setIsEmpty(true);
                 setIsLoading(false);
-                if(onArticlesFetched){
+                if (onArticlesFetched) {
                     onArticlesFetched({
                         articlesIds: [],
                     });
