@@ -5,6 +5,7 @@ const { useState, useEffect, render, Fragment } = wp.element;
 const TAFrontBalancedRow = (props) => {
     const {
         rowArgs,
+        cellsCount,
         onArticlesFetched,
         articlesRequestArgs,
     } = props;
@@ -28,12 +29,12 @@ const TAFrontBalancedRow = (props) => {
 
         fetch("http://localhost:3003/api/posts/personalized", requestOptions)
             .then(response => response.json())
-            .then((response) => {
-                console.log('Fetch Articles Response', response);
-                setFetchedArticles(response);
+            .then((articles) => {
+                console.log('Fetch Articles Response', articles);
+                setFetchedArticles(articles);
                 if (onArticlesFetched) {
                     onArticlesFetched({
-                        articlesIds: response.map(article => article.postId),
+                        articlesIds: articles.slice(0, cellsCount).map(article => article.postId),
                     });
                 }
             })

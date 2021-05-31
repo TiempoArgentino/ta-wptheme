@@ -28,6 +28,48 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 		};
 	}
 
+	/**
+	*	Takes the user preference data from the balancer, and maps its fields to
+	*   the one expected by the Tiempo Argentino latest articles API
+	*/
+	function mapFromUserPreferenceToAPIFields(userPreference){
+		const hasPreferences = userPreference && userPreference.info;
+		const taPreferences = {};
+		const fieldsScheme = {
+			cats: {
+				apiField: "sections",
+				default: [],
+			},
+			tags: {
+				apiField: "tags",
+				default: [],
+			},
+			authors: {
+				apiField: "authors",
+				default: [],
+			},
+			locations: {
+				apiField: "locations",
+				default: [],
+			},
+			topics: {
+				apiField: "topics",
+				default: [],
+			},
+		}
+
+		for (var balancerFieldName in fieldsScheme) {
+			if (!fieldsScheme.hasOwnProperty(balancerFieldName))
+				continue;
+
+			const { default: defaultVal, apiField } = fieldsScheme[balancerFieldName];
+			const userPrefValue = hasPreferences ? userPreference.info[balancerFieldName] : null;
+			taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
+		}
+
+		return taPreferences;
+	}
+
 	$(document).ready( async () => {
 		if(!postsBalancer)
 			return;
@@ -41,39 +83,7 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 			}
 			else{
 				const userPreference = await postsBalancer.loadPreferences();
-				const fieldsScheme = {
-					cats: {
-						apiField: "sections",
-						default: [],
-					},
-					tags: {
-						apiField: "tags",
-						default: [],
-					},
-					authors: {
-						apiField: "authors",
-						default: [],
-					},
-					locations: {
-						apiField: "locations",
-						default: [],
-					},
-					topics: {
-						apiField: "topics",
-						default: [],
-					},
-				}
-
-				if(userPreference.info){
-					for (var balancerFieldName in fieldsScheme) {
-						if (!fieldsScheme.hasOwnProperty(balancerFieldName))
-							continue;
-
-						const { default: defaultVal, apiField } = fieldsScheme[balancerFieldName];
-						const userPrefValue = userPreference.info[balancerFieldName];
-						taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
-					}
-				}
+				taPreferences = mapFromUserPreferenceToAPIFields(userPreference);
 			}
 
 			const  { render } = wp.element;
@@ -96,6 +106,7 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 				render(
 					<TAFrontBalancedRow
 						rowArgs = {rowArgs}
+						cellsCount = {cellsCount}
 						articlesRequestArgs = { articlesRequestArgs }
 						onArticlesFetched = { ({articlesIds}) => {
 							fetchedArticles = [...fetchedArticles, ...articlesIds];
