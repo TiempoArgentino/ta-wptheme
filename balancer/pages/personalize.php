@@ -45,7 +45,7 @@
         </div>
     </div>
 </div>
-<!-- temas --> 
+<!-- temas -->
 <div class="container ta-context asociate gray-border mt-2 my-lg-5" id="categories">
     <div class="line-height-0">
         <div class="separator m-0"></div>
@@ -64,9 +64,9 @@
                                 </p>
                             </div>
                             <div class="temas d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-left">
-                            <?php if(!empty(balancer_personalize()->get_topics())):?>
+                            <?php if(!empty(Posts_Balancer_Personalize::get_topics())):?>
 
-                                <?php foreach(balancer_personalize()->get_topics() as $key => $val):?>
+                                <?php foreach(Posts_Balancer_Personalize::get_topics() as $key => $val):?>
                                     <div class="tema col-12 col-md-4 px-1 <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'theme-selected' : ''?>" id="<?php echo $val?>">
                                     <label>
                                         <input type="checkbox" name="categorie[]" class="topic categorie" id="<?php echo $key?>" <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_topics',true)) ? 'checked="checked"' : ''?> value="<?php echo $key?>">
@@ -74,7 +74,7 @@
                                     </label>
                                 </div>
                                         <?php endforeach;?>
-                                <?php endif;?> 
+                                <?php endif;?>
                             </div>
                             <!--<div class="subtitle text-center mt-4 d-none d-md-block">
                                 <a href="">
@@ -118,9 +118,9 @@
                                 </h4>
                             </div>
                             <div class="periodismo articulos d-flex flex-column flex-md-row flex-wrap align-items-center align-items-md-start justify-content-left my-3">
-                                <?php if(!empty(balancer_personalize()->get_taxonomies())):?>
-                                    <?php foreach(balancer_personalize()->get_taxonomies() as $key => $val): ?>
-                                        <?php 
+                                <?php if(!empty(Posts_Balancer_Personalize::get_taxonomies())):?>
+                                    <?php foreach(Posts_Balancer_Personalize::get_taxonomies() as $key => $val): ?>
+                                        <?php
                                             $args = [
                                                 'post_type' => get_option('balancer_editorial_post_type'),
                                                 'numberposts' => 1,
@@ -132,7 +132,7 @@
                                                     'terms' => $key
                                                 ]
                                             ];
-                                            $query = get_posts($args);  
+                                            $query = get_posts($args);
                                             foreach($query as $t):
                                                 $authors = get_the_terms($t->{'ID'},get_option('balancer_editorial_autor'));
                                                 $post_author = [];
@@ -158,7 +158,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                <?php 
+                                <?php
                                     endforeach;
                                 endforeach?>
                                 <?php endif?>
@@ -178,7 +178,7 @@
 
 </div>
 <!-- periodismo -->
-<!-- emociiones --> 
+<!-- emociiones -->
 <div class="container ta-context asociate gray-border mt-2 my-lg-5" id="emotions">
     <div class="line-height-0">
         <div class="separator m-0"></div>
@@ -198,9 +198,9 @@
                             </div>
                             <div class="fotos my-3">
                                 <div class="row flex-wrap">
-                                <?php if(!empty(balancer_personalize()->get_authors())):?>
-                                    <?php foreach(balancer_personalize()->get_authors() as $key => $val):?>
-                                        <?php 
+                                <?php if(!empty(Posts_Balancer_Personalize::get_authors())):?>
+                                    <?php foreach(Posts_Balancer_Personalize::get_authors() as $key => $val):?>
+                                        <?php
                                             $args = [
                                                 'post_type' => get_option('balancer_editorial_post_type'),
                                                 'numberposts' => 1,
@@ -212,7 +212,7 @@
                                                     'terms' => $key
                                                 ]
                                             ];
-                                            $query = get_posts($args);  
+                                            $query = get_posts($args);
                                             foreach($query as $t):
                                                 $taxos = get_the_terms($t->{'ID'},get_option('balancer_editorial_taxonomy'));
                                                 $post_tax = [];
@@ -221,7 +221,7 @@
                                                         $post_tax[] = $ta->{'term_id'};
                                                     }
                                                 }
-                    
+
                                         ?>
                                     <div
                                         class="foto col-6 col-md-3 position-relative d-flex justify-content-center align-items-center mt-3 mt-md-4 ">
@@ -236,7 +236,7 @@
                                                     data-taxo="<?php echo json_encode($post_tax) ?>"
                                                     class="photo foto-checkbox position-absolute"
                                                     name="photo-item[]"
-                                                    <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?> 
+                                                    <?php echo is_array(get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) && in_array($key,get_user_meta(wp_get_current_user()->ID,'_personalizer_authors',true)) ? 'checked="checked"' : ''?>
                                                     value="<?php echo $key?>">
                                                 </div>
                                             </label>

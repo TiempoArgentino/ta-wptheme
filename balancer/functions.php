@@ -53,7 +53,7 @@ class Balancer_TA
 
     public function tag_cloud_template()
     {
-        if (function_exists('balancer_personalize')) {
+        if (class_exists('Posts_Balancer_Personalize')) {
 
             if (is_user_logged_in()) {
                 $topics = get_user_meta(wp_get_current_user()->ID, '_personalizer_topics', true);
@@ -78,7 +78,7 @@ class Balancer_TA
         if(isset($_POST['action'])) {
 
             if(isset($_POST['id'])) {
-               
+
                 balancer_cookie()->populate_cookie();
 
                 $tag = $_POST['id'];
@@ -107,7 +107,7 @@ class Balancer_TA
 
                 wp_send_json_success($_POST['id']);
                 wp_die();
-                
+
             } else {
                 wp_send_json_success();
             }

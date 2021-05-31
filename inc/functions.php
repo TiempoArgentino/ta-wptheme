@@ -1,5 +1,29 @@
 <?php
 
+function ta_get_latest_most_viewed_query($args = array()){
+	$query_args = array(
+		'post_type' 	=> 'ta_article',
+		'orderby' 		=> 'ta_article_count',
+		'order' 		=> 'DESC',
+		'meta_query' 	=> [
+			[
+				'key' 		=> 'ta_article_count',
+				'compare' 	=> 'LIKE',
+				'type'      => 'NUMERIC',
+				'compare'   => 'EXISTS'
+			]
+		],
+		'date_query' => [
+			[
+				'column' => 'post_date_gmt',
+				'after'  => get_option('balancer_editorial_days') . ' days ago',
+			]
+		]
+	);
+
+	return new WP_Query( array_merge($query_args, $args));
+}
+
 function ta_print_header(){
 	include(TA_THEME_PATH . '/markup/partes/header.php');
 };

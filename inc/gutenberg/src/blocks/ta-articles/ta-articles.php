@@ -1,6 +1,7 @@
 <?php
 define('TA_ARTICLES_CELLS_COUNT_VARNAME', 'ta_article_preview_cell_count');
 
+require_once plugin_dir_path( __FILE__ ) . 'functions.php';
 require_once plugin_dir_path(__FILE__) . '/classes/TAArticlesBlockRow.php';
 require_once plugin_dir_path(__FILE__) . '/classes/TAArticlesCommonRow.php';
 require_once plugin_dir_path(__FILE__) . '/classes/TAArticlesMiscelaneaRow.php';

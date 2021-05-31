@@ -1,4 +1,6 @@
 <?php
+require_once plugin_dir_path( __FILE__ ) . 'functions.php';
+
 /**
 *	Article preview block
 *	@param TA_Article_Data article												The article intance. If passed, is used instead of article_data and article_type

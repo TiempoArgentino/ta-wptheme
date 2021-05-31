@@ -1,10 +1,10 @@
 <?php
-if(!function_exists('balancer_front'))
-    return;
-
-$posts = balancer_front()->interesting(4);
-if(!$posts || !is_array($posts) || is_wp_error($posts))
-    return;
+// if(!function_exists('balancer_front'))
+//     return;
+//
+// $posts = balancer_front()->interesting(4);
+// if(!$posts || !is_array($posts) || is_wp_error($posts))
+//     return;
 
 $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
 
@@ -21,6 +21,7 @@ $articles_block->render(array(
             'cells_per_row'             => 4,
             'fill'                      => true,
             'deactivate_opinion_layout' => true,
+            'use_balacer_articles'      => true,
         ),
     ),
     'use_container'     => true,

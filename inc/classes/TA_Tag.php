@@ -7,6 +7,10 @@ class TA_Tag extends TA_Tag_Data {
         $this->term = $term;
     }
 
+    public function get_ID(){
+        return $this->term ? $this->term->term_id : null;
+    }
+    
     protected function get_name(){
         return $this->term ? $this->term->name : '';
     }

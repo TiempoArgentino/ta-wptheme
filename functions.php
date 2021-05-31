@@ -46,10 +46,12 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_Article.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Edicion_Impresa.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_Author.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Tag.php';
@@ -57,6 +59,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_DB.php';
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 		add_action('admin_init', array(self::class, 'clean_dashboard'));
@@ -254,6 +257,7 @@ class TA_Theme
 		wp_enqueue_script('tw-js', 'https://platform.twitter.com/widgets.js');
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
+		wp_enqueue_script("ta-balancer-front-block-js", ['react', 'reactdom']);
 
 		wp_localize_script(
 			'ta_comments',
@@ -261,6 +265,17 @@ class TA_Theme
 			array(
 				'restURL' 	=> get_rest_url(),
 				'nonce' 	=> wp_create_nonce('wp_rest')
+			),
+		);
+
+		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
+		$most_viewed_query = ta_get_latest_most_viewed_query();
+
+		wp_localize_script(
+			'ta_comments',
+			'taMostViewed',
+			array(
+				'ids' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
 			),
 		);
 	}

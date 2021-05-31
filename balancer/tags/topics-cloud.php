@@ -22,11 +22,11 @@
                         <div class="container">
                             <div class="article-tags d-flex flex-wrap mt-4" id="cloud-tag-topics">
                                 <?php if(!is_user_logged_in()) : ?>
-                                    <?php foreach(balancer_personalize()->get_topics(16) as $key => $val) : ?>
-                                    <div class="tag d-flex justify-content-center my-2">
+                                    <?php foreach(Posts_Balancer_Personalize::get_topics(16) as $key => $val) : ?>
+                                    <div class="tag d-flex justify-content-center my-2" data-id="<?php echo $key?>">
                                         <div class="content p-1">
                                             <!--<a href="#" class="cloud-link">-->
-                                                <p class="m-0 cloud-item" data-id="<?php echo $key?>"><?php echo $val?></p>
+                                                <p class="m-0 cloud-item"><?php echo $val?></p>
                                             <!--</a>-->
                                         </div>
                                         <div class="triangle"></div>
@@ -36,7 +36,7 @@
                                         <button type="button"  id="ver-mas-cloud" data-toggle="collapse" data-target="#seeAllTags" aria-expanded="false"
                                             aria-controls="seeAllTags" class="collapsed">ver más<img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/right-arrow.png" alt=""
                                                 class="img-fluid" /></button>
-                                    </div>                                   
+                                    </div>
                                 <?php endif;?>
                             </div>
                             <div class="container-md mb-2 p-0 d-none">
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="ver-mas d-flex justify-content-center mt-4">
-                        <button id="listo-cloud"><?php echo __('Listo','gen-base-theme')?></button>
+                        <button id="listo-cloud" class="not-active"><?php echo __('Listo','gen-base-theme')?></button>
                     </div>
                 </div>
             </div>

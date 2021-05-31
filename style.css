@@ -177,3 +177,44 @@ reemplazar en styles de angie
 .ta-celeste-color{
     color: var(--ta-celeste);
 }
+
+/** HOTFIX TAGS CLOUD **/
+.article-tags .tag .content, .article-tags .tag .cloud-item, .article-tags .tag .triangle{
+    cursor: pointer;
+     /*transition: all 0.3s;*/
+}
+
+.article-tags .tag{
+    user-select: none;
+}
+
+.article-tags .tag .content{
+    background-color: transparent;
+}
+
+.article-tags .tag.active .content {
+    background-color: var(--ta-celeste);
+}
+
+.article-tags .tag.active .cloud-item {
+    color: #fff;
+}
+
+.article-tags .tag.active .triangle {
+    background-color: var(--ta-celeste);
+}
+
+#cloud-tag-container{
+    display: none;
+}
+
+.eleccion-contenido .ver-mas button.not-active{
+    background-color: #c0c0c0;
+    color: #ffffff;
+}
+/* END HOTFIX TAGS CLOUD */
+
+
+.article-preview .article-icons img{
+    display: none;
+}

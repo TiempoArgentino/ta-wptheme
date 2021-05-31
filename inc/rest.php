@@ -11,6 +11,81 @@
 // New Edicion Impresa
 add_action( 'rest_api_init', function () {
 
+	register_rest_route( 'ta/v1', '/balancer-db/load-latest', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$params = $request->get_json_params();
+			$days_ago = isset($params['days']) && is_int($params['days']) ? $params['days'] : null;
+			return new WP_REST_Response(TA_Balancer_DB::insert_latest_articles($days_ago), 200);
+		},
+		'permission_callback' 	=> fn() => current_user_can( 'delete_published_articles' ),
+	) );
+
+	register_rest_route( 'ta/v1', '/balancer-db/articles', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+
+			// init the resource
+			$ch = curl_init("https://content-balancer-tiempoar.herokuapp.com/api/posts");
+			curl_setopt($ch, CURLOPT_URL, "https://content-balancer-tiempoar.herokuapp.com/api/posts");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_CAINFO, TA_THEME_PATH . '/inc/cacert.pem');
+
+			// Check if initialization had gone wrong*
+		    if ($ch === false) {
+				return new WP_REST_Response( 'Failed to initialize', 500);
+		    }
+
+			// execute
+			$output = curl_exec($ch);
+			if ($output === false) {
+				throw new Exception(curl_error($ch), curl_errno($ch));
+				// return new WP_REST_Response( 'Failed to initialize', 500);
+		    }
+			// free
+			curl_close($ch);
+
+			$articles = json_decode($output);
+
+			return new WP_REST_Response(array(
+				'articles'	=> $articles,
+			), 200);
+		},
+		'permission_callback' => function () {
+	    	return true;
+	    },
+	) );
+
+	register_rest_route( 'ta/v1', '/balancer-row', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$params = $request->get_json_params();
+			$articles_db = isset($params['articles']) ? $params['articles'] : [];
+			$row_args = isset($params['row_args']) ? $params['row_args'] : [];
+
+			if(!is_array($articles_db) || !is_array($articles_db)){
+				return new WP_REST_Response(array(
+					'html'	=> '',
+				), 200);
+			}
+
+			$row_args['use_balacer_articles'] = false;
+
+			$articles = array_map( fn($article_db) => new TA_Balancer_Article($article_db), $articles_db);
+
+			ob_start();
+			ta_render_articles_block_row($articles, $row_args, 0);
+			$row = ob_get_clean();
+
+			return new WP_REST_Response(array(
+				'html'	=> $row,
+			), 200);
+		},
+		'permission_callback' => function () {
+	    	return true;
+	    },
+	) );
+
 	register_rest_route( 'ta/v1', '/comment', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){

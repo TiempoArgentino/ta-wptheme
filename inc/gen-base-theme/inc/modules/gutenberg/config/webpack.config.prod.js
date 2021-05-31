@@ -11,6 +11,12 @@ module.exports = merge(commonConfig, {
             // Minify the code.
             new UglifyJsPlugin({
                 uglifyOptions: {
+                    // Eliminate comments
+                    comments: false,
+                    // remove warnings
+                    warnings: false,
+                    // Drop console statements
+                    drop_console: true,
                     compress: {
                         // warnings: false,
                         // Disabled because of an issue with Uglify breaking seemingly valid code:
@@ -18,6 +24,8 @@ module.exports = merge(commonConfig, {
                         // Pending further investigation:
                         // https://github.com/mishoo/UglifyJS2/issues/2011
                         comparisons: false,
+                        // Drop console statements
+                        drop_console: true,
                     },
                     // mangle: {
                     //     safari10: true,

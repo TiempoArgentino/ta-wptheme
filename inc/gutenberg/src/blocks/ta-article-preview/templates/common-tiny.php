@@ -1,8 +1,8 @@
 <?php
-$preview_class = "$class";
+$preview_class = esc_attr($class);
 $section = $article->section;
 ?>
-<div class="article-preview d-flex <?php echo esc_attr($preview_class); ?>">
+<div <?php ta_print_article_preview_attr($article, array( 'class' => "d-flex $preview_class" )); ?>>
     <?php if( $thumbnail_url ): ?>
     <div class="col-3 p-0">
         <a href="<?php echo esc_attr($url); ?>">

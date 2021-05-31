@@ -7,6 +7,10 @@ class TA_Section extends TA_Section_Data{
         $this->term = $term;
     }
 
+    public function get_ID(){
+        return $this->term ? $this->term->term_id : null;
+    }
+
     public function get_name(){
         return $this->term ? $this->term->name : '';
     }
