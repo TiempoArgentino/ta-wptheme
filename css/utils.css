@@ -233,3 +233,6 @@ input#editInfo, input#editDInfo {
 .ta-context.quienes-somos.mt-3 .img-container {
   padding-bottom: 0px !IMPORTANT;
 }
+div#ntroCompromisoQuienesSomos .img-container .img-wrapper {
+  background-size: cover !IMPORTANT;
+}
