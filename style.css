@@ -216,3 +216,8 @@ reemplazar en styles de angie
     color: #ffffff;
 }
 /* END HOTFIX TAGS CLOUD */
+
+
+.article-preview .article-icons img{
+    display: none;
+}

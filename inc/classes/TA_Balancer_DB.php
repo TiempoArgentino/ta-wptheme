@@ -73,7 +73,7 @@ class TA_Balancer_DB{
             'isOpinion'			=> fn($article) => $article->isopinion,
             'section'			=> fn($article) => $article->section ? $article->section->ID : null,
             'authors'			=> fn($article) => $article->authors ? array_map( [self::class, 'get_author_data'], $article->authors ) : [],
-            'tags'				=> fn($article) => $article->tags ? array_map( fn($tag) => array( 'tagsId' => $tag->ID ), $article->tags ) : [],
+            'tags'				=> fn($article) => $article->tags ? array_map( fn($tag) => array( 'tagId' => $tag->ID ), $article->tags ) : [],
             'themes'			=> fn($article) => $article->temas ? array_map( fn($tema) => array( 'themeId' => $tema->term_id ), $article->temas ) : [],
             'places'			=> fn($article) => $places = $article->lugares ? array_map( fn($lugar) => array( 'placeId' => $lugar->term_id ), $article->lugares ) : [],
         );
@@ -181,7 +181,7 @@ class TA_Balancer_DB{
 		RB_Filters_Manager::add_action( "ta_update_authors_in_balancer_db", "edited_term", function($term_id, $tt_id, $taxonomy){
 			if( $taxonomy !== 'ta_article_author' )
 				return;
-    
+
 			self::update_author( self::get_author_data(TA_Author_Factory::get_author($term_id)) );
 		}, array(
 			'priority'		=> 100,

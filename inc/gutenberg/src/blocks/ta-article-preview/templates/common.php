@@ -4,8 +4,16 @@ $thumb_cont_class = $desktop_horizontal ? 'col-5 col-md-6 pr-0 pl-0' : '';
 $info_class = $desktop_horizontal ? 'col-7 col-md-6' : '';
 $preview_class = $desktop_horizontal ? 'd-flex' : '';
 $preview_class .= " $class";
+$preview_class = esc_attr($preview_class);
 ?>
-<div class="article-preview mb-3 <?php echo esc_attr($preview_class); ?>">
+<div
+    <?php
+    ta_print_article_preview_attr($article, array(
+        'class'                 => "mb-3 $preview_class",
+        'use_balancer_icons'    => true 
+    ));
+    ?>
+>
     <?php if( $thumbnail_url ): ?>
     <div class="<?php echo esc_attr($thumb_cont_class); ?>">
         <a href="<?php echo esc_attr($url); ?>">

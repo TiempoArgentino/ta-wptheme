@@ -1,5 +1,7 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
-import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds} from './tagsCloud.js';
+import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from './tagsCloud';
+import './balancerIcons';
+import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 
 // TODO: REMOVE LOGS
 ( ($) => {
@@ -35,37 +37,12 @@ import {userCompletedPersonalization, userDeniedPersonalization, getCloudLocalSt
 	function mapFromUserPreferenceToAPIFields(userPreference){
 		const hasPreferences = userPreference && userPreference.info;
 		const taPreferences = {};
-		const fieldsScheme = {
-			cats: {
-				apiField: "sections",
-				default: [],
-			},
-			tags: {
-				apiField: "tags",
-				default: [],
-			},
-			authors: {
-				apiField: "authors",
-				default: [],
-			},
-			locations: {
-				apiField: "locations",
-				default: [],
-			},
-			topics: {
-				apiField: "topics",
-				default: [],
-			},
-		}
 
-		for (var balancerFieldName in fieldsScheme) {
-			if (!fieldsScheme.hasOwnProperty(balancerFieldName))
-				continue;
-
-			const { default: defaultVal, apiField } = fieldsScheme[balancerFieldName];
-			const userPrefValue = hasPreferences ? userPreference.info[balancerFieldName] : null;
+		forEachField( ({ fieldName, fieldData }) => {
+			const { default: defaultVal, apiField } = fieldData;
+			const userPrefValue = hasPreferences ? userPreference.info[fieldName] : null;
 			taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
-		}
+		} );
 
 		return taPreferences;
 	}

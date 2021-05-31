@@ -7,7 +7,14 @@ $title_class = $desktop_horizontal ? '' : 'w-75 mx-md-auto';
 $preview_class = $desktop_horizontal ? 'd-flex py-3' : 'py-2 d-flex flex-row flex-md-column';
 ?>
 
-<div class="article-preview autor light-blue-bg context-bg mb-3">
+<div
+    <?php
+    ta_print_article_preview_attr($article, array(
+        'class'                 => 'autor light-blue-bg context-bg mb-3',
+        'use_balancer_icons'    => false,
+    ));
+    ?>
+>
     <div class="<?php echo esc_attr($preview_class); ?>">
         <div class="<?php echo esc_attr($thumb_cont_class); ?>">
             <a href="<?php echo esc_attr($url); ?>">
