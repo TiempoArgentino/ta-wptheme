@@ -9,7 +9,7 @@ class TA_Balancer_DB{
     /**
     *   @property string $api_url
     */
-    static private $api_url = 'https://cuddly-deer-72.loca.lt/'; //'http://localhost:3003'
+    static private $api_url = 'http://localhost:3003';
 
     /**
     *   @property string[] $metakeys

@@ -27,7 +27,7 @@ const TAFrontBalancedRow = (props) => {
             redirect: 'follow'
         };
 
-        fetch("https://cuddly-deer-72.loca.lt/api/posts/personalized", requestOptions)
+        fetch("http://localhost:3003/api/posts/personalized", requestOptions)
             .then(response => response.json())
             .then((articles) => {
                 console.log('Fetch Articles Response', articles);
