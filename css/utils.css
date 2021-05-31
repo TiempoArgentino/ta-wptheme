@@ -237,3 +237,7 @@ input#editInfo, input#editDInfo {
 div#ntroCompromisoQuienesSomos .img-container .img-wrapper {
   background-size: cover !IMPORTANT;
 }
+
+.ta-articles-block.fullwidth-row.nota-hermana .icons-container {
+  display: none;
+}

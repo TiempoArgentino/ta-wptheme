@@ -16,7 +16,7 @@ if(!$sister_article)
     </div>
     <div class="sub-blocks mt-3 mt-md-0">
         <div class="container">
-            <div class="ta-articles-block fullwidth-row">
+            <div class="ta-articles-block fullwidth-row nota-hermana">
                 <?php
                 ta_render_article_preview($sister_article, array(
                     'layout'                => 'common-tiny',
