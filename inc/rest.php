@@ -14,7 +14,9 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'ta/v1', '/balancer-db/load-latest', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
-			return new WP_REST_Response(TA_Balancer_DB::insert_latest_articles(), 200);
+			$params = $request->get_json_params();
+			$days_ago = isset($params['days']) && is_int($params['days']) ? $params['days'] : null;
+			return new WP_REST_Response(TA_Balancer_DB::insert_latest_articles($days_ago), 200);
 		},
 		'permission_callback' 	=> fn() => current_user_can( 'delete_published_articles' ),
 	) );

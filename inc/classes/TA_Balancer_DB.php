@@ -207,9 +207,10 @@ class TA_Balancer_DB{
 
     /**
     *   Inserts into the DB the latest articles
-    *   @param mixed[] $article_data
+    *   @param int $days														Articles from $days ago
     */
-    static public function insert_latest_articles(){
+    static public function insert_latest_articles($days = null){
+		$days = $days ? $days : get_option('balancer_editorial_days', 20);
         $query = new WP_Query(array(
             'post_type' 		=> 'ta_article',
         	'orderby' 			=> 'date',
@@ -218,7 +219,7 @@ class TA_Balancer_DB{
         	'date_query' 		=> [
         		[
         			'column' => 'post_date_gmt',
-        			'after'  => get_option('balancer_editorial_days', 20) . ' days ago',
+        			'after'  => $days . ' days ago',
         		]
         	]
         ));
