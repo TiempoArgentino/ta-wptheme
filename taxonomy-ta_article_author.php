@@ -8,9 +8,9 @@ $articles = get_ta_articles_from_query($wp_query);
 //include_once(TA_THEME_PATH . '/markup/partes/podes-leer.php');
 ?>
 
-<?php get_header(); ?>
+<?php get_header();?>
 
-    <?php if( $author->description || $author->quote ): ?>
+    <?php //if( $author->bio || $author->quote ): ?>
     <div class="mt-3">
         <div class="container">
             <div class="section-title">
@@ -93,7 +93,7 @@ $articles = get_ta_articles_from_query($wp_query);
             </div>
         </div>
     </div>
-    <?php endif; ?>
+    <?php //endif; ?>
     <div class="py-3">
         <div class="container">
             <div class="section-title">
