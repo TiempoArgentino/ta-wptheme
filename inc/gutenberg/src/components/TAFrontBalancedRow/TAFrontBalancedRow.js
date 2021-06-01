@@ -90,7 +90,6 @@ const TAFrontBalancedRow = (props) => {
 
     return (
         <>
-        <div ref={containerRef} ></div>
             {loading &&
             <div class = "d-flex align-items-center">
                 <p><Spinner/> Cargando Artículos </p>
