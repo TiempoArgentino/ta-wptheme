@@ -72,10 +72,20 @@ import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 				const rowArgs = $(rowElem).data('row');
 				const cellsCount = $(rowElem).data('count');
 				const amounts = getAmounts(cellsCount);
+				const mostViewed = shiftFromMostViewed(amounts.mostViewed);
+
+				// If amounts differ from actual mostViewed amount
+				if(mostViewed.length < amounts.mostViewed){
+					const mostViewedDif = amounts.mostViewed - mostViewed.length;
+					amounts.mostViewed -= mostViewedDif;
+					amounts.editorial += mostViewedDif;
+				}
+
+				// Final arguments
 				const articlesRequestArgs = {
 					amounts,
 					userPreference: taPreferences,
-					mostViewed: shiftFromMostViewed(amounts.mostViewed),
+					mostViewed,
 					ignore: fetchedArticles,
 				};
 				console.log('articlesRequestArgs', articlesRequestArgs);
