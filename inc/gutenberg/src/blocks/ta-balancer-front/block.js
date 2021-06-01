@@ -1,6 +1,7 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
 import { fieldsScheme, forEachField, getUserPreferenceForAPI } from '../../helpers/balancerFront/scheme';
 import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
+import { renderBalancerArticlesRow } from '../../helpers/balancerFront/balancerRow';
 import './tagsCloud';
 import './balancerIcons';
 
@@ -42,7 +43,7 @@ import './balancerIcons';
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
 
-			const renderNextRow = () => {
+			const renderNextRow = async () => {
 				const rowElem = balancedRows[currentRowIndex];
 				const rowArgs = $(rowElem).data('row');
 				const cellsCount = $(rowElem).data('count');
@@ -57,28 +58,21 @@ import './balancerIcons';
 				}
 
 				// Final arguments
-				const articlesRequestArgs = {
+				const articlesArgs = {
 					amounts,
 					userPreference: taPreferences,
 					mostViewed,
 					ignore: fetchedArticles,
 				};
-				console.log('articlesRequestArgs', articlesRequestArgs);
+				console.log('articlesRequestArgs', articlesArgs);
 
-				render(
-					<TAFrontBalancedRow
-						rowArgs = {rowArgs}
-						cellsCount = {cellsCount}
-						articlesRequestArgs = { articlesRequestArgs }
-						onArticlesFetched = { ({articlesIds}) => {
-							fetchedArticles = [...fetchedArticles, ...articlesIds];
-							if(currentRowIndex < balancedRows.length - 1){
-								currentRowIndex++;
-								renderNextRow();
-							}
-						} }
-					/>
-				, rowElem);
+				const renderedArticlesIds = await renderBalancerArticlesRow({ elem: rowElem, articlesArgs, rowArgs, cellsCount });
+				fetchedArticles = renderedArticlesIds?.length ? [...fetchedArticles, ...renderedArticlesIds] : fetchedArticles;
+
+				if(currentRowIndex < balancedRows.length - 1){
+					currentRowIndex++;
+					renderNextRow();
+				}
 			}
 
 			if(balancedRows && balancedRows.length)
