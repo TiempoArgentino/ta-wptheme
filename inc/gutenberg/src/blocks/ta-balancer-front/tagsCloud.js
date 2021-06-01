@@ -76,8 +76,8 @@ if(typeof window.postsBalancer !== 'undefined'){
             });
 
             $(document).on('click', '#listo-cloud', function(){
-                completeSelection();
-                hideTagsCloud();
+                if(completeSelection())
+                    hideTagsCloud();
             });
 
             // TODO: Esto hay que refactorizarlo
@@ -98,5 +98,5 @@ if(typeof window.postsBalancer !== 'undefined'){
     catch (e) {
         console.log(e);
     }
-    
+
 }
