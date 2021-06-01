@@ -14,7 +14,7 @@ export async function loadArticlePreviewIcons({ elem, preferences }){
                         $(elem).find(`[data-icon="author"]`).fadeIn();
                     if(matches['locations']?.length)
                         $(elem).find(`[data-icon="location"]`).fadeIn();
-                    if(matches['toddsdpics']?.length || matches['cats']?.length || matches['tags']?.length)
+                    if(matches['topics']?.length || matches['cats']?.length || matches['tags']?.length)
                         $(elem).find(`[data-icon="favorite"]`).fadeIn();
                 }
             }
