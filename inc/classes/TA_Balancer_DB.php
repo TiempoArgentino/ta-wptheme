@@ -8,8 +8,9 @@ class TA_Balancer_DB{
 
     /**
     *   @property string $api_url
+	*	It gets stablished during initialize() based on the current envirionment.
     */
-    static private $api_url = 'http://localhost:3003';
+    static private $api_url = '';
 
     /**
     *   @property string[] $metakeys
@@ -26,15 +27,30 @@ class TA_Balancer_DB{
 			return false;
 
 		 self::$initialized = true;
+		 self::stablish_env_variables();
 		 self::sync_latest_articles_with_balancer_db();
 		 self::sync_terms_with_balancer_db();
+	}
+
+	static private function stablish_env_variables(){
+		switch ( wp_get_environment_type() ) {
+		   case 'staging':
+			   self::$api_url = "https://api-dev.nuevotiempoargentino.com/";
+			   break;
+		   case 'production':
+			   self::$api_url = "https://api.nuevotiempoargentino.com/";
+			   break;
+		   default:
+			   self::$api_url = "http://localhost:3003";
+			   break;
+	   }
 	}
 
     /**
     *   Composes an endpoint for the api using the stored api base url
     *   @param string $route
     */
-    static private function get_api_endpoint(string $route){
+    static public function get_api_endpoint(string $route = ""){
         return self::$api_url . $route;
     }
 

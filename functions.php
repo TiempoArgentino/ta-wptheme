@@ -114,18 +114,18 @@ class TA_Theme
 					padding: 20px 20px 0 20px !important;
 				}
 				.wp-block-lazyblock-contenedor-avisos .lzb-content-controls, .wp-block-lazyblock-contenedor-avisos .lzb-preview-server{
-					display: none !important;   
+					display: none !important;
 				}
 				</style>';
 			}
 		}
 	}
 
-	static public function languages_path() 
+	static public function languages_path()
 	{
 		load_theme_textdomain( 'gen-base-theme', get_template_directory() . '/languages' );
 	}
-	
+
 	static public function head_script()
 	{
 		if(is_single()) { //mow player para 1 video en las internas
@@ -272,10 +272,11 @@ class TA_Theme
 		$most_viewed_query = ta_get_latest_most_viewed_query();
 
 		wp_localize_script(
-			'ta_comments',
-			'taMostViewed',
+			'ta-balancer-front-block-js',
+			'TABalancerApiData',
 			array(
-				'ids' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
+				'mostViewed' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
+				'apiEndpoint'	=> TA_Balancer_DB::get_api_endpoint(),
 			),
 		);
 	}

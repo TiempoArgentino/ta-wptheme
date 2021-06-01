@@ -6,7 +6,7 @@ import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 // TODO: REMOVE LOGS
 ( ($) => {
 	let fetchedArticles = [];
-	const mostViewedArticlesIds = taMostViewed && taMostViewed.ids ? [...taMostViewed.ids] : [];
+	const mostViewedArticlesIds = TABalancerApiData && TABalancerApiData.mostViewed ? [...TABalancerApiData.mostViewed] : [];
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
