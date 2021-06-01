@@ -9,9 +9,7 @@ import { loadArticlePreviewIcons } from '../../helpers/balancerFront/icons';
         if(hasPreferences){
             $(document).ready(function(){
                 const articlesPreviews = document.querySelectorAll(".article-preview[data-icons]");
-                for (let i = 0; i < articlesPreviews.length; i++) {
-                    loadArticlePreviewIcons(articlesPreviews[i]);
-                }
+                articlesPreviews.forEach(articlePreview => loadArticlePreviewIcons({ elem: articlePreview }));
             })
         }
     }

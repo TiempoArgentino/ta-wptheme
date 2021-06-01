@@ -16,7 +16,7 @@ export const fieldsScheme = {
         default: [],
     },
     topics: {
-        apiField: "topics",
+        apiField: "themes",
         default: [],
     },
 };
