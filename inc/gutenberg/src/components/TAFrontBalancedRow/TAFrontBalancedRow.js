@@ -66,7 +66,6 @@ const TAFrontBalancedRow = (props) => {
             },
         })
             .then((response) => {
-                console.log(response);
                 setRowHTML(response.html);
                 setIsLoading(false);
             })

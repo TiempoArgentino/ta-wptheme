@@ -1,10 +1,10 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
-import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from './tagsCloud';
+import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
 import './balancerIcons';
-import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
+import { fieldsScheme, forEachField, getUserPreferenceForAPI } from '../../helpers/balancerFront/scheme';
 
 // TODO: REMOVE LOGS
-( ($) => {
+( async ($) => {
 	let fetchedArticles = [];
 	const mostViewedArticlesIds = TABalancerApiData && TABalancerApiData.mostViewed ? [...TABalancerApiData.mostViewed] : [];
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
@@ -30,44 +30,18 @@ import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 		};
 	}
 
-	/**
-	*	Takes the user preference data from the balancer, and maps its fields to
-	*   the one expected by the Tiempo Argentino latest articles API
-	*/
-	function mapFromUserPreferenceToAPIFields(userPreference){
-		const hasPreferences = userPreference && userPreference.info;
-		const taPreferences = {};
+	if(!postsBalancer)
+		return;
 
-		forEachField( ({ fieldName, fieldData }) => {
-			const { default: defaultVal, apiField } = fieldData;
-			const userPrefValue = hasPreferences ? userPreference.info[fieldName] : null;
-			taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
-		} );
+	try {
+		let taPreferences = await getUserPreferenceForAPI();
 
-		return taPreferences;
-	}
-
-	$(document).ready( async () => {
-		if(!postsBalancer)
-			return;
-
-		try {
-			let taPreferences = {};
-			// If logged and has selected tags from the tags cloud
-			// it doesn't use the data from the balancer (current post data, etc)
-			if(!postsBalancerData.isLogged && userCompletedPersonalization()){
-				taPreferences.tags = getCloudLocalStorageIds();
-			}
-			else{
-				const userPreference = await postsBalancer.loadPreferences();
-				taPreferences = mapFromUserPreferenceToAPIFields(userPreference);
-			}
-
+		$(document).ready( async () => {
 			const  { render } = wp.element;
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
 
-			function renderNextRow(){
+			const renderNextRow = () => {
 				const rowElem = balancedRows[currentRowIndex];
 				const rowArgs = $(rowElem).data('row');
 				const cellsCount = $(rowElem).data('count');
@@ -108,12 +82,12 @@ import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 
 			if(balancedRows && balancedRows.length)
 				renderNextRow();
-		}
-		catch (e) {
-			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
-			balancedRows.forEach( balancedRow => balancedRow.remove() );
-			console.log(e);
-		}
-	} );
+		} );
+	}
+	catch (e) {
+		const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
+		balancedRows.forEach( balancedRow => balancedRow.remove() );
+		console.log(e);
+	}
 
 })(jQuery)

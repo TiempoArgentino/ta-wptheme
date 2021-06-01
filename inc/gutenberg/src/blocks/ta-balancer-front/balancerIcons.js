@@ -1,4 +1,4 @@
-import { fieldsScheme, forEachField, getMatchingBalancerData } from '../../helpers/balancerFront/scheme';
+import { getUserPreferenceForAPI } from '../../helpers/balancerFront/scheme';
 import { loadArticlePreviewIcons } from '../../helpers/balancerFront/icons';
 
 ( async ($) => {

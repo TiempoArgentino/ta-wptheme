@@ -1,3 +1,5 @@
+import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from './anonymousPersonalization';
+
 export const fieldsScheme = {
     cats: {
         apiField: "sections",
@@ -20,7 +22,6 @@ export const fieldsScheme = {
         default: [],
     },
 };
-
 
 export function forEachField(cb){
     if(!cb)
@@ -51,10 +52,56 @@ export function getMatchingBalancerData(dataA, dataB){
         const valueB = dataB.info[fieldName] ? dataB.info[fieldName] : [];
         const valuesMatches = arrayDif(valueA, valueB);
 
-        matches[apiField] = valuesMatches && valuesMatches.length ? valuesMatches : [];
+        matches[fieldName] = valuesMatches && valuesMatches.length ? valuesMatches : [];
     } );
 
     return matches;
+}
+
+/**
+*   Returns the user preference. This data is not ready to be passed to the API.
+*   If data compatible with the latest articles is needed, use getUserPreferenceForAPI
+*/
+export async function getUserPreference(){
+    let userPreference = {};
+    // If logged and has selected tags from the tags cloud it doesn't use the data from the balancer (current post data, etc)
+    if(!postsBalancerData.isLogged && userCompletedPersonalization()){
+        userPreference = {
+            info: {
+                topics: getCloudLocalStorageIds(),
+            },
+        };
+    }
+    else{
+        userPreference = await postsBalancer.loadPreferences();
+    }
+
+    return userPreference;
+}
+
+/**
+*   Parses the user preferences from the balancer to ones compatible with the
+*   TA latest articles API
+*/
+export async function getUserPreferenceForAPI(){
+    return mapFromUserPreferenceToAPIFields( await getUserPreference() );
+}
+
+/**
+*	Takes the user preference data from the balancer, and maps its fields to
+*   the one expected by the Tiempo Argentino latest articles API
+*/
+export function mapFromUserPreferenceToAPIFields(userPreference){
+    const hasPreferences = userPreference && userPreference.info;
+    const taPreferences = {};
+
+    forEachField( ({ fieldName, fieldData }) => {
+        const { default: defaultVal, apiField } = fieldData;
+        const userPrefValue = hasPreferences ? userPreference.info[fieldName] : null;
+        taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
+    } );
+
+    return taPreferences;
 }
 
 function arrayDif(array1, array2){

@@ -1,3 +1,13 @@
+import {
+    getCloudLocalStorage,
+    getCloudLocalStorageField,
+    getCloudLocalStorageIds,
+    updateCloudLocalStorage,
+    updateCloudLocalStorageField,
+    userCompletedPersonalization,
+    userDeniedPersonalization,
+    setUserDeniedPersonalization,
+} from '../../helpers/balancerFront/anonymousPersonalization';
 const $ = jQuery;
 const selectedTags = [];
 
@@ -23,65 +33,17 @@ function removeTag(tagId){
         selectedTags.splice(tagIndex, 1);
 }
 
-function completeSelection(){
+function storeSelectionInLocalStorage(){
+    updateCloudLocalStorageField('ids', selectedTags);
+}
+
+export function completeSelection(){
     if(selectedTags.length <= 0)
         return false;
     storeSelectionInLocalStorage();
     return true;
 }
 
-function getCloudLocalStorage(){
-    const localStorageData = window.localStorage.getItem('taBalancerTagsCloud');
-    return localStorageData ? JSON.parse(localStorageData) : {
-        ids: [],
-        denied: false,
-    };
-}
-
-function getCloudLocalStorageField(field){
-    const localStorageData = getCloudLocalStorage();
-    return localStorageData[field];
-}
-
-export function getCloudLocalStorageIds(){
-    return getCloudLocalStorageField('ids');
-}
-
-function updateCloudLocalStorage(data){
-    window.localStorage.setItem('taBalancerTagsCloud', JSON.stringify(data));
-}
-
-function updateCloudLocalStorageField(field,data){
-    const localStorageData = getCloudLocalStorage();
-    localStorageData[field] = data;
-    updateCloudLocalStorage(localStorageData);
-}
-
-function storeSelectionInLocalStorage(){
-    updateCloudLocalStorageField('ids', selectedTags);
-}
-
-/**
-*   Indicates if the user has already completed the tags personalization.
-*/
-export function userCompletedPersonalization(){
-    const storedIds = getCloudLocalStorageIds();
-    return storedIds && storedIds.length;
-}
-
-/**
-*   Indicates if the user closed the tags cloud in a previous intance
-*/
-export function userDeniedPersonalization(){
-    return getCloudLocalStorageField('denied');
-}
-
-/**
-*   Updates local storage value of denied to true
-*/
-function setUserDeniedPersonalization(){
-    updateCloudLocalStorageField('denied', true);
-}
 
 try {
     if(userCompletedPersonalization() || userDeniedPersonalization()){
