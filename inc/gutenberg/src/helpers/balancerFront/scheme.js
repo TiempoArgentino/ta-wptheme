@@ -88,6 +88,14 @@ export async function getUserPreferenceForAPI(){
 }
 
 /**
+*   Returns an array of ids of the articles visisted by the user
+*/
+export async function getUserViewedArticlesIds(){
+    const balancerData = await getUserPreference();
+    return balancerData?.info?.posts ?? [];
+}
+
+/**
 *	Takes the user preference data from the balancer, and maps its fields to
 *   the one expected by the Tiempo Argentino latest articles API
 */

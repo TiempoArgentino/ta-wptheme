@@ -1,5 +1,5 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
-import { fieldsScheme, forEachField, getUserPreferenceForAPI } from '../../helpers/balancerFront/scheme';
+import { fieldsScheme, forEachField, getUserPreferenceForAPI, getUserViewedArticlesIds } from '../../helpers/balancerFront/scheme';
 import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
 import { renderBalancerArticlesRow } from '../../helpers/balancerFront/balancerRow';
 import './tagsCloud';
@@ -11,6 +11,7 @@ import './balancerIcons';
 		return;
 
 	let fetchedArticles = [];
+	let ignoredArticles = await getUserViewedArticlesIds();
 	const mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
 	function shiftFromMostViewed(amount){
@@ -62,7 +63,7 @@ import './balancerIcons';
 					amounts,
 					userPreference: taPreferences,
 					mostViewed,
-					ignore: fetchedArticles,
+					ignore: [...ignoredArticles, ...fetchedArticles],
 				};
 				console.log('articlesRequestArgs', articlesArgs);
 
