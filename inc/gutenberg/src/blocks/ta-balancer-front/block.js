@@ -16,6 +16,7 @@ import './balancerIcons';
 	if(ignoredArticles.length)
 		mostViewedArticlesIds = mostViewedArticlesIds.filter( id => ignoredArticles.indexOf( id ) < 0 );
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
+	console.log('ignoredArticles:', ignoredArticles);
 
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
