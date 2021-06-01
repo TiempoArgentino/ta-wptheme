@@ -1,12 +1,16 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
-import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
-import './balancerIcons';
 import { fieldsScheme, forEachField, getUserPreferenceForAPI } from '../../helpers/balancerFront/scheme';
+import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
+import './tagsCloud';
+import './balancerIcons';
 
 // TODO: REMOVE LOGS
 ( async ($) => {
+	if(typeof window.postsBalancer === 'undefined')
+		return;
+
 	let fetchedArticles = [];
-	const mostViewedArticlesIds = TABalancerApiData && TABalancerApiData.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+	const mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
@@ -29,9 +33,6 @@ import { fieldsScheme, forEachField, getUserPreferenceForAPI } from '../../helpe
 			editorial,
 		};
 	}
-
-	if(!postsBalancer)
-		return;
 
 	try {
 		let taPreferences = await getUserPreferenceForAPI();

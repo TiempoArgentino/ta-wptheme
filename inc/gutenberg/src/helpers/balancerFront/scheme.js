@@ -39,8 +39,8 @@ export function forEachField(cb){
 }
 
 export function getMatchingBalancerData(dataA, dataB){
-    const dataAHasInfo = dataA && dataA.info;
-    const dataBHasInfo = dataB && dataB.info;
+    const dataAHasInfo = dataA?.info;
+    const dataBHasInfo = dataB?.info;
     const matches = {};
 
     if(!dataAHasInfo || !dataBHasInfo)
@@ -48,11 +48,11 @@ export function getMatchingBalancerData(dataA, dataB){
 
     forEachField( ({ fieldName, fieldData }) => {
         const { default: defaultVal, apiField } = fieldData;
-        const valueA = dataA.info[fieldName] ? dataA.info[fieldName] : [];
-        const valueB = dataB.info[fieldName] ? dataB.info[fieldName] : [];
+        const valueA = dataA.info[fieldName] ?? [];
+        const valueB = dataB.info[fieldName] ?? [];
         const valuesMatches = arrayDif(valueA, valueB);
 
-        matches[fieldName] = valuesMatches && valuesMatches.length ? valuesMatches : [];
+        matches[fieldName] = valuesMatches?.length ? valuesMatches : [];
     } );
 
     return matches;
@@ -92,13 +92,12 @@ export async function getUserPreferenceForAPI(){
 *   the one expected by the Tiempo Argentino latest articles API
 */
 export function mapFromUserPreferenceToAPIFields(userPreference){
-    const hasPreferences = userPreference && userPreference.info;
     const taPreferences = {};
 
     forEachField( ({ fieldName, fieldData }) => {
         const { default: defaultVal, apiField } = fieldData;
-        const userPrefValue = hasPreferences ? userPreference.info[fieldName] : null;
-        taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
+        const userPrefValue = userPreference?.info[fieldName] ?? null;
+        taPreferences[apiField] = userPrefValue ?? defaultVal;
     } );
 
     return taPreferences;

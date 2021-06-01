@@ -27,10 +27,7 @@ export function updateCloudLocalStorageField(field,data){
 /**
 *   Indicates if the user has already completed the tags personalization.
 */
-export function userCompletedPersonalization(){
-    const storedIds = getCloudLocalStorageIds();
-    return storedIds && storedIds.length;
-}
+export const userCompletedPersonalization = () => getCloudLocalStorageIds()?.length > 0;
 
 /**
 *   Indicates if the user closed the tags cloud in a previous intance
