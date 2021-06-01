@@ -12,8 +12,11 @@ import './balancerIcons';
 
 	let fetchedArticles = [];
 	let ignoredArticles = await getUserViewedArticlesIds();
-	const mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+	let mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+	if(ignoredArticles.length)
+		mostViewedArticlesIds = mostViewedArticlesIds.filter( id => ignoredArticles.indexOf( id ) < 0 );
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
+
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
 	}
