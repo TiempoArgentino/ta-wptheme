@@ -2,7 +2,7 @@ import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalS
 
 export const fieldsScheme = {
     cats: {
-        apiField: "sections",
+        apiField: "section",
         default: [],
         apiToBalancer: (section) => section !== null && section !== undefined ? [section] : [],
     },

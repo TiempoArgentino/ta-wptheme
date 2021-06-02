@@ -29,7 +29,6 @@ function ta_print_article_preview_attr($article, $args = array()){
 function ta_add_article_preview_shown($article){
     global $ta_articles_previews_shown;
     if($article?->ID >= 0){
-        var_dump($article?->ID);
         $ta_articles_previews_shown[$article->ID] = $article;
     }
 }
