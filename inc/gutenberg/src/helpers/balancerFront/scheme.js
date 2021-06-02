@@ -2,27 +2,32 @@ import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalS
 
 export const fieldsScheme = {
     cats: {
-        apiField: "section",
+        personalizeReqField: "sections",
+        apiDocField: "section",
         default: [],
         apiToBalancer: (section) => section !== null && section !== undefined ? [section] : [],
     },
     tags: {
-        apiField: "tags",
+        personalizeReqField: "tags",
+        apiDocField: "tags",
         default: [],
         apiToBalancer: (tags) => tags?.map( tag => tag.tagId ) ?? [],
     },
     authors: {
-        apiField: "authors",
+        personalizeReqField: "authors",
+        apiDocField: "authors",
         default: [],
         apiToBalancer: (authors) => authors?.map( author => author.authorId ) ?? [],
     },
     locations: {
-        apiField: "places",
+        personalizeReqField: "places",
+        apiDocField: "places",
         default: [],
         apiToBalancer: (places) => places?.map( place => place.placeId ) ?? [],
     },
     topics: {
-        apiField: "themes",
+        personalizeReqField: "themes",
+        apiDocField: "themes",
         default: [],
         apiToBalancer: (themes) => themes?.map( theme => theme.themeId ) ?? [],
     },
@@ -35,8 +40,8 @@ export const fieldsScheme = {
 export function apiArticleToBalancerData({ articleData }){
     const data = { info: {} };
     forEachField( ({ fieldName, fieldData }) => {
-        const { default: defaultVal, apiField, apiToBalancer } = fieldData;
-        data.info[fieldName] = apiToBalancer(articleData?.[apiField]);
+        const { default: defaultVal, apiDocField, apiToBalancer } = fieldData;
+        data.info[fieldName] = apiToBalancer(articleData?.[apiDocField]);
     });
     return data;
 }
@@ -65,7 +70,7 @@ export function getMatchingBalancerData(dataA, dataB){
         return matches;
 
     forEachField( ({ fieldName, fieldData }) => {
-        const { default: defaultVal, apiField } = fieldData;
+        const { default: defaultVal } = fieldData;
         const valueA = dataA.info[fieldName] ?? [];
         const valueB = dataB.info[fieldName] ?? [];
         const valuesMatches = arrayDif(valueA, valueB);
@@ -121,9 +126,9 @@ export function mapFromUserPreferenceToAPIFields(userPreference){
     const taPreferences = {};
 
     forEachField( ({ fieldName, fieldData }) => {
-        const { default: defaultVal, apiField } = fieldData;
+        const { default: defaultVal, personalizeReqField } = fieldData;
         const userPrefValue = userPreference?.info[fieldName] ?? null;
-        taPreferences[apiField] = userPrefValue ?? defaultVal;
+        taPreferences[personalizeReqField] = userPrefValue ?? defaultVal;
     } );
 
     return taPreferences;
