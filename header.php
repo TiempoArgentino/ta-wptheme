@@ -166,7 +166,7 @@
                     </div>
                     <div class="asociate-banner-content position-absolute">
                         <div class="separator"></div>
-                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('SUMATE','gen-base-theme')?></a></p>
+                        <p class="mt-1"><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('ASOCIATE','gen-base-theme')?></a></p>
                     </div>
                 </div>
             </div>
