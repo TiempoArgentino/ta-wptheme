@@ -270,10 +270,8 @@ class TA_Theme
 		);
 
 		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
-		$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
-
-
 		add_action('wp_footer', function(){
+			$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
 			wp_localize_script(
 				'ta-balancer-front-block-js',
 				'TABalancerApiData',
