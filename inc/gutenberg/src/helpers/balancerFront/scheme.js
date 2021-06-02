@@ -4,24 +4,42 @@ export const fieldsScheme = {
     cats: {
         apiField: "sections",
         default: [],
+        apiToBalancer: (section) => section !== null && section !== undefined ? [section] : [],
     },
     tags: {
         apiField: "tags",
         default: [],
+        apiToBalancer: (tags) => tags?.map( tag => tag.tagId ) ?? [],
     },
     authors: {
         apiField: "authors",
         default: [],
+        apiToBalancer: (authors) => authors?.map( author => author.authorId ) ?? [],
     },
     locations: {
-        apiField: "locations",
+        apiField: "places",
         default: [],
+        apiToBalancer: (places) => places?.map( place => place.placeId ) ?? [],
     },
     topics: {
         apiField: "themes",
         default: [],
+        apiToBalancer: (themes) => themes?.map( theme => theme.themeId ) ?? [],
     },
 };
+
+/**
+*   Takes a data compatible with the latest articles API document and returns
+*   the valuable balancer data.
+*/
+export function apiArticleToBalancerData({ articleData }){
+    const data = { info: {} };
+    forEachField( ({ fieldName, fieldData }) => {
+        const { default: defaultVal, apiField, apiToBalancer } = fieldData;
+        data.info[fieldName] = apiToBalancer(articleData?.[apiField]);
+    });
+    return data;
+}
 
 export function forEachField(cb){
     if(!cb)

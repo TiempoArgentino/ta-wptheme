@@ -5,6 +5,7 @@ import { renderBalancerArticlesRow } from '../../helpers/balancerFront/balancerR
 import './tagsCloud';
 import './balancerIcons';
 
+
 // TODO: REMOVE LOGS
 ( async ($) => {
 	if(typeof window.postsBalancer === 'undefined')

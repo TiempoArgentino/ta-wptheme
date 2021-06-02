@@ -278,6 +278,7 @@ class TA_Theme
 			array(
 				'mostViewed' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
 				'apiEndpoint'	=> TA_Balancer_DB::get_api_endpoint(),
+				'themeUrl'		=> TA_THEME_URL,
 			),
 		);
 	}

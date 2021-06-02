@@ -1,15 +1,21 @@
 import { loadArticlePreviewIcons } from '../../helpers/balancerFront/icons';
 const { apiFetch } = wp;
 const $ = jQuery;
+import ArticlesCommonRow from './elements/ArticlesCommonRow';
+import ArticlesMiscelaneaRow from './elements/ArticlesMiscelaneaRow';
+import ArticlesSliderRow from './elements/ArticlesSliderRow';
 
 export async function renderBalancerArticlesRow({ elem, articlesArgs, rowArgs, cellsCount }){
-    const balancedArticles = await fetchBalancedArticles({ articlesArgs });
+    let balancedArticles = await fetchBalancedArticles({ articlesArgs });
+    let ids = [];
+    balancedArticles = balancedArticles?.length > 0 ? balancedArticles.slice(0, cellsCount) : [];
 
-    if(balancedArticles){
+    if(balancedArticles.length){
         renderArticlesBlock({ elem, articles: balancedArticles, rowArgs });
+        ids = balancedArticles.slice(0, cellsCount).map(article => article?.postId ?? null);
     }
 
-    return balancedArticles ? balancedArticles.slice(0, cellsCount).map(article => article.postId) : [];
+    return ids;
 }
 
 function fetchBalancedArticles({ articlesArgs }){
@@ -35,31 +41,22 @@ function fetchBalancedArticles({ articlesArgs }){
         });
 }
 
-async function renderArticlesBlock({ elem, articles, rowArgs}){
+function renderArticlesBlock({ elem, articles, rowArgs }){
     if(articles === null)
         return false;
 
-    const balancerRowHtml = await apiFetch({
-        path: `/ta/v1/balancer-row`,
-        method: 'POST',
-        data: {
-            articles: [...articles],
-            row_args: rowArgs,
-        },
+    let RowRenderer = ArticlesCommonRow;
+    switch (rowArgs.format) {
+        case 'slider': RowRenderer = ArticlesSliderRow; break;
+        case 'miscelanea': RowRenderer = ArticlesMiscelaneaRow; break;
+    }
+
+    var row = RowRenderer({
+        rowArgs: rowArgs,
+        articles: articles,
     })
-        .then((response) => {
-            return response?.html;
-        })
-        .catch(function(error) {
-            console.log('ERROR', error.message);
-            return '';
-        });
+    const $row = $(row);
 
-	if(balancerRowHtml){
-		$(elem).html(balancerRowHtml);
-		const articlesPreviews = elem.querySelectorAll(".article-preview[data-icons]");
-        articlesPreviews.forEach(articlePreview => loadArticlePreviewIcons({ elem: articlePreview }));
-	}
-
-	return balancerRowHtml;
+    $(elem).replaceWith($row);
+    $row.find(".article-preview[data-icons]").each( function(){ loadArticlePreviewIcons({ elem: $(this)[0] }) });
 }
