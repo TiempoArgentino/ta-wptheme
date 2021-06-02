@@ -552,40 +552,19 @@ add_action('init', 'ta_article_participation_meta_register');
 /**
  * filtro por creador
  */
-function filter_by_creator($post_type){
-	if ('ta_article' !== $post_type) {
-		return;
-	}
-	global $post;
-
-	$authors = get_users(array('role__in' => array('author', 'editor', 'administrator')));
-
-	$filter = isset($_REQUEST['author_filter']) ? $_REQUEST['author_filter'] : '';
-
-	echo '<select id="author_filter" name="author_filter">';
-	echo '<option value="0"> Creador </option>';
-	foreach ($authors as $s) {
-		echo '<option value="' . $s->{'ID'} . '" ' . selected($s->{'ID'}, $filter, false) . ' >' . $s->{'display_name'} . ' </option>';
-	}
-	echo '</select>';
+function filter_by_the_author() {
+	$params = array(
+		'name' => 'author', // this is the "name" attribute for filter <select>
+		'show_option_all' => 'Creador' // label for all authors (display posts without filter)
+	);
+ 
+	if ( isset($_GET['user']) )
+		$params['selected'] = $_GET['user']; // choose selected user by $_GET variable
+ 
+	wp_dropdown_users( $params ); // print the ready author list
 }
-
-function filter_creator_query($query){
-	if (!(is_admin() and $query->is_main_query())) {
-		return $query;
-	}
-
-	if ($query->query['post_type'] == 'ta_article') {
-		return $query;
-	}
-
-	if (isset($_REQUEST['author_filter']) &&  0 != $_REQUEST['author_filter']) {
-		$query->query_vars['author'] = $_REQUEST['author_filter'];
-	}
-	return $query;
-}
-add_action('restrict_manage_posts', 'filter_by_creator', 10);
-add_action('parse_query', 'filter_creator_query', 10);
+ 
+add_action('restrict_manage_posts', 'filter_by_the_author');
 
 
 /**
