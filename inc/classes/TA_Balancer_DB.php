@@ -58,7 +58,7 @@ class TA_Balancer_DB{
     *   Returns the authors data with the scheme used in the balancer DB
     *   @param TA_Author_Data $author
     */
-    static private function get_author_data($author){
+    static public function get_author_data($author){
         return $author ? array(
             'authorId'			=> $author->ID,
             'authorName'		=> $author->name,
@@ -72,7 +72,7 @@ class TA_Balancer_DB{
     *   @param TA_Article_Data $article
     *   @param string[] $wanted_fields                                          Fields wanted from the article
     */
-    static private function get_article_data($article, $wanted_fields = null){
+    static public function get_article_data($article, $wanted_fields = null){
         if(!$article)
             return null;
 
