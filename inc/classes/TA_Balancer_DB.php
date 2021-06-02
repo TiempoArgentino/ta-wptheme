@@ -137,8 +137,11 @@ class TA_Balancer_DB{
 				return;
 
 			// no previous status or new status publish
-			if ( $new_status == 'new' || $new_status == 'publish' )
+			if ( $new_status == 'new' || $new_status == 'publish' ){
+				TA_Article_Factory::$use_cache = false;
                 self::create_or_update_article( self::get_article_data( TA_Article_Factory::get_article($post) ) );
+				TA_Article_Factory::$use_cache = true;
+			}
 			else if ( $old_status == 'publish' ) // from published to something else
                 self::delete_article($post->ID);
 		}, array(

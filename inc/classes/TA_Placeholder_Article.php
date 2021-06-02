@@ -21,7 +21,7 @@ class TA_Placeholder_Article extends TA_Article_Data{
     protected function get_thumbnail_common($variation = null, $size = 'full'){
         $thumb_data = array(
             'attachment'    => null,
-            'url'           => 'https://i.pinimg.com/originals/69/bc/42/69bc42f5f60a2c18e6bf9458e8080b82.gif',
+            'url'           => TA_IMAGES_URL . '/article-preview-spinner.gif',
             'caption'       => '',
             'author'        => null,
             'position'      => null,
