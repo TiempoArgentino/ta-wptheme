@@ -1,5 +1,4 @@
 <?php
-
 function ta_print_article_preview_attr($article, $args = array()){
     if(!$article)
         return;
@@ -25,4 +24,16 @@ function ta_print_article_preview_attr($article, $args = array()){
             <?php
         endif;
     }
+}
+
+function ta_add_article_preview_shown($article){
+    global $ta_articles_previews_shown;
+    if($article?->ID >= 0){
+        $ta_articles_previews_shown[$article->ID] = $article;
+    }
+}
+
+function ta_get_articles_previews_shown_ids(){
+    global $ta_articles_previews_shown;
+    return array_keys($ta_articles_previews_shown);
 }

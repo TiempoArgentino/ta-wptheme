@@ -270,17 +270,19 @@ class TA_Theme
 		);
 
 		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
-		$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
-
-		wp_localize_script(
-			'ta-balancer-front-block-js',
-			'TABalancerApiData',
-			array(
-				'mostViewed' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
-				'apiEndpoint'	=> TA_Balancer_DB::get_api_endpoint(),
-				'themeUrl'		=> TA_THEME_URL,
-			),
-		);
+		add_action('wp_footer', function(){
+			$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
+			wp_localize_script(
+				'ta-balancer-front-block-js',
+				'TABalancerApiData',
+				array(
+					'mostViewed' 			=> wp_list_pluck($most_viewed_query->posts, 'ID'),
+					'apiEndpoint'			=> TA_Balancer_DB::get_api_endpoint(),
+					'themeUrl'				=> TA_THEME_URL,
+					'articlesShownOnRender'	=> ta_get_articles_previews_shown_ids(),
+				),
+			);
+		});
 	}
 
 	static public function admin_scripts()

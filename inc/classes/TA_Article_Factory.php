@@ -39,4 +39,9 @@ class TA_Article_Factory{
         return null;
     }
 
+    static public function get_articles_cache(){
+        return self::$ta_articles;
+    }
+
+
 }

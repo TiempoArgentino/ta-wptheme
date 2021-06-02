@@ -57,6 +57,9 @@ function renderArticlesBlock({ elem, articles, rowArgs }){
     })
     const $row = $(row);
 
-    $(elem).replaceWith($row);
-    $row.find(".article-preview[data-icons]").each( function(){ loadArticlePreviewIcons({ elem: $(this)[0] }) });
+    $(elem).fadeOut("100", function(){
+        $(elem).replaceWith($row);
+        $row.find(".article-preview[data-icons]").each( function(){ loadArticlePreviewIcons({ elem: $(this)[0] }) });
+        $row.fadeIn("100");
+    });
 }

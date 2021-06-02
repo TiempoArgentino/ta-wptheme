@@ -11,6 +11,31 @@
 // New Edicion Impresa
 add_action( 'rest_api_init', function () {
 
+	register_rest_route( 'ta/v1', '/articles/latest-json', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$params = $request->get_json_params();
+			$days_ago = isset($params['days']) && is_int($params['days']) ? $params['days'] : get_option('balancer_editorial_days', 20);
+			$query = new WP_Query(array(
+				'post_type' 		=> 'ta_article',
+				'orderby' 			=> 'date',
+				'order' 			=> 'DESC',
+				'posts_per_page'	=> -1,
+				'date_query' 		=> [
+					[
+						'column' => 'post_date_gmt',
+						'after'  => $days_ago . ' days ago',
+					]
+				]
+			));
+
+			$articles = $query && !is_wp_error($query) ? array_map( fn($post) => TA_Balancer_DB::get_article_data(TA_Article_Factory::get_article($post)), $query->posts ) : null;
+			return new WP_REST_Response($articles, 200);
+		},
+		'permission_callback' 	=> fn() => current_user_can( 'delete_published_articles' ),
+	) );
+
+
 	register_rest_route( 'ta/v1', '/balancer-db/load-latest', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
