@@ -3,7 +3,6 @@
 class TAArticlesMiscelaneaRow extends TAArticlesBlockRow{
 
     protected $default_args = array(
-        'slides_amount'             => 4,
         'deactivate_opinion_layout' => false,
     );
 

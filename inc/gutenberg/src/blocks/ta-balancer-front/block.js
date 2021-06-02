@@ -1,13 +1,24 @@
 import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalancedRow';
-import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from './tagsCloud';
+import { fieldsScheme, forEachField, getUserPreferenceForAPI, getUserViewedArticlesIds } from '../../helpers/balancerFront/scheme';
+import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
+import { renderBalancerArticlesRow } from '../../helpers/balancerFront/balancerRow';
+import './tagsCloud';
 import './balancerIcons';
-import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
+
 
 // TODO: REMOVE LOGS
-( ($) => {
+( async ($) => {
+	if(typeof window.postsBalancer === 'undefined')
+		return;
+
 	let fetchedArticles = [];
-	const mostViewedArticlesIds = TABalancerApiData && TABalancerApiData.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+	let ignoredArticles = await getUserViewedArticlesIds();
+	let mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+	if(ignoredArticles.length)
+		mostViewedArticlesIds = mostViewedArticlesIds.filter( id => ignoredArticles.indexOf( id ) < 0 );
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
+	console.log('ignoredArticles:', ignoredArticles);
+
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
 	}
@@ -30,80 +41,54 @@ import { fieldsScheme, forEachField } from '../../helpers/balancerFront/scheme';
 		};
 	}
 
-	/**
-	*	Takes the user preference data from the balancer, and maps its fields to
-	*   the one expected by the Tiempo Argentino latest articles API
-	*/
-	function mapFromUserPreferenceToAPIFields(userPreference){
-		const hasPreferences = userPreference && userPreference.info;
-		const taPreferences = {};
+	try {
+		let taPreferences = await getUserPreferenceForAPI();
 
-		forEachField( ({ fieldName, fieldData }) => {
-			const { default: defaultVal, apiField } = fieldData;
-			const userPrefValue = hasPreferences ? userPreference.info[fieldName] : null;
-			taPreferences[apiField] = userPrefValue ? userPrefValue : defaultVal;
-		} );
-
-		return taPreferences;
-	}
-
-	$(document).ready( async () => {
-		if(!postsBalancer)
-			return;
-
-		try {
-			let taPreferences = {};
-			// If logged and has selected tags from the tags cloud
-			// it doesn't use the data from the balancer (current post data, etc)
-			if(!postsBalancerData.isLogged && userCompletedPersonalization()){
-				taPreferences.tags = getCloudLocalStorageIds();
-			}
-			else{
-				const userPreference = await postsBalancer.loadPreferences();
-				taPreferences = mapFromUserPreferenceToAPIFields(userPreference);
-			}
-
+		$(document).ready( async () => {
 			const  { render } = wp.element;
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
 
-			function renderNextRow(){
+			const renderNextRow = async () => {
 				const rowElem = balancedRows[currentRowIndex];
 				const rowArgs = $(rowElem).data('row');
 				const cellsCount = $(rowElem).data('count');
 				const amounts = getAmounts(cellsCount);
-				const articlesRequestArgs = {
+				const mostViewed = shiftFromMostViewed(amounts.mostViewed);
+
+				// If amounts differ from actual mostViewed amount
+				if(mostViewed.length < amounts.mostViewed){
+					const mostViewedDif = amounts.mostViewed - mostViewed.length;
+					amounts.mostViewed -= mostViewedDif;
+					amounts.editorial += mostViewedDif;
+				}
+
+				// Final arguments
+				const articlesArgs = {
 					amounts,
 					userPreference: taPreferences,
-					mostViewed: shiftFromMostViewed(amounts.mostViewed),
-					ignore: fetchedArticles,
+					mostViewed,
+					ignore: [...ignoredArticles, ...fetchedArticles],
 				};
-				console.log('articlesRequestArgs', articlesRequestArgs);
+				console.log('articlesRequestArgs', articlesArgs);
 
-				render(
-					<TAFrontBalancedRow
-						rowArgs = {rowArgs}
-						cellsCount = {cellsCount}
-						articlesRequestArgs = { articlesRequestArgs }
-						onArticlesFetched = { ({articlesIds}) => {
-							fetchedArticles = [...fetchedArticles, ...articlesIds];
-							if(currentRowIndex < balancedRows.length - 1){
-								currentRowIndex++;
-								renderNextRow();
-							}
-						} }
-					/>
-				, rowElem);
+				const renderedArticlesIds = await renderBalancerArticlesRow({ elem: rowElem, articlesArgs, rowArgs, cellsCount });
+				fetchedArticles = renderedArticlesIds?.length ? [...fetchedArticles, ...renderedArticlesIds] : fetchedArticles;
+
+				if(currentRowIndex < balancedRows.length - 1){
+					currentRowIndex++;
+					renderNextRow();
+				}
 			}
 
 			if(balancedRows && balancedRows.length)
 				renderNextRow();
-		}
-		catch (e) {
-			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
-			balancedRows.forEach( balancedRow => balancedRow.remove() );
-			console.log(e);
-		}
-	} );
+		} );
+	}
+	catch (e) {
+		const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
+		balancedRows.forEach( balancedRow => balancedRow.remove() );
+		console.log(e);
+	}
 
 })(jQuery)

@@ -10,15 +10,15 @@ $preview_class = esc_attr($preview_class);
     <?php
     ta_print_article_preview_attr($article, array(
         'class'                 => "mb-3 $preview_class",
-        'use_balancer_icons'    => true 
+        'use_balancer_icons'    => true
     ));
     ?>
 >
     <?php if( $thumbnail_url ): ?>
     <div class="<?php echo esc_attr($thumb_cont_class); ?>">
-        <a href="<?php echo esc_attr($url); ?>">
+        <a data-url href="<?php echo esc_attr($url); ?>">
             <div class="img-container">
-                <div class="img-wrapper d-flex align-items-end" style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>">
+                <div class="img-wrapper d-flex align-items-end" data-thumbnail style='background-image: url("<?php echo $thumbnail_url; ?>")' alt="<?php echo esc_attr($thumbnail['alt']); ?>">
                     <div class="icons-container">
                         <div class="article-icons d-flex flex-column mb-2">
                             <?php get_template_part( 'parts/article', 'balancer_icons', array( 'article' => $article ) ); ?>
@@ -35,12 +35,12 @@ $preview_class = esc_attr($preview_class);
         <?php if($cintillo): ?>
         <div class="article-border"></div>
         <div class="category-title">
-            <h4><?php echo $cintillo; ?></h4>
+            <h4 data-headband><?php echo $cintillo; ?></h4>
         </div>
         <?php endif; ?>
         <div class="title">
-            <a href="<?php echo esc_attr($url); ?>">
-                <p><?php echo $title; ?></p>
+            <a data-url href="<?php echo esc_attr($url); ?>">
+                <p data-title><?php echo $title; ?></p>
             </a>
         </div>
         <?php if($authors): ?>

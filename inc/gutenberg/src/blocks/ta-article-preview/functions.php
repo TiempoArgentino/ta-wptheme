@@ -20,7 +20,7 @@ function ta_print_article_preview_attr($article, $args = array()){
         $balancer_data = Post_Balancer_User_Data::get_post_balanceable_data($article->ID);
         if($balancer_data):
             ?>
-            data-icons
+            data-icons="<?php echo esc_attr(true); ?>"
             data-balancer="<?php echo esc_attr(json_encode($balancer_data)); ?>"
             <?php
         endif;

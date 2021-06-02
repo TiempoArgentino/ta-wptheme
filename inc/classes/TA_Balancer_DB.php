@@ -35,10 +35,10 @@ class TA_Balancer_DB{
 	static private function stablish_env_variables(){
 		switch ( wp_get_environment_type() ) {
 		   case 'staging':
-			   self::$api_url = "https://api-dev.nuevotiempoargentino.com/";
+			   self::$api_url = "https://api-dev.nuevotiempoargentino.com";
 			   break;
 		   case 'production':
-			   self::$api_url = "https://api.nuevotiempoargentino.com/";
+			   self::$api_url = "https://api.nuevotiempoargentino.com";
 			   break;
 		   default:
 			   self::$api_url = "http://localhost:3003";

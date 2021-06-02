@@ -47,6 +47,7 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article_Data.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Article.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_Article.php';
+		require_once TA_THEME_PATH . '/inc/classes/TA_Placeholder_Article.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Edicion_Impresa.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Factory.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Author_Data.php';
@@ -269,7 +270,7 @@ class TA_Theme
 		);
 
 		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
-		$most_viewed_query = ta_get_latest_most_viewed_query();
+		$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
 
 		wp_localize_script(
 			'ta-balancer-front-block-js',
@@ -277,6 +278,7 @@ class TA_Theme
 			array(
 				'mostViewed' 	=> wp_list_pluck($most_viewed_query->posts, 'ID'),
 				'apiEndpoint'	=> TA_Balancer_DB::get_api_endpoint(),
+				'themeUrl'		=> TA_THEME_URL,
 			),
 		);
 	}

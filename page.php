@@ -4,7 +4,26 @@
 */
 ?>
 <?php get_header(); ?>
-<?php if(is_front_page()): ?>
+<?php if(is_front_page()):
+
+$articles = [];
+$articles[] = new TA_Balancer_Article(array(
+    'postId'            => null,    //done
+    'title'             => "Placeholder",      //done
+    'url'               => "placeholder",      //done
+    'headband'          => "placeholder",      //done
+    'imgURL'            => "placeholder",      //done
+    'isOpinion'         => false,   //done
+    'section'           => null,    //done
+    'authors'           => [],      //done
+    'tags'              => [],      //done
+    'themes'            => [],      //done
+    'places'            => [],      //done
+));
+ta_render_articles_block_row();
+
+// Usar placeholder de carga
+?>
 
     <div class="fullpage-onboarding">
     <div class="container">
@@ -45,7 +64,7 @@
 
 
 <?php TA_Blocks_Container_Manager::open_new(); ?>
-    <?php if ( have_posts() ) : the_post(); 
+    <?php if ( have_posts() ) : the_post();
 
         if(is_front_page()) {
             do_action('quienes_somos_banner');
@@ -54,8 +73,8 @@
         if(is_front_page()) {
             do_action('cloud_tag');
         }
-        
-        the_content(); 
+
+        the_content();
     endif; ?>
 <?php TA_Blocks_Container_Manager::close(); ?>
 

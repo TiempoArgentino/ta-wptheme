@@ -1,23 +1,22 @@
-import { fieldsScheme, forEachField, getMatchingBalancerData } from './scheme';
+import { fieldsScheme, forEachField, getMatchingBalancerData, getUserPreference } from './scheme';
 
-export async function loadArticlePreviewIcons(articlePreview){
+export async function loadArticlePreviewIcons({ elem, preferences }){
     const $ = jQuery;
     try {
-        const userPreference = await postsBalancer.loadPreferences();
-        const hasPreferences = userPreference && userPreference.info;
-        const articleBalancerData = $(articlePreview).data('balancer');
-
-        if(hasPreferences && articleBalancerData){
-            const matches = getMatchingBalancerData(userPreference, articleBalancerData);
-            // console.log('Matching data:', getMatchingBalancerData(userPreference, articleBalancerData));
-            if(matches['authors'].length){
-                $(articlePreview).find(`[data-icon="author"]`).fadeIn();
-            }
-            if(matches['locations'].length){
-                $(articlePreview).find(`[data-icon="location"]`).fadeIn();
-            }
-            if(matches['topics'].length){
-                $(articlePreview).find(`[data-icon="favorite"]`).fadeIn();
+        let articleBalancerData;
+        if($(elem).data('icons') && (articleBalancerData = $(elem).data('balancer')) ){
+            const userPreference = preferences ?? await getUserPreference();
+            const hasPreferences = userPreference && userPreference.info;
+            if(hasPreferences){
+                const matches = getMatchingBalancerData(userPreference, articleBalancerData);
+                if(matches){
+                    if(matches['authors']?.length)
+                        $(elem).find(`[data-icon="author"]`).fadeIn();
+                    if(matches['locations']?.length)
+                        $(elem).find(`[data-icon="location"]`).fadeIn();
+                    if(matches['topics']?.length || matches['cats']?.length || matches['tags']?.length)
+                        $(elem).find(`[data-icon="favorite"]`).fadeIn();
+                }
             }
         }
     }

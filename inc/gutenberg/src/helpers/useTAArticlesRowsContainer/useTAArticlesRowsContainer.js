@@ -48,16 +48,21 @@ const useTAArticlesRowsContainer = (props = {}) => {
 
             const RowComponent = rowData.component;
             const isSelected = index == selectedRowIndex;
-            const className = `articles-row ${isSelected ? 'selected' : ''}`;
+            let className = `articles-row ${isSelected ? 'selected' : ''}`;
             const isFirst = index == 0;
             const isLast = index == rows.length - 1;
             let balancerText;
 
             if(row.use_balacer_articles){
-                if(row.balancer_allow_fallback)
+                className += " balanced-row";
+                if(row.balancer_allow_fallback){
                     balancerText = "Los artículos que se visualizan en esta fila son los que se mostrarían en el caso de que no se encuentren otros en el balanceador.";
-                else
+                    className += " with-fallback";
+                }
+                else {
                     balancerText = "Esta fila muestra artículos del balanceador. En caso de que no se encuentren, no se mostrará.";
+                    className += " no-fallback";
+                }
             }
 
             // Only count the row cells if it uses articles from the filters

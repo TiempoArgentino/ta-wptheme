@@ -30,9 +30,17 @@ function ta_render_articles_block_row($articles_left = [], $row = [], $offset = 
 
     $balanced_cells_count = $renderer->get_cells_count_if_balanced();
     if($row['use_balacer_articles']){
+        $placeholder_article = new TA_Placeholder_Article();
+        $placeholder_articles = [];
+        for ($i=0; $i < $balanced_cells_count; $i++)
+            $placeholder_articles[] = $placeholder_article;
+        $renderer->set_articles($placeholder_articles);
+
         ?> <div class="ta-articles-balanced-row mb-4"
         data-count="<?php echo esc_attr($balanced_cells_count); ?>"
-        data-row="<?php echo esc_attr(json_encode($row)); ?>">Cargando...</div> <?php
+        data-row="<?php echo esc_attr(json_encode($row)); ?>">
+            <?php $renderer->render(); ?>
+        </div> <?php
         return 0; // 0 rows rendered. Will render from the client with balancer data
     }
 

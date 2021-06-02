@@ -1,6 +1,7 @@
 const { apiFetch } = wp;
 const { Spinner } = wp.components;
-const { useState, useEffect, render, Fragment } = wp.element;
+const { useState, useEffect, useRef, render, Fragment } = wp.element;
+import { loadArticlePreviewIcons } from '../../helpers/balancerFront/icons';
 
 const TAFrontBalancedRow = (props) => {
     const {
@@ -14,6 +15,7 @@ const TAFrontBalancedRow = (props) => {
     const [isEmpty, setIsEmpty] = useState(false);
     const [rowHTML, setRowHTML] = useState(null);
     const [fetchedArticles, setFetchedArticles] = useState(null);
+    const containerRef = useRef(null);
 
     // Fetch articles from the new database
     useEffect( () => {
@@ -64,7 +66,6 @@ const TAFrontBalancedRow = (props) => {
             },
         })
             .then((response) => {
-                console.log(response);
                 setRowHTML(response.html);
                 setIsLoading(false);
             })
@@ -77,6 +78,15 @@ const TAFrontBalancedRow = (props) => {
             });
     }, [fetchedArticles]);
 
+    // Load icons
+    useEffect( () => {
+        if(loading || isEmpty || !containerRef.current)
+            return;
+
+        const articlesPreviews = containerRef.current.querySelectorAll(".article-preview[data-icons]");
+        articlesPreviews.forEach(articlePreview => loadArticlePreviewIcons({ elem: articlePreview }));
+    }, [rowHTML,loading,isEmpty]);
+
     return (
         <>
             {loading &&
@@ -84,11 +94,7 @@ const TAFrontBalancedRow = (props) => {
                 <p><Spinner/> Cargando Artículos </p>
             </div>
             }
-            {!loading && !isEmpty &&
-            <>
-                <div dangerouslySetInnerHTML={{__html: rowHTML}} ></div>
-            </>
-            }
+            <div ref={containerRef} dangerouslySetInnerHTML={{__html: !loading && !isEmpty ? rowHTML : ''}} ></div>
         </>
     );
 };

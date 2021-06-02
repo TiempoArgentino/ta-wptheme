@@ -73,3 +73,13 @@
 .ta-article-preview.large .authors {
     font-size: 12px;
 }
+
+/********
+*   BALANCED
+**********/
+.articles-row.balanced-row.no-fallback .ta-article-preview .article-thumbnail {
+    box-shadow: inset 0px 0px 3px black;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
