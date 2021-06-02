@@ -32,6 +32,12 @@
     background-size: cover;
 }
 
+/* balanced */
+.articles-row.balanced-row.no-fallback .ta-article-slide > .bkg-container .bkg-img {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .ta-article-slide > .bkg-container .bkg-overlay {
     position: absolute;
     top: 0;
