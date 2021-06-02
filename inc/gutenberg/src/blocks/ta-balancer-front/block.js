@@ -17,7 +17,6 @@ import './balancerIcons';
 	if(ignoredArticles.length)
 		mostViewedArticlesIds = mostViewedArticlesIds.filter( id => ignoredArticles.indexOf( id ) < 0 );
 	console.log('mostViewedArticlesIds', mostViewedArticlesIds);
-	console.log('ignoredArticles:', ignoredArticles);
 
 	function shiftFromMostViewed(amount){
 		return mostViewedArticlesIds.splice(0, amount);
@@ -48,6 +47,7 @@ import './balancerIcons';
 			const  { render } = wp.element;
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
+			ignoredArticles = TABalancerApiData?.articlesShownOnRender?.length > 0 ? [...ignoredArticles, ...TABalancerApiData.articlesShownOnRender] : ignoredArticles;
 
 			const renderNextRow = async () => {
 				const rowElem = balancedRows[currentRowIndex];

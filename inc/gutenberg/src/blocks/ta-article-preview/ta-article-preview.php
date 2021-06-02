@@ -1,4 +1,7 @@
 <?php
+global $ta_articles_previews_shown;
+$ta_articles_previews_shown = [];
+
 require_once plugin_dir_path( __FILE__ ) . 'functions.php';
 
 /**

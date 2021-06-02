@@ -45,4 +45,7 @@ switch ($layout) {
         include "$block_path/templates/common.php";
     break;
 }
+
+
+ta_add_article_preview_shown($article);
 ?>
