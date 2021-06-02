@@ -472,7 +472,7 @@
                             <div class="subs-opt mt-3 mt-md-5">
                                 <div class="asociate-wrapper">
                                     <div class="address-block">
-                                        <div id="message-register-response"></div>
+                                        <div id="message-register-response" style="display:none"></div>
                                         <form method="post" class="register-form-loop">
                                             <div class="form-container mt-4">
                                                 <div class="input-container">
