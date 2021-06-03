@@ -448,4 +448,16 @@
       );
     });
   });
+
+  $(document).ready(function(){
+    $('#paymentBank').prop('disabled',true);
+
+    $('#terms-conditions_bank').on('click',function(){
+     if($(this).prop('checked')){
+      $('#paymentBank').prop('disabled',false);
+     } else {
+      $('#paymentBank').prop('disabled',true);
+     }
+    });
+  });
 })(jQuery);

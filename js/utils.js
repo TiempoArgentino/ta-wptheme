@@ -352,4 +352,5 @@ window.addEventListener("resize", function () {
   });
 
   
+  
 })(jQuery);

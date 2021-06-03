@@ -241,3 +241,7 @@ div#ntroCompromisoQuienesSomos .img-container .img-wrapper {
 .ta-articles-block.fullwidth-row.nota-hermana .icons-container {
   display: none;
 }
+.btn-primary.disabled, .btn-primary:disabled{
+  background-color: #ffbb0f !important;
+    border-color: #ffbb0f !important;
+}
