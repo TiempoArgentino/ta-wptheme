@@ -570,7 +570,7 @@ function filter_by_the_author() {
 	$params = array(
 		'name' => 'author', // this is the "name" attribute for filter <select>
 		'show_option_all' => 'Creador', // label for all authors (display posts without filter)
-		'role' => ['administrator','editor','ta_redactor']
+		//'role' => ['administrator','editor','ta_redactor']
 	);
 
 	if ( isset($_GET['user']) )
