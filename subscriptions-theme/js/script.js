@@ -380,37 +380,40 @@
   });
 
   $(document).ready(function () {
-    if ($("#state").val() !== "") {
-      var host = window.location.protocol + "//" + window.location.hostname;
-      var provincia = $("#state").val();
-      var localidad = $("#localidad").val();
-
-      $.getJSON(
-        host +
-          "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
-          provincia +
-          ".json",
-        function (data) {
-          $("#city").prop("disabled", false);
-          var localidades = [];
-          $.each(data, function (index, value) {
-            localidades.push(
-              '<option value="' +
-                value.Localidad +
-                '">' +
-                value.Localidad +
-                "</option>"
+    if($("#state").length > 0) {
+      if ($("#state").val() !== "") {
+        var host = window.location.protocol + "//" + window.location.hostname;
+        var provincia = $("#state").val();
+        var localidad = $("#localidad").val();
+  
+        $.getJSON(
+          host +
+            "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
+            provincia +
+            ".json",
+          function (data) {
+            $("#city").prop("disabled", false);
+            var localidades = [];
+            $.each(data, function (index, value) {
+              localidades.push(
+                '<option value="' +
+                  value.Localidad +
+                  '">' +
+                  value.Localidad +
+                  "</option>"
+              );
+            });
+  
+            $("#city").html(localidades);
+            $("#city option[value='" + localidad + "']").attr(
+              "selected",
+              "selected"
             );
-          });
-
-          $("#city").html(localidades);
-          $("#city option[value='" + localidad + "']").attr(
-            "selected",
-            "selected"
-          );
-        }
-      );
+          }
+        );
+      }
     }
+   
 
     $("#state").on("change", function () {
       var host = window.location.protocol + "//" + window.location.hostname;
