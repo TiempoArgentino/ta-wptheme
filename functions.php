@@ -88,7 +88,7 @@ class TA_Theme
 		self::remove_quick_edit();
 		add_action( 'after_setup_theme', [self::class,'languages_path'] );
 
-		add_action('save_post_ta_article', [self::class, 'save_relatives_taxonomies'], 10, 2);
+		self::sync_articles_topics_and_places();
 
 		add_action('quienes_somos_banner', [self::class, 'extra_home_content']);
 		add_action('wp_insert_comment', function ($id, $comment) {
@@ -332,40 +332,50 @@ class TA_Theme
 		remove_menu_page('edit.php');
 	}
 
-	static public function save_relatives_taxonomies($post_id, $post)
-	{
-		if (is_admin()) {
-			$tags = get_the_terms($post_id, 'ta_article_tag'); //$tags->slug;
-
-			if (!$tags || !is_array($tags) || empty($tags))
+	static private function sync_articles_topics_and_places(){
+		// Status change
+        RB_Filters_Manager::add_action( "ta_sync_articles_topics_and_places", "save_post", function($post_ID, $post, $update){
+			if( array_search($post->post_type, TA_ARTICLES_COMPATIBLE_POST_TYPES) === false )
 				return;
 
+			$article = TA_Article_Factory::get_article($post);
+			$new_places = [];
+			$new_topics = [];
 			$topics = get_terms([
 				'taxonomy' => 'ta_article_tema',
 				'hide_empty' => false
 			]);
-
 			$places = get_terms([
 				'taxonomy' => 'ta_article_place',
 				'hide_empty' => false
 			]);
 
-			foreach ($tags as $tag) {
-				$slug = $tag->slug;
+			if($article->tags){
+				foreach ($article->tags as $tag) {
+					$comparable_name = strtolower(trim($tag->name));
+					$new_places = [];
+					$new_topics = [];
 
-				foreach ($places as $place) {
-					if ($slug === $place->slug) {
-						wp_set_post_terms($post_id, $place->name, 'ta_article_place');
-					}
-				}
+					if($comparable_name){
+						foreach($places as $place){
+							if( $comparable_name === strtolower(trim($place->name)) )
+								$new_places[] = $place->term_id;
+						}
 
-				foreach ($topics as $topic) {
-					if ($slug === $topic->slug) {
-						wp_set_post_terms($post_id, $topic->term_id, 'ta_article_tema');
+						foreach ($topics as $topic) {
+							if ( $comparable_name === strtolower(trim($topic->name)) )
+								$new_topics[] = $topic->term_id;
+						}
 					}
 				}
 			}
-		}
+
+			wp_set_post_terms($post_ID, $new_places, 'ta_article_place');
+			wp_set_post_terms($post_ID, $new_topics, 'ta_article_tema');
+		}, array(
+			'priority'		=> 100,
+			'accepted_args'	=> 3,
+		) );
 	}
 
 	public static function extra_home_content()
@@ -561,13 +571,13 @@ function filter_by_the_author() {
 		'name' => 'author', // this is the "name" attribute for filter <select>
 		'show_option_all' => 'Creador' // label for all authors (display posts without filter)
 	);
- 
+
 	if ( isset($_GET['user']) )
 		$params['selected'] = $_GET['user']; // choose selected user by $_GET variable
- 
+
 	wp_dropdown_users( $params ); // print the ready author list
 }
- 
+
 add_action('restrict_manage_posts', 'filter_by_the_author');
 
 
