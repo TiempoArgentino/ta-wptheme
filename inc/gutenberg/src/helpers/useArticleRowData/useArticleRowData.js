@@ -6,7 +6,8 @@ import balancerImage from './balancer-padded.png';
 *   @param {int} offset                                                         Defines an offset from which to start selecting articles
 *                                                                               from the articles array
 */
-export default function useArticleRowData({ articles, cells, offset = 0, isSelected, use_balacer_articles, balancer_allow_fallback }){
+export default function useArticleRowData({ articles, cells, offset = 0, isSelected, use_balacer_articles }){
+    const balancer_allow_fallback = false; // It doesn't allow fallback anymore, since it renders from the client side+
     const articlesLeft = articles && articles.length ? articles.length - offset : 0;
     const hasArticles = articlesLeft > 0;
 
