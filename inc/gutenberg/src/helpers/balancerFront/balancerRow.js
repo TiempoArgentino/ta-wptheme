@@ -5,14 +5,30 @@ import ArticlesCommonRow from './elements/ArticlesCommonRow';
 import ArticlesMiscelaneaRow from './elements/ArticlesMiscelaneaRow';
 import ArticlesSliderRow from './elements/ArticlesSliderRow';
 
-export async function renderBalancerArticlesRow({ elem, articlesArgs, rowArgs, cellsCount }){
-    let balancedArticles = await fetchBalancedArticles({ articlesArgs });
-    let ids = [];
-    balancedArticles = balancedArticles?.length > 0 ? balancedArticles.slice(0, cellsCount) : [];
+function failMisserably({elem, error}){
+    console.log('ERROR:', error);
+    $(elem).slideUp(400);
+}
 
-    if(balancedArticles.length){
-        renderArticlesBlock({ elem, articles: balancedArticles, rowArgs });
-        ids = balancedArticles.slice(0, cellsCount).map(article => article?.postId ?? null);
+export async function renderBalancerArticlesRow({ elem, articlesArgs, rowArgs, cellsCount }){
+    let ids = [];
+
+    try {
+        let balancedArticles = await fetchBalancedArticles({ articlesArgs });
+        if(balancedArticles?.error !== undefined)
+            failMisserably({ elem, error: balancedArticles.error });
+        else{
+            balancedArticles = balancedArticles?.length > 0 ? balancedArticles.slice(0, cellsCount) : [];
+            if(balancedArticles.length <= 0)
+                failMisserably({ elem, error: 'No articles found' });
+            else {
+                renderArticlesBlock({ elem, articles: balancedArticles, rowArgs });
+                ids = balancedArticles.slice(0, cellsCount).map(article => article?.postId ?? null);
+            }
+        }
+
+    } catch (error) {
+        failMisserably({ elem, error });
     }
 
     return ids;
@@ -36,8 +52,9 @@ function fetchBalancedArticles({ articlesArgs }){
             return articles;
         })
         .catch(function(error) {
-            console.log(error);
-            return [];
+            return {
+                error,
+            };
         });
 }
 

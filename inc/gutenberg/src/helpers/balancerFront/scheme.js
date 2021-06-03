@@ -127,7 +127,7 @@ export function mapFromUserPreferenceToAPIFields(userPreference){
 
     forEachField( ({ fieldName, fieldData }) => {
         const { default: defaultVal, personalizeReqField } = fieldData;
-        const userPrefValue = userPreference?.info[fieldName] ?? null;
+        const userPrefValue = userPreference?.info?.[fieldName] ?? null;
         taPreferences[personalizeReqField] = userPrefValue ?? defaultVal;
     } );
 

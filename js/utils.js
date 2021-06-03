@@ -214,7 +214,7 @@ window.addEventListener("resize", function () {
         },
         content: function () {
           return (
-            '<ul><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-1.svg">Autor favorito</li><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-2.svg">Tema de interés</li><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-3.svg">Relevante por localización</li></ul>' +
+            '<ul><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-3.svg">Autor favorito</li><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-2.svg">Tema de interés</li><li><img src="wp-content/themes/tiempo-argentino/assets/img/icon-img-1.svg">Relevante por localización</li></ul>' +
             '<div class="d-flex justify-content-between align-items-end"><span><img src="wp-content/themes/tiempo-argentino/assets/img/marker-tiempo.svg">paso 3 de 4</span>' +
             '<button id="go-to-4">siguiente</button></div>'
           );

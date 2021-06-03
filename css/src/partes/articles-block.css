@@ -209,6 +209,7 @@
   line-height: 16.5px;
   letter-spacing: -0.2px;
   font-size: 15px;
+  margin: 0;
 }
 .article-preview .content .description p {
   font-family: "Red Hat Display";
@@ -426,6 +427,9 @@
   } */
 }
 @media (min-width: 992px) {
+  .article-preview .content .title p {
+    margin-bottom: 1rem;
+  }
   .article-preview.vertical-article .img-container .img-wrapper {
     min-height: 133px;
   }

@@ -173,7 +173,7 @@ const useTAArticlesRowsContainer = (props = {}) => {
                             checked={ selectedRow.use_balacer_articles }
                             onChange={(value) => updateRow(selectedRowIndex, {...selectedRow, use_balacer_articles: value}) }
                         />
-                        {selectedRow.use_balacer_articles &&
+                        {selectedRow.use_balacer_articles && false && // this is no longer used, since the balancer articles get render from the client
                         <ToggleControl
                             label={"Si el balanceador no tiene artículos suficientes, mostrar los correspondientes a los filtros establecidos."}
                             checked={ selectedRow.balancer_allow_fallback }
