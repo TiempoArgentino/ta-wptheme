@@ -27,7 +27,7 @@ $can_register = get_option('users_can_register');
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" value="" placeholder="<?php echo __('Contraseña', 'gen-base-theme') ?>" class="form-control">
                                 </div>
-                                <input type="hidden" name="redirect_to" value="<?php echo wp_get_referer() && wp_get_referer() !== get_permalink(get_option('subscriptions_login_register_page')) ? wp_get_referer() : get_permalink(get_option('subscriptions_profile')) ?>">
+                                <input type="hidden" name="redirect_to" value="<?php echo get_permalink(get_option('user_panel_page')) ?>">
                                 <div class="btns-container text-center mt-3">
                                     <button type="submit" name="login" class="yellow-btn-white-text"><?php echo __('Ingresar', 'gen-base-theme') ?></button>
                                 </div>

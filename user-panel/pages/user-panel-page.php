@@ -1,6 +1,5 @@
-<?php get_header() ?>
-
 <?php do_action('before_panel_user')?>
+<?php get_header() ?>
 
 <div class="container ta-context user-tabs gray-border mt-2 my-lg-5">
 
