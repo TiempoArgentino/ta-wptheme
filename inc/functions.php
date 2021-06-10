@@ -856,6 +856,70 @@ function create_new_article($args){
 *   @return int|false|WP_Error                                                  Post id if an update was applied. False if no update was needed.
 *                                                                               WP_Error on error.
 */
+function fix_articles_no_images($args){
+    if(!$args || !is_array($args))
+        return false;
+
+    $default_args = array(
+        'post_author'                                   => null,
+        'oldId'                                         => null,    // Done
+        'coverimage'                                    => null,    // Done
+        'mainpicture'                                   => null,    // Done
+    );
+    $args = array_merge($default_args, $args);
+    extract($args);
+
+    $query = new WP_Query(array(
+        'post_type'			=> ['ta_article', 'ta_audiovisual', 'ta_fotogaleria'],
+        'post_status' 		=> array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'),
+        'meta_key'         	=> 'oldId',
+        'meta_value'       	=> $oldId,
+        'posts_per_page'    => 1,
+    ));
+
+    if( is_wp_error($query) )
+        return $query;
+
+    if(!$query->have_posts()){
+        return new WP_Error('oldId_post_not_found', 'No se encontro articulo ese oldId');
+    }
+
+    $update_result = false;
+    $post = $query->posts[0];
+    $update_post_args = array();
+
+	// Main picture in args but no thumbnail
+    if( !($mainpicture && isset($mainpicture['url']) && ( !is_string($mainpicture['url']) || !trim($mainpicture['url']) )) && !has_post_thumbnail($post) ){
+        $update_post_args['_thumbnail_id'] = import_media($mainpicture);
+    }
+
+	// Cover image in args but no alt image
+	$altimage_meta = get_post_meta($post->ID, 'ta_article_thumbnail_alt', true);
+    if( !($coverimage && isset($coverimage['url']) && ( !is_string($coverimage['url']) || !trim($coverimage['url']) )) && !$altimage_meta ){
+        $update_post_args['meta_input'] = array(
+            'ta_article_thumbnail_alt'  => import_media($coverimage),
+        );
+    }
+
+    if(!empty($update_post_args)){
+        $update_post_args = array_merge($update_post_args, array(
+            'ID'            => $post->ID,
+        ));
+        $update_result = wp_update_post($update_post_args, true);
+    }
+
+    return array(
+		'updatedPostID'	=> $update_result,
+		'updatedData'	=> $update_post_args,
+	); // WP_Error | 0 | post_id
+}
+
+
+/**
+*   Check if an article image was wrongly set during importation and removes it (main and cover)
+*   @return int|false|WP_Error                                                  Post id if an update was applied. False if no update was needed.
+*                                                                               WP_Error on error.
+*/
 function correct_article_images($args){
     if(!$args || !is_array($args))
         return false;

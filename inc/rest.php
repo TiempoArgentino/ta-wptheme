@@ -246,6 +246,29 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
+	register_rest_route( 'ta/v1', '/import/fix/article-no-image', array(
+		'methods' 				=> 'POST',
+		'callback' 				=> function($request){
+			$args = $request->get_json_params();
+
+			$update_result = fix_articles_no_images(array_merge($args, array( 'post_author' => 5 )));
+
+			if( !$update_result )
+				return new WP_REST_Response('No se encontró un artículo con ese oldId, o se encontró pero las urls pasadas no estaban vacías.', 500);
+			else{
+				if( is_wp_error($update_result)  )
+					return new WP_REST_Response($update_result->get_error_message(), 500);
+				else if( is_wp_error($update_result['updatedPostID']) )
+					return new WP_REST_Response($update_result->get_error_message(), 500);
+			}
+
+			return new WP_REST_Response($update_result, 200);
+		},
+		'permission_callback' => function () {
+			return current_user_can( 'edit_published_articles' );
+		},
+	) );
+
 	register_rest_route( 'ta/v1', '/import/article', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
