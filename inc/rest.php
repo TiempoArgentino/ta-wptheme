@@ -258,9 +258,15 @@ add_action( 'rest_api_init', function () {
 			else{
 				if( is_wp_error($update_result)  )
 					return new WP_REST_Response($update_result->get_error_message(), 500);
-				else if( is_wp_error($update_result['updatedPostID']) )
+				if( is_wp_error($update_result['updatedPostID']) )
 					return new WP_REST_Response($update_result->get_error_message(), 500);
 			}
+
+			if( $update_result['updatedPostID'] === false )
+				return new WP_REST_Response("No fue necesario actualizar el articulo.", 409);
+
+			if( $update_result['updatedPostID'] === 0 )
+				return new WP_REST_Response("Hubo un error al intentar actualizar el articulo", 409);
 
 			return new WP_REST_Response($update_result, 200);
 		},
