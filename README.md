@@ -1,6 +1,7 @@
 
 
 
+
 # Introducción
 
 Tema de Wordpress desarrollado, en conjunto con una serie de plugins y APIs, específicamente para su uso en sitios web de periodismo.
@@ -23,6 +24,7 @@ de cada repositorio:
     - Etiquetador API
 3. Definir las siguientes variables de entorno en `wp-config.php`
     - `TA_BALANCER_API_URI`: URI de la API del balanceador.
+    - `TA_BALANCER_API_KEY`: API Key de autorización para los request a la API del balanceador.
     - `TA_ETIQUETADOR_API_URI`: URI de la API del etiquetador.
 4. Ir al panel de temas del sitio (** WP-Admin -> Apariencia -> Temas **) y activar el tema `Tiempo Argentino`
 
