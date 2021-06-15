@@ -33,17 +33,7 @@ class TA_Balancer_DB{
 	}
 
 	static private function stablish_env_variables(){
-		switch ( wp_get_environment_type() ) {
-		   case 'staging':
-			   self::$api_url = "https://api-dev.nuevotiempoargentino.com";
-			   break;
-		   case 'production':
-			   self::$api_url = "https://api.nuevotiempoargentino.com";
-			   break;
-		   default:
-			   self::$api_url = "http://localhost:3003";
-			   break;
-	   }
+		self::$api_url = TA_BALANCER_API_URI ?? "http://localhost:3003";
 	}
 
     /**
