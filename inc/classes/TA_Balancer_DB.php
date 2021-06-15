@@ -33,7 +33,7 @@ class TA_Balancer_DB{
 	}
 
 	static private function stablish_env_variables(){
-		self::$api_url = TA_BALANCER_API_URI ?? "http://localhost:3003";
+		self::$api_url = defined('TA_BALANCER_API_URI') ? TA_BALANCER_API_URI : "http://localhost:3003";
 	}
 
     /**

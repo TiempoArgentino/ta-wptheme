@@ -56,6 +56,8 @@ Los siguientes bloques fueron pensados para ser usados en ella:
 -   Mow Player
 -   Quote
 
+Videos de demostración de armado de portada: https://drive.google.com/drive/folders/15Lt9E0Xfv_VGbZ2IuUqKkEHE_OZLqpTX
+
 ## Artículos
 
 El sitio gira en torno a los **artículos**, el `custom post type` principal del
@@ -75,7 +77,7 @@ Estas entidades manejan los siguientes datos:
 
 #### Taxonomías de un Artículo
 
-- **Secciones**: Características generales similares. Se debe mantener la mínima cantidad posible. **Es obligatoria** y **unica**.
+- **Secciones**: Características generales similares. Se debe mantener la mínima cantidad posible. **Es obligatoria** y **única**.
 - **Etiquetas**: Características especificas.
 - **Autores**: Quienes escribieron el artículo. No debe confundirse con el autor
 usuario del sitio Wordpress.
@@ -83,6 +85,8 @@ usuario del sitio Wordpress.
 Tienen su propia landing y se manejan desde el código.
 - **Temas**: No se muestra públicamente. Es utilizada por el balanceador.
 - **Lugares**: No se muestra públicamente. Es utilizada por el balanceador.
+
+Videos de demostración de armado de un artículo: https://drive.google.com/drive/folders/14ou5hI8C9bivkkPsO3lN7kXCoM1KQerk
 
 ## Ediciones Impresas
 

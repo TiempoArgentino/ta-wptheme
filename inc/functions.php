@@ -479,7 +479,7 @@ function create_new_edicion_impresa($args){
 }
 
 function get_etiquetas($request){
-	if(!TA_ETIQUETADOR_API_URI)
+	if(!defined('TA_BALANCER_API_URI'))
 		return null;
 	// init the resource
 	$ch = curl_init();
