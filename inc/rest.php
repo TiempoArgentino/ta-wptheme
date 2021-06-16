@@ -35,7 +35,6 @@ add_action( 'rest_api_init', function () {
 		'permission_callback' 	=> fn() => current_user_can( 'delete_published_articles' ),
 	) );
 
-
 	register_rest_route( 'ta/v1', '/balancer-db/load-latest', array(
 		'methods' 				=> 'POST',
 		'callback' 				=> function($request){
@@ -44,41 +43,6 @@ add_action( 'rest_api_init', function () {
 			return new WP_REST_Response(TA_Balancer_DB::insert_latest_articles($days_ago), 200);
 		},
 		'permission_callback' 	=> fn() => current_user_can( 'delete_published_articles' ),
-	) );
-
-	register_rest_route( 'ta/v1', '/balancer-db/articles', array(
-		'methods' 				=> 'POST',
-		'callback' 				=> function($request){
-
-			// init the resource
-			$ch = curl_init("https://content-balancer-tiempoar.herokuapp.com/api/posts");
-			curl_setopt($ch, CURLOPT_URL, "https://content-balancer-tiempoar.herokuapp.com/api/posts");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CAINFO, TA_THEME_PATH . '/inc/cacert.pem');
-
-			// Check if initialization had gone wrong*
-		    if ($ch === false) {
-				return new WP_REST_Response( 'Failed to initialize', 500);
-		    }
-
-			// execute
-			$output = curl_exec($ch);
-			if ($output === false) {
-				throw new Exception(curl_error($ch), curl_errno($ch));
-				// return new WP_REST_Response( 'Failed to initialize', 500);
-		    }
-			// free
-			curl_close($ch);
-
-			$articles = json_decode($output);
-
-			return new WP_REST_Response(array(
-				'articles'	=> $articles,
-			), 200);
-		},
-		'permission_callback' => function () {
-	    	return true;
-	    },
 	) );
 
 	register_rest_route( 'ta/v1', '/balancer-row', array(
