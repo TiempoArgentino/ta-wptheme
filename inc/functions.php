@@ -479,11 +479,13 @@ function create_new_edicion_impresa($args){
 }
 
 function get_etiquetas($request){
+	if(!defined('TA_BALANCER_API_URI'))
+		return null;
 	// init the resource
 	$ch = curl_init();
 
 	curl_setopt_array($ch, array(
-		CURLOPT_URL               	=> "http://190.105.238.93:5000/api/textrank",
+		CURLOPT_URL               	=> TA_ETIQUETADOR_API_URI . "/api/textrank",
 		CURLOPT_RETURNTRANSFER    	=> true,
 		CURLOPT_POST				=> true,
 		CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
