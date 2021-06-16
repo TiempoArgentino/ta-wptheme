@@ -40,7 +40,12 @@ $articles_block = RB_Gutenberg_Block::get_block('ta/articles');
                 </div>
             <?php } ?>
 
-            <?php include_once(TA_THEME_PATH . '/markup/partes/seamos-socios.php');  ?>
+            <?php
+            get_template_part('parts/common', 'seamos_socios', array(
+                'title'                     => "En Tiempo Argentino hacemos periodismo sin condicionamientos.",
+                'body'                      => "Nuestro único compromiso es con los lectores. Ayudá a sostener esta experiencia autogestiva y necesaria.",
+                'btn'                       => "ASOCIATE",
+            )); ?>
 
             <?php if (is_active_sidebar('seccion_desk_1')) { ?>
                 <div class="container d-none d-sm-none d-md-block mt-md-3 mb-md-3">

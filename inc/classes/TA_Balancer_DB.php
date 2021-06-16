@@ -219,10 +219,14 @@ class TA_Balancer_DB{
         curl_setopt_array($ch, $args);
         // execute
         $output = curl_exec($ch);
+		// errors
+		if (curl_errno($ch))
+			error_log(curl_error($ch));
         // free
         curl_close($ch);
         return $output;
     }
+
 
     /**
     *   Inserts into the DB the latest articles
