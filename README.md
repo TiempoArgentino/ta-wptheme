@@ -1,6 +1,5 @@
-
-
-
+Este plugin fue desarrollado como parte de una estrategia Open Source para medios de todo el mundo basada en el CMS WordPress.
+Haciendo click en este [enlace](https://tiempoar.com.ar/proyecto-colaborativo/) se puede encontrar más información sobre el proyecto, así como las lista de plugins que complementan a este para tener un sitio completamente funcional.
 
 # Introducción
 
@@ -16,12 +15,16 @@ Tema de Wordpress desarrollado, en conjunto con una serie de plugins y APIs, esp
 1. Descargar el último release y extraerlo en `wp-content/themes/tiempo-argentino`.
 2. Instalar los siguientes plugins y activarlos, siguiendo las instrucciones
 de cada repositorio:
-    - Posts Balancer
-    - Suscripciones
-    - Roles
+    - [Posts Balancer](https://github.com/TiempoArgentino/ta-content-balancer)
+    - [Suscripciones](https://github.com/TiempoArgentino/ta-suscriptions)
+    - [Roles](https://github.com/TiempoArgentino/ta-user-roles-extension)
+    - [User Panel](https://github.com/TiempoArgentino/ta-user-panel)
+    - [Tweets Search](https://github.com/TiempoArgentino/ta-tweets-search)
+    - [Odoo](https://github.com/TiempoArgentino/ta-odoo)
+    - [Mailtrain](https://github.com/TiempoArgentino/ta-mailtrain)
 4. Instalar las siguientes APIs:
-    - Balancer API mongo
-    - Etiquetador API
+    - [Balancer API mongo](https://github.com/TiempoArgentino/ta-content-balancer-node-api)
+    - [Etiquetador API](https://github.com/TiempoArgentino/ta-textrank-keyword-generator-api)
 3. Definir las siguientes variables de entorno en `wp-config.php`
     - `TA_BALANCER_API_URI`: URI de la API del balanceador.
     - `TA_BALANCER_API_KEY`: API Key de autorización para los request a la API del balanceador.
