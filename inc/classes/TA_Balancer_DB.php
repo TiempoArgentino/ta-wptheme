@@ -41,7 +41,7 @@ class TA_Balancer_DB{
 	}
 
 	static private function get_api_key_header(){
-		return 'api_key: ' . TA_BALANCER_API_KEY;
+		return 'api-key: ' . TA_BALANCER_API_KEY;
 	}
 
     /**
