@@ -27,13 +27,21 @@ class TA_Balancer_DB{
 			return false;
 
 		 self::$initialized = true;
+
+		 if(!defined('TA_BALANCER_API_URI') || !defined('TA_BALANCER_API_KEY'))
+		 	return false;
+
 		 self::stablish_env_variables();
 		 self::sync_latest_articles_with_balancer_db();
 		 self::sync_terms_with_balancer_db();
 	}
 
 	static private function stablish_env_variables(){
-		self::$api_url = TA_BALANCER_API_URI ?? "http://localhost:3003";
+		self::$api_url = TA_BALANCER_API_URI;
+	}
+
+	static private function get_api_key_header(){
+		return 'api-key: ' . TA_BALANCER_API_KEY;
 	}
 
     /**
@@ -244,8 +252,9 @@ class TA_Balancer_DB{
                 CURLOPT_URL               	=> self::get_api_endpoint("/api/posts/allposts"),
                 CURLOPT_RETURNTRANSFER    	=> true,
                 CURLOPT_CUSTOMREQUEST 		=> 'POST',
-                CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+                CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
                 CURLOPT_POSTFIELDS			=> json_encode($articles),
+                CURLOPT_SSL_VERIFYHOST      => 0
             ));
         }
     }
@@ -259,8 +268,9 @@ class TA_Balancer_DB{
             CURLOPT_URL               	=> self::get_api_endpoint("/api/posts/649846"),
             CURLOPT_RETURNTRANSFER    	=> true,
             CURLOPT_CUSTOMREQUEST 		=> 'PUT',
-            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
             CURLOPT_POSTFIELDS			=> json_encode($article_data),
+            CURLOPT_SSL_VERIFYHOST      => 0
         ));
     }
 
@@ -273,7 +283,8 @@ class TA_Balancer_DB{
             CURLOPT_URL               	=> self::get_api_endpoint("/api/posts/$article_id"),
             CURLOPT_RETURNTRANSFER    	=> true,
             CURLOPT_CUSTOMREQUEST 		=> 'DELETE',
-            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
+            CURLOPT_SSL_VERIFYHOST      => 0
         ));
     }
 
@@ -287,11 +298,12 @@ class TA_Balancer_DB{
             CURLOPT_URL               	=> self::get_api_endpoint("/api/posts/terms/324324234"),
             CURLOPT_RETURNTRANSFER    	=> true,
             CURLOPT_CUSTOMREQUEST 		=> 'PUT',
-            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
             CURLOPT_POSTFIELDS			=> json_encode(array(
                 'taxonomy'  => $taxonomy,
                 'id'        => $term_id,
             )),
+            CURLOPT_SSL_VERIFYHOST      => 0
         ));
     }
 
@@ -303,7 +315,8 @@ class TA_Balancer_DB{
             CURLOPT_URL               	=> self::get_api_endpoint("/api/posts"),
             CURLOPT_RETURNTRANSFER    	=> true,
             CURLOPT_CUSTOMREQUEST 		=> 'DELETE',
-            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
+            CURLOPT_SSL_VERIFYHOST      => 0
         ));
     }
 
@@ -316,8 +329,9 @@ class TA_Balancer_DB{
             CURLOPT_URL               	=> self::get_api_endpoint("/api/posts/updateauthor/324324234"),
             CURLOPT_RETURNTRANSFER    	=> true,
             CURLOPT_CUSTOMREQUEST 		=> 'PUT',
-            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json'),
+            CURLOPT_HTTPHEADER			=> array('Content-Type: application/json', self::get_api_key_header()),
             CURLOPT_POSTFIELDS			=> json_encode($author_data),
+            CURLOPT_SSL_VERIFYHOST      => 0
         ));
     }
 }

@@ -37,7 +37,7 @@ extract( array_merge( $defaults, $args ) );
                 </div>
                 <div class="btns-container">
                     <div class="asociarme-btn d-flex justify-content-center mx-auto mt-3">
-                        <button><?php echo $btn; ?></button>
+                    <a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>" class="text-light"><button><?php echo $btn; ?></button></a>
                     </div>
                 </div>
 

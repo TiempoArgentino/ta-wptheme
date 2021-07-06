@@ -1,0 +1,13 @@
+<div style="display:flex;flex-wrap:wrap; width:800px;border:1px solid black;">
+            <div style="flex-basis: 48%;padding:5px"><strong>Method: </strong>mk_curl_req</div>
+            <div style="flex-basis: 48%;padding:5px"><strong>Response: </strong>sin error</div>
+        </div><div style="display:flex;flex-wrap:wrap; width:800px;border:1px solid black;">
+            <div style="flex-basis: 48%;padding:5px"><strong>Method: </strong>create_or_update_article</div>
+            <div style="flex-basis: 48%;padding:5px"><strong>Response: </strong>{"n":1,"nModified":1,"ok":1}</div>
+        </div><div style="display:flex;flex-wrap:wrap; width:800px;border:1px solid black;">
+            <div style="flex-basis: 48%;padding:5px"><strong>Method: </strong>mk_curl_req</div>
+            <div style="flex-basis: 48%;padding:5px"><strong>Response: </strong>sin error</div>
+        </div><div style="display:flex;flex-wrap:wrap; width:800px;border:1px solid black;">
+            <div style="flex-basis: 48%;padding:5px"><strong>Method: </strong>create_or_update_article</div>
+            <div style="flex-basis: 48%;padding:5px"><strong>Response: </strong>{"n":1,"nModified":1,"ok":1}</div>
+        </div>

@@ -567,6 +567,11 @@ add_action('init', 'ta_article_participation_meta_register');
  * filtro por creador
  */
 function filter_by_the_author() {
+
+	if ('ta_article' != $_REQUEST['post_type']) {
+		return;
+	}
+
 	$params = array(
 		'name' => 'author', // this is the "name" attribute for filter <select>
 		'show_option_all' => 'Creador', // label for all authors (display posts without filter)

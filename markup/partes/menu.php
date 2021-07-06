@@ -69,7 +69,9 @@ $extra_menu_items = RB_Menu::get_menu_items('extra-menu');
                                 <p><a href="<?php echo get_permalink( get_option('user_panel_page') )?>"><?php echo __('PERFIL','gen-base-theme')?></a></p>
                                 <?php else: ?>
                                 <p><a href="<?php echo get_permalink( get_option('user_login_page') )?>"><?php echo __('INGRESAR','gen-base-theme')?></a></p>
+                                </p>
                                 <?php endif;?>
+                               
                             </div>
                         </a>
                     </div>

@@ -1,5 +1,5 @@
-
-
+Este plugin fue desarrollado como parte de una estrategia Open Source para medios de todo el mundo basada en el CMS WordPress.
+Haciendo click en este [enlace](https://tiempoar.com.ar/proyecto-colaborativo/) se puede encontrar más información sobre el proyecto, así como las lista de plugins que complementan a este para tener un sitio completamente funcional.
 
 # Introducción
 
@@ -15,14 +15,19 @@ Tema de Wordpress desarrollado, en conjunto con una serie de plugins y APIs, esp
 1. Descargar el último release y extraerlo en `wp-content/themes/tiempo-argentino`.
 2. Instalar los siguientes plugins y activarlos, siguiendo las instrucciones
 de cada repositorio:
-    - Posts Balancer
-    - Suscripciones
-    - Roles
+    - [Posts Balancer](https://github.com/TiempoArgentino/ta-content-balancer)
+    - [Suscripciones](https://github.com/TiempoArgentino/ta-suscriptions)
+    - [Roles](https://github.com/TiempoArgentino/ta-user-roles-extension)
+    - [User Panel](https://github.com/TiempoArgentino/ta-user-panel)
+    - [Tweets Search](https://github.com/TiempoArgentino/ta-tweets-search)
+    - [Odoo](https://github.com/TiempoArgentino/ta-odoo)
+    - [Mailtrain](https://github.com/TiempoArgentino/ta-mailtrain)
 4. Instalar las siguientes APIs:
-    - Balancer API mongo
-    - Etiquetador API
+    - [Balancer API mongo](https://github.com/TiempoArgentino/ta-content-balancer-node-api)
+    - [Etiquetador API](https://github.com/TiempoArgentino/ta-textrank-keyword-generator-api)
 3. Definir las siguientes variables de entorno en `wp-config.php`
     - `TA_BALANCER_API_URI`: URI de la API del balanceador.
+    - `TA_BALANCER_API_KEY`: API Key de autorización para los request a la API del balanceador.
     - `TA_ETIQUETADOR_API_URI`: URI de la API del etiquetador.
 4. Ir al panel de temas del sitio (** WP-Admin -> Apariencia -> Temas **) y activar el tema `Tiempo Argentino`
 
@@ -56,6 +61,8 @@ Los siguientes bloques fueron pensados para ser usados en ella:
 -   Mow Player
 -   Quote
 
+Videos de demostración de armado de portada: https://drive.google.com/drive/folders/15Lt9E0Xfv_VGbZ2IuUqKkEHE_OZLqpTX
+
 ## Artículos
 
 El sitio gira en torno a los **artículos**, el `custom post type` principal del
@@ -75,7 +82,7 @@ Estas entidades manejan los siguientes datos:
 
 #### Taxonomías de un Artículo
 
-- **Secciones**: Características generales similares. Se debe mantener la mínima cantidad posible. **Es obligatoria** y **unica**.
+- **Secciones**: Características generales similares. Se debe mantener la mínima cantidad posible. **Es obligatoria** y **única**.
 - **Etiquetas**: Características especificas.
 - **Autores**: Quienes escribieron el artículo. No debe confundirse con el autor
 usuario del sitio Wordpress.
@@ -83,6 +90,8 @@ usuario del sitio Wordpress.
 Tienen su propia landing y se manejan desde el código.
 - **Temas**: No se muestra públicamente. Es utilizada por el balanceador.
 - **Lugares**: No se muestra públicamente. Es utilizada por el balanceador.
+
+Videos de demostración de armado de un artículo: https://drive.google.com/drive/folders/14ou5hI8C9bivkkPsO3lN7kXCoM1KQerk
 
 ## Ediciones Impresas
 

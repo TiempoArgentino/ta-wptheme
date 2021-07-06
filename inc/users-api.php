@@ -16,25 +16,27 @@ class Users_Api
     {
         $data = [$request->get_json_params()];
         if ($data) {
+
             foreach ($data as $d) {
 
                 if(trim($d['email']) === null) {
-                    echo http_response_code(409).'\n No existe';
+                  // echo http_response_code(409).'\n No existe';
+                    echo wp_send_json_error( 'No existe', 409 );
                     continue;
                 }
 
                 if(empty($d['email']) || $d['email'] === '' || $d['email'] === ' '){
-                    echo http_response_code(409).'\n Vino Vacio';
+                    echo wp_send_json_error( 'Falta el email', 409 );
                     continue;
                 }
 
                 if(!filter_var($d['email'], FILTER_SANITIZE_EMAIL)){
-                    echo http_response_code(409).'\n No es email';
+                    echo wp_send_json_error( 'Email incorrecto', 409 );
                     continue;
                 }
 
                 if(get_user_by('email', trim($d['email']))){
-                    echo http_response_code(409).'\n Ya existia';
+                    echo wp_send_json_error( 'El usuario ya existe', 409 );
                     continue;
                 }
             
@@ -47,7 +49,7 @@ class Users_Api
                   
                     
                     if (!$new) {
-                        echo http_response_code(400).'\n Error de no se creo';
+                        echo wp_send_json_error( 'No se creo el usuario', 400 );
                         /**
                          * sino se importo, reintentar
                          */
@@ -175,10 +177,11 @@ class Users_Api
                             update_user_meta($new, 'suscription_name',$category);
                         }
  
-                        echo http_response_code(200).'\n Creado';
+                        echo wp_send_json_success( 'Creado', 200 );
                     }
                 } else {
-                    echo http_response_code(404).'\n Dta vacio';
+                    //echo http_response_code(404).'\n Dta vacio';
+                    echo wp_send_json_error( 'No había datos para leer', 404 );
                 }
             }
         } 

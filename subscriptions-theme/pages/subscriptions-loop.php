@@ -439,14 +439,6 @@
                                                 <button class="gray-btn-black-text"><a href="<?php echo get_permalink(get_option('subscriptions_lost_password_page')) ?>"><?php echo __('RECUPERAR', 'gen-base-theme') ?></a></button>
                                             </div>
                                         </div>
-                                        <div class="sign-in mt-4">
-                                            <div class="text-center">
-                                                <p><?php echo __('¿No tenés cuenta?', 'gen-base-theme') ?></p>
-                                            </div>
-                                            <div class="btns-container text-center">
-                                                <button class="gray-btn-black-text" type="button" id="register-button"><?php echo __('CREAR CUENTA', 'gen-base-theme') ?></button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
