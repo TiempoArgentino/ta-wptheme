@@ -23,6 +23,10 @@ require_once TA_THEME_PATH . '/inc/cooperativa.php';
 class TA_Theme
 {
 	static private $initialized = false;
+	/**
+	*	@property array $latest_most_viewed 									Guarda los articulos mas leidos de los ultimos dias
+	*/
+	static public $latest_most_viewed = null;
 
 	static public function initialize()
 	{
@@ -61,6 +65,10 @@ class TA_Theme
 		require_once TA_THEME_PATH . '/inc/classes/TA_Section.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Photographer.php';
 		require_once TA_THEME_PATH . '/inc/classes/TA_Balancer_DB.php';
+
+		$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
+		self::$latest_most_viewed = $most_viewed_query->posts;
+
 		add_action('gen_modules_loaded', array(self::class, 'register_gutenberg_categories'));
 		add_action('wp_enqueue_scripts', array(self::class, 'enqueue_scripts'));
 		add_action('admin_init', array(self::class, 'clean_dashboard'));
@@ -271,12 +279,11 @@ class TA_Theme
 
 		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
 		add_action('wp_footer', function(){
-			$most_viewed_query = ta_get_latest_most_viewed_query(array( 'posts_per_page'	=> -1 ));
 			wp_localize_script(
 				'ta-balancer-front-block-js',
 				'TABalancerApiData',
 				array(
-					'mostViewed' 			=> wp_list_pluck($most_viewed_query->posts, 'ID'),
+					'mostViewed' 			=> wp_list_pluck(self::$latest_most_viewed, 'ID'),
 					'apiEndpoint'			=> TA_Balancer_DB::get_api_endpoint(),
 					'themeUrl'				=> TA_THEME_URL,
 					'articlesShownOnRender'	=> ta_get_articles_previews_shown_ids(),

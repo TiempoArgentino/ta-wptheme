@@ -1,25 +1,27 @@
 <?php
-$query = get_posts([
-    'post_type' => 'ta_article',
-    'posts_per_page' => 5,
-    'orderby' => 'ta_article_count',
-    'order' => 'DESC',
-    'meta_query' => [
-        [
-            'key' => 'ta_article_count',
-            'compare' => 'LIKE',
-            'type'      => 'NUMERIC',
-            'compare'   => 'EXISTS'
-        ]
-    ],
-    'date_query' => [
-        [
-            'column' => 'post_date_gmt',
-            'after'  => get_option('balancer_editorial_days') . ' days ago',
-        ]
-    ]
-]);
+// $query = get_posts([
+//     'post_type' => 'ta_article',
+//     'posts_per_page' => 5,
+//     'orderby' => 'ta_article_count',
+//     'order' => 'DESC',
+//     'meta_query' => [
+//         [
+//             'key' => 'ta_article_count',
+//             'compare' => 'LIKE',
+//             'type'      => 'NUMERIC',
+//             'compare'   => 'EXISTS'
+//         ]
+//     ],
+//     'date_query' => [
+//         [
+//             'column' => 'post_date_gmt',
+//             'after'  => get_option('balancer_editorial_days') . ' days ago',
+//         ]
+//     ]
+// ]);
 
+$query = TA_Theme::$latest_most_viewed;
+$amount = count($query) >= 5 ? 5 : count($query);
 ?>
 
 <div class="ta-context user-tabs gray-border mas-leidas mt-2 my-lg-5">
@@ -41,7 +43,7 @@ $query = get_posts([
                             <div
                                 class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                                 <div class="w-100">
-                                <?php foreach($query as $art) : ?>
+                                <?php for ($i=0; $i < $amount; $i++): $art = $query[$i]?>
                                     <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
                                             <a href="<?php echo get_permalink( $art->{'ID'} )?>">
@@ -60,7 +62,7 @@ $query = get_posts([
                                             </div>
                                         </div>
                                     </div>
-                                <?php endforeach?>
+                                <?php endfor; ?>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +72,7 @@ $query = get_posts([
                             <div
                                 class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                                 <div class="w-100">
-                                <?php foreach($query as $art) : ?>
+                                <?php for ($i=0; $i < $amount; $i++): $art = $query[$i]?>
                                    <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
                                             <a href="<?php echo get_permalink( $art->{'ID'} )?>">
@@ -89,7 +91,7 @@ $query = get_posts([
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endforeach?>
+                                    <?php endfor?>
                                 </div>
                             </div>
                         </div>
