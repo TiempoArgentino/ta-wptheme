@@ -11,83 +11,98 @@ import {
 const $ = jQuery;
 const selectedTags = [];
 
-function showTagsCloud(){
+function showTagsCloud() {
     $('#cloud-tag-container').slideDown();
 }
 
-function hideTagsCloud(){
+function hideTagsCloud() {
     $('#cloud-tag-container').slideUp();
 }
 
-function indexOfTag(tagId){
+function indexOfTag(tagId) {
     return selectedTags.indexOf(tagId);
 }
 
-function addTag(tagId){
+function addTag(tagId) {
     selectedTags.push(tagId);
 }
 
-function removeTag(tagId){
+function removeTag(tagId) {
     const tagIndex = indexOfTag(tagId);
-    if(tagIndex != -1)
+    if (tagIndex != -1)
         selectedTags.splice(tagIndex, 1);
 }
 
-function storeSelectionInLocalStorage(){
+function storeSelectionInLocalStorage() {
     updateCloudLocalStorageField('ids', selectedTags);
 }
 
-export function completeSelection(){
-    if(selectedTags.length <= 0)
+export function completeSelection() {
+    if (selectedTags.length <= 0)
         return false;
     storeSelectionInLocalStorage();
     return true;
 }
 
-if(typeof window.postsBalancer !== 'undefined'){
+if (typeof window.postsBalancer !== 'undefined') {
 
     try {
-        if(userCompletedPersonalization() || userDeniedPersonalization()){
+        if (userCompletedPersonalization() || userDeniedPersonalization()) {
             $('#cloud-tag-container').remove();
         }
-        else{
+        else {
             showTagsCloud();
 
-            $(document).on('click', '#cloud-tag-container .tag', function(){
+            $(document).on('click', '#cloud-tag-container .tag', function () {
                 const tagId = $(this).data('id');
-                if( $(this).hasClass('active') ){
+                if ($(this).hasClass('active')) {
                     removeTag(tagId);
                     $(this).removeClass('active');
                 }
-                else{
+                else {
                     addTag(tagId);
                     $(this).addClass('active');
                 }
 
-                if(selectedTags.length > 0)
+                if (selectedTags.length > 0)
                     $('#listo-cloud').removeClass('not-active');
                 else
                     $('#listo-cloud').addClass('not-active');
             });
 
-            $(document).on('click', '#close-cloud-tag', function(){
+            $(document).on('click', '#close-cloud-tag', function () {
                 setUserDeniedPersonalization();
                 hideTagsCloud();
             });
 
-            $(document).on('click', '#listo-cloud', function(){
-                if(completeSelection())
+            $(document).on('click', '#listo-cloud', function () {
+                if (completeSelection())
                     hideTagsCloud();
             });
 
-            // TODO: Esto hay que refactorizarlo
-            $(document).ready(function() {
+            // TODO: This needs to be refactored
+            $(document).ready(function () {
                 if ($("#cloud-tag-topics").length) {
-                    var $div = $("#cloud-tag-topics .tag");
-                    if ($div.length > 6) {
-                        $div.slice(6, 16).removeClass("d-flex").addClass("d-none");
-                        $("#ver-mas-cloud").on("click", function() {
-                            $div.slice(0, 16).removeClass("d-none").addClass("d-flex");
+                    var $div = $("#cloud-tag-topics .tag"); //tags
+
+                    var total = parseInt($div.length); //total tags
+
+                    if ($div.length >= 10) { //if tags count > than total, show only first 10
+
+                        var sliceDiv = 10;
+
+                        $div.slice(sliceDiv, total).removeClass("d-flex").addClass("d-none"); 
+
+                        $("#ver-mas-cloud").on("click", function () {
+
+                            if (parseInt($("#cloud-tag-topics .tag:visible").length) >= total) {                              
+                                $(this).addClass('d-none');
+                                return;
+                            }
+
+                            sliceDiv -= 20;
+                            $div.slice(sliceDiv, total).removeClass("d-none").addClass("d-flex");
+
                         });
                     }
                 }

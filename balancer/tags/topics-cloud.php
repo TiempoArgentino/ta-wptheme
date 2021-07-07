@@ -22,7 +22,7 @@
                         <div class="container">
                             <div class="article-tags d-flex flex-wrap mt-4" id="cloud-tag-topics">
                                 <?php if(!is_user_logged_in()) : ?>
-                                    <?php foreach(Posts_Balancer_Personalize::get_topics(16) as $key => $val) : ?>
+                                    <?php foreach(Posts_Balancer_Personalize::get_topics(false) as $key => $val) : ?>
                                     <div class="tag d-flex justify-content-center my-2" data-id="<?php echo $key?>">
                                         <div class="content p-1">
                                             <!--<a href="#" class="cloud-link">-->
