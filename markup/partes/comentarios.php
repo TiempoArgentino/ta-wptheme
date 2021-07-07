@@ -5,7 +5,7 @@ $article = TA_Article_Factory::get_article($post);
 $comments_amount = get_comments_number($post->ID);
 $header_title = $article->participation['use'] ? 'PREGUNTÁ Y PARTICIPÁ' : 'COMENTARIOS';
 ?>
-<div class="container-with-header">
+<div class="container-with-header" id="comments-container">
     <div>
         <div class="section-title">
             <h4><?php echo $header_title; ?></h4>

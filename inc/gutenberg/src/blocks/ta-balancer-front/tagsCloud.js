@@ -84,7 +84,7 @@ if (typeof window.postsBalancer !== 'undefined') {
             $(document).ready(function () {
                 if ($("#cloud-tag-topics").length) {
                     var $div = $("#cloud-tag-topics .tag"); //tags
-
+                    
                     var total = parseInt($div.length); //total tags
 
                     if ($div.length >= 10) { //if tags count > than total, show only first 10
