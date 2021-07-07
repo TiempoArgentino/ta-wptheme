@@ -16,7 +16,7 @@ function ta_get_latest_most_viewed_query($args = array()){
 		'date_query' => [
 			[
 				'column' => 'post_date_gmt',
-				'after'  => get_option('balancer_editorial_days') . ' days ago',
+				'after'  => '5 days ago',
 			]
 		]
 	);
