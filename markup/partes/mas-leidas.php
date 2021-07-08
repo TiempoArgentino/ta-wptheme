@@ -1,25 +1,4 @@
 <?php
-// $query = get_posts([
-//     'post_type' => 'ta_article',
-//     'posts_per_page' => 5,
-//     'orderby' => 'ta_article_count',
-//     'order' => 'DESC',
-//     'meta_query' => [
-//         [
-//             'key' => 'ta_article_count',
-//             'compare' => 'LIKE',
-//             'type'      => 'NUMERIC',
-//             'compare'   => 'EXISTS'
-//         ]
-//     ],
-//     'date_query' => [
-//         [
-//             'column' => 'post_date_gmt',
-//             'after'  => get_option('balancer_editorial_days') . ' days ago',
-//         ]
-//     ]
-// ]);
-
 $query = TA_Theme::$latest_most_viewed;
 $amount = count($query) >= 5 ? 5 : count($query);
 ?>
