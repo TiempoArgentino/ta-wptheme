@@ -3,7 +3,7 @@ import './css/style.css';
 
 function useAutocomplete({
     search,
-    timeout = 200,
+    timeout = 1000,
     minLength = 3,
     requestURL,
     filterFetchArgs,

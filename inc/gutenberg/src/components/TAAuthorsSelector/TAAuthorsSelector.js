@@ -1,4 +1,3 @@
-import RBAutocompleteList from '../../components/RBAutocompleteList/RBAutocompleteList';
 import TAArticleAuthorMetaBlock from '../../components/TAArticleAuthorMetaBlock/TAArticleAuthorMetaBlock';
 import RBTermsSelector from '../../components/RBTermsSelector/RBTermsSelector';
 import { fetchAuthors, useTAAuthors } from '../../helpers/useTAAuthors/useTAAuthors';
