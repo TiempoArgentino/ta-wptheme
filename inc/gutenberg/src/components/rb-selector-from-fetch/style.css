@@ -1,4 +1,5 @@
 .rb-search-filter {
+    display: flex;
     margin-bottom: 1rem;
 }
 

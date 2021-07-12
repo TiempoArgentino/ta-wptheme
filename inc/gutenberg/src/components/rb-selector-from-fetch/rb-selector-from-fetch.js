@@ -1,6 +1,6 @@
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { Component, Fragment, useState, useEffect } = wp.element;
-const { Spinner } = wp.components;
+const { Spinner, IconButton } = wp.components;
 
 import styles from "./style.css";
 import RBListWithActions  from "../rb-list-with-actions/rb-list-with-actions.js";
@@ -280,12 +280,18 @@ const ItemSelector = (props) => {
 
     //Pagination State
     const [page, setPage] = useState(initialPage);
-    //Pagination State
+    // Searched Query
     const [searchQuery, setSearchQuery] = useState(initialSearch);
+    // Search input text
+    const [searchInput, setSearchInput] = useState(initialSearch);
     //Filters State
     const [filters, setFilters] = useState({page, searchQuery});
     //Items fetch data
     let {items, totalPages, loading, error, errorMessage = itemsFetchErrorMessage, errorContent} = itemsFetch({filters});
+
+    function submitSearchText(){
+        setSearchQuery(searchInput);
+    }
 
     useEffect(() => {
         //Set the filter state when on of the filters has changed
@@ -313,11 +319,22 @@ const ItemSelector = (props) => {
                         <Fragment>
                             <div class="rb-search-filter">
                                 <input
-                                type="text"
-                                class="search-input"
-                                placeholder="Buscar..."
-                                value={searchQuery}
-                                onChange={(event) => setSearchQuery(event.target.value)}
+                                    type="text"
+                                    class="search-input"
+                                    placeholder="Buscar..."
+                                    value={searchInput}
+                                    onChange={(event) => setSearchInput(event.target.value)}
+                                    onKeyDown={ (event) => {
+                                        if(event.key === 'Enter')
+                                            submitSearchText();
+                                    }}
+                                />
+                                <IconButton isDefault
+                                    className={'search-btn'}
+                                    disabled={!searchInput || loading}
+                                    icon={'search'}
+                                    label={'search'}
+                                    onClick={() => submitSearchText()}
                                 />
                             </div>
                             {filtersContent}
