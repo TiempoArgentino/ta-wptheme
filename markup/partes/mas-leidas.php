@@ -7,7 +7,7 @@ $thumbnail = $placeholder_article->thumbnail_alt_common ? $placeholder_article->
 $thumbnail_url = $thumbnail['url'] ?? '';
 ?>
 
-<div class="ta-context user-tabs gray-border mas-leidas mt-2 my-lg-5">
+<div class="ta-user-tabs-block ta-context user-tabs gray-border mas-leidas mt-2 my-lg-5">
     <div class="user-block-container">
         <div class="container p-md-0">
             <div class="user-tabs  mas-leidas">
@@ -30,14 +30,14 @@ $thumbnail_url = $thumbnail['url'] ?? '';
                                         <div class="col-5 p-0">
                                             <a data-link href="">
                                                 <div class="img-container position-relative">
-                                                    <div class="img-wrapper" style="background-image:url('<?php echo $thumbnail_url ?>');"></div>
+                                                    <div class="img-wrapper" data-thumbnail style="background-image:url('<?php echo $thumbnail_url ?>');"></div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="content col-7">
                                             <div class="description">
                                                 <a data-link href="">
-                                                    <p><?php echo $placeholder_article->title; ?></p>
+                                                    <p data-title><?php echo $placeholder_article->title; ?></p>
                                                 </a>
                                             </div>
                                         </div>

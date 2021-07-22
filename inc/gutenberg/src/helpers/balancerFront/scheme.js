@@ -1,5 +1,15 @@
 import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from './anonymousPersonalization';
 
+/**
+*   These functions facilitates the communication between the balancer API (Wordpress/PHP)
+*   and the latest articles API (mongoose)
+*   The key of each element corresponds to the name of the field in the balancer API
+*   @property {string} personalizeReqField                                      Name of the field when passed to the latest articles API personalized request.
+*   @property {string} apiDocField                                              Name of the field in the latest articles API article document.
+*   @property {string} default                                                  Field's default value.
+*   @property {callback} apiToBalancer                                          Transforms the value from the latest articles API to the value expected by the
+*                                                                               balancer API.
+*/
 export const fieldsScheme = {
     cats: {
         personalizeReqField: "sections",
@@ -83,7 +93,7 @@ export function getMatchingBalancerData(dataA, dataB){
 
 /**
 *   Returns the user preference. This data is not ready to be passed to the API.
-*   If data compatible with the latest articles is needed, use getUserPreferenceForAPI
+*   If data compatible with the latest articles API is needed, use getUserPreferenceForAPI
 */
 export async function getUserPreference(){
     let userPreference = {};

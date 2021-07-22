@@ -267,6 +267,7 @@ class TA_Theme
 		wp_enqueue_script('ta_utils_js', TA_ASSETS_JS_URL . '/utils.js', ['jquery']);
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery']);
 		wp_enqueue_script("ta-balancer-front-block-js", ['react', 'reactdom']);
+		wp_enqueue_script("ta-mas-leidas-front-block-js");
 
 		wp_localize_script(
 			'ta_comments',

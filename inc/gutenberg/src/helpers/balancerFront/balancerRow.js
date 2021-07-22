@@ -34,7 +34,7 @@ export async function renderBalancerArticlesRow({ elem, articlesArgs, rowArgs, c
     return ids;
 }
 
-function fetchBalancedArticles({ articlesArgs }){
+export function fetchBalancedArticles({ articlesArgs }){
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
 
