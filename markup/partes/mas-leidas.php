@@ -1,6 +1,7 @@
 <?php
 $query = TA_Theme::$latest_most_viewed;
 $amount = count($query) >= 5 ? 5 : count($query);
+
 ?>
 
 <div class="ta-context user-tabs gray-border mas-leidas mt-2 my-lg-5">
