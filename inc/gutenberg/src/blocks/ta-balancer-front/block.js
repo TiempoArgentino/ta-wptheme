@@ -2,9 +2,18 @@ import TAFrontBalancedRow from '../../components/TAFrontBalancedRow/TAFrontBalan
 import { fieldsScheme, forEachField, getUserPreferenceForAPI, getUserViewedArticlesIds } from '../../helpers/balancerFront/scheme';
 import { userCompletedPersonalization, userDeniedPersonalization, getCloudLocalStorageIds } from '../../helpers/balancerFront/anonymousPersonalization';
 import { renderBalancerArticlesRow } from '../../helpers/balancerFront/balancerRow';
+import { fetchLatestMostViewedPosts } from '../../helpers/postsViewCount/postsViewCount';
 import './tagsCloud';
 import './balancerIcons';
 
+async function getMostViewedArticlesIds(){
+	let {
+		success: mostViewedFetchSuccess,
+		data: mostViewedArticlesData,
+	} = await fetchLatestMostViewedPosts() ?? {};
+
+	return mostViewedFetchSuccess && mostViewedArticlesData?.length ? mostViewedArticlesData.map( article => article.post_id ) : [];
+}
 
 // TODO: REMOVE LOGS
 ( async ($) => {
@@ -15,12 +24,18 @@ import './balancerIcons';
 		let taPreferences = await getUserPreferenceForAPI();
 
 		$(document).ready( async () => {
-			const  { render } = wp.element;
 			const balancedRows = document.querySelectorAll(".ta-articles-balanced-row");
 			let currentRowIndex = 0;
 			let fetchedArticles = [];
-			let mostViewedArticlesIds = TABalancerApiData?.mostViewed ? [...TABalancerApiData.mostViewed] : [];
+			let mostViewedArticlesIds = [];
 			let ignoredArticles = await getUserViewedArticlesIds();
+
+			try {
+				mostViewedArticlesIds = await getMostViewedArticlesIds() ?? [];
+			} catch (e) {
+				console.log('ERRRO', e);
+			}
+
 			ignoredArticles = TABalancerApiData?.articlesShownOnRender?.length > 0 ? [...ignoredArticles, ...TABalancerApiData.articlesShownOnRender] : ignoredArticles;
 			if(ignoredArticles.length)
 				mostViewedArticlesIds = mostViewedArticlesIds.filter( id => ignoredArticles.indexOf( id ) < 0 );
@@ -67,7 +82,7 @@ import './balancerIcons';
 					mostViewed,
 					ignore: [...ignoredArticles, ...fetchedArticles],
 				};
-				console.log('articlesRequestArgs', articlesArgs);
+				// console.log('articlesRequestArgs', articlesArgs);
 
 				const renderedArticlesIds = await renderBalancerArticlesRow({ elem: rowElem, articlesArgs, rowArgs, cellsCount });
 				fetchedArticles = renderedArticlesIds?.length ? [...fetchedArticles, ...renderedArticlesIds] : fetchedArticles;
