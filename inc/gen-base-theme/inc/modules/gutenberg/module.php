@@ -143,7 +143,7 @@ class GEN_Gutenberg_Build{
 				if( file_exists("$block_dist_path/block.min.js") ){
 					wp_register_script(
 						"$block_name-block-js", // Handle.
-						"$block_dist_url/block.min.js", // Block.build.js: We register the block here. Built with Webpack.
+						"$block_dist_url/block.min.js?ver=".TA_THEME_VERSION, // Block.build.js: We register the block here. Built with Webpack.
 						$block_args['script_dependencies'], // Dependencies, defined above.
 						null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 						true // Enqueue the script in the footer.

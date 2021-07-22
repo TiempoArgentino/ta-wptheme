@@ -18,7 +18,7 @@ class Balancer_TA
 
     public function place_ajax_vars()
     {
-        wp_enqueue_script('tar_balancer_ajax_script', get_template_directory_uri()  . '/balancer/js/tar-balancer-ajax.js', array('jquery'), '1.0', true);
+        wp_enqueue_script('tar_balancer_ajax_script', get_template_directory_uri()  . '/balancer/js/tar-balancer-ajax.js', array('jquery'), TA_THEME_VERSION, true);
         wp_localize_script('tar_balancer_ajax_script', 'balancer_place_ajax', [
             'url'    => admin_url('admin-ajax.php'),
             'action' => '_balancer_action_theme',
