@@ -225,8 +225,10 @@
                                                             <?php endforeach; ?>
                                                         </div>
                                                     <?php endif; ?>
-                                                <?php else : ?>
-                                                    <p>Fecha elegida <?php echo beneficios_front()->get_beneficio_data(wp_get_current_user()->ID, get_the_ID())->{'date_hour'} ?></p>
+                                                <?php else : 
+                                                    $date_choose = beneficios_front()->get_beneficio_data(wp_get_current_user()->ID, get_the_ID())->{'date_hour'};
+                                                    ?>
+                                                    <p><?php echo $date_choose ? 'Fecha elegida '.$date_choose : '' ?></p>
                                                 <?php endif ?>
                                                 <!-- fecha -->
                                             <?php endif ?>
