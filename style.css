@@ -218,3 +218,139 @@ reemplazar en styles de angie
 .article-preview .article-icons img{
     display: none;
 }
+/* Nacho's styles */
+
+
+
+.ta-recuadro .ta-recuadro-contenedor { border: 1px solid;border-color: var(--ta-gris-subtexto);box-sizing: border-box;}
+
+.ta-recuadro.espectaculos .line-height-0 { display:none;}
+
+.ta-recuadro.espectaculos .ta-recuadro-contenedor { border-color:var(--ta-espectaculos) !important;}
+
+.ta-recuadro.espectaculos .ta-recuadro-contenedor a { color:var(--ta-espectaculos) !important;}
+
+.ta-titulo-de-video-portada {
+font-family: "Caladea";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 33.69px;
+letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+.ta-bajada-de-video-portada {
+font-family: "Caladea";
+    font-style: normal;
+		letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+@media(min-width:600px){
+	.bloque-video-mas-nota .wp-block-embed__wrapper {
+		padding-top: calc(100% / 3 * 2);
+	}
+	.bloque-video-mas-nota iframe {
+		width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+	}
+		.bloque-video-mas-nota .ta-articles-block >.col-md-6 {
+		flex: 0 0 100%;
+    max-width: 100%;
+	}
+
+}
+	.bloque-video-mas-nota .ta-articles-block >.col-md-6:first-child {
+		display: none !important;
+	}
+.page-id-304879 h2
+{
+	font-family: "Caladea";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.page-id-304879 .container  p {
+	font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+}
+
+
+.page-id-304879 .article-body {
+border: 1px solid;
+border-color: var(--ta-celeste);
+padding: 10px}
+
+.btn-campus .wp-block-button__link {
+		background: #fff;
+    color: #16A1DC !important;
+    border: solid 2px #16A1DC;
+		border-radius: 0 !important;
+		font-family: 'Red Hat Display', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    font-size: 19px;
+    padding: 0.6rem 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.btn-campus .wp-block-button__link:hover{
+	    text-decoration: none;
+}
+
+@media (min-width: 1200px){
+.articulo-simple .article-body li, .articulo-especial .article-body li {
+    font-size: 19px;
+    line-height: 25.14px;
+    margin-bottom: 1rem;
+}}
+
+@media (max-width:767px){
+	.articulo-simple .author:not(:first-child){
+		margin-top: 1.5rem !important;
+	}
+}
+
+.benefits #fechas label {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+}
+
+.benefits #fechas label input {
+    font-family: "Red Hat Display";
+height: 18px;
+    vertical-align: sub;
+}
+
+.abrir-beneficio .img-wrapper{
+	background-size: contain !important;
+}
+
+.avisos-contenedor-desktop,.avisos-contenedor-mobile {margin-bottom:30px;}
+.avisos-contenedor-desktop .wp-block-lazyblock-avisos {margin-left:15px;margin-right:15px;}
+.menu {max-width: 100vw;}
+
+
+
+
+#mora .img-wrapper {
+	    background-size: contain;
+	    padding-bottom: 40% !important;
+}
