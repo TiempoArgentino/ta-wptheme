@@ -1,5 +1,4 @@
 <?php
-// $query = TA_Theme::$latest_most_viewed;
 $amount = 5;
 $placeholders_articles = [];
 $placeholder_article = new TA_Placeholder_Article();
@@ -25,7 +24,7 @@ $thumbnail_url = $thumbnail['url'] ?? '';
                         <div class="container">
                             <div class="ta-articles-block fullwidth-row d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-between">
                                 <div class="w-100">
-                                <?php for ($i=0; $i < $amount; $i++): $art = $query->posts[$i]?>
+                                <?php for ($i=0; $i < $amount; $i++):?>
                                     <div class="article-preview d-flex mb-3">
                                         <div class="col-5 p-0">
                                             <a data-link href="">
