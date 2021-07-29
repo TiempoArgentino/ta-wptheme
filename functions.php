@@ -609,3 +609,6 @@ function author_order_column($columns){
 	$columns['author'] = 'author';
 	return $columns;
 }
+
+//deactivate new widgets
+//add_filter( 'use_widgets_block_editor', '__return_false' );

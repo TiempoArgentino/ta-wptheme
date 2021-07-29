@@ -25,7 +25,7 @@
                     </div>
                     <div
                         class="social-btns d-flex flex-column flex-md-row justify-content-around justify-content-md-start my-3">
-                        <a href="" class="mr-2">
+                        <a href="dsfsfs" class="mr-2">
                             <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-tw.svg" alt="" />
                         </a>
                         <a href="" class="mr-2">
