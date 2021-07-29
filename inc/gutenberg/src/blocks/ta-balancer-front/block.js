@@ -77,6 +77,7 @@ async function getMostViewedArticlesIds(){
 
 				// Final arguments
 				const articlesArgs = {
+					maxDays: TABalancerApiData?.balancerDaysAgo ?? 20,
 					amounts,
 					userPreference: taPreferences,
 					mostViewed,

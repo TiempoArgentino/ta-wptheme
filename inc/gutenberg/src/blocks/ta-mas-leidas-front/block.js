@@ -33,6 +33,7 @@ const { apiFetch } = wp;
 
 			// Final arguments for most reads api
 			const articlesArgs = {
+				maxDays: TABalancerApiData?.masLeidasDaysAgo ?? 10,
 				amounts: {
 					mostViewed: mostViewedArticlesIds.length,
 				},
@@ -41,7 +42,6 @@ const { apiFetch } = wp;
 				ignore: [],
 			};
 
-			// TODO: Si hay un error, ocultar las mas leidas
 			const articlesData = await fetchBalancedArticles({ articlesArgs });
 
 			if(articlesData?.length) {

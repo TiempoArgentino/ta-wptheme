@@ -279,16 +279,19 @@ class TA_Theme
 			),
 		);
 
-		// TODO: Mover esto a su propio method. Controlar valor devuelvto por el WP_Query
 		add_action('wp_footer', function(){
+			// Se les hace accesibles variables relacionadas al balanceador a los scripts del componente
+			// de mas leidas y notas balancedas.
 			wp_localize_script(
-				'ta-balancer-front-block-js',
+				'ta-balancer-front-block-js', // utilizado tambien por ta-mas-leidas-front-js
 				'TABalancerApiData',
 				array(
 					'mostViewed' 			=> wp_list_pluck(self::$latest_most_viewed, 'ID'),
 					'apiEndpoint'			=> TA_Balancer_DB::get_api_endpoint(),
 					'themeUrl'				=> TA_THEME_URL,
 					'articlesShownOnRender'	=> ta_get_articles_previews_shown_ids(),
+					'balancerDaysAgo'		=> get_option('balancer_editorial_days') ?? 20,
+					'masLeidasDaysAgo'		=> 10,
 				),
 			);
 		});
