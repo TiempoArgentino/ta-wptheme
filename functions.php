@@ -27,7 +27,7 @@ class TA_Theme
 	/**
 	*	@property array $latest_most_viewed 									Guarda los articulos mas leidos de los ultimos dias
 	*/
-	static public $latest_most_viewed = [];
+	static public $latest_most_viewed = null;
 
 	static public function initialize()
 	{
