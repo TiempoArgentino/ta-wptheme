@@ -16,7 +16,7 @@ $article_part_slug = $article->micrositio ? 'special_article' : 'article';
 (function($){
      /** share */
  $(document).ready(function () {
-    $("#share-popover").popover({
+    $(".share-popover").popover({
       placement: "bottom",
       trigger: "focus",
       template:
