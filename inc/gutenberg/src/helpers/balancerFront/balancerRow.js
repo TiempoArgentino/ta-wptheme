@@ -48,7 +48,7 @@ export function fetchBalancedArticles({ articlesArgs }){
     return fetch(`${TABalancerApiData.apiEndpoint}/api/posts/personalized`, requestOptions)
         .then(response => response.json())
         .then((articles) => {
-            console.log('Fetch Articles Response', articles);
+            // console.log('Fetch Articles Response', articles);
             return articles;
         })
         .catch(function(error) {
