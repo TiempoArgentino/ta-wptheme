@@ -614,4 +614,4 @@ function author_order_column($columns){
 }
 
 //deactivate new widgets
-//add_filter( 'use_widgets_block_editor', '__return_false' );
+add_filter( 'use_widgets_block_editor', '__return_false' );

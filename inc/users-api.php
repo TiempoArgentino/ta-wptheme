@@ -195,7 +195,7 @@ class Users_Api
             array(
                 'methods' => 'POST',
                 'callback' => [$this, 'importar_user'],
-                'permission_callback' => ''
+                'permission_callback'	=> '__return_true',
             )
         );
     }
