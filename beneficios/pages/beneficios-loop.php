@@ -234,7 +234,9 @@
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                            <?php if(is_user_logged_in()):?>
+                                            <?php if(is_user_logged_in() && 
+                                                    get_user_meta( wp_get_current_user()->ID, '_user_status', true) == 1 ||
+                                                    in_array('administrator',get_user_by('id',wp_get_current_user()->ID)->roles) == 1):?>
                                                 <div class="request">
                                                     <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
                                                                                 echo 'disabled';
