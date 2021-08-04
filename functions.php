@@ -407,6 +407,7 @@ class TA_Theme
 		remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
 		remove_meta_box('dashboard_activity', 'dashboard', 'normal'); //since 3.8
 	}
+
 }
 
 TA_Theme::initialize();
@@ -615,3 +616,23 @@ function author_order_column($columns){
 
 //deactivate new widgets
 add_filter( 'use_widgets_block_editor', '__return_false' );
+
+function subscription_user_type($user_id)
+{
+	if(is_user_logged_in()) {
+		$user_subscription = get_user_meta($user_id,'suscription',true);
+		$suscription_type = get_post_meta($user_subscription,'_is_type',true);
+		return $suscription_type;
+	}
+
+	return false;
+}
+
+function user_active($user_id) {
+	if(is_user_logged_in()) {
+		$user_active = get_user_meta(wp_get_current_user()->ID, '_user_status', true);
+		return $user_active;
+	}
+
+	return false;
+}

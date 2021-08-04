@@ -215,7 +215,16 @@
                                         </div>
                                         <div class="options mt-4">
 
-                                            <?php if (is_user_logged_in()) : ?>
+                                            <?php if (is_user_logged_in()) : 
+                                                
+                                                if (
+                                                    user_active(wp_get_current_user()->ID) && 
+                                                    user_active(wp_get_current_user()->ID) == 'active' &&
+                                                    subscription_user_type(wp_get_current_user()->ID)  === 'digital' ||
+                                                    in_array('administrator', get_user_by('id', wp_get_current_user()->ID)->roles) == 1
+                                                ) : 
+
+                                                ?>
                                                 <!-- fcha -->
                                                 <?php if (!beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID())) : ?>
                                                     <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) : ?>
@@ -225,6 +234,7 @@
                                                             <?php endforeach; ?>
                                                         </div>
                                                     <?php endif; ?>
+                                                <?php endif; ?>
                                                 <?php else :
                                                     $date_choose = beneficios_front()->get_beneficio_data(wp_get_current_user()->ID, get_the_ID())->{'date_hour'};
                                                 ?>
@@ -234,40 +244,43 @@
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                                <?php 
-                                                $user_subscription = get_user_meta(wp_get_current_user()->ID,'suscription',true);
-                                                $suscription_type = get_post_meta($user_subscription,'_is_type',true);
-                                                if (
-                                                    is_user_logged_in() &&
-                                                    get_user_meta(wp_get_current_user()->ID, '_user_status', true) == 'active' &&
-                                                    $suscription_type === 'digital' ||
-                                                    in_array('administrator', get_user_by('id', wp_get_current_user()->ID)->roles) == 1
-                                                ) : ?>
-                                                    <div class="request">
-                                                        <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
-                                                                                    echo 'disabled';
-                                                                                } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
-                                                            <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
-                                                        </button>
-                                                    </div>
+                                                <?php
+                                                if (is_user_logged_in()) :
 
-                                                    <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
-                                                        <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
-                                                        <p>
-                                                            <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
-                                                        </p>
+                                                    if (
+                                                        user_active(wp_get_current_user()->ID) && 
+                                                        user_active(wp_get_current_user()->ID) == 'active' &&
+                                                        subscription_user_type(wp_get_current_user()->ID)  === 'digital' ||
+                                                        in_array('administrator', get_user_by('id', wp_get_current_user()->ID)->roles) == 1
+                                                    ) : ?>
                                                         <div class="request">
-                                                            <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                            <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
+                                                                                        echo 'disabled';
+                                                                                    } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
+                                                                <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
+                                                            </button>
                                                         </div>
-                                                    </div>
+
+                                                        <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
+                                                            <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
+                                                            <p>
+                                                                <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
+                                                            </p>
+                                                            <div class="request">
+                                                                <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                            </div>
+                                                        </div>
+                                                    <?php else : ?>
+                                                        <div class="request">
+                                                            <button>
+                                                                <a title="Tu tipo de suscripción no permite el acceso a los beneficios, cambia el tipo de suscripción por favor." href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Cambiar Suscripción', 'gen-base-theme') ?></a>
+                                                            </button>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 <?php else : ?>
                                                     <div class="request">
                                                         <button>
-                                                            <?php if($suscription_type !== 'digital'): ?>
-                                                            <a title="Tu tipo de suscripción no permite el acceso a los beneficios, cambia el tipo de suscripción por favor." href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Cambiar Suscripción', 'gen-base-theme') ?></a>
-                                                            <?php else: ?>
                                                             <a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a>
-                                                            <?php endif; ?>
                                                         </button>
                                                     </div>
                                                 <?php endif ?>
