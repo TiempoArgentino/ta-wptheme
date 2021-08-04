@@ -11,7 +11,7 @@ $article = TA_Article_Factory::get_article($post);
 get_template_part('parts/single', 'article', array(
     'show_date'             => false,
     'before_social_buttons' => function() use ($article){
-        if(!$article->issue_pdf)
+        if( !$article->issue_pdf || !( current_user_can( 'subscriber' ) || current_user_can( 'edit_ed_impresa' ) ) )
             return;
         ?>
         <a class="ta-ed-impresa-link" href="<?php echo esc_attr($article->issue_pdf['url']); ?>">Ver Online</a>
