@@ -234,9 +234,13 @@
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                                <?php if (
+                                                <?php 
+                                                $user_subscription = get_user_meta(wp_get_current_user()->ID,'suscription',true);
+                                                $suscription_type = get_post_meta($user_subscription,'_is_type',true);
+                                                if (
                                                     is_user_logged_in() &&
-                                                    get_user_meta(wp_get_current_user()->ID, '_user_status', true) == 1 ||
+                                                    get_user_meta(wp_get_current_user()->ID, '_user_status', true) == 'active' &&
+                                                    $suscription_type === 'digital' ||
                                                     in_array('administrator', get_user_by('id', wp_get_current_user()->ID)->roles) == 1
                                                 ) : ?>
                                                     <div class="request">
@@ -258,7 +262,13 @@
                                                     </div>
                                                 <?php else : ?>
                                                     <div class="request">
-                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
+                                                        <button>
+                                                            <?php if($suscription_type !== 'digital'): ?>
+                                                            <a title="Tu tipo de suscripción no permite el acceso a los beneficios, cambia el tipo de suscripción por favor." href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Cambiar Suscripción', 'gen-base-theme') ?></a>
+                                                            <?php else: ?>
+                                                            <a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a>
+                                                            <?php endif; ?>
+                                                        </button>
                                                     </div>
                                                 <?php endif ?>
                                                 <div class="see-description">
