@@ -65,43 +65,43 @@
 
 <div class="container mt-3">
     <div id="benefitsSearchBar" class="show mb-4" aria-labelledby="benefitsSearchBar" data-parent="#search-btn2">
-    <form action="<?php echo site_url('/'); ?>" method="get" id="searchform">
-        <div class="search-bar-container px-3 pt-3 pb-4">
-            <div class="close d-flex d-lg-none justify-content-end">
-                <div>
-                    <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
-                    </button>
-                </div>
-            </div>
-           
-            <div class="input-container d-flex justify-content-center mt-3">
-                <div class="search-icon mr-2">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/search-icon-blue.svg" class="img-fluid" alt="">
-                </div>
-                
-                <div class="input-wrapper flex-fill">
-                    <input type="text" name="s" placeholder="Busca por ubicación o palabra clave" />
-                </div>
-                <div class="search d-none d-lg-flex justify-content-center ml-3">
-                    <input type="hidden" name="post_type" value="beneficios" />
-                    
-                    <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
-                </div>
-                
-                <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
+        <form action="<?php echo site_url('/'); ?>" method="get" id="searchform">
+            <div class="search-bar-container px-3 pt-3 pb-4">
+                <div class="close d-flex d-lg-none justify-content-end">
                     <div>
                         <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
                             <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
                         </button>
                     </div>
                 </div>
+
+                <div class="input-container d-flex justify-content-center mt-3">
+                    <div class="search-icon mr-2">
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/search-icon-blue.svg" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="input-wrapper flex-fill">
+                        <input type="text" name="s" placeholder="Busca por ubicación o palabra clave" />
+                    </div>
+                    <div class="search d-none d-lg-flex justify-content-center ml-3">
+                        <input type="hidden" name="post_type" value="beneficios" />
+
+                        <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
+                    </div>
+
+                    <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
+                        <div>
+                            <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search d-flex d-lg-none justify-content-center mt-4">
+                    <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
+                </div>
             </div>
-            
-            <div class="search d-flex d-lg-none justify-content-center mt-4">
-                <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
-            </div>
-        </div>
         </form>
     </div>
 </div>
@@ -190,7 +190,7 @@
                         ]
                     ];
                     $beneficios = new WP_Query($args);
-                   // var_dump($beneficios);
+                    // var_dump($beneficios);
                     ?>
                     <?php if ($beneficios->have_posts()) : ?>
                         <?php while ($beneficios->have_posts()) : $beneficios->the_post(); ?>
@@ -225,40 +225,42 @@
                                                             <?php endforeach; ?>
                                                         </div>
                                                     <?php endif; ?>
-                                                <?php else : 
+                                                <?php else :
                                                     $date_choose = beneficios_front()->get_beneficio_data(wp_get_current_user()->ID, get_the_ID())->{'date_hour'};
-                                                    ?>
-                                                    <p><?php echo $date_choose ? 'Fecha elegida '.$date_choose : '' ?></p>
+                                                ?>
+                                                    <p><?php echo $date_choose ? 'Fecha elegida ' . $date_choose : '' ?></p>
                                                 <?php endif ?>
                                                 <!-- fecha -->
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                            <?php if(is_user_logged_in() && 
-                                                    get_user_meta( wp_get_current_user()->ID, '_user_status', true) == 1 ||
-                                                    in_array('administrator',get_user_by('id',wp_get_current_user()->ID)->roles) == 1):?>
-                                                <div class="request">
-                                                    <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
-                                                                                echo 'disabled';
-                                                                            } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
-                                                        <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
-                                                    </button>
-                                                </div>
-
-                                                <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
-                                                    <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
-                                                    <p>
-                                                        <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
-                                                    </p>
+                                                <?php if (
+                                                    is_user_logged_in() &&
+                                                    get_user_meta(wp_get_current_user()->ID, '_user_status', true) == 1 ||
+                                                    in_array('administrator', get_user_by('id', wp_get_current_user()->ID)->roles) == 1
+                                                ) : ?>
                                                     <div class="request">
-                                                        <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                        <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
+                                                                                    echo 'disabled';
+                                                                                } ?> class="solicitar" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" id="solicitar-<?php echo get_the_ID() ?>">
+                                                            <?php echo beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID()) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios') ?>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="request">
-                                                    <button><a href="<?php echo get_permalink( get_option('subscriptions_login_register_page') )?>"><?php echo __('Iniciar Sesión.','gen-base-theme')?></a></button>
-                                                </div>
-                                            <?php endif?>
+
+                                                    <div id="dni-<?php echo get_the_ID() ?>" class="dni-field" style="display: none;">
+                                                        <?php echo __('Agrega tu DNI para solicitar el beneficio', 'beneficios') ?><br />
+                                                        <p>
+                                                            <input type="number" name="dni-number" id="dni-number-<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-user="<?php echo wp_get_current_user()->ID ?>" data-date="" value="" class="form-control" />
+                                                        </p>
+                                                        <div class="request">
+                                                            <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
+                                                        </div>
+                                                    </div>
+                                                <?php else : ?>
+                                                    <div class="request">
+                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
+                                                    </div>
+                                                <?php endif ?>
                                                 <div class="see-description">
                                                     <button type="button" class="collapsed" data-content="#content<?php echo get_the_ID() ?>" data-toggle="collapse" data-target="#content<?php echo get_the_ID() ?>" aria-expanded="false" aria-controls="content<?php echo get_the_ID() ?>">
                                                         ver más <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/right-arrow.png" alt="" class="img-fluid" />
