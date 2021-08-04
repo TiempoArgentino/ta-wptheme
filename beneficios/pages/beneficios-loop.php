@@ -280,7 +280,7 @@
                                                 <?php else : ?>
                                                     <div class="request">
                                                         <button>
-                                                            <a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a>
+                                                            <a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión', 'gen-base-theme') ?></a>
                                                         </button>
                                                     </div>
                                                 <?php endif ?>
