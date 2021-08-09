@@ -32,7 +32,7 @@
                                         <div class="triangle"></div>
                                     </div>
                                     <?php endforeach?>
-                                    <div class="btns-container d-none d-md-flex align-items-center">
+                                    <div class="btns-container d-block d-md-flex align-items-center">
                                         <button type="button"  id="ver-mas-cloud" data-toggle="collapse" data-target="#seeAllTags" aria-expanded="false"
                                             aria-controls="seeAllTags" class="collapsed">ver más<img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/right-arrow.png" alt=""
                                                 class="img-fluid" /></button>
