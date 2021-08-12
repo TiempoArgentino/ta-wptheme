@@ -2,15 +2,12 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 //const { Component, Fragment } = wp.element;
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { InspectorControls } = wp.editor;
-const { useRef, useState, useEffect, Fragment } = wp.element;
-const { SelectControl, Spinner, PanelBody, Button, ToggleControl } = wp.components;
+const { useState, useEffect, Fragment } = wp.element;
+const { Spinner, PanelBody, Button, ToggleControl } = wp.components;
 import arrayMove from 'array-move';
-import TAArticlePreview from '../../components/TAArticlePreview/TAArticlePreview';
-import TAArticlesGrid from '../../components/TAArticlesGrid/TAArticlesGrid';
 import TAContainer from '../../components/TAContainer/TAContainer';
 import TAContainerControls from '../../components/TAContainerControls/TAContainerControls';
 import useTAArticlesRowsContainer from '../../helpers/useTAArticlesRowsContainer/useTAArticlesRowsContainer';
-import {useTAArticles} from '../../helpers/ta-article/ta-article';
 import { useTAArticlesManager } from '../../helpers/ta-article/lr-articles.js';
 import './css/editor.css';
 // import './gallery';
@@ -122,6 +119,7 @@ registerBlockType( 'ta/articles', {
 			articles,
 			renderArticlesControls,
 			isTermArticles,
+			triggerFetch,
 		} = useTAArticlesManager({
 			attributes,
 			setAttributes,
@@ -150,8 +148,14 @@ registerBlockType( 'ta/articles', {
 				>
 					<div className={`${className} ta-articles-block`}>
 						{ loadingArticles && <Spinner/> }
-						{ !loadingArticles && (!articles || articles.length == 0) &&
+						{ !loadingArticles && !articlesFetchError && (!articles || articles.length == 0) &&
 						<p>No hay articulos</p>
+						}
+						{ !loadingArticles && articlesFetchError &&
+							<>
+								<p>Ocurrió un error al intentar recuperar los artículos de este bloque.</p>
+								<Button isPrimary onClick={ triggerFetch }>Reintentar</Button>
+							</>
 						}
 						<div className="rows-container">
 							{ renderRows({articles: articles}) }

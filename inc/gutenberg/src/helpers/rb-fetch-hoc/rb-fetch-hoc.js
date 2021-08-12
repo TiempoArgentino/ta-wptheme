@@ -31,26 +31,32 @@ export function useRbFetch(path, props){
     const prevProps = usePrevious(props);
     const prevPath = usePrevious(path);
     const triggerFetch = () => {
+        console.log('triggerFetch');
         setState({shouldFetch: true,})
     };
 
     useEffect(() => {
-        // if(!props.updateOnArgsChange || (props.needsUpdateCheck && props.needsUpdateCheck()))
-        //     return;
-        if( !isMountFetch.current && ( !props.updateOnArgsChange ||
-            ( (prevPath == path) && (JSON.stringify(prevProps) == JSON.stringify(props)) ) )
-        )
-            return;
-
-        if( !path )
-            return;
-        isMountFetch.current = false;
+        console.log(state.shouldFetch);
         // if(!state.shouldFetch)
         //     return;
+        if(!state.shouldFetch){
+            // if(!props.updateOnArgsChange || (props.needsUpdateCheck && props.needsUpdateCheck()))
+            //     return;
+            if( !isMountFetch.current && ( !props.updateOnArgsChange ||
+                ( (prevPath == path) && (JSON.stringify(prevProps) == JSON.stringify(props)) ) )
+            )
+                return;
+        }
+
         setState({
             loading: true,
             shouldFetch: false,
         });
+
+        if( !path )
+            return;
+
+        isMountFetch.current = false;
         path = props.queryArgs ? addQueryArgs(path, props.queryArgs) : path;
 
         apiFetch({
@@ -72,7 +78,7 @@ export function useRbFetch(path, props){
             if(props.onCatch)
                 props.onCatch({response});
         });
-    });
+    }, [state.shouldFetch, isMountFetch.current, props.updateOnArgsChange, props.queryArgs]);
 
     return {
         response: state.response,

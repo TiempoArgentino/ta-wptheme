@@ -149,6 +149,7 @@ export function useTAArticlesManager( props = {} ){
 		articlesData: articles,
 		articlesFetchStatus,
 		updateArticlesData,
+		triggerFetch,
 	} = useLRArticlesData( {
 		fetchArgs: {
 			// Forzamos fetchs cuando estamos en mas recientes, o se cambia de mas recientes a seleccion manual
@@ -176,6 +177,7 @@ export function useTAArticlesManager( props = {} ){
 		articles,
 		renderArticlesControls,
 		isTermArticles: hasOnlyOneTermFilter(),
+		triggerFetch,
 	};
 }
 
@@ -224,7 +226,7 @@ export function useLRArticlesData( args = {} ){
 	// Do fetch only when query args changed, or when manually updating articles data and
 	// and a required article is not in articlesData
 	const updateOnArgsChange = needsFetch || fetchArgs && fetchArgs.updateOnArgsChange;
-	const { articles: articlesFetchData, status: articlesFetchStatus, totalPages } = useLRArticlesFetch( {
+	const { articles: articlesFetchData, status: articlesFetchStatus, totalPages, triggerFetch } = useLRArticlesFetch( {
 		...fetchArgs,
 		updateOnArgsChange: updateOnArgsChange,
 		onThen: ({responseData}) => {
@@ -238,7 +240,7 @@ export function useLRArticlesData( args = {} ){
 	} );
 
 	return {
-		articlesFetchData, articlesFetchStatus, articlesData, setArticlesData, updateArticlesData, totalPages,
+		articlesFetchData, articlesFetchStatus, articlesData, setArticlesData, updateArticlesData, totalPages, triggerFetch
 	};
 }
 
@@ -296,7 +298,7 @@ export function useLRArticlesFetch( props ) {
 		...fetchArgs
 	} = props;
 
-	const { response, responseData, status } = useRbFetch( '/ta/v1/articles', {
+	const { response, responseData, status, triggerFetch } = useRbFetch( '/ta/v1/articles', {
 		...fetchArgs,
 		restPath: '/ta/v1/articles',
 		method: 'POST',
@@ -310,6 +312,7 @@ export function useLRArticlesFetch( props ) {
 		totalPages: response && response.headers ? parseInt( response.headers.get( 'X-WP-TotalPages' ) ) : 0,
 		status,
 		response,
+		triggerFetch,
 	};
 }
 
