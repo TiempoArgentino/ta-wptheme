@@ -108,7 +108,8 @@ class TA_Theme
 
 		self::redirect_searchs();
 		self::filter_contents();
-
+		self::searchpage();
+		
 		add_action('admin_head',[self::class,'not_admin']);
 	}
 
@@ -314,6 +315,55 @@ class TA_Theme
 		RB_Wordpress_Framework::load_module('fields');
 		RB_Wordpress_Framework::load_module('customizer');
 		add_action('customize_register', array(self::class, 'require_customizer_panel'), 1000000);
+	}
+
+	/**
+	*	Steps related to the search results page
+	*/
+	static private function searchpage(){
+
+		function get_search_results_params(){
+			global $wp;
+			$url_info = wp_parse_url("http://base/{$wp->request}");
+			$path_parts = explode('/', $url_info['path']) ?? null;
+			return isset($path_parts[1]) && $path_parts[1] === 'search' ? array(
+			 'query'	=> $path_parts[2] ?? null,
+			 'page'		=> $path_parts[4] ?? 1,
+			) : null;
+		}
+
+		RB_Filters_Manager::add_action( 'ta_redirect_search_page', 'template_redirect', function($template) {
+			if ( is_search() && ! empty( $_GET['s'] ) ) {
+		        wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
+		        exit();
+		    }
+		} );
+
+		/**
+		*	If the request has the search URL params, sets the correct template
+		*/
+		RB_Filters_Manager::add_action( 'ta_searchpage_front_script', 'template_include', function($template) {
+			$search_results_params = get_search_results_params();
+
+			if ( $search_results_params ) {
+				$template = TA_THEME_PATH . '/search-ta_article.php';
+			}
+
+			return $template;
+		} );
+
+		/**
+		*	If search page, updates the main query params based on the URL params
+		*/
+		RB_Filters_Manager::add_action( 'ta_search_results_page_query_page', 'pre_get_posts', function( $query ){
+			$search_results_params = get_search_results_params();
+			if( $search_results_params && $query->is_main_query() ){
+				$query->set( 'paged', $search_results_params['page'] );
+				$query->is_search = true; // We making WP think it is Search page
+				$query->is_page = false; // disable unnecessary WP condition
+				$query->is_singular = false; // disable unnecessary WP condition
+			}
+		} );
 	}
 
 	static public function require_customizer_panel($wp_customize)
