@@ -40,7 +40,7 @@ $articles = get_ta_articles_from_query($wp_query);
                         <?php if( $author->networks ): ?>
                         <div class="social-btns d-flex flex-column flex-md-row justify-content-around justify-content-md-start my-3 ml-3">
                             <?php if( !empty($author->networks['twitter']['username']) ): ?>
-                            <a target="_blank" href="<?php echo esc_attr($author->networks['twitter']['username']); ?>" class="mr-2">
+                            <a target="_blank" href="https://twitter.com/<?php echo esc_attr($author->networks['twitter']['username']); ?>" class="mr-2">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/author-tw.svg" alt="">
                             </a>
                             <?php endif; ?>
@@ -50,7 +50,7 @@ $articles = get_ta_articles_from_query($wp_query);
                             </a>
                             <?php endif; ?>
                             <?php if( !empty($author->networks['instagram']['username']) ): ?>
-                            <a target="_blank" href="<?php echo esc_attr($author->networks['instagram']['username']); ?>" class="mr-2">
+                            <a target="_blank" href="https://www.instagram.com/<?php echo esc_attr($author->networks['instagram']['username']); ?>" class="mr-2">
                                 <img src="<?php echo TA_THEME_URL; ?>/markup/assets/images/instagram.svg" alt="">
                             </a>
                             <?php endif; ?>
