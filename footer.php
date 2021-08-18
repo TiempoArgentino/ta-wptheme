@@ -31,48 +31,17 @@
 <?php if (is_front_page()) : ?>
 
 <?php if (is_active_sidebar('footer_fixed')) { ?>
-    <div id="sticky-abajo" class="d-none d-sm-none d-md-block d-lg-block position-fixed text-center">
-        <div class="sticky-bajo">
-            <span class="cerrar-pop-abajo">
-                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-            </span>
-            <?php dynamic_sidebar('footer_fixed'); ?>
-        </div>
-    </div>
+    <?php dynamic_sidebar('footer_fixed'); ?>        
 <?php } ?>
 
 <?php if (is_active_sidebar('footer_fixed_mobile')) { ?>
-    <div id="sticky-abajo" class="d-block d-sm-none d-md-none d-lg-none position-fixed text-center">
-        <div class="sticky-bajo mobile-fixed">
-            <span class="cerrar-pop-abajo mobile-pop-close">
-                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-            </span>
-            <?php dynamic_sidebar('footer_fixed_mobile'); ?>
-        </div>
-    </div>
+    <?php dynamic_sidebar('footer_fixed_mobile'); ?>
 <?php } ?>
 
 <?php if (is_active_sidebar('vslider_desktop')) { ?>
-    <div id="vslider" class="d-none d-sm-none d-md-block d-lg-block position-fixed text-center">
-        <div class="video-bajo">
-            <span class="cerrar-vslider-desktop">
-                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-            </span>
-            <?php dynamic_sidebar('vslider_desktop'); ?>
-        </div>
-    </div>
+    <?php dynamic_sidebar('vslider_desktop'); ?>
 <?php } ?>
 
-<?php if (is_active_sidebar('vslider_desktop')) { ?>
-    <div id="vslider" class="d-block d-sm-none d-md-none d-lg-none position-fixed text-center">
-        <div class="video-bajo">
-            <span class="cerrar-vslider-desktop cerrar-video-abajo">
-                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-            </span>
-            <?php dynamic_sidebar('vslider_desktop'); ?>
-        </div>
-    </div>
-<?php } ?>
 
 <?php endif?>
 <?php wp_footer(); ?>
