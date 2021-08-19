@@ -176,9 +176,9 @@ if ( function_exists( 'lazyblocks' ) ) :
             'editor_html' => '',
             'editor_callback' => '',
             'editor_css' => '',
-            'frontend_html' => '<div class="<?php echo $attributes[\'pantalla\']?> ">
+            'frontend_html' => '<?php if(!is_admin() && !is_user_logged_in()):?><div class="<?php echo $attributes[\'pantalla\']?> ">
         <?php echo $attributes[\'contenedor\']?>
-    </div>',
+    </div><?php endif;?>',
             'frontend_callback' => '',
             'frontend_css' => '',
             'show_preview' => 'always',
