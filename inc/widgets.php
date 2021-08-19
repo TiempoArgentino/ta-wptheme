@@ -163,7 +163,6 @@ class Widgets_Theme_TA
     public function home_mobile()
     {
         $widgets = [
-            'home_mob_1' => __('Header Mobile 1', 'gen-base-theme'),
             'home_mob_2' => __('Home Mobile 1', 'gen-base-theme'),
         ];
 

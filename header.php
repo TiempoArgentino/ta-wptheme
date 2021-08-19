@@ -195,11 +195,11 @@
         <?php } ?>
     <?php endif; ?>
     <?php if (is_front_page()) : ?>
-        <?php if (is_active_sidebar('home_mob_1')) { ?>
+        <?php if (is_active_sidebar('home_mob_2')) { ?>
             <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
                 <div class="row d-flex">
                     <div class="col-12 mx-auto text-center">
-                        <?php dynamic_sidebar('home_mob_1'); ?>
+                        <?php dynamic_sidebar('home_mob_2'); ?>
                     </div>
                 </div>
             </div>
