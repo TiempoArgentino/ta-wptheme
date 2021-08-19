@@ -26,7 +26,7 @@ $preview_class = $desktop_horizontal ? 'd-flex py-3' : 'py-2 d-flex flex-row fle
         <div class="content <?php echo esc_attr($info_class); ?>">
             <div class="title">
                 <a href="<?php echo esc_attr($url); ?>">
-                    <p class="nota-title <?php echo esc_attr($title_class); ?>">“<?php echo $title; ?>”</p>
+                    <p class="nota-title <?php echo esc_attr($title_class); ?>">“<?php echo esc_html($title); ?>”</p>
                 </a>
             </div>
             <div class="article-info-container d-block">

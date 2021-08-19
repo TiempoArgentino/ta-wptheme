@@ -28,7 +28,7 @@ $section = $article->section;
         <?php endif; ?>
         <div class="description">
             <a href="<?php echo esc_attr($url); ?>">
-                <p><?php echo $title; ?></p>
+                <p><?php echo esc_html($title); ?></p>
             </a>
         </div>
     </div>
