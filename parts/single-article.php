@@ -73,11 +73,11 @@ $authors = $article->authors;
 
 
             <?php include_once(TA_THEME_PATH . '/markup/partes/tags.php');  ?>
-            <?php if (is_active_sidebar('note_mob_1')) { ?>
+            <?php if (is_active_sidebar('note_mob_2')) { ?>
 
                 <div class="row d-flex d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 mt-3">
                     <div class="col-9 mx-auto">
-                        <?php dynamic_sidebar('note_mob_1'); ?>
+                        <?php dynamic_sidebar('note_mob_2'); ?>
                     </div>
                 </div>
 
