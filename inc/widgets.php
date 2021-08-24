@@ -15,11 +15,17 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this, 'middle_mobile']);
 
+        add_action('widgets_init', [$this, 'middle_mobile_amp']);
+
         add_action('widgets_init', [$this, 'insert_middle_mob']);
 
         add_action('widgets_init', [$this, 'insert_middle_mob_1']);
 
         add_filter('the_content', [$this, 'insert_custom_content']);
+
+        add_filter('the_content', [$this, 'insert_custom_content_amp_1']);
+
+        add_filter('the_content', [$this, 'insert_custom_content_amp_2']);
 
         add_filter('the_content', [$this, 'insert_custom_content_2']);
 
@@ -238,6 +244,63 @@ class Widgets_Theme_TA
         }
     }
 
+    public function middle_mobile_amp()
+    {
+        $widgets = [
+            'note_mob_mid_1_amp' => __('Note medio mobile 1 AMP', 'gen-base-theme'),
+            'note_mob_mid_2_amp' => __('Note medio mobile 2 AMP', 'gen-base-theme'),
+        ];
+
+        foreach ($widgets as $key => $val) {
+            register_sidebar(array(
+                'name'          => $val,
+                'id'            => $key,
+                'before_widget' => '',
+                'after_widget'  => '',
+            ));
+        }
+    }
+
+    public function insert_middle_amp_1()
+    {
+        if (is_active_sidebar('note_mob_mid_1_amp')) :
+            return dynamic_sidebar('note_mob_mid_1_amp');
+        endif;
+    }
+
+    public function insert_middle_amp_2()
+    {
+        if (is_active_sidebar('note_mob_mid_2_amp')) :
+            return dynamic_sidebar('note_mob_mid_2_amp');
+        endif;
+    }
+
+    public function insert_custom_content_amp_1($content)
+    {
+        ob_start();
+        $this->insert_middle_amp_1();
+        $widget_area_html_2 = ob_get_clean();
+
+        if (is_single() && !is_admin() && ampforwp_is_amp_endpoint()) {
+            return $this->insert_after_paragraph($widget_area_html_2, 2, $content);
+        }
+
+        return $content;
+    }
+
+    public function insert_custom_content_amp_2($content)
+    {
+        ob_start();
+        $this->insert_middle_amp_2();
+        $widget_area_html_2 = ob_get_clean();
+
+        if (is_single() && !is_admin() && ampforwp_is_amp_endpoint()) {
+            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
+        }
+
+        return $content;
+    }
+
     public function insert_middle()
     {
         if (is_active_sidebar('middle-single-note')) :
@@ -273,7 +336,7 @@ class Widgets_Theme_TA
         $this->insert_middle();
         $widget_area_html = ob_get_clean();
 
-        if (is_single() && !is_admin()) {
+        if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
             return $this->insert_after_paragraph($widget_area_html, 2, $content);
         }
 
@@ -287,7 +350,7 @@ class Widgets_Theme_TA
         $this->insert_middle_mobile();
         $widget_area_html_2 = ob_get_clean();
 
-        if (is_single() && !is_admin()) {
+        if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
             return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
         }
 
@@ -301,7 +364,7 @@ class Widgets_Theme_TA
         $this->insert_middle_mob();
         $widget_area_html_2 = ob_get_clean();
 
-        if (is_single() && !is_admin()) {
+        if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
             return $this->insert_after_paragraph($widget_area_html_2, 2, $content);
         }
 
@@ -315,7 +378,7 @@ class Widgets_Theme_TA
         $this->insert_middle_mob_1();
         $widget_area_html_2 = ob_get_clean();
 
-        if (is_single() && !is_admin()) {
+        if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
             return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
         }
 
