@@ -195,11 +195,11 @@
         <?php } ?>
     <?php endif; ?>
     <?php if (is_front_page()) : ?>
-        <?php if (is_active_sidebar('home_mob_1')) { ?>
+        <?php if (is_active_sidebar('home_mob_2')) { ?>
             <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3 text-center mt-3">
                 <div class="row d-flex">
                     <div class="col-12 mx-auto text-center">
-                        <?php dynamic_sidebar('home_mob_1'); ?>
+                        <?php dynamic_sidebar('home_mob_2'); ?>
                     </div>
                 </div>
             </div>
@@ -231,26 +231,18 @@
     <!-- pops -->
     <?php if (is_front_page()) : ?>
         <?php if (is_active_sidebar('popup')) { ?>
-            <div id="popup-avis" class="d-none d-sm-none d-md-block d-lg-block position-fixed">
-                <div class="popup">
-                    <span class="cerrar-pop">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-                    </span>
-                    <?php dynamic_sidebar('popup'); ?>
-                </div>
-            </div>
+            <?php dynamic_sidebar('popup'); ?>
+        <?php } ?>
+    <?php endif; ?>
+
+    <?php if (is_front_page()) : ?>
+        <?php if (is_active_sidebar('popup_mobile')) { ?>
+            <?php dynamic_sidebar('popup_mobile'); ?>
         <?php } ?>
     <?php endif; ?>
 
     <?php if (is_front_page()) : ?>
         <?php if (is_active_sidebar('vslider_mobile')) { ?>
-            <div id="popup-avis" class="d-block d-sm-none d-md-none d-lg-none position-fixed">
-                <div class="popup popup-mobile">
-                    <span class="cerrar-pop pop-mobile-close">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/times-circle-regular.svg" />
-                    </span>
-                    <?php dynamic_sidebar('vslider_mobile'); ?>
-                </div>
-            </div>
+            <?php dynamic_sidebar('vslider_mobile'); ?>               
         <?php } ?>
     <?php endif; ?>

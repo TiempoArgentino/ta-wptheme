@@ -109,7 +109,7 @@ class TA_Theme
 		self::redirect_searchs();
 		self::filter_contents();
 		self::searchpage();
-		
+    
 		add_action('admin_head',[self::class,'not_admin']);
 	}
 
@@ -270,6 +270,14 @@ class TA_Theme
 		wp_enqueue_script('ta_comments', TA_ASSETS_JS_URL . '/src/comments.js', ['jquery'], TA_THEME_VERSION);
 		wp_enqueue_script("ta-balancer-front-block-js", ['react', 'reactdom']);
 		wp_enqueue_script("ta-mas-leidas-front-block-js",'',TA_THEME_VERSION);
+		wp_enqueue_script("ta-searchpage-front-block-js",'',TA_THEME_VERSION);
+		wp_localize_script(
+			'ta-searchpage-front-block-js',
+			'TASearchData',
+			array(
+				'searchpageUrl'	=> home_url( "/search/" ),
+			),
+		);
 
 		wp_localize_script(
 			'ta_comments',
@@ -327,27 +335,36 @@ class TA_Theme
 			$url_info = wp_parse_url("http://base/{$wp->request}");
 			$path_parts = explode('/', $url_info['path']) ?? null;
 			return isset($path_parts[1]) && $path_parts[1] === 'search' ? array(
-			 'query'	=> $path_parts[2] ?? null,
-			 'page'		=> $path_parts[4] ?? 1,
+				'query'	=> $path_parts[2] ?? null,
+				'page'		=> $path_parts[4] ?? 1,
 			) : null;
 		}
-
-		RB_Filters_Manager::add_action( 'ta_redirect_search_page', 'template_redirect', function($template) {
-			if ( is_search() && ! empty( $_GET['s'] ) ) {
-		        wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
-		        exit();
-		    }
-		} );
+		// Not used anymore. Redirect is made via js
+		// RB_Filters_Manager::add_action( 'ta_redirect_search_page', 'template_redirect', function($template) {
+		// 	if ( is_search() && ! empty( $_GET['s'] ) ) {
+		//         wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
+		//         exit();
+		//     }
+		// } );
 
 		/**
 		*	If the request has the search URL params, sets the correct template
 		*/
 		RB_Filters_Manager::add_action( 'ta_searchpage_front_script', 'template_include', function($template) {
 			$search_results_params = get_search_results_params();
+			if ( !$search_results_params )
+				return $template;
 
-			if ( $search_results_params ) {
-				$template = TA_THEME_PATH . '/search-ta_article.php';
-			}
+			$template = TA_THEME_PATH . '/search-ta_article.php';
+
+			wp_localize_script(
+				'ta-searchpage-front-block-js',
+				'TASearchQuery',
+				array(
+					's' 			=> $search_results_params['query'],
+					'page' 			=> $search_results_params['page'],
+				),
+			);
 
 			return $template;
 		} );

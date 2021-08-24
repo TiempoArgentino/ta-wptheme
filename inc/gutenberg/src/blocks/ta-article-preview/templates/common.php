@@ -40,7 +40,7 @@ $preview_class = esc_attr($preview_class);
         <?php endif; ?>
         <div class="title">
             <a data-url href="<?php echo esc_attr($url); ?>">
-                <p data-title><?php echo $title; ?></p>
+                <p data-title><?php echo esc_html($title); ?></p>
             </a>
         </div>
         <?php if($authors): ?>
