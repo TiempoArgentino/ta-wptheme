@@ -20,6 +20,7 @@ class TA_Balancer_DB{
     static private $metakeys = array(
         'ta_article_cintillo'   => 'headband',
         'ta_article_isopinion'  => 'isOpinion',
+        '_thumbnail_id' => 'imgURL'
     );
 
 	static public function initialize(){
