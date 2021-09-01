@@ -23,7 +23,7 @@ const { apiFetch } = wp;
 				data: mostViewedArticlesData,
 			} = await fetchLatestMostViewedPosts({
 				show: 5,
-				days_ago: 30,
+				// days_ago: 30,
 			}) ?? {};
 
 			if(!mostViewedFetchSuccess || !mostViewedArticlesData?.length) {
@@ -78,7 +78,7 @@ const { apiFetch } = wp;
 						}
 						else { // Actualizamos datos placeholder
 							$(this).find(`[data-link]`).attr('href', url);
-							$(this).find(`[data-title]`).text(title);
+							$(this).find(`[data-title]`).html(title);
 							$(this).find(`[data-thumbnail]`).css('background-image', `url(${thumbnailUrl})`);
 						}
 					} );

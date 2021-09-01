@@ -2,6 +2,7 @@
 /*** @jsxFrag createFragment */
 import { createElement, createFragment } from '../../jsx/jsx';
 import { getAuthorsLinks } from '../previewsElements';
+import { htmlDecode } from '../helpers';
 let slidersGenerated = 0;
 
 export default function ArticlesSliderRow(props = {}){
@@ -33,12 +34,12 @@ export default function ArticlesSliderRow(props = {}){
                     <div class="separator"></div>
                     { $article?.headband &&
                     <div class="category-title mt-2">
-                        <h4>{ $article.headband }</h4>
+                        <h4>{ htmlDecode($article.headband) }</h4>
                     </div>
                     }
                     <div class="title">
                         <a href={$article?.url ?? ''}>
-                            <p>{$article?.title ?? ''}</p>
+                            <p>{htmlDecode($article?.title) ?? ''}</p>
                         </a>
                     </div>
                     <div class="article-info-container">

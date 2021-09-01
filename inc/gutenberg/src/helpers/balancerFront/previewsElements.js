@@ -2,6 +2,7 @@
 /*** @jsxFrag createFragment */
 import { createElement, createFragment } from '../jsx/jsx';
 import { apiArticleToBalancerData } from './scheme';
+import { htmlDecode } from './helpers';
 
 export function getArticlePreviewAttr({
     articleData = {},
@@ -28,7 +29,7 @@ export function getAuthorsLinks({ authors }){
         const separator = authors[i + 1] ? (i + 2 == authors.length ? " y " : ", ") : null;
         return (
             <>
-                <a href={author?.authorUrl ?? ''}>{author?.authorName ?? ''}</a>
+                <a href={author?.authorUrl ?? ''}>{htmlDecode(author?.authorName) ?? ''}</a>
                 { separator !== null ? <span>{separator}</span> : '' }
             </>
         )

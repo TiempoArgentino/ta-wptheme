@@ -2,6 +2,7 @@
 /*** @jsxFrag createFragment */
 import { createElement, createFragment } from '../../jsx/jsx';
 import { getArticlePreviewAttr, getAuthorsLinks } from '../previewsElements';
+import { htmlDecode } from '../helpers';
 
 export default function ArticlePreviewCommon(props = {}){
     const {
@@ -26,7 +27,7 @@ export default function ArticlePreviewCommon(props = {}){
             <div class={thumb_cont_class}>
                 <a data-url href={articleData?.url ?? ''}>
                     <div class="img-container">
-                        <div class="img-wrapper d-flex align-items-end" data-thumbnail style={ `background-image: url("${articleData.imgURL}");` } alt={articleData?.imgAlt ?? ''}>
+                        <div class="img-wrapper d-flex align-items-end" data-thumbnail style={ `background-image: url("${articleData.imgURL}");` } alt={htmlDecode(articleData?.imgAlt) ?? ''}>
                             <div class="icons-container">
                                 <div class="article-icons d-flex flex-column position-absolute">
                                     <img data-icon="location" src={`${TABalancerApiData?.themeUrl}/assets/img/icon-img-1.svg`} alt="" />
@@ -45,14 +46,14 @@ export default function ArticlePreviewCommon(props = {}){
                 <>
                     <div class="article-border"></div>
                     <div class="category-title">
-                        <h4 data-headband>{articleData.headband}</h4>
+                        <h4 data-headband>{htmlDecode(articleData.headband)}</h4>
                     </div>
                 </>
                 }
 
                 <div class="title">
                     <a data-url href={articleData?.url ?? ''}>
-                        <p data-title>{articleData?.title ?? ''}</p>
+                        <p data-title>{htmlDecode(articleData?.title) ?? ''}</p>
                     </a>
                 </div>
                 { (articleData?.authors?.length > 0) &&

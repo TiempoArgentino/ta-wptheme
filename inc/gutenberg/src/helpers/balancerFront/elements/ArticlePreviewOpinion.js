@@ -2,6 +2,7 @@
 /*** @jsxFrag createFragment */
 import { createElement, createFragment } from '../../jsx/jsx';
 import { getArticlePreviewAttr, getAuthorsLinks } from '../previewsElements';
+import { htmlDecode } from '../helpers';
 
 export default function ArticlePreviewOpinion(props = {}){
     const {
@@ -32,14 +33,14 @@ export default function ArticlePreviewOpinion(props = {}){
                 <div class={thumb_cont_class}>
                     <a href={articleData?.url ?? ''}>
                         <div class="img-container position-relative">
-                            <div class="img-wrapper" style={ `background-image: url("${author.authorImg}");` } alt={ author?.authorName ?? '' }></div>
+                            <div class="img-wrapper" style={ `background-image: url("${author.authorImg}");` } alt={ htmlDecode(author?.authorName) ?? '' }></div>
                         </div>
                     </a>
                 </div>
                 <div class={`content ${info_class}`}>
                     <div class="title">
                         <a href={articleData?.url ?? ''}>
-                            <p class={`nota-title ${title_class}`}>“{articleData?.title ?? ''}”</p>
+                            <p class={`nota-title ${title_class}`}>“{htmlDecode(articleData?.title) ?? ''}”</p>
                         </a>
                     </div>
                     <div class="article-info-container d-block">
