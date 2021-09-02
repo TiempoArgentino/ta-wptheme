@@ -47,7 +47,14 @@
     });
 
     $(document).ready(function () {
+
+        $('#address-button').on('click', function(){
+            $(this).hide();
+            $('#loader-address').removeClass('d-none').addClass('d-block');
+        });
+
         $("#address-button-2").on("click", function () {
+
           var state = $("#state").val();
           var city = $("#city").val();
           var address = $("#address").val();

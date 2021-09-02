@@ -96,6 +96,10 @@ do_action('subscriptions_payment_page_header');
                                                     <textarea name="observations" placeholder="<?php echo __('Observaciones', 'gen-base-theme') ?>" class="form-control" id="observations" cols="30" rows="4"><?php echo $address[0]['observations'] !== null ? $address[0]['observations'] : ''; ?></textarea>
                                                 </div>
                                                 <div class="btns-container text-center mt-4">
+                                                    <span class="d-none" id="loader-address">
+                                                        <img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/loader-button.gif" />
+                                                        <span class="text-center d-block">Un momento por favor...</span>
+                                                    </span>
                                                     <button type="button" name="address-button" id="address-button"><?php echo __('Confirmar', 'gen-base-theme') ?></button>
                                                 </div>
                                             </div>

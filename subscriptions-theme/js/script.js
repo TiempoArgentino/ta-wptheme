@@ -27,8 +27,8 @@
         $(".info h6").addClass("text-danger");
         $("#minimum").html(
           '<strong class="text-center d-block text-danger">Recordá que el valor mínimo es $' +
-            min +
-            "</strong>"
+          min +
+          "</strong>"
         );
         return;
       }
@@ -343,7 +343,6 @@
       }
     });
     $(".form-check-input").on("click", function () {
-      console.log("click");
       if ($(this).is(":checked")) {
         $(".payment-button-submit").css("color", "#252B2D");
       } else {
@@ -356,6 +355,8 @@
    */
 
   $(document).on("click", "#payment-continue", function (e) {
+    $(this).hide();
+    $('#loader-address').removeClass('d-none').addClass('d-block');
     if ($("#add-paper").is(":checked")) {
       e.preventDefault();
       $.ajax({
@@ -380,30 +381,30 @@
   });
 
   $(document).ready(function () {
-    if($("#state").length > 0) {
+    if ($("#state").length > 0) {
       if ($("#state").val() !== "") {
         var host = window.location.protocol + "//" + window.location.hostname;
         var provincia = $("#state").val();
         var localidad = $("#localidad").val();
-  
+
         $.getJSON(
           host +
-            "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
-            provincia +
-            ".json",
+          "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
+          provincia +
+          ".json",
           function (data) {
             $("#city").prop("disabled", false);
             var localidades = [];
             $.each(data, function (index, value) {
               localidades.push(
                 '<option value="' +
-                  value.Localidad +
-                  '">' +
-                  value.Localidad +
-                  "</option>"
+                value.Localidad +
+                '">' +
+                value.Localidad +
+                "</option>"
               );
             });
-  
+
             $("#city").html(localidades);
             $("#city option[value='" + localidad + "']").attr(
               "selected",
@@ -413,7 +414,7 @@
         );
       }
     }
-   
+
 
     $("#state").on("change", function () {
       var host = window.location.protocol + "//" + window.location.hostname;
@@ -422,9 +423,9 @@
 
       $.getJSON(
         host +
-          "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
-          provincia +
-          ".json",
+        "/wp-content/themes/tiempo-argentino/subscriptions-theme/js/" +
+        provincia +
+        ".json",
         function (data) {
           $("#city").prop("disabled", false);
           var localidades = [];
@@ -433,12 +434,12 @@
               $("#city").val() === localidad ? 'selected="selected"' : "";
             localidades.push(
               '<option value="' +
-                value.Localidad +
-                '" ' +
-                selected +
-                ">" +
-                value.Localidad +
-                "</option>"
+              value.Localidad +
+              '" ' +
+              selected +
+              ">" +
+              value.Localidad +
+              "</option>"
             );
           });
 
@@ -452,15 +453,52 @@
     });
   });
 
-  $(document).ready(function(){
-    $('#paymentBank').prop('disabled',true);
+  $(document).ready(function () {
+      $('#paymentBank').prop('disabled', true);
 
-    $('#terms-conditions_bank').on('click',function(){
-     if($(this).prop('checked')){
-      $('#paymentBank').prop('disabled',false);
-     } else {
-      $('#paymentBank').prop('disabled',true);
-     }
-    });
+
+      $('#terms-conditions_bank').on('click', function () {
+        if ($(this).prop('checked')) {
+          $('#paymentBank').prop('disabled', false);
+        } else {
+          $('#paymentBank').prop('disabled', true);
+        }
+      });
+
+      $('#paymentBank').on('click', function () {
+        var doc_type = $('#doc_type').val();
+        var dni_number = $('#dni_number').val();
+        var cbu_bank = $('#cbu_bank').val();
+        var dni_bank = $('#dni_bank').val();
+
+        
+
+        if ($(this).prop('disabled', false)) {
+          $('#paymentBank').hide();
+          $('#loader-address-bank').removeClass('d-none').addClass('d-block');
+
+          if(doc_type.length < 1){
+            $('#doc_type').addClass('border-danger');
+            paymentBankButton('#paymentBank');
+          }
+          if(dni_number.length < 7){
+            $('#dni_number').addClass('border-danger');
+            paymentBankButton('#paymentBank');
+          }
+          if(cbu_bank.length < 7){
+            $('#cbu_bank').addClass('border-danger');
+            paymentBankButton('#paymentBank');
+          }
+          if(dni_bank.length < 7){
+            $('#dni_bank').addClass('border-danger');
+            paymentBankButton('#paymentBank');
+          }
+        }
+      });
   });
+
+  function paymentBankButton(button){
+     $(button).show();
+     $('#loader-address-bank').removeClass('d-block').addClass('d-none');
+  }
 })(jQuery);

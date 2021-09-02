@@ -6,7 +6,7 @@
         <div class="separator m-0"></div>
     </div>
     <div class="asociate-block-container">
-        <?php if (subscriptions_proccess()->verify_subscription(wp_get_current_user()->ID)) : ?>           
+        <?php if (subscriptions_proccess()->verify_subscription(wp_get_current_user()->ID)) : ?>
             <div class="delivery-zones-popup">
                 <div class="popup">
                     <div class="container text-center">
@@ -72,7 +72,7 @@
                                                     'compare' => 'NOT IN'
                                                 ],
                                             ]
-                                            
+
                                         ]
                                     );
                                     $query = new WP_Query($args);
@@ -126,7 +126,7 @@
                                                                     if (get_post_meta(get_the_ID(), '_price_custom', true)) {
                                                                         echo ' <div class="col-6 col-lg-12 p-1">
                                                                         <div class="amount other price-custom">
-                                                                            <button class="custom-price-button open-price" data-address="'. get_post_meta(get_the_ID(),'_physical',true).'" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
+                                                                            <button class="custom-price-button open-price" data-address="' . get_post_meta(get_the_ID(), '_physical', true) . '" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
                                                                                 <p>' . __('abonar más', 'gen-base-theme') . '</p>
                                                                             </button>
                                                                         </div>
@@ -136,7 +136,7 @@
                                                                 </div>
                                                                 <div class="btns-container">
                                                                     <div class="d-flex justify-content-center mx-auto uppercase mt-3">
-                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(),'_physical',true)?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
+                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="opt-details mt-3">
@@ -166,72 +166,72 @@
                                         wp_reset_postdata();
                                         ?>
                                 </div>
-                                <?php endif; ?>
-                                <?php
-                                     $args = array(
-                                        'post_type' => 'subscriptions',
-                                        'meta_query' => [
-                                            'relation' => 'AND',
-                                            [
-                                                'relation' => 'OR',
-                                                [
-                                                    'key' => '_is_donation',
-                                                    'compare' => 'NOT EXISTS'
-                                                ],
-                                                [
-                                                    'key' => '_is_donation',
-                                                    'value' => ['1'],
-                                                    'compare' => 'NOT IN'
-                                                ],
-                                            ],
-                                            [
-                                                'relation' => 'AND',
-                                                [
-                                                    'key' => '_is_special',
-                                                    'compare' => 'EXISTS'
-                                                ],
-                                                [
-                                                    'key' => '_is_special',
-                                                    'value' => ['1'],
-                                                    'compare' => 'IN'
-                                                ],
-                                            ]
-                                            
-                                        ]
-                                    );
-                                    $query = new WP_Query($args);
-                                    if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-                                ?>
-                                <div class="opt papel py-3 py-lg-4">
-                                    <div class="container">
-                                        <div class="content">
-                                            <div class="container d-lg-flex justify-content-center align-items-center p-0">
-                                                <div class="description text-center mt-2 mt-lg-0">
-                                                    <div class="d-flex justify-content-center mr-lg-3">
-                                                        <div class="paper-icon mr-2">
-                                                            <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>" alt="">
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                            <h4 class="m-0"><?php echo get_the_title( get_the_ID() ) ?></h4>
+                            <?php endif; ?>
+                            <?php
+                            $args = array(
+                                'post_type' => 'subscriptions',
+                                'meta_query' => [
+                                    'relation' => 'AND',
+                                    [
+                                        'relation' => 'OR',
+                                        [
+                                            'key' => '_is_donation',
+                                            'compare' => 'NOT EXISTS'
+                                        ],
+                                        [
+                                            'key' => '_is_donation',
+                                            'value' => ['1'],
+                                            'compare' => 'NOT IN'
+                                        ],
+                                    ],
+                                    [
+                                        'relation' => 'AND',
+                                        [
+                                            'key' => '_is_special',
+                                            'compare' => 'EXISTS'
+                                        ],
+                                        [
+                                            'key' => '_is_special',
+                                            'value' => ['1'],
+                                            'compare' => 'IN'
+                                        ],
+                                    ]
+
+                                ]
+                            );
+                            $query = new WP_Query($args);
+                            if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+                            ?>
+                                    <div class="opt papel py-3 py-lg-4">
+                                        <div class="container">
+                                            <div class="content">
+                                                <div class="container d-lg-flex justify-content-center align-items-center p-0">
+                                                    <div class="description text-center mt-2 mt-lg-0">
+                                                        <div class="d-flex justify-content-center mr-lg-3">
+                                                            <div class="paper-icon mr-2">
+                                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>" alt="">
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                <h4 class="m-0"><?php echo get_the_title(get_the_ID()) ?></h4>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="btns-container">
-                                                <?php
+                                                    <div class="btns-container">
+                                                        <?php
                                                         $price_main = get_post_meta(get_the_ID(), '_s_price', true);
                                                         $paper = get_post_meta($post->ID, '_physical', true);
-                                                ?>
-                                                    <div class=" d-flex justify-content-center mx-auto uppercase mt-3 mt-lg-0">
-                                                        <button class="yellow-btn-white-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(),'_physical',true)?>" data-price="<?php echo $price_main ?>" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('elegir y continuar', 'gen-base-theme') ?></button>
+                                                        ?>
+                                                        <div class=" d-flex justify-content-center mx-auto uppercase mt-3 mt-lg-0">
+                                                            <button class="yellow-btn-white-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" data-price="<?php echo $price_main ?>" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('elegir y continuar', 'gen-base-theme') ?></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php   
-                            endwhile;
-                            wp_reset_postdata(); 
+                            <?php
+                                endwhile;
+                                wp_reset_postdata();
                             endif;
                             ?>
                             </div>
@@ -314,8 +314,8 @@
                                     <p>$ <span id="price-paquete"></span></p>
                                 </div>
                                 <div class="checkbox-container text-center mt-3" id="paper-option">
-                                <?php
-                                     $args = array(
+                                    <?php
+                                    $args = array(
                                         'post_type' => 'subscriptions',
                                         'meta_query' => [
                                             'relation' => 'AND',
@@ -343,25 +343,29 @@
                                                     'compare' => 'IN'
                                                 ],
                                             ]
-                                            
+
                                         ]
                                     );
                                     $query = new WP_Query($args);
                                     if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-                                ?>
-                                    <input type="checkbox" class="paper-checkbox" value="<?php echo get_post_meta(get_the_ID(), '_s_price', true)?>" id="add-paper" name="addpaper">
-                                    <label for="add-paper"><?php echo __('Agregá el diario en papel por', 'gen-base-theme') ?> <b>$<span id="price-papper"><?php echo get_post_meta(get_the_ID(), '_s_price', true)?></span></b></label>
-                                    <?php   
+                                    ?>
+                                            <input type="checkbox" class="paper-checkbox" value="<?php echo get_post_meta(get_the_ID(), '_s_price', true) ?>" id="add-paper" name="addpaper">
+                                            <label for="add-paper"><?php echo __('Agregá el diario en papel por', 'gen-base-theme') ?> <b>$<span id="price-papper"><?php echo get_post_meta(get_the_ID(), '_s_price', true) ?></span></b></label>
+                                    <?php
                                         endwhile;
-                                        wp_reset_postdata(); 
-                                        endif;
-                                     ?>
+                                        wp_reset_postdata();
+                                    endif;
+                                    ?>
                                 </div>
                             </div>
                             <div class="sign-up-sign-in text-center mt-4">
                                 <?php if (is_user_logged_in()) : ?>
                                     <div id="user-logged-in">
                                         <div class="btns-container text-center">
+                                            <span class="d-none" id="loader-address">
+                                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/loader-button.gif" />
+                                                <span class="text-center d-block">Un momento por favor...</span>
+                                            </span>
                                             <button id="payment-continue"><a href="<?php echo get_permalink(get_option('subscriptions_payment_page')) ?>"><?php echo __('CONTINUAR AL PAGO', 'gen-base-theme') ?></a></button>
                                         </div>
                                     </div>
