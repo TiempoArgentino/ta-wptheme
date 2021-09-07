@@ -275,19 +275,6 @@ class Widgets_Theme_TA
         endif;
     }
 
-    public function insert_custom_content_amp_1($content)
-    {
-        ob_start();
-        $this->insert_middle_amp_1();
-        $widget_area_html_2 = ob_get_clean();
-
-        if (is_single() && !is_admin() && ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 2, $content);
-        }
-
-        return $content;
-    }
-
     public function insert_custom_content_amp_2($content)
     {
         ob_start();
@@ -389,6 +376,37 @@ class Widgets_Theme_TA
     public function insert_after_paragraph($insertion, $paragraph_id, $content)
     {
         $closing_p = '</p>';
+        $paragraphs = explode($closing_p, $content);
+
+        foreach ($paragraphs as $index => $paragraph) {
+            if (trim($paragraph)) {
+                $paragraphs[$index] .= $closing_p;
+            }
+
+            if ($paragraph_id == $index + 1) {
+                $paragraphs[$index] .= $insertion;
+            }
+        }
+
+        return implode('', $paragraphs);
+    }
+
+    public function insert_custom_content_amp_1($content)
+    {
+        ob_start();
+        $this->insert_middle_amp_1();
+        $widget_area_html_2 = ob_get_clean();
+
+        if (is_single() && !is_admin() && ampforwp_is_amp_endpoint()) {
+            return $this->insert_before_paragraph($widget_area_html_2, 1, $content);
+        }
+
+        return $content;
+    }
+    
+    public function insert_before_paragraph($insertion, $paragraph_id, $content)
+    {
+        $closing_p = '<p>';
         $paragraphs = explode($closing_p, $content);
 
         foreach ($paragraphs as $index => $paragraph) {
