@@ -354,3 +354,7 @@ height: 18px;
 	    background-size: contain;
 	    padding-bottom: 40% !important;
 }
+
+.amp_widget_below_the_header.f-w .w-bl {
+    margin-bottom: 0;
+}
