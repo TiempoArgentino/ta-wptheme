@@ -119,6 +119,6 @@ body.taxonomy-ta_article_micrositio #col-left {
 body.taxonomy-ta_article_micrositio #col-right {
     width: 100%;
 }
-#custom_content_editor, #ampforwp_title_meta, #ampforwp_title_meta_redir{
+#custom_content_editor, #ampforwp_title_meta{
     display: none !important;
 }
