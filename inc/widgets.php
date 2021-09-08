@@ -191,6 +191,7 @@ class Widgets_Theme_TA
             'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-base-theme'),
             'note_mob_5' => __('Note Comentarios Mobi', 'gen-base-theme'),
             'note_mob_6' => __('Relacionados Mobi', 'gen-base-theme'),
+            'note_mob_7' => __('Abajo de la foto Mobile', 'gen-base-theme')
         ];
 
         foreach ($widgets as $key => $val) {
@@ -230,8 +231,8 @@ class Widgets_Theme_TA
     public function middle_mobile()
     {
         $widgets = [
-            'note_mob_mid_1' => __('Note medio mobile 1', 'gen-base-theme'),
-            'note_mob_mid_2' => __('Note medio mobile 2', 'gen-base-theme'),
+            'note_mob_mid_1' => __('Nota medio mobile 1', 'gen-base-theme'),
+            'note_mob_mid_2' => __('Nota medio mobile 2', 'gen-base-theme'),
         ];
 
         foreach ($widgets as $key => $val) {
@@ -282,7 +283,7 @@ class Widgets_Theme_TA
         $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && !is_admin() && ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 3, $content);
         }
 
         return $content;
@@ -338,7 +339,7 @@ class Widgets_Theme_TA
         $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 3, $content);
         }
 
         return $content;
@@ -366,7 +367,7 @@ class Widgets_Theme_TA
         $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 4, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 3, $content);
         }
 
         return $content;

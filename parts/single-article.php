@@ -56,8 +56,15 @@ $authors = $article->authors;
                         <?php endif; ?>
 
                         <?php get_template_part('parts/article','authors_data', array( 'article' => $article )); ?>
-
-                        <div class="article-body mt-3">
+                        
+                        <?php if (is_active_sidebar('note_mob_7')) { ?>
+                            <div class="row d-flex">
+                                <div class="col-12 d-block d-md-none d-sm-none mx-auto text-center mt-3">
+                                    <?php dynamic_sidebar('note_mob_7'); ?>
+                                </div>
+                            </div>
+                    <?php } ?>
+                           <div class="article-body mt-3">
                             <div class="art-column-w-lpadding">
                                 <?php echo apply_filters( 'the_content', $article->content ); ?>
                             </div>
