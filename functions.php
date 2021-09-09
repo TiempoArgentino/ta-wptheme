@@ -714,8 +714,8 @@ function author_amp()
 add_action('ampforwp_below_the_title','author_amp');
 
 
-function test4()
+function publi_note_mob_before_related()
 {
 	widgets_ta()->note_mob_before_related();
 }
-add_action('ampforwp_above_related_post','test4');
+add_action('ampforwp_above_related_post','publi_note_mob_before_related');
