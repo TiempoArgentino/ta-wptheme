@@ -703,3 +703,19 @@ function user_active($user_id) {
 
 	return false;
 }
+
+function author_amp()
+{
+	$authors = get_the_terms(get_queried_object_id(),'ta_article_author');
+	$terms_string = join(', ', wp_list_pluck($authors, 'name'));
+	echo '<div class="amp-author">Por: '.$terms_string.'</div>';
+}
+
+add_action('ampforwp_below_the_title','author_amp');
+
+
+function test4()
+{
+	widgets_ta()->note_mob_before_related();
+}
+add_action('ampforwp_above_related_post','test4');

@@ -250,6 +250,7 @@ class Widgets_Theme_TA
         $widgets = [
             'note_mob_mid_1_amp' => __('Note medio mobile 1 AMP', 'gen-base-theme'),
             'note_mob_mid_2_amp' => __('Note medio mobile 2 AMP', 'gen-base-theme'),
+            'note_mob_before_related' => __('AMP Arriba de relacionadas', 'gen-base-theme'),
         ];
 
         foreach ($widgets as $key => $val) {
@@ -273,6 +274,16 @@ class Widgets_Theme_TA
     {
         if (is_active_sidebar('note_mob_mid_2_amp')) :
             return dynamic_sidebar('note_mob_mid_2_amp');
+        endif;
+    }
+
+    public function note_mob_before_related()
+    {
+        if (is_active_sidebar('note_mob_before_related')) :
+            $publi = '<div class="publi-amp-before-related">';
+            $publi .= dynamic_sidebar('note_mob_before_related');
+            $publi .= '</div>';
+            return $publi;
         endif;
     }
 
