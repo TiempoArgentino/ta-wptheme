@@ -354,7 +354,7 @@ class Widgets_Theme_TA
         $widget_area_html_2 = ob_get_clean();
 
         if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 2, $content);
+            return $this->insert_after_paragraph($widget_area_html_2, 3, $content);
         }
 
         return $content;
