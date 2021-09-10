@@ -19,8 +19,6 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this, 'insert_middle_mob']);
 
-        add_action('widgets_init', [$this, 'insert_middle_mob_1']);
-
         add_filter('the_content', [$this, 'insert_custom_content']);
 
         add_filter('the_content', [$this, 'insert_custom_content_amp_1']);
@@ -30,8 +28,6 @@ class Widgets_Theme_TA
         add_filter('the_content', [$this, 'insert_custom_content_2']);
 
         add_filter('the_content', [$this, 'insert_custom_content_3']);
-
-        add_filter('the_content', [$this, 'insert_custom_content_4']);
 
         add_action('widgets_init', [$this, 'footer_fixed_mobile']);
 
@@ -188,9 +184,9 @@ class Widgets_Theme_TA
             'note_mob_1' => __('Note Header Mobile', 'gen-base-theme'),
             'note_mob_2' => __('Note BoxMobile 2', 'gen-base-theme'),
             'note_mob_3' => __('Note BoxMobile 3', 'gen-base-theme'),
-            'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-base-theme'),
-            'note_mob_5' => __('Note Comentarios Mobi', 'gen-base-theme'),
-            'note_mob_6' => __('Relacionados Mobi', 'gen-base-theme'),
+           // 'note_mob_4' => __('Note Bajo Newsletter Mobi', 'gen-base-theme'),
+           // 'note_mob_5' => __('Note Comentarios Mobi', 'gen-base-theme'),
+           // 'note_mob_6' => __('Relacionados Mobi', 'gen-base-theme'),
             'note_mob_7' => __('Abajo de la foto Mobile', 'gen-base-theme')
         ];
 
@@ -232,7 +228,7 @@ class Widgets_Theme_TA
     {
         $widgets = [
             'note_mob_mid_1' => __('Nota medio mobile 1', 'gen-base-theme'),
-            'note_mob_mid_2' => __('Nota medio mobile 2', 'gen-base-theme'),
+          //  'note_mob_mid_2' => __('Nota medio mobile 2', 'gen-base-theme'),
         ];
 
         foreach ($widgets as $key => $val) {
@@ -321,13 +317,7 @@ class Widgets_Theme_TA
         endif;
     }
 
-    public function insert_middle_mob_1()
-    {
-        if (is_active_sidebar('note_mob_mid_2')) :
-            return dynamic_sidebar('note_mob_mid_2');
-        endif;
-    }
-
+   
     public function insert_custom_content($content)
     {
 
@@ -370,19 +360,7 @@ class Widgets_Theme_TA
         return $content;
     }
 
-    public function insert_custom_content_4($content)
-    {
-
-        ob_start();
-        $this->insert_middle_mob_1();
-        $widget_area_html_2 = ob_get_clean();
-
-        if (is_single() && !is_admin() && !ampforwp_is_amp_endpoint()) {
-            return $this->insert_after_paragraph($widget_area_html_2, 3, $content);
-        }
-
-        return $content;
-    }
+   
 
 
     public function insert_after_paragraph($insertion, $paragraph_id, $content)

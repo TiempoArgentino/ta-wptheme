@@ -22,11 +22,11 @@ $articles_interest_block->render(array(
 
 <?php include_once(TA_THEME_PATH . '/markup/partes/segun-tus-intereses.php');  ?>
 
-<?php if (is_active_sidebar('note_mob_2')) { ?>
+<?php if (is_active_sidebar('note_mob_3')) { ?>
     <div class="container d-block d-sm-none d-md-none d-lg-none mt-md-3 mb-md-3">
         <div class="row d-flex">
             <div class="col-9 mx-auto">
-                <?php dynamic_sidebar('note_mob_2'); ?>
+                <?php dynamic_sidebar('note_mob_3'); ?>
             </div>
         </div>
     </div>
