@@ -75,6 +75,12 @@ window.addEventListener("resize", function () {
       });
     });
 
+    $(".cerrar-pop-mobile").on("click", function () {
+      $("#popup-avis-pop").fadeOut(400, function () {
+        $("#popup-avis-pop").remove();
+      });
+    });
+
     $(".pop-mobile-close").on("touchstart", function () {
       $("#popup-avis").fadeOut(400, function () {
         $("#popup-avis").remove();

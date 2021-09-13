@@ -35,6 +35,8 @@ class Widgets_Theme_TA
 
         add_action('widgets_init', [$this, 'pop_desktop']);
 
+        add_action('widgets_init', [$this, 'pop_mobile']);
+
         add_action('widgets_init', [$this, 'vslider_mobile']);
 
         add_action('widgets_init', [$this, 'vslider_desktop']);
@@ -155,6 +157,21 @@ class Widgets_Theme_TA
             'before_widget' => '<div id="popup-avis" class="d-none d-sm-none d-md-block d-lg-block position-fixed">
             <div class="popup">
                 <span class="cerrar-pop">
+                    <img src="' . get_stylesheet_directory_uri() . '/assets/img/times-circle-regular.svg" />
+                </span>',
+            'after_widget'  => '</div>
+            </div>',
+        ));
+    }
+
+    public function pop_mobile()
+    {
+        register_sidebar(array(
+            'name'          => __('Popup Mobile Home', 'gen-base-theme'),
+            'id'            => 'popup_mobile',
+            'before_widget' => '<div id="popup-avis-pop" class="popup-mobile popup d-block d-sm-none d-md-none d-lg-none position-fixed">
+            <div class="popup">
+                <span class="cerrar-pop cerrar-pop-mobile">
                     <img src="' . get_stylesheet_directory_uri() . '/assets/img/times-circle-regular.svg" />
                 </span>',
             'after_widget'  => '</div>
