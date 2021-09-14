@@ -147,6 +147,21 @@ class TA_Balancer_DB{
 			'priority'		=> 100,
 			'accepted_args'	=> 3,
 		) );
+        
+         // First upload of meta data (if no exists).
+         RB_Filters_Manager::add_action("ta_latest_articles_sync_add_meta", "add_post_meta", function($post_id, $meta_key, $meta_value){
+            if( !self::post_is_db_compatible($post_id) || !self::meta_is_db_compatible($meta_key) )// post or meta not compatible
+                return;
+                
+            TA_Article_Factory::$use_cache = false;
+			$article_data = self::get_article_data( TA_Article_Factory::get_article($post_id), array(self::$metakeys[$meta_key]) );
+			$article_data["imgURL"] = wp_get_attachment_image_url($meta_value, 'full', false);
+            self::create_or_update_article( $article_data );
+            TA_Article_Factory::$use_cache = true;
+        }, array(
+            'priority'		=> 100,
+            'accepted_args'	=> 3,
+        ));
 
         // Some metadata gets updated after a post save hook.
         RB_Filters_Manager::add_action("ta_latest_articles_sync_metas", "updated_post_meta", function($meta_id, $post_id, $meta_key, $meta_value){
