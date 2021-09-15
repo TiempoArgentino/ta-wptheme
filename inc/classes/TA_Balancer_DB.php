@@ -125,6 +125,23 @@ class TA_Balancer_DB{
     }
 
     /**
+    *   Updates an article meta values in the latest articles DB if the passed
+    *    meta is one stored on it. Uses the current meta value from article.
+    *   @param string $article_id
+    *   @param string $meta_key
+    */
+    static public function sync_article_meta($article_id, $meta_key){
+        if( !self::post_is_db_compatible($article_id) || !self::meta_is_db_compatible($meta_key) )// post or meta not compatible
+            return;
+        // we removed the cache to avoid grabbing old values stored before meta_update
+        // We don't use $meta_value directly because it may need some proccesing from the TA_Article, like with ta_article_isopinion
+        TA_Article_Factory::$use_cache = false;
+        $article_data = self::get_article_data( TA_Article_Factory::get_article($article_id), array(self::$metakeys[$meta_key]) );
+        self::create_or_update_article( $article_data );
+        TA_Article_Factory::$use_cache = true;
+    }
+
+    /**
     *   Hooks DB update callbacks to wordpress articles and metadata updates actions
     */
 	static private function sync_latest_articles_with_balancer_db(){
@@ -148,34 +165,20 @@ class TA_Balancer_DB{
 			'accepted_args'	=> 3,
 		) );
         
-         // First upload of meta data (if no exists).
-         RB_Filters_Manager::add_action("ta_latest_articles_sync_add_meta", "add_post_meta", function($post_id, $meta_key, $meta_value){
-            if( !self::post_is_db_compatible($post_id) || !self::meta_is_db_compatible($meta_key) )// post or meta not compatible
-                return;
-                
-            TA_Article_Factory::$use_cache = false;
-			$article_data = self::get_article_data( TA_Article_Factory::get_article($post_id), array(self::$metakeys[$meta_key]) );
-			$article_data["imgURL"] = wp_get_attachment_image_url($meta_value, 'full', false);
-            self::create_or_update_article( $article_data );
-            TA_Article_Factory::$use_cache = true;
+         // Some metadata gets updated after a post save hook.
+        RB_Filters_Manager::add_action("ta_latest_articles_sync_added_metas", "added_post_meta", function($meta_id, $post_id, $meta_key, $meta_value){
+            self::sync_article_meta($post_id, $meta_key, $meta_value);
         }, array(
-            'priority'		=> 100,
-            'accepted_args'	=> 3,
+            'priority'        => 100,
+            'accepted_args'    => 4,
         ));
 
         // Some metadata gets updated after a post save hook.
         RB_Filters_Manager::add_action("ta_latest_articles_sync_metas", "updated_post_meta", function($meta_id, $post_id, $meta_key, $meta_value){
-            if( !self::post_is_db_compatible($post_id) || !self::meta_is_db_compatible($meta_key) )// post or meta not compatible
-                return;
-
-            // we removed the cache to avoid grabbing old values stored before meta_update
-            // We don't use $meta_value directly because it may need some proccesing from the TA_Article, like with ta_article_isopinion
-            TA_Article_Factory::$use_cache = false;
-            self::create_or_update_article( self::get_article_data( TA_Article_Factory::get_article($post_id), array(self::$metakeys[$meta_key]) ) );
-            TA_Article_Factory::$use_cache = true;
+            self::sync_article_meta($post_id, $meta_key, $meta_value);
         }, array(
-            'priority'		=> 100,
-            'accepted_args'	=> 4,
+            'priority'        => 100,
+            'accepted_args'    => 4,
         ));
 
         // Deletion
