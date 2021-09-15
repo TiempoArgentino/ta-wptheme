@@ -707,8 +707,10 @@ function user_active($user_id) {
 function author_amp()
 {
 	$authors = get_the_terms(get_queried_object_id(),'ta_article_author');
-	$terms_string = join(', ', wp_list_pluck($authors, 'name'));
-	echo '<div class="amp-author">Por: '.$terms_string.'</div>';
+	$terms_string = join(' / ', wp_list_pluck($authors, 'name'));
+	if($authors) {
+		echo '<div class="amp-author">Por: '.$terms_string.'</div>';
+	}
 }
 
 add_action('ampforwp_below_the_title','author_amp');
