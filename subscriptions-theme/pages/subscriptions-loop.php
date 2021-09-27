@@ -493,6 +493,10 @@
                                                 </div>
                                                 <input type="hidden" name="register_redirect" id="register_redirect" value="<?php echo get_permalink(get_option('subscriptions_payment_page')); ?>">
                                                 <div class="btns-container text-center mt-4">
+                                                    <span class="d-none" id="loader-address">
+                                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/loader-button.gif" />
+                                                        <span class="text-center d-block">Un momento por favor...</span>
+                                                    </span>
                                                     <button class="yellow-btn-white-text" type="button" name="submit-register" id="submit-register"><?php echo __('REGISTRARSE', 'gen-base-theme') ?></button>
                                                 </div>
                                             </div>

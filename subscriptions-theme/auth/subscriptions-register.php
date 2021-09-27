@@ -39,7 +39,12 @@ $can_register = get_option('users_can_register');
                             <input type="password" autocomplete="off" placeholder="Repetir Contraseña" name="password2" id="passwd2" class="form-control" />
                         </div>
                         <input type="hidden" name="register_redirect" value="<?php echo wp_get_referer() && wp_get_referer() !== get_permalink(get_option('subscriptions_login_register_page')) ? wp_get_referer() : get_permalink(get_option('subscriptions_profile')) ?>">
+
                         <div class="btns-container text-center mt-3">
+                            <span class="d-none" id="loader-address">
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/loader-button.gif" />
+                                <span class="text-center d-block">Un momento por favor...</span>
+                            </span>
                             <button class="yellow-btn-white-text" type="submit" name="submit-register"><?php echo __('Registrarse', 'subscriptions') ?></button>
                         </div>
                     </form>
