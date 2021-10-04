@@ -5,6 +5,7 @@
   }
   $(document).ready(function () {
     $(".amount .price").on("click", function (event) {
+
       $(".continue-btn").removeClass("active");
       $(".amount button").removeClass("active");
       const buttonID = $(this).data("id");
@@ -42,7 +43,8 @@
       var price = $(this).data("price");
       var name = $(this).data("name");
       var paper = $(this).data("paper");
-
+      var type = $(this).data("role");
+      
       if (paper === 1) {
         $("#paper-option").hide();
       }
@@ -273,11 +275,14 @@
    */
   $(document).ready(function () {
     $(".button-suscribe-1").on("click", function () {
+      
       var suscription_id = $(this).data("id");
       var suscription_price = $(this).data("price");
       var suscription_name = $(this).data("name");
       var suscription_type = $(this).data("type");
       var address = $(this).data("address");
+      var type = $(this).data("role");
+
       $.ajax({
         type: "post",
         url: ajax_add_price_data.url,
@@ -289,13 +294,14 @@
           suscription_price: suscription_price,
           suscription_name: suscription_name,
           suscription_type: suscription_type,
-          suscription_address: address
+          suscription_address: address,
+          suscription_role: type
         },
         beforeSend: function (result) {
           // console.log('before ' + suscription_id);
         },
         success: function (result) {
-          // console.log('success ' + result);
+          console.log('success ' + result);
         },
         error: function (result) {
           console.log("error " + result);
@@ -319,7 +325,8 @@
           suscription_price: $("#custom-price-input").val(),
           suscription_name: $("#custom-price-input").data("name"),
           suscription_type: $("#custom-next-2").data("type"),
-          suscription_address: $("#custom-price-input").data("address")
+          suscription_address: $("#custom-price-input").data("address"),
+          suscription_role: $('#custom-price-input').data('role')
         },
         beforeSend: function (result) {
           // console.log('before ' + suscription_id);

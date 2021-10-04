@@ -1,5 +1,8 @@
 <?php get_header() ?>
 
+<?php if(null !== Subscriptions_Sessions::get_session('subscriptions_add_session')) {
+    var_dump(Subscriptions_Sessions::get_session('subscriptions_add_session'));
+}?>
 
 <div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
     <div class="line-height-0">
@@ -126,7 +129,7 @@
                                                                     if (get_post_meta(get_the_ID(), '_price_custom', true)) {
                                                                         echo ' <div class="col-6 col-lg-12 p-1">
                                                                         <div class="amount other price-custom">
-                                                                            <button class="custom-price-button open-price" data-address="' . get_post_meta(get_the_ID(), '_physical', true) . '" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
+                                                                            <button class="custom-price-button open-price" data-role="'.get_post_meta(get_the_ID(),'_is_type',true).'" data-address="' . get_post_meta(get_the_ID(), '_physical', true) . '" data-id="' . get_the_ID() . '" data-min="' . $price_min . '" data-title="' . get_the_title() . '">
                                                                                 <p>' . __('abonar más', 'gen-base-theme') . '</p>
                                                                             </button>
                                                                         </div>
@@ -136,7 +139,7 @@
                                                                 </div>
                                                                 <div class="btns-container">
                                                                     <div class="d-flex justify-content-center mx-auto uppercase mt-3">
-                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
+                                                                        <button class="continue-btn yellow-btn-yellow-text button-suscribe-1" data-role="<?php echo get_post_meta(get_the_ID(),'_is_type',true)?>" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" disabled data-id="<?php echo get_the_ID() ?>" data-price="" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('continuar', 'gen-base-theme') ?></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="opt-details mt-3">
@@ -222,7 +225,7 @@
                                                         $paper = get_post_meta($post->ID, '_physical', true);
                                                         ?>
                                                         <div class=" d-flex justify-content-center mx-auto uppercase mt-3 mt-lg-0">
-                                                            <button class="yellow-btn-white-text button-suscribe-1" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" data-price="<?php echo $price_main ?>" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('elegir y continuar', 'gen-base-theme') ?></button>
+                                                            <button class="yellow-btn-white-text button-suscribe-1" data-role="<?php echo get_post_meta(get_the_ID(),'_is_type',true)?>" data-type="subscription" id="button<?php echo get_the_ID() ?>" data-id="<?php echo get_the_ID() ?>" data-address="<?php echo get_post_meta(get_the_ID(), '_physical', true) ?>" data-price="<?php echo $price_main ?>" data-name="<?php echo get_the_title() ?>" data-paper="<?php echo $paper === '1' ? 1 : 0 ?>"><?php echo __('elegir y continuar', 'gen-base-theme') ?></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -492,6 +495,7 @@
                                                     <div class="password2_error text-center alert alert-danger"></div>
                                                 </div>
                                                 <input type="hidden" name="register_redirect" id="register_redirect" value="<?php echo get_permalink(get_option('subscriptions_payment_page')); ?>">
+                                                <input type="hidden" name="subscriptor_type" id="subscriptor_type" value="<?php echo Subscriptions_Sessions::get_session('subscriptions_add_session') !== null ? Subscriptions_Sessions::get_session('subscriptions_add_session')['suscription_role'] : ''?>">
                                                 <div class="btns-container text-center mt-4">
                                                     <span class="d-none" id="loader-address">
                                                         <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/loader-button.gif" />
