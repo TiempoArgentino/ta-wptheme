@@ -1,9 +1,5 @@
 <?php get_header() ?>
 
-<?php if(null !== Subscriptions_Sessions::get_session('subscriptions_add_session')) {
-    var_dump(Subscriptions_Sessions::get_session('subscriptions_add_session'));
-}?>
-
 <div class="container ta-context asociate mt-2 my-lg-5" id="subscriptions-loop">
     <div class="line-height-0">
         <div class="separator m-0"></div>
