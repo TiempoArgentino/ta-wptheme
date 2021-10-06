@@ -1152,3 +1152,20 @@ function ta_get_comment_form_fields_as_string(){
     get_template_part('parts/commentform','fields');
     return ob_get_clean();
 }
+
+function payment_user_role_sync()
+{
+  if(null !== Subscriptions_Sessions::get_session('subscriptions_add_session')) {
+        $type = Subscriptions_Sessions::get_session('subscriptions_add_session')['suscription_role'];
+        if($type === 'digital') {
+            $user = new WP_User(get_current_user_id());
+
+            if(in_array('subscriber', get_userdata(get_current_user_id())->roles)){
+                $user->set_role(get_option('subscription_digital_role'));
+            }
+
+        }
+    }
+}
+
+add_action('subscriptions_payment_page_header','payment_user_role_sync');
