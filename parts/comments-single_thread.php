@@ -13,7 +13,7 @@ extract($template_args);
                     <div class="icon position-absolute">
                         <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-blue.png" alt="" />
                     </div>
-                <?php elseif($is_partner): ?>
+                <?php elseif($is_partner && get_user_meta(get_current_user_id(),'_user_status',true) == 'active'): ?>
                     <div class="icon position-absolute">
                         <img src="<?php echo TA_THEME_URL; ?>/assets/img/partner-yellow.svg" alt="" />
                     </div>
@@ -32,7 +32,7 @@ extract($template_args);
                         <span class="blue-tag">| Autor</span>
                         <?php elseif($user_manages_comments): ?>
                         <span class="blue-tag">| Editor</span>
-                        <?php elseif($is_partner): ?>
+                        <?php elseif($is_partner && get_user_meta(get_current_user_id(),'_user_status',true) == 'active'): ?>
                         <span class="yellow-tag">| Socio</span>
                         <?php endif; ?>
                     </p>
