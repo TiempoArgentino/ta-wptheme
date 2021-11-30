@@ -116,7 +116,8 @@
                                     <input type="hidden" name="subscription_name" value="" id="subscription_name">
                                     <input type="hidden" name="action" value="edit_membership" />
                                     <input type="hidden" id="user_edit_email" name="user_edit_email" class="form-control" value="<?php echo wp_get_current_user()->user_email ?>" />
-                                    <div class="btns-container">
+                                    <div id="msg-edit-mp"></div>
+                                    <div class="btns-container" id="panel-mp-buttons">
                                         <button type="submit" name="send-edit-subscription" id="paymentMP"><?php echo __('Editar', 'gen-base-theme') ?></button>
                                         <button type="button" id="cancel-edit-subscription" class="gray-btn-black-text ml-2"><?php echo __('Cancelar', 'gen-base-theme') ?></button>
                                     </div>

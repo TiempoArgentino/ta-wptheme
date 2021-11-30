@@ -721,3 +721,13 @@ function publi_note_mob_before_related()
 	widgets_ta()->note_mob_before_related();
 }
 add_action('ampforwp_above_related_post','publi_note_mob_before_related');
+
+
+function search_filter($query) {
+    if ( ! is_admin() && $query->is_main_query() ) {
+        if ( $query->is_search ) {
+            $query->set( 'posts_per_page', -1 );
+        }
+    }
+}
+add_action( 'pre_get_posts', 'search_filter' );
