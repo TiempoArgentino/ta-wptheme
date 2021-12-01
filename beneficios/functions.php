@@ -87,7 +87,7 @@ class Beneficios_Assets
 
         $args = [
             'post_type' => 'beneficios',
-            'posts_per_page' => 6,
+            'posts_per_page' => 12,
             'offset' => $offset,
             'tax_query' => [
                 [

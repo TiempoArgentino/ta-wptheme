@@ -6,6 +6,8 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
 $status = get_user_meta(get_current_user_id(),'_user_status',true);
 $userdata = get_userdata(get_current_user_id());
 $rol = $userdata->roles[0];
+
+$post_per_page = 12;
 ?>
 
 <!-- banner -->
@@ -177,11 +179,11 @@ $rol = $userdata->roles[0];
             <div class="container">
                 <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-bleft" id="beneficios-categoria">
                     <?php
-                    // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'beneficios',
-                        'posts_per_page' => 12,
-                        //  'paged' => $paged,
+                        'posts_per_page' => $post_per_page,
+                        'paged' => $paged,
                         'tax_query' => [
                             [
                                 'taxonomy' => 'cat_beneficios',
@@ -308,7 +310,7 @@ $rol = $userdata->roles[0];
                     <?php endif; ?>
                 </div>
                 <div class="col-12 pagination">
-                      <button type="button" data-offset="1" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-mas"><?php _e('Ver más', 'beneficios') ?></button>
+                      <button type="button" data-offset="<?php echo $post_per_page?>" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-mas"><?php _e('Ver más', 'beneficios') ?></button>
                 </div>
             </div>
         </div>
