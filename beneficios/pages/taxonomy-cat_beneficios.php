@@ -310,7 +310,9 @@ $post_per_page = 12;
                     <?php endif; ?>
                 </div>
                 <div class="col-12 pagination">
-                      <button type="button" data-offset="<?php echo $post_per_page?>" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-mas"><?php _e('Ver más', 'beneficios') ?></button>
+                      <?php if($beneficios->max_num_pages > 1): ?>
+                        <button type="button" data-offset="<?php echo $post_per_page?>" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-mas"><?php _e('Ver más', 'beneficios') ?></button>
+                      <?php endif; ?>
                 </div>
             </div>
         </div>
