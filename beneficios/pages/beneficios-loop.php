@@ -218,7 +218,7 @@ $rol = $userdata->roles[0];
                                             </a>
                                         </div>
                                         <div class="options mt-4">
-                                            <?php if (is_user_logged_in() && $status == 'active' && $rol == get_option('subscription_digital_role') || $rol == 'administrator') : ?>
+                                            <?php if (is_user_logged_in() && $status == 'active' && ($rol == get_option('subscription_digital_role') || $rol == 'administrator')) : ?>
                                                 <!-- fcha -->
                                                 <?php if (!beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID())) : ?>
                                                     <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) : ?>
@@ -235,7 +235,7 @@ $rol = $userdata->roles[0];
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                                <?php if (is_user_logged_in() && $status == 'active' && $rol == get_option('subscription_digital_role') || $rol == 'administrator') : ?>
+                                                <?php if (is_user_logged_in() && $status == 'active' && ($rol == get_option('subscription_digital_role') || $rol == 'administrator')) : ?>
                                                     <div class="request">
                                                         <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
                                                                                     echo 'disabled';
@@ -253,9 +253,9 @@ $rol = $userdata->roles[0];
                                                             <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
                                                         </div>
                                                     </div>
-                                                <?php elseif (is_user_logged_in() && $status == 'active' && $rol != get_option('subscription_digital_role') || $rol != 'administrator') : ?>
+                                                <?php elseif (is_user_logged_in() && ($status == 'active' || $status == 'inactive') && $rol != get_option('subscription_digital_role') || $rol != 'administrator') : ?>
                                                     <div class="request">
-                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Cambiar membresía.', 'gen-base-theme') ?></a></button>
+                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Renovar membresía.', 'gen-base-theme') ?></a></button>
                                                     </div>
                                                 <?php else: ?>
                                                     <div class="request">
