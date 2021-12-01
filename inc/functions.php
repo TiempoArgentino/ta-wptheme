@@ -1145,7 +1145,6 @@ function ta_get_commment_display_data($args = array()){
     );
 
     if($display_data['user_data']){
-        
         if(check_member($display_data['user_data']->ID)){
             $display_data['container_class'] .= " partner";
             $display_data['is_partner'] = true;

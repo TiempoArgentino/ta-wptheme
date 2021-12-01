@@ -3,6 +3,9 @@ get_header();
 do_action('beneficios_taxonomy_header');
 $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
 
+$status = get_user_meta(get_current_user_id(),'_user_status',true);
+$userdata = get_userdata(get_current_user_id());
+$rol = $userdata->roles[0];
 ?>
 
 <!-- banner -->
@@ -69,43 +72,43 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
 
 <div class="container mt-3">
     <div id="benefitsSearchBar" class="show mb-4" aria-labelledby="benefitsSearchBar" data-parent="#search-btn2">
-    <form action="<?php echo site_url('/'); ?>" method="get" id="searchform">
-        <div class="search-bar-container px-3 pt-3 pb-4">
-            <div class="close d-flex d-lg-none justify-content-end">
-                <div>
-                    <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
-                    </button>
-                </div>
-            </div>
-           
-            <div class="input-container d-flex justify-content-center mt-3">
-                <div class="search-icon mr-2">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/search-icon-blue.svg" class="img-fluid" alt="">
-                </div>
-                
-                <div class="input-wrapper flex-fill">
-                    <input type="text" name="s" placeholder="Busca por ubicación o palabra clave" />
-                </div>
-                <div class="search d-none d-lg-flex justify-content-center ml-3">
-                    <input type="hidden" name="post_type" value="beneficios" />
-                    
-                    <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
-                </div>
-                
-                <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
+        <form action="<?php echo site_url('/'); ?>" method="get" id="searchform">
+            <div class="search-bar-container px-3 pt-3 pb-4">
+                <div class="close d-flex d-lg-none justify-content-end">
                     <div>
                         <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
                             <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
                         </button>
                     </div>
                 </div>
+
+                <div class="input-container d-flex justify-content-center mt-3">
+                    <div class="search-icon mr-2">
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/search-icon-blue.svg" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="input-wrapper flex-fill">
+                        <input type="text" name="s" placeholder="Busca por ubicación o palabra clave" />
+                    </div>
+                    <div class="search d-none d-lg-flex justify-content-center ml-3">
+                        <input type="hidden" name="post_type" value="beneficios" />
+
+                        <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
+                    </div>
+
+                    <div class="close d-none d-lg-flex justify-content-end align-items-center ml-3">
+                        <div>
+                            <button class="btn btn-link d-flex" data-toggle="collapse" data-target="#benefitsSearchBar" aria-expanded="true" aria-controls="benefitsSearchBar">
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/close.svg" class="img-fluid" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search d-flex d-lg-none justify-content-center mt-4">
+                    <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
+                </div>
             </div>
-            
-            <div class="search d-flex d-lg-none justify-content-center mt-4">
-                <button type="submit"><?php echo __('BUSCAR', 'gen-base-theme') ?></button>
-            </div>
-        </div>
         </form>
     </div>
 </div>
@@ -172,12 +175,13 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
         </div>
         <div class="sub-blocks py-3">
             <div class="container">
-                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-bleft">
+                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-bleft" id="beneficios-categoria">
                     <?php
-                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                    // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'beneficios',
-                        'numberposts' => 12,
+                        'posts_per_page' => 3,
+                        //  'paged' => $paged,
                         'tax_query' => [
                             [
                                 'taxonomy' => 'cat_beneficios',
@@ -201,7 +205,6 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                         ]
                     ];
                     $beneficios = new WP_Query($args);
-
                     ?>
                     <?php if ($beneficios->have_posts()) : ?>
                         <?php while ($beneficios->have_posts()) : $beneficios->the_post(); ?>
@@ -225,13 +228,15 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                             </a>
                                         </div>
                                         <div class="options mt-4">
-                                            <?php if (is_user_logged_in()) : ?>
+                                            <?php if (is_user_logged_in() && $status == 'active' && $rol == get_option('subscription_digital_role') || $rol == 'administrator') : ?>
                                                 <!-- fcha -->
                                                 <?php if (!beneficios_front()->get_beneficio_by_user(wp_get_current_user()->ID, get_the_ID())) : ?>
                                                     <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) : ?>
                                                         <div id="fechas">
                                                             <?php foreach (get_post_meta(get_the_ID(), '_beneficio_date', true) as $key => $val) : ?>
-                                                                <label><input type="radio" data-button="#solicitar-<?php echo get_the_ID() ?>" <?php echo $check ?> class="select-dates" name="gender" value="<?php echo date('Y-m-d H:i:s', strtotime($val)); ?>"> <?php echo date_i18n('d M H:i',  strtotime($val)); ?>hs</label><br />
+                                                                <label>
+                                                                    <input type="radio" data-button="#solicitar-<?php echo get_the_ID() ?>" <?php echo $check ?> class="select-dates" name="gender" value="<?php echo date('Y-m-d H:i:s', strtotime($val)); ?>"> 
+                                                                    <?php echo date_i18n('d M H:i',  strtotime($val)); ?>hs</label><br />
                                                             <?php endforeach; ?>
                                                         </div>
                                                     <?php endif; ?>
@@ -242,7 +247,7 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                             <?php endif ?>
 
                                             <div class="btns-container d-flex justify-content-between align-items-center">
-                                                <?php if (is_user_logged_in()) : ?>
+                                                <?php if (is_user_logged_in() && $status == 'active' && $rol == get_option('subscription_digital_role') || $rol == 'administrator') : ?>
                                                     <div class="request">
                                                         <button type="button" <?php if (get_post_meta(get_the_ID(), '_beneficio_date', true)) {
                                                                                     echo 'disabled';
@@ -260,9 +265,13 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                                             <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
                                                         </div>
                                                     </div>
-                                                <?php else : ?>
+                                                <?php elseif (is_user_logged_in() && $status == 'active' && $rol != get_option('subscription_digital_role') || $rol != 'administrator') : ?>
                                                     <div class="request">
-                                                        <button><a href="<?php echo get_permalink( get_option('subscriptions_login_register_page') )?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
+                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Cambiar membresía.', 'gen-base-theme') ?></a></button>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <div class="request">
+                                                        <button><a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
                                                     </div>
                                                 <?php endif ?>
 
@@ -271,7 +280,6 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                                         ver más <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/right-arrow.png" alt="" class="img-fluid" />
                                                     </button>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="benefit-description collapse mt-4" id="content<?php echo get_the_ID() ?>">
@@ -296,11 +304,11 @@ $term = get_term_by('slug', get_query_var('term'), 'cat_beneficios');
                                 </div>
                             </div>
                         <?php endwhile; ?>
-                        <div class="col-12 pagination">
-                            <button type="button" class="btn btn-block btn-text"><?php next_posts_link(__('ver más', 'beneficios'), $beneficios->max_num_pages); ?></button>
-                        </div>
 
                     <?php endif; ?>
+                </div>
+                <div class="col-12 pagination">
+                      <button type="button" data-offset="1" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-mas"><?php _e('Ver más', 'beneficios') ?></button>
                 </div>
             </div>
         </div>

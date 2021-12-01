@@ -358,3 +358,31 @@ height: 18px;
 .amp_widget_below_the_header.f-w .w-bl {
     margin-bottom: 0;
 }
+.pagination {
+    text-align: center;
+}
+.pagination button {
+    display: inline-block;
+    width: auto;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    color: white;
+    background-color: var(--ta-celeste);
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+.pagination button a{
+    color: white !important;
+    text-transform: uppercase;
+}
+.pagination .loading{
+    background-image: url('./assets/img/load-beneficios.gif');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    text-indent: -10000px;
+    background-color: transparent;
+}
