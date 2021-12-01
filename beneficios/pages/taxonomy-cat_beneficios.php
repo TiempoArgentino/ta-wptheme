@@ -180,7 +180,7 @@ $rol = $userdata->roles[0];
                     // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'beneficios',
-                        'posts_per_page' => 3,
+                        'posts_per_page' => 12,
                         //  'paged' => $paged,
                         'tax_query' => [
                             [
