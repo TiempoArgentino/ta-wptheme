@@ -186,9 +186,9 @@ class Beneficios_Assets
                     <button type="button" data-id="#dni-number-' . $id . '" class="dni-button btn btn-primary">Solicitar</button>
                 </div>
             </div>';
-        elseif ($logged == 1 && $status == 'active' && $rol != get_option('subscription_digital_role') || $rol != 'administrator') :
+        elseif ($logged == 1 && ($status == 'active' || $status == 'inactive' || $status == 'on-hold' || !$status) && ($rol != get_option('subscription_digital_role') || $rol != 'administrator')) :
             $html .= '<div class="request">
-            <button><a href="' . get_permalink(get_option('subscriptions_loop_page')) . '">' . __('Cambiar membresía.', 'gen-base-theme') . '</a></button>
+            <button><a href="' . get_permalink(get_option('subscriptions_loop_page')) . '">' . __('Renovar membresía.', 'gen-base-theme') . '</a></button>
         </div>';
         else :
             $html .= '<div class="request">

@@ -253,7 +253,7 @@ $rol = $userdata->roles[0];
                                                             <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
                                                         </div>
                                                     </div>
-                                                <?php elseif (is_user_logged_in() && ($status == 'active' || $status == 'inactive') && $rol != get_option('subscription_digital_role') || $rol != 'administrator') : ?>
+                                                 <?php elseif (is_user_logged_in() && ($status == 'active' || $status == 'inactive' || $status == 'on-hold' || !$status) && ($rol != get_option('subscription_digital_role') || $rol != 'administrator')) : ?>
                                                     <div class="request">
                                                         <button><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Renovar membresía.', 'gen-base-theme') ?></a></button>
                                                     </div>
