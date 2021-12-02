@@ -7,7 +7,7 @@ $status = get_user_meta(get_current_user_id(),'_user_status',true);
 $userdata = get_userdata(get_current_user_id());
 $rol = $userdata->roles[0];
 
-$post_per_page = 3;
+$post_per_page = 12;
 ?>
 
 <!-- banner -->
