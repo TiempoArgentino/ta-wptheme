@@ -1,8 +1,9 @@
 <?php get_header() ?>
 <?php do_action('beneficios_loop_header');
-$status = get_user_meta(get_current_user_id(),'_user_status',true);
+$status = get_user_meta(get_current_user_id(), '_user_status', true);
 $userdata = get_userdata(get_current_user_id());
 $rol = $userdata->roles[0];
+$post_per_page = 12;
 ?>
 
 <!-- banner -->
@@ -171,12 +172,12 @@ $rol = $userdata->roles[0];
         </div>
         <div class="sub-blocks py-3">
             <div class="container">
-                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-left">
+                <div class="ta-articles-block flex-wrap d-flex flex-column flex-lg-row overflow-hidden justify-content-lg-left" id="beneficios-loop">
                     <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'beneficios',
-                        'posts_per_page' => 12,
+                        'posts_per_page' => $post_per_page,
                         'paged' => $paged,
                         'meta_query' => [
                             'relation' => 'AND',
@@ -253,11 +254,11 @@ $rol = $userdata->roles[0];
                                                             <button type="button" data-id="#dni-number-<?php echo get_the_ID() ?>" class="dni-button btn btn-primary">Solicitar</button>
                                                         </div>
                                                     </div>
-                                                 <?php elseif (is_user_logged_in() && ($status == 'active' || $status == 'inactive' || $status == 'on-hold' || !$status) && ($rol != get_option('subscription_digital_role') || $rol != 'administrator')) : ?>
+                                                <?php elseif (is_user_logged_in() && ($status == 'active' || $status == 'inactive' || $status == 'on-hold' || !$status) && ($rol != get_option('subscription_digital_role') || $rol != 'administrator')) : ?>
                                                     <div class="request">
                                                         <button><a href="<?php echo get_permalink(get_option('subscriptions_loop_page')) ?>"><?php echo __('Renovar membresía.', 'gen-base-theme') ?></a></button>
                                                     </div>
-                                                <?php else: ?>
+                                                <?php else : ?>
                                                     <div class="request">
                                                         <button><a href="<?php echo get_permalink(get_option('subscriptions_login_register_page')) ?>"><?php echo __('Iniciar Sesión.', 'gen-base-theme') ?></a></button>
                                                     </div>
@@ -292,10 +293,14 @@ $rol = $userdata->roles[0];
                                 </div>
                             </div>
                         <?php endwhile; ?>
-                        <div class="col-12 pagination">
-                            <button type="button" class="btn btn-block btn-text"><?php next_posts_link(__('ver más', 'beneficios'), $beneficios->max_num_pages); ?></button>
-                        </div>
-
+                        <!-- <div class="col-12 pagination">
+                            <button type="button" class="btn btn-block btn-text"><?php //next_posts_link(__('ver más', 'beneficios'), $beneficios->max_num_pages); ?></button>
+                        </div> -->
+                    <?php endif; ?>
+                </div>
+                <div class="col-12 pagination">
+                    <?php if ($beneficios->max_num_pages > 1) : ?>
+                        <button type="button" data-offset="<?php echo $post_per_page ?>" data-max="<?php echo $beneficios->max_num_pages ?>" data-term="<?php echo $term->term_id ?>" class="btn btn-block btn-text" id="cargar-loop"><?php _e('Ver más', 'beneficios') ?></button>
                     <?php endif; ?>
                 </div>
             </div>

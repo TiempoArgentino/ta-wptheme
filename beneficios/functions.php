@@ -36,6 +36,7 @@ class Beneficios_Assets
             'post_id' => isset($_POST['post_id']) ? $_POST['post_id'] : '',
             'user' => isset($_POST['user']) ? $_POST['user'] : '',
             'loadMore' => rest_url('beneficios/v1/more'),
+            'loadLoop' => rest_url('beneficios/v1/loop'),
             'loggedIn' => is_user_logged_in(),
             'userID' => wp_get_current_user()->ID
         ]);
@@ -76,6 +77,12 @@ class Beneficios_Assets
             'callback' => [$this, 'beneficios_posts'],
             'permission_callback' => '__return_true'
         ));
+
+        register_rest_route('beneficios/v1', '/loop', array(
+            'methods' => 'POST',
+            'callback' => [$this, 'beneficios_loop'],
+            'permission_callback' => '__return_true'
+        ));
     }
 
     public function beneficios_posts(WP_REST_Request $request)
@@ -96,6 +103,41 @@ class Beneficios_Assets
                     'terms' => $term
                 ]
             ],
+            'meta_query' => [
+                'relation' => 'AND',
+                [
+                    'key' => '_active',
+                    'value' => '1',
+                    'compare' => 'LIKE'
+                ],
+                [
+                    'key' => '_finish',
+                    'value' => date('Y-m-d'),
+                    'compare' => '>=',
+                    'type' => 'DATE'
+                ]
+            ]
+        ];
+        $beneficios = get_posts($args);
+
+
+        $html = [];
+        foreach ($beneficios as $beneficio) {
+            $html[] = $this->show_beneficio($beneficio->ID, $beneficio->post_title, $logged, $userid);
+        }
+        return wp_send_json_success($html);
+    }
+
+    public function beneficios_loop(WP_REST_Request $request)
+    {
+        $offset = $request->get_param('offset');
+        $logged = $request->get_param('logged');
+        $userid = $request->get_param('userid');
+
+        $args = [
+            'post_type' => 'beneficios',
+            'posts_per_page' => 12,
+            'offset' => $offset,
             'meta_query' => [
                 'relation' => 'AND',
                 [

@@ -160,3 +160,37 @@ if (typeof (cargarMas) != 'undefined' && cargarMas != null) {
 
     });
 }
+
+const loadLoop = document.querySelector('#cargar-loop');
+
+if(typeof(loadLoop) != 'undefined' && loadLoop != null){
+    loadLoop.addEventListener('click', async () => {
+        loadLoop.classList.add('loading');
+        const beneficios = await fetch(beneficios_theme_ajax.loadLoop, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                offset: loadLoop.dataset.offset,
+                term: loadLoop.dataset.term,
+                logged: beneficios_theme_ajax.loggedIn,
+                userid: beneficios_theme_ajax.userID
+            })
+        });
+        const response = await beneficios.json();
+
+        if (response.data.length == 0) {
+            loadLoop.innerHTML = 'No hay más beneficios';
+            setTimeout(() => {
+                loadLoop.remove();
+            },1000)
+            return;
+        }
+
+        loadLoop.dataset.offset = parseInt(loadLoop.dataset.offset) + parseInt(response.data.length);
+
+        document.getElementById('beneficios-loop').innerHTML += response.data.join('');
+        loadLoop.classList.remove('loading');
+    });
+}
