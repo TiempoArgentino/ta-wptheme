@@ -386,3 +386,6 @@ height: 18px;
     text-indent: -10000px;
     background-color: transparent;
 }
+#paymentFormBankEdit label{
+    display: block !important;
+}
