@@ -89,7 +89,7 @@
                                             <p class="help"><?php echo __('Recorda llenar tu dirección para el envío', 'gen-base-theme') ?></p>
                                         </div>
                                     <?php endif; ?>
-                                    <div class="from-group prices price-container mb-3">
+                                    <div class="from-group prices price-container mb-3" id="users-prices-container">
                                         <?php echo __('Selecionar monto: ', 'gen-base-theme') ?>
                                         <?php if (membership()->get_price()) : ?>
                                             <div class="amount">

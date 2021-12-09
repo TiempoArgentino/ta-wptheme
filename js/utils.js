@@ -359,7 +359,7 @@ window.addEventListener("resize", function () {
 
   $(document).ready(function () {
     $('#subs_change').on('change', function(){
-      console.log($(this).find(':selected').data('physical'))
+      
       if($(this).find(':selected').data('physical') == '1' && $('#paper-option').is(':visible')) {
         $('#paper-option').hide();
       } else {
