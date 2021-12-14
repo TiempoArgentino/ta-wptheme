@@ -83,11 +83,16 @@
                                             <label><?php echo __('Cambiar mi plan', 'gen-base-theme') ?></label>
                                             <?php membership()->get_subscriptions_names('form-control') ?>
                                         </div>
-                                        <div class="form-group checkbox-container" id="paper-option">
-                                            <input type="checkbox" class="paper-checkbox" name="paper" id="paper" value="<?php echo membership()->get_paper_value() ?>" <?php echo checked('1', membership()->get_membership(wp_get_current_user()->ID)['physical'], false) ?> />
-                                            <label for=""><?php echo __('Agregá el diario en papel', 'gen-base-theme') ?></label>
-                                            <p class="help"><?php echo __('Recorda llenar tu dirección para el envío', 'gen-base-theme') ?></p>
-                                        </div>
+                                            <div class="form-group checkbox-container" id="paper-option">
+                                                <input type="checkbox" 
+                                                class="paper-checkbox" 
+                                                name="paper" 
+                                                id="paper" 
+                                                value="<?php echo membership()->get_paper_value() ?>" 
+                                                <?php echo checked('1', get_user_meta(wp_get_current_user()->ID,'_user_paper',true), false) ?> />
+                                                <label for=""><?php echo __('Agregá el diario en papel', 'gen-base-theme') ?></label>
+                                                <p class="help"><?php echo __('Recorda llenar tu dirección para el envío', 'gen-base-theme') ?></p>
+                                            </div>
                                     <?php endif; ?>
                                     <div class="from-group prices price-container mb-3" id="users-prices-container">
                                         <?php echo __('Selecionar monto: ', 'gen-base-theme') ?>

@@ -357,9 +357,15 @@ window.addEventListener("resize", function () {
     }
   });
 
+
   $(document).ready(function () {
-    $('#subs_change').on('change', function(){
-      
+    console.log($('#subs_change').find(':selected').data('physical'));
+    if($('#subs_change').find(':selected').data('physical') == '1') {
+      $('#paper-option').hide();
+    } else {
+      $('#paper-option').show();
+    }
+    $('#subs_change').on('change', function(){   
       if($(this).find(':selected').data('physical') == '1' && $('#paper-option').is(':visible')) {
         $('#paper-option').hide();
       } else {
