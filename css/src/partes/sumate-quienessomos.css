@@ -1,0 +1,660 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-socios-fondos2: #fff4d8;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
+}
+
+.sumate .title h3,
+.quienes-somos .title h3 {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+.sumate .sumate-opts .opt .title h4,
+.quienes-somos .sumate-opts .opt .title h4 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 31px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+.sumate .sumate-opts .opt .subtitle p,
+.quienes-somos .sumate-opts .opt .subtitle p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+.sumate .sumate-opts .opt .img-container img,
+.quienes-somos .sumate-opts .opt .img-container img {
+  max-width: 175px;
+}
+.sumate .sumate-opts .opt .opt-details button,
+.quienes-somos .sumate-opts .opt .opt-details button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: transparent;
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+}
+.sumate .sumate-opts .opt .opt-details button:focus,
+.quienes-somos .sumate-opts .opt .opt-details button:focus {
+  outline: none;
+}
+.sumate .sumate-opts .opt .opt-details button .dropdown-icon img,
+.quienes-somos .sumate-opts .opt .opt-details button .dropdown-icon img {
+  transform: rotate(180deg);
+}
+.sumate .sumate-opts .opt .opt-details button p,
+.quienes-somos .sumate-opts .opt .opt-details button p {
+  margin: 0;
+}
+.sumate .sumate-opts .opt .opt-details .card-body,
+.quienes-somos .sumate-opts .opt .opt-details .card-body {
+  padding: 10px;
+}
+.sumate .sumate-opts .opt .opt-details .card-body h6,
+.quienes-somos .sumate-opts .opt .opt-details .card-body h6 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+.sumate .sumate-opts .opt .btns-container button,
+.quienes-somos .sumate-opts .opt .btns-container button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  background-color: var(--ta-socios);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  min-width: 176px;
+}
+.sumate .sumate-opts .opt .info,
+.quienes-somos .sumate-opts .opt .info {
+  text-align: center;
+}
+.sumate .sumate-opts .opt .info small,
+.quienes-somos .sumate-opts .opt .info small {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.sumate .sumate-opts .opt.socio,
+.quienes-somos .sumate-opts .opt.socio {
+  border: 1px solid var(--ta-socios);
+}
+.sumate .sumate-opts .opt.socio .opt-border,
+.quienes-somos .sumate-opts .opt.socio .opt-border {
+  border: 10px solid var(--ta-socios-fondos);
+}
+.sumate .sumate-opts .opt.socio .opt-bg,
+.quienes-somos .sumate-opts .opt.socio .opt-bg {
+  background-color: var(--ta-socios-fondos);
+}
+.sumate .sumate-opts .opt.donacion,
+.quienes-somos .sumate-opts .opt.donacion {
+  border: 1px solid var(--ta-gris-subtexto);
+}
+.sumate .sumate-opts .opt.donacion .opt-border,
+.quienes-somos .sumate-opts .opt.donacion .opt-border {
+  border: 10px solid var(--ta-gris-fondos);
+}
+.sumate .sumate-opts .opt.donacion .opt-bg,
+.quienes-somos .sumate-opts .opt.donacion .opt-bg {
+  background-color: var(--ta-gris-fondos);
+}
+.sumate .info p,
+.quienes-somos .info p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.sumate .info p span,
+.quienes-somos .info p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+.sumate .info p a,
+.quienes-somos .info p a {
+  background-color: var(--ta-socios-fondos);
+  text-decoration: underline;
+}
+.sumate .content .title h3,
+.quienes-somos .content .title h3 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 31px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+.sumate .content .subtitle p,
+.quienes-somos .content .subtitle p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+.sumate .content .ver-mas button,
+.quienes-somos .content .ver-mas button {
+  color: var(--ta-gris-subtexto);
+}
+.sumate .content .ver-mas button img,
+.quienes-somos .content .ver-mas button img {
+  margin-left: 5px;
+  transform: rotate(180deg);
+}
+.sumate .content .ver-mas button:focus,
+.quienes-somos .content .ver-mas button:focus {
+  border: none;
+  outline: none;
+}
+.sumate .content .dropdown.ntro-compromiso .ta-article-block .article-preview .img-container,
+.quienes-somos .content .dropdown.ntro-compromiso .ta-article-block .article-preview .img-container {
+  padding-bottom: 52.63%;
+}
+.sumate .content .dropdown.ntro-compromiso .ta-article-block .article-preview .img-container .img-wrapper,
+.quienes-somos .content .dropdown.ntro-compromiso .ta-article-block .article-preview .img-container .img-wrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.sumate .content .dropdown.vision-sumate p,
+.quienes-somos .content .dropdown.vision-sumate p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+.sumate .content .dropdown.vision-sumate p span,
+.quienes-somos .content .dropdown.vision-sumate p span {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+}
+.sumate .content .dropdown.vision-sumate p span a,
+.quienes-somos .content .dropdown.vision-sumate p span a {
+  color: var(--ta-celeste) !important;
+  text-decoration: underline;
+}
+.sumate .content .dropdown .media,
+.quienes-somos .content .dropdown .media {
+  border: 1px solid var(--ta-celeste);
+}
+.sumate .content .dropdown p,
+.quienes-somos .content .dropdown p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+.sumate .content .dropdown p span,
+.quienes-somos .content .dropdown p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.sumate .content .dropdown p span.tiempo-color,
+.quienes-somos .content .dropdown p span.tiempo-color {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ta-celeste);
+}
+.sumate .content .dropdown p span.tiempo-color a,
+.quienes-somos .content .dropdown p span.tiempo-color a {
+  color: var(--ta-celeste) !important;
+  text-decoration: underline;
+}
+.sumate .content .dropdown .article-preview,
+.quienes-somos .content .dropdown .article-preview {
+  flex-basis: auto;
+  width: 100%;
+}
+.sumate .content .dropdown .article-preview p,
+.quienes-somos .content .dropdown .article-preview p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+}
+.sumate .content .dropdown .article-preview .article-info-container .author p,
+.quienes-somos .content .dropdown .article-preview .article-info-container .author p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.sumate .content .dropdown .eje .img-container,
+.quienes-somos .content .dropdown .eje .img-container {
+  text-align: center;
+}
+.sumate .content .dropdown .eje .img-container img,
+.quienes-somos .content .dropdown .eje .img-container img {
+  max-width: 175px;
+}
+.sumate .content .dropdown .eje .title h3,
+.quienes-somos .content .dropdown .eje .title h3 {
+  color: var(--ta-celeste);
+  font-size: 20px;
+  line-height: 112.3%;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+.sumate .content .dropdown .eje .subtitle,
+.quienes-somos .content .dropdown .eje .subtitle {
+  max-width: 90%;
+  margin: 0 auto;
+}
+.sumate .content .dropdown .eje .subtitle p,
+.quienes-somos .content .dropdown .eje .subtitle p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+.sumate .content .user-block-container .user-tabs .nav.nav-tabs,
+.quienes-somos .content .user-block-container .user-tabs .nav.nav-tabs {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.sumate .content .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p,
+.quienes-somos .content .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+.sumate .content .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active p,
+.quienes-somos .content .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  border-bottom: none;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img {
+  width: 80px;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper {
+  min-height: 80px;
+  min-width: 80px;
+  width: auto;
+  background-image: url(../../../assets/img/author-photo.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50px;
+  border: 1px solid var(--ta-gris-subtexto);
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content p {
+  margin-bottom: 0;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .name p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .name p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .position p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .position p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p a,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p a {
+  color: var(--ta-celeste) !important;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter .form-select,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter .form-select {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  height: 35px;
+  border: 1.5px solid var(--ta-gris-subtexto);
+  color: var(--ta-gris-subtexto);
+  border-radius: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url(../../../assets/img/gray-down-arrow.svg);
+  background-repeat: no-repeat;
+  background-position-x: 97%;
+  background-position-y: 12px;
+  padding: 0 10px;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter .form-select:focus,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter .form-select:focus {
+  outline: none;
+}
+.sumate .content .user-block-container .user-tabs .tab-content .tab-pane .separator,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .separator {
+  background-color: var(--ta-celeste) !important;
+}
+.sumate .ta-border-block .opt-border,
+.quienes-somos .ta-border-block .opt-border {
+  background-color: white;
+  border: 1px solid var(--ta-celeste);
+}
+.sumate .ta-border-block .opt-border .title h3,
+.quienes-somos .ta-border-block .opt-border .title h3 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-celeste);
+  font-size: 27px;
+  line-height: 31px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+.sumate .ta-border-block .opt-border .subtitle p,
+.quienes-somos .ta-border-block .opt-border .subtitle p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+.sumate .ta-border-block .opt-border .subtitle p span,
+.quienes-somos .ta-border-block .opt-border .subtitle p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+
+@media (min-width: 992px) {
+  .sumate .title h3,
+.quienes-somos .title h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .sumate .sumate-opts .opt,
+.quienes-somos .sumate-opts .opt {
+    flex: 1;
+  }
+  .sumate .sumate-opts .opt.donacion .opt-border,
+.quienes-somos .sumate-opts .opt.donacion .opt-border {
+    border: 23px solid var(--ta-gris-fondos);
+  }
+  .sumate .sumate-opts .opt.socio .opt-border,
+.quienes-somos .sumate-opts .opt.socio .opt-border {
+    border: 23px solid var(--ta-socios-fondos);
+  }
+  .sumate .sumate-opts .opt .title,
+.quienes-somos .sumate-opts .opt .title {
+    min-height: 90px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .sumate .sumate-opts .opt .title h4,
+.quienes-somos .sumate-opts .opt .title h4 {
+    font-size: 39px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+  }
+  .sumate .sumate-opts .opt .img-container,
+.quienes-somos .sumate-opts .opt .img-container {
+    min-height: 120px;
+  }
+  .sumate .sumate-opts .opt .img-container img,
+.quienes-somos .sumate-opts .opt .img-container img {
+    max-width: 235px;
+    width: 100%;
+  }
+  .sumate .sumate-opts .opt .subtitle,
+.quienes-somos .sumate-opts .opt .subtitle {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .sumate .sumate-opts .opt .subtitle p,
+.quienes-somos .sumate-opts .opt .subtitle p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .sumate .sumate-opts .opt .opt-details button p,
+.quienes-somos .sumate-opts .opt .opt-details button p {
+    font-size: 19px;
+  }
+  .sumate .sumate-opts .opt .opt-details .card-body div,
+.quienes-somos .sumate-opts .opt .opt-details .card-body div {
+    margin-top: 5px;
+  }
+  .sumate .sumate-opts .opt .opt-details .card-body h6,
+.quienes-somos .sumate-opts .opt .opt-details .card-body h6 {
+    font-size: 19px;
+  }
+  .sumate .sumate-opts .opt .btns-container button,
+.quienes-somos .sumate-opts .opt .btns-container button {
+    font-size: 19px;
+    line-height: 25px;
+    min-width: 230px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .sumate .sumate-opts .opt .info small,
+.quienes-somos .sumate-opts .opt .info small {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .sumate .info,
+.quienes-somos .info {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .sumate .info p,
+.quienes-somos .info p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .sumate .content .title h3,
+.quienes-somos .content .title h3 {
+    font-size: 39px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+  }
+  .sumate .content .subtitle p,
+.quienes-somos .content .subtitle p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .sumate .content .dropdown.ntro-compromiso,
+.quienes-somos .content .dropdown.ntro-compromiso {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  .sumate .content .dropdown.vision-sumate p,
+.quienes-somos .content .dropdown.vision-sumate p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .sumate .content .dropdown p,
+.quienes-somos .content .dropdown p {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+  }
+  .sumate .content .dropdown .article-preview p,
+.quienes-somos .content .dropdown .article-preview p {
+    margin-top: 10px;
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+  }
+  .sumate .content .dropdown .article-preview .article-info-container .author p,
+.quienes-somos .content .dropdown .article-preview .article-info-container .author p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .sumate .content .dropdown .eje a,
+.quienes-somos .content .dropdown .eje a {
+    text-decoration: none;
+  }
+  .sumate .content .dropdown .eje .img-container img,
+.quienes-somos .content .dropdown .eje .img-container img {
+    max-width: 190px;
+  }
+  .sumate .content .dropdown .eje .title h3,
+.quienes-somos .content .dropdown .eje .title h3 {
+    font-size: 30px;
+    line-height: 112.3%;
+    letter-spacing: -0.5px;
+  }
+  .sumate .content .dropdown .eje .subtitle p,
+.quienes-somos .content .dropdown .eje .subtitle p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .categories-filter {
+    max-width: 500px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member {
+    width: 205px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img {
+    width: 170px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .profile-img .img-container .img-wrapper {
+    min-height: 170px;
+    border-radius: 100px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content {
+    max-width: 220px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .name p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .name p {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 5px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .position p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .position p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+    margin-top: 5px;
+  }
+  .sumate .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p,
+.quienes-somos .content .user-block-container .user-tabs .tab-content .tab-pane .member .content .social p {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 5px;
+  }
+  .sumate .ta-border-block,
+.quienes-somos .ta-border-block {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  .sumate .ta-border-block .opt-border .title h3,
+.quienes-somos .ta-border-block .opt-border .title h3 {
+    font-size: 39px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+  }
+  .sumate .ta-border-block .opt-border .subtitle p,
+.quienes-somos .ta-border-block .opt-border .subtitle p {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+  }
+}
+
+/*# sourceMappingURL=sumate-quienessomos.css.map */

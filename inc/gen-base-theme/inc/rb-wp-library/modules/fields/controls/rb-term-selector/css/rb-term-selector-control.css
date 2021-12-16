@@ -1,0 +1,7 @@
+.rb-post-selection select {
+    margin-bottom: 0;
+    height: auto;
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+    /* max-width: 100%; */
+}

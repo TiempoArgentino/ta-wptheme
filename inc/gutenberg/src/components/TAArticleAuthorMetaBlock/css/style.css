@@ -1,0 +1,52 @@
+.ta-article-author-meta {
+    /* color: #fff; */
+    position: relative;
+    background: #d1f2ff;
+    margin-bottom: 1rem;
+}
+
+.ta-article-author-meta > .header{
+    background-color: #16a1dc;
+    cursor: pointer;
+}
+
+.ta-article-author-meta > .header .name {
+    text-align: center;
+    font-weight: bold;
+    text-transform: unset;
+    padding: 0.5rem;
+    color: #fff;
+}
+
+.ta-article-author-meta .photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ta-article-author-meta .photo-container .photo {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+.ta-article-author-meta .meta-controls {
+    /* padding: 1rem; */
+}
+
+.ta-article-author-meta .input-container{
+    margin-bottom: 1rem;
+}
+
+.ta-article-author-meta .remove-author {
+    color: red;
+    text-align: right;
+}
+
+.ta-article-author-meta .remove-author .remove-btn {
+    margin-bottom: 0;
+    cursor: pointer;
+    display: inline-block;
+}

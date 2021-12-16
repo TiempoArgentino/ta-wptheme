@@ -1,0 +1,25 @@
+.rb-items-selector .items-selector-list .item.selected .item-content{
+    background-color: #00d5ff;
+    opacity: 0.5;
+}
+
+/* .rb-items-selector .columns-container {
+    display: flex;
+}
+
+.rb-items-selector .selected-column {
+    width: 100%;
+    min-width: 0;
+    flex: 1 0 50%;
+}
+
+.rb-items-selector .selector-column {
+    width: auto;
+    min-width: 0;
+    flex: 1 0 48%;
+    margin-right: 1rem;
+}
+
+.rb-items-selector .end-buttons{
+    text-align: right;
+} */

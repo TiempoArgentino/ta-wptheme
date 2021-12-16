@@ -1,0 +1,397 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-socios-fondos2: #fff4d8;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.header-sticky-micrositio {
+  display: none;
+}
+.header-sticky-micrositio.sticky {
+  display: block;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 15;
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in;
+  animation-duration: 100ms;
+}
+.header-sticky-micrositio .header-content {
+  padding: 5px 0;
+}
+
+.asociate-banner-micrositio {
+  max-width: 35%;
+}
+.asociate-banner-micrositio .asociate-banner-content {
+  top: 0;
+  left: 0;
+  transform: none;
+}
+.asociate-banner-micrositio .asociate-banner-content p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: underline;
+}
+.asociate-banner-micrositio .banner {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.asociate-banner-micrositio .banner p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+}
+
+.banner-micrositio {
+  background-color: var(--ta-gris-fondos);
+  box-shadow: 4px 4px 10px rgba(132, 152, 153, 0.4);
+}
+.banner-micrositio.sticky {
+  width: 70%;
+  box-shadow: none;
+  background-color: transparent;
+}
+.banner-micrositio.sticky .topic-tag {
+  height: 100%;
+}
+.banner-micrositio.sticky .topic-tag .content {
+  width: 100%;
+  height: 41.5px;
+}
+.banner-micrositio.sticky .topic-tag .content .hamburger-menu button span {
+  background-color: white;
+}
+.banner-micrositio.sticky .topic-tag .content .title {
+  text-align: left;
+  margin-left: 10px;
+}
+.banner-micrositio.sticky .topic-tag .content .title h2 {
+  margin: 0;
+  font-size: 17px;
+  text-transform: initial;
+}
+.banner-micrositio.sticky .topic-tag .triangle-right {
+  width: 33.6px;
+  height: 29.6px;
+  transform: rotate(45deg) translate(-10.8px, 11px);
+}
+.banner-micrositio .topic-tag .content {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  border-right: 1px solid transparent;
+  font-size: 27px;
+  height: 35px;
+  letter-spacing: -1px;
+  line-height: 31px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 80%;
+  color: white;
+  z-index: 10;
+}
+.banner-micrositio .topic-tag .content p {
+  margin: 0;
+}
+.banner-micrositio .topic-tag .triangle-left,
+.banner-micrositio .topic-tag .triangle-right {
+  content: "";
+  background-color: transparent;
+  bottom: 0;
+  width: 24.6px;
+  height: 24.6px;
+  transform: rotate(45deg) translate(-5.5px, 12px);
+}
+.banner-micrositio .topic-tag .triangle-left {
+  transform: rotate(225deg) translate(-12.5px, 5px);
+}
+
+.slider-micrositio .carousel .carousel-item .carousel-caption {
+  left: 5%;
+  right: 5%;
+}
+.slider-micrositio .carousel .carousel-item .carousel-caption .separator {
+  margin-top: 0;
+}
+.slider-micrositio .carousel .carousel-item .carousel-caption .category-title h4 {
+  font-size: 12px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.slider-micrositio .carousel .carousel-item .carousel-caption .title p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  line-height: 22.5px;
+}
+.slider-micrositio .carousel .carousel-item .carousel-caption .author p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--ta-gris-subtexto);
+}
+.slider-micrositio .carousel .carousel-indicators {
+  z-index: 10;
+}
+.slider-micrositio .carousel .carousel-indicators li {
+  width: 31px;
+  height: 31px;
+  text-indent: unset;
+  background-color: transparent;
+  border: 1px solid var(--ta-gris-subtexto);
+}
+.slider-micrositio .carousel .carousel-indicators li p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 25px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.slider-micrositio .carousel .carousel-indicators li.active {
+  background-color: var(--ta-negro-texto);
+  color: white;
+  border: none;
+}
+.slider-micrositio .carousel .carousel-indicators li.active p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+
+@media (min-width: 400px) {
+  .header-sticky-micrositio {
+    display: none;
+  }
+  .header-sticky-micrositio.sticky {
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 15;
+    opacity: 1;
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 100ms;
+  }
+  .header-sticky-micrositio .banner-micrositio {
+    background-color: var(--ta-gris-fondos);
+    box-shadow: 4px 4px 10px rgba(132, 152, 153, 0.4);
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky {
+    width: 70%;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky .topic-tag {
+    height: 100%;
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky .topic-tag .content {
+    width: 100%;
+    height: 52.5px;
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky .topic-tag .content .hamburger-menu button span {
+    background-color: white;
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky .topic-tag .content .title h2 {
+    font-size: 25px;
+    line-height: 23px;
+  }
+  .header-sticky-micrositio .banner-micrositio.sticky .topic-tag .triangle-right,
+.header-sticky-micrositio .banner-micrositio.sticky .topic-tag .triangle-left {
+    width: 40.6px;
+    height: 36.6px;
+    transform: rotate(45deg) translate(-11.8px, 13px);
+  }
+}
+@media (min-width: 768px) {
+  .slider-micrositio .carousel {
+    position: relative;
+  }
+  .slider-micrositio .carousel .carousel-item {
+    height: 400px;
+  }
+  .slider-micrositio .carousel .carousel-item .img-container {
+    height: 100%;
+  }
+  .slider-micrositio .carousel .carousel-item .img-container img {
+    position: absolute;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 400px;
+  }
+  .slider-micrositio .carousel .carousel-item .img-container .overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(46, 42, 38, 0) 49.04%, #252b2d 86.07%);
+    position: relative;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption {
+    position: absolute;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption a {
+    text-decoration-color: white;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption .separator {
+    background-color: #f4f8ee;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption .category-title h4,
+.slider-micrositio .carousel .carousel-item .carousel-caption .category-title p,
+.slider-micrositio .carousel .carousel-item .carousel-caption .title h4,
+.slider-micrositio .carousel .carousel-item .carousel-caption .title p,
+.slider-micrositio .carousel .carousel-item .carousel-caption .author h4,
+.slider-micrositio .carousel .carousel-item .carousel-caption .author p {
+    color: white;
+  }
+  .slider-micrositio .carousel .carousel-indicators {
+    position: absolute;
+  }
+  .slider-micrositio .carousel .carousel-indicators li p {
+    color: var(--ta-gris-subtexto);
+  }
+  .slider-micrositio .carousel .carousel-indicators li.active {
+    background-color: white;
+  }
+  .slider-micrositio .carousel .carousel-indicators li.active p {
+    color: var(--ta-negro-texto);
+  }
+}
+@media (min-width: 992px) {
+  .header-sticky-micrositio.sticky {
+    background-color: var(--ta-gris-fondos);
+  }
+  .header-sticky-micrositio.sticky .hamburger-and-logo {
+    flex: 1;
+  }
+  .header-sticky-micrositio.sticky .hamburger-and-logo .hamburger-menu button span {
+    background-color: var(--ta-negro-texto);
+  }
+  .header-sticky-micrositio.sticky .banner-micrositio {
+    flex: 2;
+    box-shadow: none;
+  }
+  .header-sticky-micrositio.sticky .banner-micrositio .topic-tag .content {
+    height: 50px;
+  }
+  .header-sticky-micrositio.sticky .banner-micrositio .topic-tag .content p {
+    margin: 0;
+  }
+  .header-sticky-micrositio.sticky .banner-micrositio .topic-tag .triangle-right,
+.header-sticky-micrositio.sticky .banner-micrositio .topic-tag .triangle-left {
+    width: 35.6px;
+    height: 35.6px;
+    transform: rotate(45deg) translate(-7.5px, 17px);
+  }
+  .header-sticky-micrositio.sticky .banner-micrositio .topic-tag .triangle-left {
+    transform: rotate(225deg) translate(-18.5px, 8px);
+  }
+  .header-sticky-micrositio.sticky .search-and-profile {
+    flex: 1;
+  }
+
+  .asociate-banner-micrositio .banner {
+    max-width: 90%;
+  }
+  .asociate-banner-micrositio .banner p {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .header-micrositio .header-content .search-and-profile {
+    flex: 1;
+  }
+  .header-micrositio .banner-micrositio .topic-tag {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .header-micrositio .banner-micrositio .topic-tag .content {
+    height: 50px;
+  }
+  .header-micrositio .banner-micrositio .topic-tag .triangle-right,
+.header-micrositio .banner-micrositio .topic-tag .triangle-left {
+    width: 35.6px;
+    height: 35.6px;
+    transform: rotate(45deg) translate(-7.5px, 17px);
+  }
+  .header-micrositio .banner-micrositio .topic-tag .triangle-left {
+    transform: rotate(225deg) translate(-18.5px, 8px);
+  }
+
+  .slider-micrositio .carousel .carousel-item {
+    height: 600px;
+  }
+  .slider-micrositio .carousel .carousel-item .img-container {
+    height: 100%;
+  }
+  .slider-micrositio .carousel .carousel-item .img-container img {
+    position: absolute;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 600px;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption .category-title h4,
+.slider-micrositio .carousel .carousel-item .carousel-caption .category-title p,
+.slider-micrositio .carousel .carousel-item .carousel-caption .author h4,
+.slider-micrositio .carousel .carousel-item .carousel-caption .author p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .slider-micrositio .carousel .carousel-item .carousel-caption .title p {
+    font-size: 39px;
+    line-height: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  .asociate-banner-micrositio .banner {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=micrositio.css.map */

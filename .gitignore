@@ -1,0 +1,9 @@
+/languages/
+**/.DS_Store
+/yarn-error.log
+/node_modules
+/inc/modules/*/index.min.js
+/components/*/dist/index.min.js
+/inc/gutenberg/dist
+/inc/gen-base-theme/inc/modules/gutenberg/node_modules
+/.vscode/

@@ -1,0 +1,43 @@
+.ta-etiquetador {
+    border: solid;
+    border: solid 4px #007cba;
+}
+
+.ta-etiquetador .tags-container {
+    /* text-align: center; */
+    margin: 0 -0.25rem -0.25rem -0.25rem;
+}
+
+.ta-etiquetador .tags-container .tag-btn {
+    margin: 0 0.25rem 0.25rem 0.25rem;
+}
+
+button {
+    user-select: none;
+}
+
+.ta-etiquetador .header .title {
+    background: #007cba;
+    color: #fff;
+    /* margin: 0 -1rem; */
+    padding: 0.2rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.ta-etiquetador .generator-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 0;
+}
+
+.ta-etiquetador .tags-container {
+    margin-bottom: 2rem;
+    padding: 0rem 0.2rem;
+}
+
+.ta-etiquetador .loading-spinner {
+    text-align: center;
+}

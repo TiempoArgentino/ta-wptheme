@@ -1,0 +1,239 @@
+
+:root {
+    --ta-celeste: #16a1dc;
+    --ta-gris-fondos: #ebf1f2;
+    --ta-gris-imagen: #ebebeb;
+    --ta-celeste-fondos: #ebf7fe;
+    --ta-negro-texto: #252b2d;
+    --ta-gris-subtexto: #849899;
+    --ta-socios: #ffbb0f;
+    --ta-socios-fondos: #ffe7a9;
+    --ta-socios-fondos2: #fff4d8;
+    --ta-espectaculos: #ce0d54;
+    --ta-espectaculos-bg: #f9f2f6;
+    --ta-cultura: #48b1a7;
+    --ta-cultura-bg: #e0fbf9;
+    --ta-deportes: #ee813c;
+    --ta-deportes-bg: #fff3ec;
+    --ta-ambiental: #5e852a;
+    --ta-ambiental-bg: #f4f8ee;
+    --ta-habitat: #ba5749;
+    --ta-habitat-bg: #fff4f3;
+    --ta-medios: #5d9dd6;
+    --ta-medios-bg: #f3f9ff;
+  }
+  
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  
+  .asociate-opacity-bg,
+  .personaliza-opacity-bg,
+  .iconos-opacity-bg,
+  .config-opacity-bg {
+    height: 100% !important;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 100;
+  }
+  
+  .fullpage-onboarding {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+  }
+  .fullpage-onboarding .popovers {
+    width: 100%;
+    height: 1px;
+  }
+  
+  .asociate-popover,
+  .personaliza-popover,
+  .iconos-popover,
+  .config-popover {
+    height: 1px;
+  }
+  .asociate-popover .popover-dismiss,
+  .personaliza-popover .popover-dismiss,
+  .iconos-popover .popover-dismiss,
+  .config-popover .popover-dismiss {
+    width: 100%;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    padding: 1px 0 !important;
+  }
+  
+  .popover {
+    min-width: calc(100% - 30px);
+    margin: 0 auto;
+    background-color: var(--ta-celeste-fondos);
+  }
+  .popover.share {
+    min-width: 0;
+    border-radius: 0;
+    border-color: var(--ta-celeste);
+  }
+  .popover.share .arrow::before {
+    border-color: var(--ta-celeste);
+  }
+  .popover.share .arrow:after{
+    border-bottom-color: var(--ta-celeste-fondos);
+  }
+  .popover.asociate .arrow {
+    left: 78.5% !important;
+  }
+  .popover.iconos {
+    transform: translateX(0);
+  }
+  .popover.iconos .arrow {
+    left: 0 !important;
+  }
+  
+  .popover-header {
+    background-color: var(--ta-celeste-fondos);
+    border: none;
+  }
+  .popover-header .popover-title {
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: -0.2px;
+    margin-bottom: 0;
+  }
+  .popover-header .close {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 5px;
+    max-width: 20px;
+  }
+  .popover-header .close:focus {
+    outline: none !important;
+  }
+  
+  .popover-body p {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+  }
+  .popover-body ul {
+    padding: 0;
+  }
+  .popover-body ul li {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: -0.2px;
+    line-height: 22px;
+    list-style: none;
+    margin-top: 5px;
+  }
+  .popover-body ul li img {
+    margin-right: 5px;
+  }
+  .popover-body span {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+  }
+  .popover-body span img {
+    margin-right: 5px;
+  }
+  .popover-body button {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    background-color: var(--ta-celeste);
+    border: none;
+    color: white;
+    font-size: 15px;
+    left: 50%;
+    line-height: 20px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+  .popover-body button:focus {
+    outline: none !important;
+  }
+  
+  @media (min-width: 768px) {
+    .fullpage-onboarding .popovers {
+      width: 300px;
+    }
+  
+    .asociate-popover .popover-container {
+      width: 300px;
+      right: 0;
+      margin-left: auto;
+    }
+  
+    .iconos-popover .popover-container {
+      width: 45px;
+    }
+  
+    .config-popover .popover-container {
+      width: 300px;
+      margin-right: 100%;
+    }
+  
+    .popover {
+      min-width: 300px;
+      margin: 0;
+    }
+    .popover.share {
+      min-width: 0;
+    }
+    .popover.asociate .arrow {
+      left: 61% !important;
+    }
+    .popover.iconos .arrow {
+      left: 0 !important;
+    }
+  }
+  @media (min-width: 992px) {
+    .popover-header .popover-title {
+      font-size: 26px;
+      line-height: 32px;
+    }
+  
+    .popover-body p {
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: -0.2px;
+    }
+    .popover-body ul li {
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: -0.2px;
+    }
+    .popover-body span {
+      font-size: 19px;
+      line-height: 25px;
+      letter-spacing: -0.1px;
+    }
+    .popover-body button {
+      font-size: 19px;
+      line-height: 25px;
+    }
+  }
+  
+  /*# sourceMappingURL=onboarding.css.map */
+  

@@ -1,0 +1,56 @@
+{
+    "name": "gen-gutenberg",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack --watch --mode=development --config ./config/webpack.config.dev.js",
+        "build": "webpack --mode=production --config ./config/webpack.config.prod.js"
+    },
+    "dry": {
+        "extends": "../../../../../package-dry.json",
+        "dependencies": {
+            "parent": "1.0.0"
+        }
+    },
+    "dependencies": {
+        "@wordpress/api-fetch": "^5.1.0",
+        "array-move": "^3.0.1",
+        "autoprefixer": "^10.2.3",
+        "css-loader": "^5.0.1",
+        "file-loader": "^6.2.0",
+        "glob": "^7.1.6",
+        "image-webpack-loader": "^7.0.1",
+        "postcss": "^8.2.4",
+        "postcss-loader": "^4.2.0",
+        "raw-loader": "^4.0.2",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-sortablejs": "^6.0.0",
+        "sass": "^1.32.5",
+        "sass-loader": "^10.1.1",
+        "sortablejs": "^1.13.0",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack-merge": "^5.7.3",
+        "workspace-a": "1.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/preset-react": "^7.12.10",
+        "babel-loader": "^8.2.2",
+        "mini-css-extract-plugin": "^1.3.4",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.1.3",
+        "webpack-cli": "^4.1.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://juanraba@bitbucket.org/genosha/gen-base-theme.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/genosha/gen-base-theme#readme"
+}

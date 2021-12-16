@@ -1,0 +1,146 @@
+.rb-tax-form-field input[type=checkbox] {
+    display: inline-block;
+    float: left;
+    margin-top: 0.1rem;
+}
+
+.form-wrap input[type=radio]+label {
+    display: inline-block;
+}
+
+/* ========================================================================== */
+/* IMAGE ZOOM */
+/* ========================================================================== */
+.rb-image-zoom{
+    cursor: pointer;
+}
+
+.rb-image-zoom-container {
+    position:  fixed;
+    height:  100vh;
+    width:  100vw;
+    padding: 5% 10%;
+    top: 0;
+    box-sizing:  border-box;
+    background-color:  rgba(0,0,0,0.7);
+    z-index:  2000000;
+    opacity:  0;
+    display: none;
+    align-items:  center;
+    justify-content:  center;
+}
+
+.rb-image-zoom-container.open {
+    display:  flex;
+}
+
+.rb-image-zoom-container .rb-zoomed {
+    max-height: 100%;
+    max-width: 100%;
+    user-select:  none;
+}
+
+/* ========================================================================== */
+/* GALLERY TAX */
+/* ========================================================================== */
+.rb-tax-field .rb-tax-field-title {
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.rb-tax-images {
+    position: relative;
+    left: -0.3rem;
+    display: flex;
+    flex-wrap:  wrap;
+}
+
+.rb-tax-images .rb-tax-images-boxes {
+    display: flex;
+    flex-wrap:  wrap;
+}
+
+.rb-gallery-box {
+    height:  5rem;
+    width:  5rem;
+    background-position:  center;
+    background-size:  cover;
+    background-repeat:  no-repeat;
+    display:  flex;
+    align-items:  center;
+    justify-content:  center;
+    /* float: left; */
+    margin-left:  0.3rem;
+    margin-bottom: 0.3rem;
+    border: solid 0.1px grey;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.rb-gallery-box:hover {
+    border-color: #3e3e3e;
+}
+
+.rb-gallery-box > i {
+    text-shadow: 0 0 3px black;
+    opacity: 0.5;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.rb-gallery-box > i:hover {
+    opacity: 1;
+}
+
+.rb-gallery-box > .rb-remove {
+    color: red;
+}
+
+.rb-gallery-box.rb-tax-add{
+    cursor: pointer;
+}
+
+.rb-gallery-box.rb-tax-add > .rb-add {
+    opacity: 1;
+    color: green;
+    text-shadow: none;
+}
+
+.rb-gallery-box.rb-tax-add:hover > .rb-add {
+    color: lime;
+}
+
+.rb-image-zoom-container[rb-zoom-gallery-container] .rb-zoom-gallery-close {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    position:  absolute;
+    background:  red;
+    top: calc(5% + 1rem);
+    right: calc(10% + 1rem);
+}
+/* ========================================================================== */
+/* COLUMNS */
+/* ========================================================================== */
+.rb-term-column-images > .rb-gallery-box {
+    height: 2rem;
+    width: 100%;
+}
+
+@media (min-width: 980px) {
+    .rb-term-column-images > .rb-gallery-box {
+        height: 2rem;
+        width: calc(50% - 0.32rem);
+    }
+}
+
+.rb-term-column-images {
+    display:  flex;
+    flex-wrap:  wrap;
+    position:  relative;
+    left: -0.3rem;
+}
+
+.images.column-images {
+    vertical-align: middle;
+}

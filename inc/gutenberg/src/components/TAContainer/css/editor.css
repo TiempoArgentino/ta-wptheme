@@ -1,0 +1,29 @@
+.ta-container > .container-header {
+    margin-bottom: 1rem;
+}
+
+.ta-container > .container-header .text {
+    line-height: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.ta-container > .container-header.special .text {
+    padding: 0.5rem 0.75rem;
+    background: #ebf7fe;
+    display: inline-block;
+    color: #16a1dc;
+}
+
+.ta-context.dark-blue{
+    color: #fff;
+    background-color: #252b2d;
+}
+
+.ta-context.dark-blue .context-bkg-color{
+    background-color: #252b2d;
+}
+
+.ta-context.dark-blue .context-color{
+    background-color: #16a1dc;
+}

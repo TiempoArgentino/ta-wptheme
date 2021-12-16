@@ -1,0 +1,8 @@
+.rb-search-filter {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.rb-search-filter input {
+    width: 100%;
+}

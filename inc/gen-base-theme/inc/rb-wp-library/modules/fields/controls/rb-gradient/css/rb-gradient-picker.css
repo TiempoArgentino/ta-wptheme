@@ -1,0 +1,107 @@
+.rb-gradient-picker-control .inputs{
+    /* display: none; */
+    margin-bottom: 1rem;
+}
+
+.rb-gradient-picker-control .inputs select {
+    width: 49%;
+}
+
+.rb-gradient-picker-control .gradient-picker-holder{
+    margin-bottom: 2rem;
+    /* margin-top: 6rem; */
+}
+
+.rb-gradient-picker-control .gradient-picker-creator{
+    padding: 1rem;
+    display: inline-block;
+    border: solid 1px #0473aa;
+    background-color: #0473aa;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    transition: all 0.4s;
+    /* box-shadow: -2px 3px 5px 0px #00000040; */
+}
+
+.rb-gradient-picker-control .controls-container {
+    display: none;
+}
+
+.rb-gradient-picker-control .gradient-picker-creator:hover {
+    background-color: #008bcf;
+    color: #ffffff;
+    box-shadow: 0 0 4px 0px #008bcf;
+    border-color: #008bcf;
+}
+
+.rb-gradient-picker-control .grp-handler-cp-c {
+    display: block;
+}
+
+.rb-gradient-picker-control .preview {
+    height: 10rem;
+    width: 100%;
+    display: block;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==");
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #0000002b;
+}
+
+.rb-gradient-picker-control .preview span {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    mix-blend-mode: difference;
+    text-shadow: -1px 2px 0px #ffffff;
+}
+
+.rb-gradient-picker-control .grp-handler {
+    width: 8px;
+    margin-left: -3px;
+}
+
+.rb-gradient-picker-control .grp-handler-drag {
+    position: relative;
+    left: -1px;
+}
+
+.rb-gradient-picker-control .gradient-controls {
+    margin-bottom: 2rem;
+}
+
+.rb-gradient-picker-control .gradient-controls .control {
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.25rem;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0473aa;
+    border-radius: 0.25rem;
+}
+
+.rb-gradient-picker-control .gradient-controls .control:hover {
+    /* color: #0473aa; */
+    background-color: #00a1f1;
+}
+
+.rb-gradient-picker-control {
+    /* margin-top: -1rem; */
+}
+
+.rb-gradient-picker-control .grp-handler-selected .grp-handler-drag {
+    border: solid 2px #00e3ffc9;
+    box-sizing: border-box;
+    border-top: 0;
+    border-bottom: 0;
+}

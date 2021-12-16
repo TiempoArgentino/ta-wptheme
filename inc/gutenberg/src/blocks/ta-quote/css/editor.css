@@ -1,0 +1,32 @@
+.ta-quote-block .quote, .ta-quote-block .quote input {
+    /* border: none; */
+    color: rgb(37, 43, 45);
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: -0.2px;
+}
+
+.ta-quote-block .quote input, .ta-quote-block .author input {
+    border: none!important;
+    box-shadow: none!important;
+    max-width: 90%;
+    /* font-size: inherit; */
+    /* color: inherit; */
+}
+
+.ta-quote-block .author {
+    text-align: right;
+}
+
+.ta-quote-block .author input{
+    color: #849899;
+    font-family: "Libre Baskerville";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    text-align: right;
+}

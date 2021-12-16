@@ -1,0 +1,8 @@
+.benefit-description .description.mt-3 {
+  word-break: break-word;
+}
+.benefit-description .description.mt-3 a {
+  color: var(--ta-celeste) !important;
+  text-decoration: underline;
+  font-weight: bold;
+}

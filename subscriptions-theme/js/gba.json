@@ -1,0 +1,562 @@
+[
+    {
+        "Localidad": "11 de septiemnre",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "20 de junio",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "25 de mayo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Acassuso",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Adrogué",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Aldo Bonzi",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Avellaneda",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Banfield",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Barrio Parque",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Barrio Santa Teresita",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Beccar",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Bella Vista",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Berazategui",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Bernal Este",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Bernal Oeste",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Billinghurst",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Boulonge",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Burzaco",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Carapachay",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Caseros",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Castelar",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Churruca",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ciudad Evita",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ciudad Madero",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ciudadela",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Claypole",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Crucecita",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Dock Sud",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Don Bosco",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Don Orione",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "El Jagüel",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "El Libertador",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "El Palomar",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "El Tala",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "EL Trébol",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ezeiza",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ezpeleta",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Florencia Varela",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Florida",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Francisco Álvarez",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Gerli",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Glew",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "González Catán",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Gral. Lamadrid",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Grand Bourg",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Gregorio de Laferrere",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Guillermo Enrique Hudson",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Haedo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Hurlingham",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ing. Sourdeaux",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Isisdro Casanova",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ituzaingó",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "José C. Paz",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "José Ingenieros",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "José Marmol",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "La Lucila",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "La Reja",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "La Tablada",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Lanús",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Llavallol",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Loma Hermosa",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Lomas de Zamora",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Lomas del Millón",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Lomas del Mirador",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Longchamps",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Los Polvorines",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Luis Guillón",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Malvinas Argentinas",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Martín Coronado",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Martínez",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Merlo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ministro Rivadavia",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Monte Chingolo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Monte Grande",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Moreno",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Morón",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Muñiz",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Olivos",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Pablo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Nogués",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Pablo Podestá",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Paso del Rey",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Pereyra",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Piñeiro",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Plátanos",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Pontevedra",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Quilmes",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Rafael Calzada",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Rafael Castillo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ramon Mejía",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Ranelagh",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Remedios de Escalada",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Antonio de Padua",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Fernando",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Francisco Solano",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Isidro",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San José",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Justo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Martín",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "San Miguel",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Santos Lugares",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Sarandí",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Souringues",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Sáenz Peña",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Tapiales",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Temperley",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Tigre",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Tortuguitas",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Tristán Suárez",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Trujui",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Turdera",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Valentín Alsina",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Vicente López",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "VIla Adelina",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Ballester",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Bosch",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Caraza",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Celina",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Cententario",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Diamante",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa DOmínico",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa España",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Fiorito",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "VIlla Guillermina",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Insuperable",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa José León Suárez",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa La Florida",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Luzuriaga",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Martelli",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Obrera",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Progreso",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Raffo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Sarmiento",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "VIlla Tesei",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa Udaondo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Villa de Mayo",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Virrey del Pino",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Wilde",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "William Morris",
+        "Distrito": "gba"
+    },
+    {
+        "Localidad": "Área Reserva Cinturón Ecológico",
+        "Distrito": "gba"
+    }
+]

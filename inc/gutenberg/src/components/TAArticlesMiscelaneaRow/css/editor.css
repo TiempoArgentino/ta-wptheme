@@ -1,0 +1,14 @@
+.articles-list.miscelanea {
+    display: flex;
+}
+
+.articles-list.miscelanea .column:first-child {
+    width: 50%;
+    margin-right: 1rem;
+}
+
+.articles-list.miscelanea .column:nth-child(2) {
+    width: 50%;
+    overflow: auto;
+    max-height: 26rem;
+}

@@ -1,0 +1,26 @@
+{
+    "name": "gen-theme",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "private": true,
+    "workspaces": [
+        "inc/gen-base-theme/inc/modules/gutenberg"
+    ],
+    "scripts": {
+        "start": "webpack --watch --mode=development",
+        "build": "webpack --mode=production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://juanraba@bitbucket.org/genosha/gen-base-theme.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/genosha/gen-base-theme#readme",
+    "dependencies": {
+        "array-move": "^3.0.1",
+        "react-sortable-hoc": "^1.11.0"
+    }
+}

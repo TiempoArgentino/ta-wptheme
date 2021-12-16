@@ -1,0 +1,267 @@
+.media .wp-block-embed__wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#ejesSumate .img-container {
+  height: 201px;
+}
+.member h3 strong {
+  font-size: 19px;
+  line-height: 25px;
+  letter-spacing: -0.1px;
+  margin-top: 5px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+.member .content a {
+  color: var(--ta-celeste) !important;
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 5px;
+}
+
+div#sticky-abajo {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 2000;
+  position: relative;
+}
+.sticky-bajo {
+  position: relative;
+  max-width: 970px;
+  margin-left: auto;
+  margin-right: auto;
+}
+span.cerrar-pop-abajo {
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+}
+span.cerrar-pop-abajo img {
+  width: 24px;
+  height: 24px;
+}
+
+div#popup-avis {
+  z-index: 1500;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  align-items: center;
+  background: rgb(255 255 255 / 62%);
+  height: 100%;
+}
+
+div#popup-avis .popup {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  max-width: 800px;
+  position: relative;
+}
+div#popup-avis .popup img {
+  max-width: 800px;
+}
+span.cerrar-pop {
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+}
+span.cerrar-pop img {
+  width: 32px;
+  height: 32px;
+}
+
+div#popup-avis .popup.popup-mobile {
+  max-width: 320px;
+  margin-top: 50%;
+}
+
+div#popup-avis-pop {
+  z-index: 1500;
+  text-align: center;
+  width: 100%;
+  top: 25%;
+  align-items: center;
+  background: rgb(255 255 255 / 62%);
+  height: 100%;
+  padding: 1% 3%;
+}
+
+div#popup-avis-pop img {
+  max-width: 100%;
+}
+
+div#popup-avis-pop span.cerrar-pop{
+  right: 5px
+}
+
+.sticky-bajo.mobile-fixed {
+  position: relative;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#vslider {
+  z-index: 2000;
+  right: 0.3%;
+  position: fixed;
+  max-width: 500px;
+  bottom: 0;
+}
+.video-bajo {
+  position: relative;
+}
+span.cerrar-vslider-desktop {
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+}
+span.cerrar-vslider-desktop img {
+  width: 16px;
+  height: 16px;
+}
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: var(--ta-socios) !important;
+  border-color: var(--ta-socios) !important;
+}
+.personalizar button a {
+  color: #16a1dc !important;
+  text-decoration: none !important;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+.participa-block-container .participa-items .item img {
+  width: auto !important;
+}
+
+/**
+fix avisos
+*/
+.wp-block-lazyblock-contenedor-avisos {
+  display: flex;
+  justify-content: center;
+}
+
+li#wp-admin-bar-new-post {
+  display: none;
+}
+
+.article-preview .content .article-info-container .author p {
+  display: inline;
+}
+
+@media (min-width: 992px) {
+  .article-preview .img-container .icons-container .article-icons img {
+    max-width: 33px;
+  }
+}
+
+@media (min-width: 768px) {
+  .article-preview .img-container .icons-container .article-icons img {
+    width: 45px;
+    max-width: initial;
+  }
+}
+
+@media (min-width: 500px) {
+  .article-preview .img-container .icons-container .article-icons img {
+    width: 60px;
+  }
+}
+
+@media (min-width: 400px) {
+  .article-preview .img-container .icons-container .article-icons img {
+    width: 50px;
+  }
+}
+@media (min-width: 360px) {
+  .article-preview .img-container .icons-container .article-icons img {
+    width: 40px;
+  }
+}
+
+.article-preview .img-container .icons-container .article-icons img {
+  width: 35px;
+  height: 100%;
+  margin-top: 5px;
+}
+.article-preview .img-container .icons-container .article-icons {
+  min-height: 33px;
+  bottom: 0;
+}
+.temas .tema label {
+  text-transform: capitalize;
+}
+.cloud-item {
+  cursor: pointer;
+}
+
+#page-404 h1, #page-404 h2, #page-404 h3{
+  font-family: 'Libre Baskerville';
+  font-weight: 400;
+  font-style: italic;
+}
+div#page-404 img {
+  max-width: 150px;
+}
+div#page-404 {
+  background: #EBF1F2;
+}
+input#editInfo, input#editDInfo {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  min-width: 130px;
+}
+.ta-context.quienes-somos.mt-3 .img-container {
+  padding-bottom: 0px !IMPORTANT;
+}
+div#ntroCompromisoQuienesSomos .img-container .img-wrapper {
+  background-size: cover !IMPORTANT;
+}
+
+.ta-articles-block.fullwidth-row.nota-hermana .icons-container {
+  display: none;
+}
+.btn-primary.disabled, .btn-primary:disabled{
+  background-color: #ffbb0f !important;
+    border-color: #ffbb0f !important;
+}

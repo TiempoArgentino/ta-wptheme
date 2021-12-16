@@ -1,0 +1,22 @@
+#adminmenu .wp-menu-image img {
+    width: 1.75rem;
+    max-width: 100%;
+    padding: 0;
+}
+
+.auto-fold #adminmenu div.wp-menu-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#adminmenu a.menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#adminmenu div.wp-menu-name {
+    padding-left: 0;
+}

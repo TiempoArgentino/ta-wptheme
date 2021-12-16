@@ -1,0 +1,57 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+}
+
+.historieta .comic-container .comic-wrapper {
+  overflow-x: scroll;
+}
+.historieta .comic-container .comic-wrapper img {
+  max-height: 275px;
+}
+.historieta .title p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22.46px;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+.historieta .autor p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.88px;
+  color: var(--ta-gris-subtexto);
+}
+
+@media (min-width: 768px) {
+  .historieta .comic-container .comic-wrapper {
+    overflow-x: hidden;
+  }
+}
+@media (min-width: 992px) {
+  .historieta .comic-container .comic-wrapper {
+    overflow-x: hidden;
+  }
+  .historieta .comic-container .comic-wrapper img {
+    max-height: inherit;
+    height: auto;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=historieta.css.map */

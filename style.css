@@ -1,0 +1,391 @@
+/*
+* Theme Name: Tiempo Argentino
+* Theme URI:
+* Author: Genosha
+* Author URI: www.genosha.com.ar
+* Description:
+* Version: 0.0.14
+* License:
+* License URI:
+* Tags:
+* Text Domain: gen-base-theme
+* Domain Path: /languages
+*/
+html {
+    margin-top: 0 !important;
+}
+
+#wpadminbar {
+    position: initial;
+}
+
+.article-preview .img-container img {
+    height: 144px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.ta-author-block .profile .picture {
+    height: 174px;
+    border-radius: 6px;
+}
+
+.ta-author-block .profile .picture img {
+    object-fit: cover;
+    max-width: 11rem;
+}
+
+.article-preview .img-container .img-wrapper, .article-preview.destacado .img-container .img-wrapper {
+    background: initial;
+    background-size: cover;
+    background-position: top left;
+    margin-bottom: 10px;
+}
+
+.article-preview.autor .img-container .img-wrapper {
+    margin-bottom: 10px;
+}
+
+.article-preview.autor .img-container .img-wrapper {
+    background-position: top left;
+    background-size: cover;
+}
+
+.ta-redes i {
+    font-size: 27px;
+    color: #849899;
+}
+
+button a {
+    color: var(--ta-celeste) !important
+}
+
+.sub-blocks .ta-articles-block {
+    overflow: hidden;
+}
+
+.podcasts-block .podcast-playlist .podcast-preview.current {
+    background: #ffffff17;
+}
+
+.ta-comentarios-block .single-comment.new {
+    animation-name: newComment;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+
+@keyframes newComment {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.75);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+.ta-comentarios-block .general-error {
+    display: none;
+}
+
+.ta-comentarios-block .error-message {
+    color: red;
+}
+
+.separator-grey {
+    width: 100%;
+    height: 1px;
+    background-color: #00000024;
+    margin-bottom: 3rem;
+}
+
+/** HOT FIX FOTOS EN MICROSITIO SLIDER - SACAR CUANDO ANGIE SUBA ARREGLOS **/
+.slider-micrositio .carousel .carousel-item .carousel-caption a {
+    color: #fff !important;
+}
+
+/** END HOT FIX **/
+/* ESTILOS DE .btns-container .pagination button, adaptados para funcionar con el nav de wordpress
+reemplazar en styles de angie
+ */
+.pagination-articles {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-articles .page-numbers {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-articles .page-numbers {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    background-color: transparent;
+    /* border-radius: 50%; */
+    /* border: 1px solid var(--ta-gris-subtexto); */
+    color: var(--ta-gris-subtexto)!important; /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+    /* margin: 3px; */
+    /* width: 31px; */
+    height: 31px;
+    padding: 0;
+    margin: 0 5px;
+    border: none;
+}
+
+.pagination-articles .page-numbers.prev, .pagination-articles .page-numbers.next {
+    border-color: transparent;
+}
+
+.pagination-articles .page-numbers.current {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    /* background-color: var(--ta-negro-texto); */
+    /* border: 1px solid var(--ta-negro-texto);
+    color: var(--ta-celeste-fondos)!important; */ /* IMPORTANT porque hay un style de anchors en main.scss que lo pisa */
+    border: none;
+    color: var(--ta-negro-texto) !important;
+}
+
+@media (min-width: 992px) {
+    .pagination-articles .page-numbers {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 992px) {
+    .pagination-articles .page-numbers {
+        font-size: 19px;
+    }
+}
+/* END HOTFIX ESTILOS  .btns-container .pagination button */
+
+.ta-ed-impresa-link{
+    color: var(--ta-celeste)!important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.ta-celeste-color{
+    color: var(--ta-celeste);
+}
+
+/** HOTFIX TAGS CLOUD **/
+.article-tags .tag .content, .article-tags .tag .cloud-item, .article-tags .tag .triangle{
+    cursor: pointer;
+     /*transition: all 0.3s;*/
+}
+
+.article-tags .tag{
+    user-select: none;
+}
+
+.article-tags .tag .content{
+    background-color: transparent;
+}
+
+.article-tags .tag.active .content {
+    background-color: var(--ta-celeste);
+}
+
+.article-tags .tag.active .cloud-item {
+    color: #fff;
+}
+
+.article-tags .tag.active .triangle {
+    background-color: var(--ta-celeste);
+}
+
+#cloud-tag-container{
+    display: none;
+}
+
+.eleccion-contenido .ver-mas button.not-active{
+    background-color: #c0c0c0;
+    color: #ffffff;
+}
+/* END HOTFIX TAGS CLOUD */
+
+
+.article-preview .article-icons img{
+    display: none;
+}
+/* Nacho's styles */
+
+
+
+.ta-recuadro .ta-recuadro-contenedor { border: 1px solid;border-color: var(--ta-gris-subtexto);box-sizing: border-box;}
+
+.ta-recuadro.espectaculos .line-height-0 { display:none;}
+
+.ta-recuadro.espectaculos .ta-recuadro-contenedor { border-color:var(--ta-espectaculos) !important;}
+
+.ta-recuadro.espectaculos .ta-recuadro-contenedor a { color:var(--ta-espectaculos) !important;}
+
+.ta-titulo-de-video-portada {
+font-family: "Caladea";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 33.69px;
+letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+.ta-bajada-de-video-portada {
+font-family: "Caladea";
+    font-style: normal;
+		letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+@media(min-width:600px){
+	.bloque-video-mas-nota .wp-block-embed__wrapper {
+		padding-top: calc(100% / 3 * 2);
+	}
+	.bloque-video-mas-nota iframe {
+		width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+	}
+		.bloque-video-mas-nota .ta-articles-block >.col-md-6 {
+		flex: 0 0 100%;
+    max-width: 100%;
+	}
+
+}
+	.bloque-video-mas-nota .ta-articles-block >.col-md-6:first-child {
+		display: none !important;
+	}
+.page-id-304879 h2
+{
+	font-family: "Caladea";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.page-id-304879 .container  p {
+	font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+}
+
+
+.page-id-304879 .article-body {
+border: 1px solid;
+border-color: var(--ta-celeste);
+padding: 10px}
+
+.btn-campus .wp-block-button__link {
+		background: #fff;
+    color: #16A1DC !important;
+    border: solid 2px #16A1DC;
+		border-radius: 0 !important;
+		font-family: 'Red Hat Display', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    font-size: 19px;
+    padding: 0.6rem 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.btn-campus .wp-block-button__link:hover{
+	    text-decoration: none;
+}
+
+@media (min-width: 1200px){
+.articulo-simple .article-body li, .articulo-especial .article-body li {
+    font-size: 19px;
+    line-height: 25.14px;
+    margin-bottom: 1rem;
+}}
+
+@media (max-width:767px){
+	.articulo-simple .author:not(:first-child){
+		margin-top: 1.5rem !important;
+	}
+}
+
+.benefits #fechas label {
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+}
+
+.benefits #fechas label input {
+    font-family: "Red Hat Display";
+height: 18px;
+    vertical-align: sub;
+}
+
+.abrir-beneficio .img-wrapper{
+	background-size: contain !important;
+}
+
+.avisos-contenedor-desktop,.avisos-contenedor-mobile {margin-bottom:30px;}
+.avisos-contenedor-desktop .wp-block-lazyblock-avisos {margin-left:15px;margin-right:15px;}
+.menu {max-width: 100vw;}
+
+
+
+
+#mora .img-wrapper {
+	    background-size: contain;
+	    padding-bottom: 40% !important;
+}
+
+.amp_widget_below_the_header.f-w .w-bl {
+    margin-bottom: 0;
+}
+.pagination {
+    text-align: center;
+}
+.pagination button {
+    display: inline-block;
+    width: auto;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 900;
+    color: white;
+    background-color: var(--ta-celeste);
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+.pagination button a{
+    color: white !important;
+    text-transform: uppercase;
+}
+.pagination .loading{
+    background-image: url('./assets/img/load-beneficios.gif');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    text-indent: -10000px;
+    background-color: transparent;
+}
+#paymentFormBankEdit label{
+    display: block !important;
+}

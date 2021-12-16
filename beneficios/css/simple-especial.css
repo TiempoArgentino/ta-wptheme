@@ -1,0 +1,367 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+  --ta-ambiental: #5e852a;
+  --ta-ambiental-bg: #f4f8ee;
+  --ta-habitat: #ba5749;
+  --ta-habitat-bg: #fff4f3;
+  --ta-medios: #5d9dd6;
+  --ta-medios-bg: #f3f9ff;
+}
+
+.articulo-simple .categories h4,
+.articulo-especial .categories h4 {
+  font-size: 13px;
+  line-height: 15.88px;
+}
+.articulo-simple .categories h4.theme,
+.articulo-especial .categories h4.theme {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  margin-right: 10px;
+}
+.articulo-simple .categories h4.subtheme,
+.articulo-especial .categories h4.subtheme {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.articulo-simple .title h1,
+.articulo-especial .title h1 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+}
+.articulo-simple .subtitle h3,
+.articulo-especial .subtitle h3 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22.49px;
+  letter-spacing: -0.2px;
+}
+.articulo-simple .social-btns a,
+.articulo-especial .social-btns a {
+  text-decoration: none;
+}
+.articulo-simple .date,
+.articulo-simple .author,
+.articulo-especial .date,
+.articulo-especial .author {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+}
+.articulo-simple .author .author-img,
+.articulo-especial .author .author-img {
+  height: 60px;
+  min-height: 60px;
+  width: 60px;
+  background-image: url(../../assets/images/autor-foto-art.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+  position: relative;
+  border-radius: 8px;
+}
+.articulo-simple .author .author-img .author-icon,
+.articulo-especial .author .author-img .author-icon {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+}
+.articulo-simple .img-container .img-wrapper,
+.articulo-especial .img-container .img-wrapper {
+  width: 100vw;
+  height: auto;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+.articulo-simple .img-container .credits p,
+.articulo-especial .img-container .credits p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+}
+.articulo-simple .img-container .credits a,
+.articulo-especial .img-container .credits a {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ta-celeste) !important;
+}
+.articulo-simple .author .author-icon,
+.articulo-especial .author .author-icon {
+  margin-right: 5px;
+}
+.articulo-simple .author p,
+.articulo-especial .author p {
+  margin-bottom: 0;
+}
+.articulo-simple .author a,
+.articulo-especial .author a {
+  color: var(--ta-celeste) !important;
+}
+.articulo-simple .article-body p,
+.articulo-especial .article-body p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.49px;
+  letter-spacing: -0.2px;
+  margin-bottom: 0;
+}
+.articulo-simple .article-body p span,
+.articulo-especial .article-body p span {
+  font-weight: 700;
+}
+.articulo-simple .article-body .anuncio-seccion .anuncio-container p,
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container p,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 19.85px;
+  letter-spacing: -0.2px;
+}
+.articulo-simple .article-body .anuncio-seccion .anuncio-container span,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  color: var(--ta-celeste);
+}
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
+  color: var(--ta-celeste) !important;
+}
+.articulo-simple .article-body .ta-subnote-block,
+.articulo-especial .article-body .ta-subnote-block {
+  border: 1px solid var(--ta-gris-subtexto);
+  position: relative;
+}
+.articulo-simple .article-body .ta-subnote-block .separator,
+.articulo-especial .article-body .ta-subnote-block .separator {
+  position: absolute;
+  top: -2px;
+  margin-top: 0;
+  background-color: var(--ta-negro-texto);
+}
+.articulo-simple .article-body .ta-subnote-block .title h2,
+.articulo-especial .article-body .ta-subnote-block .title h2 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  line-height: 22.49px;
+}
+.articulo-simple .article-body .ta-event-block,
+.articulo-especial .article-body .ta-event-block {
+  border: 1px solid var(--ta-espectaculos);
+}
+.articulo-simple .article-body .ta-event-block .title h2,
+.articulo-especial .article-body .ta-event-block .title h2 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  line-height: 22.49px;
+}
+.articulo-simple .article-body .ta-event-block .title h2.bold,
+.articulo-especial .article-body .ta-event-block .title h2.bold {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.articulo-simple .article-body .ta-event-block .content p a,
+.articulo-especial .article-body .ta-event-block .content p a {
+  text-decoration: underline;
+  text-decoration-color: #ce0d54;
+  color: #ce0d54 !important;
+}
+.articulo-simple .article-body .ta-event-block .content p.bold,
+.articulo-especial .article-body .ta-event-block .content p.bold {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+.articulo-simple .article-body .ta-event-block .content p.red-font,
+.articulo-especial .article-body .ta-event-block .content p.red-font {
+  color: #ce0d54;
+}
+.articulo-simple .bajada p,
+.articulo-especial .bajada p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 17.2px;
+  letter-spacing: 0.3px;
+  color: var(--ta-gris-subtexto);
+}
+.articulo-simple .quote,
+.articulo-especial .quote {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.article-tags .tag .content {
+  width: max-content;
+  border: 1px solid var(--ta-celeste);
+  border-right: 1px solid transparent;
+  z-index: 10;
+}
+.article-tags .tag .content a {
+  text-decoration-color: var(--ta-celeste);
+}
+.article-tags .tag .content p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ta-celeste);
+}
+.article-tags .tag .triangle {
+  content: "";
+  background-color: transparent;
+  bottom: 0;
+  width: 20.6px;
+  height: 20.6px;
+  border-right: 1px solid var(--ta-celeste);
+  border-top: 1px solid var(--ta-celeste);
+  transform: rotate(45deg) translate(-4.5px, 10px);
+}
+.article-tags.ta-blue-bg .tag .content,
+.article-tags.ta-blue-bg .tag .triangle {
+  background-color: var(--ta-celeste);
+}
+.article-tags.ta-blue-bg .tag .content p,
+.article-tags.ta-blue-bg .tag .triangle p {
+  color: white;
+}
+
+@media (min-width: 992px) {
+  .articulo-simple .img-container .img-wrapper,
+.articulo-especial .img-container .img-wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: auto;
+    margin-left: 0;
+  }
+  .articulo-simple .author .author-img,
+.articulo-especial .author .author-img {
+    width: 75px;
+    height: 75px;
+    min-height: 75px;
+  }
+  .articulo-simple .art-column-w-lpadding,
+.articulo-especial .art-column-w-lpadding {
+    padding-left: 85px;
+  }
+  .articulo-simple .art-column-w-xpadding,
+.articulo-especial .art-column-w-xpadding {
+    padding: 0 85px;
+  }
+}
+@media (min-width: 1200px) {
+  .articulo-simple .title h1,
+.articulo-especial .title h1 {
+    font-size: 39px;
+    line-height: 44.85px;
+  }
+  .articulo-simple .subtitle h3,
+.articulo-especial .subtitle h3 {
+    font-size: 19px;
+    line-height: 25.14px;
+  }
+  .articulo-simple .img-container .credits p,
+.articulo-especial .img-container .credits p {
+    font-size: 13px;
+    line-height: 16.12px;
+  }
+  .articulo-simple .article-body p,
+.articulo-especial .article-body p {
+    font-size: 19px;
+    line-height: 25.14px;
+    margin-bottom: 1rem;
+  }
+  .articulo-simple .article-body .featured-quote .quote-body p,
+.articulo-especial .article-body .featured-quote .quote-body p {
+    font-size: 26px;
+    line-height: 32.24px;
+  }
+  .articulo-simple .article-body .featured-quote .author-quoted p,
+.articulo-especial .article-body .featured-quote .author-quoted p {
+    font-size: 16px;
+    line-height: 19.84px;
+  }
+  .articulo-simple .article-body .anuncio-seccion .anuncio-container p,
+.articulo-simple .article-body .anuncio-seccion .anuncio-container a,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container p,
+.articulo-especial .article-body .anuncio-seccion .anuncio-container a {
+    font-size: 19px;
+    line-height: 25.14px;
+  }
+  .articulo-simple .article-body .ta-subnote-block .title h2,
+.articulo-simple .article-body .ta-event-block .title h2,
+.articulo-especial .article-body .ta-subnote-block .title h2,
+.articulo-especial .article-body .ta-event-block .title h2 {
+    font-size: 24px;
+    line-height: 31.75px;
+    letter-spacing: -0.2px;
+  }
+  .articulo-simple .bajada p,
+.articulo-especial .bajada p {
+    font-size: 16px;
+    line-height: 21.17px;
+    letter-spacing: 0.3px;
+  }
+  .articulo-simple .date,
+.articulo-simple .author,
+.articulo-especial .date,
+.articulo-especial .author {
+    font-size: 16px;
+    line-height: 19.84px;
+  }
+
+  .article-tags .tag .content p {
+    font-size: 16px;
+    line-height: 21.17px;
+  }
+  .article-tags .tag .triangle {
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg) translate(-5px, 11px);
+  }
+}
+
+/*# sourceMappingURL=simple-especial.css.map */

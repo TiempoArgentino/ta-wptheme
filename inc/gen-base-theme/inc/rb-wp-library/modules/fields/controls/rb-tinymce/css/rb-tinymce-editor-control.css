@@ -1,0 +1,69 @@
+.rb-tinymce-control{
+    position: relative;
+    min-height: 6rem;
+    /* z-index: 99999; */
+}
+
+.rb-tinymce-control .editor-placeholder {
+    position: absolute;
+    width: 100%;
+    background-image: url(http://modx.s3.amazonaws.com/extras/54eb652ddc532f725a02bf64/tinymcerte.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 0rem;
+}
+
+.rb-tinymce-control .editor-open-button {
+    color: #ffffff;
+    background-color: rgba(100, 149, 237, 0.85);
+    padding: 1rem;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-tinymce-control .editor-open-button:hover {
+    background-color: #61a4f9;
+}
+
+.rb-tinymce-control .tinymce-editor-container {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    background-color: #d6dde8;
+    display: none;
+    /* width: 100%; */
+    z-index: 1;
+    position: relative;
+    box-shadow: 0px 0px 3px black;
+    padding: 0.5rem;
+    min-height: 6rem;
+}
+
+.rb-tinymce-control .tinymce-editor-container .media-button {
+    display: block;
+    background-color: #fff;
+    border: solid 1px #ffffff;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    /* margin: 0 auto; */
+    width: max-content;
+    border-radius: 0.5rem;
+    /* margin-left: 1rem; */
+    /* transition: all 0.3s; */
+}
+
+.rb-tinymce-control .tinymce-editor-container .media-button:hover {
+    border-color: grey;
+}

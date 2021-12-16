@@ -1,0 +1,643 @@
+@keyframes half-turn {
+    100% {transform: rotate(180deg)}
+}
+
+a {
+    color: #ffa200;
+}
+
+li {
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	display: inline-block;
+	float: left;
+}
+
+label, legend {
+    font-weight: 400;
+}
+
+button.customize-partial-edit-shortcut-button {
+    left: 1rem;
+}
+
+.separator-control {
+    border-top: double 0.3rem #ffa200;
+    padding-top: 1rem;
+
+}
+
+.customize-section-title > h3 {
+    font-weight: bold!important;
+}
+
+.customize-panel-back:focus, .customize-panel-back:hover, .customize-section-back:focus, .customize-section-back:hover {
+    color: #ffa200;
+    border-left-color: #ffa200;
+}
+
+#customize-theme-controls .control-section .accordion-section-title:focus:after, #customize-theme-controls .control-section .accordion-section-title:hover:after, #customize-theme-controls .control-section.open .accordion-section-title:after, #customize-theme-controls .control-section:hover>.accordion-section-title:after {
+    color: #ffa200;
+}
+
+#customize-controls .control-section .accordion-section-title:focus, #customize-controls .control-section .accordion-section-title:hover, #customize-controls .control-section.open .accordion-section-title, #customize-controls .control-section:hover>.accordion-section-title {
+    color: #ffa200;
+    border-left-color: #ffa200;
+}
+
+.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
+    color: #FFF;
+    background-color: #ffa20000;
+    border-color: #ffa200;
+}
+
+@media screen and (max-width: 640px){
+	#publish-settings{
+		height: 30px;
+	}
+}
+
+#publish-settings{
+	border-left: solid 0.1rem #ffa200;
+}
+
+.wp-core-ui .button-primary {
+    background: #ffa20000;
+    text-decoration: none;
+    text-shadow: none;
+    color: #ffa200!important;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
+    -webkit-box-shadow: 0 1px 0 #ffa200, 0 0 2px 1px #ffa200;
+    box-shadow: 0 1px 0 #ffa200, 0 0 2px 1px #ffa200;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+    background: #c83c4d;
+    border-color: #6a9221;
+    color: #fff;
+}
+
+.button.button-primary:hover, button.button-primary:hover, input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover, .button.button-primary:focus, button.button-primary:focus, input[type="submit"].button-primary:focus, input[type="reset"].button-primary:focus, input[type="button"].button-primary:focus {
+    color: #ffffff!important;
+    background-color: #c04d5b00;
+    border-color: #ffa200;
+    background-color: #ffa200;
+}
+
+.wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
+    background-color: #c83c4d;
+    border-color: #c83c4d;
+    -webkit-box-shadow: inset 0 2px 0 #c83c4d;
+    box-shadow: inset 0 2px 0 #8e1d2b;
+}
+
+.button-primary#save {
+    border-right-width: 0;
+    transform: none!important;
+}
+
+.wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] {
+    color: #979797!important;
+    background: #555d66!important;
+    border-color: #555d66!important;
+}
+
+#customize-save-button-wrapper .save:focus, #publish-settings:focus {
+    box-shadow: 0 1px 0 #ffa200, 0 0 2px 1px #ffa200;
+}
+
+.wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
+    background-color: #ffa200;
+    border-color: #ffa200;
+}
+
+#customize-header-actions .customize-controls-preview-toggle, #customize-header-actions .spinner, #customize-save-button-wrapper, .button-primary#save, #publish-settings {
+    transition:  all 0.2s;
+}
+
+.wp-core-ui .button-link {
+    color: #ffa200;
+}
+
+.customize-pane-child {
+	height: 100%;
+}
+
+.input-container-control {
+	display: none;
+    width: 100%;
+    background: #ffa200;
+    padding: 0.5rem;
+    box-sizing: border-box;
+	color: white;
+}
+
+.field-label {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.item.item-text.item-network {
+    margin-bottom: 1rem;
+}
+
+.customize-control-arrow {
+	float: right;
+	font-size: 2.5rem;
+	position: absolute;
+	right: 1rem;
+	top: -0.2rem;
+	animation-timing-function: ease-out;
+	transition: all 0.4s;
+}
+
+.customize-control-arrow.top-control-arrow{
+    float: none;
+    position: static;
+    margin-right: 1rem;
+}
+
+.rotate {
+    animation: half-turn 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.title-holder {
+	transition: all 0.4s;
+	display: block;
+	background: #ffffff;
+	border: solid 1px #bbbbbb;
+	padding: 0.5rem;
+	cursor: pointer;
+	position: relative;
+	height: 2.6rem;
+}
+
+.title-holder:hover  span {
+	color: #ffa200;
+}
+
+.controls-separator{
+    margin: 3rem 0;
+    text-align: center;
+    border: solid 0.3rem #ffa200;
+    background-color: #ffa200;
+    border-left: 0;
+    border-right: 0;
+    font-weight: bold;
+    font-size: 2.3rem;
+    color: #ffffff;
+    position:  relative;
+    left: -1.2rem;
+    width: calc(100% + 2.4rem);
+}
+
+.image-gallery-thumbnail-wrapper{
+	cursor: move;
+}
+
+.customizer-control-holder {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #adadad;
+    cursor: default;
+}
+
+.rb-inputs-group-fake-input{
+    display: none!important;
+    height: 0!important;
+    width: 0!important;
+    padding: 0!important;
+    margin: 0!important;
+    overflow: hidden!important;
+}
+
+/*Collapsibles*
+/*************************************************************************************************/
+.collapsible-body {
+    display:  none;
+    background-color: #ffffff;/*    background-color: #ffa200;*/
+    padding: 1rem 0.7rem;
+}
+
+.collapsible-body input:not([type='checkbox']), .collapsible-body textarea{
+	width: 100%;
+	background-color: #ffa2000a;
+}
+
+.customizer-inputs-group .input-label {
+    color: #ffa200;
+    font-size: 1.6rem;
+    font-weight:  bold;
+}
+
+.customizer-inputs-group .inputs-generator-inputs-holder {
+    margin-bottom: 1rem!important;
+}
+
+.customizer-inputs-group input, .customizer-inputs-group textarea, .customizer-inputs-group select {
+    margin-bottom: 0!important;
+}
+
+.customize-control-multiple-inputs input[type=checkbox] {
+    margin-bottom: 0!important;
+}
+
+.collapsible-title {
+    transition: all 0.4s;
+    /* display: block; */
+    background: #ffffff;
+    border: solid 1px #bbbbbb;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    height: 3.6rem;
+    box-sizing:  border-box;
+    overflow:  hidden;
+}
+
+.collapsible-title .collapsible-arrow:hover {
+    color: #ffa200;
+}
+
+.collapsible-title i {
+    transition:  all 0.4s;
+}
+
+.collapsible-title .delete-item:hover {
+    color: #a80606;
+}
+
+.collapsible-title .delete-item:hover ~ i {
+    color: #555d66;
+}
+
+.collapsible-title:hover .collapsible-arrow {
+    color: #ffa200;
+}
+
+.collapsible-title:hover .customize-control-title {
+    color: #ffa200;
+}
+
+.collapsible-title.customize-control-title {
+    transition: all 0.4s;
+}
+
+
+.collapsible-body-controls .delete-item {
+    font-size:  2.5rem;
+    color: #ffffff;
+    transition:  all 0.4s;
+    cursor:  pointer;
+}
+
+.collapsible-body-controls {
+    text-align:  right;
+    margin-top: 1rem;
+}
+
+.collapsible-body-controls .delete-item:hover {
+    color: #000000;
+}
+
+.collapsible-title.collapsible-open ~ .collapsible-body {
+    border: solid 0.1rem #bbbbbb;
+    border-top-width: 0;
+}
+
+/*Dragable lists and generators controlls*/
+/*************************************************************************************************/
+
+.title-and-trash-holder .customize-control-title {
+    width: 70%;
+    display: inline-block;
+    box-sizing: border-box;
+	margin-bottom: 0;
+}
+
+.title-and-trash-holder .delete-item-on-drop {
+    width: 28%;
+    display: inline-block;
+    box-sizing:  border-box;
+    text-align: right;
+    font-size: 3rem;
+	margin: 0;
+}
+
+.title-and-trash-holder .delete-item-on-drop.trashcan-activated {
+	animation: transhcanActivated 1.5s infinite;
+}
+
+@keyframes transhcanActivated {
+  0% {
+    color: #555d66;
+  }
+  50% {
+    color: #ff0000;
+  }
+  100% {
+    color: #555d66;
+  }
+}
+
+.title-and-trash-holder{
+	display: flex;
+	align-items: center;
+}
+
+.title-holder .customize-control-arrow {
+    width:  15%;
+    text-align:  center;
+}
+
+.customizer-add-new-button {
+    text-align:  center;
+}
+
+.customizer-add-new-button i:hover {
+    color: #ffa200;
+}
+
+.customizer-add-new-button i {
+    transition: all 0.4s;
+    font-size: 4rem;
+    cursor:  pointer;
+}
+
+.bullet-draggable.ui-sortable-placeholder {
+	height: 3.6rem!important;
+	box-sizing: border-box;
+	border-style: none!important;
+	overflow: hidden;
+}
+
+.bullet-draggable.ui-sortable-placeholder:before {
+    content: "";
+    display: block;
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: #ffa200;
+    border-radius: 50%;
+    position: absolute;
+	left: 0;
+    top: 0.9rem;
+    cursor: move;
+    transition: all 0.4s;
+    z-index: 2;
+}
+
+.customizer-sortable-ul {
+    margin-left: 0;
+}
+
+.customizer-draggable-li{
+    position:  relative;
+}
+
+.customizer-draggable-li .draggable-ball-space {
+    height: 3.4rem;
+    width: 3.4rem;
+    position: absolute;
+    left: -1.9rem;
+    top: -0.1rem;
+    background: #eeeeee;
+    border: solid 0.1rem #bbbbbb;
+    border-left: 0;
+    border-radius: 100%;
+    display:  flex;
+    align-items:  center;
+    justify-content: center;
+}
+
+.customizer-draggable-li .draggable-ball {
+    display:  block;
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: #555d66;
+    border-radius: 50%;
+    position: absolute;
+    left: 0rem;
+    top: 0.9rem;
+    cursor: move;
+    transition:  all 0.4s;
+    z-index:  2;
+}
+
+.customizer-draggable-li .draggable-ball:hover {
+    background-color: #ffa200;
+    box-shadow: 0px 0px 2px 0px #ffa200;
+}
+
+.customizer-draggable-li .customize-control-title {
+    user-select: none;
+    left: 2rem;
+    position: relative;
+    white-space:  nowrap;
+    width: 80%;
+    overflow:  hidden;
+    text-overflow:  ellipsis;
+}
+
+.customizer-draggable-li.bullet-draggable .customizer-draggable-li-title:after {
+    content:  "";
+    height: 3.4rem;
+    width: 3.4rem;
+    position: absolute;
+    left: -2rem;
+    top: -0.1rem;
+    background: #eeeeee;
+    border: solid 0.1rem #bbbbbb;
+    border-left: 0;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bullet-draggable {
+    padding-left: 0.8rem;
+}
+
+.customizer-sortable-list {
+    margin-left:  0;
+}
+
+.customizer-sortable-list li {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.customizer-add-new-button {
+    text-align: center;
+}
+
+.customizer-add-new-button i {
+    transition: all 0.4s;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+.customizer-add-new-button i:hover {
+    color: #ffa200;
+}
+
+.bullet-draggable .customizer-draggable-li-title {
+    position: relative;
+    background: #ffffff;
+    border-left-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 3.6rem;
+    transition: all 0.4s;
+}
+
+.input-wp-media-image-holder .input-image-src {
+    position:  relative;
+    max-height: 15rem;
+    opacity: 1;
+}
+
+.input-wp-media-image-holder {
+    position:  relative;
+    border: dashed 0.1rem #555d66;
+    min-height: 6rem;
+    cursor:  pointer;
+    display:  flex;
+    align-items:  center;
+    justify-content:  center;
+    background-color: #d2d2d2;
+}
+
+.input-wp-media-image-holder .input-image-placeholder {
+    position:  absolute;
+    display:  flex;
+    align-items: center;
+    justify-content:  center;
+    height:  100%;
+    width:  100%;
+    top: 0;
+    left:  0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.input-wp-media-image-holder .input-image-placeholder p {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.input-wp-media-image-holder:hover .input-image-src {
+    opacity: 0.2;
+}
+
+.input-wp-media-image-holder:hover .input-image-placeholder, .input-wp-media-image-holder .input-image-src[src=""] ~ .input-image-placeholder {
+    z-index: 2;
+    opacity: 1;
+}
+
+.input-wp-media-image-holder input {
+    position:  absolute;
+    top: 0;
+    z-index:  -1;
+    opacity: 0;
+}
+
+.remove-image-button {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.remove-image-button i:hover {
+    color:  red;
+}
+
+.remove-image-button i {
+    transition:  all 0.3s;
+    cursor:  pointer;
+}
+
+/* ========================================================================== */
+/* BASE CONTROL PANEL */
+/* ========================================================================== */
+
+.rb-control-panel {
+    position:  fixed;
+    width: 100%;
+    height:  0;
+    background-color: #ffffff;
+    top: 4.54rem;
+    left:  0;
+    z-index:  20;
+    padding: 0rem 1rem;
+    box-sizing:  border-box;
+    overflow: auto;
+    transition: 0.4s;
+    cursor: default;
+    border-right: solid 0.3rem #ffa200;
+}
+
+@media (min-width: 601px){
+	.rb-control-panel {
+		width: 300px;
+	}
+}
+
+.rb-control-panel > span {display:  block;}
+
+.rb-control-panel-title {
+    color: #ffa200;
+    width: 90%;
+    margin-bottom: 0;
+}
+
+.rb-control-panel-close-button {
+    width:  10%;
+    font-size: 3rem;
+    text-align:  center;
+    margin-right: 1rem;
+    transition: all 0.4s;
+    cursor:  pointer;
+}
+
+.rb-control-panel-close-button:hover {
+    color: #ffa200;
+}
+
+.rb-control-panel-title-container {
+    display:  flex;
+    align-items:  center;
+    margin: 1rem 0;
+}
+
+/* ========================================================================== */
+/* BUTTONS */
+/* ========================================================================== */
+.rb-hollow-button {
+    position: relative;
+    background: #f5f5f5;
+    color: #555555;
+    font-weight: 600;
+    text-align: center;
+    border: solid 0.1rem #ddd;
+    padding: 0.6rem;
+    overflow: hidden;
+    cursor:  pointer;
+    transition:  all 0.3s;
+}
+
+.rb-hollow-button:hover {
+    border-color: #999;
+    color: #23282d;
+    border-color: #23282d;
+}

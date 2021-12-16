@@ -1,0 +1,42 @@
+.rb-autocomplete {
+    position: relative;
+}
+
+.rb-autocomplete .search-input {
+    width: 100%;
+    box-sizing: border-box;
+    /* padding: 0; */
+    margin: 0;
+}
+
+.rb-autocomplete .dropdown {
+    background: #fff;
+    /* height: 5rem; */
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    border: solid 1px grey;
+    border-top: 0;
+    box-sizing: border-box;
+}
+
+.rb-autocomplete .result-item {
+    padding: 0.5rem 1rem;
+    /* margin-bottom: 1rem; */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.rb-autocomplete .result-item:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.rb-autocomplete .result-item:hover {
+    background-color: #2271b1;
+    color: #fff;
+}
+
+.rb-autocomplete .result-item .title {
+    margin: 0;
+}

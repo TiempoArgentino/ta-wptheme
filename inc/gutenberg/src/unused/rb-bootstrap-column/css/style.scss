@@ -1,0 +1,54 @@
+.edit-post-visual-editor .block-editor-block-list__block.rb-bs-col-block{
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    border: dashed 1px transparent;
+    margin: initial;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    margin-right: 2rem;
+}
+
+.edit-post-visual-editor .block-editor-block-list__block.rb-bs-col-block:not(.is-selected) {
+    border-color: grey;
+}
+
+$columns: 12;
+$breakpoints: ("xs": "", "sm": "", "md": "", "lg": "", "xl": "");
+$infix: 1;
+
+@function breakpoint-min($name){
+    @return $name == "xs";
+}
+
+@function breakpoint-infix($name) {
+  @return if(breakpoint-min($name), "", "-#{$name}");
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    max-width: calc(#{percentage($size / $columns)} - 2rem);
+    min-height: 8rem;
+}
+
+@function col-class($preview-class, $infix, $i){
+    @return ".rb-bootstrap-row.columns#{$preview-class} > .block-editor-inner-blocks > .block-editor-block-list__layout > .rb-bs-col-block#{$infix}-#{$i}";
+}
+
+$todo-breakpoints: ($breakpoints);
+@each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint);
+    @for $i from 1 through $columns {
+        $class: '';
+        @each $preview-breakpoint in map-keys($todo-breakpoints){
+            $preview-infix: breakpoint-infix($preview-breakpoint);
+            $preview-class: if(breakpoint-min($preview-breakpoint), '', ".preview#{$preview-infix}");
+            $class: $class + col-class($preview-class, $infix, $i) + ',';
+        }
+        #{$class} {
+            @include make-col($i, $columns);
+        }
+    }
+
+    $todo-breakpoints: map-remove($todo-breakpoints, $breakpoint);
+}

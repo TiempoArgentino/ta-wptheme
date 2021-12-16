@@ -1,0 +1,42 @@
+.rb-autocomplete-list .rb-autocomplete {
+    margin-bottom: 1rem;
+}
+
+.rb-autocomplete-list .items-list {
+    margin-right: -0.2rem;
+}
+
+.rb-autocomplete-list .items-list .item {
+    display: inline-flex;
+    background: #dddddd;
+    border-radius: 1rem;
+    padding: 3px 12px;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+    border: solid #dddddd;
+}
+
+.rb-autocomplete-list .items-list .item.sortable-chosen.sortable-ghost{
+    opacity: 0.5;
+    border-style: dashed;
+    border-color: #3c434a;
+}
+
+.rb-autocomplete-list .items-list .item .title {
+    margin-right: 8px;
+    user-select: none;
+    font-size: 11px;
+}
+
+.rb-autocomplete-list .items-list .item .rmv-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-autocomplete-list .items-list .item .rmv-btn .dashicon {
+    font-size: 13px;
+    height: initial;
+    width: initial;
+}

@@ -1,0 +1,115 @@
+.rb-attachment-focus-control .attachment-image-container{
+    position: relative;
+    margin: 1rem 1rem;
+    /* overflow: hidden; */
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-overlay-container > .overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 0%;
+    background-color: #00ffe752;
+}
+
+.rb-attachment-focus-control .attachment-image-container img {
+    display: block;
+    max-height: 15rem;
+    max-width: 100%;
+    /* height: auto; */
+    user-select: none;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-table {
+    /* position: absolute; */
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    top: 0;
+    left: 0;
+    user-select: none;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-table .pointer {
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 2px;
+    background-color: #ffffffa3;
+    /* border: solid 1px red; */
+    /* border-radius: 50%; */
+    box-sizing: border-box;
+    /* pointer-events: none; */
+    /* outline: solid 5px #ff0000bf; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-table .pointer span {
+    background-color: inherit;
+    height: min-content;
+    width: min-content;
+    padding: 2px;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-table .pointer.x-pointer {
+    background-color: #7a00ffa3;
+    height: 100%;
+    justify-content: center;
+    margin-left: -2px;
+}
+
+.rb-attachment-focus-control .attachment-image-container .selection-table .pointer.y-pointer {
+    background-color: #00ff1fa3;
+    width: 100%;
+    align-items: center;
+    /* padding-left: 2px; */
+    margin-top: -2px;
+}
+
+.rb-attachment-focus-control .data-display{
+
+display: flex;
+
+flex-wrap: wrap;
+
+margin-bottom: 1rem;
+}
+
+.rb-attachment-focus-control .data-display .display-item{
+    width: 50%;
+    display: inline-block;
+    border: solid 1px;
+    box-sizing: border-box;
+    padding: 0.2rem 0.5rem;
+}
+
+.rb-attachment-focus-control .data-display .display-item:first-child {
+    border-right: 0;
+}
+
+.rb-attachment-focus-control .data-display .display-item .title {
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.rb-attachment-focus-control .data-display .display-item .value {
+    margin: 0;
+}
+
+.rb-attachment-focus-control .options-selection .title{
+    font-weight: 600;
+}

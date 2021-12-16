@@ -1,0 +1,124 @@
+.ta-articles-images-controls {
+    margin-bottom: 2rem;
+}
+
+.ta-articles-images-controls:not(.empty) .when-empty, .ta-articles-images-controls:not(.loading) .when-loading {
+    display: none;
+}
+
+.ta-articles-images-controls.empty .when-not-empty {
+    display: none;
+}
+
+.ta-articles-images-controls.loading .image-box .content{
+    display: none;
+}
+
+.ta-articles-images-controls .image-box {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+    border: dashed 2px;
+    box-sizing: border-box;
+}
+
+.ta-articles-images-controls.loading .image-box {
+    border-width: 0;
+}
+
+.ta-articles-images-controls .image-box .bkg {
+    width: 100%;
+    height: 100%;
+    background-position: top left;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ta-articles-images-controls .image-box .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+}
+
+.ta-articles-images-controls .image-selector .title {
+    margin-bottom: 0;
+}
+
+.ta-articles-images-controls.image-selector .description {
+    font-size: 11px;
+}
+
+.ta-articles-images-controls .image-box .content .controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ta-articles-images-controls .image-box .content .controls .remove-btn {
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 1rem;
+    border: solid 1px black;
+    cursor: pointer;
+}
+
+.ta-articles-images-controls .content .text {
+    text-shadow: 0px 0px 2px black;
+    color: #fff;
+    background-color: #0000005c;
+    max-width: min-content;
+    padding: 0.2rem;
+}
+
+li#wp-admin-bar-new-post,li#wp-admin-bar-archive {
+    display: none;
+}
+
+.compat-item tr.compat-field-ta_photographer {
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.compat-item tr.compat-field-ta_photographer > .field{
+    width: 100%;
+}
+
+.compat-item tr.compat-field-ta_photographer > .field > input.text{
+    display: none;
+}
+
+#custom-comment-meta-controls {
+    padding: 5px;
+}
+
+#replyrow #edithead{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body.taxonomy-ta_article_micrositio .form-field.term-slug-wrap {
+    display: none;
+}
+
+body.taxonomy-ta_article_micrositio #col-left {
+    display: none;
+}
+
+body.taxonomy-ta_article_micrositio #col-right {
+    width: 100%;
+}
+#custom_content_editor, #ampforwp_title_meta{
+    display: none !important;
+}

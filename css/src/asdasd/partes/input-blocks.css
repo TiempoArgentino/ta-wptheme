@@ -1,0 +1,216 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-cultura: #48b1a7;
+  --ta-deportes: #ee813c;
+}
+
+.header-container .date p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+}
+.header-container .title p,
+.header-container .author-name p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-celeste);
+  font-size: 15px;
+  line-height: 18px;
+  margin: 0;
+}
+.header-container .author-name p {
+  color: var(--ta-negro-texto);
+}
+.header-container .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22.49px;
+  letter-spacing: -0.2px;
+}
+.header-container .description p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22.49px;
+  letter-spacing: 0.3px;
+}
+.header-container .description p.hashtag {
+  color: var(--ta-celeste);
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22.49px;
+  letter-spacing: 0.3px;
+}
+.header-container .description a:hover {
+  color: var(--ta-celeste) !important;
+}
+
+.input-quantity p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  color: var(--ta-celeste);
+}
+
+.input-box .input-container .input-wrapper span {
+  display: block;
+  padding: 0 10px;
+  padding-right: 40px;
+  border-radius: 20px;
+  border: 1.5px solid var(--ta-celeste);
+}
+.input-box .input-container .input-wrapper span input {
+  background: none;
+  width: 100%;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  height: 38px;
+}
+.input-box .input-container .input-wrapper span input::placeholder {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ta-celeste);
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+.input-box .input-container .input-icon button {
+  right: 0;
+  bottom: 5px;
+  max-width: 42px;
+  border: none;
+  background-color: transparent;
+}
+.input-box .send-btn button {
+  background-color: transparent;
+  border: none;
+}
+
+.input-container .input .profile {
+  height: min-content;
+}
+.input-container .input .profile .partner-icon .icon {
+  left: -10px;
+  bottom: -25%;
+}
+.input-container .input .content .user-info p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.input-container .input .content .user-info p span.yellow-tag {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ta-socios);
+}
+.input-container .input .content .user-info p span.blue-tag {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  color: var(--ta-celeste);
+}
+.input-container .input .content .questioner-info p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-celeste);
+}
+.input-container .input .content .date p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+.input-container .input .content .input-body p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+
+@media (min-width: 1200px) {
+  .header-container .date p,
+.header-container .title p,
+.header-container .author-name p {
+    font-size: 19px;
+    line-height: 25.14px;
+    letter-spacing: -0.1px;
+  }
+  .header-container .description p,
+.header-container .description p.hashtag {
+    font-size: 24px;
+    line-height: 31.75px;
+    letter-spacing: -0.2px;
+  }
+  .header-container .description p span,
+.header-container .description p.hashtag span {
+    font-size: 24px;
+    line-height: 31.75px;
+    letter-spacing: -0.2px;
+  }
+
+  .input-quantity p {
+    font-size: 19px;
+    line-height: 25.14px;
+    letter-spacing: -0.1px;
+  }
+
+  .input-box .input-container .input-wrapper span {
+    padding-right: 50px;
+  }
+  .input-box .input-container .input-wrapper span input {
+    height: 50px;
+  }
+  .input-box .input-container .input-wrapper span input::placeholder {
+    font-size: 19px;
+    letter-spacing: -0.1px;
+  }
+  .input-box .input-container .input-icon button {
+    max-width: unset;
+    bottom: 6px;
+  }
+  .input-box .send-btn {
+    height: 52px;
+  }
+
+  .input-container .input .content .user-info p,
+.input-container .input .content .input-body p {
+    font-size: 19px;
+    line-height: 25.14px;
+    letter-spacing: -0.1px;
+  }
+  .input-container .input .content .date p {
+    font-size: 16px;
+    line-height: 19.84px;
+  }
+}
+
+/*# sourceMappingURL=input-blocks.css.map */

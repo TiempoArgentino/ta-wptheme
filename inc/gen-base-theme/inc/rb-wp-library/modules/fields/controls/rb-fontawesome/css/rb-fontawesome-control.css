@@ -1,0 +1,84 @@
+.font-awesome-list .nav {
+    display:  flex;
+    align-items:  center;
+    justify-content: space-around;
+}
+
+.font-awesome-list .nav > div {
+    width: 100%;
+    text-align:  center;
+    background-color: #c1c1c1;
+    color: black;
+    border-right:  solid 0.1px grey;
+    cursor:  pointer;
+}
+
+.font-awesome-list {
+    padding:  0;
+}
+
+.font-awesome-list .nav > div:last-child {
+    border-right:  none;
+}
+
+.font-awesome-list .codes-list {
+    min-height:  5rem;
+    /* padding:  1rem; */
+}
+
+.current-fa {
+    text-align:  center;
+    font-size: 3rem;
+    border: solid 1px #bbbbbb;
+    border-bottom: 0;
+    padding: 0.5rem;
+}
+
+.fa-control-title {
+    display:  flex;
+    align-items:  center;
+    justify-content:  space-between;
+}
+
+.fa-control-title .collapsible-arrow {
+    font-size: 2rem;
+}
+
+.fa-icons-group-title {
+    text-align:  center;
+    font-weight:  bold;
+}
+
+.fa-icons-group-title:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.fa-icons-group-body > i, .fa-search-list > i {
+    font-size: 1.5rem;
+    width: 12%;
+    margin: 5%;
+    cursor: pointer;
+    transition: all 0.1s;
+    text-align: center;
+}
+
+.fa-icons-group-body > i:hover, .fa-icons-group-body > i.active, .fa-search-list > i:hover, .fa-search-list > i.active {
+    color: #fd2a5f;
+}
+
+.fa-icons-group-body > i:hover, .fa-search-list > i:hover {
+    transform: scale(2);
+}
+
+.font-awesome-list .nav > input {
+    margin-bottom: 0!important;
+    border-radius:  0;
+}
+
+.fa-search-list {
+    margin-bottom: 1rem;
+}
+
+.fa-icons-group-body > i.active, .fa-search-list > i.active {
+    cursor: default;
+}

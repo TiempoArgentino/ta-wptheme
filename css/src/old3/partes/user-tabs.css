@@ -1,0 +1,1201 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-fondos: #ebf1f2;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-espectaculos-bg: #f9f2f6;
+  --ta-cultura: #48b1a7;
+  --ta-cultura-bg: #e0fbf9;
+  --ta-deportes: #ee813c;
+  --ta-deportes-bg: #fff3ec;
+}
+
+.ta-context.user-tabs .separator {
+  background-color: var(--ta-socios);
+}
+.ta-context.user-tabs .btns-container button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  min-width: 130px;
+}
+.ta-context.user-tabs .btns-container button:focus {
+  border: none;
+  outline: none;
+}
+.ta-context.user-tabs .btns-container button.yellow-btn-white-text {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: white;
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+.ta-context.user-tabs .btns-container button.yellow-btn-yellow-text {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-socios-fondos);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+.ta-context.user-tabs .btns-container button.yellow-btn-yellow-text.active {
+  color: var(--ta-negro-texto);
+}
+.ta-context.user-tabs .btns-container button.gray-btn-black-text {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-gris-fondos);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+}
+.ta-context.user-tabs .btns-container button.transparent-btn {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: transparent;
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+}
+
+/* .mh-75 {
+  max-height: 75vh !important;
+} */
+.user-block-container .title h4 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+}
+.user-block-container .title h4.italic {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24.8px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .title h4.pack-name {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+.user-block-container .title h4 span {
+  background-color: var(--ta-socios-fondos);
+}
+.user-block-container .form-container .input-container {
+  position: relative;
+  margin-top: 15px;
+}
+.user-block-container .form-container .input-container input,
+.user-block-container .form-container .input-container select {
+  border-radius: 20px;
+  font-size: 13px;
+  height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.user-block-container .form-container .input-container input::placeholder,
+.user-block-container .form-container .input-container select::placeholder {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-gris-subtexto);
+}
+.user-block-container .form-container .input-container input:focus,
+.user-block-container .form-container .input-container select:focus {
+  outline: none;
+}
+.user-block-container .form-container .input-container input.with-icon {
+  padding-left: 40px;
+}
+.user-block-container .form-container .input-container input:not(:placeholder-shown):valid {
+  background: url(../../assets/images/correct-input.svg);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: 97%;
+}
+.user-block-container .form-container .input-container input:not(:placeholder-shown):valid + label {
+  opacity: 0;
+}
+.user-block-container .form-container .input-container input:not(:placeholder-shown):invalid {
+  background: url(../../assets/images/wrong-input.svg);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: 97%;
+}
+.user-block-container .form-container .input-container input:not(:placeholder-shown):invalid + label {
+  opacity: 0;
+}
+.user-block-container .form-container .input-container .input-icon img {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+}
+.user-block-container .form-container .input-container select {
+  padding: 0 5px;
+  min-width: 70px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-gris-subtexto);
+}
+.user-block-container .form-container .input-container label {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+}
+.user-block-container .form-container .input-container textarea {
+  width: 100%;
+  border: 1.5px solid var(--ta-gris-subtexto);
+  font-size: 13px;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+.user-block-container .form-container .input-container textarea:focus {
+  outline: none;
+}
+.user-block-container .btns-container button {
+  padding-left: 40px;
+  padding-right: 40px;
+  width: inherit;
+}
+.user-block-container .btns-container button.gray-btn-black-text {
+  min-width: 150px;
+}
+.user-block-container .user-tabs .nav {
+  flex-wrap: nowrap;
+}
+.user-block-container .user-tabs .nav.nav-tabs {
+  background-color: var(--ta-gris-fondos);
+  border: none;
+}
+.user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link {
+  display: flex;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0;
+  border: none;
+}
+.user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding: 5px;
+}
+.user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active {
+  border-color: var(--ta-gris-subtexto);
+  background-color: var(--ta-gris-fondos);
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  border-right: transparent;
+  position: relative;
+  z-index: 5;
+  height: 32px;
+}
+.user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active p {
+  border: 1px solid var(--ta-gris-subtexto);
+  border-bottom: 2px solid var(--ta-socios);
+  background-color: white;
+  border-right: none;
+}
+.user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link.active div {
+  display: block;
+  height: 100%;
+  position: relative;
+  left: -5px;
+  width: 12px;
+  height: 32px;
+  background-color: #fff;
+  transform: skew(25deg, 0deg);
+  border-right: 1px solid var(--ta-gris-subtexto);
+  border-top: 1px solid var(--ta-gris-subtexto);
+  border-bottom: 4px solid white;
+  z-index: 0;
+}
+.user-block-container .user-tabs .nav.nav-tabs .last-nav-item .nav-link.active p {
+  border-right: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content {
+  border: 1px solid var(--ta-gris-subtexto);
+  border-top: none;
+  position: relative;
+  z-index: 10;
+  padding-top: 1px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .img-container {
+  width: 174px;
+  height: 171px;
+  border-radius: 6px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .img-container .img-wrapper {
+  background-image: url(../../assets/images/user-img.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .img-container .img-wrapper .edit-icon {
+  bottom: -12px;
+  left: -8px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .img-container .img-wrapper .edit-icon button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .name-and-plan .name h4 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-negro-texto);
+  font-size: 27px;
+  letter-spacing: -1px;
+  line-height: 31px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .name-and-plan .plan .type h6 {
+  margin: 0;
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ta-gris-subtexto);
+  font-size: 20px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button {
+  width: 100%;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  background-color: var(--ta-gris-fondos);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-icon {
+  max-width: 35px;
+  height: auto;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-title p {
+  margin: 0;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  line-height: 20px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-title p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option.new-notif button {
+  background-color: var(--ta-socios);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .title h4 {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .title h4 span {
+  background-color: transparent;
+  color: var(--ta-socios);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-header {
+  border-top: 1px solid var(--ta-gris-subtexto);
+  justify-content: flex-end;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-header .unread-icon {
+  display: none;
+  background-color: var(--ta-socios);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-header .unread-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-header .unread-icon img {
+  max-width: 35px;
+  height: auto;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-header .close-btn img,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-header .close-btn img {
+  max-width: 15px;
+  height: auto;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .article-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .article-title p {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  line-height: 16.5px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .date small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .author small,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .date small {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment-title p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment-title p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .description p,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .notif-link a,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .notif-link a {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  background-color: var(--ta-socios-fondos);
+  text-decoration: underline;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment.unread .notif-header,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article.unread .notif-header {
+  border-top: 1px solid var(--ta-socios);
+  justify-content: space-between;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment.unread .notif-header .unread-icon,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article.unread .notif-header .unread-icon {
+  display: block;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .clearall,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .clearall,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .clearall {
+  border-top: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .clearall .clearall-btn button,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .clearall .clearall-btn button,
+.user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .clearall .clearall-btn button {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  background-color: var(--ta-socios);
+  border: none;
+  color: var(--ta-negro-texto);
+  font-size: 15px;
+  left: 50%;
+  line-height: 20px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown {
+  background-color: transparent;
+  border: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: left;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown .dropdown-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown .dropdown-icon img {
+  transform: rotate(180deg);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown:not(.collapsed) .dropdown-icon img,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown:not(.collapsed) .dropdown-icon img {
+  transform: rotate(0);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown:focus,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown:focus {
+  border: none;
+  outline: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support p span,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapse .card,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapsing .card,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapse .card,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapsing .card {
+  border: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapse .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapsing .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapse .subtitle p,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapsing .subtitle p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container {
+  background-color: var(--ta-gris-fondos);
+  border-radius: 20px;
+  font-size: 13px;
+  height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container.editing,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container.editing {
+  background-color: transparent;
+  border: 1.5px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container label,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container label {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ta-gris-subtexto);
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  line-height: 20px;
+  margin: 0;
+  white-space: nowrap;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input {
+  border: none;
+  height: 35px;
+  padding-left: 5px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input:disabled:not(:placeholder-shown):valid, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input:disabled:not(:placeholder-shown):invalid,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input:disabled:not(:placeholder-shown):valid,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input:disabled:not(:placeholder-shown):invalid {
+  background: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .btns-container #finishEditingPersonalInfo,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .btns-container #finishEditingDeliveryInfo,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .btns-container #finishEditingPersonalInfo,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .btns-container #finishEditingDeliveryInfo {
+  display: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support a,
+.user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support a {
+  background-color: var(--ta-socios-fondos);
+  text-decoration: underline;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown {
+  border-top: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn:focus {
+  border: none;
+  outline: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn .title p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn .dropdown-icon img {
+  transform: rotate(180deg);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn:not(.collapsed) .dropdown-icon img {
+  transform: rotate(0);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .collapse .card,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .collapsing .card {
+  border: none;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .freq p,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .email-address p,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p {
+  margin-bottom: 10px !important;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .freq p span,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .email-address p span,
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p {
+  font-style: italic;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p span {
+  font-style: normal;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .author small {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-list .edit-themes {
+  border-top: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .news-nolist .subtitle p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .plan-container {
+  border: 1px solid var(--ta-socios);
+  margin-top: 85px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .plan-container .icon {
+  margin-top: -85px;
+  min-height: 92px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .plan-container .icon img {
+  background: white;
+  padding: 0 10px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .plan-container .title {
+  background-color: white;
+  margin: -54px auto 0 auto;
+  max-width: 75%;
+  min-height: 63px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .description h4 {
+  font-family: "Caladea";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 31.05px;
+  letter-spacing: -1px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19.85px;
+  letter-spacing: -0.2px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .description p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .btns-container button {
+  max-width: 129px;
+  min-width: 129px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits button {
+  border: none;
+  background-color: var(--ta-gris-fondos);
+  min-width: 100%;
+  text-transform: none;
+  height: 35px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits button .benefit-title p {
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits button .benefit-title p span {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .history-item .history-header {
+  border-top: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .history-item .history-header .close-btn img {
+  max-width: 15px;
+  height: auto;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .history-item .history-body .title p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .history-item .history-body .description p {
+  margin: 0;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .history-item .history-body .date small {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .clearall {
+  border-top: 1px solid var(--ta-gris-subtexto);
+}
+.user-block-container .user-tabs .tab-content .tab-pane .subs-block .clearall .btns-container button {
+  max-width: 100%;
+}
+
+@media (min-width: 778px) {
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .plan-container .title {
+    margin: -35px auto 0 auto;
+    max-width: 50%;
+    min-height: 45px;
+  }
+}
+@media (min-width: 992px) {
+  .user-block-container .mw-md-60 {
+    max-width: 60%;
+  }
+  .user-block-container .user-tabs .nav.nav-tabs .nav-item .nav-link p {
+    font-size: 16px;
+    padding: 7px 15px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .title h4 {
+    font-size: 26px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .name-and-plan .name h4 {
+    font-size: 39px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .name-and-plan .plan .type h6 {
+    font-size: 26px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .options {
+    max-width: 48%;
+    margin: 0 auto;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button {
+    border-radius: 25px 0 0 25px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-icon {
+    max-width: 50px;
+    margin-right: 20px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-profile .options .option button .opt-title p {
+    font-size: 19px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .article-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .article-title p {
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .date small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .author small, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .date small {
+    font-size: 16px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .description p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .description p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment-title p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment-title p {
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .notifications .saved-article .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .comments .saved-article .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .notif .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .comment .saved-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .notif-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .comment-body .your-comment .comment p, .user-block-container .user-tabs .tab-content .tab-pane .user-block .saved .saved-article .saved-body .your-comment .comment p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container {
+    max-width: 1030px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container {
+    min-width: 500px;
+    height: 50px;
+    border-radius: 30px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container input, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container input {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+    height: 50px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container label, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .form-container .input-container label {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .delivery-info-dropdown p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .support p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .delivery-info-dropdown p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .support p {
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapse .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .collapsing .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapse .subtitle p, .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .delivery-info .collapsing .subtitle p {
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(1) {
+    order: 1;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(2) {
+    order: 3;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(3) {
+    order: 2;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(4) {
+    order: 4;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(5) {
+    order: 5;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(6) {
+    order: 7;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .account-info .info-forms .personal-info .form-container .input-container:nth-child(7) {
+    order: 6;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .description h4 {
+    font-size: 39px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .description p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits button {
+    height: 50px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits button .benefit-title p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .subs-block .benefits .benefit-icon img {
+    width: 30px;
+    height: auto;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .dropdown-btn .title p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .freq p, .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .email-address p, .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .theme p {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: -0.1px;
+  }
+  .user-block-container .user-tabs .tab-content .tab-pane .news-list .news-themes-dropdowns .theme-dropdown .author small {
+    font-size: 16px;
+  }
+}
+
+/*# sourceMappingURL=user-tabs.css.map */

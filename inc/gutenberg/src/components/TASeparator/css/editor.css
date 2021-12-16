@@ -1,0 +1,20 @@
+.ta-separator .separator {
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: #16a1dc;
+    line-height: 0;
+    margin-bottom: 0.75rem;
+}
+
+.ta-separator.center{
+    text-align: center;
+}
+
+.ta-separator.right{
+    text-align: right;
+}
+
+.ta-separator{
+    line-height: 0;
+}

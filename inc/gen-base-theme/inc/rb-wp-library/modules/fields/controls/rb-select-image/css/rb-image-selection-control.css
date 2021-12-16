@@ -1,0 +1,70 @@
+.rb-image-selection-control .image-option .image-selection-image {
+    height: 6rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rb-image-selection-control .image-option .image-option-input {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 0.3s;
+    border-width: 0.2rem;
+    border-color: transparent;
+}
+
+.rb-image-selection-control .image-option .image-option-input:hover {
+    border-color: #00afff;
+}
+
+.rb-image-selection-control .image-option .image-option-input:checked {
+    border-color: #00afff;
+    border-width: 0.2rem;
+    box-shadow: 0 0 5px rgb(0, 175, 255);
+}
+
+.rb-image-selection-control .image-option .image-option-input:before{
+    content: "";
+    display: block;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: black;
+    box-shadow: inset 0px 0px 6px 0px black;
+    width: 15px;
+    height: 15px;
+    transition: all 0.3s;
+    margin: 4px;
+    z-index: 345345345;
+}
+
+.rb-image-selection-control .image-option .image-option-input:checked:before {
+    background-color: #00bbff;
+    /* border: solid 3px #6cff0f; */
+    width: 20px;
+    height: 20px;
+}
+
+.rb-image-selection-control .image-option {
+    position: relative;
+    margin-bottom: auto;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.rb-image-selection-control .images-options-container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    margin-bottom: -0.5rem;
+    justify-content: center;
+}

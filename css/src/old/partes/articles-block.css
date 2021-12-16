@@ -1,0 +1,193 @@
+:root {
+  --ta-celeste: #16a1dc;
+  --ta-gris-imagen: #ebebeb;
+  --ta-celeste-fondos: #ebf7fe;
+  --ta-negro-texto: #252b2d;
+  --ta-gris-subtexto: #849899;
+  --ta-socios: #ffbb0f;
+  --ta-socios-fondos: #ffe7a9;
+  --ta-espectaculos: #ce0d54;
+  --ta-cultura: #48b1a7;
+  --ta-deportes: #ee813c;
+}
+
+.article-preview {
+  max-width: 258px;
+}
+.article-preview.horizontal {
+  max-width: 100%;
+}
+.article-preview.horizontal .date {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.88px;
+  color: var(--ta-gris-subtexto);
+  text-align: right;
+  margin-top: 5px;
+}
+.article-preview.horizontal .img-container img {
+  max-width: 115px;
+}
+.article-preview.horizontal .content {
+  margin-left: 10px;
+}
+.article-preview.horizontal .content .description p {
+  margin: 0;
+}
+.article-preview.horizontal .content .author {
+  max-width: 100%;
+}
+.article-preview .img-container img {
+  min-width: 100%;
+  height: auto;
+}
+.article-preview .img-container .article-icons {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.article-preview .img-container .article-icons img {
+  max-width: 40px;
+  height: auto;
+  margin: 5px 0;
+}
+.article-preview .content .category-title h4 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+}
+.article-preview .content .description p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.85px;
+  letter-spacing: -0.2px;
+  font-size: 15px;
+}
+.article-preview .content .duration {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 19.85px;
+  letter-spacing: -0.2px;
+  font-size: 15px;
+}
+.article-preview .content .date {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--white);
+}
+.article-preview .content .article-info-container {
+  display: flex;
+}
+.article-preview .content .article-info-container .author {
+  max-width: 50%;
+}
+.article-preview .content .article-info-container .author p {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ta-gris-subtexto);
+  font-size: 12px;
+  line-height: 14.88px;
+  margin-bottom: 0;
+}
+.article-preview .content .article-info-container .format-icon {
+  margin-right: 10px;
+}
+.article-preview .content .article-info-container .author,
+.article-preview .content .article-info-container .format {
+  max-width: 90%;
+}
+.article-preview .content .article-info-container .format p {
+  margin: 0;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+}
+
+.sub-blocks .ta-articles-block {
+  overflow: scroll;
+  overflow-y: hidden;
+}
+.sub-blocks .ta-articles-block.fullwidth-row {
+  overflow: hidden;
+}
+.sub-blocks .ta-articles-block.fullwidth-row .article,
+.sub-blocks .ta-articles-block.fullwidth-row .article-preview {
+  max-width: 100%;
+}
+.sub-blocks .ta-articles-block.fullwidth-row .article .img-container img,
+.sub-blocks .ta-articles-block.fullwidth-row .article-preview .img-container img {
+  min-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 992px) {
+  .article-preview.horizontal .img-container .img-wrapper img {
+    max-width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .sub-blocks .ta-articles-block {
+    overflow: hidden;
+  }
+
+  .article-preview {
+    max-width: 258px;
+  }
+  .article-preview.thumbnail {
+    max-width: 258px;
+  }
+  .article-preview.thumbnail .img-container img {
+    max-width: 100%;
+  }
+  .article-preview.thumbnail .content {
+    margin-left: 0;
+  }
+  .article-preview.thumbnail .content .article-border {
+    border-top: 2px solid var(--ta-celeste);
+    width: 70px;
+    margin: 10px 0;
+  }
+  .article-preview.thumbnail .content .description p {
+    margin-bottom: 1rem;
+  }
+  .article-preview.thumbnail .content .author {
+    max-width: 70%;
+  }
+  .article-preview .content .description p {
+    font-size: 19px;
+    line-height: 25.14px;
+    letter-spacing: -0.1px;
+  }
+  .article-preview .content .duration {
+    line-height: 25.14px;
+    letter-spacing: -0.1px;
+    font-size: 19px;
+  }
+  .article-preview .content .date {
+    font-size: 16px;
+    line-height: 19.84px;
+  }
+  .article-preview .content .article-info-container .format p {
+    font-size: 16px;
+    line-height: 21.17px;
+  }
+  .article-preview .content .article-info-container .author p {
+    font-size: 16px;
+    line-height: 19.84px;
+  }
+  .article-preview .content .category-title h4 {
+    font-size: 16px;
+    line-height: 21.17px;
+  }
+}
+
+/*# sourceMappingURL=articles-block.css.map */
